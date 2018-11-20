@@ -1,0 +1,8 @@
+@import "normalize.scss";
+/* Подключение шрифтов, миксин  и переменных*/
+@import "variables.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+/* Базовая стилизация */
+@import "base.scss";
+@import "visually-hidden.scss";
