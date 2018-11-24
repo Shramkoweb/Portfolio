@@ -1,6 +1,8 @@
 .main-navigation {
   position: relative;
 
+  padding-top: 20px;
+
   &--closed .main-navigation__list {
     display: none;
   }
@@ -24,14 +26,19 @@
 }
 
 .main-navigation__item {
-  text-align: center;
+  text-align: right;
 }
 
 .main-navigation__link {
+  position: relative;
+
   display: block;
   padding: 10px 5px;
 
   font-weight: 700;
+  text-transform: uppercase;
+
+  outline: none;
 
   &:hover,
   &:focus {
@@ -51,6 +58,7 @@
     transform-origin: top;
     opacity: 0;
   }
+
   100% {
     transform: rotateX(0deg);
     transform-origin: top;
