@@ -49,3 +49,17 @@ window.onload = function () {
         }
     }
 };
+
+/* Меню */
+
+var navigationMain = document.querySelector(".main-navigation");
+var navigationToggle = document.querySelector(".main-navigation__toggle");
+
+//Открытие меню в мобильно версии.
+
+navigationMain.classList.remove("main-navigation--no-js");
+navigationMain.classList.add("main-navigation--closed");
+
+navigationToggle.addEventListener("click", function () {
+  navigationMain.classList.toggle("main-navigation--closed");
+})
