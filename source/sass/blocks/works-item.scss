@@ -1,0 +1,29 @@
+.works-item {
+  margin-bottom: 50px;
+}
+
+.works-item__title {
+  margin: 0;
+  margin-bottom: 15px;
+
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.works-item__type {
+  display: block;
+  margin-bottom: 15px;
+
+  font-size: 14px;
+}
+
+.works-item__list {
+  @include list-reset;
+
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.works-item__item {
+}
