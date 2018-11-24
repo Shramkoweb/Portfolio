@@ -13,33 +13,37 @@
 
   <body class="page">
     <header class="page-header">
-      <!-- Логотип -->
-      <div class="logo">
-        <a class="logo__link">
-          <img class="logo__img" src="img/logo.svg" alt="Логотип сайта" width="200" height="200">
-        </a>
+      <div class="container">
+        <div class="page-header__inner">
+          <!-- Логотип -->
+          <div class="logo">
+            <a class="logo__link">
+              <img class="logo__img" src="img/logo.svg" alt="Логотип сайта" width="35" height="35">
+            </a>
+          </div>
+
+          <!-- Навигация -->
+          <nav class="main-navigation main-navigation--no-js">
+            <ul class="main-navigation__list">
+              <li class="main-navigation__item">
+                <a class="main-navigation__link" href="#" tabindex="2">Навыки</a>
+              </li>
+
+              <li class="main-navigation__item">
+                <a class="main-navigation__link" href="#" tabindex="3">Работы</a>
+              </li>
+
+              <li class="main-navigation__item">
+                <a class="main-navigation__link" href="#" tabindex="4">Контакты</a>
+              </li>
+            </ul>
+
+            <button class="main-navigation__toggle toggle" type="button" tabindex="1">
+              <span class="visually-hidden">Кнопка открытия меню</span>
+            </button>
+          </nav>
+        </div>
       </div>
-
-      <!-- Навигация -->
-      <nav class="main-navigation">
-        <ul class="main-navigation__list">
-          <li class="main-navigation__item">
-            <a class="main-navigation__link" href="#">Навыки</a>
-          </li>
-
-          <li class="main-navigation__item">
-            <a class="main-navigation__link" href="#">Работы</a>
-          </li>
-
-          <li class="main-navigation__item">
-            <a class="main-navigation__link" href="#">Контакты</a>
-          </li>
-        </ul>
-
-        <button class="main-navigation__toggle toggle" type="button">
-          <span class="visually-hidden">Кнопка открытия меню</span>
-        </button>
-      </nav>
     </header>
 
     <main>
