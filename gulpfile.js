@@ -72,19 +72,7 @@ gulp.task("webp", function () {
 });
 
 gulp.task("sprite", function () {
-  return gulp.src([
-    "source/img/icon-search.svg",
-    "source/img/icon-cart.svg",
-    "source/img/icon-fb.svg",
-    "source/img/icon-insta.svg",
-    "source/img/icon-twitter.svg",
-    "source/img/icon-right-arrow.svg",
-    "source/img/icon-mail.svg",
-    "source/img/icon-phone.svg",
-    "source/img/icon-left-arrow.svg",
-    "source/img/logo-footer.svg",
-    "source/img/htmlacademy.svg",
-  ])
+  return gulp.src("source/img/**/*.svg")
     .pipe(svgstore({
       inlineSvg: true
     }))
@@ -117,6 +105,7 @@ gulp.task("build", gulp.series(
   "clean",
   "copy",
   "css",
+  "sprite",
   "html"
 ));
 
