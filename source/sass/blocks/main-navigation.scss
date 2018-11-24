@@ -1,0 +1,38 @@
+.main-navigation {
+  position: relative;
+
+  &--closed .main-navigation__list {
+    display: none;
+  }
+}
+
+
+.main-navigation__list {
+  @include list-reset;
+}
+
+
+.main-navigation--no-js .main-navigation__toggle {
+  display: none;
+}
+
+.main-navigation__item {
+  text-align: center;
+}
+
+.main-navigation__link {
+  display: block;
+  padding: 10px 5px;
+
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    color: $link_color;
+  }
+
+  &:active {
+    opacity: 0.5;
+    color: $link_color;
+  }
+}
