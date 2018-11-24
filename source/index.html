@@ -203,7 +203,12 @@
 
                 <ul class="works-item__list">
                   <li class="works-item__item">
-                    <img src="../img/123.png alt=" Проект">
+                    <picture>
+                      <source media="(min-width: 1150px)" srcset="img/pink-desktop@1x.png 1x, img/pink-desktop@2x.png 2x">
+                      <source media="(min-width: 768px)" srcset="img/pink-tablet@1x.png 1x, img/pink-tablet@2x.png 2x">
+                      <img class="works-item__image" src="img/pink-mobile@1x.png" srcset="img/pink-mobile@2x.png 2x"
+                        alt="Проект 'Pink'">
+                    </picture>
                   </li>
                 </ul>
               </li>
