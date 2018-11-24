@@ -11,6 +11,13 @@
     box-shadow: 0 5px 0 0  #000000, 0 11px 0 0  #000000;
     transform: none;
   }
+
+  &--closed .main-navigation__toggle:focus {
+    &::before {
+      box-shadow: 0 5px 0 0  $link_color, 0 11px 0 0 $link_color;
+      transform: none;
+    }
+  }
 }
 
 

@@ -11,6 +11,7 @@
 
   background: transparent;
   border: none;
+  outline: none;
   cursor: pointer;
 
   &::before {
@@ -25,5 +26,11 @@
     background-color: #000000;
 
     transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &:focus {
+    &::before {
+      background-color: $link_color;
+    }
   }
 }
