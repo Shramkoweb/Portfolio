@@ -1,9 +1,8 @@
 .toggle {
   position: absolute;
-  z-index: 2;
-
-  right: 0;
   top: -30px;
+  right: 0;
+  z-index: 2;
 
   width: 30px;
   height: 15px;
@@ -24,6 +23,7 @@
     height: 2px;
 
     background-color: #000000;
-    box-shadow: 0 6px 0 0 #000000, 0 12px 0 0 #000000;
+
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 }
