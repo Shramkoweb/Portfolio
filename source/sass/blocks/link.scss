@@ -1,0 +1,14 @@
+.link {
+  background: linear-gradient($link_color, $link_color);
+  background-repeat: no-repeat;
+  background-position: left 0 bottom 0;
+  background-size: 100% 0.2em;
+  outline: none;
+
+  transition: all 0.2s ease-out;
+
+  &:hover,
+  &:focus {
+    background-color: $link_color;
+  }
+}
