@@ -229,7 +229,12 @@
 
                 <ul class="works-item__list">
                   <li class="works-item__item">
-                    <img src="http://placehold.it/250x200" alt="Проект">
+                    <picture>
+                      <source media="(min-width: 1150px)" srcset="img/sedona-desktop@1x.png 1x, img/sedona-desktop@2x.png 2x">
+                      <source media="(min-width: 768px)" srcset="img/sedona-tablet@1x.png 1x, img/sedona-tablet@2x.png 2x">
+                      <img class="works-item__image" src="img/sedona-mobile@1x.png" srcset="img/sedona-mobile@2x.png 2x"
+                        alt="Проект 'Sedona'">
+                    </picture>
                   </li>
                 </ul>
               </li>
