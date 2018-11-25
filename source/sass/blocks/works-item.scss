@@ -17,13 +17,6 @@
   font-size: 14px;
 }
 
-.works-item__list {
-  @include list-reset;
-
-  display: flex;
-  justify-content: center;
+.works-item__image-wrapper {
   margin-top: 25px;
-}
-
-.works-item__item {
 }
