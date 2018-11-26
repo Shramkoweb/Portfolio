@@ -1,5 +1,9 @@
 .works-item {
   margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .works-item__title {
