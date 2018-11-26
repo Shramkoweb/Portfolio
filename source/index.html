@@ -247,6 +247,32 @@
       <div class="container">
         <h2 class="page-footer__title"> Контакты</h2>
 
+        <div class="form-wrapper">
+          <form class="form" action="#">
+            <fieldset class="form__group">
+              <legend class="form__title">Отправьте мне письмо</legend>
+
+              <div class="form__row form__row--name">
+                <label for="name">Имя:</label>
+
+                <input type="text" name="name" id="name" required>
+              </div>
+
+              <div class="form__row form__row--mail">
+                <label for="mail">Почта:</label>
+
+                <input type="text" name="mail" id="mail">
+              </div>
+
+              <div class="form__row form__row--text">
+                <label for="text">Сообщение:</label>
+
+                <textarea name="text" id="text" cols="30" rows="10"></textarea>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
         <!-- Контакты -->
         <section class="contacts" id="contacts">
           <ul class="contacts__list">
