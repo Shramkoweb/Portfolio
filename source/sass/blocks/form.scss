@@ -1,8 +1,27 @@
-.form__row--text {
+.form__row {
   display: flex;
   flex-direction: column;
+
+  & input {
+    padding: 0;
+  }
+
+  & label {
+  }
 }
 
 .form__title {
+  font-weight: 700;
+}
 
+.form__group {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 25px;
+
+  border: none;
+}
+
+.form__textarea {
+  padding: 0;
 }
