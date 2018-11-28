@@ -1,24 +1,56 @@
 .form__row {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
 
   & input {
-    padding: 0;
+    padding: 15px 10px;
+    padding-bottom: 0;
+
+    border: none;
+    border-bottom: 1px solid #000000;
+
+    &:hover,
+    &:focus {
+      border-bottom: 1px solid $link-color;
+      outline: none;
+    }
+  }
+
+  & label {
+    font-weight: 700;
+
+    cursor: pointer;
   }
 }
 
 .form__title {
-  font-weight: 700;
+  margin-bottom: 25px;
 }
 
 .form__group {
   margin: 0;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   padding: 0;
 
   border: none;
+
+  &::after {
+    content: "* Все поля обязательны к заполнению";
+
+    display: block;
+  }
 }
 
 .form__textarea {
-  padding: 0;
+  margin-top: 25px;
+  padding: 5px;
+
+  border: 1px solid #000000;
+
+  &:hover,
+  &:focus {
+    border: 1px solid $link-color;
+    outline: none;
+  }
 }
