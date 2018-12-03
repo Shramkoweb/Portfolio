@@ -1,4 +1,19 @@
-.contacts__icon {
-  width: 30px;
-  height: 30px;
+.contacts__list {
+  @include list-reset;
+
+  &:first-child {
+    margin-bottom: 50px;
+  }
+
+  &:last-child {
+    text-align: right;
+  }
+}
+
+.contacts__item {
+  margin-right: 5px;
+  margin-bottom: 10px;
+
+  font-weight: 700;
+  text-transform: uppercase;
 }
