@@ -25,4 +25,12 @@
   display: flex;
   justify-content: center;
   margin-top: 25px;
+
+  & a {
+    outline: none;
+  }
+
+  & a:focus {
+    outline: 1px solid #000000;
+  }
 }
