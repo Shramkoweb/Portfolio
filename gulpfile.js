@@ -108,4 +108,14 @@ gulp.task("build", gulp.series(
   "html"
 ));
 
+gulp.task("deploy", gulp.series(
+  "clean",
+  "copy",
+  "css",
+  "sprite",
+  "images",
+  "webp",
+  "html"
+));
+
 gulp.task("start", gulp.series("build", "server"));
