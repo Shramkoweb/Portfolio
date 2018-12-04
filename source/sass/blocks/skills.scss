@@ -40,11 +40,6 @@
   @media (min-width: $bp-tablet) {
     width: 45%;
 
-    & .skills__image {
-      margin: 0;
-      margin-right: auto;
-    }
-
     &:nth-of-type(2n) ::before {
       left: 100%;
 
@@ -100,4 +95,9 @@
   width: 200px;
   height: 200px;
   margin: 0 auto;
+
+  @media (min-width: $bp-tablet) {
+    margin: 0;
+    margin-right: auto;
+  }
 }
