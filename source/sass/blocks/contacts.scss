@@ -1,3 +1,11 @@
+.contacts {
+  @media (min-width: $bp-tablet) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
 .contacts__list {
   @include list-reset;
 
