@@ -100,4 +100,9 @@
     margin: 0;
     margin-right: auto;
   }
+
+  @media (min-width: 550px) and (max-width: $bp-tablet - 1) {
+    width: 300px;
+    height: 300px;
+  }
 }
