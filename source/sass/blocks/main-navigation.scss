@@ -18,13 +18,25 @@
       transform: none;
     }
   }
+
+  @media (min-width: $bp-tablet) {
+    width: 50%;   
+
+    .main-navigation__toggle {
+      display: none;
+    }
+
+    .main-navigation__list {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
 
-
 .main-navigation__list {
-  animation: swing 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-
   @include list-reset;
+
+  animation: swing 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 
 

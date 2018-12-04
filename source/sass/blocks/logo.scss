@@ -1,5 +1,9 @@
 .logo {
   margin-right: 50px;
+
+  @media (min-width: $bp-tablet) {
+    width: 25%;
+  }
 }
 
 .logo__link {

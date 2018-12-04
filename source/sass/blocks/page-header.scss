@@ -1,7 +1,11 @@
 .page-header__inner {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding-top: 2em;
 
-  flex-direction: column;
+  @media (min-width: $bp-tablet) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
