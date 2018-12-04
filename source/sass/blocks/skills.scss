@@ -18,9 +18,15 @@
 }
 
 .skills__list {
+  @include list-reset;
+
   counter-reset: counter;
 
-  @include list-reset;
+  @media (min-width: $bp-tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 .skills-item {
@@ -30,6 +36,35 @@
   padding-bottom: 50px;
 
   counter-increment: counter;
+
+  @media (min-width: $bp-tablet) {
+    width: 45%;
+
+    &:nth-of-type(2n) ::before {
+      left: 100%;
+
+      transform: translateX(-100%);
+    }
+
+    &:nth-of-type(2n) {
+      text-align: right;
+    }
+
+    &:nth-of-type(2n)  .skills__image {
+      margin: 0;
+      margin-left: auto;
+    }
+
+    &:last-child {
+      width: 100%;
+
+      text-align: center;
+    }
+
+    &:last-child ::before {
+      right: 0;
+    }
+  }
 }
 
 .skills-item__title {
