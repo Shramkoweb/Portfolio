@@ -9,3 +9,9 @@
 
   font-size: 2em;
 }
+
+.about__text-wrapper {
+  @media (min-width: $bp-tablet) {
+    width: 85%;
+  }
+}
