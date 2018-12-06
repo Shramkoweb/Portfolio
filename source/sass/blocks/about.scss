@@ -14,11 +14,11 @@
   @media (min-width: $bp-desktop) {
     background-image: url("../img/me.svg");
     background-repeat: no-repeat;
-    background-position: right 10% bottom;
+    background-position: right bottom;
   }
 
   @media (min-width: $bp-desktop-large) {
-    background-position: right 35% bottom;
+    background-position: right 18% bottom;
   }
 }
 
