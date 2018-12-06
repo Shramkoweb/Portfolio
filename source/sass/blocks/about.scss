@@ -16,10 +16,10 @@
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: 475px;
-  }
 
-  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../img/computer@2x.png");
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../img/computer@2x.png");
+    }
   }
 }
 
