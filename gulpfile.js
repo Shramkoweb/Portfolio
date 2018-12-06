@@ -74,7 +74,10 @@ gulp.task("webp", function () {
 });
 
 gulp.task("sprite", function () {
-  return gulp.src("build/img/**/*.svg")
+  return gulp.src([
+    "build/img/**/*.svg",
+    "!build/img/me.svg"
+  ])
     .pipe(svgstore({
       inlineSvg: true
     }))
@@ -106,7 +109,8 @@ gulp.task("html", function () {
 gulp.task("cleanImg", function () {
   return del([
     "build/img/**/*.svg",
-    "!build/img/sprite.svg"
+    "!build/img/sprite.svg",
+    "!build/img/me.svg"
   ]);
 });
 

@@ -10,8 +10,24 @@
   font-size: 2em;
 }
 
+.about__inner {
+  @media (min-width: $bp-desktop) {
+    background-image: url("../img/me.svg");
+    background-repeat: no-repeat;
+    background-position: right 10% bottom;
+  }
+
+  @media (min-width: $bp-desktop-large) {
+    background-position: right 35% bottom;
+  }
+}
+
 .about__text-wrapper {
   @media (min-width: $bp-tablet) {
     width: 85%;
+  }
+
+  @media (min-width: $bp-desktop) {
+    width: 50%;
   }
 }
