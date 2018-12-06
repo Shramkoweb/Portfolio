@@ -103,11 +103,19 @@ gulp.task("html", function () {
     .pipe(gulp.dest("build"));
 });
 
+gulp.task("cleanImg", function () {
+  return del([
+    "build/img/**/*.svg",
+    "!build/img/sprite.svg"
+  ]);
+});
+
 gulp.task("build", gulp.series(
   "clean",
   "copy",
   "css",
   "sprite",
+  "cleanImg",
   "webp",
   "html"
 ));
@@ -118,6 +126,7 @@ gulp.task("deploy", gulp.series(
   "css",
   "images",
   "sprite",
+  "cleanImg",
   "webp",
   "html"
 ));
