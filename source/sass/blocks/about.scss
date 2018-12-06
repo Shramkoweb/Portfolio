@@ -12,13 +12,9 @@
 
 .about__inner {
   @media (min-width: $bp-desktop) {
-    background-image: url("../img/me.svg");
+    background-image: url("../img/computer.png");
     background-repeat: no-repeat;
     background-position: right bottom;
-  }
-
-  @media (min-width: $bp-desktop-large) {
-    background-position: right 18% bottom;
   }
 }
 

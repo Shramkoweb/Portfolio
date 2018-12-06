@@ -110,7 +110,6 @@ gulp.task("cleanImg", function () {
   return del([
     "build/img/**/*.svg",
     "!build/img/sprite.svg",
-    "!build/img/me.svg"
   ]);
 });
 
