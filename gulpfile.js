@@ -52,7 +52,11 @@ gulp.task("images", function () {
       imagemin.optipng({ optimizationLevel: 7 }),
       imagemin.jpegtran({ progressive: true }),
       imagemin.gifsicle({ interlaced: true }),
-      imagemin.svgo()
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: false }
+        ]
+      })
     ], {
         verbose: true
       }))
@@ -70,7 +74,7 @@ gulp.task("webp", function () {
 });
 
 gulp.task("sprite", function () {
-  return gulp.src("source/img/**/*.svg")
+  return gulp.src("build/img/**/*.svg")
     .pipe(svgstore({
       inlineSvg: true
     }))
@@ -112,8 +116,8 @@ gulp.task("deploy", gulp.series(
   "clean",
   "copy",
   "css",
-  "sprite",
   "images",
+  "sprite",
   "webp",
   "html"
 ));
