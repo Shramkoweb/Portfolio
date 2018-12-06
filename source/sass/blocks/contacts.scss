@@ -11,6 +11,11 @@
 
   &:first-child {
     margin-bottom: 50px;
+
+    @media (min-width: $bp-desktop) {
+      margin: 0;
+      margin-top: auto;
+    }
   }
 }
 
