@@ -12,14 +12,14 @@
 
 .about__inner {
   @media (min-width: $bp-desktop) {
-    background-image: url("../../img/computer@1x.png");
+    background-image: url("../img/computer@1x.png");
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: 475px;
   }
 
   @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../../img/computer@2x.png");
+    background-image: url("../img/computer@2x.png");
   }
 }
 
