@@ -43,10 +43,6 @@
     margin-bottom: 1em;
 
     text-align: center;
-
-    &:last-child {
-      width: 100%;
-    }
   }
 
   @media (min-width: $bp-desktop) {
