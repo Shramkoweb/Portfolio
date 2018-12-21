@@ -19,6 +19,9 @@
     "gulp-svgstore": "^7.0.0",
     "gulp-uglify": "^3.0.1",
     "gulp-webp": "^3.0.0",
+    "imagemin": "^6.0.0",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-pngquant": "^6.0.0",
     "pump": "^3.0.0",
     "stylelint": "9.6.x",
     "stylelint-config-htmlacademy": "0.1.x"
