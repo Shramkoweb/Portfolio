@@ -65,7 +65,7 @@ gulp.task("images", (done) => {
       optipng: false,
       zopflipng: true,
       jpegRecompress: false,
-      mozjpeg: true,
+      mozjpeg: ['-optimize', '-progressive', '-quality', 85],
       guetzli: false,
       gifsicle: true,
       svgo: ['--disable', 'cleanupIDs',],
