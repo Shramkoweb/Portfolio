@@ -69,7 +69,7 @@ gulp.task("images", (done) => {
       guetzli: false,
       gifsicle: true,
       svgo: ['--disable', 'cleanupIDs',],
-      concurrent: 10,
+       concurrent: 10,
     }))
     .pipe(gulp.dest("build/img"));
   done();
