@@ -1,6 +1,5 @@
 "use strict";
 
-var gulp = require("gulp");
 var sass = require("gulp-sass");
 var plumber = require("gulp-plumber");
 var postcss = require("gulp-postcss");
@@ -12,8 +11,10 @@ var imagemin = require("gulp-imagemin");
 var webp = require("gulp-webp");
 var svgstore = require("gulp-svgstore");
 var del = require("del");
-var uglify = require('gulp-uglify');
-var pump = require('pump');
+var uglify = require("gulp-uglify");
+var pump = require("pump");
+const image = require("gulp-image");
+const gulp = require("gulp");
 
 gulp.task("css", function () {
   return gulp.src("source/sass/style.scss")
@@ -47,33 +48,31 @@ gulp.task("refresh", function (done) {
   done();
 });
 
-gulp.task('compress', function (cb) {
+gulp.task("compress", function (cb) {
   pump([
-        gulp.src("source/js/**"),
-        uglify(),
-        gulp.dest("build/js")
-    ],
+    gulp.src("source/js/**"),
+    uglify(),
+    gulp.dest("build/js")
+  ],
     cb
   );
 });
 
-
-gulp.task("images", function () {
-  return gulp.src("source/img/**/*.{png,jpg,svg}")
-    .pipe(imagemin([
-      imagemin.optipng({ optimizationLevel: 7 }),
-      imagemin.jpegtran({ progressive: true }),
-      imagemin.gifsicle({ interlaced: true }),
-      imagemin.svgo({
-        plugins: [
-          { removeViewBox: false }
-        ]
-      })
-    ], {
-        verbose: true
-      }))
+gulp.task("images", (done) => {
+  gulp.src("build/img/**/*.{png,jpg,svg}")
+    .pipe(image({
+      pngquant: true,
+      optipng: false,
+      zopflipng: true,
+      jpegRecompress: false,
+      mozjpeg: true,
+      guetzli: false,
+      gifsicle: true,
+      svgo: ['--disable', 'cleanupIDs',],
+      concurrent: 10,
+    }))
     .pipe(gulp.dest("build/img"));
-
+  done();
 });
 
 gulp.task("webp", function () {
@@ -131,7 +130,8 @@ gulp.task("build", gulp.series(
   "sprite",
   "cleanImg",
   "webp",
-  "html"
+  "html",
+  "images"
 ));
 
 gulp.task("deploy", gulp.series(
@@ -139,7 +139,6 @@ gulp.task("deploy", gulp.series(
   "copy",
   "compress",
   "css",
-  "images",
   "sprite",
   "cleanImg",
   "webp",
