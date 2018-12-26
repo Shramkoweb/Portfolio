@@ -143,7 +143,8 @@ gulp.task("deploy", gulp.series(
   "sprite",
   "cleanImg",
   "webp",
-  "html"
+  "html",
+  "images"
 ));
 
 gulp.task("start", gulp.series("build", "server"));
