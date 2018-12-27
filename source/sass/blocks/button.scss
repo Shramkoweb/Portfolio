@@ -2,4 +2,13 @@
   width: 100%;
 
   background-color: #ffffff;
+
+  &:hover {
+    border: 2px solid $link_color;
+  }
+}
+
+.button-warpper {
+  max-width: 288px;
+  margin: 0 auto;
 }
