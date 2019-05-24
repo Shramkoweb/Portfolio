@@ -13,7 +13,6 @@ var svgstore = require("gulp-svgstore");
 var del = require("del");
 var uglify = require("gulp-uglify");
 var pump = require("pump");
-const image = require("gulp-image");
 const gulp = require("gulp");
 
 gulp.task("css", function () {
@@ -58,21 +57,21 @@ gulp.task("compress", function (cb) {
   );
 });
 
-gulp.task("images", (done) => {
-  gulp.src("build/img/**/*.{png,jpg,svg}")
-    .pipe(image({
-      pngquant: true,
-      optipng: false,
-      zopflipng: true,
-      jpegRecompress: false,
-      mozjpeg: ['-optimize', '-progressive', '-quality', 85],
-      guetzli: false,
-      gifsicle: true,
-      svgo: ['--disable', 'cleanupIDs',],
-      concurrent: 10,
-    }))
+gulp.task("images", function () {
+  return gulp.src("source/img/**/*.{png,jpg,svg}")
+    .pipe(imagemin([
+      imagemin.optipng({ optimizationLevel: 7 }),
+      imagemin.jpegtran({ progressive: true }),
+      imagemin.gifsicle({ interlaced: true }),
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: false }
+        ]
+      })
+    ], {
+        verbose: true
+      }))
     .pipe(gulp.dest("build/img"));
-  done();
 });
 
 gulp.task("webp", function () {
@@ -128,11 +127,11 @@ gulp.task("build", gulp.series(
   "copy",
   "compress",
   "css",
+  "images",
   "sprite",
   "cleanImg",
   "webp",
-  "html",
-  "images"
+  "html"
 ));
 
 gulp.task("deploy", gulp.series(
@@ -140,11 +139,11 @@ gulp.task("deploy", gulp.series(
   "copy",
   "compress",
   "css",
+  "images",
   "sprite",
   "cleanImg",
   "webp",
-  "html",
-  "images"
+  "html"
 ));
 
 gulp.task("start", gulp.series("build", "server"));
