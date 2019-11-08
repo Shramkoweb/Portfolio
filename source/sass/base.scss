@@ -30,3 +30,24 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+
+ins, del{
+  text-decoration: none;
+  padding: 0 .3em;
+  height: auto;
+  border-radius: .3em;
+  display: inline;
+  box-decoration-break: clone;
+  margin-left: .07em;
+  margin-right: .07em;
+}
+
+ins {
+  background: #83d5a8;
+}
+
+del{
+  background: #d57c70;
+}
+
