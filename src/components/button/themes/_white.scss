@@ -1,0 +1,16 @@
+.button {
+  &_theme {
+    &_white {
+      padding: 11px 10px;
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--black);
+      background-color: var(--white);
+      transition: background-color 0.2s linear, color 0.2s linear;
+
+      &:hover {
+        background-color: var(--black-100);
+      }
+    }
+  }
+}
