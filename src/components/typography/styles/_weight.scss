@@ -1,0 +1,14 @@
+$weights: ("normal": 400, "bold": 700);
+
+.typography {
+
+  &_weight {
+
+    @each $weight, $weightValue in $weights {
+
+      &_#{$weight} {
+        font-weight: $weightValue;
+      }
+    }
+  }
+}

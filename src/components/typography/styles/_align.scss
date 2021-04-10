@@ -1,0 +1,14 @@
+$aligns: inherit, left, center, right, justify;
+
+.typography {
+
+  &_align {
+
+    @each $align in $aligns {
+
+      &_#{$align} {
+        text-align: $align;
+      }
+    }
+  }
+}

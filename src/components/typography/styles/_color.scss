@@ -1,0 +1,22 @@
+$colors: ("primary": '--black', "secondary": '--white', 'error': '--error');
+
+.typography {
+
+  &_color {
+
+    &_intial {
+      color: initial;
+    }
+
+    &_inherit {
+      color: inherit;
+    }
+
+    @each $color, $colorValue in $colors {
+
+      &_#{$color} {
+        color: var(#{$colorValue});
+      }
+    }
+  }
+}
