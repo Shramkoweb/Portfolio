@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import classNames from "classnames";
 
-import styles from "./button.module.scss";
+import styles from "./styles/button.module.scss";
 
 export interface ButtonProps {
   height?: "small" | "medium";
