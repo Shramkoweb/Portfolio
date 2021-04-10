@@ -1,5 +1,5 @@
 {
-  "name": "Portfolio",
+  "name": "s.shramko-portfolio",
   "author": "Serhii Shramko <shramko.dev@gmail.com",
   "license": "MIT",
   "version": "1.0.0",
@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
-    "format": "prettier --write portfolio",
-    "lint": "eslint portfolio --ext ts --ext tsx --ext js",
+    "format": "prettier --write ./",
+    "lint": "eslint ./ --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
     "storybook": "start-storybook -p 6006",
