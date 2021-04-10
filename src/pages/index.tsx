@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Button from "../components/button";
+import Typography from "../components/typography";
 
 export const Home = (): JSX.Element => (
   <div className="container">
@@ -11,9 +12,9 @@ export const Home = (): JSX.Element => (
 
     <main>
       <Button height='medium'>Submit Application</Button>
-      <h1 className="title">
+      <Typography tag='h1' >
         Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      </Typography>
 
       <p className="description">
         Get started by editing <code>pages/index.tsx</code>
