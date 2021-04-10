@@ -1,0 +1,21 @@
+.button {
+
+  &_theme {
+
+    &_secondary {
+      padding: 11px 10px;
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--black);
+      background-color: var(--yelow);
+      border: 1px solid transparent;
+      transition: background-color 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+
+      &:hover {
+        color: var(--yelow);
+        background-color: var(--black);
+        border-color: var(--yelow);
+      }
+    }
+  }
+}

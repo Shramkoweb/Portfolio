@@ -1,0 +1,20 @@
+.button {
+
+  &_theme {
+
+    &_main {
+      padding: 15px 10px;
+      font-size: 14px;
+      line-height: 18px;
+      color: var(--white);
+      background-color: var(--black);
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+
+      &:hover,
+      &:focus {
+        background-color: var(--black-800);
+      }
+    }
+  }
+}

@@ -1,9 +1,11 @@
 html {
   box-sizing: border-box;
   --black: #000;
+  --black-800: #262626;
+  --black-700: #434343;
   --yelow: #fee001;
   --grey: #979797;
-  --white: #fffff;
+  --white: #fff;
 }
 
 *,

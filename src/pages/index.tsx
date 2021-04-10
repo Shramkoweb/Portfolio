@@ -1,14 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head";
+import Image from "next/image";
+import Button from "../components/button";
 
 export const Home = (): JSX.Element => (
   <div className="container">
     <Head>
       <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.ico"/>
     </Head>
 
     <main>
+      <Button height='medium'>Submit Application</Button>
       <h1 className="title">
         Welcome to <a href="https://nextjs.org">Next.js!</a>
       </h1>
@@ -19,7 +21,7 @@ export const Home = (): JSX.Element => (
 
       <button
         onClick={() => {
-          window.alert('With typescript and Jest')
+          window.alert("With typescript and Jest");
         }}
       >
         Test Button
@@ -60,8 +62,8 @@ export const Home = (): JSX.Element => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by{' '}
-        <Image src="/vercel.svg" alt="Vercel Logo" height={'32'} width={'64'} />
+        Powered by{" "}
+        <Image src="/vercel.svg" alt="Vercel Logo" height={"32"} width={"64"}/>
       </a>
     </footer>
 
@@ -141,7 +143,7 @@ export const Home = (): JSX.Element => (
         padding: 0.75rem;
         font-size: 1.1rem;
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
       }
 
       .grid {
@@ -198,7 +200,7 @@ export const Home = (): JSX.Element => (
         padding: 0;
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
       }
 
       * {
@@ -206,6 +208,6 @@ export const Home = (): JSX.Element => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Home
+export default Home;

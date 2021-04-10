@@ -1,3 +1,7 @@
-export const parameters = {
-  actions: {argTypesRegex: "^on[A-Z].*"},
-};
+import "../src/styles/global.css";
+
+export const decorators = [
+  (Story) => (
+    <Story/>
+  ),
+];

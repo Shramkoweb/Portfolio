@@ -1,0 +1,13 @@
+$sizes: ("small": 40px, "medium": 50px);
+
+.button {
+
+  &_height {
+    @each $size, $sizeValue in $sizes {
+
+      &_#{$size} {
+        min-height: $sizeValue;
+      }
+    }
+  }
+}
