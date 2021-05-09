@@ -1,12 +1,20 @@
-# My brand-new Portfolio (Work in progress)
+# portfolio
 
-## Project storybook - [LINK](https://portfolio-storybook.vercel.app/?path=/story/components-button--default&args=height:medium;width:small)
+## Build Setup
 
-Bootstrap a developer-friendly NextJS app configured with:
+```bash
+# install dependencies
+$ npm install
 
-- [Next JS](https://nextjs.org/)
-- [Typescript](https://www.typescriptlang.org/)
-- Linting with [ESLint](https://eslint.org/)
-- Formatting with [Prettier](https://prettier.io/)
-- Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+# serve with hot reload at localhost:3000
+$ npm run dev
+
+# build for production and launch server
+$ npm run build
+$ npm run start
+
+# generate static project
+$ npm run generate
+```
+
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

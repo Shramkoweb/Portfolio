@@ -1,69 +1,56 @@
 {
-  "name": "s.shramko-portfolio",
-  "author": "Serhii Shramko <shramko.dev@gmail.com",
-  "license": "MIT",
+  "name": "portfolio",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "type-check": "tsc --pretty --noEmit",
-    "format": "prettier --write ./",
-    "lint": "eslint ./ --ext ts --ext tsx --ext js",
-    "test": "jest",
-    "test-all": "yarn lint && yarn type-check && yarn test",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
+    "lint": "npm run lint:js && npm run lint:style",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint",
+    "*.{css,vue}": "stylelint"
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn lint"
-    ]
-  },
-  "browserslist": [
-    ">0.3%",
-    "not ie 11",
-    "not dead",
-    "not op_mini all"
-  ],
   "dependencies": {
-    "classnames": "2.3.1",
-    "next": "10.1.3",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "sass": "1.32.8"
+    "core-js": "^3.9.1",
+    "nuxt": "^2.15.3"
   },
   "devDependencies": {
-    "@babel/core": "7.13.14",
-    "@storybook/addon-actions": "^6.2.7",
-    "@storybook/addon-essentials": "^6.2.7",
-    "@storybook/addon-links": "^6.2.7",
-    "@storybook/react": "^6.2.7",
-    "@testing-library/react": "11.2.5",
-    "@types/jest": "26.0.20",
-    "@types/node": "14.14.25",
-    "@types/react": "17.0.1",
-    "@typescript-eslint/eslint-plugin": "4.14.2",
-    "@typescript-eslint/parser": "4.14.2",
-    "babel-jest": "26.6.3",
-    "babel-loader": "8.2.2",
-    "css-loader": "5.2.1",
-    "eslint": "7.19.0",
-    "eslint-config-prettier": "7.2.0",
-    "eslint-plugin-react": "7.19.0",
-    "husky": "4.2.3",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "26.6.3",
-    "jest-watch-typeahead": "0.6.1",
-    "lint-staged": "10.0.10",
-    "prettier": "2.0.2",
-    "sass-loader": "10.1.1",
-    "style-loader": "2.0.0",
-    "typescript": "4.1.3"
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@nuxt/types": "^2.15.3",
+    "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/eslint-config-typescript": "^6.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/stylelint-module": "^4.0.0",
+    "@vue/test-utils": "^1.1.3",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.7.0",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^21.0.0",
+    "ts-jest": "^26.5.4",
+    "vue-jest": "^3.0.4"
   }
 }
