@@ -2,7 +2,12 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import clsx from 'clsx';
 
-export function Link({ href, text }: any) {
+interface LinkProps {
+  href: string;
+  text: string;
+}
+
+export function Link({ href, text }: LinkProps) {
   const router = useRouter();
   const isActive = router.asPath === href;
 
