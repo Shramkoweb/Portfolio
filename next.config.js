@@ -1,6 +1,12 @@
 const { withSentryConfig } = require("@sentry/nextjs");
 
+/** @type {import("next").NextConfig} */
 const moduleExports = {
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
   reactStrictMode: true,
 };
 
