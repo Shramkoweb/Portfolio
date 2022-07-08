@@ -1,4 +1,4 @@
-import { Link } from '@/components/link';
+import { HeaderLink } from '@/components/header-link';
 
 export function Header() {
   return (
@@ -10,10 +10,8 @@ export function Header() {
           Skip to content
         </a>
         <div className="ml-[-0.60rem]">
-          <Link href="/" text="Home" />
-          <Link href="/about" text="About" />
-          <Link href="/dashboard" text="Dashboard" />
-          <Link href="/blog" text="Blog" />
+          <HeaderLink href="/" text="Home" />
+          <HeaderLink href="/about" text="About" />
         </div>
       </nav>
     </div>
