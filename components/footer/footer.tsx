@@ -18,13 +18,7 @@ export function Footer() {
           </Link>
         </div>
         <div className="flex flex-col space-y-4">
-          <FooterLink href="#">
-            Twitter - coming soon
-          </FooterLink>
           <FooterLink href="https://github.com/shramkoweb">GitHub</FooterLink>
-          <FooterLink href="#">
-            YouTube - coming soon
-          </FooterLink>
         </div>
         <div className="flex flex-col space-y-4">
           <Link href="/gear">

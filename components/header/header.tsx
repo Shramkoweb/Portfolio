@@ -12,8 +12,6 @@ export function Header() {
         <div className="ml-[-0.60rem]">
           <HeaderLink href="/" text="Home" />
           <HeaderLink href="/about" text="About" />
-          <HeaderLink href="/dashboard" text="Dashboard" />
-          <HeaderLink href="/blog" text="Blog" />
         </div>
       </nav>
     </div>
