@@ -1,6 +1,6 @@
-import { Container } from '../components/container';
+import { Container } from '@/components/container';
 
-function Home() {
+function IndegPage() {
   return (
     <Container>
       <button
@@ -16,4 +16,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default IndegPage;
