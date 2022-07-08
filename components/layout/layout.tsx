@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Header } from '@/components/header';
 import { PropsWithChildren } from 'react';
+
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 const DESCRIPTION = 'Front-end developer, JavaScript enthusiast and mentor.';
 const TITLE = 'Serhii Shramko – Developer, writer, creator.';
@@ -37,6 +39,7 @@ export function Layout({ children }: PropsWithChildren) {
         className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
       >
         {children}
+        <Footer />
       </main>
     </div>
   );
