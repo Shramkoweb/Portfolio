@@ -1,4 +1,5 @@
 [![Lint](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml/badge.svg)](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml)
+![](https://api.checklyhq.com/v1/badges/checks/1c47f38a-59e0-440b-bd58-dbf381c58f4d?style=flat-square&theme=dark)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
