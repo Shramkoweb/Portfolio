@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@sentry/nextjs": "7.5.1",
+    "@tailwindcss/typography": "^0.5.3",
     "clsx": "1.2.1",
     "next": "12.2.1",
     "react": "18.2.0",
