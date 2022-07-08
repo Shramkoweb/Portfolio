@@ -17,6 +17,7 @@
     "next/core-web-vitals"
   ],
   "rules": {
+    "react/require-default-props": "off",
     "import/prefer-default-export": "off",
     "no-console": "error"
   }
