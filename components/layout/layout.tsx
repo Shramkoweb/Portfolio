@@ -16,11 +16,11 @@ export function Layout({ children }: PropsWithChildren) {
       <Head>
         <title>{TITLE}</title>
         <meta name="robots" content="follow, index" />
-        <meta content="Serhii Shramko - Front-end developer, JavaScript enthusiast and mentor." name="description" />
+        <meta content={DESCRIPTION} name="description" />
         <meta property="og:url" content={`https://shramko.dev${ROUTER_PATH}`} />
         <link rel="canonical" href={`https://shramko.dev${ROUTER_PATH}`} />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Lee Robinson" />
+        <meta property="og:site_name" content="Serhii Shramko" />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:title" content={TITLE} />
         <meta property="og:image" content={IMAGE} />
