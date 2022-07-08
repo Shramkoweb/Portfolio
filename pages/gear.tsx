@@ -39,8 +39,7 @@ function GearPage() {
           <h3 id="coding">Coding</h3>
           <ul>
             <li>
-              Editor:
-              {' '}
+              Editor:&ensp;
               <a href="https://www.jetbrains.com/ru-ru/phpstorm/" rel="noopener noreferrer" target="_blank">
                 PhpStorm
               </a>
