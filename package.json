@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "pre-commit": "npm run lint",
-    "pre-push": ""
+    "pre-commit": "",
+    "pre-push": "npm run lint"
   },
   "dependencies": {
     "@sentry/nextjs": "7.4.1",
