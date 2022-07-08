@@ -1,5 +1,7 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Link from 'next/link';
+
+import avatar from 'public/static/images/avatar.jpg';
 
 function IndexPage() {
   return (
@@ -52,13 +54,14 @@ function IndexPage() {
         <div className="w-[100px] sm:w-[200px] relative mb-8 sm:mb-0 mr-auto">
           <Image
             alt="Serhii Shramko"
+            placeholder="blur"
             height={200}
             width={200}
             quality={100}
-            src="/static/images/avatar.jpg"
+            src={avatar}
             sizes="30vw"
-            priority
             className="rounded-full"
+            priority
           />
         </div>
       </div>

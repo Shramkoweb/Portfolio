@@ -1,5 +1,7 @@
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from 'next/future/image';
+
+import gear from 'public/static/images/gear.jpeg';
 
 function GearPage() {
   return (
@@ -8,7 +10,7 @@ function GearPage() {
         <title>Gear - Serhii Shramko</title>
         <meta content="Here's what gear I'm currently using for coding and live." name="description" />
       </Head>
-      <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
+      <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           My Gear
         </h1>
@@ -20,19 +22,19 @@ function GearPage() {
           <Image
             className="rounded-lg"
             alt="My stuff"
-            src="/static/images/gear.jpeg"
+            placeholder="blur"
+            src={gear}
             width={1000}
             height={667}
-            quality={100}
             priority
           />
         </div>
         <div className="prose dark:prose-dark w-full">
           <h3 id="computer-office">Computer</h3>
           <ul>
-            <li>16&quot; Macbook Pro (2018) 💻</li>
-            <li>27&quot; LG UltraFine 27UL850-W 🖥</li>
-            <li>SteelSeries Rival Wireless 3 Mouse 🖱</li>
+            <li>16&quot; Macbook Pro (2018)</li>
+            <li>27&quot; LG UltraFine 27UL850-W</li>
+            <li>SteelSeries Rival Wireless 3 Mouse</li>
           </ul>
           <h3 id="coding">Coding</h3>
           <ul>
