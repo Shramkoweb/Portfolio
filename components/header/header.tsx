@@ -14,6 +14,7 @@ export function Header() {
           <MobileMenu />
           <HeaderLink href="/" text="Home" />
           <HeaderLink href="/about" text="About" />
+          <HeaderLink href="/blog" text="Blog" />
           <HeaderLink href="/gear" text="Gear" />
         </div>
       </nav>

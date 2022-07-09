@@ -16,6 +16,11 @@ export function Footer() {
               About
             </a>
           </Link>
+          <Link href="/blog">
+            <a className="text-gray-500 hover:text-gray-600 transition">
+              Blog
+            </a>
+          </Link>
         </div>
         <div className="flex flex-col space-y-4">
           <FooterLink href="https://github.com/shramkoweb">GitHub</FooterLink>
