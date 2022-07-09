@@ -53,8 +53,8 @@ export function MobileMenu() {
         <ul
           className={clsx(
             styles.menu,
+            styles.menuRendered,
             'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
-            isMenuOpen && styles.menuRendered,
           )}
         >
           <li

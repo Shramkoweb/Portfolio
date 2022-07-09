@@ -75,7 +75,7 @@ function GearPage() {
             <li>Grammarly</li>
             <li>Magnet</li>
           </ul>
-          <h3 id="other-tech">Other Tech</h3>
+          <h3 id="other">Other</h3>
           <ul>
             <li>Golf GTI&ensp;🚗💨</li>
             <li>Apple iPhone</li>
