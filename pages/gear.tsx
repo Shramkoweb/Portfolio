@@ -22,7 +22,6 @@ function GearPage() {
           <Image
             className="rounded-lg"
             alt="My stuff"
-            placeholder="blur"
             src={gear}
             width={1000}
             height={667}

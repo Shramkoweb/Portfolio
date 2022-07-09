@@ -54,7 +54,6 @@ function IndexPage() {
         <div className="w-[100px] sm:w-[200px] relative mb-8 sm:mb-0 mr-auto">
           <Image
             alt="Serhii Shramko"
-            placeholder="blur"
             height={200}
             width={200}
             quality={100}
