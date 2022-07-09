@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import { CrossIcon, MenuIcon } from '@/components/mobile-menu/icons';
 
 import styles from 'styles/mobile-menu.module.css';
-import { useRouter } from 'next/router';
 
 function disablePageScroll() {
   document.body.style.overflow = 'hidden';
