@@ -1,0 +1,40 @@
+.burger {
+  transition: opacity 300ms ease;
+  border: 0;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.burger svg {
+  transform: translate(-50%, -50%) scale(1);
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.burger svg[data-hide='true'] {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.menu {
+  margin: 0;
+  padding: 24px 28px 0 4px;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  left: 0;
+}
+
+.menu li {
+  @apply border-gray-200 dark:border-gray-600 w-full;
+  white-space: nowrap;
+}
+
+
+.menu > * + * {
+  margin-top: 24px;
+}

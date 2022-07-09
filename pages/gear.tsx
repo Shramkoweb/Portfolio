@@ -22,7 +22,6 @@ function GearPage() {
           <Image
             className="rounded-lg"
             alt="My stuff"
-            placeholder="blur"
             src={gear}
             width={1000}
             height={667}
@@ -76,7 +75,7 @@ function GearPage() {
             <li>Grammarly</li>
             <li>Magnet</li>
           </ul>
-          <h3 id="other-tech">Other Tech</h3>
+          <h3 id="other">Other</h3>
           <ul>
             <li>Golf GTI&ensp;🚗💨</li>
             <li>Apple iPhone</li>

@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Image from 'next/future/image';
 
 import about from '../public/static/images/about.jpeg';
@@ -23,7 +22,6 @@ function AboutPage() {
           <Image
             className="rounded-lg"
             alt="Serhii Shramko with photography camera"
-            placeholder="blur"
             src={about}
             width={1269}
             height={846}
@@ -35,19 +33,21 @@ function AboutPage() {
           <h2>Links</h2>
           <ul>
             <li>
-              GitHub:&ensp;
-              <a href="https://github.com/shramkoweb" rel="noopener noreferrer" target="_blank">@shramkoweb</a>
+              <a href="https://github.com/shramkoweb" rel="noopener noreferrer" target="_blank">GitHub</a>
             </li>
             <li>
-              Website:&ensp;
-              <Link href="https://shramko.dev" rel="noopener" target="_blank">
-                <a>https://shramko.dev</a>
-              </Link>
-            </li>
-            <li>
-              LinkedIn:&ensp;
               <a href="https://www.linkedin.com/in/sergey-shramko">
-                https://www.linkedin.com/in/sergey-shramko
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:shramko.dev@gmail.com"
+                rel="noreferrer"
+                target="_blank"
+                title="Shramko Serhii personal email"
+              >
+                shramko.dev@gmail.com
               </a>
             </li>
           </ul>
@@ -126,26 +126,22 @@ function AboutPage() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Image
               className="rounded-lg"
-              alt="My stuff"
-              placeholder="blur"
+              alt="Me with tennis cup"
               src={tennis}
             />
             <Image
               className="rounded-lg"
-              alt="My stuff"
-              placeholder="blur"
+              alt="I am eat =)"
               src={eat}
             />
             <Image
               className="rounded-lg"
-              alt="My stuff"
-              placeholder="blur"
+              alt="Me with Anton near red BMW"
               src={car}
             />
             <Image
               className="rounded-lg"
-              alt="My stuff"
-              placeholder="blur"
+              alt="Me with Anton near red Golf GTI"
               src={carBack}
             />
           </div>

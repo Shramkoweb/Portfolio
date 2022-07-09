@@ -1,4 +1,5 @@
 import { HeaderLink } from '@/components/header-link';
+import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
 
 export function Header() {
   return (
@@ -10,8 +11,10 @@ export function Header() {
           Skip to content
         </a>
         <div className="ml-[-0.60rem]">
+          <MobileMenu />
           <HeaderLink href="/" text="Home" />
           <HeaderLink href="/about" text="About" />
+          <HeaderLink href="/gear" text="Gear" />
         </div>
       </nav>
     </div>
