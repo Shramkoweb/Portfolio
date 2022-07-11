@@ -64,7 +64,7 @@ function AboutPage() {
             ,&ensp;
             <abbr title="A JavaScript library for building user interfaces">React</abbr>
             &ensp;and&ensp;
-            <abbr title="HyperText Markup Languag">HTML</abbr>
+            <abbr title="HyperText Markup Language">HTML</abbr>
             &ensp;courses at&ensp;
             <a href="https://htmlacademy.ru/profile/id852139" target="_blank" rel="noreferrer">HTML Academy</a>
           </p>
@@ -94,7 +94,7 @@ function AboutPage() {
             <li>Rewriting Japanese site with Next.js and improve web vitals metrics</li>
             <li>
               Mentoring junior developers and interns in&ensp;
-              <a href="https://macpaw.com/internship" target="_blank" rel="noreferrer">MacPaw Intership</a>
+              <a href="https://macpaw.com/internship" target="_blank" rel="noreferrer">MacPaw Internship</a>
             </li>
             <li>
               Refactored the
@@ -175,13 +175,15 @@ function AboutPage() {
               {' '}
               bundle by 5%
             </li>
+            <li>
+              Developed high-quality, scalable, and reusable UI library for 3 big company products
+            </li>
             <li>Refactor Pug/Jade components to React</li>
             <li>
               Improving website accessibility for passing
               {' '}
               <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
             </li>
-            <li>Create new things in the core PDF editor team</li>
           </ul>
           <hr />
 
