@@ -9,7 +9,7 @@ interface BlogPostPreviewProps {
 
 export function BlogPostPreview({ title, slug, gradient }: BlogPostPreviewProps) {
   return (
-    <Link href="/">
+    <Link href={slug}>
       <a
         className={clsx(
           'transform hover:scale-[1.025] transition-all rounded-xl w-full md:w-1/3 bg-gradient-to-r p-1',

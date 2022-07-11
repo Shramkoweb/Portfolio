@@ -70,11 +70,11 @@ function AboutPage() {
           </p>
 
           <h3>Experience</h3>
-          <em className="text-gray-300">
+          <em className="text-gray-300 text-xs">
             <time dateTime="2021-10">October 2021</time>
             &ensp;–&ensp;present.
           </em>
-          <p className="mb-8">
+          <p className="m-0 mb-4">
             Senior Developer at&ensp;
             <a
               href="https://macpaw.com/"
@@ -85,36 +85,125 @@ function AboutPage() {
             </a>
             &ensp;🐾
           </p>
+          <p className="text-sm">
+            MacPaw develops software for iOS and MacOS. Their products include CleanMyMac, Setapp,
+            Gemini Photos and more. MacPaw‘s active user base exceeds 30 million worldwide.
+            Every fifth Mac on Earth has at least one app by MacPaw.
+          </p>
+          <ul className="text-sm">
+            <li>Rewriting Japanese site with Next.js and improve web vitals metrics</li>
+            <li>
+              Mentoring junior developers and interns in&ensp;
+              <a href="https://macpaw.com/internship" target="_blank" rel="noreferrer">MacPaw Intership</a>
+            </li>
+            <li>
+              Refactored the
+              {' '}
+              <a href="https://imgix.com/" target="_blank" rel="noreferrer">imgix</a>
+              {' '}
+              code in PHP, which allowed to optimize the size of the pictures by 2-6 times 🔥
+            </li>
+            <li>Speaker in internal Front-end meetings</li>
+          </ul>
+          <hr />
 
-          <em className="text-gray-300">
+          <em className="text-gray-300 text-xs">
             <time dateTime="2020-11">November 2020</time>
             &ensp;–&ensp;
             <time dateTime="2021-10">October 2021</time>
           </em>
-          <p>
+          <p className="m-0 mb-4">
             Frontend Developer at&ensp;
             <a href="https://p1k.org/" rel="noopener noreferrer" target="_blank">Phase One Karma</a>
           </p>
+          <p className="text-sm">
+            Phase One Karma created AI-driven anti-plagiarism checker with more than 1
+            million users worldwide
+            {' '}
+            <a href="https://unicheck.com/" target="_blank" rel="noreferrer">Unicheck</a>
+            .
+          </p>
+          <ul className="text-sm text-gray-200">
+            <li>
+              Reduced code base and improved code reusability by creating shared npm
+              UI library with
+              {' '}
+              <a href="https://storybook.js.org/" target="_blank" rel="noreferrer">Storybook</a>
+            </li>
+            <li>Reduced chunk size by 12 KB each, it crops the final bundle by 60kb</li>
+            <li>
+              Built from scratch new user dashboard with
+              {' '}
+              <a href="https://nextjs.org/" target="_blank" rel="noreferrer">Next.js</a>
+            </li>
+            <li>
+              Rewrite old WordPress site to
+              {' '}
+              <a href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">Gatsby</a>
+            </li>
+            <li>
+              Create team guidelines for writing
+              {' '}
+              <abbr title="Cascading Style Sheets">CSS</abbr>
+              {' '}
+              and
+              {' '}
+              <abbr title="Syntactically Awesome Style Sheets">SCSS</abbr>
+            </li>
+          </ul>
+          <hr />
 
-          <em className="text-gray-300">
+          <em className="text-gray-300 text-sm">
             <time dateTime="2019-04">April 2019</time>
             &ensp;–&ensp;
             <time dateTime="2020-11">November 2020</time>
           </em>
-          <p>
+          <p className="m-0 mb-4">
             Frontend Developer at&ensp;
             <a href="https://www.pdffiller.com/" rel="noopener noreferrer" target="_blank">pdfFiller</a>
           </p>
+          <p className="text-sm">
+            One of four Ukrainian unicorn 🦄 company.
+            PDFfiller is a comprehensive online document management platform and provides service
+            to over 120,000 businesses around the world and in almost every industry
+          </p>
+          <ul className="text-sm text-gray-200">
+            <li>
+              Improving internal UI framework by shared classes. It reduced the size of the
+              {' '}
+              <abbr title="Cascading Style Sheets">CSS</abbr>
+              {' '}
+              bundle by 5%
+            </li>
+            <li>Refactor Pug/Jade components to React</li>
+            <li>
+              Improving website accessibility for passing
+              {' '}
+              <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
+            </li>
+            <li>Create new things in the core PDF editor team</li>
+          </ul>
+          <hr />
 
-          <em className="text-gray-300">
+          <em className="text-gray-300 text-xs">
             <time dateTime="2018-12">December 2018</time>
             &ensp;–&ensp;
             <time dateTime="2019-03">March 2019</time>
           </em>
-          <p>
+          <p className="m-0 mb-4">
             Frontend Developer at&ensp;
             <a href="https://hexa.com.ua/en/home/" rel="noopener noreferrer" target="_blank">Hexa</a>
           </p>
+          <p className="text-sm">Hexa - A small web studio that makes websites and turnkey solutions.</p>
+          <ul className="text-sm">
+            <li>
+              Move manual creation of emails to framework
+              {' '}
+              <a href="https://get.foundation/emails.html" target="_blank" rel="noreferrer">Foundation</a>
+            </li>
+            <li>Create user-friendly web pages</li>
+          </ul>
+
           <h3>Education</h3>
           <p>
             Master degree in Electromechanical Systems of Automation and Electric Drive at&ensp;
