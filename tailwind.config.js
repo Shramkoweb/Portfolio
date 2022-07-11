@@ -8,9 +8,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      scale: {
-        "200": '2.0'
-      },
       colors: {
         gray: {
           0: "#fff",
