@@ -12,7 +12,7 @@ function GearPage() {
       </Head>
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          <u>My Gear</u>
+          My Gear
         </h1>
         <p className="text-gray-700 dark:text-gray-300 mt-2 mb-8">
           Here is what gear I am currently using for coding and live.

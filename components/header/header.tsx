@@ -20,7 +20,7 @@ export function Header() {
           <Link href="/static/s.shramko-senior-developer.pdf" download>
             <a
               title="PDF document - 71 KB"
-              className="ml-12 border-2 border-cyan-400 hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+              className="ml-12 border-2 border-gray-700 hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
             >
               Resume
             </a>
