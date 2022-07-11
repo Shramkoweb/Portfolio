@@ -1,9 +1,18 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import clsx from 'clsx';
 
-import avatar from 'public/static/images/avatar.jpg';
+import smile from 'public/static/images/smile.webp';
+import tongue from 'public/static/images/tongue.webp';
 
 function IndexPage() {
+  const [isAvatarHovered, setIsAvatarHovered] = useState(false);
+
+  const handleHover = () => {
+    setIsAvatarHovered((prevValue) => !prevValue);
+  };
+
   return (
     <div
       className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16"
@@ -25,13 +34,19 @@ function IndexPage() {
             </a>
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
-            Hi, I’m a frontend developer from Kyiv,
-            with a lot of experience in application development, responsive and adaptive markup.
+            Hi there 🖐 🇺🇦
           </p>
-
+          <p className="text-gray-600 dark:text-gray-400">
+            I am an experienced software engineer with extensive knowledge of front-end development,
+            with laser-focus on
+            &ensp;
+            <abbr title="A JavaScript library for building user interfaces">React</abbr>
+            &ensp;and&ensp;
+            <abbr title="The React Framework for Production">Next.JS</abbr>
+          </p>
           <Link href="/about">
             <a
-              className="flex items-center mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
+              className="flex items-center mt-8 mb-8 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
             >
               Read more about me
               <svg
@@ -51,16 +66,27 @@ function IndexPage() {
             </a>
           </Link>
         </div>
-        <div className="w-[100px] sm:w-[200px] relative mb-8 sm:mb-0 mr-auto">
+        <div
+          className="w-[150px] sm:w-[300px] min-h-[150px] relative mb-8 sm:mb-0 mr-auto relative"
+          onMouseEnter={handleHover}
+          onMouseLeave={handleHover}
+        >
           <Image
-            alt="Serhii Shramko"
-            height={200}
-            width={200}
+            alt=""
             quality={100}
-            src={avatar}
-            sizes="30vw"
-            className="rounded-full"
+            src={smile}
+            className={clsx('absolute', {
+              'opacity-0': isAvatarHovered,
+            })}
             priority
+          />
+          <Image
+            alt=""
+            quality={100}
+            src={tongue}
+            className={clsx('absolute', {
+              'opacity-0': !isAvatarHovered,
+            })}
           />
         </div>
       </div>

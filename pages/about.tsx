@@ -125,22 +125,22 @@ function AboutPage() {
           <h2>I love Eating, Parties, and Cars</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Image
-              className="rounded-lg"
+              className="rounded-lg transition-transform time md:hover:scale-150"
               alt="Me with tennis cup"
               src={tennis}
             />
             <Image
-              className="rounded-lg"
+              className="rounded-lg transition-transform time md:hover:scale-150"
               alt="I am eat =)"
               src={eat}
             />
             <Image
-              className="rounded-lg"
+              className="rounded-lg transition-transform time md:hover:scale-150"
               alt="Me with Anton near red BMW"
               src={car}
             />
             <Image
-              className="rounded-lg"
+              className="rounded-lg transition-transform time md:hover:scale-150"
               alt="Me with Anton near red Golf GTI"
               src={carBack}
             />
