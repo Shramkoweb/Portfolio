@@ -160,12 +160,12 @@ function AboutPage() {
           </em>
           <p className="m-0 mb-4">
             Frontend Developer at&ensp;
-            <a href="https://www.pdffiller.com/" rel="noopener noreferrer" target="_blank">pdfFiller</a>
+            <a href="https://www.pdffiller.com/" rel="noopener noreferrer" target="_blank">PDFfiller</a>
           </p>
           <p className="text-sm">
             One of four Ukrainian unicorn 🦄 company.
             PDFfiller is a comprehensive online document management platform and provides service
-            to over 120,000 businesses around the world and in almost every industry
+            to over 120,000 businesses around the world and in almost every industry.
           </p>
           <ul className="text-sm">
             <li>
@@ -196,7 +196,7 @@ function AboutPage() {
             Frontend Developer at&ensp;
             <a href="https://hexa.com.ua/en/home/" rel="noopener noreferrer" target="_blank">Hexa</a>
           </p>
-          <p className="text-sm">Hexa - A small web studio that makes websites and turnkey solutions.</p>
+          <p className="text-sm">Hexa - a small web studio that makes websites and turnkey solutions.</p>
           <ul className="text-sm">
             <li>
               Move manual creation of emails to framework
@@ -212,6 +212,7 @@ function AboutPage() {
             <a href="http://www.nmu.org.ua/en/" rel="noopener noreferrer" target="_blank">
               NMU
             </a>
+            .
           </p>
           <h2>I love Eating, Parties, and Cars</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
