@@ -123,7 +123,7 @@ function AboutPage() {
             <a href="https://unicheck.com/" target="_blank" rel="noreferrer">Unicheck</a>
             .
           </p>
-          <ul className="text-sm text-gray-200">
+          <ul className="text-sm">
             <li>
               Reduced code base and improved code reusability by creating shared npm
               UI library with
@@ -167,7 +167,7 @@ function AboutPage() {
             PDFfiller is a comprehensive online document management platform and provides service
             to over 120,000 businesses around the world and in almost every industry
           </p>
-          <ul className="text-sm text-gray-200">
+          <ul className="text-sm">
             <li>
               Improving internal UI framework by shared classes. It reduced the size of the
               {' '}
