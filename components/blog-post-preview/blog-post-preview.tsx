@@ -46,7 +46,7 @@ export function BlogPostPreview({ title, slug, gradient }: BlogPostPreviewProps)
               />
             </svg>
             <span className="ml-2 align-baseline capsize">
-              {true ? Number(777).toLocaleString() : '–––'}
+              {Number(777).toLocaleString()}
             </span>
           </div>
         </div>
