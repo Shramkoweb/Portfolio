@@ -153,7 +153,7 @@ function AboutPage() {
           </ul>
           <hr />
 
-          <em className="text-gray-300 text-sm">
+          <em className="text-gray-300 text-xs">
             <time dateTime="2019-04">April 2019</time>
             &ensp;–&ensp;
             <time dateTime="2020-11">November 2020</time>
