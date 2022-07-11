@@ -1,5 +1,6 @@
 import { HeaderLink } from '@/components/header-link';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
+import Link from 'next/link';
 
 export function Header() {
   return (
@@ -16,6 +17,14 @@ export function Header() {
           <HeaderLink href="/about" text="About" />
           <HeaderLink href="/blog" text="Blog" />
           <HeaderLink href="/gear" text="Gear" />
+          <Link href="/static/s.shramko-senior-developer.pdf" download>
+            <a
+              title="PDF document - 71 KB"
+              className="ml-12 border-2 border-cyan-400 hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+            >
+              Resume
+            </a>
+          </Link>
         </div>
       </nav>
     </div>

@@ -85,6 +85,16 @@ export function MobileMenu() {
               <a className="flex w-auto pb-4">Gear</a>
             </Link>
           </li>
+          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+            <Link href="/static/s.shramko-senior-developer.pdf" download>
+              <a
+                className="flex w-auto pb-4"
+                title="PDF document - 71 KB"
+              >
+                Resume
+              </a>
+            </Link>
+          </li>
         </ul>
       )}
     </>
