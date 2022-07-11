@@ -1,5 +1,15 @@
 import { HeaderLink } from '@/components/header-link';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
+import Link from 'next/link';
+import { event } from '../../lib/ga';
+
+const handleResumeClick = () => {
+  event({
+    action: 'Resume download click',
+    category: 'Resume',
+    label: 'Resume - click',
+  });
+};
 
 export function Header() {
   return (
@@ -16,6 +26,17 @@ export function Header() {
           <HeaderLink href="/about" text="About" />
           <HeaderLink href="/blog" text="Blog" />
           <HeaderLink href="/gear" text="Gear" />
+          <Link href="/static/s.shramko-senior-developer.pdf" download>
+            {/* eslint-disable-next-line max-len */}
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+            <a
+              onClick={handleResumeClick}
+              title="PDF document - 71 KB"
+              className="ml-12 border-2 border-gray-700 hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+            >
+              Resume
+            </a>
+          </Link>
         </div>
       </nav>
     </div>

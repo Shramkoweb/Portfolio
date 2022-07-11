@@ -29,12 +29,6 @@
   left: 0;
 }
 
-.menu li {
-  @apply border-gray-200 dark:border-gray-600 w-full;
-  white-space: nowrap;
-}
-
-
 .menu > * + * {
   margin-top: 24px;
 }

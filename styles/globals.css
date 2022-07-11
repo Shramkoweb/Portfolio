@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 ::selection {
-  background-color: blueviolet;
+  @apply bg-emerald-500;
   color: #fefefe;
 }
 
@@ -25,14 +25,4 @@ html {
 
 #skip {
   scroll-margin-top: 1.125rem;
-}
-
-u {
-  box-shadow: inset 0 -0.3em 0 blueviolet;
-  text-decoration: none;
-  transition: box-shadow .3s ease-out;
-}
-
-u:hover {
-  box-shadow: inset 0 -1em 0 blueviolet;
 }

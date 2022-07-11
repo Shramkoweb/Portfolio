@@ -9,7 +9,7 @@ function BlogPage() {
       </Head>
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-          <u>Blog</u>
+          Blog
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           Hi there. Posts will be here. I promise 🫡
