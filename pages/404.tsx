@@ -15,7 +15,7 @@ function NotFound() {
       </Head>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 text-black dark:text-white">
-          <u>YOU&apos;RE IN THE WRONG PLACE</u>
+          YOU&apos;RE IN THE WRONG PLACE
         </h1>
         <video loop autoPlay muted className="mb-8 w-full">
           <source src="/static/images/404.mp4" type="video/mp4" />
