@@ -11,6 +11,9 @@
     "pre-commit": "",
     "pre-push": "npm run lint"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "dependencies": {
     "@sentry/nextjs": "7.6.0",
     "@tailwindcss/typography": "^0.5.4",
