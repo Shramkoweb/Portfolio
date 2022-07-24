@@ -103,7 +103,7 @@ function AboutPage() {
               {' '}
               code in PHP, which allowed to optimize the size of the pictures by 2-6 times 🔥
             </li>
-            <li>Speaker in internal Front-end meetings</li>
+            <li>Speaker in internal Front-end meetups</li>
           </ul>
           <hr />
 
@@ -206,7 +206,7 @@ function AboutPage() {
             <li>Create user-friendly web pages</li>
           </ul>
 
-          <h3>Education</h3>
+          <h3 className="mt-16">Education</h3>
           <p>
             Master degree in Electromechanical Systems of Automation and Electric Drive at&ensp;
             <a href="http://www.nmu.org.ua/en/" rel="noopener noreferrer" target="_blank">
