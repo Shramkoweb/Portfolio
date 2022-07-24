@@ -18,20 +18,21 @@ export function Layout({ children }: PropsWithChildren) {
       <Head>
         <title>{TITLE}</title>
         <meta name="robots" content="follow, index" />
-        <meta content={DESCRIPTION} name="description" />
-        <meta property="og:url" content={`https://shramko.dev${ROUTER_PATH}`} />
+        <meta content={DESCRIPTION} name="description" key="description" />
+        <meta property="og:url" content={`https://shramko.dev${ROUTER_PATH}`} key="og:url" />
         <link rel="canonical" href={`https://shramko.dev${ROUTER_PATH}`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Serhii Shramko" />
-        <meta property="og:description" content={DESCRIPTION} />
-        <meta property="og:title" content={TITLE} />
-        <meta property="og:image" content={IMAGE} />
+        <meta property="og:type" content="website" key="og:type" />
+        <meta property="og:site_name" content="Serhii Shramko" key="og:site_name" />
+        <meta property="og:description" content={DESCRIPTION} key="og:description" />
+        <meta property="og:title" content={TITLE} key="og:title" />
+        <meta property="og:image" content={IMAGE} key="og:image" />
         <meta name="twitter:card" content="summary_large_image" />
         {/* TODO check twitter:site */}
-        <meta name="twitter:site" content="@shramkoweb" />
-        <meta name="twitter:title" content={TITLE} />
-        <meta name="twitter:description" content={DESCRIPTION} />
-        <meta name="twitter:image" content={IMAGE} />
+        <meta name="twitter:creator" content="@shramkoweb" key="twitter:creator" />
+        <meta name="twitter:site" content="@shramkoweb" key="twitter:site" />
+        <meta name="twitter:title" content={TITLE} key="twitter:title" />
+        <meta name="twitter:description" content={DESCRIPTION} key="twitter:description" />
+        <meta name="twitter:image" content={IMAGE} key="twitter:image" />
       </Head>
       <Header />
       <main
