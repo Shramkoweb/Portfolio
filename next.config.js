@@ -6,7 +6,7 @@ const ContentSecurityPolicy = `
     style-src 'self' 'unsafe-inline';
     img-src 'self';
     connect-src *;
-    media-src 'none';
+    media-src 'self';
     font-src 'self';
 `;
 
