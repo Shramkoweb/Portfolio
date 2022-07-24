@@ -1,6 +1,18 @@
 import Head from 'next/head';
+import { getPosts, Post } from '@/lib/posts/api';
+import { BlogPostPreview } from '@/components/blog-post-preview';
+import { useState } from 'react';
 
-function BlogPage() {
+interface BlogPageProps {
+  posts: Post[];
+}
+
+function BlogPage(props: BlogPageProps) {
+  const { posts } = props;
+  const [searchValue, setSearchValue] = useState('');
+  const filteredBlogPosts = posts
+    .filter((post) => post.data.title.toLowerCase().includes(searchValue.toLowerCase()));
+
   return (
     <>
       <Head>
@@ -19,6 +31,7 @@ function BlogPage() {
             aria-label="Search articles"
             type="text"
             placeholder="Search articles"
+            onChange={(e) => setSearchValue(e.target.value)}
             className="pr-10 block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
           />
           <svg
@@ -36,9 +49,31 @@ function BlogPage() {
             />
           </svg>
         </div>
+        <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
+          All Posts
+        </h2>
+        {!filteredBlogPosts.length && (
+          <p className="mb-4 text-gray-600 dark:text-gray-400">
+            No posts found.
+          </p>
+        )}
+        {filteredBlogPosts.map(({ data }) => (
+          <BlogPostPreview
+            key={data.title}
+            slug={data.slug}
+            title={data.title}
+            excerpt={data.description}
+          />
+        ))}
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await getPosts();
+
+  return { props: { posts } };
 }
 
 export default BlogPage;

@@ -5,7 +5,20 @@ import { join } from 'path';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
-export async function getPostBySlug(slug?: string) {
+export type Post = {
+  data: {
+    slug: string,
+    title: string,
+    description: string,
+    readTime: string,
+    birthtimeMs: number,
+    mtimeMs: number,
+    tags?: string[],
+  },
+  content: string
+};
+
+export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {
     throw new Error('getPostBySlug: slug is required');
   }
@@ -20,6 +33,7 @@ export async function getPostBySlug(slug?: string) {
 
     return {
       data: {
+        slug,
         title,
         description,
         tags,
@@ -32,6 +46,17 @@ export async function getPostBySlug(slug?: string) {
   } catch (err) {
     throw new Error(err as string);
   }
+}
+
+export async function getPosts(): Promise<Post[]> {
+  return readdir(join(POSTS_DIRECTORY)).then((fileNames) => Promise.all(
+    fileNames
+      .filter((name) => !(process.env.IS_PRODUCTION && name === 'example.md'))
+      .map((name) => {
+        const slug = name.replace(/\.md$/, '');
+        return getPostBySlug(slug);
+      }),
+  ));
 }
 
 export async function getPostSlugs() {

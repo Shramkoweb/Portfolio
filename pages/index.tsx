@@ -5,6 +5,7 @@ import clsx from 'clsx';
 
 import smile from 'public/static/images/smile.webp';
 import tongue from 'public/static/images/tongue.webp';
+import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
 
 function IndexPage() {
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
@@ -89,6 +90,16 @@ function IndexPage() {
             })}
           />
         </div>
+      </div>
+      <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
+        Featured Posts
+      </h3>
+      <div className="flex gap-6 flex-col md:flex-row w-full">
+        <BlogPostSquarePreview
+          title="How to fix '__dirname is not defined in ES module scope'"
+          slug="dirname-error"
+          gradient="from-[#D8B4FE] to-[#818CF8]"
+        />
       </div>
     </div>
   );
