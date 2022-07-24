@@ -5,23 +5,33 @@ import { join } from 'path';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
-export async function getPostBySlug(slug: string) {
-  const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
-  const fileContents = await readFile(fullPath, 'utf8');
-  const { birthtimeMs, mtimeMs } = await stat(fullPath);
+export async function getPostBySlug(slug?: string) {
+  if (!slug) {
+    throw new Error('getPostBySlug: slug is required');
+  }
 
-  const { data, content } = matter(fileContents);
-  const { text } = readingTime(content);
+  try {
+    const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
+    const fileContents = await readFile(fullPath, 'utf8');
+    const { birthtimeMs, mtimeMs } = await stat(fullPath);
 
-  return {
-    data: {
-      ...data,
-      readTime: text,
-      birthtimeMs,
-      mtimeMs,
-    },
-    content,
-  };
+    const { data: { title, description, tags }, content } = matter(fileContents);
+    const { text } = readingTime(content);
+
+    return {
+      data: {
+        title,
+        description,
+        tags,
+        readTime: text,
+        birthtimeMs,
+        mtimeMs,
+      },
+      content,
+    };
+  } catch (err) {
+    throw new Error(err as string);
+  }
 }
 
 export async function getPostSlugs() {

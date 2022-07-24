@@ -1,6 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/future/image';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
+import {
+  GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult,
+} from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import { compileMDX } from '@/lib/posts/compiler';
@@ -89,8 +93,13 @@ function ArticlePage(props: ArticlePageProps) {
   );
 }
 
-export async function getStaticProps(context: any) {
-  const { data, content } = await getPostBySlug(context.params.slug);
+interface Params extends ParsedUrlQuery {
+  slug: string;
+}
+
+// eslint-disable-next-line max-len
+export async function getStaticProps({ params }: GetStaticPropsContext<Params>): Promise<GetStaticPropsResult<ArticlePageProps>> {
+  const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
 
   return {
@@ -101,7 +110,7 @@ export async function getStaticProps(context: any) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
   const slugs = await getPostSlugs();
 
   return {
