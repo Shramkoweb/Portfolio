@@ -18,6 +18,8 @@ export type Post = {
   content: string
 };
 
+const getSlugFromFileName = (fileName: string) => fileName.replace(/\.md$/, '');
+
 export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {
     throw new Error('getPostBySlug: slug is required');
@@ -49,18 +51,17 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  return readdir(join(POSTS_DIRECTORY)).then((fileNames) => Promise.all(
-    fileNames
-      .filter((name) => !(process.env.IS_PRODUCTION && name === 'example.md'))
-      .map((name) => {
-        const slug = name.replace(/\.md$/, '');
-        return getPostBySlug(slug);
-      }),
-  ));
+  const fileNames = await readdir(POSTS_DIRECTORY);
+
+  return Promise.all(fileNames.map((fileName) => {
+    const slug = getSlugFromFileName(fileName);
+
+    return getPostBySlug(slug);
+  }));
 }
 
 export async function getPostSlugs() {
   const fileNames = await readdir(POSTS_DIRECTORY);
 
-  return Promise.all(fileNames.map((fileName) => fileName.replace(/\.md$/, '')));
+  return Promise.all(fileNames.map((fileName) => getSlugFromFileName(fileName)));
 }
