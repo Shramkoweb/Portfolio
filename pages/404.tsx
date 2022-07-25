@@ -3,7 +3,7 @@ import Head from 'next/head';
 import * as Sentry from '@sentry/nextjs';
 import { useEffect } from 'react';
 
-function NotFound() {
+function NotFoundPage() {
   useEffect(() => {
     Sentry.captureException(new Error('404'));
   }, []);
@@ -32,4 +32,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;

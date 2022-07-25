@@ -6,7 +6,7 @@ const ContentSecurityPolicy = `
     style-src 'self' 'unsafe-inline';
     img-src 'self';
     connect-src *;
-    media-src 'none';
+    media-src 'self';
     font-src 'self';
 `;
 
@@ -38,7 +38,7 @@ const securityHeaders = [
 ];
 
 /** @type {import("next").NextConfig} */
-const moduleExports = {
+const nextConfig = {
   swcMinify: true,
   experimental: {
     images: {
@@ -59,8 +59,11 @@ const moduleExports = {
   },
 };
 
-const sentryWebpackPluginOptions = {
-  silent: true,
-};
+const nextConfigByEnv = {
+  production: withSentryConfig(nextConfig, {
+    silent: true
+  }),
+  development: nextConfig
+}
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+module.exports = nextConfigByEnv[process.env.NODE_ENV];
