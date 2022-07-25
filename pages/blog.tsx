@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import { useState } from 'react';
+
 import { getPosts, Post } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
-import { useState } from 'react';
 
 interface BlogPageProps {
   posts: Post[];

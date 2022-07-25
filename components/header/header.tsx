@@ -1,7 +1,8 @@
+import Link from 'next/link';
+
 import { HeaderLink } from '@/components/header-link';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
-import Link from 'next/link';
-import { event } from '../../lib/ga';
+import { event } from '@/lib/ga';
 
 const handleResumeClick = () => {
   event({
