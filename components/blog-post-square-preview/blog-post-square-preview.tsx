@@ -15,7 +15,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
   const { title, slug, gradient } = props;
 
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  const views = data?.total ?? 1;
+  const views = data?.total;
 
   return (
     <Link href={`/blog/${slug}`}>
@@ -55,7 +55,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
               />
             </svg>
             <span className="ml-2 align-baseline capsize">
-              {views.toLocaleString()}
+              {views ? views.toLocaleString() : '---'}
             </span>
           </div>
         </div>
