@@ -15,7 +15,7 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
   const { slug, title, excerpt } = props;
 
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  const views = data?.total;
+  const views = data?.total ?? 1;
 
   return (
     <Link href={`/blog/${slug}`}>
@@ -26,7 +26,7 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
               {title}
             </h3>
             <p className="w-32 mb-4 text-left text-gray-500 md:text-right md:mb-0">
-              {`${views ? views.toLocaleString() : 1} views`}
+              {`${views.toLocaleString()} views`}
             </p>
           </div>
           <p className="text-gray-600 dark:text-gray-400">{excerpt}</p>
