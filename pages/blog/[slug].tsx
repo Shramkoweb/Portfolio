@@ -9,6 +9,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import { compileMDX } from '@/lib/posts/compiler';
 import MDXComponents from '@/components/mdx-components';
+import { ViewCounter } from '@/components/view-counter/view-counter';
 
 interface ArticlePageProps {
   data: {
@@ -17,6 +18,7 @@ interface ArticlePageProps {
     birthtimeMs: number;
     mtimeMs: number;
     readTime: string;
+    slug: string;
     tags?: string[];
   },
   content: MDXRemoteProps
@@ -25,7 +27,7 @@ interface ArticlePageProps {
 function ArticlePage(props: ArticlePageProps) {
   const {
     data: {
-      title, readTime, description, mtimeMs, birthtimeMs, tags = [],
+      title, readTime, description, mtimeMs, birthtimeMs, slug, tags = [],
     }, content,
   } = props;
 
@@ -81,7 +83,9 @@ function ArticlePage(props: ArticlePageProps) {
             </p>
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-            {`${readTime} 🤓`}
+            {`${readTime}`}
+            {' • '}
+            <ViewCounter slug={slug} />
           </p>
         </div>
         <div className="w-full mt-4 prose dark:prose-dark max-w-none">
