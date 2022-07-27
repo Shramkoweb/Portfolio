@@ -10,6 +10,7 @@ import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import { compileMDX } from '@/lib/posts/compiler';
 import MDXComponents from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
+import { PostReaction } from '@/components/post-reaction';
 
 interface ArticlePageProps {
   data: {
@@ -92,6 +93,7 @@ function ArticlePage(props: ArticlePageProps) {
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <MDXRemote {...content} components={MDXComponents} />
         </div>
+        <PostReaction />
       </article>
     </>
   );
