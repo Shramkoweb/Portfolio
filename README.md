@@ -23,6 +23,10 @@ This repo contains the source code for [shramko.dev](https://shramko.dev). - in 
   because is the API & E2E monitoring platform for the modern stack making CI easier than ever before
 - [Snyk](https://snyk.io/)
   because Snyk finds and automatically fix vulnerabilities in your code, open source dependencies, containers, and infrastructure as code.
+- [SWR](https://swr.vercel.app/)
+  because is a cool implementation strategy stale-while-revalidate
+- [Prisma](https://www.prisma.io/)
+  because is simple and intuitive TypeScript ORM and Database Client.
 
 
 ## License
