@@ -100,6 +100,11 @@ function IndexPage() {
           slug="dirname-error"
           gradient="from-[#D8B4FE] to-[#818CF8]"
         />
+        <BlogPostSquarePreview
+          title="Expressions vs Statements"
+          slug="expressions-statements"
+          gradient="from-pink-500 via-red-500 to-yellow-500"
+        />
       </div>
     </div>
   );
