@@ -11,8 +11,6 @@ export function ThemeChanger() {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
-  if (!mounted) return null;
-
   return (
     <button
       aria-label="Toggle Theme"
@@ -20,6 +18,7 @@ export function ThemeChanger() {
       className=" ml-4 w-11 h-11 rounded-lg inline-flex items-center justify-center hover:ring-2 ring-gray-300"
       onClick={handleClick}
     >
+      {mounted && (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -43,6 +42,7 @@ export function ThemeChanger() {
           />
         )}
       </svg>
+      )}
     </button>
   );
 }
