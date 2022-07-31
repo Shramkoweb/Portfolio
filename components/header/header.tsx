@@ -24,21 +24,21 @@ export function Header() {
         <div className="ml-[-0.60rem]">
           <MobileMenu />
           <HeaderLink href="/" text="Home" />
-          <HeaderLink href="/about" text="About" />
           <HeaderLink href="/blog" text="Blog" />
-          <HeaderLink href="/gear" text="Gear" />
-          <Link href="/static/s.shramko-senior-developer.pdf" download>
-            {/* eslint-disable-next-line max-len */}
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-            <a
-              onClick={handleResumeClick}
-              title="PDF document - 71 KB"
-              className="ml-12 border-2 border-gray-700 hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
-            >
-              Resume
-            </a>
-          </Link>
+          <HeaderLink href="/about" text="About" />
+          <HeaderLink href="/dashboard" text="Dashboard" />
         </div>
+        <Link href="/static/s.shramko-senior-developer.pdf" download>
+          {/* eslint-disable-next-line max-len */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+          <a
+            onClick={handleResumeClick}
+            title="PDF document - 71 KB"
+            className="ml-12 border-2 border-gray-700 hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+          >
+            Resume
+          </a>
+        </Link>
       </nav>
     </div>
   );
