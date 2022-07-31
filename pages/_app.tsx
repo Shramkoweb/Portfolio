@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import { ThemeProvider } from 'next-themes';
 
 import { Layout } from '@/components/layout';
 import { GoogleAnalytics } from '@/components/google-analytics';
@@ -11,10 +12,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       {isProduction && <GoogleAnalytics />}
-      <Layout>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
-      </Layout>
+
+      <ThemeProvider attribute="class">
+        <Layout>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </>
   );
 }
