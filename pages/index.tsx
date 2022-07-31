@@ -47,7 +47,7 @@ function IndexPage() {
           </p>
           <Link href="/about">
             <a
-              className="flex items-center mt-8 mb-8 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
+              className="flex items-center mt-8 mb-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
             >
               Read more about me
               <svg
