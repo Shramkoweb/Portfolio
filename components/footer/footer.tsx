@@ -32,6 +32,9 @@ export function Footer() {
           <Link href="/gear">
             <a className="text-gray-500 hover:text-gray-600 transition">My Gear</a>
           </Link>
+          <Link href="/dashboard">
+            <a className="text-gray-500 hover:text-gray-600 transition">Dashboard</a>
+          </Link>
         </div>
       </div>
       <small className="text-gray-500 pb-4">

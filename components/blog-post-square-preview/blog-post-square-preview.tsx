@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import useSWR from 'swr';
 
 import { Views } from '@/lib/types';
-import fetcher from '@/lib/fetcher';
+import { fetcher } from '@/lib/fetcher';
 
 interface BlogPostPreviewProps {
   title: string;
