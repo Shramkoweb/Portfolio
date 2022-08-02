@@ -73,8 +73,10 @@ function BlogPage(props: BlogPageProps) {
 
 export async function getStaticProps() {
   const posts = await getPosts();
+  const sortedPosts = posts
+    .sort((first, second) => second.data.birthtimeMs - first.data.birthtimeMs);
 
-  return { props: { posts } };
+  return { props: { posts: sortedPosts } };
 }
 
 export default BlogPage;
