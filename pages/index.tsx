@@ -96,6 +96,11 @@ function IndexPage() {
       </h3>
       <div className="flex gap-6 flex-col md:flex-row w-full">
         <BlogPostSquarePreview
+          title="How to use ESLint with TypeScript"
+          slug="eslint-with-typescript"
+          gradient="bg-gradient-to-t from-amber-400 to-blue-800"
+        />
+        <BlogPostSquarePreview
           title="How to fix '__dirname is not defined in ES module scope'"
           slug="dirname-error"
           gradient="from-[#D8B4FE] to-[#818CF8]"
