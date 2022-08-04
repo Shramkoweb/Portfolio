@@ -85,7 +85,9 @@ export function MobileMenu() {
               <a className="flex w-auto pb-4">Dashboard</a>
             </Link>
           </li>
-          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+          <li
+            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+          >
             <Link href="/static/s.shramko-senior-developer.pdf" download>
               <a
                 className="flex w-auto pb-4"

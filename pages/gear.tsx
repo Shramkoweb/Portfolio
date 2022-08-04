@@ -8,7 +8,11 @@ function GearPage() {
     <>
       <Head>
         <title>Gear - Serhii Shramko</title>
-        <meta content="Here's what gear I'm currently using for coding and live." name="description" />
+        <meta
+          content="Here's what gear I'm currently using for coding and live."
+          name="description"
+          key="description"
+        />
       </Head>
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
@@ -21,7 +25,7 @@ function GearPage() {
         <div className="w-full mb-8 flex">
           <Image
             className="rounded-lg"
-            alt="My stuff"
+            alt="Serhii Shramko is sitting at a table with a computer"
             src={gear}
             width={1000}
             height={667}
@@ -29,13 +33,13 @@ function GearPage() {
           />
         </div>
         <div className="prose dark:prose-dark w-full">
-          <h3 id="computer-office">Computer</h3>
+          <h2 id="computer-office">Computer</h2>
           <ul>
             <li>16&quot; Macbook Pro (2018)</li>
             <li>27&quot; LG UltraFine 27UL850-W</li>
             <li>SteelSeries Rival Wireless 3 Mouse</li>
           </ul>
-          <h3 id="coding">Coding</h3>
+          <h2 id="coding">Coding</h2>
           <ul>
             <li>
               Editor:&ensp;
@@ -51,12 +55,12 @@ function GearPage() {
               </a>
             </li>
           </ul>
-          <h3 id="audio-video">Audio</h3>
+          <h2 id="audio-video">Audio</h2>
           <ul>
             <li>Sony WH-1000XM4 🎧</li>
             <li>Samsung Buds Pro</li>
           </ul>
-          <h3 id="software">Software</h3>
+          <h2 id="software">Software</h2>
           <ul>
 
             <li>
@@ -75,7 +79,7 @@ function GearPage() {
             <li>Grammarly</li>
             <li>Magnet</li>
           </ul>
-          <h3 id="other">Other</h3>
+          <h2 id="other">Other</h2>
           <ul>
             <li>Golf GTI&ensp;🚗💨</li>
             <li>Apple iPhone</li>

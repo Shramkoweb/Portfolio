@@ -12,6 +12,7 @@ export default function Dashboard() {
         <meta
           content="My personal dashboard, built with Next.js API routes deployed as serverless functions."
           name="description"
+          key="description"
         />
       </Head>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
