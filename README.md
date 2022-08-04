@@ -1,7 +1,6 @@
 [![Lint](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml/badge.svg)](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml)
-![](https://api.checklyhq.com/v1/badges/checks/1c47f38a-59e0-440b-bd58-dbf381c58f4d?style=flat-square&theme=dark)
-![](https://api.checklyhq.com/v1/badges/checks/1c47f38a-59e0-440b-bd58-dbf381c58f4d?style=flat&theme=dark&responseTime=true)
-
+![](https://api.checklyhq.com/v1/badges/checks/12872d1e-b404-40c8-82e4-3a082b34ceaa?style=flat&theme=default&responseTime=true)
+![](https://api.checklyhq.com/v1/badges/checks/12872d1e-b404-40c8-82e4-3a082b34ceaa?style=flat&theme=default)
 
 # My personal portfolio and blog
 
