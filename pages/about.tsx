@@ -43,7 +43,7 @@ function AboutPage() {
             <li>
               <a
                 href="mailto:shramko.dev@gmail.com"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Shramko Serhii personal email"
               >
@@ -66,7 +66,7 @@ function AboutPage() {
             &ensp;and&ensp;
             <abbr title="HyperText Markup Language">HTML</abbr>
             &ensp;courses at&ensp;
-            <a href="https://htmlacademy.ru/profile/id852139" target="_blank" rel="noreferrer">HTML Academy</a>
+            <a href="https://htmlacademy.ru/profile/id852139" target="_blank" rel="noopener noreferrer">HTML Academy</a>
           </p>
 
           <h3>Experience</h3>
@@ -94,12 +94,12 @@ function AboutPage() {
             <li>Rewriting Japanese site with Next.js and improve web vitals metrics</li>
             <li>
               Mentoring junior developers and interns in&ensp;
-              <a href="https://macpaw.com/internship" target="_blank" rel="noreferrer">MacPaw Internship</a>
+              <a href="https://macpaw.com/internship" target="_blank" rel="noopener noreferrer">MacPaw Internship</a>
             </li>
             <li>
               Refactored the
               {' '}
-              <a href="https://imgix.com/" target="_blank" rel="noreferrer">imgix</a>
+              <a href="https://imgix.com/" target="_blank" rel="noopener noreferrer">imgix</a>
               {' '}
               code in PHP, which allowed to optimize the size of the pictures by 2-6 times 🔥
             </li>
@@ -120,7 +120,7 @@ function AboutPage() {
             Phase One Karma created AI-driven anti-plagiarism checker with more than 1
             million users worldwide
             {' '}
-            <a href="https://unicheck.com/" target="_blank" rel="noreferrer">Unicheck</a>
+            <a href="https://unicheck.com/" target="_blank" rel="noopener noreferrer">Unicheck</a>
             .
           </p>
           <ul className="text-sm">
@@ -128,18 +128,18 @@ function AboutPage() {
               Reduced code base and improved code reusability by creating shared npm
               UI library with
               {' '}
-              <a href="https://storybook.js.org/" target="_blank" rel="noreferrer">Storybook</a>
+              <a href="https://storybook.js.org/" target="_blank" rel="noopener noreferrer">Storybook</a>
             </li>
             <li>Reduced chunk size by 12 KB each, it crops the final bundle by 60kb</li>
             <li>
               Built from scratch new user dashboard with
               {' '}
-              <a href="https://nextjs.org/" target="_blank" rel="noreferrer">Next.js</a>
+              <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Next.js</a>
             </li>
             <li>
               Rewrite old WordPress site to
               {' '}
-              <a href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">Gatsby</a>
+              <a href="https://www.gatsbyjs.com/" target="_blank" rel="noopener noreferrer">Gatsby</a>
             </li>
             <li>
               Create team guidelines for writing
@@ -201,7 +201,7 @@ function AboutPage() {
             <li>
               Move manual creation of emails to framework
               {' '}
-              <a href="https://get.foundation/emails.html" target="_blank" rel="noreferrer">Foundation</a>
+              <a href="https://get.foundation/emails.html" target="_blank" rel="noopener noreferrer">Foundation</a>
             </li>
             <li>Create user-friendly web pages</li>
           </ul>

@@ -28,7 +28,7 @@ function IndexPage() {
             <a
               href="https://macpaw.com/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="font-semibold underline"
             >
               MacPaw
