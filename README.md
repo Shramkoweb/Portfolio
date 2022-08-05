@@ -24,7 +24,7 @@ This repo contains the source code for [shramko.dev](https://shramko.dev). - in 
 ## Monitors
 - [Status page](https://stats.uptimerobot.com/8lYYzuXNM9/792406216) - lifetime checker for my portfolio uptime ![Uptime Robot status Page](docs/uptime-robot.png)
 
-- [Dashboard](https://portfolio-shramko.checklyhq.com/) this is where I run E2E tests and check image statuses ![Checkly monotor](docs/checkly.png)
+- [Dashboard](https://portfolio-shramko.checklyhq.com/) this is where I run E2E tests and check build statuses ![Checkly monotor](docs/checkly.png)
 
 ## License
 This app is an open source project released under the [MIT License](https://github.com/Shramkoweb/Portfolio/blob/develop/LICENSE).
