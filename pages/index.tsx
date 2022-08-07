@@ -25,8 +25,6 @@ interface IndexPageProps {
 function IndexPage(props: IndexPageProps) {
   const { featuredPosts } = props;
 
-  console.log(process.env.NODE_ENV);
-
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
   const handleHover = () => {
@@ -40,7 +38,7 @@ function IndexPage(props: IndexPageProps) {
       <div className="flex flex-col-reverse sm:flex-row items-start">
         <div className="flex flex-col pr-8">
           <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-            Serhii Shramko
+            {process.env.NODE_ENV}
           </h1>
           <h2 className="text-gray-700 dark:text-gray-200 mb-4">
             Senior Developer at&ensp;
