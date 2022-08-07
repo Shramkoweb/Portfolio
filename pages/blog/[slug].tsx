@@ -103,8 +103,9 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-// eslint-disable-next-line max-len
-export async function getStaticProps({ params }: GetStaticPropsContext<Params>): Promise<GetStaticPropsResult<ArticlePageProps>> {
+export async function getStaticProps(
+  { params }: GetStaticPropsContext<Params>,
+): Promise<GetStaticPropsResult<ArticlePageProps>> {
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
 
