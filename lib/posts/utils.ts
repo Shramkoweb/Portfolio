@@ -1,4 +1,4 @@
-import { Post } from '@/lib/posts/api';
+import { Post } from '@/lib/types';
 
-export const sortByBirthtime = (first: Post, second: Post) => second.data.birthtimeMs - first.data.birthtimeMs;
+export const sortByBirthtime = (first: Post, second: Post) => second.data.createDate - first.data.createDate;
 export const filterByFeatured = (post: Post) => post.data.featured;

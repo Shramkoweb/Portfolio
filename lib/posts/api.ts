@@ -1,23 +1,11 @@
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
-import { readdir, readFile, stat } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
 
-const POSTS_DIRECTORY = join(process.cwd(), '_posts');
+import { Post } from '@/lib/types';
 
-export type Post = {
-  data: {
-    slug: string,
-    title: string,
-    description: string,
-    readTime: string,
-    birthtimeMs: number,
-    mtimeMs: number,
-    featured: boolean;
-    tags?: string[],
-  },
-  content: string
-};
+const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
 const getSlugFromMdFile = (fileName: string) => fileName.replace(/\.md$/, '');
 
@@ -29,7 +17,6 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
   try {
     const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
     const fileContents = await readFile(fullPath, 'utf8');
-    const { birthtimeMs, mtimeMs } = await stat(fullPath);
 
     const {
       data: {
@@ -37,6 +24,8 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         description,
         tags,
         featured,
+        createDate,
+        updateData,
       },
       content,
     } = matter(fileContents);
@@ -50,8 +39,8 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         description,
         tags,
         readTime: text,
-        birthtimeMs,
-        mtimeMs,
+        createDate: Date.parse(createDate),
+        updateData: Date.parse(updateData),
       },
       content,
     };
