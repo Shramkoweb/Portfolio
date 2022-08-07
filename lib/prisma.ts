@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
+// eslint-disable-next-line max-len
 /* https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#solution */
 
 declare global {

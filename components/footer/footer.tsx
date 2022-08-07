@@ -10,7 +10,11 @@ export function Footer() {
       <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
         <div className="flex flex-col space-y-4">
           <Link href="/">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Home</a>
+            <a
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              Home
+            </a>
           </Link>
           <Link href="/about">
             <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
@@ -30,10 +34,17 @@ export function Footer() {
         </div>
         <div className="flex flex-col space-y-4">
           <Link href="/gear">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">My Gear</a>
+            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+              My
+              Gear
+            </a>
           </Link>
           <Link href="/dashboard">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Dashboard</a>
+            <a
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              Dashboard
+            </a>
           </Link>
         </div>
       </div>

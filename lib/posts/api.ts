@@ -1,24 +1,13 @@
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
-import { readdir, readFile, stat } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
+
+import { Post } from '@/lib/types';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
-export type Post = {
-  data: {
-    slug: string,
-    title: string,
-    description: string,
-    readTime: string,
-    birthtimeMs: number,
-    mtimeMs: number,
-    tags?: string[],
-  },
-  content: string
-};
-
-const getSlugFromFileName = (fileName: string) => fileName.replace(/\.md$/, '');
+const getSlugFromMdFile = (fileName: string) => fileName.replace(/\.md$/, '');
 
 export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {
@@ -28,20 +17,30 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
   try {
     const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
     const fileContents = await readFile(fullPath, 'utf8');
-    const { birthtimeMs, mtimeMs } = await stat(fullPath);
 
-    const { data: { title, description, tags }, content } = matter(fileContents);
+    const {
+      data: {
+        title,
+        description,
+        tags,
+        featured,
+        createDate,
+        updateData,
+      },
+      content,
+    } = matter(fileContents);
     const { text } = readingTime(content);
 
     return {
       data: {
         slug,
+        featured,
         title,
         description,
         tags,
         readTime: text,
-        birthtimeMs,
-        mtimeMs,
+        createDate: Date.parse(createDate),
+        updateData: Date.parse(updateData),
       },
       content,
     };
@@ -54,7 +53,7 @@ export async function getPosts(): Promise<Post[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
 
   return Promise.all(fileNames.map((fileName) => {
-    const slug = getSlugFromFileName(fileName);
+    const slug = getSlugFromMdFile(fileName);
 
     return getPostBySlug(slug);
   }));
@@ -63,5 +62,5 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostSlugs() {
   const fileNames = await readdir(POSTS_DIRECTORY);
 
-  return Promise.all(fileNames.map((fileName) => getSlugFromFileName(fileName)));
+  return Promise.all(fileNames.map((fileName) => getSlugFromMdFile(fileName)));
 }
