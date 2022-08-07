@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { getPosts, Post } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
+import { sortByBirthtime } from '@/lib/posts/utils';
 
 interface BlogPageProps {
   posts: Post[];
@@ -78,7 +79,7 @@ function BlogPage(props: BlogPageProps) {
 export async function getStaticProps() {
   const posts = await getPosts();
   const sortedPosts = posts
-    .sort((first, second) => second.data.birthtimeMs - first.data.birthtimeMs);
+    .sort(sortByBirthtime);
 
   return { props: { posts: sortedPosts } };
 }

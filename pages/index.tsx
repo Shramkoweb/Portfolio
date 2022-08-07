@@ -2,12 +2,28 @@ import Image from 'next/future/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { GetStaticPropsResult } from 'next';
+
+import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
+import { getPosts, Post } from '@/lib/posts/api';
+import { filterByFeatured, sortByBirthtime } from '@/lib/posts/utils';
 
 import smile from 'public/static/images/smile.webp';
 import tongue from 'public/static/images/tongue.webp';
-import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
 
-function IndexPage() {
+const GRADIENTS = [
+  'bg-gradient-to-r from-green-300 via-blue-500 to-purple-600',
+  'bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400',
+  'bg-gradient-to-r from-purple-400 to-yellow-400',
+];
+
+interface IndexPageProps {
+  featuredPosts: Post[];
+}
+
+function IndexPage(props: IndexPageProps) {
+  const { featuredPosts } = props;
+
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
   const handleHover = () => {
@@ -95,24 +111,29 @@ function IndexPage() {
         Featured Posts
       </h3>
       <div className="flex gap-6 flex-col md:flex-row w-full">
-        <BlogPostSquarePreview
-          title="How to use ESLint with TypeScript"
-          slug="eslint-with-typescript"
-          gradient="bg-gradient-to-t from-amber-400 to-blue-800"
-        />
-        <BlogPostSquarePreview
-          title="How to fix '__dirname is not defined in ES module scope'"
-          slug="dirname-error"
-          gradient="from-[#D8B4FE] to-[#818CF8]"
-        />
-        <BlogPostSquarePreview
-          title="Expressions vs Statements"
-          slug="expressions-statements"
-          gradient="from-pink-500 via-red-500 to-yellow-500"
-        />
+        {featuredPosts.map(({ data: { slug, title } }, index) => {
+          const gradient = GRADIENTS[index];
+
+          return (
+            <BlogPostSquarePreview
+              title={title}
+              slug={slug}
+              gradient={gradient}
+              key={slug}
+            />
+          );
+        })}
       </div>
     </div>
   );
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<IndexPageProps>> {
+  const posts = await getPosts();
+  const sortedPosts = posts.sort(sortByBirthtime);
+  const featuredPosts = sortedPosts.filter(filterByFeatured);
+
+  return { props: { featuredPosts } };
 }
 
 export default IndexPage;
