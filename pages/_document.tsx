@@ -1,8 +1,5 @@
 import {
-  Html,
-  Head,
-  Main,
-  NextScript,
+  Head, Html, Main, NextScript,
 } from 'next/document';
 
 export default function Document() {

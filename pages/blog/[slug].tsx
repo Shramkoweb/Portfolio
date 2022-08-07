@@ -1,11 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/future/image';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
