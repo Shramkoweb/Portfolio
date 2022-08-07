@@ -5,8 +5,9 @@ import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
 
 import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
-import { getPosts, Post } from '@/lib/posts/api';
+import { getPosts } from '@/lib/posts/api';
 import { filterByFeatured, sortByBirthtime } from '@/lib/posts/utils';
+import { Post } from '@/lib/types';
 
 import smile from 'public/static/images/smile.webp';
 import tongue from 'public/static/images/tongue.webp';
