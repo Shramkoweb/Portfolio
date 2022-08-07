@@ -13,12 +13,13 @@ export type Post = {
     readTime: string,
     birthtimeMs: number,
     mtimeMs: number,
+    featured: boolean;
     tags?: string[],
   },
   content: string
 };
 
-const getSlugFromFileName = (fileName: string) => fileName.replace(/\.md$/, '');
+const getSlugFromMdFile = (fileName: string) => fileName.replace(/\.md$/, '');
 
 export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {
@@ -30,12 +31,21 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
     const fileContents = await readFile(fullPath, 'utf8');
     const { birthtimeMs, mtimeMs } = await stat(fullPath);
 
-    const { data: { title, description, tags }, content } = matter(fileContents);
+    const {
+      data: {
+        title,
+        description,
+        tags,
+        featured,
+      },
+      content,
+    } = matter(fileContents);
     const { text } = readingTime(content);
 
     return {
       data: {
         slug,
+        featured,
         title,
         description,
         tags,
@@ -54,7 +64,7 @@ export async function getPosts(): Promise<Post[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
 
   return Promise.all(fileNames.map((fileName) => {
-    const slug = getSlugFromFileName(fileName);
+    const slug = getSlugFromMdFile(fileName);
 
     return getPostBySlug(slug);
   }));
@@ -63,5 +73,5 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostSlugs() {
   const fileNames = await readdir(POSTS_DIRECTORY);
 
-  return Promise.all(fileNames.map((fileName) => getSlugFromFileName(fileName)));
+  return Promise.all(fileNames.map((fileName) => getSlugFromMdFile(fileName)));
 }

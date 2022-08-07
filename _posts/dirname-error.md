@@ -2,6 +2,7 @@
 title: How to fix "__dirname is not defined in ES module scope"
 description: Here is how to fix the "__dirname is not defined in ES module scope" error
 tags: [JS, Node, ES Modules]
+featured: true
 ---
 
 <Image src="/static/images/es-module.png" />

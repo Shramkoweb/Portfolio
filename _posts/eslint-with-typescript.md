@@ -2,6 +2,7 @@
 title: How to use ESLint with TypeScript
 description: In this post, we'll walk through how to set up linting in your TS project.
 tags: [TS, TypeScript, ESLint, Project Setup]
+featured: true
 ---
 
 ## Intro
