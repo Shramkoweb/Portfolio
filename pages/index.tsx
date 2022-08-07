@@ -25,6 +25,8 @@ interface IndexPageProps {
 function IndexPage(props: IndexPageProps) {
   const { featuredPosts } = props;
 
+  console.log(process.env.NODE_ENV);
+
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
   const handleHover = () => {
