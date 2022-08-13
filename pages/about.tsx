@@ -12,6 +12,12 @@ function AboutPage() {
     <>
       <Head>
         <title>About - Serhii Shramko</title>
+        <meta
+          content="Get to know Serhii Shramko"
+          name="description"
+          key="description"
+        />
+        <meta content="about, Serhii, Serhii Shramko, software engineer, web developer, JavaScript developer" name="keywords" key="keywords" />
       </Head>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">

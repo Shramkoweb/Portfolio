@@ -25,6 +25,7 @@ function BlogPage(props: BlogPageProps) {
           name="description"
           key="description"
         />
+        <meta content="JavaScript blog, Tech Blog, Code snippets" name="keywords" key="keywords" />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
