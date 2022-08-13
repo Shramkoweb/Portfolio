@@ -17,17 +17,21 @@ export function Layout({ children }: PropsWithChildren) {
     <div className="bg-gray-50 dark:bg-gray-900">
       <Head>
         <title>{TITLE}</title>
+        <meta
+          name="viewport"
+          content="width=device-width , initial-scale=1.0"
+        />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="robots" content="follow, index" />
         <meta content={DESCRIPTION} name="description" key="description" />
         <meta property="og:url" content={`https://shramko.dev${ROUTER_PATH}`} key="og:url" />
-        <link rel="canonical" href={`https://shramko.dev${ROUTER_PATH}`} />
+        <link rel="canonical" key="canonical" href={`https://shramko.dev${ROUTER_PATH}`} />
         <meta property="og:type" content="website" key="og:type" />
         <meta property="og:site_name" content="Serhii Shramko" key="og:site_name" />
         <meta property="og:description" content={DESCRIPTION} key="og:description" />
         <meta property="og:title" content={TITLE} key="og:title" />
         <meta property="og:image" content={IMAGE} key="og:image" />
         <meta name="twitter:card" content="summary_large_image" />
-        {/* TODO check twitter:site */}
         <meta name="twitter:creator" content="@shramkoweb" key="twitter:creator" />
         <meta name="twitter:site" content="@shramkoweb" key="twitter:site" />
         <meta name="twitter:title" content={TITLE} key="twitter:title" />

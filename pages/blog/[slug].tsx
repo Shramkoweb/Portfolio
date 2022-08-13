@@ -1,38 +1,32 @@
 import Head from 'next/head';
 import Image from 'next/future/image';
-import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
-import {
-  GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult,
-} from 'next';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import { compileMDX } from '@/lib/posts/compiler';
-import MDXComponents from '@/components/mdx-components';
+import { MDXComponents } from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
 import { PostReaction } from '@/components/post-reaction';
+import { Post } from '@/lib/types';
 
-interface ArticlePageProps {
-  data: {
-    title: string;
-    description: string;
-    birthtimeMs: number;
-    mtimeMs: number;
-    readTime: string;
-    slug: string;
-    tags?: string[];
-  },
-  content: MDXRemoteProps
-}
+type ArticlePageProps = Pick<Post, 'data'> & { content: MDXRemoteSerializeResult };
 
 function ArticlePage(props: ArticlePageProps) {
   const {
-    data: {
-      title, readTime, description, mtimeMs, birthtimeMs, slug, tags = [],
-    }, content,
+    content, data: {
+      title,
+      slug,
+      updateData,
+      readTime,
+      description,
+      createDate,
+      tags = [],
+    },
   } = props;
 
-  const createDate = new Date(birthtimeMs).toLocaleDateString('en-us', {
+  const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -52,12 +46,17 @@ function ArticlePage(props: ArticlePageProps) {
         <meta name="twitter:description" content={description} key="twitter:description" />
         <meta
           property="article:published_time"
-          content={new Date(birthtimeMs).toISOString()}
+          content={new Date(createDate).toISOString()}
           key="article:published_time"
         />
-        <meta property="article:modified_time" content={new Date(mtimeMs).toISOString()} key="article:modified_time" />
+        <meta
+          property="article:modified_time"
+          content={new Date(updateData).toISOString()}
+          key="article:modified_time"
+        />
         <meta property="article:section" content="Technology" key="article:section" />
         <meta property="article:author" content="https://shramko.dev" key="article:author" />
+        <meta name="keywords" content={tags.join(', ')} />
         {
           tags.map((tag) => <meta key={`article:${tag}`} property="article:tag" content={tag} />)
         }
@@ -77,9 +76,9 @@ function ArticlePage(props: ArticlePageProps) {
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
               Serhii Shramko /
-              <time dateTime={new Date(birthtimeMs).toISOString()}>
+              <time dateTime={new Date(createDate).toISOString()}>
                 {' '}
-                {createDate}
+                {formattedDate}
               </time>
             </p>
           </div>
@@ -103,8 +102,9 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-// eslint-disable-next-line max-len
-export async function getStaticProps({ params }: GetStaticPropsContext<Params>): Promise<GetStaticPropsResult<ArticlePageProps>> {
+export async function getStaticProps(
+  { params }: GetStaticPropsContext<Params>,
+): Promise<GetStaticPropsResult<ArticlePageProps>> {
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
 

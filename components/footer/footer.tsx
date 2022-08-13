@@ -10,15 +10,19 @@ export function Footer() {
       <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
         <div className="flex flex-col space-y-4">
           <Link href="/">
-            <a className="text-gray-500 hover:text-gray-600 transition">Home</a>
+            <a
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              Home
+            </a>
           </Link>
           <Link href="/about">
-            <a className="text-gray-500 hover:text-gray-600 transition">
+            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
               About
             </a>
           </Link>
           <Link href="/blog">
-            <a className="text-gray-500 hover:text-gray-600 transition">
+            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
               Blog
             </a>
           </Link>
@@ -30,14 +34,21 @@ export function Footer() {
         </div>
         <div className="flex flex-col space-y-4">
           <Link href="/gear">
-            <a className="text-gray-500 hover:text-gray-600 transition">My Gear</a>
+            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+              My
+              Gear
+            </a>
           </Link>
           <Link href="/dashboard">
-            <a className="text-gray-500 hover:text-gray-600 transition">Dashboard</a>
+            <a
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              Dashboard
+            </a>
           </Link>
         </div>
       </div>
-      <small className="text-gray-500 pb-4">
+      <small className="text-gray-600 dark:text-gray-400 pb-4">
         © Made with ❤️ in
         {' '}
         {getCopyright()}
