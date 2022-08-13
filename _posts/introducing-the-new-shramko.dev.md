@@ -252,8 +252,13 @@ Quick list of why Next.js has been so good for me:
 
 <Image src="/static/images/framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" />
 
+## Acknowledgements
+- The design was inspired by [Lee Robinson](https://github.com/leerob)
+
 ## Conclusion
 
 I can't tell you how much I've learned building this website. 🤓
 
 I'm excited about the new design. And I just had fun doing it. I hope you enjoy it too!
+
+The project is developing and still has many unimplemented features, you can see or suggest them [here](https://github.com/Shramkoweb/Portfolio/issues)
