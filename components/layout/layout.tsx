@@ -25,7 +25,7 @@ export function Layout({ children }: PropsWithChildren) {
         <meta name="robots" content="follow, index" />
         <meta content={DESCRIPTION} name="description" key="description" />
         <meta property="og:url" content={`https://shramko.dev${ROUTER_PATH}`} key="og:url" />
-        <link rel="canonical" href={`https://shramko.dev${ROUTER_PATH}`} />
+        <link rel="canonical" key="canonical" href={`https://shramko.dev${ROUTER_PATH}`} />
         <meta property="og:type" content="website" key="og:type" />
         <meta property="og:site_name" content="Serhii Shramko" key="og:site_name" />
         <meta property="og:description" content={DESCRIPTION} key="og:description" />

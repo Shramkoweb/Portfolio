@@ -56,6 +56,7 @@ function ArticlePage(props: ArticlePageProps) {
         />
         <meta property="article:section" content="Technology" key="article:section" />
         <meta property="article:author" content="https://shramko.dev" key="article:author" />
+        <meta name="keywords" content={tags.join(', ')} />
         {
           tags.map((tag) => <meta key={`article:${tag}`} property="article:tag" content={tag} />)
         }
