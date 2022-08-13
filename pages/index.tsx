@@ -45,7 +45,7 @@ function IndexPage(props: IndexPageProps) {
           React,
           JavaScript,
           TypeScript,
-          Next.JS,
+          Next.js,
           Jamstack
           "
           key="keywords"
@@ -80,7 +80,7 @@ function IndexPage(props: IndexPageProps) {
               &ensp;
               <abbr title="A JavaScript library for building user interfaces">React</abbr>
               &ensp;and&ensp;
-              <abbr title="The React Framework for Production">Next.JS</abbr>
+              <abbr title="The React Framework for Production">Next.js</abbr>
             </p>
             <Link href="/about">
               <a

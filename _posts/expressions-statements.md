@@ -4,7 +4,7 @@ description: Understand the important distinction expressions vs statements in J
 tags: [JS, CS, ES Modules]
 createDate: 2022-07-27T21:27:20Z
 updateData: 2022-08-07T11:37:59.665Z
-featured: true
+featured: false
 ---
 
 JavaScript distinguishes _expressions_ and _statements_. A statement is an instruction, an action. 
