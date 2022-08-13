@@ -46,15 +46,17 @@ SUM:                            87            314             14          17427
 
 The first commit was in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f85ec7576de8a82c5b7fad835).
 
+## Key features
 
-## 🍭 Design
-
-Here's how the [latest design](https://shramkoweb.github.io/homepage/) looked before I updated it.
-
-This is a simple <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets,">CSS</abbr> site. 
-No <abbr title="JavaScript">JS</abbr> and frameworks 😂.
-
-<Image src="/static/images/old-site.jpg" />
+- Dark and Light Mode
+- [Security headers](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L13) and [CSP]
+- Featuring post with [meta parsing](https://github.com/Shramkoweb/Portfolio/blame/develop/_posts/dirname-error.md#L7)
+- Error page (try going to URL that doesn't exist)
+- Mobile and Responsive styling with Tailwind
+- Dynamic Open Graph tags and Twitter cards from [metadata](https://github.com/Shramkoweb/Portfolio/blob/develop/pages/blog/%5Bslug%5D.tsx#L61)
+- Accessibility (try to pass [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/))
+- Next.js Api for simple express server
+- Realtime updates with SWR
 
 ## 💻 Technologies
 
@@ -85,6 +87,15 @@ Here are the services this site uses:
 - [Uptimerobot](https://uptimerobot.com/) - Uptime monitoring service
 - [Snyk](https://snyk.io/) - Developer security platform
 - [Sentry](https://sentry.io): Error reporting service
+
+## 🍭 The new look
+
+Here's how the [latest design](https://shramkoweb.github.io/homepage/) looked before I updated it.
+
+This is a simple <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets,">CSS</abbr> site.
+No <abbr title="JavaScript">JS</abbr> and frameworks 😂.
+
+<Image src="/static/images/old-site.jpg" />
 
 ## 🚀 Deploy
 
@@ -144,7 +155,7 @@ import { MDXComponents } from '@/components/mdx-components';
 </div>
 ```
 
-## Monitoring
+## Monitoring with Sentry
 
 Monitoring is an essential part of development. 
 t’s usually one of the first things you’d want to do after setting up an existing project or getting started with a new one.
@@ -184,6 +195,11 @@ Whether you have an existing database or you're starting from scratch, Prisma ha
 
 When combining Prisma with Next.js, you can skip the [CRUD](https://www.codecademy.com/article/what-is-crud) boilerplate and directly query the database. 
 Less code means less bugs.
+
+### Heroku Postgres
+
+Heroku Postgres gives me all the benefits of PostgreSQL without having to spin up and maintain the databases ourselves.
+And it is [easy integrate with PhpStorm](https://www.jetbrains.com/help/phpstorm/how-to-connect-to-heroku-postgres.html).
 
 ### Type Safety
 ```sql
