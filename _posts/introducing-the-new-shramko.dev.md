@@ -2,7 +2,7 @@
 title: Introducing the new shramko.dev
 description: How I built a modern portfolio in 2022
 createDate: 2022-08-13T13:31:25.041Z
-updateData: 2022-08-13T13:31:25.041Z
+updateData: 2022-08-14T08:22:34.069Z
 tags: [Website Redesign, Next.JS, React, Tailwind, Developer Portfolio, Portfolio, Website]
 featured: true
 ---
@@ -49,7 +49,7 @@ The first commit was in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/com
 ## Key features
 
 - Dark and Light Mode
-- [Security headers](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L13) and [CSP]
+- [Security headers](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L13) and [CSP](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L3)
 - Featuring post with [meta parsing](https://github.com/Shramkoweb/Portfolio/blame/develop/_posts/dirname-error.md#L7)
 - Error page (try going to URL that doesn't exist)
 - Mobile and Responsive styling with Tailwind
@@ -67,7 +67,6 @@ Here are the primary technologies used in this project:
 - [TypeScript](https://www.typescriptlang.org): Typed JavaScript (necessary for
   any project you plan to maintain)
 - [Prisma](https://www.prisma.io): TypeScript ORM with Zero-Cost Type Safety
-  DOM-based user interfaces
 - [SWR](https://swr.vercel.app/): Cool stale-while-revalidate hook
 - [Tailwind CSS](https://tailwindcss.com): Utility classes for
   consistent/maintainable styling
@@ -79,13 +78,13 @@ Here are the primary technologies used in this project:
 
 Here are the services this site uses:
 
-- [Vercel](https://vercel.com) - Platform for frontend frameworks and static sites
+- [Vercel](https://vercel.com): Platform for frontend frameworks and static sites
 - [GitHub Actions](https://github.com/features/actions): Hosted CI pipeline
   service
-- [Heroku](https://www.heroku.com/) - Reliable and secure PostgreSQL as a service
-- [Checkly](https://www.checklyhq.com/) - API & E2E monitoring platform
-- [Uptimerobot](https://uptimerobot.com/) - Uptime monitoring service
-- [Snyk](https://snyk.io/) - Developer security platform
+- [Heroku](https://www.heroku.com/): Reliable and secure PostgreSQL as a service
+- [Checkly](https://www.checklyhq.com/): API & E2E monitoring platform
+- [Uptimerobot](https://uptimerobot.com/): Uptime monitoring service
+- [Snyk](https://snyk.io/): Developer security platform
 - [Sentry](https://sentry.io): Error reporting service
 
 ## 🍭 The new look
@@ -240,15 +239,15 @@ const views = await prisma.views.upsert({
 
 Next's framework allows you to build scalable, performant React code without the configuration hassle. 
 
-In my company, we use it for [CleanMyMac JP](https://cleanmymac.jp/)
+In my company, we use it for [CleanMyMac JP](https://cleanmymac.jp/).
 
 Quick list of why Next.js has been so good for me:
-- Zero Config: Automatic compilation and bundling. Optimized for production from the start.
-- SSG and SSR: It allows you to render your content in different ways, depending on your application's use case. These include pre-rendering with Server-side Rendering or Static Generation, and updating or creating content at runtime with Incremental Static Regeneration.
-- Deploy: You can deploy in a few clicks to [Vercel](https://vercel.com).
+- Zero Config: Automatic compilation and bundling. Optimized for production from the start
+- SSG and SSR: It allows you to render your content in different ways, depending on your application's use case. These include pre-rendering with Server-side Rendering or Static Generation, and updating or creating content at runtime with Incremental Static Regeneration
+- Deploy: You can deploy in a few clicks to [Vercel](https://vercel.com)
 - SEO: Automatic Static Optimization & Head Component
 - React ecosystem: Wide range of tools and npm packages
-- Out of the box support: Through webpack, Next provides developers with out-of-the-box support for asset compilation, hot reloading and code splitting, which can further speed up development.
+- Out of the box support: Through webpack, Next provides developers with out-of-the-box support for asset compilation, hot reloading and code splitting, which can further speed up development
 
 <Image src="/static/images/framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" />
 
@@ -261,4 +260,4 @@ I can't tell you how much I've learned building this website. 🤓
 
 I'm excited about the new design. And I just had fun doing it. I hope you enjoy it too!
 
-The project is developing and still has many unimplemented features, you can see or suggest them [here](https://github.com/Shramkoweb/Portfolio/issues)
+The project is developing and still has many unimplemented features, you can see or suggest them [here](https://github.com/Shramkoweb/Portfolio/issues).
