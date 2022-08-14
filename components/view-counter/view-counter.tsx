@@ -14,6 +14,7 @@ export function ViewCounter(props: ViewCounterProps) {
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = data?.total;
 
+  // TODO Disable on local ENV
   useEffect(() => {
     const registerView = () => fetch(`/api/views/${slug}`, {
       method: 'POST',
