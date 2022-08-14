@@ -20,3 +20,9 @@ export type Post = {
   },
   content: string
 };
+
+export enum Feedback {
+  helpful = 'helpful',
+  worthless = 'worthless',
+  blank = 'blank',
+}
