@@ -11,7 +11,7 @@ const responseTextByFeedback = {
   },
   [Feedback.worthless]: {
     title: 'Sorry to hear that.',
-    subtitle: '<a class="underline text-white hover:text-amber-50" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what i could do better.',
+    subtitle: '<a class="underline text-[#3b82f6] hover:text-[#2563eb]" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
   },
   [Feedback.blank]: {
     title: 'Was this article helpful ?',
