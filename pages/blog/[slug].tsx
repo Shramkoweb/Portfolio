@@ -10,6 +10,7 @@ import { MDXComponents } from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
 import { PostReaction } from '@/components/post-reaction';
 import { Post } from '@/lib/types';
+import { Suspense } from 'react';
 
 type ArticlePageProps = Pick<Post, 'data'> & { content: MDXRemoteSerializeResult };
 
@@ -88,10 +89,12 @@ function ArticlePage(props: ArticlePageProps) {
             <ViewCounter slug={slug} />
           </p>
         </div>
-        <div className="w-full mt-4 prose dark:prose-dark max-w-none">
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <MDXRemote {...content} components={MDXComponents} />
-        </div>
+        <Suspense fallback={null}>
+          <div className="w-full mt-4 prose dark:prose-dark max-w-none">
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+            <MDXRemote {...content} components={MDXComponents} />
+          </div>
+        </Suspense>
         <PostReaction />
       </article>
     </>

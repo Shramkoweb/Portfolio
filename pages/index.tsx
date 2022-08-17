@@ -1,6 +1,6 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
 
@@ -128,28 +128,30 @@ function IndexPage(props: IndexPageProps) {
             />
           </div>
         </div>
-        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
-          Featured Posts
-        </h3>
-        <div className="flex gap-6 flex-col md:flex-row w-full">
-          {featuredPosts.map(({
-            data: {
-              slug,
-              title,
-            },
-          }, index) => {
-            const gradient = GRADIENTS[index];
+        <Suspense fallback={null}>
+          <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
+            Featured Posts
+          </h3>
+          <div className="flex gap-6 flex-col md:flex-row w-full">
+            {featuredPosts.map(({
+              data: {
+                slug,
+                title,
+              },
+            }, index) => {
+              const gradient = GRADIENTS[index];
 
-            return (
-              <BlogPostSquarePreview
-                title={title}
-                slug={slug}
-                gradient={gradient}
-                key={slug}
-              />
-            );
-          })}
-        </div>
+              return (
+                <BlogPostSquarePreview
+                  title={title}
+                  slug={slug}
+                  gradient={gradient}
+                  key={slug}
+                />
+              );
+            })}
+          </div>
+        </Suspense>
       </div>
     </>
   );
