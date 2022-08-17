@@ -9,7 +9,7 @@ featured: false
 
 ## The For Loop
 
-There are many ways to iterate in JavaScript, and probably one of the most common is the for loop.
+There are many ways to iterate in JavaScript, and probably one of the most common is for a loop.
 
 The for statement is a type of loop that will use up to three optional expressions to implement the repeated execution of a code block.
 Let’s take a look at an example of what that means:
@@ -40,7 +40,7 @@ But in addition to this `for` loop, there are two other types of for iteration m
 
 ## The for...in Statement
 
-The `for...in` statement iterates over all [enumerable properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) of an object that are keyed by strings (ignoring ones keyed by Symbols), including inherited enumerable properties.
+The `for...in` statement iterates over all [enumerable properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)  of an object that is keyed by strings (ignoring one keyed by Symbols), including inherited enumerable properties.
 
 The syntax `for...in` looks like this:
 
@@ -95,7 +95,7 @@ const creatures = [
 ];
 
 for (const index in creatures) {
-  // We need acces to creatures value by index
+  // We need access to creatures value by index
   console.log(creatures[index])
 }
 ```
