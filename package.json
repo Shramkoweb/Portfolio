@@ -14,6 +14,9 @@
   "engines": {
     "node": ">=16"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {
     "@prisma/client": "4.2.1",
     "@sentry/nextjs": "7.10.0",
