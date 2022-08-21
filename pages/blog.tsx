@@ -8,13 +8,13 @@ import { Post } from '@/lib/types';
 
 interface BlogPageProps {
   posts: Post[];
+  postsAmount: number;
 }
 
 function BlogPage(props: BlogPageProps) {
-  const { posts } = props;
+  const { posts, postsAmount } = props;
   const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = posts
-    .filter((post) => post.data.title.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredBlogPosts = posts.filter((post) => post.data.title.toLowerCase().includes(searchValue.toLowerCase()));
 
   return (
     <>
@@ -25,15 +25,33 @@ function BlogPage(props: BlogPageProps) {
           name="description"
           key="description"
         />
-        <meta content="JavaScript blog, Tech Blog, Code snippets" name="keywords" key="keywords" />
+        <meta
+          content="
+          JavaScript blog,
+          Tech Blog, Code snippets,
+          Software blog,
+          web dev blog"
+          name="keywords"
+          key="keywords"
+        />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           Blog
         </h1>
-        <p className="mb-4 text-gray-600 dark:text-gray-400">
-          Hi there. Posts will be here. I promise 🫡
-        </p>
+        <div className="mb-4 text-gray-600 dark:text-gray-400">
+          <p className="mb-4 text-gray-600 dark:text-gray-400">Hi there.</p>
+          <p>
+            I usually write about the web, career and website
+            development.
+            <br />
+            I&apos;ve written
+            {' '}
+            {postsAmount}
+            {' '}
+            articles on my blog. Use the search below to filter by article title.
+          </p>
+        </div>
         <div className="relative w-full mb-4">
           <input
             aria-label="Search articles"
@@ -80,10 +98,14 @@ function BlogPage(props: BlogPageProps) {
 
 export async function getStaticProps() {
   const posts = await getPosts();
-  const sortedPosts = posts
-    .sort(sortByBirthtime);
+  const sortedPosts = posts.sort(sortByBirthtime);
 
-  return { props: { posts: sortedPosts } };
+  return {
+    props: {
+      posts: sortedPosts,
+      postsAmount: posts.length,
+    },
+  };
 }
 
 export default BlogPage;

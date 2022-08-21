@@ -13,6 +13,15 @@ function GearPage() {
           name="description"
           key="description"
         />
+        <meta
+          content="
+          gear for coding,
+          software for coding,
+          IDE,
+          PhpStorm"
+          name="keywords"
+          key="keywords"
+        />
       </Head>
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
@@ -43,14 +52,22 @@ function GearPage() {
           <ul>
             <li>
               Editor:&ensp;
-              <a href="https://www.jetbrains.com/ru-ru/phpstorm/" rel="noopener noreferrer" target="_blank">
+              <a
+                href="https://www.jetbrains.com/ru-ru/phpstorm/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 PhpStorm
               </a>
             </li>
             <li>Theme: Darcula</li>
             <li>
               Terminal: MacOS Terminal +&ensp;
-              <a href="https://ohmyz.sh/" rel="noopener noreferrer" target="_blank">
+              <a
+                href="https://ohmyz.sh/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Oh My Zsh
               </a>
             </li>
@@ -62,20 +79,27 @@ function GearPage() {
           </ul>
           <h2 id="software">Software</h2>
           <ul>
-
             <li>
-              <a href="https://macpaw.com/cleanmymac" rel="noopener noreferrer" target="_blank">CleanMyMac</a>
+              <a
+                href="https://macpaw.com/cleanmymac"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                CleanMyMac
+              </a>
             </li>
             <li>
-              <a href="https://macpaw.com/clearvpn" rel="noopener noreferrer" target="_blank">ClearVPN</a>
+              <a
+                href="https://macpaw.com/clearvpn"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                ClearVPN
+              </a>
             </li>
-            <li>
-              1Password
-            </li>
+            <li>1Password</li>
             <li>Spotify</li>
-            <li>
-              CleanShot X
-            </li>
+            <li>CleanShot X</li>
             <li>Grammarly</li>
             <li>Magnet</li>
           </ul>
