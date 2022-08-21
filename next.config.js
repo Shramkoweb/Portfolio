@@ -39,6 +39,9 @@ const securityHeaders = [
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  serverRuntimeConfig: {
+    appReleaseVersion: new Date().valueOf()
+  },
   swcMinify: true,
   experimental: {
     images: {
