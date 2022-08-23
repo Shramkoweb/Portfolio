@@ -13,7 +13,9 @@ interface BlogPageProps {
 
 function BlogPage(props: BlogPageProps) {
   const { posts, postsAmount } = props;
+
   const [searchValue, setSearchValue] = useState('');
+
   const filteredBlogPosts = posts.filter((post) => post.data.title.toLowerCase().includes(searchValue.toLowerCase()));
 
   return (
