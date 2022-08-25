@@ -3,6 +3,7 @@ import useSWR from 'swr';
 
 import { Views } from '@/lib/types';
 import { fetcher } from '@/lib/fetcher';
+import { isProduction } from '@/lib/utils';
 
 interface ViewCounterProps {
   slug: string;
@@ -14,13 +15,14 @@ export function ViewCounter(props: ViewCounterProps) {
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = data?.total;
 
-  // TODO Disable on local ENV
   useEffect(() => {
     const registerView = () => fetch(`/api/views/${slug}`, {
       method: 'POST',
     });
 
-    registerView();
+    if (isProduction()) {
+      registerView();
+    }
   }, [slug]);
 
   return <span>{`${views ? views.toLocaleString() : '---'} views`}</span>;

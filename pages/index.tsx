@@ -1,17 +1,18 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
 
-import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
 import { getPosts } from '@/lib/posts/api';
 import { filterByFeatured, sortByBirthtime } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
 
+import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
+
 import smile from 'public/static/images/smile.webp';
 import tongue from 'public/static/images/tongue.webp';
-import Head from 'next/head';
 
 const GRADIENTS = [
   'bg-gradient-to-r from-green-300 via-blue-500 to-purple-600',
