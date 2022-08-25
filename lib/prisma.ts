@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { isProduction } from '@/lib/utils';
 
 // eslint-disable-next-line max-len
 /* https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#solution */
@@ -11,6 +12,6 @@ declare global {
 
 export const prisma = global.prisma || new PrismaClient();
 
-if (process.env.NODE_ENV !== 'production') {
+if (!isProduction()) {
   global.prisma = prisma;
 }
