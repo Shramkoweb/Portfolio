@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import NotFoundPage from '@/pages/404';
 import * as Sentry from '@sentry/nextjs';
+
+import NotFoundPage from '@/pages/404';
 
 jest.mock('@sentry/nextjs');
 
