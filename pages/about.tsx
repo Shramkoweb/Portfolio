@@ -74,14 +74,14 @@ function AboutPage() {
           </ul>
           <h2>Bio</h2>
           <p>
-            Hi there, I&apos;m Serhii. I am a developer in the MacPaw web team,
+            Hi there, I&apos;m Serhii. I am a developer at MacPaw web team,
             where my team develops cool sites and internal projects for the
-            company. I&apos;m passionate about frontend development and try to
+            company. I&apos;m passionate about frontend development and trying to
             be better than yesterday.
           </p>
 
           <p>
-            In the past, I am a mentor and tutor for&ensp;
+            In the past, I have been a mentor and tutor for&ensp;
             <abbr title="TypeScript">TS</abbr>
             ,&ensp;
             <abbr title="A JavaScript library for building user interfaces">
@@ -123,11 +123,11 @@ function AboutPage() {
           </p>
           <ul className="text-sm">
             <li>
-              Rewriting Japanese site with Next.js and improve web vitals
+              Re-wrote Japanese site with Next.js and improve web vitals
               metrics
             </li>
             <li>
-              Mentoring junior developers and interns in&ensp;
+              Mentored junior developers and interns in&ensp;
               <a
                 href="https://macpaw.com/internship"
                 target="_blank"
@@ -150,7 +150,7 @@ function AboutPage() {
               code in PHP, which allowed to optimize the size of the pictures by
               2-6 times 🔥
             </li>
-            <li>Speaker in internal Front-end meetups</li>
+            <li>I was a speaker at internal Front-end meetups</li>
           </ul>
           <hr />
 
@@ -211,7 +211,7 @@ function AboutPage() {
               </a>
             </li>
             <li>
-              Rewrite old WordPress site to
+              Re-wrote old WordPress site to
               {' '}
               <a
                 href="https://www.gatsbyjs.com/"
@@ -256,7 +256,7 @@ function AboutPage() {
           </p>
           <ul className="text-sm">
             <li>
-              Improving internal UI framework by shared classes. It reduced the
+              Improved internal UI framework by shared classes. It reduced the
               size of the
               {' '}
               <abbr title="Cascading Style Sheets">CSS</abbr>
@@ -268,9 +268,9 @@ function AboutPage() {
               Developed high-quality, scalable, and reusable UI library for 3
               big company products
             </li>
-            <li>Refactor Pug/Jade components to React</li>
+            <li>Refactored Pug/Jade components to React</li>
             <li>
-              Improving website accessibility for passing
+              Improved website accessibility for passing
               {' '}
               <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
             </li>
@@ -297,7 +297,7 @@ function AboutPage() {
           </p>
           <ul className="text-sm">
             <li>
-              Move manual creation of emails to framework
+              Moved manual creation of emails to framework
               {' '}
               <a
                 href="https://get.foundation/emails.html"
@@ -307,7 +307,7 @@ function AboutPage() {
                 Foundation
               </a>
             </li>
-            <li>Create user-friendly web pages</li>
+            <li>Created user-friendly web pages</li>
           </ul>
 
           <h3 className="mt-16">Education</h3>
