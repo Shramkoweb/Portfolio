@@ -2,7 +2,7 @@
 title: Introducing the new shramko.dev
 description: How I built a modern portfolio in 2022
 createDate: 2022-08-13T13:31:25.041Z
-updateData: 2022-08-14T08:22:34.069Z
+updateData: 2022-08-28T19:37:43.285Z
 tags: [Website Redesign, Next.JS, React, Tailwind, Developer Portfolio, Portfolio, Website]
 featured: true
 ---
@@ -27,19 +27,19 @@ T=0.11 s (779.3 files/s, 159045.1 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-JSON                             6              0              0          14734
-TypeScript                      55            182             11           1809
-XML                              9              0              0            270
-Markdown                         5             82              0            190
-JavaScript                       3              6              2            178
+JSON                             6              0              0          29012
+XML                             14              0              0           7191
+TypeScript                      63            240             14           2240
+Markdown                         7            213              0            661
+JavaScript                       5             10              6            201
 CSS                              2             35              1            165
+YAML                             2              0              0             44
 Bourne Shell                     3              9              0             35
-YAML                             1              0              0             22
 SVG                              1              0              0             17
 Properties                       1              0              0              4
 Text                             1              0              0              3
 -------------------------------------------------------------------------------
-SUM:                            87            314             14          17427
+SUM:                           105            507             21          39573
 -------------------------------------------------------------------------------
 
 ```
@@ -68,6 +68,8 @@ Here are the primary technologies used in this project:
   any project you plan to maintain)
 - [Prisma](https://www.prisma.io): TypeScript ORM with Zero-Cost Type Safety
 - [SWR](https://swr.vercel.app/): Cool stale-while-revalidate hook
+- [Jest](https://jestjs.io/): JavaScript Testing Framework
+- [Testing Library](https://testing-library.com/): Simple and complete testing utilities
 - [Tailwind CSS](https://tailwindcss.com): Utility classes for
   consistent/maintainable styling
 - [Postcss](https://postcss.org/): CSS processor (pretty much just use it for
@@ -233,6 +235,49 @@ const views = await prisma.views.upsert({
     },
   },
 });
+```
+
+## Testing
+As a developer, you know how important tests are for any production-level project.
+
+Writing tests takes some time, but they will help you in the long run to solve problems in the codebase. 
+
+I also integrate these tests into GitHub Actions, so that whenever I deploy to production or make a pull request, tests will run automatically.
+
+My code coverage on 28 August:
+
+```shell
+------------------------------|---------|----------|---------|---------|-------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------------|---------|----------|---------|---------|-------------------
+All files                     |   79.52 |    73.33 |   71.42 |   81.98 |                   
+ components/blog-post-preview |     100 |       50 |     100 |     100 |                   
+  blog-post-preview.tsx       |     100 |       50 |     100 |     100 | 29                
+  index.ts                    |     100 |      100 |     100 |     100 |                   
+ components/footer            |     100 |      100 |     100 |     100 |                   
+  get-copyright.ts            |     100 |      100 |     100 |     100 |                   
+ components/post-reaction     |   96.77 |       80 |     100 |   96.66 |                   
+  post-reaction.tsx           |     100 |      100 |     100 |     100 |                   
+  use-feedback-reducer.ts     |   93.33 |    66.66 |     100 |   92.85 | 18                
+ components/view-counter      |     100 |       50 |     100 |     100 |                   
+  view-counter.tsx            |     100 |       50 |     100 |     100 | 25                
+ lib                          |     100 |      100 |     100 |     100 |                   
+  fetcher.ts                  |     100 |      100 |     100 |     100 |                   
+  ga.ts                       |     100 |      100 |     100 |     100 |                   
+  types.ts                    |     100 |      100 |     100 |     100 |                   
+ lib/posts                    |   34.37 |        0 |   23.07 |    42.3 |                   
+  api.ts                      |   34.61 |        0 |   33.33 |    37.5 | 13-48,53-58,63-65 
+  utils.ts                    |   33.33 |      100 |       0 |     100 |                   
+ pages                        |   85.18 |      100 |      80 |   83.33 |                   
+  404.tsx                     |     100 |      100 |     100 |     100 |                   
+  blog.tsx                    |   77.77 |      100 |   71.42 |      75 | 101-105           
+------------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 5 passed, 5 total
+Tests:       13 passed, 13 total
+Snapshots:   0 total
+Time:        2.23 s
+Ran all test suites.
 ```
 
 ## Next.js
