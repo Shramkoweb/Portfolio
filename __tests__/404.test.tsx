@@ -6,6 +6,10 @@ import NotFoundPage from '@/pages/404';
 jest.mock('@sentry/nextjs');
 
 describe('404 page', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('renders with correct heading', () => {
     render(<NotFoundPage />);
 
