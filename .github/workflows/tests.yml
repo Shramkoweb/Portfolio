@@ -1,4 +1,4 @@
-name: Linting
+name: Tests
 on:
   - push
   - pull_request
@@ -18,5 +18,5 @@ jobs:
         run: npm ci
         env:
           CI: true
-      - name: Run linter
-        run: npm run lint
+      - name: run tests
+        run: npm run test:ci

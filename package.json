@@ -11,7 +11,8 @@
     "prepare": "husky install",
     "start": "next start",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "test:coverage": "jest --coverage"
   },
   "engines": {
     "node": ">=16"
