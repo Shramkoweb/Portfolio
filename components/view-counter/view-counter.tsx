@@ -3,7 +3,6 @@ import useSWR from 'swr';
 
 import { Views } from '@/lib/types';
 import { fetcher } from '@/lib/fetcher';
-import { isProduction } from '@/lib/utils';
 
 interface ViewCounterProps {
   slug: string;
@@ -20,9 +19,7 @@ export function ViewCounter(props: ViewCounterProps) {
       method: 'POST',
     });
 
-    if (isProduction()) {
-      registerView();
-    }
+    registerView();
   }, [slug]);
 
   return <span>{`${views ? views.toLocaleString() : '---'} views`}</span>;
