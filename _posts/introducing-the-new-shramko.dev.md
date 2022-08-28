@@ -239,10 +239,9 @@ const views = await prisma.views.upsert({
 
 ## Testing
 As a developer, you know how important tests are for any production-level project.
-
 Writing tests takes some time, but they will help you in the long run to solve problems in the codebase. 
 
-I also integrate these tests into GitHub Actions, so that whenever I deploy to production or make a pull request, tests will run automatically.
+I also [integrate these tests](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/workflows/tests.yml) into GitHub Actions, so that whenever I deploy to production or make a pull request, tests will run automatically.
 
 My code coverage on 28 August:
 
