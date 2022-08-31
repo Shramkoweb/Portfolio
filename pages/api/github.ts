@@ -1,41 +1,43 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+
 const GH_HEADERS = new Headers({
   Authorization: `Bauer ${process.env.GITHUB_TOKEN}`,
 });
 
-const starReducer = (acc: number, repo: { stargazers_count: number; }) => {
+const starReducer = (acc: number, repo: { stargazers_count: number }) => {
   const result = acc + repo.stargazers_count;
 
   return result;
 };
 
-export default async function handler() {
-  const [userResponse, repositoriesResponse] = await Promise.all([
-    fetch('https://api.github.com/users/shramkoweb', {
-      headers: GH_HEADERS,
-    }),
-    fetch('https://api.github.com/users/shramkoweb/repos?per_page=100', {
-      headers: GH_HEADERS,
-    })]);
-  const [user, repos] = await Promise.all([userResponse.json(), repositoriesResponse.json()]);
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  try {
+    const [userResponse, repositoriesResponse] = await Promise.all([
+      fetch('https://api.github.com/users/shramkoweb', {
+        headers: GH_HEADERS,
+      }),
+      fetch('https://api.github.com/users/shramkoweb/repos?per_page=100', {
+        headers: GH_HEADERS,
+      }),
+    ]);
+    const [user, repos] = await Promise.all([
+      userResponse.json(),
+      repositoriesResponse.json(),
+    ]);
 
-  const mineRepos = repos.filter((repo: { fork: boolean }) => !repo.fork);
-  const stars = mineRepos.reduce(starReducer, 0);
+    const mineRepos = repos.filter((repo: { fork: boolean }) => !repo.fork);
+    const stars = mineRepos.reduce(starReducer, 0);
 
-  return new Response(
-    JSON.stringify({
-      followers: user.followers,
+    // With edge error we have error
+    // https://github.com/getsentry/sentry-javascript/issues/5667
+    return res.status(200).json({
       stars,
-    }),
-    {
-      status: 200,
-      headers: {
-        'content-type': 'application/json',
-        'cache-control': 'public, s-maxage=1200, stale-while-revalidate=600',
-      },
-    },
-  );
+      followers: user.followers,
+    });
+  } catch ({ message }) {
+    return res.status(500).json({ message });
+  }
 }
-
-export const config = {
-  runtime: 'experimental-edge',
-};

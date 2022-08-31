@@ -38,7 +38,7 @@ const securityHeaders = [
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=31536000; includeSubDomains; preload'
-  },
+  }
 ];
 
 /** @type {import("next").NextConfig} */
