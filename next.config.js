@@ -68,10 +68,7 @@ const nextConfig = {
 
 const nextConfigByEnv = {
   production: withSentryConfig(nextConfig, {
-    silent: true,
-    // https://github.com/getsentry/sentry-javascript/issues/5667
-    disableServerWebpackPlugin: true,
-    disableClientWebpackPlugin: false
+    silent: true
   }),
   test: nextConfig,
   development: nextConfig
