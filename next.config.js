@@ -38,7 +38,7 @@ const securityHeaders = [
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=31536000; includeSubDomains; preload'
-  },
+  }
 ];
 
 /** @type {import("next").NextConfig} */
@@ -68,7 +68,10 @@ const nextConfig = {
 
 const nextConfigByEnv = {
   production: withSentryConfig(nextConfig, {
-    silent: true
+    silent: true,
+    // https://github.com/getsentry/sentry-javascript/issues/5667
+    disableServerWebpackPlugin: true,
+    disableClientWebpackPlugin: false
   }),
   test: nextConfig,
   development: nextConfig
