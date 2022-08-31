@@ -6,6 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "pre-commit": "",
     "pre-push": "npm run lint",
     "prepare": "husky install",

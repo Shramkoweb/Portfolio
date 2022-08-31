@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const GH_HEADERS = new Headers({
-  Authorization: `Bauer ${process.env.GITHUB_TOKEN}`
+  Authorization: `Bauer ${process.env.GITHUB_TOKEN}`,
 });
 
 const starReducer = (acc: number, repo: { stargazers_count: number }) => {
@@ -12,20 +12,20 @@ const starReducer = (acc: number, repo: { stargazers_count: number }) => {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const [userResponse, repositoriesResponse] = await Promise.all([
       fetch('https://api.github.com/users/shramkoweb', {
-        headers: GH_HEADERS
+        headers: GH_HEADERS,
       }),
       fetch('https://api.github.com/users/shramkoweb/repos?per_page=100', {
-        headers: GH_HEADERS
-      })
+        headers: GH_HEADERS,
+      }),
     ]);
     const [user, repos] = await Promise.all([
       userResponse.json(),
-      repositoriesResponse.json()
+      repositoriesResponse.json(),
     ]);
 
     const mineRepos = repos.filter((repo: { fork: boolean }) => !repo.fork);
@@ -35,7 +35,7 @@ export default async function handler(
     // https://github.com/getsentry/sentry-javascript/issues/5667
     return res.status(200).json({
       stars,
-      followers: user.followers
+      followers: user.followers,
     });
   } catch ({ message }) {
     return res.status(500).json({ message });
