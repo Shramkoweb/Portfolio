@@ -21,7 +21,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
     <Link href={`/blog/${slug}`}>
       <a
         className={clsx(
-          'transform hover:scale-[1.025] transition-all rounded-xl w-full md:w-1/3 bg-gradient-to-r p-1',
+          'w-full transform hover:scale-[1.025] transition-all rounded-xl w-full bg-gradient-to-r p-1',
           gradient,
         )}
       >
