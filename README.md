@@ -1,6 +1,9 @@
 [![Lint](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml/badge.svg)](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml)
 ![](https://api.checklyhq.com/v1/badges/checks/3a199b7e-6745-4ddd-b277-3d6df2f8146a?style=flat&theme=default&responseTime=true)
 ![](https://api.checklyhq.com/v1/badges/checks/3a199b7e-6745-4ddd-b277-3d6df2f8146a?style=flat&theme=default)
+[![Maintainability](https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/maintainability)](https://codeclimate.com/github/Shramkoweb/Portfolio/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/test_coverage)](https://codeclimate.com/github/Shramkoweb/Portfolio/test_coverage)
+
 
 # My personal portfolio and blog
 
