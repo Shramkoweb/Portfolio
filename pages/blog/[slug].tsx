@@ -27,9 +27,9 @@ function ArticlePage(props: ArticlePageProps) {
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
-    weekday: 'long',
     year: 'numeric',
     month: 'long',
+    day:'2-digit'
   });
 
   return (
