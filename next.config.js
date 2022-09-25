@@ -48,9 +48,6 @@ const nextConfig = {
   },
   swcMinify: true,
   experimental: {
-    images: {
-      allowFutureImage: true
-    },
     browsersListForSwc: true,
     legacyBrowsers: false
   },
@@ -73,5 +70,7 @@ const nextConfigByEnv = {
   test: nextConfig,
   development: nextConfig
 };
+
+console.log(process.env.NODE_ENV);
 
 module.exports = nextConfigByEnv[process.env.NODE_ENV];

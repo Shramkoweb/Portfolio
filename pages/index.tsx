@@ -108,7 +108,7 @@ function IndexPage(props: IndexPageProps) {
             onMouseLeave={handleHover}
           >
             <Image
-              alt=""
+              alt="Serhii Shramko smile avatar from apple Memoji"
               quality={100}
               src={smile}
               className={clsx('absolute', {
@@ -117,7 +117,7 @@ function IndexPage(props: IndexPageProps) {
               priority
             />
             <Image
-              alt=""
+              alt="Serhii Shramko tongue avatar from apple Memoji"
               quality={100}
               src={tongue}
               className={clsx('absolute', {
