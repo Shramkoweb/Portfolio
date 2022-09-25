@@ -1,13 +1,13 @@
 ---
 title: Introducing the new shramko.dev
-description: How I built a modern portfolio in 2022
+description: How I built a modern portfolio in 2022, and a list of technologies used
 createDate: 2022-08-13T13:31:25.041Z
-updateData: 2022-08-28T19:37:43.285Z
+updateData: 2022-09-25T12:03:53.360Z
 tags: [Website Redesign, Next.JS, React, Tailwind, Developer Portfolio, Portfolio, Website]
 featured: true
 ---
 
-<Image src="/static/images/my-site.jpeg" priority={true} />
+<Image alt src="/static/images/my-site.jpeg" priority={true} alt="S.Shramko personal site screenshot"/>
 
 I'm so excited to announce the launch of my brand new website!
 
@@ -96,7 +96,7 @@ Here's how the [latest design](https://shramkoweb.github.io/homepage/) looked be
 This is a simple <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets,">CSS</abbr> site.
 No <abbr title="JavaScript">JS</abbr> and frameworks 😂.
 
-<Image src="/static/images/old-site.jpg" />
+<Image src="/static/images/old-site.jpg" alt="S.Shramko personal old site screenshot"/>
 
 ## 🚀 Deploy
 
@@ -109,7 +109,7 @@ And then we start multiple steps:
 
 Once ESLint, TypeScript, Checkly, and the Build all successfully complete, then we can deploy site.
 
-<Image src="/static/images/deploy.jpeg" />
+<Image src="/static/images/deploy.jpeg" alt="Deploy process screenshot on Vercel"/>
 
 ## MDX Compilation
 
@@ -293,7 +293,7 @@ Quick list of why Next.js has been so good for me:
 - React ecosystem: Wide range of tools and npm packages
 - Out of the box support: Through webpack, Next provides developers with out-of-the-box support for asset compilation, hot reloading and code splitting, which can further speed up development
 
-<Image src="/static/images/framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" />
+<Image src="/static/images/framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" alt="A meme in which a person tries to choose between two red buttons."/>
 
 ## Acknowledgements
 - The design was inspired by [Lee Robinson](https://github.com/leerob)
