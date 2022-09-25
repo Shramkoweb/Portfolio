@@ -41,6 +41,7 @@ function ArticlePage(props: ArticlePageProps) {
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
+        <meta property="og:site_name" content="Serhii Shramko Blog" key="og:site_name" />
         <meta property="og:description" content={description} key="og:description" />
         <meta name="twitter:title" content={title} key="twitter:title" />
         <meta name="twitter:description" content={description} key="twitter:description" />
