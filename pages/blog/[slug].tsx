@@ -29,7 +29,7 @@ function ArticlePage(props: ArticlePageProps) {
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
     year: 'numeric',
     month: 'long',
-    day:'2-digit'
+    day: '2-digit',
   });
 
   return (

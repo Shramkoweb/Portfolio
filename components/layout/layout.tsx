@@ -31,7 +31,7 @@ export function Layout({ children }: PropsWithChildren) {
         <meta property="og:description" content={DESCRIPTION} key="og:description" />
         <meta property="og:title" content={TITLE} key="og:title" />
         <meta property="og:image" content={IMAGE} key="og:image" />
-        <meta property="og:locale" content="en_US" key='og:locale'/>
+        <meta property="og:locale" content="en_US" key="og:locale" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@shramkoweb" key="twitter:creator" />
         <meta name="twitter:site" content="@shramkoweb" key="twitter:site" />
