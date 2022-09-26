@@ -17,17 +17,18 @@ actions and control actions, but don't become values.
 
 ```js
 100 // this is a literal that expresses number 100
+
 getUserName() // expresses Serhii
+
 5 + 2 // expresses 7
 ```
 
 `Statements` produce or control actions, but do not turn into values:
 
 ```js
-let z; // declare a variable 'z'
+let x; // declare a variable 'x'
 
-function foo() {
-} // declare a function 'foo'
+function foo() {} // declare a function 'foo'
 
 function bar() {
   return null // return is also a statement
@@ -38,16 +39,9 @@ You can't put statements where expressions are expected. For example, passing a 
 argument will produce an error. Or trying to assign the if statement to a variable:
 
 ```js
-let b =
-if (x > 10) {
-  return 100;
-}
-;  // error!
+let b = if (x > 10) { return 100; };  // error!
 
-console.log(
-const y
-)
-;  // error!
+console.log(const y);  // error!
 ```
 
 ## Related posts
