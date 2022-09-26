@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "article": "node lib/scripts/generate-article-template.js",
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
