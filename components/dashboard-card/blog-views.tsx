@@ -11,10 +11,6 @@ export function BlogViewsCard() {
   const link = 'https://shramko.dev/blog';
 
   return (
-    <DashboardCard
-      header="Total blog views"
-      link={link}
-      metric={blogViews}
-    />
+    <DashboardCard header="Total blog views" link={link} metric={blogViews} />
   );
 }

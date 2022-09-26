@@ -22,8 +22,9 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
       data: {
         title,
         description,
-        tags,
+        categories,
         featured,
+        keywords,
         createDate,
         updateData,
       },
@@ -35,9 +36,10 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
       data: {
         slug,
         featured,
+        keywords,
         title,
+        categories,
         description,
-        tags,
         readTime: text,
         createDate: Date.parse(createDate),
         updateData: Date.parse(updateData),
@@ -52,15 +54,34 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
 export async function getPosts(): Promise<Post[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
 
-  return Promise.all(fileNames.map((fileName) => {
-    const slug = getSlugFromMdFile(fileName);
+  return Promise.all(
+    fileNames.map((fileName) => {
+      const slug = getSlugFromMdFile(fileName);
 
-    return getPostBySlug(slug);
-  }));
+      return getPostBySlug(slug);
+    }),
+  );
 }
 
 export async function getPostSlugs() {
   const fileNames = await readdir(POSTS_DIRECTORY);
 
   return Promise.all(fileNames.map((fileName) => getSlugFromMdFile(fileName)));
+}
+
+export async function getPostsCategories() {
+  const posts = await getPosts();
+  const categories = posts.flatMap((post) => post.data.categories);
+
+  return categories.filter(
+    (value, index, array) => array.indexOf(value) === index,
+  );
+}
+
+export async function getPostsByCategory(category: string) {
+  const posts = await getPosts();
+
+  return posts.filter((post) => post.data.categories.some(
+    (element) => element.toLowerCase() === category.toLowerCase(),
+  ));
 }

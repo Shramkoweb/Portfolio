@@ -1,20 +1,21 @@
 import Head from 'next/head';
 import { useState } from 'react';
 
-import { getPosts, getPostsCategories } from '@/lib/posts/api';
+import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
-import { sortByBirthtime } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
+import { GetStaticPathsResult, GetStaticPropsContext } from 'next';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { Categories } from '@/components/categories';
 
-interface BlogPageProps {
+interface CategoryPageProps {
   posts: Post[];
-  postsAmount: number;
   categories: string[];
+  category: string;
 }
 
-function BlogPage(props: BlogPageProps) {
-  const { posts, postsAmount, categories } = props;
+function CategoryPage(props: CategoryPageProps) {
+  const { posts, categories, category } = props;
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -23,18 +24,19 @@ function BlogPage(props: BlogPageProps) {
   return (
     <>
       <Head>
-        <title>Blog - Serhii Shramko</title>
+        {/*  TODO REFACTOR TO CORRECT SEO */}
+        <title>
+          {category}
+          {' '}
+          articles - Serhii Shramko
+        </title>
         <meta
-          content="Articles on web dev and software engineering: TypeScript, JavaScript, Next.js, and more!"
+          content={`Articles on web dev and software engineering by ${category}`}
           name="description"
           key="description"
         />
         <meta
-          content="
-          JavaScript blog,
-          Tech Blog, Code snippets,
-          Software blog,
-          web dev blog"
+          content={`javascript blog, tech blog, code snippets, software blog, web dev blog, ${category}`}
           name="keywords"
           key="keywords"
         />
@@ -45,20 +47,13 @@ function BlogPage(props: BlogPageProps) {
         />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
-          Blog
-          <span className="ml-auto inline-block text-sm">
-            {postsAmount}
-            {' '}
-            articles
-          </span>
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+          All articles in &quot;
+          {category}
+          &quot;
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">
-          <p>
-            I usually write about the web, career and website development.
-            <br />
-            Use the search below to filter by article title.
-          </p>
+          <p>Use the search below to filter by article title.</p>
         </div>
         <div className="relative w-full mb-4">
           <input
@@ -105,18 +100,32 @@ function BlogPage(props: BlogPageProps) {
   );
 }
 
-export async function getStaticProps() {
-  const posts = await getPosts();
+export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
+  const tags = await getPostsCategories();
+
+  return {
+    paths: tags.map((tag: string) => ({
+      params: {
+        category: tag.toLowerCase(),
+      },
+    })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const posts = await getPostsByCategory(context.params?.category as string);
   const categories = await getPostsCategories();
-  const sortedPosts = posts.sort(sortByBirthtime);
 
   return {
     props: {
-      posts: sortedPosts,
-      postsAmount: posts.length,
+      posts,
+      category: categories.find(
+        (item) => item.toLowerCase() === context.params?.category,
+      ),
       categories,
     },
   };
 }
 
-export default BlogPage;
+export default CategoryPage;

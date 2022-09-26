@@ -34,9 +34,12 @@ export function MobileMenu() {
     }
   }
 
-  useEffect(() => function cleanup() {
-    activatePageScroll();
-  }, []);
+  useEffect(
+    () => function cleanup() {
+      activatePageScroll();
+    },
+    [],
+  );
 
   return (
     <>
@@ -57,42 +60,29 @@ export function MobileMenu() {
             'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
           )}
         >
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-          >
+          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
             <Link href="/">
               <a className="flex w-auto pb-4">Home</a>
             </Link>
           </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-          >
+          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
             <Link href="/about">
               <a className="flex w-auto pb-4">About</a>
             </Link>
           </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-          >
+          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
             <Link href="/blog">
               <a className="flex w-auto pb-4">Blog</a>
             </Link>
           </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-          >
+          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
             <Link href="/dashboard">
               <a className="flex w-auto pb-4">Dashboard</a>
             </Link>
           </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-          >
+          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
             <Link href="/static/s.shramko-senior-developer.pdf" download>
-              <a
-                className="flex w-auto pb-4"
-                title="PDF document - 71 KB"
-              >
+              <a className="flex w-auto pb-4" title="PDF document - 71 KB">
                 Resume
               </a>
             </Link>

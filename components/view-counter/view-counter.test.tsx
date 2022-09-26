@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { ViewCounter } from '@/components/view-counter/view-counter';
+import { ViewCounter } from '@/components/view-counter';
 
 describe('ViewCounter component', () => {
   beforeAll(() => {

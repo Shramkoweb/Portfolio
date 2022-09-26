@@ -1,29 +1,32 @@
 ---
 title: Expressions vs Statements
 description: Understand the important distinction expressions vs statements in JavaScript
-tags: [JS, CS, ES Modules]
+keywords: [JS, CS, ES Modules]
+categories: [JS, Clean Code]
 createDate: 2022-07-27T21:27:20Z
 updateData: 2022-08-07T11:37:59.665Z
 featured: false
 ---
 
-JavaScript distinguishes _expressions_ and _statements_. A statement is an instruction, an action. 
+JavaScript distinguishes _expressions_ and _statements_. A statement is an instruction, an action.
 
-Remember conditions with `if`, `loops` with `while` and `for` — all those are _statements_, because they just perform actions and control actions, but
-don't become values.
+Remember conditions with `if`, `loops` with `while` and `for` — all those are _statements_, because they just perform
+actions and control actions, but don't become values.
 
 `Expression` returns (expresses) a value. Each of the following lines contains an expression:
 
 ```js
 100 // this is a literal that expresses number 100
+
 getUserName() // expresses Serhii
+
 5 + 2 // expresses 7
 ```
 
 `Statements` produce or control actions, but do not turn into values:
 
 ```js
-let z; // declare a variable 'z'
+let x; // declare a variable 'x'
 
 function foo() {} // declare a function 'foo'
 
