@@ -29,7 +29,7 @@ function ArticlePage(props: ArticlePageProps) {
       readTime,
       description,
       createDate,
-      tags = [],
+      categories = [],
       keywords,
     },
   } = props;
@@ -84,8 +84,12 @@ function ArticlePage(props: ArticlePageProps) {
           key="article:author"
         />
         <meta name="keywords" content={keywords.join(', ')} />
-        {tags.map((tag) => (
-          <meta key={`article:${tag}`} property="article:tag" content={tag} />
+        {categories.map((category) => (
+          <meta
+            key={`article:${category}`}
+            property="article:tag"
+            content={category}
+          />
         ))}
       </Head>
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">

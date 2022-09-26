@@ -4,6 +4,7 @@ description: In this post, we'll walk through how to set up linting in your TS p
 createDate: 2022-08-02T19:51:19Z
 updateData: 2022-08-02T20:00:45.784Z
 keywords: [TS, TypeScript, ESLint, Project Setup]
+categories: [TS, Project Setup]
 featured: true
 ---
 

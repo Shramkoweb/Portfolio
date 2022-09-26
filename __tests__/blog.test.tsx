@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import BlogPage from '@/pages/blog';
 import { Post } from '@/lib/types';
@@ -12,7 +12,8 @@ const posts: Post[] = [
       description: 'First article description',
       featured: true,
       readTime: '1',
-      tags: ['JS', 'React'],
+      categories: ['JS', 'React'],
+      keywords: ['JS', 'React'],
       title: 'First article title',
       createDate: 11,
       updateData: 12,
@@ -25,7 +26,8 @@ const posts: Post[] = [
       description: 'Second article description',
       featured: false,
       readTime: '2',
-      tags: ['TS', 'Redux'],
+      categories: ['TS', 'Redux'],
+      keywords: ['TS', 'Redux'],
       title: 'Second article title',
       createDate: 124,
       updateData: 123,

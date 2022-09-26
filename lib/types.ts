@@ -17,7 +17,7 @@ export type Post = {
     updateData: number;
     featured: boolean;
     keywords: string[];
-    tags: string[];
+    categories: string[];
   };
   content: string;
 };

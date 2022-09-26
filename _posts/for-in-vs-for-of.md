@@ -3,7 +3,8 @@ title: for...in vs for...of Loops
 description: What is the difference between "for...in" and "for...of"
 createDate: 2022-08-17T20:19:07.728Z
 updateData: 2022-08-17T20:19:07.728Z
-keywords: [JS, How to iterate in JS, Loops in JS]
+keywords: [arrays in js, How to iterate in JS, Loops in JS]
+categories: [JS]
 featured: false
 ---
 
@@ -16,8 +17,10 @@ of a code block.
 Let’s take a look at an example of what that means:
 
 ```js
-for (initialization; condition; final expression) {
-	// code to be executed
+for (initialization; condition; final expression
+)
+{
+  // code to be executed
 }
 ```
 

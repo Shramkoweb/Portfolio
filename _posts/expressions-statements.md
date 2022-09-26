@@ -2,6 +2,7 @@
 title: Expressions vs Statements
 description: Understand the important distinction expressions vs statements in JavaScript
 keywords: [JS, CS, ES Modules]
+categories: [JS, Clean Code]
 createDate: 2022-07-27T21:27:20Z
 updateData: 2022-08-07T11:37:59.665Z
 featured: false
@@ -25,7 +26,8 @@ getUserName() // expresses Serhii
 ```js
 let z; // declare a variable 'z'
 
-function foo() {} // declare a function 'foo'
+function foo() {
+} // declare a function 'foo'
 
 function bar() {
   return null // return is also a statement
@@ -36,9 +38,16 @@ You can't put statements where expressions are expected. For example, passing a 
 argument will produce an error. Or trying to assign the if statement to a variable:
 
 ```js
-let b = if (x > 10) { return 100; };  // error!
+let b =
+if (x > 10) {
+  return 100;
+}
+;  // error!
 
-console.log(const y);  // error!
+console.log(
+const y
+)
+;  // error!
 ```
 
 ## Related posts
