@@ -4,15 +4,17 @@ import BlogPage from '@/pages/blog';
 import { Post } from '@/lib/types';
 
 jest.mock('@/lib/posts/api');
+jest.mock('@/components/categories');
 
-const posts: Post[] = [
+const CATEGORIES = ['JS', 'React'];
+const POSTS: Post[] = [
   {
     data: {
       slug: 'first-article',
       description: 'First article description',
       featured: true,
       readTime: '1',
-      categories: ['JS', 'React'],
+      categories: CATEGORIES,
       keywords: ['JS', 'React'],
       title: 'First article title',
       createDate: 11,
@@ -26,7 +28,7 @@ const posts: Post[] = [
       description: 'Second article description',
       featured: false,
       readTime: '2',
-      categories: ['TS', 'Redux'],
+      categories: CATEGORIES,
       keywords: ['TS', 'Redux'],
       title: 'Second article title',
       createDate: 124,
@@ -38,39 +40,63 @@ const posts: Post[] = [
 
 describe('Blog Page', () => {
   test('renders with correct heading', () => {
-    render(<BlogPage posts={posts} postsAmount={posts.length} />);
+    render(
+      <BlogPage
+        posts={POSTS}
+        categories={CATEGORIES}
+        postsAmount={POSTS.length}
+      />,
+    );
     const heading = screen.getByRole('heading', {
-      name: 'Blog',
+      name: `Blog ${POSTS.length} articles`,
     });
 
     expect(heading).toBeInTheDocument();
   });
 
   test('renders with initial posts', () => {
-    render(<BlogPage posts={posts} postsAmount={posts.length} />);
+    render(
+      <BlogPage
+        posts={POSTS}
+        categories={CATEGORIES}
+        postsAmount={POSTS.length}
+      />,
+    );
     const blogPostsLinks = screen.getAllByRole('link');
 
-    expect(blogPostsLinks).toHaveLength(posts.length);
+    expect(blogPostsLinks).toHaveLength(POSTS.length);
   });
 
-  test('on search correct filtered exist posts', () => {
-    render(<BlogPage posts={posts} postsAmount={posts.length} />);
+  test('on search correct filtered exist articles', () => {
+    render(
+      <BlogPage
+        posts={POSTS}
+        categories={CATEGORIES}
+        postsAmount={POSTS.length}
+      />,
+    );
     const inputElement = screen.getByLabelText('Search articles');
 
-    fireEvent.change(inputElement, { target: { value: posts[0].data.title } });
+    fireEvent.change(inputElement, { target: { value: POSTS[0].data.title } });
     const post = screen.getByRole('heading', {
-      name: posts[0].data.title,
+      name: POSTS[0].data.title,
     });
 
     expect(post).toBeInTheDocument();
   });
 
-  test('on search render "No posts found" if unknown post', () => {
-    render(<BlogPage posts={posts} postsAmount={posts.length} />);
+  test('on search render "No articles found" if unknown article', () => {
+    render(
+      <BlogPage
+        posts={POSTS}
+        categories={CATEGORIES}
+        postsAmount={POSTS.length}
+      />,
+    );
     const inputElement = screen.getByLabelText('Search articles');
 
-    fireEvent.change(inputElement, { target: { value: 'Unknown post' } });
-    const post = screen.getByText(/No posts found/);
+    fireEvent.change(inputElement, { target: { value: 'Unknown article' } });
+    const post = screen.getByText(/No articles found/);
 
     expect(post).toBeInTheDocument();
   });
