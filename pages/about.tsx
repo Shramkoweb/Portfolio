@@ -76,8 +76,8 @@ function AboutPage() {
           <p>
             Hi there, I&apos;m Serhii. I am a developer at MacPaw web team,
             where my team develops cool sites and internal projects for the
-            company. I&apos;m passionate about frontend development and trying to
-            be better than yesterday.
+            company. I&apos;m passionate about frontend development and trying
+            to be better than yesterday.
           </p>
 
           <p>
@@ -123,8 +123,7 @@ function AboutPage() {
           </p>
           <ul className="text-sm">
             <li>
-              Re-wrote Japanese site with Next.js and improve web vitals
-              metrics
+              Re-wrote Japanese site with Next.js and improve web vitals metrics
             </li>
             <li>
               Mentored junior developers and interns in&ensp;

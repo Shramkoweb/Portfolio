@@ -36,7 +36,11 @@ function BlogPage(props: BlogPageProps) {
           name="keywords"
           key="keywords"
         />
-        <meta property="og:site_name" content="Serhii Shramko Blog" key="og:site_name" />
+        <meta
+          property="og:site_name"
+          content="Serhii Shramko Blog"
+          key="og:site_name"
+        />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
@@ -45,14 +49,14 @@ function BlogPage(props: BlogPageProps) {
         <div className="mb-4 text-gray-600 dark:text-gray-400">
           <p className="mb-4 text-gray-600 dark:text-gray-400">Hi there.</p>
           <p>
-            I usually write about the web, career and website
-            development.
+            I usually write about the web, career and website development.
             <br />
             I&apos;ve written
             {' '}
             {postsAmount}
             {' '}
-            articles on my blog. Use the search below to filter by article title.
+            articles on my blog. Use the search
+            below to filter by article title.
           </p>
         </div>
         <div className="relative w-full mb-4">

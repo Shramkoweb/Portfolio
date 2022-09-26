@@ -3,7 +3,7 @@ title: How to fix "__dirname is not defined in ES module scope"
 description: Here is how to fix the "__dirname is not defined in ES module scope" error
 createDate: 2022-07-25T10:01:01Z
 updateData: 2022-09-25T12:03:53.360Z
-tags: [JS, Node, ES Modules, __dirname]
+keywords: [JS, Node, ES Modules, __dirname]
 featured: false
 ---
 
@@ -16,8 +16,8 @@ I ran into this error when using ```__dirname``` in an ES module.
 ```__dirname``` is an environment variable that tells you the absolute path of the directory containing the currently
 executing file, and many Node.js projects use this.
 
-But if you use it inside an ES module, you can't use it because of the infamous "__dirname is not defined in ES module scope"
-an error appears.
+But if you use it inside an ES module, you can't use it because of the infamous "__dirname is not defined in ES module
+scope" an error appears.
 
 ## Solution
 
@@ -28,7 +28,6 @@ To get the current file directory, we'll want to use a combination of a global v
 - `import.meta.url` to get the current file's as a URL
 - `url.fileURLToPath` to change the URL to a path
 - `path.dirname` to get the directory name
-
 
 Using these methods, we can reconstruct the global `__dirname` and `__filename` variables:
 
@@ -51,4 +50,5 @@ console.log(__dirname)
 
 Due to the different approaches to modularity in Node.js and EcmaScript, you may encounter such problems.
 
-For further reading, check out the [Node.js documentation for __dirname](https://nodejs.org/docs/latest/api/modules.html#modules_dirname).
+For further reading, check out
+the [Node.js documentation for __dirname](https://nodejs.org/docs/latest/api/modules.html#modules_dirname).

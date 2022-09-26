@@ -16,7 +16,8 @@ export type Post = {
     createDate: number;
     updateData: number;
     featured: boolean;
-    tags?: string[];
+    keywords: string[];
+    tags: string[];
   };
   content: string;
 };

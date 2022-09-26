@@ -3,7 +3,7 @@ title: Introducing the new shramko.dev
 description: How I built a modern portfolio in 2022, and a list of technologies used
 createDate: 2022-08-13T13:31:25.041Z
 updateData: 2022-09-25T12:03:53.360Z
-tags: [Website Redesign, Next.JS, React, Tailwind, Developer Portfolio, Portfolio, Website]
+keywords: [Website Redesign, Next.JS, React, Tailwind, Developer Portfolio, Portfolio, Website]
 featured: true
 ---
 
@@ -11,7 +11,8 @@ featured: true
 
 I'm so excited to announce the launch of my brand new website!
 
-For over 2 month, I worked on a complete rewrite of shramko.dev. I just want to give you an overview of the technologies and libraries I used to make this site .
+For over 2 month, I worked on a complete rewrite of shramko.dev. I just want to give you an overview of the technologies
+and libraries I used to make this site .
 
 ## Overview
 
@@ -44,16 +45,19 @@ SUM:                           105            507             21          39573
 
 ```
 
-The first commit was in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f85ec7576de8a82c5b7fad835).
+The first commit was
+in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f85ec7576de8a82c5b7fad835).
 
 ## Key features
 
 - Dark and Light Mode
-- [Security headers](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L13) and [CSP](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L3)
+- [Security headers](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L13)
+  and [CSP](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L3)
 - Featuring post with [meta parsing](https://github.com/Shramkoweb/Portfolio/blame/develop/_posts/dirname-error.md#L7)
 - Error page (try going to URL that doesn't exist)
 - Mobile and Responsive styling with Tailwind
-- Dynamic Open Graph tags and Twitter cards from [metadata](https://github.com/Shramkoweb/Portfolio/blob/develop/pages/blog/%5Bslug%5D.tsx#L61)
+- Dynamic Open Graph tags and Twitter cards
+  from [metadata](https://github.com/Shramkoweb/Portfolio/blob/develop/pages/blog/%5Bslug%5D.tsx#L61)
 - Accessibility (try to pass [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/))
 - Next.js Api for simple express server
 - Realtime updates with SWR
@@ -93,7 +97,8 @@ Here are the services this site uses:
 
 Here's how the [latest design](https://shramkoweb.github.io/homepage/) looked before I updated it.
 
-This is a simple <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets,">CSS</abbr> site.
+This is a simple <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets,">
+CSS</abbr> site.
 No <abbr title="JavaScript">JS</abbr> and frameworks 😂.
 
 <Image src="/static/images/old-site.jpg" alt="S.Shramko personal old site screenshot"/>
@@ -113,9 +118,11 @@ Once ESLint, TypeScript, Checkly, and the Build all successfully complete, then 
 
 ## MDX Compilation
 
-`mdx-bundler` & `next-mdx-remote` allows you to extend [remark](https://github.com/remarkjs/remark) and [rehype](https://github.com/rehypejs/rehype), providing external plugins to hook into the compilation process.
+`mdx-bundler` & `next-mdx-remote` allows you to extend [remark](https://github.com/remarkjs/remark)
+and [rehype](https://github.com/rehypejs/rehype), providing external plugins to hook into the compilation process.
 
-It helps me to convert a link to an external link and one for wrapping images with [Next Image](https://nextjs.org/docs/api-reference/next/image).
+It helps me to convert a link to an external link and one for wrapping images
+with [Next Image](https://nextjs.org/docs/api-reference/next/image).
 
 How does it look:
 
@@ -158,8 +165,9 @@ import { MDXComponents } from '@/components/mdx-components';
 
 ## Monitoring with Sentry
 
-Monitoring is an essential part of development. 
-t’s usually one of the first things you’d want to do after setting up an existing project or getting started with a new one.
+Monitoring is an essential part of development.
+t’s usually one of the first things you’d want to do after setting up an existing project or getting started with a new
+one.
 Without monitoring, it will be challenging to detect issues in your application or how to resolve them.
 
 ```tsx
@@ -191,20 +199,25 @@ module.exports = nextConfigByEnv[process.env.NODE_ENV];
 
 ## Database and Prisma
 
-[Prisma](https://www.prisma.io/nextjs) makes database access easy. With auto-generated and type-safe queries based on your database schema, it's easier than ever to manage your data.
+[Prisma](https://www.prisma.io/nextjs) makes database access easy. With auto-generated and type-safe queries based on
+your database schema, it's easier than ever to manage your data.
 Whether you have an existing database or you're starting from scratch, Prisma has you covered.
 
-When combining Prisma with Next.js, you can skip the [CRUD](https://www.codecademy.com/article/what-is-crud) boilerplate and directly query the database. 
+When combining Prisma with Next.js, you can skip the [CRUD](https://www.codecademy.com/article/what-is-crud) boilerplate
+and directly query the database.
 Less code means less bugs.
 
 ### Heroku Postgres
 
 Heroku Postgres gives me all the benefits of PostgreSQL without having to spin up and maintain the databases ourselves.
-And it is [easy integrate with PhpStorm](https://www.jetbrains.com/help/phpstorm/how-to-connect-to-heroku-postgres.html).
+And it is [easy integrate with PhpStorm](https://www.jetbrains.com/help/phpstorm/how-to-connect-to-heroku-postgres.html)
+.
 
 ### Type Safety
+
 ```sql
-model User {
+model
+User {
   id       String  @id @default(cuid())
   email    String  @unique
   password String
@@ -238,10 +251,12 @@ const views = await prisma.views.upsert({
 ```
 
 ## Testing
-As a developer, you know how important tests are for any production-level project.
-Writing tests takes some time, but they will help you in the long run to solve problems in the codebase. 
 
-I also [integrate these tests](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/workflows/tests.yml) into GitHub Actions, so that whenever I deploy to production or make a pull request, tests will run automatically.
+As a developer, you know how important tests are for any production-level project.
+Writing tests takes some time, but they will help you in the long run to solve problems in the codebase.
+
+I also [integrate these tests](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/workflows/tests.yml) into
+GitHub Actions, so that whenever I deploy to production or make a pull request, tests will run automatically.
 
 My code coverage on 28 August:
 
@@ -281,21 +296,26 @@ Ran all test suites.
 
 ## Next.js
 
-Next's framework allows you to build scalable, performant React code without the configuration hassle. 
+Next's framework allows you to build scalable, performant React code without the configuration hassle.
 
 In my company, we use it for [CleanMyMac JP](https://cleanmymac.jp/).
 
 Quick list of why Next.js has been so good for me:
+
 - Zero Config: Automatic compilation and bundling. Optimized for production from the start
-- SSG and SSR: It allows you to render your content in different ways, depending on your application's use case. These include pre-rendering with Server-side Rendering or Static Generation, and updating or creating content at runtime with Incremental Static Regeneration
+- SSG and SSR: It allows you to render your content in different ways, depending on your application's use case. These
+  include pre-rendering with Server-side Rendering or Static Generation, and updating or creating content at runtime
+  with Incremental Static Regeneration
 - Deploy: You can deploy in a few clicks to [Vercel](https://vercel.com)
 - SEO: Automatic Static Optimization & Head Component
 - React ecosystem: Wide range of tools and npm packages
-- Out of the box support: Through webpack, Next provides developers with out-of-the-box support for asset compilation, hot reloading and code splitting, which can further speed up development
+- Out of the box support: Through webpack, Next provides developers with out-of-the-box support for asset compilation,
+  hot reloading and code splitting, which can further speed up development
 
 <Image src="/static/images/framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" alt="A meme in which a person tries to choose between two red buttons."/>
 
 ## Acknowledgements
+
 - The design was inspired by [Lee Robinson](https://github.com/leerob)
 
 ## Conclusion
@@ -304,4 +324,5 @@ I can't tell you how much I've learned building this website. 🤓
 
 I'm excited about the new design. And I just had fun doing it. I hope you enjoy it too!
 
-The project is developing and still has many unimplemented features, you can see or suggest them [here](https://github.com/Shramkoweb/Portfolio/issues).
+The project is developing and still has many unimplemented features, you can see or suggest
+them [here](https://github.com/Shramkoweb/Portfolio/issues).

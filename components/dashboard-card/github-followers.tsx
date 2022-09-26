@@ -12,10 +12,6 @@ export function GithubFollowers() {
   const link = 'https://github.com/Shramkoweb';
 
   return (
-    <DashboardCard
-      header="GitHub Followers"
-      link={link}
-      metric={followers}
-    />
+    <DashboardCard header="GitHub Followers" link={link} metric={followers} />
   );
 }

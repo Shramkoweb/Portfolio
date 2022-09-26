@@ -7,7 +7,9 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const { _sum: { count } } = await prisma.views.aggregate({
+    const {
+      _sum: { count },
+    } = await prisma.views.aggregate({
       _sum: {
         count: true,
       },

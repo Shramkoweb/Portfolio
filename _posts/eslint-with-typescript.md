@@ -3,7 +3,7 @@ title: How to use ESLint with TypeScript
 description: In this post, we'll walk through how to set up linting in your TS project.
 createDate: 2022-08-02T19:51:19Z
 updateData: 2022-08-02T20:00:45.784Z
-tags: [TS, TypeScript, ESLint, Project Setup]
+keywords: [TS, TypeScript, ESLint, Project Setup]
 featured: true
 ---
 
@@ -16,7 +16,6 @@ about as well, but formatting is one of those things that we can adjust right aw
 
 [ESLint](https://eslint.org/) is statically analyzes your code to quickly find problems. It looks at your code, and
 tells you when you're not following the standard that you set in place.
-
 
 ## Installation and setup
 
@@ -77,7 +76,6 @@ Let's run the following command.
 npm run lint
 ```
 
-
 ## Eslint Rules
 
 ESLint comes with a large number of built-in rules and you can add more rules through plugins. You can modify which
@@ -88,7 +86,6 @@ set the rule ID equal to one of these values:
 - "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
 - "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
 
-
 ### Adding a rule
 
 To configure rules inside of a configuration file, use the rules key along with an error level and any options you want
@@ -96,16 +93,18 @@ to use. For example:
 
 ```json
 {
-    "rules": {
-        "curly": "error",
-        "quotes": ["error", "double"]
-    }
+  "rules": {
+    "curly": "error",
+    "quotes": [
+      "error",
+      "double"
+    ]
+  }
 }
 ```
 
 Rules are added as keys to this rules attribute and you can usually find basic eslint rules here on their website in the
 [rules' documentation](https://eslint.org/docs/latest/user-guide/configuring/rules).
-
 
 ## Conclusion
 
@@ -113,7 +112,6 @@ That's all 🎉.
 
 It's very easy to start using `ESlint`, but its contribution to code formatting and saving time is
 huge. Therefore, I recommend always using it.
-
 
 - [Create-React-App with TypeScript, ESLint, Prettier, and Github Actions](https://medium.com/@brygrill/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
 - [What is ESLint?](https://hackernoon.com/what-is-eslint-how-do-i-set-it-up-on-atom-70f270f57296)

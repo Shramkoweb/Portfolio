@@ -33,8 +33,16 @@ export default function Document() {
           href="/static/favicons/safari-pinned-tab.svg"
           rel="mask-icon"
         />
-        <meta content="#f9fafb" name="theme-color" media="(prefers-color-scheme: light)" />
-        <meta content="#111111" name="theme-color" media="(prefers-color-scheme: dark)" />
+        <meta
+          content="#f9fafb"
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          content="#111111"
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+        />
         <meta
           content="/static/favicons/browserconfig.xml"
           name="msapplication-config"
