@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { PostReaction } from '@/components/post-reaction/post-reaction';
+import { PostReaction } from '@/components/post-reaction';
 
 describe('PostReaction component', () => {
   test('Render with initial state', () => {
