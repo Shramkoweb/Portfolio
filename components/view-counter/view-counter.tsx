@@ -19,7 +19,7 @@ export function ViewCounter(props: ViewCounterProps) {
       method: 'POST',
     });
 
-    // registerView();
+    registerView();
   }, [slug]);
 
   return <span>{`${views ? views.toLocaleString() : '---'} views`}</span>;
