@@ -9,12 +9,11 @@ import { Categories } from '@/components/categories';
 
 interface BlogPageProps {
   posts: Post[];
-  postsAmount: number;
   categories: string[];
 }
 
 function BlogPage(props: BlogPageProps) {
-  const { posts, postsAmount, categories } = props;
+  const { posts, categories } = props;
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -48,7 +47,7 @@ function BlogPage(props: BlogPageProps) {
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           Blog
           <span className="ml-auto inline-block text-sm">
-            {postsAmount}
+            {posts.length}
             {' '}
             articles
           </span>
@@ -113,7 +112,6 @@ export async function getStaticProps() {
   return {
     props: {
       posts: sortedPosts,
-      postsAmount: posts.length,
       categories,
     },
   };
