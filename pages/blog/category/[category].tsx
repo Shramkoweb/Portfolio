@@ -47,13 +47,23 @@ function CategoryPage(props: CategoryPageProps) {
         />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-          All articles in &quot;
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           {category}
-          &quot;
+          <span className="ml-auto inline-block text-sm">
+            {posts.length}
+            {' '}
+            articles
+          </span>
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">
-          <p>Use the search below to filter by article title.</p>
+          <p>
+            On this page you can find interesting articles on the topic -
+            {' '}
+            <b>{category}</b>
+            .
+            <br />
+            Use the search below to filter by article title.
+          </p>
         </div>
         <div className="relative w-full mb-4">
           <input
