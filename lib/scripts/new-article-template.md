@@ -8,7 +8,7 @@ categories: [JS, TS]
 featured: true
 ---
 
-<Image src="/static/images/my-site.jpeg" alt="Don't forget to specify alt" />
+<Image src="my-site.jpeg" alt="Don't forget to specify alt" />
 
 Promo description of the article
 

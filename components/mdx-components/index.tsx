@@ -32,10 +32,15 @@ function CustomLink(
 }
 
 function RoundedImage(props: ImageProps) {
-  const { alt = '', priority = false, ...restProps } = props;
+  const {
+    alt = '', src, priority = false, ...restProps
+  } = props;
+
+  const concatenatedSrc = `/static/images/${src}`;
 
   return (
     <Image
+      src={concatenatedSrc}
       alt={alt}
       className="rounded-lg mt-4 mb-8"
       width={700}
