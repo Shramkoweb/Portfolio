@@ -4,11 +4,11 @@ description: How I built a modern portfolio in 2022, and a list of technologies 
 createDate: 2022-08-13T13:31:25.041Z
 updateData: 2022-09-25T12:03:53.360Z
 keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]
-categories: [Project Setup]
+categories: [Project Setup, React]
 featured: true
 ---
 
-<Image alt src="/static/images/my-site.jpeg" priority={true} alt="S.Shramko personal site screenshot"/>
+<Image alt src="my-site.jpeg" priority={true} alt="S.Shramko personal site screenshot"/>
 
 I'm so excited to announce the launch of my brand new website!
 
@@ -102,7 +102,7 @@ This is a simple <abbr title="HyperText Markup Language">HTML</abbr> and <abbr t
 CSS</abbr> site.
 No <abbr title="JavaScript">JS</abbr> and frameworks 😂.
 
-<Image src="/static/images/old-site.jpg" alt="S.Shramko personal old site screenshot"/>
+<Image src="old-site.jpg" alt="S.Shramko personal old site screenshot"/>
 
 ## 🚀 Deploy
 
@@ -115,7 +115,7 @@ And then we start multiple steps:
 
 Once ESLint, TypeScript, Checkly, and the Build all successfully complete, then we can deploy site.
 
-<Image src="/static/images/deploy.jpeg" alt="Deploy process screenshot on Vercel"/>
+<Image src="deploy.jpeg" alt="Deploy process screenshot on Vercel"/>
 
 ## MDX Compilation
 
@@ -313,7 +313,7 @@ Quick list of why Next.js has been so good for me:
 - Out of the box support: Through webpack, Next provides developers with out-of-the-box support for asset compilation,
   hot reloading and code splitting, which can further speed up development
 
-<Image src="/static/images/framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" alt="A meme in which a person tries to choose between two red buttons."/>
+<Image src="framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" alt="A meme in which a person tries to choose between two red buttons."/>
 
 ## Acknowledgements
 
