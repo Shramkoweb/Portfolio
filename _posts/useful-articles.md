@@ -8,7 +8,7 @@ categories: [Useful Resources]
 featured: true
 ---
 
-<Image alt="Fantasy astronaut on the night background" src="/static/images/books.jpeg" priority={true} />
+<Image alt="Retro background with grid lines" src="books.jpeg" priority={true} />
 
 > “Knowledge must be shared”.
 

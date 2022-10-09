@@ -8,7 +8,7 @@ categories: [JS, Node]
 featured: false
 ---
 
-<Image src="/static/images/es-module.png" alt="ES modules structure diagram" priority={true} />
+<Image src="es-module.png" alt="ES modules structure diagram" priority={true} />
 
 ## Problem
 

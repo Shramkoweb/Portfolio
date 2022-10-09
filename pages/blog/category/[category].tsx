@@ -25,11 +25,7 @@ function CategoryPage(props: CategoryPageProps) {
     <>
       <Head>
         {/*  TODO REFACTOR TO CORRECT SEO */}
-        <title>
-          {category}
-          {' '}
-          articles - Serhii Shramko
-        </title>
+        <title>{`${category} articles - Serhii Shramko`}</title>
         <meta
           content={`Articles on web dev and software engineering by ${category}`}
           name="description"
