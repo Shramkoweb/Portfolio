@@ -77,6 +77,15 @@ html {
   margin-bottom: 1.25em;
 }
 
+.inverted {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.dark img.inverted {
+  filter: invert(1);
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,

@@ -31,9 +31,13 @@ function CustomLink(
   );
 }
 
-function RoundedImage(props: ImageProps) {
+function RoundedImage(props: ImageProps & { inverted: boolean }) {
   const {
-    alt = '', src, priority = false, ...restProps
+    alt = '',
+    src,
+    priority = false,
+    inverted = false,
+    ...restProps
   } = props;
 
   const concatenatedSrc = `/static/images/${src}`;
@@ -42,7 +46,7 @@ function RoundedImage(props: ImageProps) {
     <Image
       src={concatenatedSrc}
       alt={alt}
-      className="rounded-lg mt-4 mb-8"
+      className={`rounded-lg mt-4 mb-8 ${inverted ? 'inverted' : ''}`}
       width={700}
       height={100}
       priority={priority}
