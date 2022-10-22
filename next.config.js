@@ -71,6 +71,4 @@ const nextConfigByEnv = {
   development: nextConfig
 };
 
-console.log(process.env.NODE_ENV);
-
 module.exports = nextConfigByEnv[process.env.NODE_ENV];
