@@ -64,7 +64,7 @@ html {
 }
 
 .prose code:not([class*='language-']) {
-  @apply text-gray-800 px-2 py-0.5 rounded-md bg-neutral-300 dark:bg-neutral-200;
+  @apply text-gray-800 px-1 py-0.5 rounded-md bg-neutral-300;
 }
 
 .prose pre code {
