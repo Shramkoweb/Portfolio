@@ -11,7 +11,8 @@ const responseTextByFeedback = {
   },
   [Feedback.worthless]: {
     title: 'Sorry to hear that.',
-    subtitle: '<a class="underline text-[#3b82f6] hover:text-[#2563eb]" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
+    subtitle:
+      '<a class="underline text-[#3b82f6] hover:text-[#2563eb]" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
   },
   [Feedback.blank]: {
     title: 'Was this article helpful ?',
@@ -20,10 +21,7 @@ const responseTextByFeedback = {
 };
 
 export function PostReaction() {
-  const {
-    state,
-    actions,
-  } = useFeedbackReducer();
+  const { state, actions } = useFeedbackReducer();
   const isReactionUntouched = state.feedback === Feedback.blank;
 
   const handleYesClick = () => {
@@ -44,18 +42,13 @@ export function PostReaction() {
     });
   };
 
-  const wrapperClassName = clsx(
-    'items-center justify-between flex flex-col',
-    {
-      'flex-row text-center': !isReactionUntouched,
-      'sm:flex-row': isReactionUntouched,
-    },
-  );
+  const wrapperClassName = clsx('items-center justify-between flex flex-col', {
+    'flex-row text-center': !isReactionUntouched,
+    'sm:flex-row': isReactionUntouched,
+  });
 
   return (
-    <div
-      className="flex flex-col p-6 sm:p-8 border border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900 rounded-md w-full mt-16"
-    >
+    <div className="flex flex-col p-6 sm:p-8 border border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900 rounded-md w-full mt-16">
       <div className={wrapperClassName}>
         <div className="flex items-center">
           <div className="flex flex-col">
@@ -64,7 +57,9 @@ export function PostReaction() {
             </h3>
             <p
               className="text-sm text-gray-700 dark:text-gray-300"
-              dangerouslySetInnerHTML={{ __html: responseTextByFeedback[state.feedback].subtitle }}
+              dangerouslySetInnerHTML={{
+                __html: responseTextByFeedback[state.feedback].subtitle,
+              }}
             />
           </div>
         </div>

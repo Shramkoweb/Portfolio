@@ -49,7 +49,7 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <small className="text-gray-600 dark:text-gray-400 pb-4">
+      <small className="text-xs text-gray-600 dark:text-gray-400 pb-4">
         © Made with ❤️ in
         {' '}
         {getCopyrightYearString(YEAR_OF_CREATE, new Date().getFullYear())}

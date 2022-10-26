@@ -24,18 +24,43 @@ export function Layout({ children }: PropsWithChildren) {
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="robots" content="follow, index" />
         <meta content={DESCRIPTION} name="description" key="description" />
-        <meta property="og:url" content={`https://shramko.dev${ROUTER_PATH}`} key="og:url" />
-        <link rel="canonical" key="canonical" href={`https://shramko.dev${ROUTER_PATH}`} />
+        <meta
+          property="og:url"
+          content={`https://shramko.dev${ROUTER_PATH}`}
+          key="og:url"
+        />
+        <link
+          rel="canonical"
+          key="canonical"
+          href={`https://shramko.dev${ROUTER_PATH}`}
+        />
         <meta property="og:type" content="website" key="og:type" />
-        <meta property="og:site_name" content="Serhii Shramko" key="og:site_name" />
-        <meta property="og:description" content={DESCRIPTION} key="og:description" />
+        <meta
+          property="og:site_name"
+          content="Serhii Shramko"
+          key="og:site_name"
+        />
+        <meta
+          property="og:description"
+          content={DESCRIPTION}
+          key="og:description"
+        />
         <meta property="og:title" content={TITLE} key="og:title" />
         <meta property="og:image" content={IMAGE} key="og:image" />
+        <meta property="og:locale" content="en_US" key="og:locale" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="@shramkoweb" key="twitter:creator" />
+        <meta
+          name="twitter:creator"
+          content="@shramkoweb"
+          key="twitter:creator"
+        />
         <meta name="twitter:site" content="@shramkoweb" key="twitter:site" />
         <meta name="twitter:title" content={TITLE} key="twitter:title" />
-        <meta name="twitter:description" content={DESCRIPTION} key="twitter:description" />
+        <meta
+          name="twitter:description"
+          content={DESCRIPTION}
+          key="twitter:description"
+        />
         <meta name="twitter:image" content={IMAGE} key="twitter:image" />
       </Head>
       <Header />

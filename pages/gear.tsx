@@ -98,6 +98,15 @@ function GearPage() {
               </a>
             </li>
             <li>1Password</li>
+            <li>
+              <a
+                href="https://preply.com/en/?pref=NjYxMTUzNA==&id=1665941658.488522"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Preply
+              </a>
+            </li>
             <li>Spotify</li>
             <li>CleanShot X</li>
             <li>Grammarly</li>

@@ -18,6 +18,9 @@ const GRADIENTS = [
   'bg-gradient-to-r from-green-300 via-blue-500 to-purple-600',
   'bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400',
   'bg-gradient-to-r from-purple-400 to-yellow-400',
+  'bg-gradient-to-r from-purple-200 to-purple-800',
+  'bg-gradient-to-r from-purple-400 to-yellow-400',
+  'bg-gradient-to-r from-green-300 to-purple-400',
 ];
 
 interface IndexPageProps {
@@ -105,7 +108,7 @@ function IndexPage(props: IndexPageProps) {
             onMouseLeave={handleHover}
           >
             <Image
-              alt=""
+              alt="Serhii Shramko smile avatar from apple Memoji"
               quality={100}
               src={smile}
               className={clsx('absolute', {
@@ -114,7 +117,7 @@ function IndexPage(props: IndexPageProps) {
               priority
             />
             <Image
-              alt=""
+              alt="Serhii Shramko tongue avatar from apple Memoji"
               quality={100}
               src={tongue}
               className={clsx('absolute', {
@@ -126,7 +129,7 @@ function IndexPage(props: IndexPageProps) {
         <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
           Featured Posts
         </h2>
-        <div className="flex gap-6 flex-col md:flex-row w-full">
+        <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
           {featuredPosts.map(({ data: { slug, title } }, index) => {
             const gradient = GRADIENTS[index];
 

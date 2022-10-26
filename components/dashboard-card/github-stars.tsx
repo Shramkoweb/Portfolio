@@ -11,11 +11,5 @@ export function GitHubStars() {
 
   const link = 'https://github.com/Shramkoweb';
 
-  return (
-    <DashboardCard
-      header="GitHub Stars"
-      link={link}
-      metric={stars}
-    />
-  );
+  return <DashboardCard header="GitHub Stars" link={link} metric={stars} />;
 }

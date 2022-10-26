@@ -8,7 +8,10 @@ interface FeedbackState {
 
 const initialState = { feedback: Feedback.blank };
 
-function reducer(state: FeedbackState, action: { type: Feedback }): FeedbackState {
+function reducer(
+  state: FeedbackState,
+  action: { type: Feedback },
+): FeedbackState {
   switch (action.type) {
     case Feedback.helpful:
       return { feedback: Feedback.helpful };
