@@ -5,7 +5,7 @@ createDate: 2022-10-09T20:40:12.461Z
 updateData: 2022-10-10T00:35:10.461Z
 keywords: [react flexbox grid, flexbox css, react js grid, react flexbox, react grid system, classnames, clsx]
 categories: [React, CSS, How-To]
-featured: true
+featured: false
 ---
 
 <Image src="grid.jpeg" alt="Don't forget to specify alt" />
