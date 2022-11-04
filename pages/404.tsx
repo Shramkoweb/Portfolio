@@ -21,10 +21,11 @@ function NotFoundPage() {
         <video loop autoPlay muted className="mb-8 w-full">
           <source src="/static/images/404.mp4" type="video/mp4" />
         </video>
-        <Link href="/">
-          <a className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white">
-            Home
-          </a>
+        <Link
+          href="/"
+          className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white"
+        >
+          Home
         </Link>
       </div>
     </>

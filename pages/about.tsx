@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 import about from '../public/static/images/about.jpeg';
 import car from '../public/static/images/car.jpeg';

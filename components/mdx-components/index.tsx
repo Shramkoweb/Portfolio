@@ -1,4 +1,4 @@
-import Image, { ImageProps } from 'next/future/image';
+import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 import { AnchorHTMLAttributes, ClassAttributes } from 'react';
 
@@ -13,8 +13,8 @@ function CustomLink(
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
-        <a className={className}>{children}</a>
+      <Link href={href} className={className}>
+        {children}
       </Link>
     );
   }
