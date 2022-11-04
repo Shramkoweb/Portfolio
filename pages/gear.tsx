@@ -38,6 +38,7 @@ function GearPage() {
             src={gear}
             width={1000}
             height={667}
+            sizes="100vw"
             priority
           />
         </div>

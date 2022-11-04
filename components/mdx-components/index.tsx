@@ -48,8 +48,9 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       alt={alt}
       className={`rounded-lg mt-4 mb-8 ${inverted ? 'inverted' : ''}`}
       width={700}
-      height={100}
+      height={300}
       priority={priority}
+      sizes="100vw"
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...restProps}
     />

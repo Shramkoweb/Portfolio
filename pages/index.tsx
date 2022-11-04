@@ -110,8 +110,9 @@ function IndexPage(props: IndexPageProps) {
           >
             <Image
               alt="Serhii Shramko smile avatar from apple Memoji"
-              quality={100}
               src={smile}
+              width={150}
+              height={150}
               className={clsx('absolute', {
                 'opacity-0': isAvatarHovered,
               })}
@@ -119,8 +120,9 @@ function IndexPage(props: IndexPageProps) {
             />
             <Image
               alt="Serhii Shramko tongue avatar from apple Memoji"
-              quality={100}
               src={tongue}
+              width={150}
+              height={150}
               className={clsx('absolute', {
                 'opacity-0': !isAvatarHovered,
               })}
