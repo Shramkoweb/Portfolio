@@ -14,11 +14,12 @@ import { compileMDX } from '@/lib/posts/compiler';
 
 import { MDXComponents } from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
-import { PostReaction } from '@/components/post-reaction';
-import { TwitterShare } from '@/components/share-button/twitter-share';
-import { LinkedInShare } from '@/components/share-button/linkedin-share';
-import { FacebookShare } from '@/components/share-button/facebook-share';
-import { TelegramShare } from '@/components/share-button/telegram-share';
+import {
+  FacebookShare,
+  LinkedInShare,
+  TelegramShare,
+  TwitterShare,
+} from '@/components/share-button';
 
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
@@ -99,7 +100,7 @@ function ArticlePage(props: ArticlePageProps) {
       </Head>
       <article className="flex w-full max-w-2xl mx-auto mb-16 relative">
         <div>
-          <aside className="share text-gray-600 dark:text-gray-400 flex flex-col items-center justify-center">
+          <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">
             <ul className="flex flex-col gap-2">
               <li>
                 <TwitterShare />
@@ -117,7 +118,7 @@ function ArticlePage(props: ArticlePageProps) {
           </aside>
         </div>
 
-        <section className="ml-[-44px]">
+        <section className="lg:ml-[-44px] w-full">
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
             {title}
           </h1>
@@ -148,7 +149,24 @@ function ArticlePage(props: ArticlePageProps) {
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <MDXRemote {...content} components={MDXComponents} />
           </div>
-          <PostReaction />
+
+          <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
+            <p>Share it:</p>
+            <ul className="flex gap-2">
+              <li>
+                <TwitterShare />
+              </li>
+              <li>
+                <LinkedInShare />
+              </li>
+              <li>
+                <FacebookShare />
+              </li>
+              <li>
+                <TelegramShare />
+              </li>
+            </ul>
+          </div>
         </section>
       </article>
     </>
