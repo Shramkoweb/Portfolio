@@ -11,20 +11,23 @@ export function Footer() {
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
       <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
         <div className="flex flex-col space-y-4">
-          <Link href="/">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-              Home
-            </a>
+          <Link
+            href="/"
+            className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Home
           </Link>
-          <Link href="/about">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-              About
-            </a>
+          <Link
+            href="/about"
+            className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            About
           </Link>
-          <Link href="/blog">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-              Blog
-            </a>
+          <Link
+            href="/blog"
+            className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Blog
           </Link>
         </div>
         <div className="flex flex-col space-y-4">
@@ -37,15 +40,17 @@ export function Footer() {
           </FooterLink>
         </div>
         <div className="flex flex-col space-y-4">
-          <Link href="/gear">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-              My Gear
-            </a>
+          <Link
+            href="/gear"
+            className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            My Gear
           </Link>
-          <Link href="/dashboard">
-            <a className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-              Dashboard
-            </a>
+          <Link
+            href="/dashboard"
+            className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Dashboard
           </Link>
         </div>
       </div>

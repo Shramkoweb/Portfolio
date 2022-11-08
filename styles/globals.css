@@ -174,3 +174,11 @@ input[type='email'] {
   -moz-appearance: none;
   appearance: none;
 }
+
+.share {
+  padding-top: 7px;
+  position: sticky;
+  top: 50px;
+  left: 0;
+  transform: translateX(-200%);
+}
