@@ -123,7 +123,7 @@ function ArticlePage(props: ArticlePageProps) {
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
             {title}
           </h1>
-          <ul className="text-gray-700 dark:text-gray-300 text-sm flex gap-2 mt-4 mb-4 flex-wrap">
+          <ul className="text-gray-700 dark:text-gray-300 text-sm flex gap-4 mt-4 mb-4 flex-wrap">
             {categories.map((category) => (
               <li key={category}>
                 <Link
