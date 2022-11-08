@@ -11,6 +11,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import { Post } from '@/lib/types';
 import { compileMDX } from '@/lib/posts/compiler';
+import Link from 'next/link';
 
 import { MDXComponents } from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
@@ -122,6 +123,19 @@ function ArticlePage(props: ArticlePageProps) {
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
             {title}
           </h1>
+          <ul className="text-gray-700 dark:text-gray-300 text-sm flex gap-2 mt-4 mb-4 flex-wrap">
+            {categories.map((category) => (
+              <li key={category}>
+                <Link
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                  href={`/blog/category/${category.toLowerCase()}`}
+                >
+                  #
+                  {category.toLowerCase()}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
             <div className="flex items-center">
               <Image
