@@ -1,11 +1,20 @@
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import { readdir, readFile } from 'node:fs/promises';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 import { Post } from '@/lib/types';
 
+// eslint-disable-next-line no-console
+console.log('process.cwd()', process.cwd());
+// eslint-disable-next-line no-console
+console.log('join', join(process.cwd(), '_posts'));
+// eslint-disable-next-line no-console
+console.log('resolve', resolve(process.cwd(), '_posts'));
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
+
+// eslint-disable-next-line no-console
+console.log('POSTS_DIRECTORY', POSTS_DIRECTORY);
 
 const getSlugFromMdFile = (fileName: string) => fileName.replace(/\.md$/, '');
 
@@ -53,6 +62,8 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
 
 export async function getPosts(): Promise<Post[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
+  // eslint-disable-next-line no-console
+  console.log('fileNames', fileNames);
 
   return Promise.all(
     fileNames.map((fileName) => {
