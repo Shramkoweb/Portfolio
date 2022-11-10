@@ -2,5 +2,8 @@
 
 module.exports = {
   siteUrl: 'https://shramko.dev',
-  changefreq: 'weekly'
+  generateIndexSitemap: false,
+  changefreq: 'weekly',
+  // TODO add lastmod with node file info from posts dir
+  autoLastmod: false
 };
