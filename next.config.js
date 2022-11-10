@@ -46,9 +46,7 @@ const nextConfig = {
   serverRuntimeConfig: {
     appReleaseVersion: new Date().valueOf()
   },
-  swcMinify: true,
   experimental: {
-    browsersListForSwc: true,
     legacyBrowsers: false
   },
   poweredByHeader: false,

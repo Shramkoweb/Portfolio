@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 import about from '../public/static/images/about.jpeg';
 import car from '../public/static/images/car.jpeg';
@@ -42,6 +42,7 @@ function AboutPage() {
             src={about}
             width={1269}
             height={846}
+            sizes="100vw"
             priority
           />
         </div>
@@ -327,21 +328,25 @@ function AboutPage() {
             <Image
               className="rounded-lg transition-transform time md:hover:scale-150"
               alt="Me with tennis cup"
+              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={tennis}
             />
             <Image
               className="rounded-lg transition-transform time md:hover:scale-150"
               alt="I am eat =)"
+              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={eat}
             />
             <Image
               className="rounded-lg transition-transform time md:hover:scale-150"
               alt="Me with Anton near red BMW"
+              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={car}
             />
             <Image
               className="rounded-lg transition-transform time md:hover:scale-150"
               alt="Me with Anton near red Golf GTI"
+              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={carBack}
             />
           </div>

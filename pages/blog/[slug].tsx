@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import {
   GetStaticPathsResult,
@@ -9,11 +9,18 @@ import {
 import { ParsedUrlQuery } from 'querystring';
 
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
+import { Post } from '@/lib/types';
 import { compileMDX } from '@/lib/posts/compiler';
+import Link from 'next/link';
+
 import { MDXComponents } from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
-import { PostReaction } from '@/components/post-reaction';
-import { Post } from '@/lib/types';
+import {
+  FacebookShare,
+  LinkedInShare,
+  TelegramShare,
+  TwitterShare,
+} from '@/components/share-button';
 
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
@@ -92,38 +99,89 @@ function ArticlePage(props: ArticlePageProps) {
           />
         ))}
       </Head>
-      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-          {title}
-        </h1>
-        <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
-          <div className="flex items-center">
-            <Image
-              alt="Serhii Shramko"
-              height={32}
-              width={32}
-              src="/static/images/avatar.jpeg"
-              className="rounded-full"
-            />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              Serhii Shramko /
-              <time dateTime={new Date(createDate).toISOString()}>
-                {' '}
-                {formattedDate}
-              </time>
+      <article className="flex w-full max-w-2xl mx-auto mb-16 relative">
+        <div>
+          <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">
+            <ul className="flex flex-col gap-2">
+              <li>
+                <TwitterShare />
+              </li>
+              <li>
+                <LinkedInShare />
+              </li>
+              <li>
+                <FacebookShare />
+              </li>
+              <li>
+                <TelegramShare />
+              </li>
+            </ul>
+          </aside>
+        </div>
+
+        <section className="lg:ml-[-44px] w-full">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+            {title}
+          </h1>
+          <ul className="text-gray-700 dark:text-gray-300 text-sm flex gap-4 mt-4 mb-4 flex-wrap">
+            {categories.map((category) => (
+              <li key={category}>
+                <Link
+                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                  href={`/blog/category/${category.toLowerCase()}`}
+                >
+                  #
+                  {category.toLowerCase()}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
+            <div className="flex items-center">
+              <Image
+                alt="Serhii Shramko"
+                height={32}
+                width={32}
+                src="/static/images/avatar.jpeg"
+                className="rounded-full"
+              />
+              <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                Serhii Shramko /
+                <time dateTime={new Date(createDate).toISOString()}>
+                  {' '}
+                  {formattedDate}
+                </time>
+              </p>
+            </div>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+              {`${readTime}`}
+              {' • '}
+              <ViewCounter slug={slug} />
             </p>
           </div>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-            {`${readTime}`}
-            {' • '}
-            <ViewCounter slug={slug} />
-          </p>
-        </div>
-        <div className="w-full mt-4 prose dark:prose-dark max-w-none">
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <MDXRemote {...content} components={MDXComponents} />
-        </div>
-        <PostReaction />
+          <div className="w-full mt-4 prose dark:prose-dark max-w-none">
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+            <MDXRemote {...content} components={MDXComponents} />
+          </div>
+
+          <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
+            <p>Share it:</p>
+            <ul className="flex gap-2">
+              <li>
+                <TwitterShare />
+              </li>
+              <li>
+                <LinkedInShare />
+              </li>
+              <li>
+                <FacebookShare />
+              </li>
+              <li>
+                <TelegramShare />
+              </li>
+            </ul>
+          </div>
+        </section>
       </article>
     </>
   );
