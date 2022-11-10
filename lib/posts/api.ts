@@ -1,6 +1,7 @@
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import { readdir, readFile } from 'node:fs/promises';
+import { readdir as readdirSync } from 'node:fs';
 import { join, resolve } from 'path';
 
 import { Post } from '@/lib/types';
@@ -16,6 +17,12 @@ const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 // eslint-disable-next-line no-console
 console.log('POSTS_DIRECTORY', POSTS_DIRECTORY);
 
+readdirSync(process.cwd(), (err, files) => {
+  files.forEach((file) => {
+    // eslint-disable-next-line no-console
+    console.log(file);
+  });
+});
 const getSlugFromMdFile = (fileName: string) => fileName.replace(/\.md$/, '');
 
 export async function getPostBySlug(slug?: string): Promise<Post> {
