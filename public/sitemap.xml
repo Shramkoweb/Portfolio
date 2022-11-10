@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://shramko.dev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/about</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/dashboard</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/gear</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/js</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/node</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/clean code</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/ts</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/project setup</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/react</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/how-to</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/css</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/useful resources</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/difference-between-absolute-and-relative-url</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/dirname-error</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/dispatch-tables</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/eslint-with-typescript</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/expressions-statements</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/for-in-vs-for-of</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/introducing-the-new-shramko.dev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/phpstorm-allow-network</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/react-flexbox-grid</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/useful-articles</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+</urlset>
