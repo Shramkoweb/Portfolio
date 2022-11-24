@@ -66,7 +66,7 @@ function IndexPage(props: IndexPageProps) {
               <a
                 href="https://macpaw.com/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="font-semibold underline"
               >
                 MacPaw

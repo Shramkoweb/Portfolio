@@ -38,7 +38,7 @@ export default function Dashboard() {
             <a
               className="text-[#60a5fa] underline"
               href="https://nextjs.org/docs/api-routes/introduction"
-              rel="noopener noreferrer"
+              rel="noopener"
               target="_blank"
             >
               Next.js API

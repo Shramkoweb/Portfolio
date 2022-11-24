@@ -9,12 +9,7 @@ export function DashboardCard(props: DashboardCardProps) {
 
   return (
     <div className="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full">
-      <a
-        aria-label={header}
-        target="_blank"
-        rel="noopener noreferrer"
-        href={link}
-      >
+      <a aria-label={header} target="_blank" rel="noopener" href={link}>
         <div className="flex items-center text-gray-900 dark:text-gray-100">
           {header}
           <svg
