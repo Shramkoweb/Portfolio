@@ -55,7 +55,7 @@ function GearPage() {
               Editor:&ensp;
               <a
                 href="https://www.jetbrains.com/ru-ru/phpstorm/"
-                rel="noopener noreferrer"
+                rel="noopener"
                 target="_blank"
               >
                 PhpStorm
@@ -64,11 +64,7 @@ function GearPage() {
             <li>Theme: Darcula</li>
             <li>
               Terminal: MacOS Terminal +&ensp;
-              <a
-                href="https://ohmyz.sh/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <a href="https://ohmyz.sh/" rel="noopener" target="_blank">
                 Oh My Zsh
               </a>
             </li>
@@ -83,7 +79,7 @@ function GearPage() {
             <li>
               <a
                 href="https://macpaw.com/cleanmymac"
-                rel="noopener noreferrer"
+                rel="noopener"
                 target="_blank"
               >
                 CleanMyMac
@@ -92,7 +88,7 @@ function GearPage() {
             <li>
               <a
                 href="https://macpaw.com/clearvpn"
-                rel="noopener noreferrer"
+                rel="noopener"
                 target="_blank"
               >
                 ClearVPN
@@ -102,7 +98,7 @@ function GearPage() {
             <li>
               <a
                 href="https://preply.com/en/?pref=NjYxMTUzNA==&id=1665941658.488522"
-                rel="noopener noreferrer"
+                rel="noopener"
                 target="_blank"
               >
                 Preply

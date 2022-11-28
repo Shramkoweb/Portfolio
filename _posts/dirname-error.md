@@ -5,7 +5,7 @@ createDate: 2022-07-25T10:01:01Z
 updateData: 2022-09-25T12:03:53.360Z
 keywords: [__filename, Node, ES Modules, __dirname]
 categories: [JS, Node]
-featured: false
+featured: true
 ---
 
 <Image src="es-module.png" alt="ES modules structure diagram" priority={true} />

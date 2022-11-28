@@ -12,7 +12,7 @@ export function FooterLink({
     <a
       className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener"
       href={href}
     >
       {children}

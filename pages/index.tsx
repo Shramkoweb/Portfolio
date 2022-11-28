@@ -25,10 +25,11 @@ const GRADIENTS = [
 
 interface IndexPageProps {
   featuredPosts: Post[];
+  otherPosts: Post[];
 }
 
 function IndexPage(props: IndexPageProps) {
-  const { featuredPosts } = props;
+  const { featuredPosts, otherPosts } = props;
 
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
@@ -66,7 +67,7 @@ function IndexPage(props: IndexPageProps) {
               <a
                 href="https://macpaw.com/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="font-semibold underline"
               >
                 MacPaw
@@ -133,18 +134,48 @@ function IndexPage(props: IndexPageProps) {
           Featured Posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map(({ data: { slug, title } }, index) => {
-            const gradient = GRADIENTS[index];
+          {featuredPosts.map(({ data: { slug, title } }, index) => (
+            <BlogPostSquarePreview
+              title={title}
+              slug={slug}
+              gradient={GRADIENTS[index]}
+              key={slug}
+            />
+          ))}
+        </div>
+        <Link
+          href="/blog"
+          className="flex items-center mt-8 text-gray-600 dark:text-gray-400 leading-10 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
+        >
+          Read more posts
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="h-6 w-6 ml-2"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+            />
+          </svg>
+        </Link>
 
-            return (
-              <BlogPostSquarePreview
-                title={title}
-                slug={slug}
-                gradient={gradient}
-                key={slug}
-              />
-            );
-          })}
+        <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white mt-16">
+          Latest posts
+        </h2>
+        <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
+          {otherPosts.map(({ data: { slug, title } }, index) => (
+            <BlogPostSquarePreview
+              title={title}
+              slug={slug}
+              gradient="bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600"
+              key={slug}
+            />
+          ))}
         </div>
         <Link
           href="/blog"
@@ -178,7 +209,12 @@ GetStaticPropsResult<IndexPageProps>
   const sortedPosts = posts.sort(sortByBirthtime);
   const featuredPosts = sortedPosts.filter(filterByFeatured);
 
-  return { props: { featuredPosts } };
+  return {
+    props: {
+      featuredPosts,
+      otherPosts: sortedPosts.slice(0, 3),
+    },
+  };
 }
 
 export default IndexPage;
