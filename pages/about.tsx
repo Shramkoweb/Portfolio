@@ -53,19 +53,19 @@ function AboutPage() {
             <li>
               <a
                 href="https://github.com/shramkoweb"
-                rel="noopener noreferrer"
+                rel="noopener"
                 target="_blank"
               >
                 GitHub
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/sergey-shramko">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/shramko-dev/">LinkedIn</a>
             </li>
             <li>
               <a
                 href="mailto:shramko.dev@gmail.com"
-                rel="noopener noreferrer"
+                rel="noopener"
                 target="_blank"
                 title="Shramko Serhii personal email"
               >
@@ -82,7 +82,11 @@ function AboutPage() {
           </p>
 
           <p>
-            In the past, I have been a mentor and tutor for&ensp;
+            Before&ensp;
+            <a href="https://war.ukraine.ua/" target="_blank" rel="noopener">
+              Russian invasion of Ukraine
+            </a>
+            , I have been a mentor and tutor for&ensp;
             <abbr title="TypeScript">TS</abbr>
             ,&ensp;
             <abbr title="A JavaScript library for building user interfaces">
@@ -94,10 +98,11 @@ function AboutPage() {
             <a
               href="https://htmlacademy.ru/profile/id852139"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
               HTML Academy
             </a>
+            .
           </p>
 
           <h3>Experience</h3>
@@ -107,11 +112,7 @@ function AboutPage() {
           </em>
           <p className="m-0 mb-4">
             Senior Developer at&ensp;
-            <a
-              href="https://macpaw.com/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="https://macpaw.com/" rel="noopener" target="_blank">
               MacPaw
             </a>
             &ensp;🐾
@@ -131,7 +132,7 @@ function AboutPage() {
               <a
                 href="https://macpaw.com/internship"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 MacPaw Internship
               </a>
@@ -139,11 +140,7 @@ function AboutPage() {
             <li>
               Refactored the
               {' '}
-              <a
-                href="https://imgix.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://imgix.com/" target="_blank" rel="noopener">
                 imgix
               </a>
               {' '}
@@ -161,11 +158,7 @@ function AboutPage() {
           </em>
           <p className="m-0 mb-4">
             Frontend Developer at&ensp;
-            <a
-              href="https://p1k.org/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="https://p1k.org/" rel="noopener" target="_blank">
               Phase One Karma
             </a>
           </p>
@@ -173,11 +166,7 @@ function AboutPage() {
             Phase One Karma created AI-driven anti-plagiarism checker with more
             than 1 million users worldwide
             {' '}
-            <a
-              href="https://unicheck.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://unicheck.com/" target="_blank" rel="noopener">
               Unicheck
             </a>
             .
@@ -190,7 +179,7 @@ function AboutPage() {
               <a
                 href="https://storybook.js.org/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 Storybook
               </a>
@@ -202,11 +191,7 @@ function AboutPage() {
             <li>
               Built from scratch new user dashboard with
               {' '}
-              <a
-                href="https://nextjs.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://nextjs.org/" target="_blank" rel="noopener">
                 Next.js
               </a>
             </li>
@@ -216,7 +201,7 @@ function AboutPage() {
               <a
                 href="https://www.gatsbyjs.com/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 Gatsby
               </a>
@@ -240,11 +225,7 @@ function AboutPage() {
           </em>
           <p className="m-0 mb-4">
             Frontend Developer at&ensp;
-            <a
-              href="https://www.pdffiller.com/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="https://www.pdffiller.com/" rel="noopener" target="_blank">
               PDFfiller
             </a>
           </p>
@@ -286,7 +267,7 @@ function AboutPage() {
             Frontend Developer at&ensp;
             <a
               href="https://hexa.com.ua/en/home/"
-              rel="noopener noreferrer"
+              rel="noopener"
               target="_blank"
             >
               Hexa
@@ -302,7 +283,7 @@ function AboutPage() {
               <a
                 href="https://get.foundation/emails.html"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 Foundation
               </a>
@@ -314,11 +295,7 @@ function AboutPage() {
           <p>
             Master degree in Electromechanical Systems of Automation and
             Electric Drive at&ensp;
-            <a
-              href="http://www.nmu.org.ua/en/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="https://www.nmu.org.ua/en/" rel="noopener" target="_blank">
               NMU
             </a>
             .
@@ -326,25 +303,25 @@ function AboutPage() {
           <h2>I love Eating, Parties, and Cars</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150"
+              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
               alt="Me with tennis cup"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={tennis}
             />
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150"
+              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
               alt="I am eat =)"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={eat}
             />
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150"
+              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
               alt="Me with Anton near red BMW"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={car}
             />
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150"
+              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
               alt="Me with Anton near red Golf GTI"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={carBack}
