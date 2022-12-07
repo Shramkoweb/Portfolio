@@ -40,13 +40,7 @@ const POSTS: Post[] = [
 
 describe('Blog Page', () => {
   test('renders with correct heading', () => {
-    render(
-      <BlogPage
-        posts={POSTS}
-        categories={CATEGORIES}
-        postsAmount={POSTS.length}
-      />,
-    );
+    render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
     const heading = screen.getByRole('heading', {
       name: `Blog ${POSTS.length} articles`,
     });
@@ -55,26 +49,14 @@ describe('Blog Page', () => {
   });
 
   test('renders with initial posts', () => {
-    render(
-      <BlogPage
-        posts={POSTS}
-        categories={CATEGORIES}
-        postsAmount={POSTS.length}
-      />,
-    );
+    render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
     const blogPostsLinks = screen.getAllByRole('link');
 
     expect(blogPostsLinks).toHaveLength(POSTS.length);
   });
 
   test('on search correct filtered exist articles', () => {
-    render(
-      <BlogPage
-        posts={POSTS}
-        categories={CATEGORIES}
-        postsAmount={POSTS.length}
-      />,
-    );
+    render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
     const inputElement = screen.getByLabelText('Search articles');
 
     fireEvent.change(inputElement, { target: { value: POSTS[0].data.title } });
@@ -86,13 +68,7 @@ describe('Blog Page', () => {
   });
 
   test('on search render "No articles found" if unknown article', () => {
-    render(
-      <BlogPage
-        posts={POSTS}
-        categories={CATEGORIES}
-        postsAmount={POSTS.length}
-      />,
-    );
+    render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
     const inputElement = screen.getByLabelText('Search articles');
 
     fireEvent.change(inputElement, { target: { value: 'Unknown article' } });
