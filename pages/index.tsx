@@ -138,7 +138,7 @@ function IndexPage(props: IndexPageProps) {
             <BlogPostSquarePreview
               title={title}
               slug={slug}
-              gradient={GRADIENTS[index]}
+              classNames={GRADIENTS[index]}
               key={slug}
             />
           ))}
@@ -172,7 +172,7 @@ function IndexPage(props: IndexPageProps) {
             <BlogPostSquarePreview
               title={title}
               slug={slug}
-              gradient="bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600"
+              classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
               key={slug}
             />
           ))}
