@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@prisma/client": "4.6.1",
-    "@sentry/nextjs": "7.21.1",
+    "@sentry/nextjs": "7.22.0",
     "@tailwindcss/typography": "0.5.8",
     "clsx": "1.2.1",
     "next": "13.0.5",
