@@ -52,6 +52,12 @@ export function Footer() {
           >
             Dashboard
           </Link>
+          <Link
+            href="/snippets"
+            className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            Snippets
+          </Link>
         </div>
       </div>
       <small className="text-xs text-gray-600 dark:text-gray-400 pb-4">

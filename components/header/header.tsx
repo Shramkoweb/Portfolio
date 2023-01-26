@@ -27,6 +27,7 @@ export function Header() {
           <HeaderLink href="/blog" text="Blog" />
           <HeaderLink href="/about" text="About" />
           <HeaderLink href="/dashboard" text="Dashboard" />
+          <HeaderLink href="/snippets" text="Snippets" />
         </div>
         <div className="flex justify-center items-center">
           <Link

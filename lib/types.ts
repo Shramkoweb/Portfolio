@@ -27,3 +27,14 @@ export enum Feedback {
   worthless = 'worthless',
   blank = 'blank',
 }
+
+export type Snippet = {
+  data: {
+    slug: string;
+    title: string;
+    description: string;
+    createDate: number;
+    updateData: number;
+  };
+  content: string;
+};

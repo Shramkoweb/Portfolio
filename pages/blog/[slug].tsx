@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import {
   GetStaticPathsResult,
@@ -9,9 +10,8 @@ import {
 import { ParsedUrlQuery } from 'querystring';
 
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
+import { compileMDX } from '@/lib/scripts/compiler';
 import { Post } from '@/lib/types';
-import { compileMDX } from '@/lib/posts/compiler';
-import Link from 'next/link';
 
 import { MDXComponents } from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
