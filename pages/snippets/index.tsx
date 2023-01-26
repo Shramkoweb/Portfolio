@@ -42,9 +42,7 @@ function SnippetsPage(props: SnippetsPageProps) {
         <div className="mb-4 text-gray-600 dark:text-gray-400">
           <p>
             These are a collection of code snippets I have used in the past and
-            saved. Some are Serverless Functions, which include set up
-            instructions. Others are anything from random CSS snippets to
-            Node.js scripts.
+            want to share with you.
           </p>
         </div>
         {!snippets.length && (
