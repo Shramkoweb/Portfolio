@@ -34,7 +34,7 @@ export type Snippet = {
     title: string;
     description: string;
     createDate: number;
-    updateData: number;
+    updateData?: number;
   };
   content: string;
 };
