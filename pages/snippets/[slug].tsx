@@ -20,7 +20,9 @@ type SnippetPageProps = Pick<Snippet, 'data'> & {
 function SnippetPage(props: SnippetPageProps) {
   const {
     content,
-    data: { title, description, createDate },
+    data: {
+      title, description, createDate, updateData,
+    },
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -52,6 +54,19 @@ function SnippetPage(props: SnippetPageProps) {
           content={description}
           key="twitter:description"
         />
+        <meta
+          property="article:published_time"
+          content={new Date(createDate).toISOString()}
+          key="article:published_time"
+        />
+        {updateData && (
+          <meta
+            property="article:modified_time"
+            content={new Date(updateData).toISOString()}
+            key="article:modified_time"
+          />
+        )}
+
         <meta
           property="article:section"
           content="Technology"
