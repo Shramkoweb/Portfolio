@@ -4,10 +4,9 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
 
 import { Post } from '@/lib/types';
+import { getSlugFromMdFile } from '@/lib/utils';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
-
-const getSlugFromMdFile = (fileName: string) => fileName.replace(/\.md$/, '');
 
 export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {

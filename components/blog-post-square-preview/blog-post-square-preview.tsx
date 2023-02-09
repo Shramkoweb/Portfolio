@@ -8,21 +8,22 @@ import { fetcher } from '@/lib/fetcher';
 interface BlogPostPreviewProps {
   title: string;
   slug: string;
-  gradient: string;
+  classNames: string;
 }
 
 export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
-  const { title, slug, gradient } = props;
+  const { title, slug, classNames } = props;
 
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = data?.total;
 
   return (
     <Link
+      key={slug}
       href={`/blog/${slug}`}
       className={clsx(
         'w-full transform hover:scale-[1.025] transition-all rounded-xl w-full bg-gradient-to-r p-1',
-        gradient,
+        classNames,
       )}
     >
       <div className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded-lg p-4">
