@@ -147,7 +147,7 @@ function IndexPage(props: IndexPageProps) {
           Latest posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {otherPosts.map(({ data: { slug, title } }, index) => (
+          {otherPosts.map(({ data: { slug, title } }) => (
             <BlogPostSquarePreview
               title={title}
               slug={slug}
