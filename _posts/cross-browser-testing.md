@@ -22,7 +22,7 @@ Opera and Microsoft Edge, plus mobile browsers and tablets.
 
 There are many methods and ways for such development, such
 as [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix), [polyfills](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill),
-responsive design and much more.
+responsive design and [much more](https://ishadeed.com/article/cross-browser-development/).
 
 I will write about all this in the next article, and today we will talk only about cross-browser testing and tools.
 
