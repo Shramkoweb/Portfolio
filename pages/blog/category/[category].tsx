@@ -16,6 +16,7 @@ interface CategoryPageProps {
 
 function CategoryPage(props: CategoryPageProps) {
   const { posts, categories, category } = props;
+  const postsLength = posts.length;
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -46,9 +47,9 @@ function CategoryPage(props: CategoryPageProps) {
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           {category}
           <span className="ml-auto inline-block text-sm">
-            {posts.length}
+            {postsLength}
             {' '}
-            articles
+            {postsLength === 1 ? 'article' : 'articles' }
           </span>
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">
