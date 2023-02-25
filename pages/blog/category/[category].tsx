@@ -1,11 +1,13 @@
 import Head from 'next/head';
 import { useState } from 'react';
-
-import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
-import { BlogPostPreview } from '@/components/blog-post-preview';
-import { Post } from '@/lib/types';
 import { GetStaticPathsResult, GetStaticPropsContext } from 'next';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+
+import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
+import { Post } from '@/lib/types';
+import { sortByBirthtime } from '@/lib/posts/utils';
+
+import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 
 interface CategoryPageProps {
@@ -123,10 +125,11 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
 export async function getStaticProps(context: GetStaticPropsContext) {
   const posts = await getPostsByCategory(context.params?.category as string);
   const categories = await getPostsCategories();
+  const sortedPosts = posts.sort(sortByBirthtime);
 
   return {
     props: {
-      posts,
+      posts: sortedPosts,
       category: categories.find(
         (item) => item.toLowerCase() === context.params?.category,
       ),
