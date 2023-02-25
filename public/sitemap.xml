@@ -6,17 +6,19 @@
 <url><loc>https://shramko.dev/dashboard</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/gear</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/snippets</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/how-to</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/useful resources</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/category/project setup</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/js</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/node</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/clean code</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/ts</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://shramko.dev/blog/category/project setup</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/react</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://shramko.dev/blog/category/how-to</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/css</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://shramko.dev/blog/category/useful resources</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/snippets/countries-sql</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/snippets/remove-duplicates-array</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/cross-browser-testing</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/difference-between-absolute-and-relative-url</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/dirname-error</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/dispatch-tables</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -25,6 +27,7 @@
 <url><loc>https://shramko.dev/blog/for-in-vs-for-of</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/introducing-the-new-shramko.dev</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/js-arrays</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/blog/nvm</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/phpstorm-allow-network</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/postgres-connect-url</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/react-flexbox-grid</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
