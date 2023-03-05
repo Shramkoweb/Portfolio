@@ -16,8 +16,6 @@
 <url><loc>https://shramko.dev/blog/category/ts</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/react</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/category/css</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://shramko.dev/snippets/countries-sql</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://shramko.dev/snippets/remove-duplicates-array</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/cross-browser-testing</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/difference-between-absolute-and-relative-url</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/dirname-error</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -32,4 +30,8 @@
 <url><loc>https://shramko.dev/blog/postgres-connect-url</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/react-flexbox-grid</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/blog/useful-articles</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/snippets/compare-dates</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/snippets/countries-sql</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/snippets/css-selection</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/snippets/remove-duplicates-array</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
