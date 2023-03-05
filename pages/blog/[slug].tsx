@@ -92,7 +92,7 @@ function ArticlePage(props: ArticlePageProps) {
           content="https://shramko.dev"
           key="article:author"
         />
-        <meta name="keywords" content={keywords.join(', ')} />
+        <meta name="keywords" key="keywords" content={keywords.join(', ')} />
         {categories.map((category) => (
           <meta
             key={`article:${category}`}

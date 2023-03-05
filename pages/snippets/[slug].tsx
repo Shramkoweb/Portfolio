@@ -67,7 +67,7 @@ function SnippetPage(props: SnippetPageProps) {
           />
         )}
 
-        <meta name="keywords" content={keywords.join(', ')} />
+        <meta name="keywords" key="keywords" content={keywords.join(', ')} />
         <meta
           property="article:section"
           content="Technology"
