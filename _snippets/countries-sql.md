@@ -2,6 +2,7 @@
 title: SQL countries table
 description: Sql dump of all the countries, country codes
 createDate: 2023-02-15T21:11:53.432Z
+keywords: [SQL snippet, countries SQL table, SQL table, SQL example, SQL examples]
 ---
 
 I'm currently working on my [Nest.js](https://nestjs.com/) backend project and I needed to add data to the countries

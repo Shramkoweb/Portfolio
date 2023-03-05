@@ -2,6 +2,7 @@
 title: Check if date is between two dates
 description: Checks if a date is between two other dates with code examples
 createDate: 2023-03-05T21:57:31.886Z
+keywords: [JS snippet, JS Date Snippet, check if date is between two dates, date getTime method, getTime JS]
 ---
 
 Working with dates is an essential part of web development. At some point, you may need to check if a given date falls
