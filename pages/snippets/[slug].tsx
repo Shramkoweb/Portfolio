@@ -21,7 +21,7 @@ function SnippetPage(props: SnippetPageProps) {
   const {
     content,
     data: {
-      title, description, createDate, updateData,
+      title, description, createDate, updateData, keywords,
     },
   } = props;
 
@@ -67,6 +67,7 @@ function SnippetPage(props: SnippetPageProps) {
           />
         )}
 
+        <meta name="keywords" content={keywords.join(', ')} />
         <meta
           property="article:section"
           content="Technology"

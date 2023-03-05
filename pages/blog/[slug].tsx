@@ -75,11 +75,13 @@ function ArticlePage(props: ArticlePageProps) {
           content={new Date(createDate).toISOString()}
           key="article:published_time"
         />
-        <meta
-          property="article:modified_time"
-          content={new Date(updateData).toISOString()}
-          key="article:modified_time"
-        />
+        {updateData && (
+          <meta
+            property="article:modified_time"
+            content={new Date(updateData).toISOString()}
+            key="article:modified_time"
+          />
+        )}
         <meta
           property="article:section"
           content="Technology"
