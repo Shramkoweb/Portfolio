@@ -23,9 +23,11 @@ function BlogPage(props: BlogPageProps) {
   return (
     <>
       <Head>
-        <title>Blog - Serhii Shramko</title>
+        <title>
+          What’s New at Software Engineering? | The Serhii Shramko&apos;s Blog
+        </title>
         <meta
-          content="Articles on web dev and software engineering: TypeScript, JavaScript, Next.js, and more!"
+          content="Join me on a journey through the world of software engineering. Learn about TypeScript, JavaScript, and Next.js, and discover new ways to improve your code."
           name="description"
           key="description"
         />
@@ -50,7 +52,7 @@ function BlogPage(props: BlogPageProps) {
           <span className="ml-auto inline-block text-sm">
             {postsLength}
             {' '}
-            {postsLength === 1 ? 'article' : 'articles' }
+            {postsLength === 1 ? 'article' : 'articles'}
           </span>
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">

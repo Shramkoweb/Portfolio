@@ -30,12 +30,14 @@ function CategoryPage(props: CategoryPageProps) {
         {/*  TODO REFACTOR TO CORRECT SEO */}
         <title>{`${category} articles - Serhii Shramko`}</title>
         <meta
-          content={`Articles on web dev and software engineering by ${category}`}
+          content={`The ${category} category page is a hub for all things related to ${category}.
+           Discover tips, tricks, tutorials, and more to level up your skills.`}
           name="description"
           key="description"
         />
         <meta
-          content={`javascript blog, tech blog, code snippets, software blog, web dev blog, ${category}`}
+          content={`${category} blog,
+           ${category} articles, tech blog, code snippets, software blog, web dev blog, ${category}`}
           name="keywords"
           key="keywords"
         />
@@ -51,7 +53,7 @@ function CategoryPage(props: CategoryPageProps) {
           <span className="ml-auto inline-block text-sm">
             {postsLength}
             {' '}
-            {postsLength === 1 ? 'article' : 'articles' }
+            {postsLength === 1 ? 'article' : 'articles'}
           </span>
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">
