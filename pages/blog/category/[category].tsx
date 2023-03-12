@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useState } from 'react';
-import { GetStaticPathsResult, GetStaticPropsContext } from 'next';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
 import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
@@ -14,10 +14,14 @@ interface CategoryPageProps {
   posts: Post[];
   categories: string[];
   category: string;
+  seoDescription: string;
+  seoKeywords: string;
 }
 
 function CategoryPage(props: CategoryPageProps) {
-  const { posts, categories, category } = props;
+  const {
+    posts, categories, category, seoDescription, seoKeywords,
+  } = props;
   const postsLength = posts.length;
 
   const [searchValue, setSearchValue] = useState('');
@@ -30,14 +34,12 @@ function CategoryPage(props: CategoryPageProps) {
         {/*  TODO REFACTOR TO CORRECT SEO */}
         <title>{`${category} articles - Serhii Shramko`}</title>
         <meta
-          content={`The ${category} category page is a hub for all things related to ${category}.
-           Discover tips, tricks, tutorials, and more to level up your skills.`}
+          content={seoDescription}
           name="description"
           key="description"
         />
         <meta
-          content={`${category} blog,
-           ${category} articles, tech blog, code snippets, software blog, web dev blog, ${category}`}
+          content={seoKeywords}
           name="keywords"
           key="keywords"
         />
@@ -112,30 +114,39 @@ function CategoryPage(props: CategoryPageProps) {
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
-  const tags = await getPostsCategories();
+  const categories = await getPostsCategories();
 
   return {
-    paths: tags.map((tag: string) => ({
+    paths: categories.map((category: string) => ({
       params: {
-        category: tag.toLowerCase(),
+        category: category.toLowerCase(),
       },
     })),
     fallback: false,
   };
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<CategoryPageProps>> {
   const posts = await getPostsByCategory(context.params?.category as string);
   const categories = await getPostsCategories();
   const sortedPosts = posts.sort(sortByBirthtime);
+  const postCategory = categories.find(
+    (item) => item.toLowerCase() === context.params?.category,
+  );
+  const formattedCategory = postCategory?.split('-').join(' ').trim();
+
+  // eslint-disable-next-line max-len
+  const seoDescription = `The ${formattedCategory} category page is a hub for all things related to ${formattedCategory}. Discover tips, tricks, tutorials, and more to level up your skills.`;
+  // eslint-disable-next-line max-len
+  const seoKeywords = `${formattedCategory} blog, ${formattedCategory} articles, tech blog, code snippets, software blog, web dev blog, ${formattedCategory}`;
 
   return {
     props: {
       posts: sortedPosts,
-      category: categories.find(
-        (item) => item.toLowerCase() === context.params?.category,
-      ),
+      category: formattedCategory as string,
       categories,
+      seoDescription,
+      seoKeywords,
     },
   };
 }

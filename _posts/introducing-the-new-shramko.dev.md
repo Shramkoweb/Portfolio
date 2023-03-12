@@ -4,7 +4,7 @@ description: How I built a modern portfolio in 2022, and a list of technologies 
 createDate: 2022-08-13T13:31:25.041Z
 updateData: 2022-09-25T12:03:53.360Z
 keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]
-categories: [Project Setup, React]
+categories: [Project-Setup, React]
 featured: false
 ---
 
