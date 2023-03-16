@@ -5,7 +5,7 @@ createDate: 2023-02-25T17:21:50.063Z
 updateData: 2023-02-25T17:21:50.063Z
 keywords: [what is nvm node, what is nvm in linux, brew install nvm, install nvm, install nvm windows, nvm set default, nvm set default node version]
 categories: [JS, Node]
-featured: true
+featured: false
 ---
 
 <Image src="node-post.jpg" alt="" />
