@@ -249,9 +249,16 @@ Skips HTML server rendering, and renders only on the client.
 
 ```jsx
 <ReactComponent client:only="react" />
-<SomeSvelteComponent client:only="svelte" />
+<SvelteComponent client:only="svelte" />
 <Component client:only="vue" />
 ```
+
+## Do you need to learn the Astro?
+
+At the [moment](https://2022.stateofjs.com/en-US/libraries/rendering-frameworks/), Astro is considered a very
+interesting framework that most people want to learn and understand. So be the first to figure it out 🚀.
+
+<Image src="astro-state.jpeg" alt="Astro framework interest on stateofjs" />
 
 ## Useful Links
 
