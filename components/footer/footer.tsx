@@ -32,10 +32,10 @@ export function Footer() {
         </div>
         <div className="flex flex-col space-y-4">
           <FooterLink href="https://github.com/shramkoweb">GitHub</FooterLink>
-          <FooterLink href="https://www.linkedin.com/in/shramko-dev">
+          <FooterLink href="https://www.linkedin.com/in/shramko-dev/">
             LinkedIn
           </FooterLink>
-          <FooterLink href="https://www.instagram.com/shramko.serhii">
+          <FooterLink href="https://www.instagram.com/serhii.shramko/">
             Instagram
           </FooterLink>
         </div>
