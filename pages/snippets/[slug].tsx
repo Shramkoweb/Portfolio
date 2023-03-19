@@ -34,7 +34,7 @@ function SnippetPage(props: SnippetPageProps) {
   return (
     <>
       <Head>
-        <title>Code Snippets - Serhii Shramko</title>
+        <title>{title}</title>
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
