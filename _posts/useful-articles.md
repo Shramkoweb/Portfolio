@@ -25,7 +25,7 @@ learning and maintaining knowledge.
 - [ui.dev](https://ui.dev/) - fun and nice courses about frontend ecosystem by Tyler McGinnis
 - [coursera.org](https://www.coursera.org/) - learn computer science, business, languages, health, arts by top
   universities and authors
-- [udacity.com](https://udacity.com/) - advance your mastery of data science and web
+- [udacity.com](https://www.udacity.com/) - advance your mastery of data science and web
 - [newline.co](https://www.newline.co/) - everything you need for full-stack development
 - [pluralsight.com](https://www.pluralsight.com/) - online education platform that offers courses primarily geared
   toward software developers.
@@ -37,8 +37,8 @@ learning and maintaining knowledge.
 - [Dan Abramov](https://overreacted.io/) - co-author of Redux and Create React App
 - [Kent C. Dodds](https://kentcdodds.com/) - React, Testing end more
 - [Sophie Alpert](https://sophiebits.com/) - managed the React team and worked at Khan Academy
-- [Sara Vieira](https://iamsaravieira.com/blog) - just nice blog
-- [Sarah Drasner](https://sarahdrasnerdesign.com/writing) - cool blog about animations in web
+- [Sara Vieira](https://iamsaravieira.com/blog/) - just nice blog
+- [Sarah Drasner](https://sarahdrasnerdesign.com/writing/) - cool blog about animations in web
 - [Lea Verou](https://lea.verou.me/) - CSS secrets book author
 - [Dr. Axel Rauschmayer](https://2ality.com/) - one of the best blog about JS Core
 - [Lin Clark](https://code-cartoons.com/) - nice cartoons about development

@@ -115,4 +115,4 @@ Examples that we discussed today.
 - [Article about how my site works under the hood](https://shramko.dev/blog/introducing-the-new-shramko.dev)
 - [Site where I drew pictures](https://okso.app/)
 - [Nice tutorial about how DNS works](https://howdns.works/)
-- [What is a URL](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
+- [What is a URL](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL)

@@ -191,7 +191,7 @@ Astro supports a wide amount of popular styling techniques out of the box:
 - [CSS modules](https://css-tricks.com/css-modules-part-1-need/)
 - [CSS Preprocessors](https://docs.astro.build/en/guides/styling/#css-preprocessors) [Sass/Less/Stylus]
 
-> The [styling doc](https://docs.astro.build/en/guides/styling) has more detail.
+> The [styling doc](https://docs.astro.build/en/guides/styling/) has more detail.
 
 ## Template Directives
 
@@ -255,7 +255,7 @@ Skips HTML server rendering, and renders only on the client.
 
 ## Do you need to learn the Astro?
 
-At the [moment](https://2022.stateofjs.com/en-US/libraries/rendering-frameworks/), Astro is considered a very
+At the [moment](https://2022.stateofjs.com/en-us/libraries/rendering-frameworks/), Astro is considered a very
 interesting framework that most people want to learn and understand. So be the first to figure it out 🚀.
 
 <Image src="astro-state.jpeg" alt="Astro framework interest on stateofjs" />

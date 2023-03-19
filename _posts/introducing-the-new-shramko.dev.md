@@ -67,7 +67,7 @@ in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f8
 
 Here are the primary technologies used in this project:
 
-- [React](https://reactjs.org): For the UI
+- [React](https://react.dev/): For the UI
 - [Next.js](https://nextjs.org/): Framework for hybrid static & server rendering
 - [TypeScript](https://www.typescriptlang.org): Typed JavaScript (necessary for
   any project you plan to maintain)

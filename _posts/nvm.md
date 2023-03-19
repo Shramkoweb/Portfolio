@@ -12,7 +12,7 @@ featured: false
 
 [NVM](https://github.com/nvm-sh/nvm), or Node Version Manager, is essential for managing multiple versions of Node.js on
 our development environment.
-[Node.js](https://nodejs.org/en/) is a JavaScript-based web technology, that allows developers to write server-side code
+[Node.js](https://nodejs.org/en) is a JavaScript-based web technology, that allows developers to write server-side code
 using JavaScript.
 
 By using NVM to manage different versions with ease, developers can keep their environment up-to-date with the best
