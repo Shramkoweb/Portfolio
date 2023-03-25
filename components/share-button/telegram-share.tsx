@@ -10,7 +10,7 @@ export function TelegramShare() {
   };
 
   return (
-    <ShareButton onClick={handleClick}>
+    <ShareButton onClick={handleClick} ariaLabel="Share this post on Telegram">
       <svg
         className="w-[18px]"
         xmlns="http://www.w3.org/2000/svg"

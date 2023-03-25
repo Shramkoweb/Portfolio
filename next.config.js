@@ -58,6 +58,14 @@ const nextConfig = {
         headers: securityHeaders
       }
     ];
+  },
+  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#extend-nextjs-configuration
+  sentry: {
+    disableServerWebpackPlugin: true,
+    disableClientWebpackPlugin: true,
+    hideSourceMaps: true,
+    autoInstrumentServerFunctions: false,
+    autoInstrumentMiddleware: false
   }
 };
 
@@ -66,7 +74,7 @@ const nextConfigByEnv = {
     silent: true
   }),
   test: nextConfig,
-  development: nextConfig
+  development: withSentryConfig(nextConfig)
 };
 
 module.exports = nextConfigByEnv[process.env.NODE_ENV];
