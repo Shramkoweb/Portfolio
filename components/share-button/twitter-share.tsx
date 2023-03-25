@@ -10,7 +10,7 @@ export function TwitterShare() {
   };
 
   return (
-    <ShareButton onClick={handleClick}>
+    <ShareButton onClick={handleClick} ariaLabel="Share this post on Twitter">
       <svg
         className="w-[18px]"
         viewBox="0 0 256 209"
