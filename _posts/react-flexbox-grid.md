@@ -3,8 +3,8 @@ title: "Tutorial: How to create a grid with flexbox in React"
 description: Creating a flexbox-based Grid component with BEM methodology and clsx
 createDate: 2022-10-09T20:40:12.461Z
 updateData: 2022-10-10T00:35:10.461Z
-keywords: [react flexbox grid, flexbox css, react js grid, react flexbox, react grid system, classnames, clsx]
-categories: [React, CSS, How-To]
+keywords: [ react flexbox grid, flexbox css, react js grid, react flexbox, react grid system, classnames, clsx ]
+categories: [ React, CSS, How-To ]
 featured: false
 ---
 
@@ -181,6 +181,6 @@ Therefore, below I share additional materials that may be useful:
 
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox Froggy Game](https://flexboxfroggy.com/)
-- [React bootstrap Grid system](https://react-bootstrap.github.io/layout/grid/)
+- [React bootstrap Grid system](https://react-bootstrap.github.io/docs/layout/grid)
 
 
