@@ -4,7 +4,7 @@ description: Cross-browser testing and how to test your site with Browserstack
 createDate: 2023-02-24T22:06:42.844Z
 updateData: 2023-02-24T22:06:42.844Z
 keywords: [browserstack, browserstack dev tools, android browser with dev tools, browserstack devices, browser with developer tools for ios]
-categories: [How-To, Useful Resources, Project Setup]
+categories: [How-To, Useful-Resources, Project-Setup]
 featured: false
 ---
 

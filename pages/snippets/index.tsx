@@ -1,6 +1,9 @@
 import Head from 'next/head';
-import { getSnippets } from '@/lib/snippets/api';
 import { Snippet } from '@/lib/types';
+import { sortByBirthtime } from '@/lib/posts/utils';
+
+import { getSnippets } from '@/lib/snippets/api';
+
 import { SnippetCard } from '@/components/snippet-card';
 
 interface SnippetsPageProps {
@@ -67,10 +70,11 @@ function SnippetsPage(props: SnippetsPageProps) {
 
 export async function getStaticProps() {
   const snippets = await getSnippets();
+  const sortedSnippets = snippets.sort(sortByBirthtime);
 
   return {
     props: {
-      snippets,
+      snippets: sortedSnippets,
     },
   };
 }

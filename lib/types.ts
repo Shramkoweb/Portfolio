@@ -14,10 +14,10 @@ export type Post = {
     description: string;
     readTime: string;
     createDate: number;
-    updateData: number;
     featured: boolean;
     keywords: string[];
     categories: string[];
+    updateData?: number;
   };
   content: string;
 };
@@ -34,6 +34,7 @@ export type Snippet = {
     title: string;
     description: string;
     createDate: number;
+    keywords: string[];
     updateData?: number;
   };
   content: string;

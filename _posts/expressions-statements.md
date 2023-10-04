@@ -2,7 +2,7 @@
 title: Expressions vs Statements
 description: Understand the important distinction expressions vs statements in JavaScript
 keywords: [JS, CS, ES Modules]
-categories: [JS, Clean Code]
+categories: [JS, Clean-Code]
 createDate: 2022-07-27T21:27:20Z
 updateData: 2022-08-07T11:37:59.665Z
 featured: false

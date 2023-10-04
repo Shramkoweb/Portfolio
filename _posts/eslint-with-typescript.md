@@ -3,8 +3,8 @@ title: How to use ESLint with TypeScript
 description: In this post, we'll walk through how to set up linting in your TS project.
 createDate: 2022-08-02T19:51:19Z
 updateData: 2022-08-02T20:00:45.784Z
-keywords: [TS, TypeScript, ESLint, Project Setup]
-categories: [TS, Project Setup]
+keywords: [TS, TypeScript, ESLint, Project-Setup]
+categories: [TS, Project-Setup]
 featured: false
 ---
 
@@ -105,7 +105,7 @@ to use. For example:
 ```
 
 Rules are added as keys to this rules attribute and you can usually find basic eslint rules here on their website in the
-[rules' documentation](https://eslint.org/docs/latest/user-guide/configuring/rules).
+[rules' documentation](https://eslint.org/docs/latest/use/configure/rules).
 
 ## Conclusion
 
@@ -114,5 +114,5 @@ That's all 🎉.
 It's very easy to start using `ESlint`, but its contribution to code formatting and saving time is
 huge. Therefore, I recommend always using it.
 
-- [Create-React-App with TypeScript, ESLint, Prettier, and Github Actions](https://medium.com/@brygrill/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
+- [Create-React-App with TypeScript, ESLint, Prettier, and Github Actions](https://brygrill.medium.com/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
 - [What is ESLint?](https://hackernoon.com/what-is-eslint-how-do-i-set-it-up-on-atom-70f270f57296)

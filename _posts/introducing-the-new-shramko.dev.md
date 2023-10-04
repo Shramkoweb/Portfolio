@@ -4,8 +4,8 @@ description: How I built a modern portfolio in 2022, and a list of technologies 
 createDate: 2022-08-13T13:31:25.041Z
 updateData: 2022-09-25T12:03:53.360Z
 keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]
-categories: [Project Setup, React]
-featured: true
+categories: [Project-Setup, React]
+featured: false
 ---
 
 <Image alt src="my-site.jpeg" priority={true} alt="S.Shramko personal site screenshot"/>
@@ -67,7 +67,7 @@ in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f8
 
 Here are the primary technologies used in this project:
 
-- [React](https://reactjs.org): For the UI
+- [React](https://react.dev/): For the UI
 - [Next.js](https://nextjs.org/): Framework for hybrid static & server rendering
 - [TypeScript](https://www.typescriptlang.org): Typed JavaScript (necessary for
   any project you plan to maintain)

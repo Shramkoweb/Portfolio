@@ -4,7 +4,7 @@ description: How to connect postgres database with URL
 createDate: 2023-02-09T12:43:36.700Z
 updateData: 2023-02-09T12:43:36.700Z
 keywords: [DataGrip connect, database connection ulr, postgres connect url, how to connect to database]
-categories: [JS, How-To, Project Setup]
+categories: [JS, How-To, Project-Setup]
 featured: false
 ---
 

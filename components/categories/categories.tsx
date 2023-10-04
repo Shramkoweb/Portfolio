@@ -17,16 +17,20 @@ export function Categories(props: CategoriesProps) {
           <span className="capsize">All</span>
         </Link>
       </li>
-      {categories.map((item) => (
-        <li key={item}>
-          <Link
-            href={`/blog/category/${item.toLowerCase()}`}
-            className="border-2 border-gray-200 dark:border-gray-700 inline-block p-1 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
-          >
-            <span className="capsize">{item}</span>
-          </Link>
-        </li>
-      ))}
+      {categories.map((item) => {
+        const formattedCategory = item.split('-').join(' ').trim();
+
+        return (
+          <li key={item}>
+            <Link
+              href={`/blog/category/${item.toLowerCase()}`}
+              className="border-2 border-gray-200 dark:border-gray-700 inline-block p-1 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+            >
+              <span className="capsize">{formattedCategory}</span>
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }

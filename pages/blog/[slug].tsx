@@ -50,7 +50,7 @@ function ArticlePage(props: ArticlePageProps) {
   return (
     <>
       <Head>
-        <title>{`${title} - Serhii Shramko`}</title>
+        <title>{title}</title>
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
@@ -75,11 +75,13 @@ function ArticlePage(props: ArticlePageProps) {
           content={new Date(createDate).toISOString()}
           key="article:published_time"
         />
-        <meta
-          property="article:modified_time"
-          content={new Date(updateData).toISOString()}
-          key="article:modified_time"
-        />
+        {updateData && (
+          <meta
+            property="article:modified_time"
+            content={new Date(updateData).toISOString()}
+            key="article:modified_time"
+          />
+        )}
         <meta
           property="article:section"
           content="Technology"
@@ -90,7 +92,7 @@ function ArticlePage(props: ArticlePageProps) {
           content="https://shramko.dev"
           key="article:author"
         />
-        <meta name="keywords" content={keywords.join(', ')} />
+        <meta name="keywords" key="keywords" content={keywords.join(', ')} />
         {categories.map((category) => (
           <meta
             key={`article:${category}`}

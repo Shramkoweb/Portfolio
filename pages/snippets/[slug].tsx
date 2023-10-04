@@ -21,7 +21,7 @@ function SnippetPage(props: SnippetPageProps) {
   const {
     content,
     data: {
-      title, description, createDate, updateData,
+      title, description, createDate, updateData, keywords,
     },
   } = props;
 
@@ -34,7 +34,7 @@ function SnippetPage(props: SnippetPageProps) {
   return (
     <>
       <Head>
-        <title>Code Snippets - Serhii Shramko</title>
+        <title>{title}</title>
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
@@ -67,6 +67,7 @@ function SnippetPage(props: SnippetPageProps) {
           />
         )}
 
+        <meta name="keywords" key="keywords" content={keywords.join(', ')} />
         <meta
           property="article:section"
           content="Technology"

@@ -13,6 +13,11 @@ function NotFoundPage() {
     <>
       <Head>
         <title>404 - Serhii Shramko</title>
+        <meta
+          content="Oops! The page you're looking for isn't here. But don't worry, we'll help you find your way back. Let's start by heading to the homepage."
+          name="description"
+          key="description"
+        />
       </Head>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 text-black dark:text-white">

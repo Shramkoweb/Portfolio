@@ -1,21 +1,28 @@
 import Head from 'next/head';
 import { useState } from 'react';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
 import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
-import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Post } from '@/lib/types';
-import { GetStaticPathsResult, GetStaticPropsContext } from 'next';
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import { sortByBirthtime } from '@/lib/posts/utils';
+
+import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 
 interface CategoryPageProps {
   posts: Post[];
   categories: string[];
   category: string;
+  seoDescription: string;
+  seoKeywords: string;
 }
 
 function CategoryPage(props: CategoryPageProps) {
-  const { posts, categories, category } = props;
+  const {
+    posts, categories, category, seoDescription, seoKeywords,
+  } = props;
+  const postsLength = posts.length;
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -27,12 +34,12 @@ function CategoryPage(props: CategoryPageProps) {
         {/*  TODO REFACTOR TO CORRECT SEO */}
         <title>{`${category} articles - Serhii Shramko`}</title>
         <meta
-          content={`Articles on web dev and software engineering by ${category}`}
+          content={seoDescription}
           name="description"
           key="description"
         />
         <meta
-          content={`javascript blog, tech blog, code snippets, software blog, web dev blog, ${category}`}
+          content={seoKeywords}
           name="keywords"
           key="keywords"
         />
@@ -46,9 +53,9 @@ function CategoryPage(props: CategoryPageProps) {
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           {category}
           <span className="ml-auto inline-block text-sm">
-            {posts.length}
+            {postsLength}
             {' '}
-            articles
+            {postsLength === 1 ? 'article' : 'articles'}
           </span>
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">
@@ -107,29 +114,39 @@ function CategoryPage(props: CategoryPageProps) {
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
-  const tags = await getPostsCategories();
+  const categories = await getPostsCategories();
 
   return {
-    paths: tags.map((tag: string) => ({
+    paths: categories.map((category: string) => ({
       params: {
-        category: tag.toLowerCase(),
+        category: category.toLowerCase(),
       },
     })),
     fallback: false,
   };
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<CategoryPageProps>> {
   const posts = await getPostsByCategory(context.params?.category as string);
   const categories = await getPostsCategories();
+  const sortedPosts = posts.sort(sortByBirthtime);
+  const postCategory = categories.find(
+    (item) => item.toLowerCase() === context.params?.category,
+  );
+  const formattedCategory = postCategory?.split('-').join(' ').trim();
+
+  // eslint-disable-next-line max-len
+  const seoDescription = `The ${formattedCategory} category page is a hub for all things related to ${formattedCategory}. Discover tips, tricks, tutorials, and more to level up your skills.`;
+  // eslint-disable-next-line max-len
+  const seoKeywords = `${formattedCategory} blog, ${formattedCategory} articles, tech blog, code snippets, software blog, web dev blog, ${formattedCategory}`;
 
   return {
     props: {
-      posts,
-      category: categories.find(
-        (item) => item.toLowerCase() === context.params?.category,
-      ),
+      posts: sortedPosts,
+      category: formattedCategory as string,
       categories,
+      seoDescription,
+      seoKeywords,
     },
   };
 }
