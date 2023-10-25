@@ -61,12 +61,11 @@ export function Footer() {
         </div>
       </div>
       <small className="text-xs text-gray-600 dark:text-gray-400 pb-4">
-        © Made with ❤️ in
-        {' '}
+        © Made with ❤️
+        <br />
         {getCopyrightYearString(YEAR_OF_CREATE, new Date().getFullYear())}
         {' '}
-        by
-        Serhii Shramko
+        <Link href="/about">Serhii Shramko</Link>
       </small>
     </footer>
   );
