@@ -3,9 +3,9 @@ title: Difference between absolute and relative URL in HTML
 description: Everything you need to know about link addresses. Absolute link vs relative
 createDate: 2022-10-21T21:57:25.439Z
 updateData: 2022-10-21T21:57:25.439Z
-keywords: [absolute and relative links, absolute url example, absolute url html, absolute url, absolute url vs relative url, absolute or relative]
-categories: [JS, HTML]
-featured: true
+keywords: [ absolute and relative links, absolute url example, absolute url html, absolute url, absolute url vs relative url, absolute or relative ]
+categories: [ JS, HTML ]
+featured: false
 ---
 
 I am a Frontend mentor in a [MacPaw internship](https://macpaw.com/internship) and sometimes my interns get confused 🫠
