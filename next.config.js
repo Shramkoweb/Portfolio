@@ -46,9 +46,6 @@ const nextConfig = {
   serverRuntimeConfig: {
     appReleaseVersion: new Date().valueOf()
   },
-  experimental: {
-    legacyBrowsers: false
-  },
   poweredByHeader: false,
   reactStrictMode: true,
   async headers() {
