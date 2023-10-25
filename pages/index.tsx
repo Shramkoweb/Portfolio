@@ -6,7 +6,11 @@ import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
 
 import { getPosts } from '@/lib/posts/api';
-import { filterByFeatured, sortByBirthtime } from '@/lib/posts/utils';
+import {
+  filterByFeatured,
+  filterByNotFeatured,
+  sortByBirthtime,
+} from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
 
 import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
@@ -185,13 +189,16 @@ export async function getStaticProps(): Promise<
 GetStaticPropsResult<IndexPageProps>
 > {
   const posts = await getPosts();
-  const sortedPosts = posts.sort(sortByBirthtime);
-  const featuredPosts = sortedPosts.filter(filterByFeatured);
+  const otherPosts = posts
+    .filter(filterByNotFeatured)
+    .sort(sortByBirthtime)
+    .slice(0, 3);
+  const featuredPosts = posts.filter(filterByFeatured).sort(sortByBirthtime);
 
   return {
     props: {
       featuredPosts,
-      otherPosts: sortedPosts.slice(0, 3),
+      otherPosts,
     },
   };
 }
