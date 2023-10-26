@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "postbuild": "next-sitemap",
+    "postinstall": "prisma generate",
     "pre-commit": "",
     "pre-push": "npm run lint",
     "prepare": "husky install",
