@@ -4,7 +4,7 @@ description: Discover the art of crafting clean and organized HTML class names w
 createDate: 2023-10-25T19:12:07.231Z
 keywords: [ css naming conventions, name convention css, css class naming conventions, css class name convention, html id naming convention, naming css, html id name convention, html class naming conventions ]
 categories: [ CSS, HTML, Clean Code ]
-featured: true
+featured: false
 ---
 
 <Image src="html.jpg" alt="White smartphone on two softbound books" />

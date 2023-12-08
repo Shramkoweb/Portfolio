@@ -9,7 +9,7 @@
 
 This repo contains the source code for [shramko.dev](https://shramko.dev). - in progress
 
-*Readme is also available in [Ukrainian](README.ua.md).*
+*Readme is also available in [Ukrainian](README.ua.md).* (in progress)
 
 ## Description
 
