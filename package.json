@@ -19,7 +19,7 @@
     "test:coverage": "jest --coverage"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "dependencies": {
     "@prisma/client": "4.16.2",
