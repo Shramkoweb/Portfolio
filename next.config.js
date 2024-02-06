@@ -62,7 +62,9 @@ const nextConfig = {
     disableClientWebpackPlugin: true,
     hideSourceMaps: true,
     autoInstrumentServerFunctions: false,
-    autoInstrumentMiddleware: false
+    autoInstrumentMiddleware: false,
+    disableLogger: true,
+    automaticVercelMonitors: true,
   }
 };
 
