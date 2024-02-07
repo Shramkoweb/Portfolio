@@ -45,7 +45,7 @@ function GearPage() {
         <div className="prose dark:prose-dark w-full">
           <h2 id="computer-office">Computer</h2>
           <ul>
-            <li>16&quot; Macbook Pro (2018)</li>
+            <li>14&quot; MacBook Pro M3 Max</li>
             <li>27&quot; LG UltraFine 27UL850-W</li>
             <li>SteelSeries Rival Wireless 3 Mouse</li>
           </ul>
@@ -72,7 +72,7 @@ function GearPage() {
           <h2 id="audio-video">Audio</h2>
           <ul>
             <li>Sony WH-1000XM4 🎧</li>
-            <li>Samsung Buds Pro</li>
+            <li>AirPods Pro 2</li>
           </ul>
           <h2 id="software">Software</h2>
           <ul>
@@ -104,6 +104,16 @@ function GearPage() {
                 Preply
               </a>
             </li>
+
+            <li>
+              <a
+                href="https://setapp.com/"
+                rel="noopener"
+                target="_blank"
+              >
+                Setapp
+              </a>
+            </li>
             <li>Spotify</li>
             <li>CleanShot X</li>
             <li>Grammarly</li>
@@ -111,7 +121,8 @@ function GearPage() {
           </ul>
           <h2 id="other">Other</h2>
           <ul>
-            <li>Golf GTI&ensp;🚗💨</li>
+            <li><s>Golf GTI</s></li>
+            <li>BMW 428 XDrive&ensp;🚗💨</li>
             <li>Apple iPhone</li>
             <li>Apple Watch</li>
             <li>Kindle</li>
