@@ -5,7 +5,7 @@ createDate: 2023-12-08T01:07:13.290Z
 updateData: 2023-12-08T01:07:13.290Z
 keywords: [ Adding SSH Keys, GitHub Account, Git Terminal, Existing SSH Keys, Generating SSH Key, SSH public key, SSH Key to GitHub Account ]
 categories: [ How-To, Project-Setup ]
-featured: true
+featured: false
 ---
 
 <Image src="keys.jpg" alt="Keys on white background" />
