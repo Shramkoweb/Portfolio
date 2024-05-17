@@ -24,7 +24,7 @@
   "dependencies": {
     "@prisma/client": "4.16.2",
     "@sentry/nextjs": "^7.109.0",
-    "@tailwindcss/typography": "0.5.12",
+    "@tailwindcss/typography": "0.5.13",
     "@vercel/analytics": "^1.2.2",
     "clsx": "1.2.1",
     "next": "13.5.6",
