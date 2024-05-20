@@ -2,6 +2,7 @@
 title: Installing PostgreSQL on macOS
 description: We'll walk you through the steps to install PostgreSQL on your macOS system.
 createDate: 2023-10-04T15:51:46.141Z
+updateData: 2024-05-20T19:09:55.954Z
 keywords: [ JS snippet, PostgreSQL Snippet, install PostgreSQL, postgres on MacOS ]
 ---
 
