@@ -1,5 +1,6 @@
 ---
-title: "JavaScript 101: Arrays"
+title: "Mastering JavaScript Arrays: A Beginner's Guide to Essential Concepts"
+heading: "JavaScript 101: Arrays"
 description: Guide to javascript array methods
 createDate: 2022-11-25T17:39:11.486Z
 updateData: 2022-11-25T17:39:11.486Z

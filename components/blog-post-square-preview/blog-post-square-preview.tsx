@@ -6,13 +6,13 @@ import { Views } from '@/lib/types';
 import { fetcher } from '@/lib/fetcher';
 
 interface BlogPostPreviewProps {
-  title: string;
+  heading: string;
   slug: string;
   classNames: string;
 }
 
 export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
-  const { title, slug, classNames } = props;
+  const { heading, slug, classNames } = props;
 
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = data?.total;
@@ -29,7 +29,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
       <div className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded-lg p-4">
         <div className="flex flex-col md:flex-row justify-between">
           <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full text-gray-900 dark:text-gray-100 tracking-tight">
-            {title}
+            {heading}
           </h4>
         </div>
         <div className="flex items-center text-gray-800 dark:text-gray-200 capsize">

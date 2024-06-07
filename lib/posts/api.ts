@@ -19,6 +19,7 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
 
     const {
       data: {
+        heading,
         title,
         description,
         categories,
@@ -33,6 +34,7 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
 
     return {
       data: {
+        heading,
         slug,
         featured,
         keywords,

@@ -1,5 +1,6 @@
 ---
-title: How to add SSH keys to your GitHub account
+title: Adding SSH Keys to Your GitHub Account
+heading: How to add SSH keys to your GitHub account
 description: Learn how to add SSH keys to your GitHub account. Boost your account's security and ease your workflow by securely connecting your local machine to your GitHub repositories.
 createDate: 2023-12-08T01:07:13.290Z
 updateData: 2023-12-08T01:07:13.290Z

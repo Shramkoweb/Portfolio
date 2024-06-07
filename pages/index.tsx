@@ -138,9 +138,9 @@ function IndexPage(props: IndexPageProps) {
           Featured Posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map(({ data: { slug, title } }, index) => (
+          {featuredPosts.map(({ data: { slug, heading } }, index) => (
             <BlogPostSquarePreview
-              title={title}
+              heading={heading}
               slug={slug}
               classNames={GRADIENTS[index]}
               key={slug}
@@ -151,9 +151,9 @@ function IndexPage(props: IndexPageProps) {
           Latest posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {otherPosts.map(({ data: { slug, title } }) => (
+          {otherPosts.map(({ data: { slug, heading } }) => (
             <BlogPostSquarePreview
-              title={title}
+              heading={heading}
               slug={slug}
               classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
               key={slug}

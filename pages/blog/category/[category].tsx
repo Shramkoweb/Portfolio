@@ -4,11 +4,12 @@ import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } fro
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
 import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
-import { Post } from '@/lib/types';
+import { Post, PostCategory } from '@/lib/types';
 import { sortByBirthtime } from '@/lib/posts/utils';
 
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
+import { categoryToSeoData } from '@/lib/utils';
 
 interface CategoryPageProps {
   posts: Post[];
@@ -16,11 +17,12 @@ interface CategoryPageProps {
   category: string;
   seoDescription: string;
   seoKeywords: string;
+  seoTitle: string;
 }
 
 function CategoryPage(props: CategoryPageProps) {
   const {
-    posts, categories, category, seoDescription, seoKeywords,
+    posts, categories, category, seoDescription, seoKeywords, seoTitle,
   } = props;
   const postsLength = posts.length;
 
@@ -31,8 +33,7 @@ function CategoryPage(props: CategoryPageProps) {
   return (
     <>
       <Head>
-        {/*  TODO REFACTOR TO CORRECT SEO */}
-        <title>{`${category} articles - Serhii Shramko`}</title>
+        <title>{`${seoTitle} articles - Serhii Shramko`}</title>
         <meta
           content={seoDescription}
           name="description"
@@ -45,12 +46,22 @@ function CategoryPage(props: CategoryPageProps) {
         />
         <meta
           property="og:site_name"
-          content="Serhii Shramko Blog"
+          content={`Serhii Shramko - Blog category ${category}`}
           key="og:site_name"
         />
+        <meta
+          property="og:description"
+          content={seoDescription}
+          key="og:description"
+        />
+        <meta property="og:title" content={seoTitle} key="og:title" />
+        <meta name="twitter:title" content={seoTitle} key="twitter:title" />
+        <meta name="twitter:description" content={seoDescription} key="twitter:description" />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
+        <h1
+          className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center"
+        >
           {category}
           <span className="ml-auto inline-block text-sm">
             {postsLength}
@@ -59,14 +70,7 @@ function CategoryPage(props: CategoryPageProps) {
           </span>
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">
-          <p>
-            On this page you can find interesting articles on the topic -
-            {' '}
-            <b>{category}</b>
-            .
-            <br />
-            Use the search below to filter by article title.
-          </p>
+          <p>{seoDescription}</p>
         </div>
         <div className="relative w-full mb-4">
           <input
@@ -104,7 +108,7 @@ function CategoryPage(props: CategoryPageProps) {
           <BlogPostPreview
             key={data.title}
             slug={data.slug}
-            title={data.title}
+            heading={data.heading}
             excerpt={data.description}
           />
         ))}
@@ -133,19 +137,19 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
   const postCategory = categories.find(
     (item) => item.toLowerCase() === context.params?.category,
   );
-  const formattedCategory = postCategory?.split('-').join(' ').trim();
+  const category = postCategory?.split('-').join(' ').trim() as string;
 
-  // eslint-disable-next-line max-len
-  const seoDescription = `The ${formattedCategory} category page is a hub for all things related to ${formattedCategory}. Discover tips, tricks, tutorials, and more to level up your skills.`;
-  // eslint-disable-next-line max-len
-  const seoKeywords = `${formattedCategory} blog, ${formattedCategory} articles, tech blog, code snippets, software blog, web dev blog, ${formattedCategory}`;
+  const seoDescription = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].description;
+  const seoKeywords = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].keywords;
+  const seoTitle = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].title;
 
   return {
     props: {
       posts: sortedPosts,
-      category: formattedCategory as string,
+      category,
       categories,
       seoDescription,
+      seoTitle,
       seoKeywords,
     },
   };

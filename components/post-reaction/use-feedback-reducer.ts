@@ -6,19 +6,19 @@ interface FeedbackState {
   feedback: Feedback;
 }
 
-const initialState = { feedback: Feedback.blank };
+const initialState = { feedback: Feedback.Blank };
 
 function reducer(
   state: FeedbackState,
   action: { type: Feedback },
 ): FeedbackState {
   switch (action.type) {
-    case Feedback.helpful:
-      return { feedback: Feedback.helpful };
-    case Feedback.worthless:
-      return { feedback: Feedback.worthless };
+    case Feedback.Helpful:
+      return { feedback: Feedback.Helpful };
+    case Feedback.Worthless:
+      return { feedback: Feedback.Worthless };
     default:
-      return { feedback: Feedback.blank };
+      return { feedback: Feedback.Blank };
   }
 }
 
@@ -34,8 +34,8 @@ export const useFeedbackReducer = () => {
   return {
     state,
     actions: {
-      worthless: () => dispatch(ActionCreator.setFeedback(Feedback.worthless)),
-      helpful: () => dispatch(ActionCreator.setFeedback(Feedback.helpful)),
+      worthless: () => dispatch(ActionCreator.setFeedback(Feedback.Worthless)),
+      helpful: () => dispatch(ActionCreator.setFeedback(Feedback.Helpful)),
     },
   };
 };

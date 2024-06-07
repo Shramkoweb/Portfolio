@@ -1,5 +1,6 @@
 ---
-title: PHPStorm Allow Network Connections on Startup
+title: "Enabling Network Connections on Startup in PHPStorm"
+heading: PHPStorm Allow Network Connections on Startup
 description: How to fix PHPStorm network connections error on startup
 createDate: 2022-10-26T16:49:52.889Z
 updateData: 2022-10-26T16:49:52.889Z
