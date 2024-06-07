@@ -3,7 +3,7 @@ title: Unsubscribe from Email Newsletters Immediately
 description: Save time by unsubscribing from email newsletters promptly
 createDate: 2024-04-08T11:47:44.249Z
 keywords: [ Unsubscribe from email newsletters, Turn off notifications, Email management tips, Notification management, Email overload, Focus improvement ]
-categories: [ Opinion, Productivity, Habit, Tools ]
+categories: [ Opinion, Productivity, Habits, Tools ]
 featured: true
 ---
 
