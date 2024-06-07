@@ -5,16 +5,16 @@ import { Feedback } from '@/lib/types';
 import { useFeedbackReducer } from './use-feedback-reducer';
 
 const responseTextByFeedback = {
-  [Feedback.helpful]: {
+  [Feedback.Helpful]: {
     title: 'Thanks for the feedback!',
     subtitle: '❤️',
   },
-  [Feedback.worthless]: {
+  [Feedback.Worthless]: {
     title: 'Sorry to hear that.',
     subtitle:
       '<a class="underline text-[#3b82f6] hover:text-[#2563eb]" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
   },
-  [Feedback.blank]: {
+  [Feedback.Blank]: {
     title: 'Was this article helpful ?',
     subtitle: 'Help me improve my blog',
   },

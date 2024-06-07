@@ -24,9 +24,9 @@ export type Post = {
 };
 
 export enum Feedback {
-  helpful = 'helpful',
-  worthless = 'worthless',
-  blank = 'blank',
+  Helpful = 'helpful',
+  Worthless = 'worthless',
+  Blank = 'blank',
 }
 
 export type Snippet = {
