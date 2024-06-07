@@ -3,7 +3,7 @@ title: Highly recommended resources for developers
 description: Check out a list of the best resources and blogs for developers in 2024.
 heading: Essential Tools and Guides Every Developer Should Utilize
 createDate: 2022-09-19T19:46:55.334Z
-updateData: 2022-09-25T12:03:53.360Z
+updateData: 2024-06-07T15:49:38.025Z
 keywords: [Resources for developers, Best Developer Websites, Tech News Resources, Awesome Web Development News Sources]
 categories: [Useful-Resources]
 featured: false
@@ -38,7 +38,6 @@ learning and maintaining knowledge.
 - [Dan Abramov](https://overreacted.io/) - co-author of Redux and Create React App
 - [Kent C. Dodds](https://kentcdodds.com/) - React, Testing end more
 - [Sophie Alpert](https://sophiebits.com/) - managed the React team and worked at Khan Academy
-- [Sara Vieira](https://iamsaravieira.com/blog/) - just nice blog
 - [Sarah Drasner](https://sarahdrasnerdesign.com/writing/) - cool blog about animations in web
 - [Lea Verou](https://lea.verou.me/) - CSS secrets book author
 - [Dr. Axel Rauschmayer](https://2ality.com/) - one of the best blog about JS Core
