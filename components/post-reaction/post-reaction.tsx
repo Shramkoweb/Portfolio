@@ -22,7 +22,7 @@ const responseTextByFeedback = {
 
 export function PostReaction() {
   const { state, actions } = useFeedbackReducer();
-  const isReactionUntouched = state.feedback === Feedback.blank;
+  const isReactionUntouched = state.feedback === Feedback.Blank;
 
   const handleYesClick = () => {
     actions.helpful();
