@@ -1,5 +1,6 @@
 ---
-title: Introducing the new shramko.dev
+title: "Presenting the Revamped shramko.dev: Explore the Exciting Updates!"
+heading: "Introducing the new shramko.dev"
 description: How I built a modern portfolio in 2022, and a list of technologies used
 createDate: 2022-08-13T13:31:25.041Z
 updateData: 2022-09-25T12:03:53.360Z

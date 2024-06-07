@@ -31,6 +31,7 @@ function ArticlePage(props: ArticlePageProps) {
     content,
     data: {
       title,
+      heading,
       slug,
       updateData,
       readTime,
@@ -123,7 +124,7 @@ function ArticlePage(props: ArticlePageProps) {
 
         <section className="lg:ml-[-44px] w-full">
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-            {title}
+            {heading}
           </h1>
           <ul className="text-gray-700 dark:text-gray-300 text-sm flex gap-4 mt-4 mb-4 flex-wrap">
             {categories.map((category) => (

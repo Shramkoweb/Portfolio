@@ -1,5 +1,6 @@
 ---
-title: Difference between absolute and relative URL in HTML
+title: "Absolute vs Relative URL: Which One Should You Use"
+heading: Difference between absolute and relative URL in HTML
 description: Everything you need to know about link addresses. Absolute link vs relative
 createDate: 2022-10-21T21:57:25.439Z
 updateData: 2022-10-21T21:57:25.439Z

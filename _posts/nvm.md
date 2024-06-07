@@ -1,5 +1,6 @@
 ---
-title: Node Version Manager
+heading: Node Version Manager 
+title: Managing Node Versions Made Easy with Node Version Manager (NVM) 
 description: NVM, or Node Version Manager. What is it and why we should use it?
 createDate: 2023-02-25T17:21:50.063Z
 updateData: 2023-02-25T17:21:50.063Z

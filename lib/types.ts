@@ -11,6 +11,7 @@ export type Post = {
   data: {
     slug: string;
     title: string;
+    heading: string;
     description: string;
     readTime: string;
     createDate: number;

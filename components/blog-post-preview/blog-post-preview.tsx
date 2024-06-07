@@ -6,12 +6,12 @@ import { fetcher } from '@/lib/fetcher';
 
 interface BlogPostPreviewProps {
   slug: string;
-  title: string;
+  heading: string;
   excerpt: string;
 }
 
 export function BlogPostPreview(props: BlogPostPreviewProps) {
-  const { slug, title, excerpt } = props;
+  const { slug, heading, excerpt } = props;
 
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = data?.total;
@@ -21,7 +21,7 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
       <div className="w-full mb-8">
         <div className="flex flex-col justify-between md:flex-row">
           <h3 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
-            {title}
+            {heading}
           </h3>
           <p className="w-32 mb-4 text-left text-gray-500 md:text-right md:mb-0">
             {`${views ? views.toLocaleString() : '---'} views`}

@@ -98,7 +98,7 @@ function BlogPage(props: BlogPageProps) {
           <BlogPostPreview
             key={data.title}
             slug={data.slug}
-            title={data.title}
+            heading={data.heading}
             excerpt={data.description}
           />
         ))}

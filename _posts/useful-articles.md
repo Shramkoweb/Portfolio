@@ -1,6 +1,7 @@
 ---
 title: Highly recommended resources for developers
-description: Check out a list of the best resources and blogs for developers in 2022.
+description: Check out a list of the best resources and blogs for developers in 2024.
+heading: Essential Tools and Guides Every Developer Should Utilize
 createDate: 2022-09-19T19:46:55.334Z
 updateData: 2022-09-25T12:03:53.360Z
 keywords: [Resources for developers, Best Developer Websites, Tech News Resources, Awesome Web Development News Sources]

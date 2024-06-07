@@ -1,9 +1,10 @@
 ---
-title: How to use ESLint with TypeScript
+title: "Optimizing TypeScript Development with ESLint: A Comprehensive Guide"
+heading: How to use ESLint with TypeScript
 description: In this post, we'll walk through how to set up linting in your TS project.
 createDate: 2022-08-02T19:51:19Z
 updateData: 2022-08-02T20:00:45.784Z
-keywords: [TS, TypeScript, ESLint, Project-Setup]
+keywords: [TS, TypeScript, ESLint, Project Setup, Optimizing TypeScript Development]
 categories: [TS, Project-Setup]
 featured: false
 ---
