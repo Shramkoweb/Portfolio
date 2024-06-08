@@ -7,7 +7,7 @@ keywords: [ JS snippet, PostgreSQL Snippet, install PostgreSQL, postgres on MacO
 ---
 
 I use PostgreSQL for my projects, and I want to share with you how to install it on macOS.
-Yea can read a little bit more about how my website works in my article [How I built my blog with Next.js](/blog/introducing-the-new-shramko.dev.md).
+Yea can read a little bit more about how my website works in my article [How I built my blog with Next.js](/blog/introducing-the-new-shramko.dev).
 
 ## Step 1: Homebrew Installation
 
