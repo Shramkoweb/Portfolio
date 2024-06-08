@@ -108,5 +108,5 @@ the [instructions](https://www.browserstack.com/docs/live/local-testing).
 ### Browserstack alternatives
 
 Unfortunately, I've only worked with this tool and don't have the experience to recommend anything else, but you can
-always [look at the competitors](https://www.g2.com/products/browserstack-automate/competitors/alternatives) and try it
+always [look at the competitors](https://www.g2.com/products/browserstack/competitors/alternatives) and try it
 yourself.

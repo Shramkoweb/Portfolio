@@ -93,7 +93,7 @@ Here are the services this site uses:
 - [Checkly](https://www.checklyhq.com/): API & E2E monitoring platform
 - [Uptimerobot](https://uptimerobot.com/): Uptime monitoring service
 - [Snyk](https://snyk.io/): Developer security platform
-- [Sentry](https://sentry.io): Error reporting service
+- [Sentry](https://sentry.io/welcome/): Error reporting service
 
 ## 🍭 The new look
 
@@ -124,7 +124,7 @@ Once ESLint, TypeScript, Checkly, and the Build all successfully complete, then 
 and [rehype](https://github.com/rehypejs/rehype), providing external plugins to hook into the compilation process.
 
 It helps me to convert a link to an external link and one for wrapping images
-with [Next Image](https://nextjs.org/docs/api-reference/next/image).
+with [Next Image](https://nextjs.org/docs/pages/api-reference/components/image).
 
 How does it look:
 

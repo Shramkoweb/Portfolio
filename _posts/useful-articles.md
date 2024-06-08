@@ -1,9 +1,9 @@
 ---
-title: Highly recommended resources for developers
+title: Highly recommended resources for developers in 2024
 description: Check out a list of the best resources and blogs for developers in 2024.
 heading: Essential Tools and Guides Every Developer Should Utilize
 createDate: 2022-09-19T19:46:55.334Z
-updateData: 2024-06-07T15:49:38.025Z
+updateData: 2024-06-08T11:44:38.025Z
 keywords: [Resources for developers, Best Developer Websites, Tech News Resources, Awesome Web Development News Sources]
 categories: [Useful-Resources]
 featured: false
@@ -30,7 +30,7 @@ learning and maintaining knowledge.
 - [newline.co](https://www.newline.co/) - everything you need for full-stack development
 - [pluralsight.com](https://www.pluralsight.com/) - online education platform that offers courses primarily geared
   toward software developers.
-- [scrimba.com](https://scrimba.com/) - interactive courses and tutorials. Watch the video and write the code directly
+- [scrimba.com](https://v2.scrimba.com/) - interactive courses and tutorials. Watch the video and write the code directly
   online
 
 ## Blogs
@@ -41,7 +41,7 @@ learning and maintaining knowledge.
 - [Sarah Drasner](https://sarahdrasnerdesign.com/writing/) - cool blog about animations in web
 - [Lea Verou](https://lea.verou.me/) - CSS secrets book author
 - [Dr. Axel Rauschmayer](https://2ality.com/) - one of the best blog about JS Core
-- [Lin Clark](https://code-cartoons.com/) - nice cartoons about development
+- [Lin Clark](https://www.code-cartoons.com/) - nice cartoons about development
 - [Josh Comeau](https://www.joshwcomeau.com/) - nice tutorials about React and Web
 - [Addy Osmani](https://addyosmani.com/blog/) - engineering Manager at Google working on Chrome
 - [Sara Soueidan](https://www.sarasoueidan.com/blog/) - one of the best blog about <abbr title="Accessibility">

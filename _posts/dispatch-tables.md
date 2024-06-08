@@ -94,7 +94,7 @@ With this approach, it is easy to add new behavior without changing the applicat
 ## Real example
 
 For example, in Next.js applications, you can
-configure [next.config.js](https://nextjs.org/docs/api-reference/next.config.js/introduction) and the code there looks
+configure [next.config.js](https://nextjs.org/docs/pages/api-reference/next-config-js) and the code there looks
 like this:
 
 ```js

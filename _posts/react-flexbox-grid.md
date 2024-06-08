@@ -102,7 +102,7 @@ What about columns logic?
 
 It is so ugly. Why we need to do it manually?
 
-Let's try some [Sass](https://sass-lang.com/documentation/at-rules/control/each) magic 🪄?
+Let's try some [Sass](https://sass-lang.com/documentation/at-rules/control/each/) magic 🪄?
 
 ```scss
 $columnsNumberToWidth: (
@@ -182,6 +182,6 @@ Therefore, below I share additional materials that may be useful:
 
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox Froggy Game](https://flexboxfroggy.com/)
-- [React bootstrap Grid system](https://react-bootstrap.github.io/docs/layout/grid)
+- [React bootstrap Grid system](https://react-bootstrap.github.io/docs/layout/grid/)
 
 

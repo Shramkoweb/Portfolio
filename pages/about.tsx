@@ -130,17 +130,17 @@ function AboutPage() {
             <li>
               Mentored junior developers and interns in&ensp;
               <a
-                href="https://macpaw.com/internship"
+                href="https://macpaw.com/bootcamp"
                 target="_blank"
                 rel="noopener"
               >
-                MacPaw Internship
+                MacPaw Bootcamp
               </a>
             </li>
             <li>
               Refactored the
               {' '}
-              <a href="https://imgix.com/" target="_blank" rel="noopener">
+              <a href="https://www.imgix.com/" target="_blank" rel="noopener">
                 imgix
               </a>
               {' '}
