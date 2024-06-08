@@ -6,9 +6,8 @@ updateData: 2024-05-20T19:09:55.954Z
 keywords: [ JS snippet, PostgreSQL Snippet, install PostgreSQL, postgres on MacOS ]
 ---
 
-Are you looking to set up a powerful and reliable relational database system on your macOS machine? PostgreSQL, also
-known as Postgres, is an excellent choice. It's a popular open-source database that offers robust features and
-scalability. In this guide, we'll walk you through the steps to install PostgreSQL on your macOS system.
+I use PostgreSQL for my projects, and I want to share with you how to install it on macOS.
+Yea can read a little bit more about how my website works in my article [How I built my blog with Next.js](/blog/introducing-the-new-shramko.dev.md).
 
 ## Step 1: Homebrew Installation
 

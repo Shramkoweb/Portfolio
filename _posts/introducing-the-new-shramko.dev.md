@@ -110,6 +110,8 @@ No <abbr title="JavaScript">JS</abbr> and frameworks 😂.
 Each commit triggers a build and environment (Production | Preview) creation.
 And then we start multiple steps:
 
+> I have post about [ESLint with TypeScript](/blog/eslint-with-typescript) 
+
 - ESLint & TypeScript: Linting the project for simple mistakes and Type checking
 - Checkly: Running end-to-end tests
 - Vercel: Building and deploy site
@@ -172,6 +174,8 @@ t’s usually one of the first things you’d want to do after setting up an exi
 one.
 Without monitoring, it will be challenging to detect issues in your application or how to resolve them.
 
+> There example of some kind of ["dispatch table" pattern](/blog/dispatch-tables).
+
 ```tsx
 const { withSentryConfig } = require("@sentry/nextjs");
 
@@ -189,6 +193,7 @@ const nextConfig = {
   reactStrictMode: true,
 };
 
+// dispatch table pattern
 const nextConfigByEnv = {
   production: withSentryConfig(nextConfig, {
     silent: true
@@ -295,6 +300,8 @@ Snapshots:   0 total
 Time:        2.23 s
 Ran all test suites.
 ```
+
+> Sometimes I use [Browserstack for cross browsing testing](/blog/cross-browser-testing).
 
 ## Next.js
 

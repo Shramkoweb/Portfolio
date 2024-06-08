@@ -8,8 +8,7 @@ keywords: [CSS snippet, CSS selection, CSS examples, change selection CSS]
 <Image src="css-hero.jpg" alt="Books about coding on the table" />
 
 Custom text selection in CSS refers to the ability to style the text that is highlighted by a user when they select it
-on a webpage. This can be a great way to add some visual flair and improve the user experience of your website. In this
-article, we will go over the steps to implement custom text selection using CSS.
+on a webpage. I use [this code](https://github.com/Shramkoweb/Portfolio/blob/develop/styles/globals.css#L5) on this blog, so you can check it out by selecting the text on this page.
 
 ## Step 1: Select the text you want to style
 

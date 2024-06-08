@@ -35,6 +35,7 @@ learning and maintaining knowledge.
 
 ## Blogs
 
+- [Shramko Serhii](https://shramko.dev/) - my blog about web development
 - [Dan Abramov](https://overreacted.io/) - co-author of Redux and Create React App
 - [Kent C. Dodds](https://kentcdodds.com/) - React, Testing end more
 - [Sophie Alpert](https://sophiebits.com/) - managed the React team and worked at Khan Academy

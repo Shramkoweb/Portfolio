@@ -127,7 +127,7 @@ const nextConfigByEnv = {
 module.exports = nextConfigByEnv[process.env.NODE_ENV];
 ```
 
-Will it look and read much better?
+Will it look and read much better? I use [dispatch tables](/blog/introducing-the-new-shramko.dev#monitoring-with-sentry) in my projects, and I can say that it is a very convenient.
 
 ## Useful links
 
