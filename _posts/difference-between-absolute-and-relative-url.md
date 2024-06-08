@@ -9,7 +9,7 @@ categories: [ JS, HTML ]
 featured: false
 ---
 
-I am a Frontend mentor in a [MacPaw internship](https://macpaw.com/internship) and sometimes my interns get confused 🫠
+I am a Frontend mentor in a [MacPaw internship](https://macpaw.com/bootcamp) and sometimes my interns get confused 🫠
 about how links work in HTML.
 
 So I decided to write a small article about this topic.
