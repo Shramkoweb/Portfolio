@@ -8,7 +8,7 @@ categories: [ JS, TS, Astro, JamStack ]
 featured: true
 ---
 
-<Image src="astro.jpg" alt="" />
+<Image src="astro.jpg" alt="Astro Framework Logo" />
 
 Astro is a framework for building static sites and web applications. It is built on top of modern web technologies like
 JavaScript, HTML, and CSS, and uses a component-based architecture to make it easy to build and maintain complex web

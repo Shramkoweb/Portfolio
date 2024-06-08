@@ -72,7 +72,7 @@ and test your site without installing Windows ☠️.
 If you want to quickly see how the site looks on many devices and browsers, you can
 take [screenshots](https://www.browserstack.com/screenshots) of the pages you want.
 
-<img src="/static/images/screenshots.gif" alt=""/>
+<img src="/static/images/screenshots.gif" alt="Animated image with how site can look on browserstack app"/>
 
 Yes, I know that my site does not work on IE. I did it on purpose. [IE 11 Must die](https://death-to-ie11.com/) 👾
 
