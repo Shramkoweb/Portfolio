@@ -5,7 +5,7 @@ heading: Unsubscribe from Email Newsletters Immediately
 createDate: 2024-04-08T11:47:44.249Z
 keywords: [ Unsubscribe from email newsletters, Turn off notifications, Email management tips, Notification management, Email overload, Focus improvement ]
 categories: [ Opinion, Productivity, Habits, Tools ]
-featured: true
+featured: false
 ---
 
 Small tasks that we put off can accumulate and ultimately consume much more of our time and energy. One such small yet important task is unsubscribing from annoying email newsletters and notifications.
