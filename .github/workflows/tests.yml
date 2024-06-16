@@ -14,16 +14,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build
-        run: npm ci
+      - name: Install
+        run: pnpm i
         env:
           CI: true
-      - name: run tests
-        run: npm run test:ci
+      - name: Run tests
+        run: pnpm run test:ci
       - name: code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: npm run test:coverage
+          coverageCommand: pnpm run test:coverage
           debug: true
