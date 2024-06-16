@@ -9,7 +9,7 @@ function CustomLink(
   AnchorHTMLAttributes<HTMLAnchorElement>,
 ) {
   const { href, children, className } = props;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
 
   if (isInternalLink) {
     return (
