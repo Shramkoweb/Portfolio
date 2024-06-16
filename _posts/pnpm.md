@@ -12,8 +12,9 @@ featured: true
 
 <Image src="pnpm-logo.png" alt="pnpm logo on gay background" />
 
-
-I found article from Vercel about [Projects using pnpm can now be deployed with zero configuration](https://vercel.com/changelog/projects-using-pnpm-can-now-be-deployed-with-zero-configuration) and I wanted to try it.
+I found article from Vercel
+about [Projects using pnpm can now be deployed with zero configuration](https://vercel.com/changelog/projects-using-pnpm-can-now-be-deployed-with-zero-configuration)
+and I wanted to try it.
 
 ## Why Migrate to pnpm?
 
@@ -66,7 +67,6 @@ packages.
 
 <Image src="pnpm-list.png" alt="pnpm list command result in terminal" />
 
-
 ## Updating Scripts
 
 ### 1. Update npm Scripts
@@ -91,7 +91,8 @@ to:
 ### 2. Update CI/CD Pipelines
 
 If your project uses CI/CD pipelines, ensure that the build scripts and installation commands are updated to use pnpm.
-For example, in a [GitHub Actions  with pnpm](https://pnpm.io/continuous-integration) workflow, you might update the step as follows:
+For example, in a [GitHub Actions  with pnpm](https://pnpm.io/continuous-integration) workflow, you might update the
+step as follows:
 
 ```yaml
 jobs:
@@ -116,13 +117,14 @@ jobs:
 
 During the migration, you might encounter some issues.
 
-> Error: Unable to locate executable file: pnpm. Please verify either the file path exists or the file can be found within a directory specified by the PATH environment variable. Also check the file mode to verify the file is executable.
+> Error: Unable to locate executable file: pnpm. Please verify either the file path exists or the file can be found
+> within a directory specified by the PATH environment variable. Also check the file mode to verify the file is
+> executable.
 
-
-I stuck with this error when I tried to run the `pnpm` command in GitHub Actions. 
+I stuck with this error when I tried to run the `pnpm` command in GitHub Actions.
 
 The solution was to use the `pnpm/action-setup@v4` before `actions/setup-node@v4`.
-So simply just copy the [above code](#2-update-cicd-pipelines) and paste it in your `.yml` file. 
+So simply just copy the [above code](#2-update-cicd-pipelines) and paste it in your `.yml` file.
 
 ## Conclusion
 
