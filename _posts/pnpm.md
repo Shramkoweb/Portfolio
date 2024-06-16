@@ -1,6 +1,6 @@
 ---
 title: "How to Migrate Your Project from npm to pnpm and save 44% deployment time: A Step-by-Step Guide"
-heading: How decrease deployment time by 44% with pnpm
+heading: How to decrease deployment time by 44% with pnpm
 description: Learn how to efficiently migrate your project from npm to pnpm with our comprehensive step-by-step guide.
 createDate: 2024-06-16T21:34:24.323Z
 keywords: [ migrate npm to pnpm, pnpm migration guide, npm to pnpm transition, pnpm benefits, pnpm installation, pnpm tutorial, npm alternatives, efficient package management, pnpm setup, node.js package manager, npm vs pnpm, upgrading to pnpm, pnpm step-by-step guide ]
