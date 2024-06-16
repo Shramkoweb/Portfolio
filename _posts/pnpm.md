@@ -1,6 +1,6 @@
 ---
-title: "How to Migrate Your Project from npm to pnpm: A Step-by-Step Guide"
-heading: How I Migrated My Project from npm to pnpm
+title: "How to Migrate Your Project from npm to pnpm and save 44% deployment time: A Step-by-Step Guide"
+heading: How decrease deployment time by 44% with pnpm
 description: Learn how to efficiently migrate your project from npm to pnpm with our comprehensive step-by-step guide.
 createDate: 2024-06-16T21:34:24.323Z
 keywords: [ migrate npm to pnpm, pnpm migration guide, npm to pnpm transition, pnpm benefits, pnpm installation, pnpm tutorial, npm alternatives, efficient package management, pnpm setup, node.js package manager, npm vs pnpm, upgrading to pnpm, pnpm step-by-step guide ]
@@ -13,7 +13,7 @@ featured: true
 <Image src="pnpm-logo.png" alt="pnpm logo on gay background" />
 
 
-I found article from Vercel about [Projects using pnpm can now be deployed with zero configuration](https://vercel.com/changelog/projects-using-pnpm-can-now-be-deployed-with-zero-configuration) and I decided to write my own guide.
+I found article from Vercel about [Projects using pnpm can now be deployed with zero configuration](https://vercel.com/changelog/projects-using-pnpm-can-now-be-deployed-with-zero-configuration) and I wanted to try it.
 
 ## Why Migrate to pnpm?
 
@@ -126,8 +126,8 @@ So simply just copy the [above code](#2-update-cicd-pipelines) and paste it in y
 
 ## Conclusion
 
-Migrating from npm to pnpm can yield significant benefits in terms of speed, disk space, and dependency management. By
-following the steps outlined in this guide, you can smoothly transition your project and take advantage of pnpm's
-features.
+This migration helped me to reduce the time of deployment by **44%** and the size of `node_modules` by **5%**.
 
-More info how my blog works you can there [How my site works under the hood](./introducing-the-new-shramko.dev)
+<Image src="vercel-deployment.png" alt="Deployment time on vercel dashboard. Around 1 seccond" />
+
+More info how my blog works you can find there [How my site works under the hood](./introducing-the-new-shramko.dev)
