@@ -131,4 +131,3 @@ following the steps outlined in this guide, you can smoothly transition your pro
 features.
 
 More info how my blog works you can there [How my site works under the hood](./introducing-the-new-shramko.dev)
-
