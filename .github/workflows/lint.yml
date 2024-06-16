@@ -9,14 +9,17 @@ jobs:
       matrix:
         node-version: [ 20.x ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build
-        run: npm ci
+          cache: 'pnpm'
+      - name: Install
+        run: pnpm i
         env:
           CI: true
       - name: Run linter
-        run: npm run lint
+        run: pnpm lint
