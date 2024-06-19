@@ -31,10 +31,10 @@ export function Header() {
         </div>
         <div className="flex justify-center items-center">
           <Link
-            href="/static/s.shramko-senior-developer.pdf"
+            href="/static/s.shramko-software-engineer.pdf"
             download
             onClick={handleResumeClick}
-            title="PDF document - 71 KB"
+            title="PDF document. Serhii Shramko Resume - 74 KB"
             className="ml-12 border-2 border-gray-700 hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
           >
             Resume
