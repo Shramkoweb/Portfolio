@@ -5,15 +5,14 @@ const SENTRY_ENV = process.env.SENTRY_ENVIRONMENT || process.env.NEXT_PUBLIC_SEN
 
 Sentry.init({
   dsn: SENTRY_DSN,
-  environment: SENTRY_ENV,
   tracesSampleRate: 1,
   debug: false,
   replaysOnErrorSampleRate: 1.0,
   replaysSessionSampleRate: 0.1,
   integrations: [
     Sentry.replayIntegration({
-      maskAllText: true,
-      blockAllMedia: true,
+      maskAllText: false,
+      blockAllMedia: false,
     }),
   ],
 });
