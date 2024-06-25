@@ -7,7 +7,7 @@ keywords: [how to get the current URL with javaScript, URL, window.location, doc
 
 When working with JavaScript, accessing the current page's URL is a common task for various purposes like analytics tracking, dynamic content updates, and more. In this guide, we'll explore different methods to achieve this.
 
-## Using `window.location`
+## 1. Using `window.location`
 
 The most straightforward method is by utilizing the `window.location` object, which contains information about the current URL, including the protocol, host, pathname, search parameters, and more.
 

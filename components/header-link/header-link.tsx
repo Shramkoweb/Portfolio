@@ -14,6 +14,7 @@ export function HeaderLink({ href, text }: HeaderLinkProps) {
   return (
     <NextLink
       href={href}
+      aria-current={isActive ?? 'page'}
       className={clsx(
         isActive
           ? 'font-semibold text-gray-800 dark:text-gray-200'

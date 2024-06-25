@@ -1,6 +1,10 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
+enum Theme {
+  light = 'light',
+  dark = 'dark',
+}
 export function ThemeChanger() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
@@ -8,25 +12,27 @@ export function ThemeChanger() {
   useEffect(() => setMounted(true), []);
 
   const handleClick = () => {
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+    setTheme(resolvedTheme === Theme.dark ? Theme.light : Theme.dark);
   };
 
   return (
     <button
-      aria-label="Toggle Theme"
+      aria-label={`Switch to ${resolvedTheme === Theme.dark ? Theme.light : Theme.dark} mode`}
+      aria-pressed={resolvedTheme === Theme.dark}
       type="button"
       className=" ml-4 w-11 h-11 rounded-lg inline-flex items-center justify-center hover:ring-2 ring-gray-300"
       onClick={handleClick}
     >
       {mounted && (
         <svg
+          role="presentation"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           className="w-5 h-5 text-gray-800 dark:text-gray-200"
         >
-          {resolvedTheme === 'dark' ? (
+          {resolvedTheme === Theme.dark ? (
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
