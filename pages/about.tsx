@@ -120,7 +120,7 @@ function AboutPage() {
           <p className="text-sm">
             MacPaw develops software for iOS and MacOS. Their products include
             CleanMyMac, Setapp, Gemini Photos and more. MacPaw‘s active user
-            base exceeds strong. Every fifth Mac on Earth has at
+            base exceeds 30 million worldwide. Every fifth Mac on Earth has at
             least one app by MacPaw.
           </p>
           <ul className="text-sm">
