@@ -110,25 +110,25 @@ function AboutPage() {
             <time dateTime="2021-10">October 2021</time>
             &ensp;–&ensp;present.
           </em>
-          <p className="m-0 mb-4">
+          <h4 className="m-0 mb-4">
             Senior Developer at&ensp;
             <a href="https://macpaw.com/" rel="noopener" target="_blank">
               MacPaw
             </a>
             &ensp;🐾
-          </p>
+          </h4>
           <p className="text-sm">
             MacPaw develops software for iOS and MacOS. Their products include
             CleanMyMac, Setapp, Gemini Photos and more. MacPaw‘s active user
-            base exceeds 30 million worldwide. Every fifth Mac on Earth has at
+            base exceeds strong. Every fifth Mac on Earth has at
             least one app by MacPaw.
           </p>
           <ul className="text-sm">
             <li>
-              Re-wrote Japanese site with Next.js and improve web vitals metrics
-            </li>
-            <li>
-              Mentored junior developers and interns in&ensp;
+              <strong>Mentored junior developers and interns</strong>
+              {' '}
+              as part of the
+              {' '}
               <a
                 href="https://macpaw.com/bootcamp"
                 target="_blank"
@@ -136,6 +136,24 @@ function AboutPage() {
               >
                 MacPaw Bootcamp
               </a>
+              ; guided a team with 2 developers.
+            </li>
+            <li>
+              Rewrote JP&apos;s website using Next.js,
+              {' '}
+              <strong>
+                resulting in a 30%
+                improvement in
+              </strong>
+              {' '}
+              <a
+                target="_blank"
+                rel="noopener"
+                href="https://web.dev/articles/vitals"
+              >
+                web vitals
+              </a>
+              .
             </li>
             <li>
               Refactored the
@@ -144,10 +162,15 @@ function AboutPage() {
                 imgix
               </a>
               {' '}
-              code in PHP, which allowed to optimize the size of the pictures by
-              2-6 times 🔥
+              code in PHP,
+              {' '}
+              <strong>decreased image size by 2-6 times 🔥</strong>
             </li>
-            <li>I was a speaker at internal Front-end meetups</li>
+            <li>
+              Delivered presentations and shared knowledge in internal
+              Front-end meetings, enhancing team understanding of key
+              concepts and best practices.
+            </li>
           </ul>
           <hr />
 
@@ -156,12 +179,12 @@ function AboutPage() {
             &ensp;–&ensp;
             <time dateTime="2021-10">October 2021</time>
           </em>
-          <p className="m-0 mb-4">
+          <h4 className="m-0 mb-4">
             Frontend Developer at&ensp;
             <a href="https://p1k.org/" rel="noopener" target="_blank">
               Phase One Karma
             </a>
-          </p>
+          </h4>
           <p className="text-sm">
             Phase One Karma created AI-driven anti-plagiarism checker with more
             than 1 million users worldwide
@@ -173,47 +196,42 @@ function AboutPage() {
           </p>
           <ul className="text-sm">
             <li>
-              Reduced code base and improved code reusability by creating shared
-              npm UI library with
+              Found a bug in Webpack configuration.
               {' '}
-              <a
-                href="https://storybook.js.org/"
-                target="_blank"
-                rel="noopener"
-              >
-                Storybook
-              </a>
+              <strong>
+                Decreased JS bundle size
+                by 60 KB.
+              </strong>
             </li>
             <li>
-              Reduced chunk size by 12 KB each, it crops the final bundle by
-              60kb
+              Migrated an old WordPress website to
+              {' '}
+              <a target="_blank" rel="noopener" href="https://www.gatsbyjs.com/">Gatsby</a>
+              ,
+              {' '}
+              <strong>raised website to 95th percentile Web Vitals</strong>
             </li>
             <li>
-              Built from scratch new user dashboard with
+              Developed a new user
+              {' '}
+              <a target="_blank" rel="noopener" href="https://lawrina.org/loio/login/">dashboard</a>
+              {' '}
+              from scratch using
               {' '}
               <a href="https://nextjs.org/" target="_blank" rel="noopener">
                 Next.js
               </a>
+              .
             </li>
             <li>
-              Re-wrote old WordPress site to
-              {' '}
-              <a
-                href="https://www.gatsbyjs.com/"
-                target="_blank"
-                rel="noopener"
-              >
-                Gatsby
-              </a>
-            </li>
-            <li>
-              Create team guidelines for writing
+              Established team guidelines for writing
               {' '}
               <abbr title="Cascading Style Sheets">CSS</abbr>
               {' '}
               and
               {' '}
               <abbr title="Syntactically Awesome Style Sheets">SCSS</abbr>
+              , standardizing code quality.
             </li>
           </ul>
           <hr />
@@ -223,12 +241,12 @@ function AboutPage() {
             &ensp;–&ensp;
             <time dateTime="2020-11">November 2020</time>
           </em>
-          <p className="m-0 mb-4">
+          <h4 className="m-0 mb-4">
             Frontend Developer at&ensp;
             <a href="https://www.pdffiller.com/" rel="noopener" target="_blank">
               PDFfiller
             </a>
-          </p>
+          </h4>
           <p className="text-sm">
             One of four Ukrainian unicorn 🦄 company. PDFfiller is a
             comprehensive online document management platform and provides
@@ -236,24 +254,31 @@ function AboutPage() {
             every industry.
           </p>
           <ul className="text-sm">
+            <li><strong>Promoted from HTML coder to Frontend Engineer.</strong></li>
             <li>
-              Improved internal UI framework by shared classes. It reduced the
-              size of the
-              {' '}
-              <abbr title="Cascading Style Sheets">CSS</abbr>
-              {' '}
-              bundle
-              by 5%
+              Improved internal UI framework by implementing shared classes,
+              <strong>
+                reducing the
+                {' '}
+                <abbr title="Cascading Style Sheets">CSS</abbr>
+                {' '}
+                bundle size by 5%.
+              </strong>
             </li>
             <li>
-              Developed high-quality, scalable, and reusable UI library for 3
-              big company products
+              Refactored Pug/Jade components to React, modernizing the
+              codebase and improving maintainability and DX.
             </li>
-            <li>Refactored Pug/Jade components to React</li>
             <li>
-              Improved website accessibility for passing
+              Enhanced website accessibility, ensuring compliance with
               {' '}
-              <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
+              <abbr
+                title="Web Content Accessibility Guidelines"
+              >
+                WCAG
+              </abbr>
+              {' '}
+              standards and improving user experience for individuals with disabilities.
             </li>
           </ul>
           <hr />
@@ -263,7 +288,7 @@ function AboutPage() {
             &ensp;–&ensp;
             <time dateTime="2019-03">March 2019</time>
           </em>
-          <p className="m-0 mb-4">
+          <h4 className="m-0 mb-4">
             Frontend Developer at&ensp;
             <a
               href="https://hexa.com.ua/en/home/"
@@ -272,23 +297,28 @@ function AboutPage() {
             >
               Hexa
             </a>
-          </p>
+          </h4>
           <p className="text-sm">
             Hexa - a small web studio that makes websites and turnkey solutions.
           </p>
           <ul className="text-sm">
             <li>
-              Moved manual creation of emails to framework
+              Transitioned manual email creation to the
               {' '}
               <a
                 href="https://get.foundation/emails.html"
                 target="_blank"
                 rel="noopener"
               >
-                Foundation
+                Foundation framefork
               </a>
+              ,
+              <strong>decreased creation time from 3 days to 1.</strong>
             </li>
-            <li>Created user-friendly web pages</li>
+            <li>
+              Developed and maintained different websites in collaboration
+              with the backend team.
+            </li>
           </ul>
 
           <h3 className="mt-16">Education</h3>
