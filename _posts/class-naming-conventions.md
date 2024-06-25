@@ -99,19 +99,20 @@ Let's see how BEM methodology applies to real-world examples:
 
 ```html
 
-<nav class="navigation-menu">
-  <ul class="navigation-menu__list">
-    <li class="navigation-menu__list-item">
-      <a class="navigation-menu__list-item-link" href="#">Home</a>
+<nav class="navigation">
+  <ul class="navigation__list">
+    <li class="navigation__item">
+      <a class="navigation__link" href="#">Home</a>
     </li>
-    <li class="navigation-menu__list-item navigation-menu__list-item--active">
-      <a class="navigation-menu__list-item-link" href="#">About</a>
+
+    <li class="navigation__item navigation__item--active">
+      <a class="navigation__link" href="#">About</a>
     </li>
   </ul>
 </nav>
 ```
 
-In this example, the block is the `navigation-menu`, and its elements and modifiers are clearly defined, making it easy
+In this example, the block is the `navigation`, and its elements and modifiers are clearly defined, making it easy
 to understand and style.
 
 #### Article Card
@@ -122,11 +123,13 @@ to understand and style.
   <header class="article-card__header">
     <h2 class="article-card__title">An Exciting Blog Post</h2>
   </header>
+  
   <div class="article-card__content">
-    <p class="article-card__content-paragraph">...</p>
+    <p class="article-card__paragraph">...</p>
   </div>
+  
   <footer class="article-card__footer article-card__footer--featured">
-    <a class="article-card__footer-link" href="#">Read More</a>
+    <a class="article-card__link" href="#">Read More</a>
   </footer>
 </article>
 ```
