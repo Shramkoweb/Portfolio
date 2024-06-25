@@ -300,6 +300,50 @@ function AboutPage() {
             </a>
             .
           </p>
+
+          <h3>Open Source</h3>
+          <em className="text-gray-300 text-xs">
+            <time dateTime="2020">2020</time>
+            &ensp;–&ensp;
+            <time dateTime="2022">2022</time>
+          </em>
+          <h4 className="m-0 mb-4">
+            Mentor -&ensp;
+            <a
+              href="https://htmlacademy.ru/profile/id852139"
+              target="_blank"
+              rel="noopener"
+            >
+              HTML Academy
+            </a>
+          </h4>
+          <p className="text-sm">
+            <strong>Mentored more than 30 individuals</strong>
+            {' '}
+            in React, TypeScript, JavaScript, and
+            HTML courses.
+          </p>
+
+          <em className="text-gray-300 text-xs">
+            <time dateTime="2021">2021</time>
+            &ensp;–&ensp;
+            <time dateTime="2023">2023</time>
+          </em>
+          <h4 className="m-0 mb-4">
+            Contributor -&ensp;
+            <a
+              href="https://stateofjs.com/en-US"
+              target="_blank"
+              rel="noopener"
+            >
+              State of JS & CSS
+            </a>
+          </h4>
+          <p className="text-sm">
+            Authored Ukrainian and Russian translations for the State of JS & CSS
+            survey.
+          </p>
+
           <h2>I love Eating, Parties, and Cars</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Image
