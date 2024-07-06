@@ -90,9 +90,9 @@ export function MobileMenu() {
               href="/static/s.shramko-software-engineer.pdf"
               download
               className="flex w-auto pb-4"
-              title="PDF document - 71 KB"
+              title="PDF document. Serhii Shramko - CV. 74 KB"
             >
-              Resume
+              My CV
             </Link>
           </li>
         </ul>
