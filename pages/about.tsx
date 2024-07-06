@@ -2,13 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import about from '../public/static/images/about.jpeg';
-import car from '../public/static/images/car.jpeg';
-import tennis from '../public/static/images/tennis.jpeg';
-import eat from '../public/static/images/eat.jpeg';
-import carBack from '../public/static/images/car-back.jpeg';
+import aboutBottom from '../public/static/images/about-bottom.png';
 
 function AboutPage() {
-  return (<>
+  return (
+    <>
       <Head>
         <title>About - Serhii Shramko</title>
         <meta
@@ -374,35 +372,18 @@ function AboutPage() {
           </p>
 
           <h2>I love Eating, Parties, and Cars</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4">
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
+              className="rounded-lg transition-transform pointer-events-none"
               alt="Me with tennis cup"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
-              src={tennis}
-            />
-            <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
-              alt="I am eat =)"
-              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
-              src={eat}
-            />
-            <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
-              alt="Me with Anton near red BMW"
-              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
-              src={car}
-            />
-            <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
-              alt="Me with Anton near red Golf GTI"
-              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
-              src={carBack}
+              src={aboutBottom}
             />
           </div>
         </div>
       </div>
-    </>);
+    </>
+  );
 }
 
 export default AboutPage;
