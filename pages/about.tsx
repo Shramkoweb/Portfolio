@@ -8,8 +8,7 @@ import eat from '../public/static/images/eat.jpeg';
 import carBack from '../public/static/images/car-back.jpeg';
 
 function AboutPage() {
-  return (
-    <>
+  return (<>
       <Head>
         <title>About - Serhii Shramko</title>
         <meta
@@ -377,25 +376,25 @@ function AboutPage() {
           <h2>I love Eating, Parties, and Cars</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
+              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
               alt="Me with tennis cup"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={tennis}
             />
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
+              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
               alt="I am eat =)"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={eat}
             />
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
+              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
               alt="Me with Anton near red BMW"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={car}
             />
             <Image
-              className="rounded-lg transition-transform time md:hover:scale-150 grayscale"
+              className="rounded-lg transition-transform time md:hover:scale-150 md:hover:z-50 grayscale"
               alt="Me with Anton near red Golf GTI"
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={carBack}
@@ -403,8 +402,7 @@ function AboutPage() {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>);
 }
 
 export default AboutPage;
