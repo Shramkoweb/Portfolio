@@ -17,7 +17,7 @@ export function SnippetCard(props: SnippetCardProps) {
       href={`/snippets/${slug}`}
       className="border border-grey-200 dark:border-gray-800 rounded p-4 w-full bg-white dark:bg-gray-900"
     >
-      <h2 className="text-lg font-bold text-left text-gray-900 dark:text-gray-100">
+      <h2 className="text-lg font-medium text-left text-gray-900 dark:text-gray-100">
         {title}
       </h2>
       <p className="mt-1 text-gray-700 dark:text-gray-400">{formattedDate}</p>
