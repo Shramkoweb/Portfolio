@@ -46,7 +46,7 @@ function GearPage() {
           <h2 id="computer-office">Computer</h2>
           <ul>
             <li>14&quot; MacBook Pro M3 Max</li>
-            <li>27&quot; LG UltraFine 27UL850-W</li>
+            <li>27&quot; Apple Studio Display</li>
             <li>SteelSeries Rival Wireless 3 Mouse</li>
           </ul>
           <h2 id="coding">Coding</h2>
@@ -82,7 +82,7 @@ function GearPage() {
                 rel="noopener"
                 target="_blank"
               >
-                CleanMyMac
+                CleanMyMac X
               </a>
             </li>
             <li>
@@ -104,7 +104,6 @@ function GearPage() {
                 Preply
               </a>
             </li>
-
             <li>
               <a
                 href="https://setapp.com/"
@@ -114,6 +113,8 @@ function GearPage() {
                 Setapp
               </a>
             </li>
+            <li>ChatGPT</li>
+            <li>Perplexity.AI</li>
             <li>Spotify</li>
             <li>CleanShot X</li>
             <li>Grammarly</li>
@@ -123,9 +124,9 @@ function GearPage() {
           <ul>
             <li><s>Golf GTI</s></li>
             <li>BMW 428 XDrive&ensp;🚗💨</li>
-            <li>Apple iPhone</li>
-            <li>Apple Watch</li>
-            <li>Kindle</li>
+            <li>Apple iPhone 13 Pro</li>
+            <li>Apple Watch 8th</li>
+            <li>Kindle 2022</li>
           </ul>
         </div>
       </section>
