@@ -87,7 +87,11 @@ function BlogPage(props: BlogPageProps) {
           Articles
         </h2>
         <ul>
-          {filteredBlogPosts.map(({ data: {title, slug, heading, description} }) => (
+          {filteredBlogPosts.map(({
+            data: {
+              title, slug, heading, description,
+            },
+          }) => (
             <li key={title}>
               <BlogPostPreview
                 slug={slug}
