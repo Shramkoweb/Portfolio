@@ -66,6 +66,7 @@ export function Layout({ children }: PropsWithChildren) {
       <Header />
       <main
         id="skip"
+        role="main"
         className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
       >
         {children}

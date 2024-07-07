@@ -55,13 +55,10 @@ function BlogPage(props: BlogPageProps) {
             {postsLength === 1 ? 'article' : 'articles'}
           </span>
         </h1>
-        <div className="mb-4 text-gray-600 dark:text-gray-400">
-          <p>
-            I usually write about the web, career and website development.
-            <br />
-            Use the search below to filter by article title.
-          </p>
-        </div>
+        <p className="mb-4 text-gray-600 dark:text-gray-400">
+          In recent years, I&apos;ve poured a lot of time into writing,
+          mostly on tech but occasionally venturing into other areas.
+        </p>
         <div className="relative w-full mb-4">
           <input
             aria-label="Search articles"
@@ -89,19 +86,17 @@ function BlogPage(props: BlogPageProps) {
         <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
           Articles
         </h2>
-        {!filteredBlogPosts.length && (
-          <p className="mb-4 text-gray-600 dark:text-gray-400">
-            No articles found.
-          </p>
-        )}
-        {filteredBlogPosts.map(({ data }) => (
-          <BlogPostPreview
-            key={data.title}
-            slug={data.slug}
-            heading={data.heading}
-            excerpt={data.description}
-          />
-        ))}
+        <ul>
+          {filteredBlogPosts.map(({ data: {title, slug, heading, description} }) => (
+            <li key={title}>
+              <BlogPostPreview
+                slug={slug}
+                heading={heading}
+                excerpt={description}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );

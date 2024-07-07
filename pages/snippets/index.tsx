@@ -38,7 +38,7 @@ function SnippetsPage(props: SnippetsPageProps) {
           key="og:title"
         />
       </Head>
-      <article className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
+      <section className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           Code Snippets
         </h1>
@@ -48,22 +48,18 @@ function SnippetsPage(props: SnippetsPageProps) {
             want to share with you.
           </p>
         </div>
-        {!snippets.length && (
-          <p className="mb-4 text-gray-600 dark:text-gray-400">
-            No articles found.
-          </p>
-        )}
-        <div className="grid w-full grid-cols-1 gap-4 my-2 mt-4 sm:grid-cols-2">
+        <ul className="grid w-full grid-cols-1 gap-4 my-2 mt-4 sm:grid-cols-2">
           {snippets.map(({ data: { title, slug, createDate } }) => (
-            <SnippetCard
-              key={title}
-              slug={slug}
-              title={title}
-              createDate={createDate}
-            />
+            <li key={title}>
+              <SnippetCard
+                slug={slug}
+                title={title}
+                createDate={createDate}
+              />
+            </li>
           ))}
-        </div>
-      </article>
+        </ul>
+      </section>
     </>
   );
 }
