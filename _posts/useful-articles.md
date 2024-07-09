@@ -3,7 +3,7 @@ title: Highly recommended resources for developers in 2024
 description: Check out a list of the best resources and blogs for developers in 2024.
 heading: Essential Tools and Guides Every Developer Should Utilize
 createDate: 2022-09-19T19:46:55.334Z
-updateData: 2024-06-08T11:44:38.025Z
+updateData: 2024-07-09T09:34:31.025Z
 keywords: [Resources for developers, Best Developer Websites, Tech News Resources, Awesome Web Development News Sources]
 categories: [Useful-Resources]
 featured: false
@@ -20,7 +20,7 @@ learning and maintaining knowledge.
 
 - [frontendmasters.com](https://frontendmasters.com/) - one of the best platform for learning Frontend
 - [egghead.io](https://egghead.io/) - high quality, concise web development screencasts
-- [epicreact.dev](https://epicreact.dev/) - probably the best course on React
+- [epicreact.dev](https://www.epicreact.dev/) - probably the best course on React
 - [freecodecamp.org/](https://www.freecodecamp.org/) - free verified certifications
 - [edx.org](https://www.edx.org/) - courses from top universities (Harvard, MIT and others)
 - [ui.dev](https://ui.dev/) - fun and nice courses about frontend ecosystem by Tyler McGinnis
@@ -38,7 +38,6 @@ learning and maintaining knowledge.
 - [Shramko Serhii](https://shramko.dev/) - my blog about web development
 - [Dan Abramov](https://overreacted.io/) - co-author of Redux and Create React App
 - [Kent C. Dodds](https://kentcdodds.com/) - React, Testing end more
-- [Sophie Alpert](https://sophiebits.com/) - managed the React team and worked at Khan Academy
 - [Sarah Drasner](https://sarahdrasnerdesign.com/writing/) - cool blog about animations in web
 - [Lea Verou](https://lea.verou.me/) - CSS secrets book author
 - [Dr. Axel Rauschmayer](https://2ality.com/) - one of the best blog about JS Core

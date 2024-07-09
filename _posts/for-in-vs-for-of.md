@@ -83,7 +83,7 @@ user.city = Kyiv
 ```
 
 We iterate through each `key` of the `user` Object, and then through this key we get the value
-with [Bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#bracket_notation)
+with [Bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors#bracket_notation)
 .
 
 ### for...in and Objects

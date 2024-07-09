@@ -12,10 +12,10 @@ featured: false
 <Image src="grid.jpeg" alt="Don't forget to specify alt" />
 
 Often in the life of a web developer, you need to make a grid, but the limitations of the browser (Internet Explorer 😭)
-do not allow you to use, for example, [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
+do not allow you to use, for example, [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout).
 
 This is
-where [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+where [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox)
 comes to the rescue. He is our friend, brother and helper. 🫡
 
 This post is about how to create a flexbox-based grid component in React. The component should be reusable and painless
