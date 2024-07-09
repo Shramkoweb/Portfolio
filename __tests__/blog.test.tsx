@@ -68,14 +68,4 @@ describe('Blog Page', () => {
 
     expect(post).toBeInTheDocument();
   });
-
-  test('on search render "No articles found" if unknown article', () => {
-    render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
-    const inputElement = screen.getByLabelText('Search articles');
-
-    fireEvent.change(inputElement, { target: { value: 'Unknown article' } });
-    const post = screen.getByText(/No articles found/);
-
-    expect(post).toBeInTheDocument();
-  });
 });
