@@ -78,10 +78,6 @@ function SnippetPage(props: SnippetPageProps) {
           content="https://shramko.dev"
           key="article:author"
         />
-        <meta
-          name="keywords"
-          content="JavaScript snippets, CSS snippets, Node.js snippets, Next.js snippets, JS code examples, code examples, codes snippet"
-        />
       </Head>
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <div className="flex justify-between w-full mb-8">
