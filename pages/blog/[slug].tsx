@@ -2,11 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
@@ -16,10 +12,7 @@ import { Post } from '@/lib/types';
 import { MDXComponents } from '@/components/mdx-components';
 import { ViewCounter } from '@/components/view-counter/view-counter';
 import {
-  FacebookShare,
-  LinkedInShare,
-  TelegramShare,
-  TwitterShare,
+  FacebookShare, LinkedInShare, TelegramShare, TwitterShare,
 } from '@/components/share-button';
 
 type ArticlePageProps = Pick<Post, 'data'> & {
@@ -43,9 +36,7 @@ function ArticlePage(props: ArticlePageProps) {
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit',
+    dateStyle: 'medium',
   });
 
   return (

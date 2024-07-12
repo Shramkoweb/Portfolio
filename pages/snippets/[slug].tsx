@@ -1,9 +1,5 @@
 import Head from 'next/head';
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
@@ -26,9 +22,7 @@ function SnippetPage(props: SnippetPageProps) {
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit',
+    dateStyle: 'medium',
   });
 
   return (

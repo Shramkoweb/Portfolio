@@ -8,8 +8,7 @@ export function SnippetCard(props: SnippetCardProps) {
   const { createDate, title, slug } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'short',
+    dateStyle: 'medium',
   });
 
   return (
