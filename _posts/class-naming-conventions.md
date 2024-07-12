@@ -171,4 +171,4 @@ These references will provide you with comprehensive insights into web developme
 equipped with the knowledge to create outstanding web pages.
 
 If you're looking for more examples and guidelines for BEM class name you can find it on my snippet page
-about [Common CSS Class Names](/snippets/bem-classes).
+about [Common CSS Class Names](/snippets/common-css-classes).

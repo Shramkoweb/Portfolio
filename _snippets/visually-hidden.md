@@ -45,4 +45,4 @@ Developers frequently employ `display: none` to conceal content on web pages.
 However, this approach can pose [accessibility](https://www.a11yproject.com/posts/how-to-hide-content/) challenges for users of screen readers, particularly when the hidden
 content was intended for their benefit.
 
-If you need more info about common css classes, check out the [post](/stippets/bem-classes).
+If you need more info about common css classes, check out the [post](/stippets/common-css-classes).
