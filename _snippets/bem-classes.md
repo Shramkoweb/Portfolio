@@ -83,6 +83,7 @@ Let's explore some common words and phrases used within CSS classes following th
 
 ## Miscellaneous
 
+- `visually-hidden`: [Visually hides](/snippets/visually-hidden) an element while keeping it accessible to screen readers
 - `search`: This class is often used for styling search elements.
 - `socials`: The `socials` class is used for styling blocks of social media icons.
 - `advertisement`, `adv`, `commercial`, `promo`: These classes are often used for styling advertisement blocks, but it's
