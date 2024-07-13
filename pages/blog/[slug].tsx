@@ -5,7 +5,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
-import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
+import { getPostBySlug, getPosts, getPostSlugs } from '@/lib/posts/api';
 import { compileMDX } from '@/lib/scripts/compiler';
 import { Post } from '@/lib/types';
 
@@ -14,9 +14,12 @@ import { ViewCounter } from '@/components/view-counter/view-counter';
 import {
   FacebookShare, LinkedInShare, TelegramShare, TwitterShare,
 } from '@/components/share-button';
+import { sortByBirthtime } from '@/lib/posts/utils';
 
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
+  prevPostSlug: string,
+  nextPostSlug: string,
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -33,6 +36,8 @@ function ArticlePage(props: ArticlePageProps) {
       categories = [],
       keywords,
     },
+    nextPostSlug,
+    prevPostSlug,
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -158,6 +163,30 @@ function ArticlePage(props: ArticlePageProps) {
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 
+          <ul className={`${!prevPostSlug ? 'justify-end' : 'justify-between'} mt-16 flex`}>
+            {prevPostSlug && (
+              <li>
+                <Link
+                  className="text-black dark:text-gray-200 inline-block p-3 rounded-lg bg-gray-200 dark:bg-gray-800 transition-all"
+                  href={`/blog/${prevPostSlug}`}
+                >
+                  👈 Previous article
+                </Link>
+              </li>
+            )}
+
+            {nextPostSlug && (
+              <li>
+                <Link
+                  className="text-black dark:text-gray-200 inline-block p-3 rounded-lg bg-gray-200 dark:bg-gray-800"
+                  href={`/blog/${nextPostSlug}`}
+                >
+                  Next article 👉
+                </Link>
+              </li>
+            )}
+          </ul>
+
           <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
             <p>Share it:</p>
             <ul className="flex gap-2">
@@ -192,11 +221,17 @@ export async function getStaticProps({
   > {
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
+  const posts = await getPosts();
+  const currentPostIndex = posts.sort(sortByBirthtime).findIndex((post) => post.data.slug === data.slug);
+  const prevPost = posts[currentPostIndex + 1] || null;
+  const nextPost = posts[currentPostIndex - 1] || null;
 
   return {
     props: {
       data,
       content: html,
+      prevPostSlug: prevPost?.data.slug || '',
+      nextPostSlug: nextPost?.data.slug || '',
     },
   };
 }
