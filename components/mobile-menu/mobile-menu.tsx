@@ -87,12 +87,12 @@ export function MobileMenu() {
           </li>
           <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
             <Link
-              href="/static/s.shramko-software-engineer.pdf"
+              href="/static/serhii-shramko-resume.pdf"
               download
               className="flex w-auto pb-4"
-              title="PDF document. Serhii Shramko - CV. 74 KB"
+              title="PDF document. Serhii Shramko - Resume. 90 KB"
             >
-              My CV
+              Resume
             </Link>
           </li>
         </ul>
