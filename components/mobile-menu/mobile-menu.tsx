@@ -90,7 +90,7 @@ export function MobileMenu() {
               href="/static/serhii-shramko-resume.pdf"
               download
               className="flex w-auto pb-4"
-              title="PDF document. Serhii Shramko - Resume. 90 KB"
+              title="PDF document. Serhii Shramko - Resume. 85 KB"
             >
               Resume
             </Link>
