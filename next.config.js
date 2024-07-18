@@ -43,6 +43,15 @@ const securityHeaders = [
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  redirects: async () => {
+    return [
+      {
+        source: '/snippets/bem-classes',
+        destination: '/snippets/common-css-classes',
+        permanent: true
+      }
+    ];
+  },
   serverRuntimeConfig: {
     appReleaseVersion: new Date().valueOf()
   },
