@@ -23,7 +23,7 @@ const GRADIENTS = [
   'bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400',
   'bg-gradient-to-r from-purple-400 to-yellow-400',
   'bg-gradient-to-r from-purple-200 to-purple-800',
-  'bg-gradient-to-r from-purple-400 to-yellow-400',
+  'bg-gradient-to-r from-purple-400 to-blue-600',
   'bg-gradient-to-r from-green-300 to-purple-400',
 ];
 
