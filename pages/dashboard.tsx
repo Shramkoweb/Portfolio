@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { BlogViewsCard } from '@/components/dashboard-card/blog-views';
 import { GithubFollowers } from '@/components/dashboard-card/github-followers';
 import { GitHubStars } from '@/components/dashboard-card/github-stars';
-import { DaysFromInit } from '@/components/dashboard-card/days-from-init';
+import { DaysAsSoftwareEngineer } from '@/components/dashboard-card/days-as-engineer';
 
 export default function Dashboard() {
   return (
@@ -59,7 +59,7 @@ export default function Dashboard() {
         </div>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
           <BlogViewsCard />
-          <DaysFromInit />
+          <DaysAsSoftwareEngineer />
         </div>
       </section>
     </>
