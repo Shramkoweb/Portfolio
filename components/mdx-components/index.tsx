@@ -42,7 +42,7 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       src={concatenatedSrc}
       alt={alt}
       className={`rounded-lg mt-4 mb-8 ${inverted ? 'inverted' : ''}`}
-      width={700}
+      width={768}
       height={300}
       priority={priority}
       sizes="100vw"
