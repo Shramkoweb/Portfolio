@@ -37,15 +37,20 @@ export const categoryToSeoData = {
     description: 'Essential tips and tutorials to create responsive web pages using HTML.',
     keywords: 'HTML, Markup, Web Development',
   },
+  [PostCategory.Vercel]: {
+    title: 'Vercel Deployment: Streamline Your Deployment Process',
+    description: 'Discover tips and techniques to streamline your deployment process with Vercel.',
+    keywords: 'Vercel, Deployment, Workflow',
+  },
   [PostCategory.CleanCode]: {
     title: 'Clean Code Practices: Improve Your Development Workflow',
     description: 'Explore the best practices for writing clean and maintainable code in your projects.',
     keywords: 'Clean Code, Development, Coding Standards',
   },
-  [PostCategory.HowTo]: {
-    title: 'How-To Guides: Step-by-Step Tutorials for Various Tasks',
-    description: 'Dive into our comprehensive how-to guides for step-by-step tutorials on various tasks and topics.',
-    keywords: 'How-To, Tutorials, Guides',
+  [PostCategory.Tutorial]: {
+    title: 'Tutorial Guides: Step-by-Step Instructions for Various Tasks',
+    description: 'Dive into our comprehensive Tutorial guides for step-by-step tutorials on various tasks and topics.',
+    keywords: 'Tutorial, Guides, Tutorial',
   },
   [PostCategory.UsefulResources]: {
     title: 'Handpicked Resources: Enhance Your Development Arsenal',

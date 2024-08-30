@@ -5,7 +5,7 @@ description: Creating a flexbox-based Grid component with BEM methodology and cl
 createDate: 2022-10-09T20:40:12.461Z
 updateData: 2022-10-10T00:35:10.461Z
 keywords: [ react flexbox grid, flexbox css, react js grid, react flexbox, react grid system, classnames, clsx ]
-categories: [ React, CSS, How-To ]
+categories: [ React, CSS, Tutorial ]
 featured: false
 ---
 

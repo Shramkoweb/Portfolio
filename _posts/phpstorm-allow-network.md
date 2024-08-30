@@ -5,7 +5,7 @@ description: How to fix PHPStorm network connections error on startup
 createDate: 2022-10-26T16:49:52.889Z
 updateData: 2022-10-26T16:49:52.889Z
 keywords: [do you want the application to accept incoming network connections, accept incoming network connections]
-categories: [How-To]
+categories: [Tutorial]
 featured: false
 ---
 
