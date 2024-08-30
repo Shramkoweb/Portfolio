@@ -7,9 +7,9 @@ import { getCopyrightYearString } from '@/components/footer/get-copyright';
 
 export function Footer() {
   return (
-    <footer role="contentinfo" className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
+    <footer role="contentinfo" className="flex flex-col justify-center items-start max-w-3xl mx-auto w-full">
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
-      <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
+      <div className="w-full max-w-3xl grid grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
         <ul className="flex flex-col space-y-4">
           <li>
             <Link

@@ -5,7 +5,7 @@ description: Guide to javascript array methods
 createDate: 2022-11-25T17:39:11.486Z
 updateData: 2022-11-25T17:39:11.486Z
 keywords: [javascript arrays, javascript array replace, js array concat, js array includes, javascript concatenate arrays, array includes javascript]
-categories: [JS, How-To]
+categories: [JS, Tutorial]
 featured: false
 ---
 

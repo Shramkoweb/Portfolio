@@ -5,7 +5,7 @@ description: Learn how to add SSH keys to your GitHub account. Boost your accoun
 createDate: 2023-12-08T01:07:13.290Z
 updateData: 2023-12-08T01:07:13.290Z
 keywords: [ Adding SSH Keys, GitHub Account, Git Terminal, Existing SSH Keys, Generating SSH Key, SSH public key, SSH Key to GitHub Account ]
-categories: [ How-To, Project-Setup ]
+categories: [ Tutorial, Project-Setup ]
 featured: false
 ---
 

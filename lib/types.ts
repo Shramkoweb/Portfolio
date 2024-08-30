@@ -25,13 +25,14 @@ export type Post = {
 
 export enum PostCategory {
   JS = 'js',
+  Vercel = 'vercel',
+  Tutorial = 'tutorial',
   TS = 'ts',
   CSS = 'css',
   Astro = 'astro',
   JamsSack = 'jamstack',
   HTML = 'html',
   CleanCode = 'clean-code',
-  HowTo = 'how-to',
   UsefulResources = 'useful-resources',
   ProjectSetup = 'project-setup',
   Node = 'node',

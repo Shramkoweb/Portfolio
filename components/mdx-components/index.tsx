@@ -9,8 +9,17 @@ function CustomLink(
   AnchorHTMLAttributes<HTMLAnchorElement>,
 ) {
   const { href, children, className } = props;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
+  const isInternalLink = href
+    && (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
+  const isItLinkTree = href && href === 'https://links.shramko.dev/';
 
+  if (isItLinkTree) {
+    return (
+      <a target="_blank" href={href} className={className} rel="noopener">
+        {children}
+      </a>
+    );
+  }
   if (isInternalLink) {
     return (
       <Link href={href} className={className}>
@@ -20,7 +29,12 @@ function CustomLink(
   }
 
   return (
-    <a target="_blank" rel="noopener" href={href} className={className}>
+    <a
+      target="_blank"
+      rel="noopener nofollow"
+      href={href}
+      className={className}
+    >
       {children}
     </a>
   );
@@ -42,7 +56,7 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       src={concatenatedSrc}
       alt={alt}
       className={`rounded-lg mt-4 mb-8 ${inverted ? 'inverted' : ''}`}
-      width={700}
+      width={768}
       height={300}
       priority={priority}
       sizes="100vw"

@@ -15,7 +15,7 @@ keywords: [
   Boosting Blog Quality with Conventional Commits,
   Conventional Commits Tools for Junior Developers
 ]
-categories: [ JS, TS, How-To, Project-Setup, Opinion, Tools ]
+categories: [ JS, TS, Tutorial, Project-Setup, Opinion, Tools ]
 featured: true
 ---
 

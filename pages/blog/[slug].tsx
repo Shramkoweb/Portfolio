@@ -98,7 +98,7 @@ function ArticlePage(props: ArticlePageProps) {
           />
         ))}
       </Head>
-      <article className="flex w-full max-w-2xl mx-auto mb-16 relative">
+      <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
         <div>
           <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">
             <ul className="flex flex-col gap-2">

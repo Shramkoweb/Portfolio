@@ -5,7 +5,7 @@ description: How I built a modern portfolio in 2022, and a list of technologies 
 createDate: 2022-08-13T13:31:25.041Z
 updateData: 2022-09-25T12:03:53.360Z
 keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]
-categories: [Project-Setup, React]
+categories: [Project-Setup, React, Vercel]
 featured: false
 ---
 
@@ -217,7 +217,7 @@ Less code means less bugs.
 ### Heroku Postgres
 
 Heroku Postgres gives me all the benefits of PostgreSQL without having to spin up and maintain the databases ourselves.
-And it is [easy integrate with PhpStorm](https://www.jetbrains.com/help/phpstorm/how-to-connect-to-heroku-postgres.html)
+And it is [easy integrate with PhpStorm](https://www.jetbrains.com/help/phpstorm/Tutorial-connect-to-heroku-postgres.html)
 .
 
 ### Type Safety
