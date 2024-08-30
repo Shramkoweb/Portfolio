@@ -5,12 +5,22 @@ import { AnchorHTMLAttributes, ClassAttributes } from 'react';
 // eslint-disable-next-line max-len
 function CustomLink(
   props: JSX.IntrinsicAttributes &
-  ClassAttributes<HTMLAnchorElement> &
-  AnchorHTMLAttributes<HTMLAnchorElement>,
+    ClassAttributes<HTMLAnchorElement> &
+    AnchorHTMLAttributes<HTMLAnchorElement>
 ) {
   const { href, children, className } = props;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
+  const isInternalLink =
+    href &&
+    (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
+  const isItLinkTree = href && href === 'https://links.shramko.dev/';
 
+  if (isItLinkTree) {
+    return (
+      <a target="_blank" href={href} className={className}>
+        {children}
+      </a>
+    );
+  }
   if (isInternalLink) {
     return (
       <Link href={href} className={className}>
@@ -20,7 +30,12 @@ function CustomLink(
   }
 
   return (
-    <a target="_blank" rel="noopener" href={href} className={className}>
+    <a
+      target="_blank"
+      rel="noopener nofollow"
+      href={href}
+      className={className}
+    >
       {children}
     </a>
   );
@@ -54,5 +69,5 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
 
 export const MDXComponents = {
   Image: RoundedImage,
-  a: CustomLink,
+  a: CustomLink
 };
