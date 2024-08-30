@@ -6,7 +6,7 @@ createDate: 2023-02-24T22:06:42.844Z
 updateData: 2023-02-24T22:06:42.844Z
 keywords: [browserstack, browserstack dev tools, android browser with dev tools, browserstack devices, browser with developer tools for ios]
 categories: [Tutorial, Useful-Resources, Project-Setup]
-featured: true
+featured: false
 ---
 
 <Image src="browsers.jpg" alt="Multiple browsers on display" />
