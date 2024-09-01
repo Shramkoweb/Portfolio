@@ -217,7 +217,7 @@ Less code means less bugs.
 ### Heroku Postgres
 
 Heroku Postgres gives me all the benefits of PostgreSQL without having to spin up and maintain the databases ourselves.
-And it is [easy integrate with PhpStorm](https://www.jetbrains.com/help/phpstorm/Tutorial-connect-to-heroku-postgres.html)
+And it is [easy integrate with PhpStorm](https://www.jetbrains.com/help/phpstorm/how-to-connect-to-heroku-postgres.html)
 .
 
 ### Type Safety
