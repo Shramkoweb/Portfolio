@@ -6,9 +6,13 @@ interface CategoriesProps {
 
 export function Categories(props: CategoriesProps) {
   const { categories } = props;
+  const aaaa = 1111;
 
   return (
     <ul className="flex flex-wrap gap-2 text-gray-600 dark:text-gray-400">
+      <li>
+        {aaaa}
+      </li>
       <li key="all">
         <Link
           href="/blog"
