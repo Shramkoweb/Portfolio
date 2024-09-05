@@ -8,14 +8,17 @@ import { compileMDX } from '@/lib/scripts/compiler';
 import { Snippet } from '@/lib/types';
 
 import { MDXComponents } from '@/components/mdx-components';
+import { useEffect } from 'react';
 
 type SnippetPageProps = Pick<Snippet, 'data'> & {
   content: MDXRemoteSerializeResult;
+  slug: string;
 };
 
 function SnippetPage(props: SnippetPageProps) {
   const {
     content,
+    slug,
     data: {
       title, description, createDate, updateData, keywords,
     },
@@ -24,6 +27,14 @@ function SnippetPage(props: SnippetPageProps) {
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
     dateStyle: 'medium',
   });
+
+  useEffect(() => {
+    const registerView = () => fetch(`/api/views/${slug}`, {
+      method: 'POST',
+    });
+
+    registerView();
+  }, [slug]);
 
   return (
     <>
@@ -112,6 +123,7 @@ export async function getStaticProps({
   return {
     props: {
       data,
+      slug: params?.slug as string,
       content: html,
     },
   };
