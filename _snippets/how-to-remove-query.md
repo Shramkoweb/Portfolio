@@ -14,8 +14,6 @@ keywords: [
 ]
 ---
 
-## Removing Query Parameters from a URL in JavaScript
-
 To remove query parameters from a URL in JavaScript, you can use the following function:
 
 ```typescript
