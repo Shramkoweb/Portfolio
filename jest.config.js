@@ -11,7 +11,7 @@ const customJestConfig = {
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
     '^@/lib/(.*)$': '<rootDir>/lib/$1',
   },
-  testEnvironment: 'jest-environment-jsdom'
+  testEnvironment: 'jsdom'
 };
 
 module.exports = createJestConfig(customJestConfig);
