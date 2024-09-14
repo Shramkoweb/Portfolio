@@ -10,7 +10,7 @@ featured: false
 
 ## Astro.js Image Component
 
-When I built my linktree website I forgot to use [Image component](https://docs.astro.build/en/guides/images/) in
+When I built [my linktree](https://links.shramko.dev/) website I forgot to use [Image component](https://docs.astro.build/en/guides/images/) in
 Astro.js.<br></br>I used the `img` tag instead. So after learning about the Image component in Astro.js, I decided to
 add it.
 
