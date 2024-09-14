@@ -55,3 +55,5 @@ pnpm add sharp
 Done and deployed. Now it works perfectly on Vercel.
 
 <Image src="astro-image.png" alt="Astro Image works on Vercel" />
+
+How I built my linktree website you can read in my [previous article](/blog/linktree).
