@@ -115,6 +115,28 @@ function getCalories(food: MexicanFood): number {
 If you add a new type of food but forget to update `getCalories`, TypeScript will give you a heads-up. It's like having
 a friendly reminder bot!
 
+## Discriminated Unions of Tuples
+
+Sometimes, you might want to use a discriminated union with tuples. Here's how you can do it:
+
+```typescript
+type User = { id: number, name: string }; // User type
+type APIResponse = [success: true, data: User] | [success: false, error: string]; // Tuple type
+
+function handleResponse(response: APIResponse): void {
+  const [success, data] = response;
+
+  if (success) {
+    const { id, name } = data; // TypeScript knows it's a User!
+    console.log(`User ${name} with ID ${id} found!`);
+  } else {
+    //  TypeScript knows it's an error string!
+    console.error(`Error: ${data}`);
+  }
+}
+````
+
+
 ## Discriminated Unions and Destructuring
 Discriminated unions are awesome, but they're not perfect. One of the main drawbacks is that you can't use them with destructuring.
 
