@@ -18,9 +18,7 @@ of a code block.
 Let’s take a look at an example of what that means:
 
 ```js
-for (initialization; condition; final expression
-)
-{
+for (initialization; condition; final expression) {
   // code to be executed
 }
 ```

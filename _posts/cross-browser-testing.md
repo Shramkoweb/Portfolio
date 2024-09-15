@@ -9,7 +9,7 @@ categories: [Tutorial, Useful-Resources, Project-Setup]
 featured: false
 ---
 
-<Image src="browsers.jpg" alt="Multiple browsers on display" />
+<Image src="browsers.jpg" alt="Different browsers logo on gradient background" />
 
 During site development, we usually test our site only in the browser installed on our computer, but in the world of
 browsers there are dozens, and maybe even thousands, of versions.

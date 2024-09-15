@@ -35,7 +35,7 @@ function AboutPage() {
         <div className="w-full mb-8 flex">
           <Image
             className="rounded-lg"
-            alt="Serhii Shramko with photography camera"
+            alt="Serhii Shramko with the camera in his hands. Black and white photo."
             src={about}
             width={1269}
             height={846}
@@ -375,7 +375,7 @@ function AboutPage() {
           <div className="grid grid-cols-1 gap-4">
             <Image
               className="rounded-lg transition-transform pointer-events-none"
-              alt="Me with tennis cup"
+              alt="Serhii Shramko with table-tennis winning cup. The 3rd place in the local tournament."
               sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
               src={aboutBottom}
             />

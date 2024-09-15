@@ -34,7 +34,7 @@ function GearPage() {
         <div className="w-full mb-8 flex">
           <Image
             className="rounded-lg"
-            alt="Serhii Shramko is sitting at a table with a computer"
+            alt="Serhii Shramko is sitting at a table on front of a computer and coding"
             src={gear}
             width={1000}
             height={667}

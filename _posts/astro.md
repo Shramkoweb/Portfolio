@@ -49,7 +49,7 @@ Then navigate to the project directory and start the development server by runni
 npm run dev
 ```
 
-<Image src="astro-dev.jpeg" alt="" />
+<Image src="astro-dev.jpeg" alt="Astro welcome screen on localhost" />
 
 This will start a live Astro development server, which will automatically rebuild your site as you make changes to your
 code.
@@ -169,7 +169,7 @@ const [ user ] = results;
 
 > Before using React inside Astro add [integration](https://docs.astro.build/en/guides/integrations-guide/react/)
 
-<Image src="astro-dev.gif" alt="" />
+<Image src="astro-dev.gif" alt="Data fetching in Astro" />
 
 You can read more about data fetching in [official documentation](https://docs.astro.build/en/guides/data-fetching/).
 

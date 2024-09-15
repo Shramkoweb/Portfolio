@@ -80,7 +80,7 @@ npm run lint
 
 ## Eslint Rules
 
-ESLint comes with a large number of built-in rules and you can add more rules through plugins. You can modify which
+ESLint comes with a large number of built-in rules, and you can add more rules through plugins. You can modify which
 rules your project uses either using configuration comments or configuration files. To change a rule setting, you must
 set the rule ID equal to one of these values:
 
@@ -90,7 +90,7 @@ set the rule ID equal to one of these values:
 
 ### Adding a rule
 
-To configure rules inside of a configuration file, use the rules key along with an error level and any options you want
+To configure rules inside a configuration file, use the rules key along with an error level and any options you want
 to use. For example:
 
 ```json
@@ -105,7 +105,7 @@ to use. For example:
 }
 ```
 
-Rules are added as keys to this rules attribute and you can usually find basic eslint rules here on their website in the
+Rules are added as keys to this rules attribute, and you can usually find basic eslint rules here on their website in the
 [rules' documentation](https://eslint.org/docs/latest/use/configure/rules).
 
 ## Conclusion

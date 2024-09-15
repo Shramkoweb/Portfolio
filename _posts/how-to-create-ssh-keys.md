@@ -30,7 +30,7 @@ and type:
 $ ls -al ~/.ssh
 ```
 
-<Image src="ssh.jpg" alt="terminal with ssh folder" />
+<Image src="ssh.jpg" alt="macOS terminal with .ssh folder" />
 
 This command lists all the files in your .ssh directory. If you don't find any, you can proceed to generate a new one.
 
@@ -94,7 +94,7 @@ Return to your terminal and type:
 $ ssh -T git@github.com![img.png](img.png)
 ```
 
-<Image src="gh.jpg" alt="terminal with ssh folder" />
+<Image src="gh.jpg" alt="Testing the Connection with GitHub in macOS terminal" />
 
 You should see a message welcoming you: "Hi [Your GitHub username]! You've successfully authenticated, but GitHub does
 not provide shell access."

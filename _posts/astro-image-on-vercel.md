@@ -27,7 +27,7 @@ add it.
 
 And what do you think? It's works locally, but when I deployed it on Vercel, I got an error.
 
-<Image src="astro-image-error.png" alt="Astro Image not works on Vercel" />
+<Image src="astro-image-error.png" alt="Astro Image doesn't work on Vercel" />
 
 ## How to Fix the Error
 

@@ -63,7 +63,7 @@ An important point, we add `/` to the address at the beginning.
 <a href="/about">About page</a>
 ```
 
-<Image src="root-example.png" alt="Root example" inverted />
+<Image src="root-example.png" alt="Relative to the root of the site example" inverted />
 
 ### Relative path from the current document
 
@@ -76,7 +76,7 @@ An important point, we do not add `/` to the address at the beginning.
 <a href="category/js">JS category of Blog</a>
 ```
 
-<Image src="location.png" alt="Location example" inverted />
+<Image src="location.png" alt="Relative path from the current document example" inverted />
 
 ## Absolute links
 
@@ -109,7 +109,7 @@ Add `#anatomy-of-a-url` to the current URL in your browser.
 
 Examples that we discussed today.
 
-<Image src="cheat-sheet.png" alt="Links cheat" inverted />
+<Image src="cheat-sheet.png" alt="Relative and Absolute paths Cheat Sheet" inverted />
 
 ## Useful links
 

@@ -9,7 +9,7 @@ categories: [Useful-Resources]
 featured: false
 ---
 
-<Image alt="Retro background with grid lines" src="books.jpeg" priority={true} />
+<Image alt="Astronaut with book in open space. Black background with stars" src="books.jpeg" priority={true} />
 
 > “Knowledge must be shared”.
 

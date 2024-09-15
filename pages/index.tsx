@@ -115,7 +115,7 @@ function IndexPage(props: IndexPageProps) {
           >
             <Image
               role="presentation"
-              alt=""
+              alt="Serhii Shramko's avatar - smile iOS emoji"
               src={smile}
               width={150}
               height={150}
@@ -126,7 +126,7 @@ function IndexPage(props: IndexPageProps) {
             />
             <Image
               role="presentation"
-              alt=""
+              alt="Serhii Shramko's avatar - tongue iOS emoji"
               src={tongue}
               width={150}
               height={150}

@@ -9,7 +9,7 @@ categories: [ React, CSS, Tutorial ]
 featured: false
 ---
 
-<Image src="grid.jpeg" alt="Don't forget to specify alt" />
+<Image src="grid.jpeg" alt="Retro background with grid lines and neon" />
 
 Often in the life of a web developer, you need to make a grid, but the limitations of the browser (Internet Explorer 😭)
 do not allow you to use, for example, [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout).
@@ -124,7 +124,7 @@ $columnsNumberToWidth: (
 
 You can see how SASS code is transformed into CSS [here](https://www.sassmeister.com/):
 
-<Image src="sass.jpeg" alt="sassmeister site screenshot" />
+<Image src="sass.jpeg" alt="sassmeister site screenshot with SCSS and CSS code" />
 
 ## Step 3: Add logic to the GridRow component.
 
