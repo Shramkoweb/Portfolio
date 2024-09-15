@@ -3,7 +3,7 @@ title: "Discriminated Unions in TypeScript: The Secret Sauce for Better Code"
 heading: Discriminated Unions in TypeScript
 description: Discover how discriminated unions in TypeScript can help you write cleaner, safer, and more expressive code. Learn what they are, how to use them, and why they're awesome!
 createDate: 2024-09-14
-keywords: [ "TypeScript", "Discriminated Unions", "Tagged Unions", "Sum Types", "Type Safety", "Code Clarity", "Exhaustiveness Checking" ]
+keywords: [ "TypeScript", "Discriminated Unions", "Tagged Unions", "Sum Types", "Type Safety", "Code Clarity", "Exhaustiveness Checking", "Discriminated Unions and Destructuring", "TypeScript Discriminated Unions" ]
 categories: [ TS, Tutorial, Clean-Code ]
 featured: false
 ---
@@ -114,6 +114,35 @@ function getCalories(food: MexicanFood): number {
 
 If you add a new type of food but forget to update `getCalories`, TypeScript will give you a heads-up. It's like having
 a friendly reminder bot!
+
+## Discriminated Unions and Destructuring
+Discriminated unions are awesome, but they're not perfect. One of the main drawbacks is that you can't use them with destructuring.
+
+```typescript
+function getCalories({ kind, shells, length, toppings }: MexicanFood): number {
+  // Error: Property 'shells' does not exist on type 'MexicanFood'.
+  // Error: Property 'length' does not exist on type 'MexicanFood'.
+  // Error: Property 'toppings' does not exist on type 'MexicanFood'.
+}
+```
+
+So, if you need to destructure your object, you'll have to do it the more explicit way:
+
+```typescript
+function getCalories(food: MexicanFood): number {
+  switch (food.kind) {
+    case "taco":
+      const { shells } = food; // TypeScript knows it's a Taco! And you can destructure here
+      return shells * 200;
+    case "burrito":
+      const { length } = food;
+      return length * 100;
+    case "nachos":
+      const { toppings } = food;
+      return toppings.length * 50;
+  }
+}
+```
 
 ## Wrapping Up
 
