@@ -21,6 +21,13 @@ I [wrote about Astro.js](/blog/astro), and I was impressed by its performance an
 
 <Image src="astro-chart.jpg" alt="Astro Framework chart on State of JS" />
 
+### Speed and Performance
+
+Try to check my website on [PageSpeed Insights](https://pagespeed.web.dev/analysis/https-links-shramko-dev/uemqqap32n?form_factor=mobile) and you will see that it is fast and efficient.
+
+<Image src="lighthouse.png" alt="My webstite metrics on Google lighthouse" />
+
+
 ## Setting Up the Project
 
 I started by creating a new Astro project:
