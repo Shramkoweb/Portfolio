@@ -1,5 +1,6 @@
 ---
-title: Visually Hidden
+title: Making Elements Visually Hidden for Screen Readers and Accessibility
+heading: Visually Hidden
 description: Hide content visually while keeping it accessible to screen readers using the visually hidden CSS technique.
 createDate: 2024-07-12
 keywords: [

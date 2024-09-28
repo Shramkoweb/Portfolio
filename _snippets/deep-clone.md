@@ -1,5 +1,6 @@
 ---
-title: Deep Clone an Object in JavaScript
+title: "JavaScript Deep Clone: How to Safely Copy Objects in 2024"
+heading: Deep Clone an Object in JavaScript
 description: A JavaScript function to create a deep clone of an object, including nested objects and arrays.
 createDate: 2024-09-04T22:06:42.844Z
 keywords: [

@@ -1,5 +1,6 @@
 ---
-title: 'useHasMounted'
+title: "React Hook Tutorial: How to Use the useHasMounted Hook"
+heading: useHasMounted
 description: Avert strange SSR problems with this useful React hook. Identify whether your rendering occurs on the client or server!
 createDate: 2024-07-11
 keywords: [

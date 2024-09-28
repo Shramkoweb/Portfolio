@@ -18,7 +18,7 @@ export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
 
     const {
       data: {
-        title, description, createDate, updateData, keywords,
+        title, heading, description, createDate, updateData, keywords,
       },
       content,
     } = matter(fileContents);
@@ -27,6 +27,7 @@ export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
       data: {
         slug,
         title,
+        heading,
         description,
         keywords,
         createDate: Date.parse(createDate),

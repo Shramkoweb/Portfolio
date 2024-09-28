@@ -49,11 +49,11 @@ function SnippetsPage(props: SnippetsPageProps) {
           </p>
         </div>
         <ul className="grid w-full grid-cols-1 gap-4 my-2 mt-4 sm:grid-cols-2">
-          {snippets.map(({ data: { title, slug, createDate } }) => (
-            <li key={title}>
+          {snippets.map(({ data: { heading, slug, createDate } }) => (
+            <li key={heading}>
               <SnippetCard
                 slug={slug}
-                title={title}
+                title={heading}
                 createDate={createDate}
               />
             </li>

@@ -1,5 +1,6 @@
 ---
-title: Random number generator
+title: "JavaScript Random Number Generation: Best Practices"
+heading: Random number generator
 description: Generate a random number in a range using JavaScript.
 createDate: 2024-07-11
 keywords: [
