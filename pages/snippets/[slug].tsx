@@ -20,7 +20,7 @@ function SnippetPage(props: SnippetPageProps) {
     content,
     slug,
     data: {
-      title, description, createDate, updateData, keywords,
+      title, heading, description, createDate, updateData, keywords,
     },
   } = props;
 
@@ -88,7 +88,7 @@ function SnippetPage(props: SnippetPageProps) {
         <div className="flex justify-between w-full mb-8">
           <div>
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-              {title}
+              {heading}
             </h1>
             <p className="text-gray-700 dark:text-gray-300">
               Serhii Shramko /

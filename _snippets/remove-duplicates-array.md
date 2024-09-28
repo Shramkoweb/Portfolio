@@ -1,5 +1,6 @@
 ---
-title: Remove Duplicates from an Array
+title: "Effective Ways to Remove Duplicates from Arrays in JavaScript"
+heading: Remove Duplicates from an Array
 description: How to remove duplicates from an Array in JS
 createDate: 2023-01-26T20:45:06.788Z
 updateData: 2023-01-26T20:45:06.788Z

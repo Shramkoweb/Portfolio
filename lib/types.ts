@@ -51,6 +51,7 @@ export enum Feedback {
 
 export type Snippet = {
   data: {
+    heading: string;
     slug: string;
     title: string;
     description: string;

@@ -1,5 +1,6 @@
 ---
-title: SQL countries table
+title: "SQL Countries Table Example: How to Create and Query Efficiently"
+heading: SQL countries table
 description: Sql dump of all the countries, country codes
 createDate: 2023-02-15T21:11:53.432Z
 keywords: [SQL snippet, countries SQL table, SQL table, SQL example, SQL examples]

@@ -1,5 +1,6 @@
 ---
-title: Range Function
+title: "How to Use the Range Function in JavaScript: A Simple Guide"
+heading: Range Function
 description: Generate an array of numbers in a range using JavaScript.
 createDate: 2024-07-12
 keywords: [
