@@ -42,3 +42,5 @@ if (isNode) {
   // do Node.js only code
 }
 ```
+
+> I have great example where it can be used in my another snippet - [Generating UUIDs in JavaScript](/snippets/window-crypto).

@@ -28,7 +28,7 @@ const myUUID = window.crypto.randomUUID();
 console.log(myUUID); // Outputs something like '3b241101-e2bb-4255-8caf-4136c566a962'
 ```
 
-> Before using `window.crypto.randomUUID()`, check if it's available. Your code might run in different environments.
+> Before using this function, check if it's available. Your code might run in different environments.
 > I have a more detailed snippet on [checking the environment](/snippets/environment) if you want to dive deeper.
 
 ## Why use it?
