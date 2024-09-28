@@ -7,7 +7,7 @@ function GearPage() {
   return (
     <>
       <Head>
-        <title>Gear - Serhii Shramko</title>
+        <title>Gear | Serhii Shramko</title>
         <meta
           content="Here's what gear I'm currently using for coding and live."
           name="description"

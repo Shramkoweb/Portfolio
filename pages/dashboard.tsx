@@ -9,7 +9,7 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>Dashboard – Serhii Shramko</title>
+        <title>Dashboard | Serhii Shramko</title>
         <meta
           content="My dashboard is built using Next.js API routes as serverless functions. It's personalized and easy to access."
           name="description"

@@ -33,7 +33,7 @@ function CategoryPage(props: CategoryPageProps) {
   return (
     <>
       <Head>
-        <title>{`${seoTitle} articles - Serhii Shramko`}</title>
+        <title>{`${seoTitle} | Serhii Shramko`}</title>
         <meta
           content={seoDescription}
           name="description"
@@ -46,7 +46,7 @@ function CategoryPage(props: CategoryPageProps) {
         />
         <meta
           property="og:site_name"
-          content={`Serhii Shramko - Blog category ${category}`}
+          content={`Blog category ${category} | Serhii Shramko`}
           key="og:site_name"
         />
         <meta

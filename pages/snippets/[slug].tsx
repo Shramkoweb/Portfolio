@@ -45,7 +45,7 @@ function SnippetPage(props: SnippetPageProps) {
         <meta property="og:title" content={title} key="og:title" />
         <meta
           property="og:site_name"
-          content="Serhii Shramko Snippets"
+          content="Snippets | Serhii Shramko"
           key="og:site_name"
         />
         <meta
