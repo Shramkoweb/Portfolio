@@ -12,7 +12,7 @@ function NotFoundPage() {
   return (
     <>
       <Head>
-        <title>404 - Serhii Shramko</title>
+        <title>404 | Serhii Shramko</title>
         <meta
           content="Oops! The page you're looking for isn't here. But don't worry, we'll help you find your way back. Let's start by heading to the homepage."
           name="description"

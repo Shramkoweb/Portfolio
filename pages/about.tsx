@@ -8,7 +8,7 @@ function AboutPage() {
   return (
     <>
       <Head>
-        <title>About - Serhii Shramko</title>
+        <title>About | Serhii Shramko</title>
         <meta
           content="Learn about me and my journey through life. Discover my passions, interests, and experiences on my personal about page. Get to know the real me today."
           name="description"

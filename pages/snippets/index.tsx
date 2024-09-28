@@ -16,7 +16,7 @@ function SnippetsPage(props: SnippetsPageProps) {
   return (
     <>
       <Head>
-        <title>Code Snippets - Serhii Shramko</title>
+        <title>Code Snippets | Serhii Shramko</title>
         <meta
           content="JavaScript snippets, CSS snippets, Node.js snippets, Next.js snippets, JS code examples, code examples, codes snippet"
           name="keywords"
@@ -34,7 +34,7 @@ function SnippetsPage(props: SnippetsPageProps) {
         />
         <meta
           property="og:title"
-          content="Code Snippets - Serhii Shramko"
+          content="Code Snippets | Serhii Shramko"
           key="og:title"
         />
       </Head>
