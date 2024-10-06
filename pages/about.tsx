@@ -26,6 +26,8 @@ function AboutPage() {
           name="keywords"
           key="keywords"
         />
+        {/* eslint-disable-next-line react/no-danger */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: '{"@context":"https://schema.org","@type":"WebSite","name":"Serhii Shramko","url":"https://shramko.dev","description":"Serhii Shramko – Developer, writer, creator.","publisher":{"@type":"Person","name":"Serhii Shramko","url":"https://shramko.dev/about","image":{"@type":"ImageObject","url":"https://shramko.dev/static/images/twittersite.png","width":1269,"height":846},"sameAs":["https://github.com/shramkoweb","https://www.linkedin.com/in/shramko-dev/","https://www.instagram.com/serhii.shramko/"],"jobTitle":"Senior Developer","worksFor":{"@type":"Organization","name":"MacPaw","url":"https://macpaw.com"},"email":"shramko.dev@gmail.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://shramko.dev/about"},"potentialAction":{"@type":"SearchAction","target":"https://shramko.dev/search?query={search_term_string}","query-input":"required name=search_term_string"}}' }} />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
