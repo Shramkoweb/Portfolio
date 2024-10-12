@@ -109,7 +109,7 @@ function IndexPage(props: IndexPageProps) {
             </Link>
           </div>
           <div
-            className="w-[150px] sm:w-[300px] min-h-[150px] relative mb-8 sm:mb-0 mr-auto relative"
+            className="w-[150px] sm:w-[300px] min-h-[150px] relative mb-8 sm:mb-0 mr-auto"
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
           >
