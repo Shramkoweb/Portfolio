@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
@@ -121,6 +122,7 @@ function QuizletPage() {
             {' '}
             Just highlight a
             word, click
+            {' '}
             <code>Add to Quizlet QuickList</code>
             {' '}
             and boom—it’s saved! You can
@@ -138,6 +140,7 @@ function QuizletPage() {
             {' '}
             When you’re ready to
             study, hit
+            {' '}
             <code>Copy</code>
             {' '}
             and paste your word list straight into Quizlet (or
@@ -285,6 +288,14 @@ function QuizletPage() {
           <br />
           A: Absolutely! As long as you can highlight the text, you can add
           words to your list.
+        </p>
+
+        <p>
+          <strong>Q: Where I can find Privacy Policy page?</strong>
+          <br />
+          A:
+          {' '}
+          <Link href="/quizlet-list/privacy-policy">Privacy policy page</Link>
         </p>
 
         <p>
