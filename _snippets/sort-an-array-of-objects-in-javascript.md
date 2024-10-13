@@ -4,16 +4,16 @@ heading: Sort an Array of Objects by Multiple Properties
 description: Learn how to sort an array of objects by multiple properties in JavaScript using the Array.prototype.sort() method with a custom compare function.
 createDate: 2024-10-13
 keywords: [
-  check environment,
-  check if code is running in browser,
-  check if code is running in Node.js,
-  check if code is running in browser or Node.js,
-  check if code is running in browser or Node.js in JavaScript,
-  check if code is running in browser or Node.js in TypeScript,
-  check if code is running in browser or Node.js in Node.js,
-  check if code is running in browser or Node.js in React,
-  check if code is running in browser or Node.js in Angular,
-  check if code is running in browser or Node.js in Vue.js
+  JavaScript,
+  Array,
+  Object,
+  Sorting,
+  Programming,
+  Coding tips,
+  Array.prototype.sort,
+  Custom compare function,
+  Sort by multiple properties,
+  Sort array of objects
 ]
 ---
 
