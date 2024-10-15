@@ -10,7 +10,7 @@ export function FooterLink({
 }: PropsWithChildren<FooterLinkProps>) {
   return (
     <a
-      className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+      className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
       target="_blank"
       rel="nofollow noopener"
       href={href}

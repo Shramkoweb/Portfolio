@@ -7,14 +7,14 @@ import { getCopyrightYearString } from '@/components/footer/get-copyright';
 
 export function Footer() {
   return (
-    <footer role="contentinfo" className="flex flex-col justify-center items-start max-w-3xl mx-auto w-full">
-      <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
-      <div className="w-full max-w-3xl grid grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
+    <footer role="contentinfo" className="mx-auto flex w-full max-w-3xl flex-col items-start justify-center">
+      <hr className="mb-8 w-full border-gray-200 border-1 dark:border-gray-800" />
+      <div className="grid w-full max-w-3xl grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
         <ul className="flex flex-col space-y-4">
           <li>
             <Link
               href="/"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               Home
             </Link>
@@ -22,7 +22,7 @@ export function Footer() {
           <li>
             <Link
               href="/about"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               About
             </Link>
@@ -30,7 +30,7 @@ export function Footer() {
           <li>
             <Link
               href="/blog"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               Blog
             </Link>
@@ -55,7 +55,7 @@ export function Footer() {
           <li>
             <Link
               href="/gear"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               My Gear
             </Link>
@@ -63,7 +63,7 @@ export function Footer() {
           <li>
             <Link
               href="/dashboard"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               Dashboard
             </Link>
@@ -71,7 +71,7 @@ export function Footer() {
           <li>
             <Link
               href="/snippets"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               Snippets
             </Link>
@@ -79,7 +79,7 @@ export function Footer() {
           </li>
         </ul>
       </div>
-      <small className="text-xs text-gray-600 dark:text-gray-400 pb-4">
+      <small className="pb-4 text-xs text-gray-600 dark:text-gray-400">
         © Made with ❤️
         <br />
         {getCopyrightYearString(YEAR_OF_CREATE, new Date().getFullYear())}

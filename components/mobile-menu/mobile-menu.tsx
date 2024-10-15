@@ -60,32 +60,32 @@ export function MobileMenu() {
             'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
           )}
         >
-          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             <Link href="/" className="flex w-auto pb-4">
               Home
             </Link>
           </li>
-          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             <Link href="/about" className="flex w-auto pb-4">
               About
             </Link>
           </li>
-          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             <Link href="/blog" className="flex w-auto pb-4">
               Blog
             </Link>
           </li>
-          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             <Link href="/dashboard" className="flex w-auto pb-4">
               Dashboard
             </Link>
           </li>
-          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             <Link href="/snippets" className="flex w-auto pb-4">
               Snippets
             </Link>
           </li>
-          <li className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold">
+          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             <Link
               href="/static/serhii-shramko-resume.pdf"
               download

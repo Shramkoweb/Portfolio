@@ -12,7 +12,7 @@ export function Categories(props: CategoriesProps) {
       <li key="all">
         <Link
           href="/blog"
-          className="border-2 border-gray-200 dark:border-gray-700 inline-block p-1 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+          className="inline-block rounded-lg border-2 border-gray-200 p-1 px-3 py-2 transition-all hover:bg-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
         >
           <span>All</span>
         </Link>
@@ -24,7 +24,7 @@ export function Categories(props: CategoriesProps) {
           <li key={item}>
             <Link
               href={`/blog/category/${item.toLowerCase()}`}
-              className="border-2 border-gray-200 dark:border-gray-700 inline-block p-1 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+              className="inline-block rounded-lg border-2 border-gray-200 p-1 px-3 py-2 transition-all hover:bg-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
             >
               <span>{formattedCategory}</span>
             </Link>

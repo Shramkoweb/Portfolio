@@ -18,12 +18,12 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
 
   return (
     <Link href={`/blog/${slug}`} className="w-full">
-      <div className="w-full mb-8">
+      <div className="mb-8 w-full">
         <div className="flex flex-col justify-between md:flex-row">
-          <h3 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
+          <h3 className="mb-2 w-full text-lg font-medium text-gray-900 dark:text-gray-100 md:text-xl">
             {heading}
           </h3>
-          <p className="w-32 mb-4 text-left text-gray-500 md:text-right md:mb-0">
+          <p className="mb-4 w-32 text-left text-gray-500 md:mb-0 md:text-right">
             {`${views ? views.toLocaleString() : '---'} views`}
           </p>
         </div>
