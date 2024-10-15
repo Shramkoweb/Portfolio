@@ -82,7 +82,7 @@ function QuizletPage() {
         <p>
           That’s why I created
           {' '}
-          <strong>Quizlet QuickList</strong>
+          <strong><a target="_blank" href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg" rel="noopener">Quizlet QuickList</a></strong>
           {' '}
           — a Chrome
           extension that makes saving and studying unfamiliar words super easy.
@@ -301,7 +301,7 @@ function QuizletPage() {
         <p>
           Ready to make language learning easier?
           {' '}
-          <a href="#">Download Quizlet QuickList here</a>
+          <a target="_blank" href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg" rel="noopener">Download Quizlet QuickList here</a>
           {' '}
           and start building
           your vocab list today! Trust me, you’ll wish you had this tool sooner.

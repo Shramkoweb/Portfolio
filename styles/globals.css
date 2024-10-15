@@ -182,3 +182,9 @@ input[type='email'] {
   left: 0;
   transform: translateX(-200%);
 }
+
+.bg-pattern {
+  background: radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#2f2f2f 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #2f2f2f 2px, currentColor 2px) -1px 0;
+  background-size: 25px 25px, 50px 50px, 15px 15px, 15px 15px;
+  opacity: .8
+}
