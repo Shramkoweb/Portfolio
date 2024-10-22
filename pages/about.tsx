@@ -2,7 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import about from '../public/static/images/about.jpeg';
-import aboutBottom from '../public/static/images/about-bottom.png';
+import car from '../public/static/images/car.jpeg';
+import tennis from '../public/static/images/tennis.jpeg';
+import eat from '../public/static/images/eat.jpeg';
+import carBack from '../public/static/images/car-back.jpeg';
+import standing from '../public/static/images/standing.jpg';
 
 function AboutPage() {
   return (
@@ -37,7 +41,7 @@ function AboutPage() {
         <div className="w-full mb-8 flex">
           <Image
             className="rounded-lg"
-            alt="Serhii Shramko with the camera in his hands. Black and white photo."
+            alt="Serhii Shramko taking a photo with a vintage camera in a modern indoor setting."
             src={about}
             width={1269}
             height={846}
@@ -374,12 +378,36 @@ function AboutPage() {
           </p>
 
           <h2>I love Eating, Parties, and Cars</h2>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Image
-              className="rounded-lg transition-transform pointer-events-none"
-              alt="Serhii Shramko with table-tennis winning cup. The 3rd place in the local tournament."
-              sizes="(max-width: 425px) 100vw,(max-width: 768px) 50vw"
-              src={aboutBottom}
+              className="pointer-events-none rounded-lg w-full md:col-span-2"
+              alt="Serhii Shramko smiling and holding a trophy, standing next to a woman holding a 500 UAH certificate in a casual office setting with a whiteboard in the background."
+              placeholder="blur"
+              src={tennis}
+            />
+            <Image
+              className="pointer-events-none rounded-lg"
+              alt="Serhii Shramko enjoying snacks and drinks with friends at a lively party"
+              placeholder="blur"
+              src={eat}
+            />
+            <Image
+              className="pointer-events-none rounded-lg"
+              alt="Serhii Shramko showing a red and black BMW to a friend in an outdoor parking lot."
+              placeholder="blur"
+              src={car}
+            />
+            <Image
+              className="pointer-events-none rounded-lg"
+              alt="Serhii Shramko and a friend examining the rear of a red sporty car in a parking garage"
+              placeholder="blur"
+              src={carBack}
+            />
+            <Image
+              className="pointer-events-none rounded-lg"
+              alt="Serhii Shramko and a friend standing outdoors in a bright, forested park, wearing casual outfits."
+              placeholder="blur"
+              src={standing}
             />
           </div>
         </div>

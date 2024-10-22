@@ -1,18 +1,5 @@
-import Link from 'next/link';
-
 import { HeaderLink } from '@/components/header-link';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
-import { ThemeChanger } from '@/components/theme-changer';
-
-import { event } from '@/lib/ga';
-
-const handleResumeClick = () => {
-  event({
-    action: 'Resume download click',
-    category: 'Resume',
-    label: 'Resume - click',
-  });
-};
 
 export function Header() {
   return (
