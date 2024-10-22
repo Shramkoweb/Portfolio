@@ -85,16 +85,6 @@ export function MobileMenu() {
               Snippets
             </Link>
           </li>
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
-            <Link
-              href="/static/serhii-shramko-resume.pdf"
-              download
-              className="flex w-auto pb-4"
-              title="PDF document. Serhii Shramko - Resume. 85 KB"
-            >
-              Resume
-            </Link>
-          </li>
         </ul>
       )}
     </>

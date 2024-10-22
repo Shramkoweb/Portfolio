@@ -29,18 +29,6 @@ export function Header() {
           <HeaderLink href="/dashboard" text="Dashboard" />
           <HeaderLink href="/snippets" text="Snippets" />
         </div>
-        <div className="flex items-center justify-center">
-          <Link
-            href="/static/serhii-shramko-resume.pdf"
-            download
-            onClick={handleResumeClick}
-            title="PDF document. Serhii Shramko - Resume. 85 KB"
-            className="ml-12 hidden rounded-lg border-2 border-gray-700 p-1 transition-all hover:bg-gray-200 sm:px-3 sm:py-2 md:inline-block dark:hover:bg-gray-800"
-          >
-            Resume
-          </Link>
-          <ThemeChanger />
-        </div>
       </nav>
     </header>
   );
