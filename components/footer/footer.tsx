@@ -7,9 +7,12 @@ import { getCopyrightYearString } from '@/components/footer/get-copyright';
 
 export function Footer() {
   return (
-    <footer role="contentinfo" className="mx-auto flex w-full max-w-3xl flex-col items-start justify-center">
+    <footer
+      role="contentinfo"
+      className="mx-auto flex w-full max-w-3xl flex-col items-start justify-center"
+    >
       <hr className="mb-8 w-full border-gray-200 border-1 dark:border-gray-800" />
-      <div className="grid w-full max-w-3xl grid-cols-1 gap-4 pb-12 sm:grid-cols-3">
+      <div className="grid w-full max-w-3xl grid-cols-1 gap-4 pb-12 sm:grid-cols-2 md:grid-cols-4">
         <ul className="flex flex-col space-y-4">
           <li>
             <Link
@@ -75,7 +78,20 @@ export function Footer() {
             >
               Snippets
             </Link>
-            \
+          </li>
+        </ul>
+        <ul className="flex flex-col space-y-4">
+          <li>
+            <FooterLink href="https://www.producthunt.com/@shramko_dev">
+              Product Hunt
+            </FooterLink>
+          </li>
+          <li>
+            <FooterLink
+              href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+            >
+              Quizlet QuickList
+            </FooterLink>
           </li>
         </ul>
       </div>
