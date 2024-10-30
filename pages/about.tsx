@@ -30,8 +30,13 @@ function AboutPage() {
           name="keywords"
           key="keywords"
         />
-        {/* eslint-disable-next-line react/no-danger */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: '{"@context":"https://schema.org","@type":"WebSite","name":"Serhii Shramko","url":"https://shramko.dev","description":"Serhii Shramko – Developer, writer, creator.","publisher":{"@type":"Person","name":"Serhii Shramko","url":"https://shramko.dev/about","image":{"@type":"ImageObject","url":"https://shramko.dev/static/images/twittersite.png","width":1269,"height":846},"sameAs":["https://github.com/shramkoweb","https://www.linkedin.com/in/shramko-dev/","https://www.instagram.com/serhii.shramko/"],"jobTitle":"Senior Developer","worksFor":{"@type":"Organization","name":"MacPaw","url":"https://macpaw.com"},"email":"shramko.dev@gmail.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://shramko.dev/about"},"potentialAction":{"@type":"SearchAction","target":"https://shramko.dev/search?query={search_term_string}","query-input":"required name=search_term_string"}}' }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html:
+              '{"@context":"https://schema.org","@type":"WebSite","name":"Serhii Shramko","url":"https://shramko.dev","description":"Serhii Shramko – Developer, writer, creator.","publisher":{"@type":"Person","name":"Serhii Shramko","url":"https://shramko.dev/about","image":{"@type":"ImageObject","url":"https://shramko.dev/static/images/twittersite.png","width":1269,"height":846},"sameAs":["https://github.com/shramkoweb","https://www.linkedin.com/in/shramko-dev/","https://www.instagram.com/serhii.shramko/"],"jobTitle":"Senior Developer","worksFor":{"@type":"Organization","name":"MacPaw","url":"https://macpaw.com"},"email":"shramko.dev@gmail.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://shramko.dev/about"},"potentialAction":{"@type":"SearchAction","target":"https://shramko.dev/search?query={search_term_string}","query-input":"required name=search_term_string"}}',
+          }}
+        />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
@@ -52,23 +57,26 @@ function AboutPage() {
 
         <div className="mb-8 prose dark:prose-dark leading-6">
           <h2>Links</h2>
+
           <ul>
             <li>
               <a
                 href="https://github.com/shramkoweb"
-                rel="noopener"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 GitHub
               </a>
             </li>
+
             <li>
               <a href="https://www.linkedin.com/in/shramko-dev/">LinkedIn</a>
             </li>
+
             <li>
               <a
                 href="mailto:shramko.dev@gmail.com"
-                rel="noopener"
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Shramko Serhii personal email"
               >
@@ -76,308 +84,288 @@ function AboutPage() {
               </a>
             </li>
           </ul>
+
           <h2>Bio</h2>
-          <p>
-            Hi there, I&apos;m Serhii. I am a developer at MacPaw web team,
-            where my team develops cool sites and internal projects for the
-            company. I&apos;m passionate about frontend development and trying
-            to be better than yesterday.
-          </p>
 
           <p>
-            Before&ensp;
-            <a href="https://war.ukraine.ua/" target="_blank" rel="noopener">
-              Russian invasion of Ukraine
-            </a>
-            , I have been a mentor and tutor for&ensp;
-            <abbr title="TypeScript">TS</abbr>
-            ,&ensp;
-            <abbr title="A JavaScript library for building user interfaces">
-              React
-            </abbr>
-            &ensp;and&ensp;
-            <abbr title="HyperText Markup Language">HTML</abbr>
-            &ensp;courses at&ensp;
-            <a
-              href="https://htmlacademy.ru/profile/id852139"
-              target="_blank"
-              rel="noopener"
-            >
-              HTML Academy
-            </a>
-            .
+            Hi there, I&apos;m Serhii. I am a Senior Software Engineer at MacPaw
+            web team, where my team develops cool sites and internal projects
+            for the company. I&apos;m passionate about frontend development and
+            trying to be better than yesterday.
           </p>
 
           <h3>Experience</h3>
-          <em className="text-gray-300 text-xs">
-            <time dateTime="2021-10">October 2021</time>
-            &ensp;–&ensp;present.
-          </em>
+
+          <div className="flex justify-between">
+            <em className="text-gray-300 text-xs">
+              <time dateTime="2021-11">November 2021</time>
+              &ensp;–&ensp;present.
+            </em>
+            <em className="text-gray-300 text-xs">Boston, MA</em>
+          </div>
+
           <h4 className="m-0 mb-4">
-            Senior Developer at&ensp;
-            <a href="https://macpaw.com/" rel="noopener" target="_blank">
+            Senior Software Engineer at&ensp;
+            <a
+              href="https://macpaw.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               MacPaw
             </a>
             &ensp;🐾
           </h4>
+
           <p className="text-sm">
             MacPaw develops software for iOS and MacOS. Their products include
             CleanMyMac, Setapp, Gemini Photos and more. MacPaw‘s active user
-            base exceeds 30 million worldwide. Every fifth Mac on Earth has at
-            least one app by MacPaw.
+            base exceeds <strong>30 million</strong> worldwide. Every fifth Mac
+            on Earth has at least one app by MacPaw.
           </p>
+
           <ul className="text-sm">
             <li>
-              <strong>Mentored junior developers and interns</strong>
-              {' '}
-              as part of the
-              {' '}
-              <a
-                href="https://macpaw.com/bootcamp"
-                target="_blank"
-                rel="noopener"
-              >
-                MacPaw Bootcamp
-              </a>
-              ; guided a team with 2 developers.
+              <strong>Led a team of 3 frontend developers</strong>, delivering
+              1–1 sessions and code reviews leading to a 30% enhancement in
+              overall performance and code quality. Elevated juniors to
+              mid-level.
             </li>
+
             <li>
-              Rewrote JP&apos;s website using Next.js,
-              {' '}
-              <strong>
-                resulting in a 30%
-                improvement in
-              </strong>
-              {' '}
-              <a
-                target="_blank"
-                rel="noopener"
-                href="https://web.dev/articles/vitals"
-              >
-                web vitals
-              </a>
-              .
+              Spearheaded the front-end development of critical websites
+              reaching <strong>2.6M+</strong> monthly users, leading to improved
+              website stability and higher customer retention.
             </li>
+
             <li>
-              Refactored the
-              {' '}
-              <a href="https://www.imgix.com/" target="_blank" rel="noopener">
-                imgix
-              </a>
-              {' '}
-              code in PHP,
-              {' '}
-              <strong>decreased image size by 2-6 times 🔥</strong>
+              Implemented a new responsive and adaptive design for the company
+              blog using TypeScript, BEM, SCSS, and Laravel, leading to a{' '}
+              <strong>$100K increase in revenue</strong>.
             </li>
+
             <li>
-              Delivered presentations and shared knowledge in internal
-              Front-end meetings, enhancing team understanding of key
-              concepts and best practices.
+              Collaborated with different teams to launch Subscription Cabinet
+              on Vercel with Next.js and REST APIs, resulting in a{' '}
+              <strong>95% Google Lighthouse performance</strong> score and
+              onboarding <strong>13,000 users</strong> in the first month.
+            </li>
+
+            <li>
+              Implemented new <strong>CI/CD</strong> processes, resulting in an{' '}
+              <strong>8% reduction</strong> in code review time per week and
+              increased productivity for the engineering team.
+            </li>
+
+            <li>
+              Enhanced codebase security and stability by implementing automated
+              dependency updates with Renovate, reducing outdated dependencies
+              by 35%. Aligned with <strong>SOC 2</strong> company strategy to
+              ensure a robust software environment.
             </li>
           </ul>
+
           <hr />
 
-          <em className="text-gray-300 text-xs">
-            <time dateTime="2020-11">November 2020</time>
-            &ensp;–&ensp;
-            <time dateTime="2021-10">October 2021</time>
-          </em>
+          <div className="flex justify-between">
+            <em className="text-gray-300 text-xs">
+              <time dateTime="2020-10">October 2020</time>
+              &ensp;–&ensp;
+              <time dateTime="2021-11">November 2021</time>
+            </em>
+            <em className="text-gray-300 text-xs">Hicksville, NY</em>
+          </div>
+
           <h4 className="m-0 mb-4">
-            Frontend Developer at&ensp;
-            <a href="https://p1k.org/" rel="noopener" target="_blank">
-              Phase One Karma
+            Software Engineer at&ensp;
+            <a
+              href="https://lawrina.org/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Lawrina
             </a>
           </h4>
+
           <p className="text-sm">
-            Phase One Karma created AI-driven anti-plagiarism checker with more
-            than 1 million users worldwide
-            {' '}
-            <a href="https://unicheck.com/" target="_blank" rel="noopener">
+            An innovative legal tech company delivering AI-driven solutions to
+            streamline legal processes and enhance efficiency. Created AI-driven
+            anti-plagiarism checker with more than{' '}
+            <strong>1 million users</strong> worldwide{' '}
+            <a
+              href="https://unicheck.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Unicheck
             </a>
-            .
           </p>
+
           <ul className="text-sm">
             <li>
-              Found a bug in Webpack configuration.
-              {' '}
-              <strong>
-                Decreased JS bundle size
-                by 60 KB.
-              </strong>
+              Developed a user dashboard from scratch using Next.js, TypeScript,
+              and Storybook, achieving a page load time of{' '}
+              <strong>under 2 seconds</strong>.
             </li>
+
             <li>
-              Migrated an old WordPress website to
-              {' '}
-              <a target="_blank" rel="noopener" href="https://www.gatsbyjs.com/">Gatsby</a>
-              ,
-              {' '}
-              <strong>raised website to 95th percentile Web Vitals</strong>
+              Migrated an old WordPress website to Gatsby.js, styled with
+              Tailwind, achieving a <strong>15% reduction</strong> in page load
+              time and enhancing the user experience.
             </li>
+
             <li>
-              Developed a new user
-              {' '}
-              <a target="_blank" rel="noopener" href="https://lawrina.org/loio/login/">dashboard</a>
-              {' '}
-              from scratch using
-              {' '}
-              <a href="https://nextjs.org/" target="_blank" rel="noopener">
-                Next.js
-              </a>
-              .
+              Implemented <strong>A/B</strong> testing with the server-side
+              render, leading to a <strong>10-25% rise</strong> in key user
+              metrics and generating actionable insights for strategic growth.
             </li>
+
             <li>
-              Established team guidelines for writing
-              {' '}
-              <abbr title="Cascading Style Sheets">CSS</abbr>
-              {' '}
-              and
-              {' '}
-              <abbr title="Syntactically Awesome Style Sheets">SCSS</abbr>
-              , standardizing code quality.
+              Improved developer experience by implementing guidelines for{' '}
+              <abbr title="Syntactically Awesome Style Sheets">SCSS</abbr>,
+              Accessibility, and Semantic markup in a cross-functional team.
             </li>
           </ul>
+
           <hr />
 
-          <em className="text-gray-300 text-xs">
-            <time dateTime="2019-04">April 2019</time>
-            &ensp;–&ensp;
-            <time dateTime="2020-11">November 2020</time>
-          </em>
+          <div className="flex justify-between">
+            <em className="text-gray-300 text-xs">
+              <time dateTime="2019-10">October 2018</time>
+              &ensp;–&ensp;
+              <time dateTime="2020-10">October 2020</time>
+            </em>
+
+            <em className="text-gray-300 text-xs">Brookline, Ma</em>
+          </div>
+
           <h4 className="m-0 mb-4">
-            Frontend Developer at&ensp;
-            <a href="https://www.pdffiller.com/" rel="noopener" target="_blank">
+            Software Engineer at&ensp;
+            <a
+              href="https://www.pdffiller.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               PDFfiller
             </a>
           </h4>
+
           <p className="text-sm">
-            One of four Ukrainian unicorn 🦄 company. PDFfiller is a
-            comprehensive online document management platform and provides
-            service to over 120,000 businesses around the world and in almost
-            every industry.
+            A global leader in document management, serving more than
+            <strong> 100 million users</strong> worldwide. One of four Ukrainian
+            unicorn 🦄 company.
           </p>
+
           <ul className="text-sm">
-            <li><strong>Promoted from HTML coder to Frontend Engineer.</strong></li>
             <li>
-              Improved internal UI framework by implementing shared classes,
-              <strong>
-                reducing the
-                {' '}
-                <abbr title="Cascading Style Sheets">CSS</abbr>
-                {' '}
-                bundle size by 5%.
-              </strong>
+              Achieved <strong>ADA and WCAG 2.1 compliance</strong> by
+              implementing semantic HTML, ARIA landmarks, and enhanced keyboard
+              navigation, ensuring user accessibility and{' '}
+              <strong>saving over $1 million</strong> in potential lawsuits.
             </li>
+
             <li>
-              Refactored Pug/Jade components to React, modernizing the
-              codebase and improving maintainability and DX.
+              Achieved a <strong>10% rise</strong> in user engagement by
+              building high-performing SPAs with React, Redux, and Redux-Saga,
+              enriching UI/UX for enterprise SaaS products.
             </li>
+
             <li>
-              Enhanced website accessibility, ensuring compliance with
-              {' '}
-              <abbr
-                title="Web Content Accessibility Guidelines"
-              >
-                WCAG
-              </abbr>
-              {' '}
-              standards and improving user experience for individuals with disabilities.
+              Collaborated with three teams and{' '}
+              <strong>over 30 developers</strong> to implement a reusable UI
+              library and a component-based architecture, resulting in improved
+              code maintainability.
+            </li>
+
+            <li>
+              Reduced CSS bundle size by <strong>5%</strong> by implementing
+              shared classes in the Pug framework, boosting performance and user
+              satisfaction.
+            </li>
+
+            <li>
+              Collaborated with cross-functional teams, including design,
+              product, and backend, to launch features and fix bugs.
             </li>
           </ul>
+
           <hr />
 
-          <em className="text-gray-300 text-xs">
-            <time dateTime="2018-12">December 2018</time>
-            &ensp;–&ensp;
-            <time dateTime="2019-03">March 2019</time>
-          </em>
-          <h4 className="m-0 mb-4">
-            Frontend Developer at&ensp;
+          <h3 className="mt-16">Education</h3>
+
+          <p>
+            <strong>
+              Bachelor of Science in Electromechanical Automation Systems
+            </strong>
+            <br />
             <a
-              href="https://hexa.com.ua/en/home/"
-              rel="noopener"
+              href="https://www.nmu.org.ua/en/"
+              rel="noopener noreferrer"
               target="_blank"
             >
-              Hexa
+              Dnipro University of Technology
             </a>
-          </h4>
-          <p className="text-sm">
-            Hexa - a small web studio that makes websites and turnkey solutions.
           </p>
-          <ul className="text-sm">
-            <li>
-              Transitioned manual email creation to the
-              {' '}
-              <a
-                href="https://get.foundation/emails.html"
-                target="_blank"
-                rel="noopener"
-              >
-                Foundation framefork
-              </a>
-              ,
-              <strong>decreased creation time from 3 days to 1.</strong>
-            </li>
-            <li>
-              Developed and maintained different websites in collaboration
-              with the backend team.
-            </li>
-          </ul>
 
-          <h3 className="mt-16">Education</h3>
-          <p>
-            Master degree in Electromechanical Systems of Automation and
-            Electric Drive at&ensp;
-            <a href="https://www.nmu.org.ua/en/" rel="noopener" target="_blank">
-              NMU
-            </a>
-            .
-          </p>
+          <hr />
 
           <h3>Open Source</h3>
-          <em className="text-gray-300 text-xs">
-            <time dateTime="2020">2020</time>
-            &ensp;–&ensp;
-            <time dateTime="2022">2022</time>
-          </em>
+
           <h4 className="m-0 mb-4">
             Mentor -&ensp;
             <a
-              href="https://htmlacademy.ru/profile/id852139"
+              href="https://kottans.org/"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
-              HTML Academy
+              Kottans
             </a>
           </h4>
+
           <p className="text-sm">
-            <strong>Mentored more than 30 individuals</strong>
-            {' '}
-            in React, TypeScript, JavaScript, and
-            HTML courses.
+            Over the years, I&apos;ve had the joy of mentoring{' '}
+            <strong>more than 30</strong> individuals. I love conducting
+            insightful code reviews on GitHub, offering engaging voice and text
+            consultations, and sharing motivation and inspiration along the way.
           </p>
 
-          <em className="text-gray-300 text-xs">
-            <time dateTime="2021">2021</time>
-            &ensp;–&ensp;
-            <time dateTime="2023">2023</time>
-          </em>
+          <h4 className="m-0 mb-4">
+            Front-end consultations -&ensp;
+            <a
+              href="https://macpaw.com/career-wave"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MacPaw Career Wave
+            </a>
+          </h4>
+
+          <p className="text-sm">
+            A <strong>mentorship program</strong> that empowers girls with
+            valuable career insights and both soft and hard skill development. I{' '}
+            <strong>helped 5 girls</strong> break the stalemate in their careers
+            and find jobs.
+          </p>
+
           <h4 className="m-0 mb-4">
             Contributor -&ensp;
             <a
               href="https://stateofjs.com/en-US"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               State of JS & CSS
             </a>
           </h4>
+
           <p className="text-sm">
-            Authored Ukrainian and Russian translations for the State of JS & CSS
-            survey.
+            Authored Ukrainian and Russian translations for the State of JS &
+            CSS survey.
           </p>
 
+          <hr />
+
           <h2>I love Eating, Parties, and Cars</h2>
+
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Image
               className="pointer-events-none rounded-lg w-full md:col-span-2"

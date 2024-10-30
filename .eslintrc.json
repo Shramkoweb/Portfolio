@@ -17,6 +17,7 @@
     "next/core-web-vitals"
   ],
   "rules": {
+    "react/jsx-one-expression-per-line": "off",
     "react/jsx-no-target-blank": [
       "error",
       {
