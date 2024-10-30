@@ -7,8 +7,7 @@ import secondImage from '../../public/static/images/quizlet-list/quizlet-quickli
 import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklist-3.png';
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
 
-const OG_IMAGE =
-  'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg';
+const OG_IMAGE = 'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg';
 
 function QuizletPage() {
   return (
@@ -63,7 +62,7 @@ function QuizletPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html:
-              '{"@context":"https://schema.org","@type":"Product","name":"Quizlet QuickList","description":"A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id","image":"https://example.com/extension-image.png","brand":{"@type":"Brand","name":"Serhii Shramko Extensions"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"0.00","availability":"https://schema.org/InStock","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id"},"applicationCategory":"BrowserExtension","operatingSystem":"Chrome","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"125"}}'
+              '{"@context":"https://schema.org","@type":"Product","name":"Quizlet QuickList","description":"A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id","image":"https://example.com/extension-image.png","brand":{"@type":"Brand","name":"Serhii Shramko Extensions"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"0.00","availability":"https://schema.org/InStock","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id"},"applicationCategory":"BrowserExtension","operatingSystem":"Chrome","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"125"}}',
           }}
         />
       </Head>
