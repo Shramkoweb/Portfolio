@@ -4,14 +4,14 @@ function PrivacyPolicy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy | Quizlet QuickList Chrome Extension</title>
+        <title>Privacy Policy | Quizlet QuickList Web Extension</title>
         <meta
-          content="Privacy policy for the Quizlet QuickList Chrome Extension. Learn how we handle your data and keep your privacy secure."
+          content="Privacy policy for the Quizlet QuickList Web Extension. Learn how we handle your data and keep your privacy secure."
           name="description"
           key="description"
         />
         <meta
-          content="privacy policy, Quizlet QuickList, Chrome extension, user data, permissions, security"
+          content="privacy policy, Quizlet QuickList, Web extension, Web extension user data, permissions, security"
           name="keywords"
           key="keywords"
         />
@@ -19,12 +19,12 @@ function PrivacyPolicy() {
         <meta
           property="og:title"
           key="og:title"
-          content="Privacy Policy | Quizlet QuickList Chrome Extension"
+          content="Privacy Policy | Quizlet QuickList Web Extension"
         />
         <meta
           property="og:description"
           key="og:description"
-          content="This is the privacy policy for the Quizlet QuickList Chrome Extension, explaining what data is collected, how it is used, and your rights as a user."
+          content="This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user."
         />
         {/* TODO */}
         {/* <meta property="og:image" content="https://example.com/your-image-url.jpg"> */}
@@ -33,11 +33,11 @@ function PrivacyPolicy() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Privacy Policy | Quizlet QuickList Chrome Extension"
+          content="Privacy Policy | Quizlet QuickList Web Extension"
         />
         <meta
           name="twitter:description"
-          content="This is the privacy policy for the Quizlet QuickList Chrome Extension. Learn how your data is handled securely."
+          content="This is the privacy policy for the Quizlet QuickList Web Extension. Learn how your data is handled securely."
         />
         {/* <meta name="twitter:image" content="https://example.com/your-image-url.jpg"> */}
         {/* eslint-disable-next-line react/no-danger */}
@@ -51,19 +51,20 @@ function PrivacyPolicy() {
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Privacy Policy - Quizlet QuickList Chrome Extension
+          Privacy Policy - Quizlet QuickList Web Extension
         </h1>
 
         <div className="mb-8 prose dark:prose-dark leading-6 text-gray-700 dark:text-gray-200">
           <p>
             Effective Date:
+            {' '}
             <strong>
-              <time dateTime="2024-10-05">5 October, 2024</time>
+              <time dateTime="2024-10-30">30 October, 2024</time>
             </strong>
           </p>
 
           <p>
-            Thank you for using the Quizlet QuickList Chrome Extension (the
+            Thank you for using the Quizlet QuickList Web Extension (the
             “Extension”). Your privacy is important to us, and we are committed
             to protecting the information that you share while using this
             Extension. This Privacy Policy explains how we collect, use, and
@@ -96,8 +97,8 @@ function PrivacyPolicy() {
           <h3>c) Word List Data:</h3>
           <p>
             The words you add to your list through the Quizlet QuickList
-            Extension are stored locally on your device, using Chrome’s storage
-            system. This data is not accessible to us, and we do not share it
+            Extension are stored locally on your device, using browser&#39;s local storage.
+            This data is not accessible to us, and we do not share it
             with any third party. You have full control over your word list, and
             you can delete or modify it at any time.
           </p>

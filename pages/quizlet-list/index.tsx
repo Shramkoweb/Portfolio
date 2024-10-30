@@ -7,29 +7,30 @@ import secondImage from '../../public/static/images/quizlet-list/quizlet-quickli
 import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklist-3.png';
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
 
-const OG_IMAGE = 'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg';
+const OG_IMAGE =
+  'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg';
 
 function QuizletPage() {
   return (
     <>
       <Head>
-        <title>Quizlet QuickList - Chrome Extension</title>
+        <title>Quizlet QuickList - Web Extension</title>
         <meta
           name="description"
           key="description"
-          content="Quizlet QuickList is a Chrome extension that helps you easily gather, organize, and export word lists for studying on Quizlet. Simplify your learning experience."
+          content="Quizlet QuickList is a Web extension that helps you easily gather, organize, and export word lists for studying on Quizlet. Simplify your learning experience."
         />
         <meta
           name="keywords"
           key="keywords"
-          content="Quizlet, Chrome Extension, Vocabulary, Study, Word List, Learning Tool, Export to Quizlet"
+          content="Quizlet, Chrome Extension, Firefox Extension, Vocabulary, Study, Word List, Learning Tool, Export to Quizlet"
         />
         <meta name="author" key="author" content="Serhii Shramko" />
         <meta property="og:type" key="og:type" content="website" />
         <meta
           property="og:title"
           key="og:title"
-          content="Quizlet QuickList - Chrome Extension"
+          content="Quizlet QuickList - Web Extension"
         />
         <meta
           property="og:description"
@@ -45,7 +46,7 @@ function QuizletPage() {
         <meta
           property="twitter:title"
           key="twitter:title"
-          content="Quizlet QuickList - Chrome Extension"
+          content="Quizlet QuickList - Web Extension"
         />
         <meta
           property="twitter:description"
@@ -62,7 +63,7 @@ function QuizletPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html:
-              '{"@context":"https://schema.org","@type":"Product","name":"Quizlet QuickList","description":"A Chrome extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id","image":"https://example.com/extension-image.png","brand":{"@type":"Brand","name":"Serhii Shramko Extensions"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"0.00","availability":"https://schema.org/InStock","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id"},"applicationCategory":"BrowserExtension","operatingSystem":"Chrome","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"125"}}',
+              '{"@context":"https://schema.org","@type":"Product","name":"Quizlet QuickList","description":"A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id","image":"https://example.com/extension-image.png","brand":{"@type":"Brand","name":"Serhii Shramko Extensions"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"0.00","availability":"https://schema.org/InStock","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id"},"applicationCategory":"BrowserExtension","operatingSystem":"Chrome","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"125"}}'
           }}
         />
       </Head>
@@ -80,16 +81,43 @@ function QuizletPage() {
         </p>
 
         <p>
-          That’s why I created
-          {' '}
-          <strong><a target="_blank" href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg" rel="noopener">Quizlet QuickList</a></strong>
-          {' '}
-          — a Chrome
-          extension that makes saving and studying unfamiliar words super easy.
-          Now, instead of getting stuck on each word, you can focus on learning
-          and have everything neatly organized for Quizlet or any study app you
-          love.
+          That’s why I created{' '}
+          <strong>
+            <a
+              target="_blank"
+              href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              rel="noopener"
+            >
+              Quizlet QuickList
+            </a>
+          </strong>{' '}
+          — a Web extension that makes saving and studying unfamiliar words
+          super easy. Now, instead of getting stuck on each word, you can focus
+          on learning and have everything neatly organized for Quizlet or any
+          study app you love.
         </p>
+
+        <ul>
+          <li>
+            <a
+              target="_blank"
+              href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              rel="noopener noreferrer"
+            >
+              Quizlet QuickList at Chrome Web Store
+            </a>
+          </li>
+
+          <li>
+            <a
+              target="_blank"
+              href="https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/"
+              rel="noopener noreferrer"
+            >
+              Quizlet QuickList at Firefox Add-ons
+            </a>
+          </li>
+        </ul>
 
         <Image
           role="presentation"
@@ -118,38 +146,22 @@ function QuizletPage() {
 
         <ul>
           <li>
-            <strong>No more tedious copy-pasting:</strong>
-            {' '}
-            Just highlight a
-            word, click
-            {' '}
-            <code>Add to Quizlet QuickList</code>
-            {' '}
-            and boom—it’s saved! You can
-            keep reading without any interruptions.
+            <strong>No more tedious copy-pasting:</strong> Just highlight a
+            word, click <code>Add to Quizlet QuickList</code> and boom—it’s
+            saved! You can keep reading without any interruptions.
           </li>
           <li>
-            <strong>Quick list management:</strong>
-            {' '}
-            Need to start over? No
+            <strong>Quick list management:</strong> Need to start over? No
             problem. You can clear your word list with one click and keep
             everything tidy.
           </li>
           <li>
-            <strong>Copy your list in one click:</strong>
-            {' '}
-            When you’re ready to
-            study, hit
-            {' '}
-            <code>Copy</code>
-            {' '}
-            and paste your word list straight into Quizlet (or
-            whatever app you use to study).
+            <strong>Copy your list in one click:</strong> When you’re ready to
+            study, hit <code>Copy</code> and paste your word list straight into
+            Quizlet (or whatever app you use to study).
           </li>
           <li>
-            <strong>Perfect for language learners:</strong>
-            {' '}
-            Whether you&#39;re
+            <strong>Perfect for language learners:</strong> Whether you&#39;re
             just starting out with a new language or brushing up on your skills,
             this tool will save you a ton of time.
           </li>
@@ -167,10 +179,7 @@ function QuizletPage() {
 
         <p>
           <em>
-            Highlight a word, click
-            {' '}
-            <code>Add to Quizlet QuickList</code>
-            , and
+            Highlight a word, click <code>Add to Quizlet QuickList</code>, and
             it&#39;s saved to your list!
           </em>
         </p>
@@ -179,16 +188,12 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt="A screenshot of a browser window showing the “Quizlet QuickList” Chrome extension. The list is currently empty, with a message that reads “No words added yet.” Below the message, there is an input field labeled “Enter a word,” a “Clear List” button, and a “Copy” button. "
+          alt="A screenshot of a browser window showing the “Quizlet QuickList” Web extension. The list is currently empty, with a message that reads “No words added yet.” Below the message, there is an input field labeled “Enter a word,” a “Clear List” button, and a “Copy” button. "
           src={thirdImage}
         />
 
         <p>
-          Once you’ve got your words ready, just hit
-          {' '}
-          <code>Clear List</code>
-          {' '}
-          to
+          Once you’ve got your words ready, just hit <code>Clear List</code> to
           start fresh.
         </p>
 
@@ -202,10 +207,7 @@ function QuizletPage() {
         />
 
         <p>
-          When you’ve added all the words you need, just click
-          {' '}
-          <code>Copy</code>
-          {' '}
+          When you’ve added all the words you need, just click <code>Copy</code>{' '}
           and paste it anywhere. Easy peasy. 🚀
         </p>
 
@@ -223,28 +225,38 @@ function QuizletPage() {
 
         <ol>
           <li>
-            <strong>Install the Extension:</strong>
+            <strong>Install the Extension:</strong> Grab Quizlet QuickList from
+            the{' '}
+            <a
+              target="_blank"
+              href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              rel="noopener noreferrer"
+            >
+              Chrome Web Store
+            </a>
             {' '}
-            Grab Quizlet QuickList from
-            the Chrome Web Store (link).
+            or
+            {' '}
+            <a
+              target="_blank"
+              href="https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/"
+              rel="noopener noreferrer"
+            >
+              Firefox Add-ons
+            </a>
+            .
           </li>
           <li>
-            <strong>Highlight and Add Words:</strong>
-            {' '}
-            As you’re browsing and see
+            <strong>Highlight and Add Words:</strong> As you’re browsing and see
             words you don’t know, highlight them and click “Add to Quizlet
             QuickList”.
           </li>
           <li>
-            <strong>Manage Your Word List:</strong>
-            {' '}
-            Ready to study? Copy your
+            <strong>Manage Your Word List:</strong> Ready to study? Copy your
             list in one click or clear it when you’re done.
           </li>
           <li>
-            <strong>Sync with Quizlet:</strong>
-            {' '}
-            Paste your list into Quizlet,
+            <strong>Sync with Quizlet:</strong> Paste your list into Quizlet,
             create custom study sets, and you’re all set to learn.
           </li>
         </ol>
@@ -262,9 +274,7 @@ function QuizletPage() {
         <p>
           If you’re serious about learning a new language or just picking up
           some new vocabulary here and there,
-          <strong>Quizlet QuickList</strong>
-          {' '}
-          is going to make your life way
+          <strong>Quizlet QuickList</strong> is going to make your life way
           easier.
         </p>
 
@@ -293,18 +303,8 @@ function QuizletPage() {
         <p>
           <strong>Q: Where I can find Privacy Policy page?</strong>
           <br />
-          A:
-          {' '}
+          A:{' '}
           <Link href="/quizlet-list/privacy-policy">Privacy policy page</Link>
-        </p>
-
-        <p>
-          Ready to make language learning easier?
-          {' '}
-          <a target="_blank" href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg" rel="noopener">Download Quizlet QuickList here</a>
-          {' '}
-          and start building
-          your vocab list today! Trust me, you’ll wish you had this tool sooner.
         </p>
       </section>
     </>
