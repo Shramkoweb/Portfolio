@@ -2,12 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
 import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklist-3.png';
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
-
-const OG_IMAGE = 'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg';
 
 function QuizletPage() {
   return (
@@ -36,7 +35,7 @@ function QuizletPage() {
           key="og:description"
           content="Simplify vocabulary learning with Quizlet QuickList. Easily gather and export word lists for studying on Quizlet."
         />
-        <meta property="og:image" content={OG_IMAGE} key="og:image" />
+        <meta property="og:image" content={QUIZLET_APP_OG_IMAGE} key="og:image" />
         <meta
           property="twitter:card"
           key="twitter:card"
@@ -52,7 +51,7 @@ function QuizletPage() {
           key="twitter:description"
           content="Make studying easier by gathering word lists and exporting them to Quizlet with Quizlet QuickList."
         />
-        <meta property="twitter:image" key="twitter:image" content={OG_IMAGE} />
+        <meta property="twitter:image" key="twitter:image" content={QUIZLET_APP_OG_IMAGE} />
         <meta
           property="twitter:site"
           key="twitter:site"
@@ -62,7 +61,7 @@ function QuizletPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html:
-              '{"@context":"https://schema.org","@type":"Product","name":"Quizlet QuickList","description":"A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id","image":"https://example.com/extension-image.png","brand":{"@type":"Brand","name":"Serhii Shramko Extensions"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"0.00","availability":"https://schema.org/InStock","url":"https://chrome.google.com/webstore/detail/quizlet-quicklist/extension-id"},"applicationCategory":"BrowserExtension","operatingSystem":"Chrome","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"125"}}',
+              '{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Quizlet QuickList","description":"A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.","url":"https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg","image":"https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg","brand":{"@type":"Brand","name":"Serhii Shramko Extensions"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"0.00","availability":"https://schema.org/InStock","url":"https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"},"applicationCategory":["BrowserApplication","EducationalApplication"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"5"}}',
           }}
         />
       </Head>

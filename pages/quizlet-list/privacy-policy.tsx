@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
+
 function PrivacyPolicy() {
   return (
     <>
@@ -26,9 +28,7 @@ function PrivacyPolicy() {
           key="og:description"
           content="This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user."
         />
-        {/* TODO */}
-        {/* <meta property="og:image" content="https://example.com/your-image-url.jpg"> */}
-        {/*   <meta property="og:url" content="https://example.com/privacy-policy"> */}
+        <meta property="og:image" content={QUIZLET_APP_OG_IMAGE} key="og:image" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -39,7 +39,7 @@ function PrivacyPolicy() {
           name="twitter:description"
           content="This is the privacy policy for the Quizlet QuickList Web Extension. Learn how your data is handled securely."
         />
-        {/* <meta name="twitter:image" content="https://example.com/your-image-url.jpg"> */}
+        <meta property="twitter:image" key="twitter:image" content={QUIZLET_APP_OG_IMAGE} />
         {/* eslint-disable-next-line react/no-danger */}
         <script
           type="application/ld+json"
@@ -56,8 +56,7 @@ function PrivacyPolicy() {
 
         <div className="mb-8 prose dark:prose-dark leading-6 text-gray-700 dark:text-gray-200">
           <p>
-            Effective Date:
-            {' '}
+            Effective Date:{' '}
             <strong>
               <time dateTime="2024-10-30">30 October, 2024</time>
             </strong>
@@ -75,12 +74,10 @@ function PrivacyPolicy() {
 
           <h3>a) Personal Information:</h3>
           <p>
-            The Extension
-            {' '}
+            The Extension{' '}
             <strong>
               does not collect, store, or share any personal information
-            </strong>
-            {' '}
+            </strong>{' '}
             such as your name, email address, or contact details. The Extension
             operates entirely locally within your browser and does not send any
             data to external servers or third parties.
@@ -97,10 +94,10 @@ function PrivacyPolicy() {
           <h3>c) Word List Data:</h3>
           <p>
             The words you add to your list through the Quizlet QuickList
-            Extension are stored locally on your device, using browser&#39;s local storage.
-            This data is not accessible to us, and we do not share it
-            with any third party. You have full control over your word list, and
-            you can delete or modify it at any time.
+            Extension are stored locally on your device, using browser&#39;s
+            local storage. This data is not accessible to us, and we do not
+            share it with any third party. You have full control over your word
+            list, and you can delete or modify it at any time.
           </p>
 
           <h2>2. Permissions Used</h2>
@@ -110,22 +107,16 @@ function PrivacyPolicy() {
           </p>
           <ul>
             <li>
-              <strong>Context Menus:</strong>
-              {' '}
-              This permission is used to add
+              <strong>Context Menus:</strong> This permission is used to add
               options to the right-click context menu, allowing you to quickly
               add selected words or phrases to your list.
             </li>
             <li>
-              <strong>Storage:</strong>
-              {' '}
-              The storage permission is required to
+              <strong>Storage:</strong> The storage permission is required to
               save your word list locally on your device.
             </li>
             <li>
-              <strong>Host Permissions:</strong>
-              {' '}
-              The Extension has access to web
+              <strong>Host Permissions:</strong> The Extension has access to web
               pages you visit to allow you to select and add words from these
               pages to your list. The Extension does not track or log your
               browsing activity, and no data is sent externally from your
