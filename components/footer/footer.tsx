@@ -93,6 +93,13 @@ export function Footer() {
               Quizlet QuickList
             </FooterLink>
           </li>
+          <li>
+            <FooterLink
+              href="https://leetcode.com/u/shramko-dev/"
+            >
+              LeetCode
+            </FooterLink>
+          </li>
         </ul>
       </div>
       <small className="pb-4 text-xs text-gray-600 dark:text-gray-400">
