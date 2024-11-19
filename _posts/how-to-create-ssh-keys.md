@@ -91,7 +91,7 @@ Paste the key into the 'Key' input on GitHub, then click 'Add SSH Key'.
 Return to your terminal and type:
 
 ```bash
-$ ssh -T git@github.com![img.png](img.png)
+$ ssh -T git@github.com
 ```
 
 <Image src="gh.jpg" alt="Testing the Connection with GitHub in macOS terminal" />
