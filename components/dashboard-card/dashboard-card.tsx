@@ -1,7 +1,7 @@
 interface DashboardCardProps {
   header: string;
   link?: string;
-  metric?: number;
+  metric?: number | string;
 }
 
 export function DashboardCard(props: DashboardCardProps) {

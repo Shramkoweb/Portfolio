@@ -4,6 +4,7 @@ import { BlogViewsCard } from '@/components/dashboard-card/blog-views';
 import { GithubFollowers } from '@/components/dashboard-card/github-followers';
 import { GitHubStars } from '@/components/dashboard-card/github-stars';
 import { DaysAsSoftwareEngineer } from '@/components/dashboard-card/days-as-engineer';
+import { MonthlyUsers } from '@/components/dashboard-card/monthly-user';
 
 export default function Dashboard() {
   return (
@@ -59,6 +60,7 @@ export default function Dashboard() {
         </div>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
           <BlogViewsCard />
+          <MonthlyUsers />
           <DaysAsSoftwareEngineer />
         </div>
       </section>
