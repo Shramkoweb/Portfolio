@@ -23,7 +23,7 @@ export function Header() {
           <Link
             href="/static/serhii-shramko-resume.pdf"
             download
-            title="PDF document. Serhii Shramko - Resume. 30 KB"
+            title="PDF document. Serhii Shramko - Resume. 105 KB"
             className="ml-12 hidden rounded-lg border-2 border-gray-700 p-1 transition-all hover:bg-gray-200 sm:px-3 sm:py-2 md:inline-block dark:hover:bg-gray-800"
           >
             Resume
