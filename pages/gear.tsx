@@ -47,7 +47,8 @@ function GearPage() {
           <ul>
             <li>14&quot; MacBook Pro M3 Max</li>
             <li>27&quot; Apple Studio Display</li>
-            <li>SteelSeries Rival Wireless 3 Mouse</li>
+            <li>Keychron K3 Max</li>
+            <li>SteelSeries Rival Wireless 3</li>
           </ul>
           <h2 id="coding">Coding</h2>
           <ul>
@@ -78,41 +79,16 @@ function GearPage() {
           <ul>
             <li>
               <a
-                href="https://macpaw.com/cleanmymac"
-                rel="noopener"
+                href="https://preply.com/en/?pref=OTc2NzkwOQ==&id=1733275008.074286"
                 target="_blank"
-              >
-                CleanMyMac X
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://macpaw.com/clearvpn"
                 rel="noopener"
-                target="_blank"
-              >
-                ClearVPN
-              </a>
-            </li>
-            <li>1Password</li>
-            <li>
-              <a
-                href="https://preply.com/en/?pref=NjYxMTUzNA==&id=1665941658.488522"
-                rel="noopener"
-                target="_blank"
               >
                 Preply
               </a>
             </li>
-            <li>
-              <a
-                href="https://setapp.com/"
-                rel="noopener"
-                target="_blank"
-              >
-                Setapp
-              </a>
-            </li>
+            <li>Raycast</li>
+            <li>1Password</li>
+            <li>Claude AI</li>
             <li>ChatGPT</li>
             <li>Perplexity.AI</li>
             <li>Spotify</li>
