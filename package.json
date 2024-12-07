@@ -22,7 +22,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@prisma/client": "5.21.1",
+    "@prisma/client": "5.22.0",
     "@sentry/nextjs": "8.35.0",
     "@tailwindcss/typography": "0.5.15",
     "@vercel/analytics": "1.3.2",
