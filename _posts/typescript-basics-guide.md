@@ -3,7 +3,7 @@ title: "TypeScript Guide for beginners"
 heading: "TypeScript: A Friendly Guide"
 description: Learn the fundamentals of TypeScript including static typing, basic types, functions, and type casting
 keywords: [ TypeScript, JavaScript, Static Typing, Programming, Web Development ]
-categories: [ TypeScript, JavaScript, Programming-Basics ]
+categories: [ TS, JS, Tutorial ]
 createDate: 2024-12-31T00:00:00Z
 updateDate: 2024-12-31T00:00:00Z
 featured: false
