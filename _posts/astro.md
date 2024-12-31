@@ -143,7 +143,7 @@ import Wrapper from '../components/Wrapper.astro';
 
 ## Data Fetching
 
-All Astro components have access to the global [fetch()](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
+All Astro components have access to the global [fetch()](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch)
 function in their component script to make HTTP requests to APIs.
 
 This fetch call will be executed at build time, and the data will be available to the component template for generating

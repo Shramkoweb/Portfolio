@@ -30,7 +30,7 @@ learning and maintaining knowledge.
 - [newline.co](https://www.newline.co/) - everything you need for full-stack development
 - [pluralsight.com](https://www.pluralsight.com/) - online education platform that offers courses primarily geared
   toward software developers.
-- [scrimba.com](https://v2.scrimba.com/) - interactive courses and tutorials. Watch the video and write the code directly
+- [scrimba.com](https://scrimba.com/home) - interactive courses and tutorials. Watch the video and write the code directly
   online
 
 ## Blogs
