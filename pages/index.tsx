@@ -67,15 +67,7 @@ function IndexPage(props: IndexPageProps) {
               Serhii Shramko
             </h1>
             <h2 className="mb-4 text-gray-700 dark:text-gray-200">
-              Senior Developer at&ensp;
-              <a
-                href="https://macpaw.com/"
-                target="_blank"
-                rel="noopener"
-                className="font-semibold underline"
-              >
-                MacPaw
-              </a>
+              Senior Software Engineer
             </h2>
             <p className="text-gray-600 dark:text-gray-400">Hi there 🖐 🇺🇦</p>
             <p className="text-gray-600 dark:text-gray-400">

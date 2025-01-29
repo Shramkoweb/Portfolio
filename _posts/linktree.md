@@ -45,7 +45,7 @@ First of all I created a data file with my links. I used a simple JSON structure
 ```json:data/user.json
 {
   "name": "Serhii Shramko",
-  "profession": "Senior Software Engineer at MacPaw",
+  "profession": "Senior Software Engineer",
   "links": [
     {
       "url": "https://shramko.dev/",

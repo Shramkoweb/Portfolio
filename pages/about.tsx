@@ -85,26 +85,18 @@ function AboutPage() {
             </li>
           </ul>
 
-          <h2>Bio</h2>
-
-          <p>
-            Hi there, I&apos;m Serhii. I am a Senior Software Engineer at MacPaw
-            web team, where my team develops cool sites and internal projects
-            for the company. I&apos;m passionate about frontend development and
-            trying to be better than yesterday.
-          </p>
-
-          <h3>Experience</h3>
+          <h2>Experience</h2>
 
           <div className="flex justify-between">
             <em className="text-gray-300 text-xs">
               <time dateTime="2021-11">November 2021</time>
-              &ensp;–&ensp;present.
+              &ensp;–&ensp;
+              <time dateTime="2024-12">December 2024</time>
             </em>
             <em className="text-gray-300 text-xs">Boston, MA</em>
           </div>
 
-          <h4 className="m-0 mb-4">
+          <h3 className="m-0 mb-4">
             Senior Software Engineer at&ensp;
             <a
               href="https://macpaw.com/"
@@ -113,8 +105,7 @@ function AboutPage() {
             >
               MacPaw
             </a>
-            &ensp;🐾
-          </h4>
+          </h3>
 
           <p className="text-sm">
             MacPaw develops software for iOS and MacOS. Their products include
@@ -175,7 +166,7 @@ function AboutPage() {
             <em className="text-gray-300 text-xs">Hicksville, NY</em>
           </div>
 
-          <h4 className="m-0 mb-4">
+          <h3 className="m-0 mb-4">
             Software Engineer at&ensp;
             <a
               href="https://lawrina.org/"
@@ -184,7 +175,7 @@ function AboutPage() {
             >
               Lawrina
             </a>
-          </h4>
+          </h3>
 
           <p className="text-sm">
             An innovative legal tech company delivering AI-driven solutions to
@@ -238,7 +229,7 @@ function AboutPage() {
             <em className="text-gray-300 text-xs">Brookline, Ma</em>
           </div>
 
-          <h4 className="m-0 mb-4">
+          <h3 className="m-0 mb-4">
             Software Engineer at&ensp;
             <a
               href="https://www.pdffiller.com/"
@@ -247,7 +238,7 @@ function AboutPage() {
             >
               PDFfiller
             </a>
-          </h4>
+          </h3>
 
           <p className="text-sm">
             A global leader in document management, serving more than
@@ -290,7 +281,7 @@ function AboutPage() {
 
           <hr />
 
-          <h3 className="mt-16">Education</h3>
+          <h2 className="mt-16">Education</h2>
 
           <p>
             <strong>
@@ -308,9 +299,9 @@ function AboutPage() {
 
           <hr />
 
-          <h3>Open Source</h3>
+          <h2>Open Source</h2>
 
-          <h4 className="m-0 mb-4">
+          <h3 className="m-0 mb-4">
             Mentor -&ensp;
             <a
               href="https://kottans.org/"
@@ -319,7 +310,7 @@ function AboutPage() {
             >
               Kottans
             </a>
-          </h4>
+          </h3>
 
           <p className="text-sm">
             Over the years, I&apos;ve had the joy of mentoring{' '}
@@ -328,7 +319,7 @@ function AboutPage() {
             consultations, and sharing motivation and inspiration along the way.
           </p>
 
-          <h4 className="m-0 mb-4">
+          <h3 className="m-0 mb-4">
             Front-end consultations -&ensp;
             <a
               href="https://macpaw.com/career-wave"
@@ -337,7 +328,7 @@ function AboutPage() {
             >
               MacPaw Career Wave
             </a>
-          </h4>
+          </h3>
 
           <p className="text-sm">
             A <strong>mentorship program</strong> that empowers girls with
@@ -346,7 +337,7 @@ function AboutPage() {
             and find jobs.
           </p>
 
-          <h4 className="m-0 mb-4">
+          <h3 className="m-0 mb-4">
             Contributor -&ensp;
             <a
               href="https://stateofjs.com/en-US"
@@ -355,7 +346,7 @@ function AboutPage() {
             >
               State of JS & CSS
             </a>
-          </h4>
+          </h3>
 
           <p className="text-sm">
             Authored Ukrainian and Russian translations for the State of JS &
