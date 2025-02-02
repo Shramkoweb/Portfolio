@@ -16,7 +16,7 @@ keywords: [
   Conventional Commits Tools for Junior Developers
 ]
 categories: [ JS, TS, Tutorial, Project-Setup, Opinion, Tools ]
-featured: true
+featured: false
 ---
 
 <Image src="conventional-commits.jpg" alt="Conventional Commits. A close up of a text description on a computer screen." />
