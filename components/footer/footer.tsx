@@ -49,9 +49,14 @@ export function Footer() {
             </FooterLink>
           </li>
           <li>
-            <FooterLink href="https://www.instagram.com/serhii.shramko/">
-              Instagram
-            </FooterLink>
+            <a
+              href="https://github.com/Shramkoweb/Portfolio/issues/new"
+              target="_blank"
+              rel="nofollow noopener"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+            >
+              Report an Issue
+            </a>
           </li>
         </ul>
         <ul className="flex flex-col space-y-4">
@@ -91,13 +96,6 @@ export function Footer() {
               href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
             >
               Quizlet QuickList
-            </FooterLink>
-          </li>
-          <li>
-            <FooterLink
-              href="https://leetcode.com/u/shramko-dev/"
-            >
-              LeetCode
             </FooterLink>
           </li>
         </ul>
