@@ -98,6 +98,13 @@ export function Footer() {
               Quizlet QuickList
             </FooterLink>
           </li>
+          <li>
+            <FooterLink
+              href="https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
+            >
+              Udemy Reset Progress
+            </FooterLink>
+          </li>
         </ul>
       </div>
       <small className="pb-4 text-xs text-gray-600 dark:text-gray-400">
