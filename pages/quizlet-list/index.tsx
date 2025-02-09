@@ -11,7 +11,7 @@ import fourthImage from '../../public/static/images/quizlet-list/quizlet-quickli
 
 function QuizletPage() {
   useEffect(() => {
-    const registerView = () => fetch('/api/views/quizlet-page}', {
+    const registerView = () => fetch('/api/views/quizlet-page', {
       method: 'POST',
     });
 
