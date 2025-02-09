@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
@@ -9,6 +10,14 @@ import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklis
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
 
 function QuizletPage() {
+  useEffect(() => {
+    const registerView = () => fetch('/api/views/quizlet-page}', {
+      method: 'POST',
+    });
+
+    registerView();
+  }, []);
+
   return (
     <>
       <Head>

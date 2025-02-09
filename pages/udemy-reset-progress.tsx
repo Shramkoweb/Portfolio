@@ -1,11 +1,19 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 import { UDEMY_RESET_APP_OG_IMAGE } from '@/lib/constants';
 import chromeStore from '../public/static/images/chrome-store.png';
 import firefoxStore from '../public/static/images/firefox-store.webp';
 
 function UdemyResetProgressPage() {
+  useEffect(() => {
+    const registerView = () => fetch('/api/views/udemy-reset-progress-page}', {
+      method: 'POST',
+    });
+
+    registerView();
+  }, []);
   return (
     <>
       <Head>
