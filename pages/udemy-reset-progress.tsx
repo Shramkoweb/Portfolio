@@ -91,7 +91,7 @@ function UdemyResetProgressPage() {
           endless dialogs.
         </p>
 
-        <video loop autoPlay muted className="mb-6 w-10/12 mx-auto mt-10">
+        <video loop autoPlay muted playsInline className="mb-6 w-10/12 mx-auto mt-10">
           <source
             src="/static/images/udemy-progress-reset/video.mp4"
             type="video/mp4"
