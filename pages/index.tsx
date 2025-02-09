@@ -148,7 +148,7 @@ function IndexPage(props: IndexPageProps) {
             Projects
           </h2>
 
-          <div className="flex gap-8">
+          <div className="flex flex-col gap-8 md:flex-row">
             <Link href="/quizlet-list" className="w-full">
               <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-[300px] bg-pattern dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
