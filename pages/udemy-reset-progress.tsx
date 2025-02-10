@@ -121,7 +121,11 @@ function UdemyResetProgressPage() {
 
         <h2>Installation</h2>
         <div className="flex gap-8 justify-center items-center">
-          <a href="https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo">
+          <a
+            target="_blank"
+            rel="nofollow noopener"
+            href="https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
+          >
             <Image
               className="w-44 border rounded-md"
               role="presentation"
@@ -129,12 +133,18 @@ function UdemyResetProgressPage() {
               src={chromeStore}
             />
           </a>
-          <Image
-            className="w-44 w-[156px]"
-            role="presentation"
-            src={firefoxStore}
-            alt="Firefox Add-ons"
-          />
+          <a
+            target="_blank"
+            rel="nofollow noopener"
+            href="https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
+          >
+            <Image
+              className="w-44 w-[156px]"
+              role="presentation"
+              src={firefoxStore}
+              alt="Firefox Add-ons"
+            />
+          </a>
         </div>
 
         <h2>How It Works</h2>
