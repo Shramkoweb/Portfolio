@@ -285,7 +285,7 @@ function AboutPage() {
 
           <p>
             <strong>
-              Bachelor of Science in Electromechanical Automation Systems
+              Master of Science in Electromechanical Automation Systems
             </strong>
             <br />
             <a
