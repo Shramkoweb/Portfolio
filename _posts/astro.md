@@ -5,7 +5,7 @@ description: Astro is a new Javascript framework, so discover what makes it spec
 createDate: 2023-03-16T09:01:43.973Z
 keywords: [ astro js, astro framework, astro js tutorial, what is astro, how to build fast, cms javascript framework ]
 categories: [ JS, TS, Astro, JamStack ]
-featured: true
+featured: false
 ---
 
 <Image src="astro.jpg" alt="Astro Framework Logo" />

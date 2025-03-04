@@ -5,7 +5,7 @@ description: Master JavaScript naming conventions with this comprehensive guide.
 createDate: 2025-02-02T09:00:00.000Z
 keywords: [ javascript naming conventions, javascript best practices, clean code javascript, javascript naming patterns, javascript variable naming, javascript coding standards, js naming convention, javascript class naming ]
 categories: [ JS, TS, Tutorial, Project-Setup, Opinion, Tools ]
-featured: true
+featured: false
 ---
 
 Writing clean, maintainable JavaScript isn't just about making your code work - it's about making it understandable. In

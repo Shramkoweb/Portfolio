@@ -5,7 +5,7 @@ description: "Learn how to build a fast, efficient link tree website using Astro
 createDate: 2024-08-30T10:00:00.000Z
 keywords: [ "astro.js", "vercel", "link tree", "web development", "static site generation", "custom domain", "vercel analytics", "deployment", "performance optimization" ]
 categories: [ "Astro", "Vercel", "Tutorial" ]
-featured: false
+featured: true
 ---
 
 <Image src="linktree.jpeg" alt="My linktree" priority />
