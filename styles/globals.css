@@ -52,7 +52,7 @@ html {
 
 .prose code:after,
 .prose code:before {
-  content: ''
+  content: '';
 }
 
 .prose *:hover > .anchor {
@@ -64,7 +64,7 @@ html {
 }
 
 .prose code:not([class*='language-']) {
-  @apply text-gray-800 px-1 py-0.5 rounded-md bg-indigo-200 font-medium  ;
+  @apply text-gray-800 px-1 py-0.5 rounded-md bg-indigo-200 font-medium text-nowrap;
 }
 
 .prose pre code {
@@ -191,7 +191,7 @@ input[type='email'] {
 
 .bg-pattern-waves {
   opacity: 0.8;
-  background-image:  radial-gradient(#2F2F2FFF 1.5px, transparent 0.5px), radial-gradient(currentColor 0.5px, currentColor 0.5px);
+  background-image: radial-gradient(#2F2F2FFF 1.5px, transparent 0.5px), radial-gradient(currentColor 0.5px, currentColor 0.5px);
   background-size: 20px 20px;
-  background-position: 0 0,10px 10px;
+  background-position: 0 0, 10px 10px;
 }
