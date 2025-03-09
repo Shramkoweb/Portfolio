@@ -91,7 +91,7 @@ function UdemyResetProgressPage() {
           endless dialogs.
         </p>
 
-        <video loop autoPlay muted playsInline className="mb-6 w-10/12 mx-auto mt-10">
+        <video loop autoPlay muted playsInline className="mb-6 mx-auto mt-10">
           <source
             src="/static/images/udemy-progress-reset/video.mp4"
             type="video/mp4"
@@ -243,11 +243,11 @@ function UdemyResetProgressPage() {
             </a>
 
             <a
-              href=""
+              href="https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Install for FireFox
+              Install for Firefox
             </a>
           </div>
         </div>
