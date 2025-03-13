@@ -41,6 +41,7 @@ export enum PostCategory {
   Productivity = 'productivity',
   Habits = 'habits',
   Tools = 'tools',
+  Certifications = 'certifications',
 }
 
 export enum Feedback {

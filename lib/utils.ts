@@ -92,6 +92,11 @@ export const categoryToSeoData = {
     description: 'Explore essential tools and resources to enhance your development workflow and productivity.',
     keywords: 'Development Tools, Resources, Productivity',
   },
+  [PostCategory.Certifications]: {
+    title: 'Certification: Get Your Certification',
+    description: 'Get your certification from my collection of certification resources and tutorials.',
+    keywords: 'Certification, Resources, Certifications, Learning',
+  },
 };
 
 export const isProduction = () => process.env.NODE_ENV === Environment.Production;

@@ -5,7 +5,7 @@ description: A friendly, practical guide to SemVer in npm. Learn versioning rule
 createDate: 2025-03-04T22:20:08.330Z
 keywords: [ npm semantic versioning, SemVer guide, package.json versioning, caret vs tilde npm, node.js dependencies, npm update rules, npm versioning cheatsheet, avoid broken dependencies, npm package management, semantic versioning tutorial ]
 categories: [ JS, Node, Project-Setup ]
-featured: true
+featured: false
 ---
 
 Let’s talk about version numbers in your `package.json`. You’ve probably seen versions like `1.2.3` or `^4.5.0`—but what
