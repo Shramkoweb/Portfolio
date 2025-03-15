@@ -124,6 +124,16 @@ function QuizletPage() {
               Quizlet QuickList at Firefox Add-ons
             </a>
           </li>
+
+          <li>
+            <a
+              target="_blank"
+              href="https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn"
+              rel="noopener noreferrer"
+            >
+              Quizlet QuickList at Microsoft Edge Store
+            </a>
+          </li>
         </ul>
 
         <Image
@@ -242,7 +252,7 @@ function QuizletPage() {
               Chrome Web Store
             </a>
             {' '}
-            or
+            ,
             {' '}
             <a
               target="_blank"
@@ -250,6 +260,16 @@ function QuizletPage() {
               rel="noopener noreferrer"
             >
               Firefox Add-ons
+            </a>
+            {' '}
+            or
+            {' '}
+            <a
+              target="_blank"
+              href="https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn"
+              rel="noopener noreferrer"
+            >
+              Microsoft Edge
             </a>
             .
           </li>
