@@ -249,6 +249,14 @@ function UdemyResetProgressPage() {
             >
               Install for Firefox
             </a>
+
+            <a
+              href="https://microsoftedge.microsoft.com/addons/detail/udemy-reset-progress/cmnolghflighmmfpdkinlbmoelfgchhc"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Install for Microsoft Edge
+            </a>
           </div>
         </div>
       </section>
