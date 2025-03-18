@@ -311,8 +311,6 @@ Ran all test suites.
 
 Next's framework allows you to build scalable, performant React code without the configuration hassle.
 
-In my team at MacPaw ??, we use it for [CleanMyMac JP](https://cleanmymac.jp/) and other internal projects.
-
 Quick list of why Next.js has been so good for me:
 
 - Zero Config: Automatic compilation and bundling. Optimized for production from the start
