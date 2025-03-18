@@ -101,7 +101,7 @@ function IndexPage(props: IndexPageProps) {
             </Link>
           </div>
           <div
-            className="relative mr-auto mb-8 w-[150px] min-h-[150px] sm:w-[300px] sm:mb-0"
+            className="shrink-0 block relative mr-auto mb-8 w-[128px] h-[128px] sm:mb-0"
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
           >
@@ -109,8 +109,9 @@ function IndexPage(props: IndexPageProps) {
               role="presentation"
               alt="Serhii Shramko's avatar - smile iOS emoji"
               src={smile}
-              width={150}
-              height={150}
+              quality={100}
+              width={128}
+              height={128}
               className={clsx('absolute', {
                 'opacity-0': isAvatarHovered,
               })}
@@ -120,8 +121,9 @@ function IndexPage(props: IndexPageProps) {
               role="presentation"
               alt="Serhii Shramko's avatar - tongue iOS emoji"
               src={tongue}
-              width={150}
-              height={150}
+              quality={100}
+              width={128}
+              height={128}
               className={clsx('absolute', {
                 'opacity-0': !isAvatarHovered,
               })}
