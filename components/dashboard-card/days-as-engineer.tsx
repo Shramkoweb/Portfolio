@@ -7,7 +7,7 @@ export function DaysAsSoftwareEngineer() {
   let months = currentDate.getMonth() - DATE_OF_CREATION.getMonth();
 
   if (months < 0) {
-    years--;
+    years -= 1;
     months += 12;
   }
   const timeString = `${years}y, ${months}m`;
