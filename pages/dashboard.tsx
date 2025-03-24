@@ -55,13 +55,13 @@ export default function Dashboard() {
           Statistics
         </h2>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
+          <DaysAsSoftwareEngineer />
+          <BlogViewsCard />
           <GithubFollowers />
           <GitHubStars />
         </div>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-          <BlogViewsCard />
           <MonthlyUsers />
-          <DaysAsSoftwareEngineer />
         </div>
       </section>
     </>
