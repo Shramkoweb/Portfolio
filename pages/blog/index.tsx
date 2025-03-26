@@ -18,7 +18,7 @@ function BlogPage(props: BlogPageProps) {
 
   const [searchValue, setSearchValue] = useState('');
 
-  const filteredBlogPosts = posts.filter((post) => post.data.title.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredBlogPosts = posts.filter((post) => post.data.heading.toLowerCase().includes(searchValue.toLowerCase()));
 
   return (
     <>
