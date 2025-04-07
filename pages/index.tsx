@@ -9,7 +9,7 @@ import { getPosts } from '@/lib/posts/api';
 import {
   filterByFeatured,
   filterByNotFeatured,
-  sortByBirthtime,
+  sortByBirthtime
 } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
 
@@ -24,7 +24,7 @@ const GRADIENTS = [
   'bg-gradient-to-r from-purple-400 to-yellow-400',
   'bg-gradient-to-r from-purple-200 to-purple-800',
   'bg-gradient-to-r from-purple-400 to-blue-600',
-  'bg-gradient-to-r from-green-300 to-purple-400',
+  'bg-gradient-to-r from-green-300 to-purple-400'
 ];
 
 interface IndexPageProps {
@@ -81,22 +81,22 @@ function IndexPage(props: IndexPageProps) {
             </p>
             <Link
               href="/about"
-              className="mt-8 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+              className="mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
             >
               Read more about me
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                className="ml-2 h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                />
+                <path d="M18 8L22 12L18 16" />
+                <path d="M2 12H22" />
               </svg>
             </Link>
           </div>
@@ -113,7 +113,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': isAvatarHovered,
+                'opacity-0': isAvatarHovered
               })}
               priority
             />
@@ -125,7 +125,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': !isAvatarHovered,
+                'opacity-0': !isAvatarHovered
               })}
             />
           </div>
@@ -184,22 +184,22 @@ function IndexPage(props: IndexPageProps) {
         </div>
         <Link
           href="/blog"
-          className="mt-8 flex h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+          className="mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
         >
           Read more posts
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
-            className="ml-2 h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-            />
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
           </svg>
         </Link>
       </section>
@@ -208,7 +208,7 @@ function IndexPage(props: IndexPageProps) {
 }
 
 export async function getStaticProps(): Promise<
-GetStaticPropsResult<IndexPageProps>
+  GetStaticPropsResult<IndexPageProps>
 > {
   const posts = await getPosts();
   const otherPosts = posts
@@ -220,8 +220,8 @@ GetStaticPropsResult<IndexPageProps>
   return {
     props: {
       featuredPosts,
-      otherPosts,
-    },
+      otherPosts
+    }
   };
 }
 

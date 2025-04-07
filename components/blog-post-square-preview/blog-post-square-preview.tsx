@@ -35,23 +35,19 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
         <div className="flex items-center text-gray-800 dark:text-gray-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
+            fill="none"
             stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
             />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-            />
+            <circle cx="12" cy="12" r="3" />
           </svg>
           <span className="ml-2 align-baseline">
             {views ? views.toLocaleString() : '---'}

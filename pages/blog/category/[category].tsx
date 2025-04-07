@@ -34,16 +34,8 @@ function CategoryPage(props: CategoryPageProps) {
     <>
       <Head>
         <title>{`${seoTitle} | Serhii Shramko`}</title>
-        <meta
-          content={seoDescription}
-          name="description"
-          key="description"
-        />
-        <meta
-          content={seoKeywords}
-          name="keywords"
-          key="keywords"
-        />
+        <meta content={seoDescription} name="description" key="description" />
+        <meta content={seoKeywords} name="keywords" key="keywords" />
         <meta
           property="og:site_name"
           content={`Blog category ${category} | Serhii Shramko`}
@@ -56,17 +48,17 @@ function CategoryPage(props: CategoryPageProps) {
         />
         <meta property="og:title" content={seoTitle} key="og:title" />
         <meta name="twitter:title" content={seoTitle} key="twitter:title" />
-        <meta name="twitter:description" content={seoDescription} key="twitter:description" />
+        <meta
+          name="twitter:description"
+          content={seoDescription}
+          key="twitter:description"
+        />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
-        <h1
-          className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center"
-        >
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           {category}
           <span className="ml-auto inline-block text-sm">
-            {postsLength}
-            {' '}
-            {postsLength === 1 ? 'article' : 'articles'}
+            {postsLength} {postsLength === 1 ? 'article' : 'articles'}
           </span>
         </h1>
         <div className="mb-4 text-gray-600 dark:text-gray-400">
@@ -83,16 +75,17 @@ function CategoryPage(props: CategoryPageProps) {
           <svg
             className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
+            fill="none"
             stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
           </svg>
         </div>
         <Categories categories={categories} />
