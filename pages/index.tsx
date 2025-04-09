@@ -9,7 +9,7 @@ import { getPosts } from '@/lib/posts/api';
 import {
   filterByFeatured,
   filterByNotFeatured,
-  sortByBirthtime
+  sortByBirthtime,
 } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
 
@@ -24,7 +24,7 @@ const GRADIENTS = [
   'bg-gradient-to-r from-purple-400 to-yellow-400',
   'bg-gradient-to-r from-purple-200 to-purple-800',
   'bg-gradient-to-r from-purple-400 to-blue-600',
-  'bg-gradient-to-r from-green-300 to-purple-400'
+  'bg-gradient-to-r from-green-300 to-purple-400',
 ];
 
 interface IndexPageProps {
@@ -113,7 +113,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': isAvatarHovered
+                'opacity-0': isAvatarHovered,
               })}
               priority
             />
@@ -125,7 +125,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': !isAvatarHovered
+                'opacity-0': !isAvatarHovered,
               })}
             />
           </div>
@@ -208,7 +208,7 @@ function IndexPage(props: IndexPageProps) {
 }
 
 export async function getStaticProps(): Promise<
-  GetStaticPropsResult<IndexPageProps>
+GetStaticPropsResult<IndexPageProps>
 > {
   const posts = await getPosts();
   const otherPosts = posts
@@ -220,8 +220,8 @@ export async function getStaticProps(): Promise<
   return {
     props: {
       featuredPosts,
-      otherPosts
-    }
+      otherPosts,
+    },
   };
 }
 
