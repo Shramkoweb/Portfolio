@@ -17,28 +17,28 @@ function UdemyResetProgressPage() {
   return (
     <>
       <Head>
-        <title>Udemy Reset Progress - Browser Extension</title>
+        <title>How to Reset Udemy Course Progress - One-Click Solution</title>
         <meta
           name="description"
           key="description"
-          content="Udemy Reset Progress extension lets you quickly clear your course progress on Udemy with one click. Perfect for restarting courses or managing multiple accounts."
+          content="Learn how to reset Udemy course progress instantly with our browser extension. The easiest way to restart Udemy courses with one click. Free download for Chrome & Firefox."
         />
         <meta
           name="keywords"
           key="keywords"
-          content="Udemy, Chrome Extension, Firefox Extension, Course Reset, Learning Management, Education Tools, Udemy Tools"
+          content="reset Udemy course progress, Udemy reset progress, how to reset Udemy course, restart Udemy course, clear Udemy progress, Udemy course reset tool"
         />
         <meta name="author" key="author" content="Serhii Shramko" />
         <meta property="og:type" key="og:type" content="website" />
         <meta
           property="og:title"
           key="og:title"
-          content="Udemy Reset Progress - Browser Extension"
+          content="How to Reset Udemy Course Progress - One-Click Solution"
         />
         <meta
           property="og:description"
           key="og:description"
-          content="One-click solution to reset your Udemy course progress. Easily restart courses or manage multiple accounts."
+          content="Learn the fastest way to reset your Udemy course progress with our free browser extension. Perfect for restarting courses or managing multiple accounts."
         />
         <meta
           property="og:image"
@@ -53,12 +53,12 @@ function UdemyResetProgressPage() {
         <meta
           property="twitter:title"
           key="twitter:title"
-          content="Udemy Reset Progress - Browser Extension"
+          content="How to Reset Udemy Course Progress Instantly"
         />
         <meta
           property="twitter:description"
           key="twitter:description"
-          content="Reset your Udemy course progress instantly with this powerful browser extension."
+          content="The easiest method to reset Udemy course progress - one-click solution with our free browser extension."
         />
         <meta
           property="twitter:image"
@@ -74,21 +74,21 @@ function UdemyResetProgressPage() {
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Udemy Reset Progress: Instant Course Progress Reset
+          How to Reset Udemy Course Progress in One Click
         </h1>
 
         <p>
-          Tired of manually clearing your Udemy course progress when you want to
-          restart a course or switch accounts? As someone who frequently tests
-          courses and manages multiple Udemy accounts, I understand how tedious
-          it can be to reset progress through Udemy interface.
+          Need to reset your Udemy course progress but frustrated with the
+          manual process? Whether you want to restart a course from scratch,
+          review material, or manage multiple accounts, resetting course
+          progress on Udemy can be tedious through their standard interface.
         </p>
 
         <p>
-          That&#39;s why I built <strong>Udemy Reset Progress</strong> — a
-          browser extension that lets you wipe your course progress with a
-          single click. No more navigating through multiple menus or confirming
-          endless dialogs.
+          That&#39;s why I created <strong>Udemy Reset Progress</strong> — a
+          free browser extension that lets you reset any Udemy course progress
+          with a single click. No more navigating through multiple menus or
+          confirmation dialogs.
         </p>
 
         <video loop autoPlay muted playsInline className="mb-6 mx-auto mt-10">
@@ -98,28 +98,29 @@ function UdemyResetProgressPage() {
           />
         </video>
 
-        <h2>Key Features</h2>
+        <h2>Why Choose Our Udemy Reset Progress Extension?</h2>
 
         <ul>
           <li>
-            <strong>One-click progress reset 🚀:</strong> Clear all course
+            <strong>Instant reset with one click ⚡️:</strong> Clear all course
             progress instantly from the extension popup
           </li>
           <li>
-            <strong>Udemy-specific functionality 🔐:</strong> Works exclusively
-            on Udemy course pages for maximum reliability
+            <strong>Works on all Udemy courses 📚:</strong> Reset progress on
+            any course you&#39;re enrolled in
           </li>
           <li>
-            <strong>Lightning fast ⚡️:</strong> Built with performance in mind
-            using SolidJS and WXT
+            <strong>100% Free with no ads 🆓:</strong> Download now for Chrome,
+            Firefox, or Edge
           </li>
           <li>
-            <strong>Privacy focused 🧑‍💻:</strong> No data collection - everything
+            <strong>Privacy focused 🔒:</strong> No data collection - everything
             happens locally in your browser
           </li>
         </ul>
 
         <h2>Installation</h2>
+
         <div className="flex gap-8 justify-center items-center">
           <a
             target="_blank"
@@ -129,7 +130,7 @@ function UdemyResetProgressPage() {
             <Image
               className="w-44 border rounded-md"
               role="presentation"
-              alt="Chrome Web Store"
+              alt="Download Udemy Reset Progress for Chrome"
               src={chromeStore}
             />
           </a>
@@ -139,22 +140,29 @@ function UdemyResetProgressPage() {
             href="https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
           >
             <Image
-              className="w-44 w-[156px]"
+              className="w-[156px]"
               role="presentation"
               src={firefoxStore}
-              alt="Firefox Add-ons"
+              alt="Download Udemy Reset Progress for Firefox"
             />
           </a>
         </div>
 
-        <h2>How It Works</h2>
+        <h2>How to Reset Udemy Course Progress (Step by Step)</h2>
+
         <ol>
-          <li>Navigate to any Udemy course page</li>
-          <li>Click the extension icon in your toolbar</li>
-          <li>Click &#34;Clear Progress&#34;</li>
+          <li>
+            Install the Udemy Reset Progress extension from your browser&#39;s
+            store
+          </li>
+          <li>Navigate to any Udemy course page you want to reset</li>
+          <li>Click the extension icon in your browser toolbar</li>
+          <li>Click the &#34;Clear Progress&#34; button</li>
+          <li>Your course progress is now completely reset!</li>
         </ol>
 
         <h2>Technical Details</h2>
+
         <ul>
           <li>
             <strong>Framework:</strong> <a href="https://wxt.dev/">WXT</a>
