@@ -21,7 +21,7 @@ function UdemyResetProgressPage() {
         <meta
           name="description"
           key="description"
-          content="Learn how to reset Udemy course progress instantly with our browser extension. The easiest way to restart Udemy courses with one click. Free download for Chrome & Firefox."
+          content="Learn how to reset Udemy course progress instantly with my browser extension. The easiest way to restart Udemy courses with one click. Free download for Chrome & Firefox."
         />
         <meta
           name="keywords"
@@ -38,7 +38,7 @@ function UdemyResetProgressPage() {
         <meta
           property="og:description"
           key="og:description"
-          content="Learn the fastest way to reset your Udemy course progress with our free browser extension. Perfect for restarting courses or managing multiple accounts."
+          content="Learn the fastest way to reset your Udemy course progress with my free browser extension. Perfect for restarting courses or managing multiple accounts."
         />
         <meta
           property="og:image"
@@ -58,7 +58,7 @@ function UdemyResetProgressPage() {
         <meta
           property="twitter:description"
           key="twitter:description"
-          content="The easiest method to reset Udemy course progress - one-click solution with our free browser extension."
+          content="The easiest method to reset Udemy course progress - one-click solution with my free browser extension."
         />
         <meta
           property="twitter:image"

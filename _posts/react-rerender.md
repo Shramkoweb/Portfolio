@@ -1,7 +1,7 @@
 ---
 title: "Understanding React Re-Renders: What Triggers Them and Why They Matter"
 heading: React Re-Renders
-description: Dive into the mechanics of React re-renders—learn what causes them, how they impact performance, and how to manage them effectively.
+description: Dive into the mechanics of React re-renders — learn what causes them, how they impact performance, and how to manage them effectively.
 createDate: 2025-05-03T09:01:43.973Z
 keywords: [ react re-render, what triggers re-render in react, react performance, react optimization, useEffect and re-render, rendering lifecycle react ]
 categories: [ Advanced-React, Tutorial, JS, TS, React ]
