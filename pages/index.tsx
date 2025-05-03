@@ -10,7 +10,7 @@ import {
   filterByAdvanceReact,
   filterByFeatured,
   filterByNotFeatured,
-  sortByBirthtime
+  sortByBirthtime,
 } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
 
@@ -25,7 +25,7 @@ const GRADIENTS = [
   'bg-gradient-to-r from-purple-400 to-yellow-400',
   'bg-gradient-to-r from-purple-200 to-purple-800',
   'bg-gradient-to-r from-purple-400 to-blue-600',
-  'bg-gradient-to-r from-green-300 to-purple-400'
+  'bg-gradient-to-r from-green-300 to-purple-400',
 ];
 
 const REACT_GRADIENTS = [
@@ -34,7 +34,7 @@ const REACT_GRADIENTS = [
   'bg-gradient-to-r from-teal-300 to-violet-500',
   'bg-gradient-to-r from-blue-300 to-blue-800',
   'bg-gradient-to-r from-yellow-200 to-orange-600',
-  'bg-gradient-to-r from-slate-300 to-sky-500'
+  'bg-gradient-to-r from-slate-300 to-sky-500',
 ];
 
 interface IndexPageProps {
@@ -124,7 +124,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': isAvatarHovered
+                'opacity-0': isAvatarHovered,
               })}
               priority
             />
@@ -136,7 +136,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': !isAvatarHovered
+                'opacity-0': !isAvatarHovered,
               })}
             />
           </div>
@@ -160,19 +160,19 @@ function IndexPage(props: IndexPageProps) {
           <h2 className="mt-12 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl flex items-start gap-2">
             Advanced React{' '}
             <span aria-hidden="true" className="w-6 h-6">
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              viewBox="0 0 24 24"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M15.407 8.593c4.6 4.6 6.802 9.853 4.92 11.735-1.88 1.881-7.135-.322-11.734-4.921S1.791 5.554 3.673 3.672c1.88-1.881 7.134.322 11.734 4.921" />
-              <path d="M8.594 8.593c-4.6 4.6-6.803 9.853-4.921 11.735s7.135-.322 11.734-4.921 6.803-9.853 4.921-11.735-7.135.322-11.734 4.921M11.75 12h.5" />
-            </svg>
-          </span>
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M15.407 8.593c4.6 4.6 6.802 9.853 4.92 11.735-1.88 1.881-7.135-.322-11.734-4.921S1.791 5.554 3.673 3.672c1.88-1.881 7.134.322 11.734 4.921" />
+                <path d="M8.594 8.593c-4.6 4.6-6.803 9.853-4.921 11.735s7.135-.322 11.734-4.921 6.803-9.853 4.921-11.735-7.135.322-11.734 4.921M11.75 12h.5" />
+              </svg>
+            </span>
           </h2>
 
           <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
@@ -272,7 +272,7 @@ function IndexPage(props: IndexPageProps) {
 }
 
 export async function getStaticProps(): Promise<
-  GetStaticPropsResult<IndexPageProps>
+GetStaticPropsResult<IndexPageProps>
 > {
   const posts = await getPosts();
   const otherPosts = posts
@@ -288,8 +288,8 @@ export async function getStaticProps(): Promise<
     props: {
       featuredPosts,
       otherPosts,
-      advancedReactPosts
-    }
+      advancedReactPosts,
+    },
   };
 }
 
