@@ -19,7 +19,7 @@ export const categoryToSeoData = {
   },
   [PostCategory.Astro]: {
     title: 'Astro Framework: Complete Guide',
-    description: 'Dive into the features and benefits of the Astro framework with our comprehensive guide.',
+    description: 'Dive into the features and benefits of the Astro framework with this comprehensive guide.',
     keywords: 'Astro, Frontend, Framework',
   },
   [PostCategory.JamsSack]: {
@@ -49,7 +49,7 @@ export const categoryToSeoData = {
   },
   [PostCategory.Tutorial]: {
     title: 'Step-by-Step Guides for Web Development Tasks',
-    description: 'Dive into our comprehensive Tutorial guides for step-by-step tutorials on various tasks and topics.',
+    description: 'Dive into this comprehensive Tutorial guides for step-by-step tutorials on various tasks and topics.',
     keywords: 'Tutorial, Guides, Tutorial',
   },
   [PostCategory.UsefulResources]: {
@@ -69,12 +69,12 @@ export const categoryToSeoData = {
   },
   [PostCategory.Opinion]: {
     title: 'Opinion: Engage in Thought-Provoking Discussions',
-    description: 'Engage with our opinion pieces and join thought-provoking discussions on various topics in the industry.',
+    description: 'Engage with my opinion pieces and join thought-provoking discussions on various topics in the industry.',
     keywords: 'Opinion, Discussions, Thought-Provoking',
   },
   [PostCategory.React]: {
     title: 'Mastering React: Advanced Tips and Techniques',
-    description: 'Advance your React skills with our collection of tips and techniques for mastering React development.',
+    description: 'Advance your React skills with this collection of tips and techniques for mastering React development.',
     keywords: 'React, Frontend, JavaScript',
   },
   [PostCategory.Productivity]: {
@@ -99,7 +99,7 @@ export const categoryToSeoData = {
   },
   [PostCategory.AdvancedReact]: {
     title: 'Advanced React: Advanced Tips and Techniques',
-    description: 'Advance your React skills with our collection of tips and techniques for mastering React development.',
+    description: 'Advance your React skills with this collection of tips and techniques for mastering React development.',
     keywords: 'React, Frontend, JavaScript',
   },
 };
