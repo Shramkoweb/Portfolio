@@ -11,7 +11,7 @@ const IMAGE = 'https://shramko.dev/static/images/twittersite.png';
 
 export function Layout({ children }: PropsWithChildren) {
   const router = useRouter();
-  const ROUTER_PATH = router.asPath;
+  const ROUTER_PATH = router.asPath.split('?')[0];
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
