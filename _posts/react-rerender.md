@@ -5,7 +5,7 @@ description: Dive into the mechanics of React re-renders—learn what causes the
 createDate: 2025-05-03T09:01:43.973Z
 keywords: [ react re-render, what triggers re-render in react, react performance, react optimization, useEffect and re-render, rendering lifecycle react ]
 categories: [ Advanced-React, Tutorial, JS, TS, React ]
-featured: true
+featured: false
 ---
 
 <Image alt="" src="react-rerender.png" priority={true} />
@@ -20,7 +20,7 @@ on beginners. But what comes next? How can you dive deeper and really understand
 React for a while, basic or
 even intermediate courses may not be enough. Sadly, resources for advanced learning are limited.
 
-That’s why I’m launching a series of articles to fill this knowledge gap.
+That’s why I’m launching a [series of articles](/blog/category/advanced-react) to fill this knowledge gap.
 
 ## Intro to re-renders
 

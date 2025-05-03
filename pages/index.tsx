@@ -7,9 +7,10 @@ import { GetStaticPropsResult } from 'next';
 
 import { getPosts } from '@/lib/posts/api';
 import {
+  filterByAdvanceReact,
   filterByFeatured,
   filterByNotFeatured,
-  sortByBirthtime,
+  sortByBirthtime
 } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
 
@@ -24,16 +25,26 @@ const GRADIENTS = [
   'bg-gradient-to-r from-purple-400 to-yellow-400',
   'bg-gradient-to-r from-purple-200 to-purple-800',
   'bg-gradient-to-r from-purple-400 to-blue-600',
-  'bg-gradient-to-r from-green-300 to-purple-400',
+  'bg-gradient-to-r from-green-300 to-purple-400'
+];
+
+const REACT_GRADIENTS = [
+  'bg-gradient-to-r from-amber-200 via-emerald-400 to-indigo-600',
+  'bg-gradient-to-r from-rose-400 via-pink-500 to-cyan-300',
+  'bg-gradient-to-r from-teal-300 to-violet-500',
+  'bg-gradient-to-r from-blue-300 to-blue-800',
+  'bg-gradient-to-r from-yellow-200 to-orange-600',
+  'bg-gradient-to-r from-slate-300 to-sky-500'
 ];
 
 interface IndexPageProps {
   featuredPosts: Post[];
   otherPosts: Post[];
+  advancedReactPosts: Post[];
 }
 
 function IndexPage(props: IndexPageProps) {
-  const { featuredPosts, otherPosts } = props;
+  const { featuredPosts, otherPosts, advancedReactPosts } = props;
 
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
@@ -91,9 +102,9 @@ function IndexPage(props: IndexPageProps) {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M18 8L22 12L18 16" />
                 <path d="M2 12H22" />
@@ -113,7 +124,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': isAvatarHovered,
+                'opacity-0': isAvatarHovered
               })}
               priority
             />
@@ -125,7 +136,7 @@ function IndexPage(props: IndexPageProps) {
               width={128}
               height={128}
               className={clsx('absolute', {
-                'opacity-0': !isAvatarHovered,
+                'opacity-0': !isAvatarHovered
               })}
             />
           </div>
@@ -145,7 +156,59 @@ function IndexPage(props: IndexPageProps) {
           ))}
         </div>
 
-        <section className="my-6 w-full">
+        <div>
+          <h2 className="mt-12 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl flex items-start gap-2">
+            Advanced React{' '}
+            <span aria-hidden="true" className="w-6 h-6">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M15.407 8.593c4.6 4.6 6.802 9.853 4.92 11.735-1.88 1.881-7.135-.322-11.734-4.921S1.791 5.554 3.673 3.672c1.88-1.881 7.134.322 11.734 4.921" />
+              <path d="M8.594 8.593c-4.6 4.6-6.803 9.853-4.921 11.735s7.135-.322 11.734-4.921 6.803-9.853 4.921-11.735-7.135.322-11.734 4.921M11.75 12h.5" />
+            </svg>
+          </span>
+          </h2>
+
+          <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
+            {advancedReactPosts.map(({ data: { slug, heading } }, index) => (
+              <BlogPostSquarePreview
+                heading={heading}
+                slug={slug}
+                classNames={REACT_GRADIENTS[index]}
+                key={slug}
+              />
+            ))}
+          </div>
+
+          <Link
+            href="/blog/category/advanced-react"
+            className="mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+          >
+            Read more about React
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 8L22 12L18 16" />
+              <path d="M2 12H22" />
+            </svg>
+          </Link>
+        </div>
+
+        <div className="my-6 w-full">
           <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
             Projects
           </h2>
@@ -167,7 +230,7 @@ function IndexPage(props: IndexPageProps) {
               </div>
             </Link>
           </div>
-        </section>
+        </div>
 
         <h2 className="mt-16 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
           Latest posts
@@ -182,6 +245,7 @@ function IndexPage(props: IndexPageProps) {
             />
           ))}
         </div>
+
         <Link
           href="/blog"
           className="mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
@@ -194,9 +258,9 @@ function IndexPage(props: IndexPageProps) {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path d="M18 8L22 12L18 16" />
             <path d="M2 12H22" />
@@ -208,7 +272,7 @@ function IndexPage(props: IndexPageProps) {
 }
 
 export async function getStaticProps(): Promise<
-GetStaticPropsResult<IndexPageProps>
+  GetStaticPropsResult<IndexPageProps>
 > {
   const posts = await getPosts();
   const otherPosts = posts
@@ -216,12 +280,16 @@ GetStaticPropsResult<IndexPageProps>
     .sort(sortByBirthtime)
     .slice(0, 3);
   const featuredPosts = posts.filter(filterByFeatured).sort(sortByBirthtime);
+  const advancedReactPosts = posts
+    .filter(filterByAdvanceReact)
+    .sort(sortByBirthtime);
 
   return {
     props: {
       featuredPosts,
       otherPosts,
-    },
+      advancedReactPosts
+    }
   };
 }
 
