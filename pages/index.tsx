@@ -156,7 +156,7 @@ function IndexPage(props: IndexPageProps) {
           ))}
         </div>
 
-        <div>
+        <div className="w-full">
           <h2 className="mt-12 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl flex items-start gap-2">
             Advanced React{' '}
             <span aria-hidden="true" className="w-6 h-6">
