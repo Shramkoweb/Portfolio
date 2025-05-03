@@ -97,6 +97,11 @@ export const categoryToSeoData = {
     description: 'Get your certification from my collection of certification resources and tutorials.',
     keywords: 'Certification, Resources, Certifications, Learning',
   },
+  [PostCategory.AdvancedReact]: {
+    title: 'Advanced React: Advanced Tips and Techniques',
+    description: 'Advance your React skills with our collection of tips and techniques for mastering React development.',
+    keywords: 'React, Frontend, JavaScript',
+  },
 };
 
 export const isProduction = () => process.env.NODE_ENV === Environment.Production;

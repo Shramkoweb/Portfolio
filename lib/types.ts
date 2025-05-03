@@ -17,7 +17,7 @@ export type Post = {
     createDate: number;
     featured: boolean;
     keywords: string[];
-    categories: string[];
+    categories: PostCategory[];
     updateData?: number;
   };
   content: string;
@@ -42,6 +42,7 @@ export enum PostCategory {
   Habits = 'habits',
   Tools = 'tools',
   Certifications = 'certifications',
+  AdvancedReact = 'advanced-react',
 }
 
 export enum Feedback {
