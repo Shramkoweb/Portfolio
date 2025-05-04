@@ -114,8 +114,6 @@ const employees = [
 ];
 ```
 
-[//]: # (TODO ADD EXAMPLE OF MY ARR)
-
 #### Add & remove items from array
 
 Methods that add and remove items from the beginning or the end:
