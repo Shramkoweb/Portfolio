@@ -98,6 +98,37 @@ function UdemyResetProgressPage() {
           />
         </video>
 
+        <h2>Installation</h2>
+
+        <div className="flex gap-8 justify-center items-center">
+          <a
+            target="_blank"
+            rel="nofollow noopener"
+            href="https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
+            aria-label="Udemy Reset Progress on Chrome Web Store"
+          >
+            <Image
+              className="w-44 border rounded-md"
+              role="presentation"
+              alt="Download Udemy Reset Progress for Chrome"
+              src={chromeStore}
+            />
+          </a>
+          <a
+            target="_blank"
+            rel="nofollow noopener"
+            href="https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
+            aria-label="Udemy Reset Progress on Firefox Add-ons"
+          >
+            <Image
+              className="w-[156px]"
+              role="presentation"
+              src={firefoxStore}
+              alt="Download Udemy Reset Progress for Firefox"
+            />
+          </a>
+        </div>
+
         <h2>Why Choose Our Udemy Reset Progress Extension?</h2>
 
         <ul>
@@ -118,35 +149,6 @@ function UdemyResetProgressPage() {
             happens locally in your browser
           </li>
         </ul>
-
-        <h2>Installation</h2>
-
-        <div className="flex gap-8 justify-center items-center">
-          <a
-            target="_blank"
-            rel="nofollow noopener"
-            href="https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
-          >
-            <Image
-              className="w-44 border rounded-md"
-              role="presentation"
-              alt="Download Udemy Reset Progress for Chrome"
-              src={chromeStore}
-            />
-          </a>
-          <a
-            target="_blank"
-            rel="nofollow noopener"
-            href="https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
-          >
-            <Image
-              className="w-[156px]"
-              role="presentation"
-              src={firefoxStore}
-              alt="Download Udemy Reset Progress for Firefox"
-            />
-          </a>
-        </div>
 
         <h2>How to Reset Udemy Course Progress (Step by Step)</h2>
 
