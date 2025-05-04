@@ -42,8 +42,11 @@ const securityHeaders = [
   }
 ];
 
-/** @type {import("next").NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    instrumentationHook: true
+  },
   redirects: async () => {
     return [
       {
@@ -65,25 +68,24 @@ const nextConfig = {
         headers: securityHeaders
       }
     ];
-  },
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#extend-nextjs-configuration
-  sentry: {
-    disableServerWebpackPlugin: true,
-    disableClientWebpackPlugin: true,
-    hideSourceMaps: true,
-    autoInstrumentServerFunctions: false,
-    autoInstrumentMiddleware: false,
-    disableLogger: true,
-    automaticVercelMonitors: true,
   }
 };
 
+const sentryBuildOptions = {
+  silent: !process.env.CI,
+  disableServerWebpackPlugin: true,
+  disableClientWebpackPlugin: true,
+  hideSourceMaps: true,
+  autoInstrumentServerFunctions: false,
+  autoInstrumentMiddleware: false,
+  disableLogger: true,
+  automaticVercelMonitors: true
+};
+
 const nextConfigByEnv = {
-  production: withSentryConfig(nextConfig, {
-    silent: true
-  }),
+  production: withSentryConfig(nextConfig, sentryBuildOptions),
   test: nextConfig,
-  development: withSentryConfig(nextConfig)
+  development: withSentryConfig(nextConfig, sentryBuildOptions)
 };
 
 module.exports = nextConfigByEnv[process.env.NODE_ENV];
