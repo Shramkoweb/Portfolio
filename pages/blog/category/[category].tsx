@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useState } from 'react';
-import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 
 import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
 import { Post, PostCategory } from '@/lib/types';
@@ -110,7 +109,7 @@ function CategoryPage(props: CategoryPageProps) {
   );
 }
 
-export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
+export async function getStaticPaths() {
   const categories = await getPostsCategories();
 
   return {
