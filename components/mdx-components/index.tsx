@@ -1,8 +1,7 @@
 import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
-import { AnchorHTMLAttributes, ClassAttributes } from 'react';
+import { AnchorHTMLAttributes, ClassAttributes, JSX } from 'react';
 
-// eslint-disable-next-line max-len
 function CustomLink(
   props: JSX.IntrinsicAttributes &
   ClassAttributes<HTMLAnchorElement> &
