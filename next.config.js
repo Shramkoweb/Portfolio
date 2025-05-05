@@ -44,9 +44,6 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    instrumentationHook: true
-  },
   redirects: async () => {
     return [
       {
