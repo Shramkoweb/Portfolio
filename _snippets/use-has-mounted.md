@@ -36,6 +36,9 @@ function useHasMounted() {
 }
 ```
 
+> Be careful with **any** custom React Hooks you write. They can trigger re-renders because underhood they use **useState**.
+> For more information, check out [article about re-renders](/blog/react-rerender).
+
 ## Why use it?
 
 - Conditional rendering: You can conditionally render parts of your UI that depend on the component being fully mounted.
