@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 
-import { event } from '@/lib/ga';
 import { Feedback } from '@/lib/types';
 import { useFeedbackReducer } from './use-feedback-reducer';
 
@@ -26,20 +25,10 @@ export function PostReaction() {
 
   const handleYesClick = () => {
     actions.helpful();
-    event({
-      action: 'Reaction click',
-      category: 'Blog - article',
-      label: 'Yes',
-    });
   };
 
   const handleNoClick = () => {
     actions.worthless();
-    event({
-      action: 'Reaction click',
-      category: 'Blog - article',
-      label: 'No',
-    });
   };
 
   const wrapperClassName = clsx('items-center justify-between flex flex-col', {

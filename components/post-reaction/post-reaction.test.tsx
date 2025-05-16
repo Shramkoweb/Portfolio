@@ -17,35 +17,21 @@ describe('PostReaction component', () => {
 
   describe('reactions click:', () => {
     test('worthless', () => {
-      window.gtag = jest.fn();
       render(<PostReaction />);
 
       const worthlessReactionButton = screen.getByRole('button', {
         name: 'No',
       });
       fireEvent.click(worthlessReactionButton);
-
-      expect(window.gtag).toHaveBeenCalledWith('event', 'Reaction click', {
-        event_category: 'Blog - article',
-        event_label: 'No',
-        value: undefined,
-      });
     });
 
     test('helpful', () => {
-      window.gtag = jest.fn();
       render(<PostReaction />);
 
       const worthlessReactionButton = screen.getByRole('button', {
         name: 'Yes',
       });
       fireEvent.click(worthlessReactionButton);
-
-      expect(window.gtag).toHaveBeenCalledWith('event', 'Reaction click', {
-        event_category: 'Blog - article',
-        event_label: 'Yes',
-        value: undefined,
-      });
     });
   });
 });
