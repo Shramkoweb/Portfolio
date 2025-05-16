@@ -3,7 +3,7 @@ title: "Presenting the Revamped shramko.dev: Explore the Exciting Updates!"
 heading: "Introducing the new shramko.dev"
 description: How I built a modern portfolio and a list of technologies used to create it.
 createDate: 2022-08-13T13:31:25.041Z
-updateData: 2024-09-15T15:26:41.719Z
+updateData: 2025-05-16T14:58:41.719Z
 keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]
 categories: [Project-Setup, React, Vercel]
 featured: false
@@ -14,39 +14,41 @@ featured: false
 I'm so excited to announce the launch of my brand-new website!
 
 For over 2 month, I worked on a complete rewrite of shramko.dev. I just want to give you an overview of the technologies
-and libraries I used to make this site .
+and libraries I used to make this site.
 
 ## Overview
 
 Here are the [cloc](https://github.com/AlDanial/cloc) stats:
 
 ```shell
-cloc .                                                                                                  
-     200 text files.
-      190 unique files.                              
-      86 files ignored.
+cloc --exclude-dir=node_modules .
+      358 text files.
+      329 unique files.                              
+      191 files ignored.
 
 T=0.07 s (2903.5 files/s, 389492.6 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-YAML                             3           2077              0           7816
-HTML                            28            405              0           4579
-Markdown                        41           1139              5           3593
-TypeScript                      79            326             16           3268
-XML                             12              0              0            989
-JavaScript                      10             47             31            496
-CSS                              4             50             10            383
-JSON                             6              0              0            204
+JavaScript                     143           6476           7897          13153
+YAML                             3           2172              0           8278
+Markdown                        56           1420              4           4523
+TypeScript                      86            461             17           4177
+XML                             12              0              0           1008
+JSON                            19              0              0            271
+CSS                              2             40              1            190
+diff                             1              0             20             23
 SVG                              1              0              0             17
 Prisma Schema                    1              2              0             12
 INI                              1              2              0             11
 Bourne Shell                     2              2              0              4
 Text                             2              0              0              4
 -------------------------------------------------------------------------------
-SUM:                           190           4050             62          21376
+SUM:                           329          10575           7939          31671
 -------------------------------------------------------------------------------
 ```
+
+> Update: Line of Code on <time dateTime="2025-05-16">16 May 2025</time>
 
 The first commit was
 in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f85ec7576de8a82c5b7fad835).
@@ -262,46 +264,49 @@ GitHub Actions, so that whenever I deploy to production or make a pull request, 
 
 My code coverage on <time dateTime="2022-08-28">28 August 2022</time>:
 
-> Update: Test coverage on <time dateTime="2024-09-15">15 September 2024</time>
+> Update: Test coverage on <time dateTime="2025-05-16">16 May 2025</time>
 
 ```shell
-------------------------------|---------|----------|---------|---------|-------------------------------
-File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s             
-------------------------------|---------|----------|---------|---------|-------------------------------
-All files                     |   72.54 |    68.75 |   59.52 |   78.19 |                               
- components/blog-post-preview |     100 |       50 |     100 |     100 |                               
-  blog-post-preview.tsx       |     100 |       50 |     100 |     100 | 27                            
-  index.ts                    |     100 |      100 |     100 |     100 |                               
- components/categories        |     100 |      100 |     100 |     100 |                               
-  categories.tsx              |     100 |      100 |     100 |     100 |                               
-  index.ts                    |     100 |      100 |     100 |     100 |                               
- components/footer            |     100 |      100 |     100 |     100 |                               
-  get-copyright.ts            |     100 |      100 |     100 |     100 |                               
- components/post-reaction     |   96.77 |       75 |     100 |   96.66 |                               
-  index.ts                    |     100 |      100 |     100 |     100 |                               
-  post-reaction.tsx           |     100 |      100 |     100 |     100 |                               
-  use-feedback-reducer.ts     |   93.33 |    66.66 |     100 |   92.85 | 21                            
- components/view-counter      |     100 |       50 |     100 |     100 |                               
-  index.ts                    |     100 |      100 |     100 |     100 |                               
-  view-counter.tsx            |     100 |       50 |     100 |     100 | 25                            
- lib                          |   72.22 |      100 |   66.66 |     100 |                               
-  fetcher.ts                  |     100 |      100 |     100 |     100 |                               
-  ga.ts                       |     100 |      100 |     100 |     100 |                               
-  types.ts                    |     100 |      100 |     100 |     100 |                               
-  utils.ts                    |      50 |      100 |       0 |     100 |                               
- lib/posts                    |   31.11 |        0 |       0 |   37.83 |                               
-  api.ts                      |   30.55 |        0 |       0 |   33.33 | 12-51,56-62,68-70,74-78,83-86 
-  utils.ts                    |   33.33 |      100 |       0 |      75 | 6                             
- pages                        |     100 |      100 |     100 |     100 |                               
-  404.tsx                     |     100 |      100 |     100 |     100 |                               
- pages/blog                   |      75 |       50 |      80 |   72.22 |                               
-  index.tsx                   |      75 |       50 |      80 |   72.22 | 109-114                       
-------------------------------|---------|----------|---------|---------|-------------------------------
+------------------------------|---------|----------|---------|---------|-------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------------|---------|----------|---------|---------|-------------------
+All files                     |   93.45 |    73.33 |   93.61 |    94.4 |                   
+ components/blog-post-preview |     100 |       50 |     100 |     100 |                   
+  blog-post-preview.tsx       |     100 |       50 |     100 |     100 | 27                
+  index.ts                    |     100 |      100 |     100 |     100 |                   
+ components/categories        |     100 |      100 |     100 |     100 |                   
+  categories.tsx              |     100 |      100 |     100 |     100 |                   
+  index.ts                    |     100 |      100 |     100 |     100 |                   
+ components/footer            |     100 |      100 |     100 |     100 |                   
+  get-copyright.ts            |     100 |      100 |     100 |     100 |                   
+ components/post-reaction     |   96.77 |       75 |     100 |   96.66 |                   
+  index.ts                    |     100 |      100 |     100 |     100 |                   
+  post-reaction.tsx           |     100 |      100 |     100 |     100 |                   
+  use-feedback-reducer.ts     |   93.33 |    66.66 |     100 |   92.85 | 21                
+ components/search-input      |     100 |      100 |     100 |     100 |                   
+  index.ts                    |     100 |      100 |     100 |     100 |                   
+  search-input.tsx            |     100 |      100 |     100 |     100 |                   
+ components/view-counter      |     100 |       50 |     100 |     100 |                   
+  index.ts                    |     100 |      100 |     100 |     100 |                   
+  view-counter.tsx            |     100 |       50 |     100 |     100 | 25                
+ lib                          |   83.33 |      100 |      75 |     100 |                   
+  fetcher.ts                  |     100 |      100 |     100 |     100 |                   
+  ga.ts                       |     100 |      100 |     100 |     100 |                   
+  types.ts                    |     100 |      100 |     100 |     100 |                   
+  utils.ts                    |      70 |      100 |      50 |     100 |                   
+ lib/posts                    |   96.42 |      100 |   94.73 |   95.45 |                   
+  api.ts                      |   94.73 |      100 |   91.66 |   94.28 | 89-90             
+  utils.ts                    |     100 |      100 |     100 |     100 |                   
+ pages                        |     100 |      100 |     100 |     100 |                   
+  404.tsx                     |     100 |      100 |     100 |     100 |                   
+ pages/blog                   |      75 |       50 |      80 |   72.22 |                   
+  index.tsx                   |      75 |       50 |      80 |   72.22 | 119-124           
+------------------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 6 passed, 6 total
-Tests:       13 passed, 13 total
+Test Suites: 9 passed, 9 total
+Tests:       37 passed, 37 total
 Snapshots:   0 total
-Time:        1.152 s
+Time:        0.822 s, estimated 1 s
 Ran all test suites.
 ```
 
