@@ -51,6 +51,7 @@ export enum Feedback {
   Blank = 'blank',
 }
 
+// TODO: Extend from Post
 export type Snippet = {
   data: {
     heading: string;
