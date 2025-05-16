@@ -4,11 +4,12 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 
 import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
 import { Post, PostCategory } from '@/lib/types';
-import { sortByBirthtime } from '@/lib/posts/utils';
+import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
 
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 import { categoryToSeoData } from '@/lib/utils';
+import { SearchInput } from '@/components/search-input';
 
 interface CategoryPageProps {
   posts: Post[];
@@ -26,8 +27,7 @@ function CategoryPage(props: CategoryPageProps) {
   const postsLength = posts.length;
 
   const [searchValue, setSearchValue] = useState('');
-
-  const filteredBlogPosts = posts.filter((post) => post.data.title.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredBlogPosts = posts.filter((post) => filterByHeading(post, searchValue));
 
   return (
     <>
@@ -63,30 +63,7 @@ function CategoryPage(props: CategoryPageProps) {
         <div className="mb-4 text-gray-600 dark:text-gray-400">
           <p>{seoDescription}</p>
         </div>
-        <div className="relative w-full mb-4">
-          <input
-            aria-label="Search articles"
-            type="text"
-            placeholder="Search articles"
-            onChange={(e) => setSearchValue(e.target.value)}
-            className="pr-10 block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
-          />
-          <svg
-            className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-        </div>
+        <SearchInput placeholder="Search articles" onChange={setSearchValue} />
         <Categories categories={categories} />
         <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
           Articles
@@ -122,7 +99,9 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<CategoryPageProps>> {
+export async function getStaticProps(
+  context: GetStaticPropsContext,
+): Promise<GetStaticPropsResult<CategoryPageProps>> {
   const posts = await getPostsByCategory(context.params?.category as string);
   const categories = await getPostsCategories();
   const sortedPosts = posts.sort(sortByBirthtime);

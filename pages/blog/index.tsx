@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { getPosts, getPostsCategories } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
-import { sortByBirthtime } from '@/lib/posts/utils';
+import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
 import { Categories } from '@/components/categories';
 
@@ -17,8 +17,7 @@ function BlogPage(props: BlogPageProps) {
   const postsLength = posts.length;
 
   const [searchValue, setSearchValue] = useState('');
-
-  const filteredBlogPosts = posts.filter((post) => post.data.heading.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredBlogPosts = posts.filter((post) => filterByHeading(post, searchValue));
 
   return (
     <>
