@@ -79,10 +79,13 @@ export async function getPostsCategories() {
   );
 }
 
-export async function getPostsByCategory(category: string) {
-  const posts = await getPosts();
-
+export function filterPostsByCategory(posts: Post[], category: string): Post[] {
   return posts.filter((post) => post.data.categories.some(
     (element) => element.toLowerCase() === category.toLowerCase(),
   ));
+}
+
+export async function getPostsByCategory(category: string): Promise<Post[]> {
+  const posts = await getPosts();
+  return filterPostsByCategory(posts, category);
 }
