@@ -6,25 +6,26 @@ interface FeedbackState {
   feedback: Feedback;
 }
 
+interface FeedbackAction {
+  type: 'SET_FEEDBACK';
+  payload: Feedback;
+}
+
 const initialState = { feedback: Feedback.Blank };
 
-function reducer(
-  state: FeedbackState,
-  action: { type: Feedback },
-): FeedbackState {
+function reducer(state: FeedbackState, action: FeedbackAction): FeedbackState {
   switch (action.type) {
-    case Feedback.Helpful:
-      return { feedback: Feedback.Helpful };
-    case Feedback.Worthless:
-      return { feedback: Feedback.Worthless };
+    case 'SET_FEEDBACK':
+      return { feedback: action.payload };
     default:
-      return { feedback: Feedback.Blank };
+      return state;
   }
 }
 
-const ActionCreator = {
-  setFeedback: (feedback: Feedback) => ({
-    type: feedback,
+const ActionCreator: Record<string, (feedback: Feedback) => FeedbackAction> = {
+  setFeedback: (payload: Feedback) => ({
+    type: 'SET_FEEDBACK',
+    payload,
   }),
 };
 
