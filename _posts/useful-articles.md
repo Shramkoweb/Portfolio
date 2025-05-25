@@ -38,7 +38,6 @@ learning and maintaining knowledge.
 - [Shramko Serhii](https://shramko.dev/) - my blog about web development
 - [Dan Abramov](https://overreacted.io/) - co-author of Redux and Create React App
 - [Kent C. Dodds](https://kentcdodds.com/) - React, Testing end more
-- [Sarah Drasner](https://sarahdrasnerdesign.com/writing/) - cool blog about animations in web
 - [Lea Verou](https://lea.verou.me/) - CSS secrets book author
 - [Dr. Axel Rauschmayer](https://2ality.com/) - one of the best blog about JS Core
 - [Lin Clark](https://www.code-cartoons.com/) - nice cartoons about development
