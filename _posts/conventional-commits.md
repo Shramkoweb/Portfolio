@@ -3,6 +3,7 @@ title: "Conventional Commits enhance your coding practices"
 heading: Conventional Commits
 description: Discover how Conventional Commits can enhance your work and project's readability.
 createDate: 2024-07-23T22:52:26.716Z
+updateData: 2025-05-25T15:59:10.754Z
 keywords: [
   Conventional Commits for JavaScript Development,
   Effective Conventional Commits in Next.js Projects,
@@ -96,6 +97,20 @@ commonly used types:
 | ci       | Continuous Integration     | ci(travis): update config        |
 | revert   | Revert previous commit     | revert: rollback last change     |
 
+## Leveraging AI with Conventional Commits
+
+AI-powered IDEs like **JetBrains'** suite of tools enhances your workflow by intelligently suggesting commit messages that
+adhere to Conventional Commits standards. These suggestions are contextually generated based on changes you've made,
+significantly streamlining the process and reducing the cognitive load of writing detailed commit messages.
+
+### AI-Powered IDEs and Conventional Commits
+
+JetBrains IDEs, such as IntelliJ IDEA and WebStorm, integrate [AI tools](https://www.jetbrains.com/ai-assistant/) that:
+
+- Automatically suggest precise commit messages.
+- Detect commit types (feat, fix, docs, etc.) based on changes.
+- Recommend appropriate scopes, improving accuracy and efficiency.
+
 ## Examples of Conventional Commits
 
 Understanding the theory behind Conventional Commits is one thing, but seeing how they are applied in real-world
@@ -103,7 +118,6 @@ scenarios can be extremely helpful. Below are some examples illustrating how to 
 commit messages.
 
 > Here example of commits from [my GitHub](https://github.com/Shramkoweb/Portfolio/commits/develop/)
-
 
 ### Example 1: Adding a New Feature
 
