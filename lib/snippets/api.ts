@@ -3,7 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
 
 import { Snippet } from '@/lib/types';
-import { getSlugFromMdFile } from '@/lib/utils';
+import { extractMarkdownSlug } from '@/lib/utils';
 
 const SNIPPETS_DIRECTORY = join(process.cwd(), '_snippets');
 
@@ -42,18 +42,18 @@ export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
 
 export async function getSnippets(): Promise<Snippet[]> {
   const fileNames = await readdir(SNIPPETS_DIRECTORY);
+  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
 
-  return Promise.all(
-    fileNames.map((fileName) => {
-      const slug = getSlugFromMdFile(fileName);
+  const snippetPromises = markdownFiles
+    .map(extractMarkdownSlug)
+    .map(getSnippetBySlug);
 
-      return getSnippetBySlug(slug);
-    }),
-  );
+  return Promise.all(snippetPromises);
 }
 
-export async function getSnippetSlugs() {
+export async function getSnippetSlugs(): Promise<string[]> {
   const fileNames = await readdir(SNIPPETS_DIRECTORY);
+  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
 
-  return Promise.all(fileNames.map((fileName) => getSlugFromMdFile(fileName)));
+  return markdownFiles.map(extractMarkdownSlug);
 }

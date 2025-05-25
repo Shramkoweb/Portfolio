@@ -50,7 +50,12 @@ const nextConfig = {
         source: '/snippets/bem-classes',
         destination: '/snippets/common-css-classes',
         permanent: true
-      }
+      },
+      {
+        source: '/static/serhii-shramko-resume.pdf',
+        destination: '/static/serhii_shramko_frontend.pdf',
+        permanent: true,
+      },
     ];
   },
   serverRuntimeConfig: {

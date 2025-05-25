@@ -4,7 +4,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
 
 import { Post } from '@/lib/types';
-import { getSlugFromMdFile } from '@/lib/utils';
+import { extractMarkdownSlug } from '@/lib/utils';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
@@ -54,29 +54,26 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
 
 export async function getPosts(): Promise<Post[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
+  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
 
-  return Promise.all(
-    fileNames.map((fileName) => {
-      const slug = getSlugFromMdFile(fileName);
+  const postPromises = markdownFiles
+    .map(extractMarkdownSlug)
+    .map(getPostBySlug);
 
-      return getPostBySlug(slug);
-    }),
-  );
+  return Promise.all(postPromises);
 }
 
 export async function getPostSlugs() {
   const fileNames = await readdir(POSTS_DIRECTORY);
+  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
 
-  return Promise.all(fileNames.map((fileName) => getSlugFromMdFile(fileName)));
+  return markdownFiles.map(extractMarkdownSlug);
 }
 
 export async function getPostsCategories() {
   const posts = await getPosts();
-  const categories = posts.flatMap((post) => post.data.categories);
 
-  return categories.filter(
-    (value, index, array) => array.indexOf(value) === index,
-  );
+  return [...new Set(posts.flatMap((post) => post.data.categories))];
 }
 
 export function filterPostsByCategory(posts: Post[], category: string): Post[] {

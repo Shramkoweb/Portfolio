@@ -132,8 +132,9 @@ export async function getStaticProps({
 export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
   const slugs = await getSnippetSlugs();
 
+
   return {
-    paths: slugs.map((slug: string) => ({
+    paths: slugs.map((slug) => ({
       params: {
         slug,
       },
