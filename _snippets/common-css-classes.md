@@ -326,5 +326,5 @@ By following the BEM methodology and using these common words in your CSS classe
 maintainable codebase for your web projects.
 
 This
-approach [enhances collaboration and simplifies](http://localhost:3000/blog/class-naming-conventions#understanding-the-importance-of-html-class-naming-conventions)
+approach [enhances collaboration and simplifies](/blog/class-naming-conventions#understanding-the-importance-of-html-class-naming-conventions)
 the process of understanding and maintaining your stylesheets.
