@@ -289,7 +289,7 @@ function AboutPage() {
             </strong>
             <br />
             <a
-              href="https://www.nmu.org.ua/en/"
+              href="https://nmu.org.ua/en/"
               rel="noopener noreferrer"
               target="_blank"
             >
