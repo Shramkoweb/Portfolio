@@ -1,5 +1,5 @@
 ---
-title: "How to Migrate Your Project from npm to pnpm and save 44% deployment time: A Step-by-Step Guide"
+title: "Migrate from npm to pnpm – Save Time with This Guide"
 heading: How to decrease deployment time by 44% with pnpm
 description: Learn how to efficiently migrate your project from npm to pnpm with this guide.
 createDate: 2024-06-16T21:34:24.323Z

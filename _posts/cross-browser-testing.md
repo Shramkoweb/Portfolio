@@ -1,5 +1,5 @@
 ---
-title: "Mastering Cross-Browser Compatibility: A Comprehensive Guide to Testing"
+title: Cross-Browser Compatibility – Testing Guide
 heading: Cross-browser testing
 description: Cross-browser testing and how to test your site with Browserstack
 createDate: 2023-02-24T22:06:42.844Z

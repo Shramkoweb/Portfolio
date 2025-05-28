@@ -1,5 +1,5 @@
 ---
-title: "Lazy Loading Images with Intersection Observer: TypeScript Implementation Guide"
+title: Lazy Load Images in TypeScript Using Observer
 heading: Lazy Loading Images
 description: Complete guide to implementing lazy loading for images using Intersection Observer API with TypeScript, including code examples and best practices
 createDate: 2025-02-02T00:00:00.000Z

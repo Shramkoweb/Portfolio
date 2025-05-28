@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting: Resolving the __dirname is Not Defined in ES Module Scope Error"
+title: "Fix “__dirname Not Defined” in ES Modules – Quick Guide"
 heading: How to fix "__dirname is not defined in ES module scope"
 description: Here is how to fix the "__dirname is not defined in ES module scope" error
 createDate: 2022-07-25T10:01:01Z

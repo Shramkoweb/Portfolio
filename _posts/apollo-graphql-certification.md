@@ -1,5 +1,5 @@
 ---
-title: GraphQL Certified – How I earned my ‘Apollo Graph Developer - Associate’ certification for free
+title: How I Got Apollo GraphQL Certification for Free
 heading: GraphQL Certified – How I earned my certification
 description: Astro is a new Javascript framework, so discover what makes it special and what are its core features.
 createDate: 2025-03-13T09:01:43.973Z

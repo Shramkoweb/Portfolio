@@ -1,5 +1,5 @@
 ---
-title: "Establishing Database Connections: Understanding the Postgres Connect URL"
+title: Use Postgres Connect URLs for DB Connections
 heading: Postgres connect to database with URL
 description: How to connect postgres database with URL
 createDate: 2023-02-09T12:43:36.700Z
