@@ -16,7 +16,7 @@ As a web developer, you understand the importance of keeping your codebase clean
 aspects of achieving this goal is following HTML class naming conventions.
 
 In this article, we'll delve into the world of HTML class naming conventions, with a specific focus on
-the [BEM](https://www.educative.io/answers/what-is-a-css-class-naming-convention) (Block,
+the [BEM](https://how.dev/answers/what-is-a-css-class-naming-convention) (Block,
 Element, Modifier) methodology.
 We'll explore how this approach enhances CSS naming conventions, improves code readability, and makes your codebase more
 organized.

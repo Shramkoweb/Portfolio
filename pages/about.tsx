@@ -183,7 +183,7 @@ function AboutPage() {
             anti-plagiarism checker with more than{' '}
             <strong>1 million users</strong> worldwide{' '}
             <a
-              href="https://unicheck.com/"
+              href="https://www.turnitin.com/products/unicheck/"
               target="_blank"
               rel="noopener noreferrer"
             >

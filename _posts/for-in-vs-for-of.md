@@ -45,7 +45,7 @@ and `for...of`.
 ## The for...in Statement
 
 The `for...in` statement iterates over
-all [enumerable properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)
+all [enumerable properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Enumerability_and_ownership_of_properties)
 of an object that is keyed by strings (ignoring one keyed by Symbols), including inherited enumerable properties.
 
 The syntax `for...in` looks like this:

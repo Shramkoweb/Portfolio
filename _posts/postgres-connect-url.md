@@ -9,7 +9,7 @@ categories: [JS, Tutorial, Project-Setup]
 featured: false
 ---
 
-Very often, cloud database services such as [neon.tech](https://neon.tech/) allow you to connect via URL.
+Very often, cloud database services such as [neon.tech](https://neon.com/) allow you to connect via URL.
 That is, without credentials such as `user`, `password`, etc.
 
 ## Connection details
