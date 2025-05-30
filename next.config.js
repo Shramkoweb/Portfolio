@@ -2,7 +2,7 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com/;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com/ https://vercel.live/;
     style-src 'self' 'unsafe-inline';
     worker-src 'self' blob: data:;
     img-src 'self';
