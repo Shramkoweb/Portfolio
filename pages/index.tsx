@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
+import { Routes } from '@/lib/routes';
 
 import { getPosts } from '@/lib/posts/api';
 import {
@@ -214,7 +215,7 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="flex flex-col gap-8 md:flex-row">
-            <Link href="/quizlet-list" className="w-full">
+            <Link href={Routes.QuizletList()} className="w-full">
               <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-[300px] bg-pattern dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                   Quizlet QuickList
@@ -222,7 +223,7 @@ function IndexPage(props: IndexPageProps) {
               </div>
             </Link>
 
-            <Link href="/udemy-reset-progress" className="w-full">
+            <Link href={Routes.UdemyResetProgress()} className="w-full">
               <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-[300px] bg-pattern-waves dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                   Udemy Reset Progress

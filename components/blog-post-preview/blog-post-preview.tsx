@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Routes } from '@/lib/routes';
 import useSWR from 'swr';
 
 import { Views } from '@/lib/types';
@@ -17,7 +18,7 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
   const views = data?.total;
 
   return (
-    <Link href={`/blog/${slug}`} className="w-full">
+    <Link href={Routes.BlogPost(slug)} className="w-full">
       <div className="mb-8 w-full">
         <div className="flex flex-col justify-between md:flex-row">
           <h3 className="mb-2 w-full text-lg font-medium text-gray-900 dark:text-gray-100 md:text-xl">

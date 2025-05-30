@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { HeaderLink } from '@/components/header-link';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
 import { ThemeChanger } from '@/components/theme-changer';
+import { Routes } from '@/lib/routes';
 
 export function Header() {
   return (
@@ -13,15 +14,15 @@ export function Header() {
         </a>
         <div className="ml-[-0.60rem]">
           <MobileMenu />
-          <HeaderLink href="/" text="Home" />
-          <HeaderLink href="/blog" text="Blog" />
-          <HeaderLink href="/about" text="About" />
-          <HeaderLink href="/dashboard" text="Dashboard" />
-          <HeaderLink href="/snippets" text="Snippets" />
+          <HeaderLink href={Routes.Home()} text="Home" />
+          <HeaderLink href={Routes.Blog()} text="Blog" />
+          <HeaderLink href={Routes.About()} text="About" />
+          <HeaderLink href={Routes.Dashboard()} text="Dashboard" />
+          <HeaderLink href={Routes.Snippets()} text="Snippets" />
         </div>
         <div className="flex items-center justify-center">
           <Link
-            href="/static/serhii_shramko_frontend.pdf"
+            href={Routes.Resume()}
             download
             title="PDF document. Serhii Shramko - Resume. 105 KB"
             className="ml-12 hidden rounded-lg border-2 border-gray-700 p-1 transition-all hover:bg-gray-200 sm:px-3 sm:py-2 md:inline-block dark:hover:bg-gray-800"

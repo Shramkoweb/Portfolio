@@ -4,6 +4,7 @@ import { YEAR_OF_CREATE } from '@/lib/constants';
 
 import { FooterLink } from '@/components/footer-link';
 import { getCopyrightYearString } from '@/components/footer/get-copyright';
+import { Routes } from '@/lib/routes';
 
 export function Footer() {
   return (
@@ -62,7 +63,7 @@ export function Footer() {
         <ul className="flex flex-col space-y-4">
           <li>
             <Link
-              href="/gear"
+              href={Routes.Gear()}
               className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               My Gear

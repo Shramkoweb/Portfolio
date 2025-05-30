@@ -1,6 +1,7 @@
 import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 import { AnchorHTMLAttributes, ClassAttributes, JSX } from 'react';
+import { Routes } from '@/lib/routes';
 
 function CustomLink(
   props: JSX.IntrinsicAttributes &
@@ -10,7 +11,7 @@ function CustomLink(
   const { href, children, className } = props;
   const isInternalLink = href
     && (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
-  const isItLinkTree = href && href === 'https://links.shramko.dev/';
+  const isItLinkTree = href && href === Routes.LinkTree();
 
   if (isItLinkTree) {
     return (
