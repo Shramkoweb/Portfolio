@@ -2,6 +2,7 @@ import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 import { AnchorHTMLAttributes, ClassAttributes, JSX } from 'react';
 import { Routes } from '@/lib/routes';
+import { Code } from './code';
 
 function CustomLink(
   props: JSX.IntrinsicAttributes &
@@ -69,4 +70,5 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
 export const MDXComponents = {
   Image: RoundedImage,
   a: CustomLink,
+  pre: Code,
 };
