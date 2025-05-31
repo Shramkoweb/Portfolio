@@ -3,7 +3,28 @@ heading: Generic Type Parameters in TypeScript
 title: What is a generic type parameter T in TypeScript?
 description: Understanding Generics Parameters naming conventions.
 createDate: 2025-05-31T15:01:43.973Z
-keywords: [ git info exclude, git assume unchanged, git local ignore, gitignore alternatives, git file management, git exclude files locally, git update-index, git ignore tracked files ]
+keywords: [
+  "TypeScript generics",
+  "generic type parameters",
+  "TypeScript T parameter",
+  "generic naming conventions",
+  "TypeScript generic syntax",
+  "generic types TypeScript",
+  "TypeScript T U V parameters",
+  "descriptive generic names",
+  "TypeScript code conventions",
+  "generic type naming",
+  "TypeScript best practices",
+  "generic functions TypeScript",
+  "type parameter conventions",
+  "TypeScript utility types",
+  "repository pattern TypeScript",
+  "generic interfaces TypeScript",
+  "TypeScript clean code",
+  "type safety TypeScript",
+  "generic constraints TypeScript",
+  "TypeScript programming patterns"
+]
 categories: [TS, Clean-Code, Opinion, tutorial]
 featured: true
 ---
