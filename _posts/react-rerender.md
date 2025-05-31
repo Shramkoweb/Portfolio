@@ -27,7 +27,7 @@ That’s why I’m launching a [series of articles](/blog/category/advanced-reac
 Understanding re-renders in React is crucial for performance. You need to understand what triggers them. Know how they
 move through the app. Learn what happens during a re-render and why it matters.
 
-<Image alt="" src="react-meme.png" priority={true} />
+<Image alt="" src="react-meme.png" />
 
 ## The problem
 
