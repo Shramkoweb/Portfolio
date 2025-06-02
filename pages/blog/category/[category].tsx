@@ -13,7 +13,7 @@ import { SearchInput } from '@/components/search-input';
 
 interface CategoryPageProps {
   posts: Post[];
-  categories: string[];
+  categories: PostCategory[];
   category: string;
   seoDescription: string;
   seoKeywords: string;
