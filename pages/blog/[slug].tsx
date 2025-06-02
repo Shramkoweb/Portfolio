@@ -8,12 +8,16 @@ import {
   GetStaticPropsResult,
 } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import { MDXComponents } from '@/components/mdx-components';
+import React from 'react';
 
 import { getPostBySlug, getPosts, getPostSlugs } from '@/lib/posts/api';
-import { compileMDX } from '@/lib/scripts/compiler';
+import {
+  compileMDX,
+  extractHeadingsFromMarkdown,
+} from '@/lib/scripts/compiler';
 import { Post } from '@/lib/types';
-
-import { MDXComponents } from '@/components/mdx-components';
+import { TableOfContent } from '@/components/table-of-content';
 import { ViewCounter } from '@/components/view-counter/view-counter';
 import {
   FacebookShare,
@@ -33,6 +37,7 @@ type ArticlePageProps = Pick<Post, 'data'> & {
     slug: string;
     heading: string;
   };
+  headings: { text: string; level: number; id: string }[];
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -51,6 +56,7 @@ function ArticlePage(props: ArticlePageProps) {
     },
     nextPost,
     previousPost,
+    headings,
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -135,6 +141,7 @@ function ArticlePage(props: ArticlePageProps) {
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
             {heading}
           </h1>
+          <TableOfContent headings={headings} />
           <ul className="text-gray-700 dark:text-gray-300 text-sm flex gap-4 mt-4 mb-4 flex-wrap">
             {categories.map((category) => (
               <li key={category}>
@@ -182,7 +189,9 @@ function ArticlePage(props: ArticlePageProps) {
                   className="text-left flex flex-col rounded-lg border border-gray-200 p-4 dark:border-gray-800 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
                   href={`/blog/${previousPost.slug}`}
                 >
-                  <span className="text-gray-700 dark:text-gray-300 mb-1">Older Post</span>
+                  <span className="text-gray-700 dark:text-gray-300 mb-1">
+                    Older Post
+                  </span>
                   <span className="text-[#60a5fa] font-bold">
                     &laquo; {previousPost.heading}
                   </span>
@@ -196,7 +205,9 @@ function ArticlePage(props: ArticlePageProps) {
                   className="text-right flex flex-col rounded-lg border border-gray-200 p-4 dark:border-gray-800 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
                   href={`/blog/${nextPost.slug}`}
                 >
-                  <span className="text-gray-700 dark:text-gray-300 mb-1">Newer Post</span>
+                  <span className="text-gray-700 dark:text-gray-300 mb-1">
+                    Newer Post
+                  </span>
                   <span className="text-[#60a5fa] font-bold">
                     {nextPost.heading} &raquo;
                   </span>
@@ -239,6 +250,7 @@ export async function getStaticProps({
   > {
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
+  const headings = extractHeadingsFromMarkdown(content);
   const posts = await getPosts();
   const currentPostIndex = posts
     .sort(sortByBirthtime)
@@ -250,6 +262,7 @@ export async function getStaticProps({
     props: {
       data,
       content: html,
+      headings,
       previousPost: {
         slug: prevPost?.data.slug || '',
         heading: prevPost?.data.heading || '',
