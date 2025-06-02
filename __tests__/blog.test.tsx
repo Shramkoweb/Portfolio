@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import BlogPage from '@/pages/blog';
-import { Post } from '@/lib/types';
+import { Post, PostCategory } from '@/lib/types';
 
 jest.mock('@/lib/posts/api');
 jest.mock('@/components/categories');
 
-const CATEGORIES = ['JS', 'React'];
+const CATEGORIES = [PostCategory.JS, PostCategory.React];
 const POSTS: Post[] = [
   {
     data: {

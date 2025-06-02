@@ -7,18 +7,21 @@ export type GitHub = {
   followers: number;
 };
 
+export type BaseFrontmatter = {
+  slug: string;
+  title: string;
+  heading: string;
+  description: string;
+  createDate: number;
+  keywords: string[];
+  updateData?: number;
+};
+
 export type Post = {
-  data: {
-    slug: string;
-    title: string;
-    heading: string;
-    description: string;
+  data: BaseFrontmatter & {
     readTime: string;
-    createDate: number;
     featured: boolean;
-    keywords: string[];
     categories: PostCategory[];
-    updateData?: number;
   };
   content: string;
 };
@@ -51,16 +54,7 @@ export enum Feedback {
   Blank = 'blank',
 }
 
-// TODO: Extend from Post
 export type Snippet = {
-  data: {
-    heading: string;
-    slug: string;
-    title: string;
-    description: string;
-    createDate: number;
-    keywords: string[];
-    updateData?: number;
-  };
+  data: BaseFrontmatter;
   content: string;
 };

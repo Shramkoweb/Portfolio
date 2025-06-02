@@ -11,6 +11,10 @@ interface FeedbackAction {
   payload: Feedback;
 }
 
+interface FeedbackActionCreators {
+  setFeedback: (payload: Feedback) => FeedbackAction;
+}
+
 const initialState = { feedback: Feedback.Blank };
 
 function reducer(state: FeedbackState, action: FeedbackAction): FeedbackState {
@@ -22,7 +26,7 @@ function reducer(state: FeedbackState, action: FeedbackAction): FeedbackState {
   }
 }
 
-const ActionCreator: Record<string, (feedback: Feedback) => FeedbackAction> = {
+const ActionCreator: FeedbackActionCreators = {
   setFeedback: (payload: Feedback) => ({
     type: 'SET_FEEDBACK',
     payload,

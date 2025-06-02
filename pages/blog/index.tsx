@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { getPosts, getPostsCategories } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
-import { Post } from '@/lib/types';
+import { Post, PostCategory } from '@/lib/types';
 import { Categories } from '@/components/categories';
 
 interface BlogPageProps {
   posts: Post[];
-  categories: string[];
+  categories: PostCategory[];
 }
 
 function BlogPage(props: BlogPageProps) {

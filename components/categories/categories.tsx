@@ -1,7 +1,8 @@
 import Link from 'next/link';
+import { PostCategory } from '@/lib/types';
 
 interface CategoriesProps {
-  categories: string[];
+  categories: PostCategory[];
 }
 
 export function Categories(props: CategoriesProps) {
