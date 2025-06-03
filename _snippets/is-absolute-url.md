@@ -1,0 +1,24 @@
+---
+title: Check if URL is Absolute - JavaScript Function
+heading: Check is Absolute URL
+description: A JavaScript function that uses regex to determine if a given URL string is absolute by checking for http or https protocol prefix
+createDate: 2025-06-03
+keywords: [
+  javascript,
+  url validation,
+  absolute url,
+  regex,
+  http,
+  https,
+  web development,
+  utility function
+]
+---
+
+Returns true if the url is an absolute URL
+
+```javascript
+function isAbsolute(url) {
+  return /^https?:\/\//.test(url);
+}
+```
