@@ -25,19 +25,17 @@ import {
   TelegramShare,
   TwitterShare,
 } from '@/components/share-button';
-import { sortByBirthtime } from '@/lib/posts/utils';
+import { AlsoBlock } from '@/components/also-block';
 
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
-  previousPost: {
-    slug: string;
-    heading: string;
-  };
-  nextPost: {
-    slug: string;
-    heading: string;
-  };
   headings: { text: string; level: number; id: string }[];
+  relatedPosts: Array<{
+    slug: string;
+    heading: string;
+    excerpt: string;
+    overlapCount: number;
+  }>;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -54,9 +52,8 @@ function ArticlePage(props: ArticlePageProps) {
       categories = [],
       keywords,
     },
-    nextPost,
-    previousPost,
     headings,
+    relatedPosts,
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -182,39 +179,12 @@ function ArticlePage(props: ArticlePageProps) {
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 
-          <ul className="text-xs mt-16 grid gap-4 lg:grid-cols-2">
-            {previousPost.slug && (
-              <li>
-                <Link
-                  className="text-left flex flex-col rounded-lg border border-gray-200 p-4 dark:border-gray-800 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-                  href={`/blog/${previousPost.slug}`}
-                >
-                  <span className="text-gray-700 dark:text-gray-300 mb-1">
-                    Older Post
-                  </span>
-                  <span className="text-[#60a5fa] font-bold">
-                    &laquo; {previousPost.heading}
-                  </span>
-                </Link>
-              </li>
+          <div className="mt-16 w-full">
+            <hr />
+            {relatedPosts && relatedPosts.length > 0 && (
+              <AlsoBlock relatedPosts={relatedPosts} />
             )}
-
-            {nextPost.slug && (
-              <li>
-                <Link
-                  className="text-right flex flex-col rounded-lg border border-gray-200 p-4 dark:border-gray-800 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-                  href={`/blog/${nextPost.slug}`}
-                >
-                  <span className="text-gray-700 dark:text-gray-300 mb-1">
-                    Newer Post
-                  </span>
-                  <span className="text-[#60a5fa] font-bold">
-                    {nextPost.heading} &raquo;
-                  </span>
-                </Link>
-              </li>
-            )}
-          </ul>
+          </div>
 
           <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
             <p>Share it:</p>
@@ -252,25 +222,35 @@ export async function getStaticProps({
   const html = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
   const posts = await getPosts();
-  const currentPostIndex = posts
-    .sort(sortByBirthtime)
-    .findIndex((post) => post.data.slug === data.slug);
-  const prevPost = posts[currentPostIndex + 1] || null;
-  const nextPost = posts[currentPostIndex - 1] || null;
+
+  // Related posts by overlapping categories
+  const relatedPosts = posts
+    .filter((post) => post.data.slug !== data.slug)
+    .map((post) => {
+      const postCategories = post.data.categories;
+      const currentCategories = data.categories;
+      const categorySet = new Set(currentCategories);
+      const overlapCount = postCategories
+        .filter((cat) => categorySet.has(cat))
+        .length;
+
+      return {
+        slug: post.data.slug,
+        heading: post.data.heading,
+        excerpt: post.data.description,
+        overlapCount,
+      };
+    })
+    .filter((post) => post.overlapCount > 0)
+    .sort((a, b) => b.overlapCount - a.overlapCount)
+    .slice(0, 3);
 
   return {
     props: {
       data,
       content: html,
       headings,
-      previousPost: {
-        slug: prevPost?.data.slug || '',
-        heading: prevPost?.data.heading || '',
-      },
-      nextPost: {
-        slug: nextPost?.data.slug || '',
-        heading: nextPost?.data.heading || '',
-      },
+      relatedPosts,
     },
   };
 }
