@@ -14,7 +14,7 @@ function LinkedinFeedback(props: Props) {
 
       <ul className="list-none p-0 m-0 grid grid-cols-1 gap-8">
         {feedbackList.map((feedback) => (
-          <li className="p-0 m-0" key={feedback.text}>
+          <li className="p-0 m-0" key={feedback.author.name}>
             <blockquote className="p-0 m-0 border-0">
               <cite className="flex">
                 <Image
@@ -22,7 +22,7 @@ function LinkedinFeedback(props: Props) {
                   height={100}
                   className="m-0 w-16 h-16 rounded-lg"
                   src={feedback.author.avatar}
-                  alt=""
+                  alt={`${feedback.author.name} avatar`}
                 />
 
                 <div className="flex flex-col ml-2">
