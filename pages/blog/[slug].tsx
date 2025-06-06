@@ -227,8 +227,12 @@ export async function getStaticProps({
   const relatedPosts = posts
     .filter((post) => post.data.slug !== data.slug)
     .map((post) => {
-      // eslint-disable-next-line max-len
-      const overlapCount = (post.data.categories as string[]).filter((cat) => (data.categories as string[]).includes(cat)).length;
+      const postCategories = post.data.categories;
+      const currentCategories = data.categories;
+      const categorySet = new Set(currentCategories);
+      const overlapCount = postCategories
+        .filter((cat) => categorySet.has(cat))
+        .length;
 
       return {
         slug: post.data.slug,

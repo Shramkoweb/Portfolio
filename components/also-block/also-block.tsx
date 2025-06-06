@@ -11,7 +11,7 @@ function AlsoBlock({ relatedPosts }: { relatedPosts: RelatedPost[] }) {
     <section className="mt-12">
       <h2 className="text-xl font-bold mb-4 prose dark:prose-dark max-w-none">You might also like:</h2>
 
-      <div className="grid">
+      <div className="grid grid-cols-1">
         {relatedPosts.map((post) => (
           <BlogPostPreview
             key={post.slug}
