@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
+import { LinkedinFeedback } from '@/components/linkedin-feedback';
+import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback/constants';
+
 import about from '../public/static/images/about.jpeg';
 import car from '../public/static/images/car.jpeg';
 import tennis from '../public/static/images/tennis.jpeg';
@@ -278,6 +281,10 @@ function AboutPage() {
               product, and backend, to launch features and fix bugs.
             </li>
           </ul>
+
+          <hr />
+
+          <LinkedinFeedback feedbackList={LINKEDIN_FEEDBACK_LIST} />
 
           <hr />
 

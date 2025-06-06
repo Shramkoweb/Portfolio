@@ -58,3 +58,21 @@ export type Snippet = {
   data: BaseFrontmatter;
   content: string;
 };
+
+type LinkedinCompany = {
+  name: string;
+  url: string;
+};
+
+type LinkedinFeedbackAuthor = {
+  name: string;
+  position: string;
+  avatar: string;
+  company: LinkedinCompany;
+};
+
+export type TLinkedinFeedback = {
+  author: LinkedinFeedbackAuthor;
+  postDate: string;
+  text: string;
+};
