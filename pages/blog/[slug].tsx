@@ -179,7 +179,7 @@ function ArticlePage(props: ArticlePageProps) {
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 
-          <div className="mt-16 w-ful">
+          <div className="mt-16 w-full">
             <hr />
             {relatedPosts && relatedPosts.length > 0 && (
               <AlsoBlock relatedPosts={relatedPosts} />
