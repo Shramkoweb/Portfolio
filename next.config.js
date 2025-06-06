@@ -5,7 +5,7 @@ const ContentSecurityPolicy = `
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com/ https://vercel.live/;
     style-src 'self' 'unsafe-inline';
     worker-src 'self' blob: data:;
-    img-src 'self';
+    img-src 'self' media.licdn.com avatars.githubusercontent.com;
     connect-src *;
     media-src 'self';
     font-src 'self';
@@ -54,12 +54,29 @@ const nextConfig = {
       {
         source: '/static/serhii-shramko-resume.pdf',
         destination: '/static/serhii_shramko_frontend.pdf',
-        permanent: true,
-      },
+        permanent: true
+      }
     ];
   },
   serverRuntimeConfig: {
     appReleaseVersion: new Date().valueOf()
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**'
+      }
+    ]
+
   },
   poweredByHeader: false,
   reactStrictMode: true,
