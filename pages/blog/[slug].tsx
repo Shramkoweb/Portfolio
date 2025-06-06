@@ -26,6 +26,7 @@ import {
   TwitterShare,
 } from '@/components/share-button';
 import { sortByBirthtime } from '@/lib/posts/utils';
+import { AlsoBlock } from '@/components/also-block';
 
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
@@ -38,6 +39,12 @@ type ArticlePageProps = Pick<Post, 'data'> & {
     heading: string;
   };
   headings: { text: string; level: number; id: string }[];
+  relatedPosts: Array<{
+    slug: string;
+    heading: string;
+    excerpt: string;
+    overlapCount: number;
+  }>;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -57,6 +64,7 @@ function ArticlePage(props: ArticlePageProps) {
     nextPost,
     previousPost,
     headings,
+    relatedPosts,
   } = props;
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -182,6 +190,14 @@ function ArticlePage(props: ArticlePageProps) {
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 
+          <div className="mt-16 w-ful">
+            <hr />
+            {relatedPosts && relatedPosts.length > 0 && (
+              <AlsoBlock relatedPosts={relatedPosts} />
+            )}
+            <hr />
+          </div>
+
           <ul className="text-xs mt-16 grid gap-4 lg:grid-cols-2">
             {previousPost.slug && (
               <li>
@@ -258,6 +274,24 @@ export async function getStaticProps({
   const prevPost = posts[currentPostIndex + 1] || null;
   const nextPost = posts[currentPostIndex - 1] || null;
 
+  // Related posts by overlapping categories
+  const relatedPosts = posts
+    .filter((post) => post.data.slug !== data.slug)
+    .map((post) => {
+      // eslint-disable-next-line max-len
+      const overlapCount = (post.data.categories as string[]).filter((cat) => (data.categories as string[]).includes(cat)).length;
+
+      return {
+        slug: post.data.slug,
+        heading: post.data.heading,
+        excerpt: post.data.description,
+        overlapCount,
+      };
+    })
+    .filter((post) => post.overlapCount > 0)
+    .sort((a, b) => b.overlapCount - a.overlapCount)
+    .slice(0, 3);
+
   return {
     props: {
       data,
@@ -271,6 +305,7 @@ export async function getStaticProps({
         slug: nextPost?.data.slug || '',
         heading: nextPost?.data.heading || '',
       },
+      relatedPosts,
     },
   };
 }
