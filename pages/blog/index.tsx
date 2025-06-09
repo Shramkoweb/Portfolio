@@ -56,7 +56,7 @@ function BlogPage(props: BlogPageProps) {
       <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           Blog
-          <span className="ml-auto inline-block text-sm">
+          <span className="ml-auto inline-block text-sm font-medium">
             {postsLength} {postsLength === 1 ? 'article' : 'articles'}
           </span>
         </h1>

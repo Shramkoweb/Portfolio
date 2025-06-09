@@ -3,7 +3,7 @@ title: "Dispatch Tables in JavaScript: A Clean Code Approach"
 heading: Dispatch table in javascript
 description: Polymorphism and Dispatch Tables in JS
 createDate: 2022-08-28T08:04:18.720Z
-updateData: 2022-08-28T10:28:54.920Z
+updateDate: 2022-08-28T10:28:54.920Z
 keywords: [Switch statement in javascript, Dynamic Dispatch, Dispatch Tables, Conditionals in JavaScript, Polymorphism in JavaScript]
 categories: [JS, Clean-Code]
 featured: false

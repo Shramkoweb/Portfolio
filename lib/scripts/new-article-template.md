@@ -2,7 +2,7 @@
 title: Article {{slug}}
 description: Article {{slug}} description
 createDate: {{createDate}}
-updateData: {{updateData}}
+updateDate: {{updateDate}}
 keywords: [keyword, short keyword]
 categories: [JS, TS]
 featured: true

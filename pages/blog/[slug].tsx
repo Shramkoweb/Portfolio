@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import {
@@ -45,7 +44,7 @@ function ArticlePage(props: ArticlePageProps) {
       title,
       heading,
       slug,
-      updateData,
+      updateDate,
       readTime,
       description,
       createDate,
@@ -56,8 +55,9 @@ function ArticlePage(props: ArticlePageProps) {
     relatedPosts,
   } = props;
 
-  const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
+  const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
     dateStyle: 'medium',
+    timeZone: 'UTC',
   });
 
   return (
@@ -88,10 +88,10 @@ function ArticlePage(props: ArticlePageProps) {
           content={new Date(createDate).toISOString()}
           key="article:published_time"
         />
-        {updateData && (
+        {updateDate && (
           <meta
             property="article:modified_time"
-            content={new Date(updateData).toISOString()}
+            content={new Date(updateDate).toISOString()}
             key="article:modified_time"
           />
         )}
@@ -151,24 +151,31 @@ function ArticlePage(props: ArticlePageProps) {
               </li>
             ))}
           </ul>
-          <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
-            <div className="flex items-center">
-              <Image
-                alt="Serhii Shramko"
-                height={32}
-                width={32}
-                src="/static/images/avatar.jpeg"
-                className="rounded-full"
-              />
-              <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-                Serhii Shramko /
-                <time dateTime={new Date(createDate).toISOString()}>
-                  {' '}
-                  {formattedDate}
-                </time>
-              </p>
+          <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row">
+            <div className="flex flex-col items-start">
+              <div className="text-xs text-gray-700 dark:text-gray-300">
+                <p>
+                  Published on{' '}
+                  <time dateTime={new Date(createDate).toISOString()}>
+                    {formatedCreateDate}
+                  </time>
+                </p>
+                {updateDate && (
+                  <p>
+                    Last updated on{' '}
+                    <strong className="font-medium">
+                      <time dateTime={new Date(updateDate).toISOString()}>
+                        {new Date(updateDate).toLocaleDateString('en-us', {
+                          dateStyle: 'medium',
+                          timeZone: 'UTC',
+                        })}
+                      </time>
+                    </strong>
+                  </p>
+                )}
+              </div>
             </div>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+            <p className="mt-2 text-xs text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
               {`${readTime}`}
               {' • '}
               <ViewCounter slug={slug} />
@@ -230,9 +237,7 @@ export async function getStaticProps({
       const postCategories = post.data.categories;
       const currentCategories = data.categories;
       const categorySet = new Set(currentCategories);
-      const overlapCount = postCategories
-        .filter((cat) => categorySet.has(cat))
-        .length;
+      const overlapCount = postCategories.filter((cat) => categorySet.has(cat)).length;
 
       return {
         slug: post.data.slug,
