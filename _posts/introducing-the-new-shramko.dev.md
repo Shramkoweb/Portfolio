@@ -3,7 +3,7 @@ title: "Presenting the Revamped shramko.dev: Explore the Exciting Updates!"
 heading: "Introducing the new shramko.dev"
 description: How I built a modern portfolio and a list of technologies used to create it.
 createDate: 2022-08-13T13:31:25.041Z
-updateData: 2025-05-16T14:58:41.719Z
+updateDate: 2025-05-16T14:58:41.719Z
 keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]
 categories: [Project-Setup, React, Vercel]
 featured: false

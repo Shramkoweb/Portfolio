@@ -14,7 +14,7 @@ export type BaseFrontmatter = {
   description: string;
   createDate: number;
   keywords: string[];
-  updateData?: number;
+  updateDate?: number;
 };
 
 export type Post = {

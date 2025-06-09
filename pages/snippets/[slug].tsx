@@ -12,7 +12,7 @@ import { compileMDX } from '@/lib/scripts/compiler';
 import { Snippet } from '@/lib/types';
 
 import { MDXComponents } from '@/components/mdx-components';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 type SnippetPageProps = Pick<Snippet, 'data'> & {
   content: MDXRemoteSerializeResult;
@@ -24,11 +24,11 @@ function SnippetPage(props: SnippetPageProps) {
     content,
     slug,
     data: {
-      title, heading, description, createDate, updateData, keywords,
+      title, heading, description, createDate, updateDate, keywords,
     },
   } = props;
 
-  const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
+  const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
     dateStyle: 'medium',
   });
 
@@ -68,10 +68,10 @@ function SnippetPage(props: SnippetPageProps) {
           content={new Date(createDate).toISOString()}
           key="article:published_time"
         />
-        {updateData && (
+        {updateDate && (
           <meta
             property="article:modified_time"
-            content={new Date(updateData).toISOString()}
+            content={new Date(updateDate).toISOString()}
             key="article:modified_time"
           />
         )}
@@ -94,13 +94,27 @@ function SnippetPage(props: SnippetPageProps) {
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
               {heading}
             </h1>
-            <p className="text-gray-700 dark:text-gray-300">
-              Serhii Shramko /
-              <time dateTime={new Date(createDate).toISOString()}>
-                {' '}
-                {formattedDate}
-              </time>
-            </p>
+            <div className="text-xs text-gray-700 dark:text-gray-300">
+              <p>
+                Published on{' '}
+                <time dateTime={new Date(createDate).toISOString()}>
+                  {formatedCreateDate}
+                </time>
+              </p>
+              {updateDate && (
+                <p>
+                  Last updated on{' '}
+                  <strong className="font-medium">
+                    <time dateTime={new Date(updateDate).toISOString()}>
+                      {new Date(updateDate).toLocaleDateString('en-us', {
+                        dateStyle: 'medium',
+                        timeZone: 'UTC',
+                      })}
+                    </time>
+                  </strong>
+                </p>
+              )}
+            </div>
           </div>
         </div>
         <div className="prose dark:prose-dark w-full">

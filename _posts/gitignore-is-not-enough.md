@@ -3,7 +3,7 @@ heading: Ignore files in Git without adding them to .gitignore
 title: When .gitignore Isn't the Right Tool
 description: Learn about Git's hidden alternatives to .gitignore for managing file exclusions locally without affecting your team's workflow.
 createDate: 2025-05-29T10:30:00.000Z
-updateData: 2025-05-29T10:30:00.000Z
+updateDate: 2025-06-01T10:30:00.000Z
 keywords: [ git info exclude, git assume unchanged, git local ignore, gitignore alternatives, git file management, git exclude files locally, git update-index, git ignore tracked files ]
 categories: [ opinion, Project-Setup, Tools ]
 featured: false

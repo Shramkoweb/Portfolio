@@ -26,7 +26,7 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         featured,
         keywords,
         createDate,
-        updateData,
+        updateDate,
       },
       content,
     } = matter(fileContents);
@@ -43,7 +43,7 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         description,
         readTime: text,
         createDate: Date.parse(createDate),
-        updateData: Date.parse(updateData),
+        updateDate: Date.parse(updateDate),
       },
       content,
     };

@@ -3,7 +3,7 @@ title: "Conventional Commits enhance your coding practices"
 heading: Conventional Commits
 description: Discover how Conventional Commits can enhance your work and project's readability.
 createDate: 2024-07-23T22:52:26.716Z
-updateData: 2025-05-25T15:59:10.754Z
+updateDate: 2025-05-25T15:59:10.754Z
 keywords: [
   Conventional Commits for JavaScript Development,
   Effective Conventional Commits in Next.js Projects,
