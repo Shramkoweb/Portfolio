@@ -12,6 +12,13 @@ interface BlogPageProps {
   categories: PostCategory[];
 }
 
+/**
+ * Renders the main blog page with a searchable list of articles and category navigation.
+ *
+ * Displays blog metadata for SEO, a search input to filter articles by heading, a list of categories, and previews of matching blog posts.
+ *
+ * @param props - Contains the list of blog posts and categories to display.
+ */
 function BlogPage(props: BlogPageProps) {
   const { posts, categories } = props;
   const postsLength = posts.length;

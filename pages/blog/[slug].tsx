@@ -37,6 +37,11 @@ type ArticlePageProps = Pick<Post, 'data'> & {
   }>;
 };
 
+/**
+ * Renders a blog article page with metadata, content, table of contents, social sharing, and related posts.
+ *
+ * Displays the article's title, headings, categories, publication and update dates, read time, and view counter. Renders the main content from serialized MDX and includes social share buttons and a related posts section if applicable. Sets up SEO and social media metadata in the HTML head.
+ */
 function ArticlePage(props: ArticlePageProps) {
   const {
     content,
@@ -220,6 +225,14 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
+/**
+ * Generates static props for a blog article page, including post data, compiled MDX content, extracted headings, and related posts.
+ *
+ * Fetches the article by slug, compiles its MDX content, extracts headings for the table of contents, and determines up to three related posts based on overlapping categories.
+ *
+ * @param params - Contains the article slug used to identify the post.
+ * @returns Props required to render the article page with related content.
+ */
 export async function getStaticProps({
   params,
 }: GetStaticPropsContext<Params>): Promise<

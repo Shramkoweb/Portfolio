@@ -8,6 +8,14 @@ import { extractMarkdownSlug } from '@/lib/utils';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
+/**
+ * Retrieves a blog post by its slug, parsing metadata and content from the corresponding markdown file.
+ *
+ * @param slug - The unique identifier for the post.
+ * @returns The {@link Post} object containing parsed metadata and content.
+ *
+ * @throws {Error} If {@link slug} is not provided or if the post file cannot be read or parsed.
+ */
 export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {
     throw new Error('getPostBySlug: slug is required');

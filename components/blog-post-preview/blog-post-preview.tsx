@@ -11,6 +11,13 @@ interface BlogPostPreviewProps {
   excerpt: string;
 }
 
+/**
+ * Displays a preview of a blog post with its heading, excerpt, and view count.
+ *
+ * Renders a link to the full blog post, showing the post's heading, a formatted view count (or "---" if unavailable), and an excerpt.
+ *
+ * @param props - Contains the blog post's slug, heading, and excerpt.
+ */
 export function BlogPostPreview(props: BlogPostPreviewProps) {
   const { slug, heading, excerpt } = props;
 

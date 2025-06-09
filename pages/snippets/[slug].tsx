@@ -19,6 +19,13 @@ type SnippetPageProps = Pick<Snippet, 'data'> & {
   slug: string;
 };
 
+/**
+ * Renders a snippet article page with metadata, SEO tags, and MDX content.
+ *
+ * Displays the snippet's heading, publication and update dates, and renders the MDX content using custom components. Registers a view count for the snippet on mount.
+ *
+ * @param props - Contains snippet metadata, serialized MDX content, and the snippet slug.
+ */
 function SnippetPage(props: SnippetPageProps) {
   const {
     content,

@@ -7,6 +7,14 @@ import { extractMarkdownSlug } from '@/lib/utils';
 
 const SNIPPETS_DIRECTORY = join(process.cwd(), '_snippets');
 
+/**
+ * Retrieves a markdown snippet and its metadata by slug.
+ *
+ * @param slug - The unique identifier for the snippet (without file extension).
+ * @returns The snippet object containing metadata and content.
+ *
+ * @throws {Error} If {@link slug} is not provided or if the snippet file cannot be read or parsed.
+ */
 export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
   if (!slug) {
     throw new Error('getPostBySlug: slug is required');
