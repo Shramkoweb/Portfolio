@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import * as Sentry from '@sentry/react';
+import * as Sentry from '@sentry/nextjs';
 
 import { Views } from '@/lib/types';
 import { fetcher } from '@/lib/fetcher';
