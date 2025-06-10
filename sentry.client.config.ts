@@ -8,6 +8,22 @@ Sentry.init({
   debug: false,
   replaysOnErrorSampleRate: 1.0,
   replaysSessionSampleRate: 0.1,
+  ignoreErrors: [
+    // iOS Safari WebKit errors
+    'undefined is not an object (evaluating \'window.webkit.messageHandlers\')',
+    /webkit\.messageHandlers/,
+
+    // Browser extension errors
+    'ResizeObserver loop limit exceeded',
+  ],
+
+  denyUrls: [
+    // Browser extensions
+    /extensions\//i,
+    /^chrome:\/\//i,
+    /^moz-extension:\/\//i,
+    /^safari-extension:\/\//i,
+  ],
   integrations: [
     Sentry.replayIntegration({
       maskAllText: false,
