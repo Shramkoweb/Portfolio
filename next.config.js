@@ -47,6 +47,11 @@ const nextConfig = {
   redirects: async () => {
     return [
       {
+        source: '/blog/category/clean%20code',
+        destination: '/blog/category/clean-code',
+        permanent: true
+      },
+      {
         source: '/snippets/bem-classes',
         destination: '/snippets/common-css-classes',
         permanent: true
@@ -76,7 +81,6 @@ const nextConfig = {
         pathname: '/**'
       }
     ]
-
   },
   poweredByHeader: false,
   reactStrictMode: true,
