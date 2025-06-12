@@ -35,6 +35,7 @@ export function ViewCounter(props: ViewCounterProps) {
             slug,
           },
           extra: {
+            error: JSON.stringify(error),
             endpoint: `/api/views/${slug}`,
             timestamp: new Date().toISOString(),
           },
