@@ -5,7 +5,7 @@ description: Learn about Git's hidden alternatives to .gitignore for managing fi
 createDate: 2025-05-29T10:30:00.000Z
 updateDate: 2025-06-01T10:30:00.000Z
 keywords: [ git info exclude, git assume unchanged, git local ignore, gitignore alternatives, git file management, git exclude files locally, git update-index, git ignore tracked files ]
-categories: [ opinion, Project-Setup, Tools ]
+categories: [ Opinion, Project-Setup, Tools ]
 featured: false
 ---
 <Image src="git.jpg" alt="Hand-drawn illustration of the Git logo inside a tilted square outline with three red dots connected by black lines, representing branches" priority={true} />

@@ -25,7 +25,7 @@ keywords: [
   "generic constraints TypeScript",
   "TypeScript programming patterns"
 ]
-categories: [TS, Clean-Code, Opinion, tutorial]
+categories: [TS, Clean-Code, Opinion, Tutorial]
 featured: true
 ---
 

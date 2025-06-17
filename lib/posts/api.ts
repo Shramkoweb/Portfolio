@@ -3,7 +3,7 @@ import readingTime from 'reading-time';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
 
-import { Post } from '@/lib/types';
+import { Post, PostCategory } from '@/lib/types';
 import { extractMarkdownSlug } from '@/lib/utils';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
@@ -70,15 +70,15 @@ export async function getPostSlugs() {
   return markdownFiles.map(extractMarkdownSlug);
 }
 
-export async function getPostsCategories() {
-  const posts = await getPosts();
+export async function getPostsCategories(): Promise<PostCategory[]> {
+  const posts: Post[] = await getPosts();
 
-  const uniqueCategories = posts.reduce((acc, post) => {
-    post.data.categories.forEach((category) => {
-      acc.add(category.trim().toLowerCase());
+  const uniqueCategories = posts.reduce((acc: Set<PostCategory>, post: Post) => {
+    post.data.categories.forEach((category: PostCategory) => {
+      acc.add(category);
     });
     return acc;
-  }, new Set());
+  }, new Set<PostCategory>());
 
   return [...uniqueCategories];
 }
