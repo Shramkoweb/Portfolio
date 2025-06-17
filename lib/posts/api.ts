@@ -73,7 +73,14 @@ export async function getPostSlugs() {
 export async function getPostsCategories() {
   const posts = await getPosts();
 
-  return [...new Set(posts.flatMap((post) => post.data.categories))];
+  const uniqueCategories = posts.reduce((acc, post) => {
+    post.data.categories.forEach((category) => {
+      acc.add(category.trim().toLowerCase());
+    });
+    return acc;
+  }, new Set());
+
+  return [...uniqueCategories];
 }
 
 export function filterPostsByCategory(posts: Post[], category: string): Post[] {
