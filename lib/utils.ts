@@ -6,6 +6,13 @@ const Environment = {
   Development: 'development',
 };
 
+export function formatCategoryName(category: PostCategory): string {
+  if (!category) {
+    return '';
+  }
+  return category.split('-').join(' ').trim();
+}
+
 export const categoryToSeoData = {
   [PostCategory.JS]: {
     title: 'JavaScript Tips to Enhance Coding Skills',

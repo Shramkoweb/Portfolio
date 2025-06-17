@@ -8,13 +8,13 @@ import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
 
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
-import { categoryToSeoData } from '@/lib/utils';
+import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
 import { SearchInput } from '@/components/search-input';
 
 interface CategoryPageProps {
   posts: Post[];
   categories: PostCategory[];
-  category: string;
+  category: PostCategory;
   seoDescription: string;
   seoKeywords: string;
   seoTitle: string;
@@ -25,6 +25,7 @@ function CategoryPage(props: CategoryPageProps) {
     posts, categories, category, seoDescription, seoKeywords, seoTitle,
   } = props;
   const postsLength = posts.length;
+  const displayCategory = formatCategoryName(category);
 
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) => filterByHeading(post, searchValue));
@@ -37,7 +38,7 @@ function CategoryPage(props: CategoryPageProps) {
         <meta content={seoKeywords} name="keywords" key="keywords" />
         <meta
           property="og:site_name"
-          content={`Blog category ${category} | Serhii Shramko`}
+          content={`Blog category ${displayCategory} | Serhii Shramko`}
           key="og:site_name"
         />
         <meta
@@ -55,7 +56,7 @@ function CategoryPage(props: CategoryPageProps) {
       </Head>
       <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
-          {category}
+          {displayCategory}
           <span className="ml-auto inline-block text-sm">
             {postsLength} {postsLength === 1 ? 'article' : 'articles'}
           </span>
@@ -108,8 +109,6 @@ export async function getStaticProps(
   const postCategory = categories.find(
     (item) => item.toLowerCase() === context.params?.category,
   );
-  const category = postCategory?.split('-').join(' ').trim() as string;
-
   const seoDescription = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].description;
   const seoKeywords = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].keywords;
   const seoTitle = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].title;
@@ -117,7 +116,7 @@ export async function getStaticProps(
   return {
     props: {
       posts: sortedPosts,
-      category,
+      category: postCategory!,
       categories,
       seoDescription,
       seoTitle,

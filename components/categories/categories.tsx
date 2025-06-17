@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PostCategory } from '@/lib/types';
+import { formatCategoryName } from '@/lib/utils';
 
 interface CategoriesProps {
   categories: PostCategory[];
@@ -14,15 +15,12 @@ export function Categories(props: CategoriesProps) {
     <nav aria-label="Post categories">
       <ul className="flex flex-wrap gap-2 text-gray-600 dark:text-gray-400">
         <li key="all">
-          <Link
-            href="/blog"
-            className={linkClasses}
-          >
+          <Link href="/blog" className={linkClasses}>
             <span>All</span>
           </Link>
         </li>
         {categories.map((item) => {
-          const displayCategory = item.split('-').join(' ').trim();
+          const displayCategory = formatCategoryName(item);
 
           return (
             <li key={item}>
