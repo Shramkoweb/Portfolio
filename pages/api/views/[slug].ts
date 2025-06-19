@@ -2,9 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { prisma } from 'lib/prisma';
 
+// eslint-disable-next-line consistent-return
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const slug = req.query.slug as string;
@@ -13,34 +14,34 @@ export default async function handler(
       const views = await prisma.views.upsert({
         where: { slug },
         create: {
-          slug
+          slug,
         },
         update: {
           count: {
-            increment: 1
-          }
-        }
+            increment: 1,
+          },
+        },
       });
 
       return res.status(200).json({
-        total: views.count.toString()
+        total: views.count.toString(),
       });
     }
 
     if (req.method === 'GET') {
       const views = await prisma.views.findUnique({
         where: {
-          slug
-        }
+          slug,
+        },
       });
 
       return res.status(200).json({ total: views?.count.toString() });
     }
-  } catch {
+  } catch (err) {
     return res.status(500).json({
       error: {
-        message: 'Internal Server Error'
-      }
+        message: 'Internal Server Error',
+      },
     });
   }
 }

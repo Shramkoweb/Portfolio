@@ -1,4 +1,4 @@
-import { withSentryConfig } from '@sentry/nextjs';
+const { withSentryConfig } = require('@sentry/nextjs');
 
 const ContentSecurityPolicy = `
     default-src 'self';
@@ -111,4 +111,4 @@ const nextConfigByEnv = {
   development: withSentryConfig(nextConfig, sentryBuildOptions)
 };
 
-export default nextConfigByEnv[process.env.NODE_ENV];
+module.exports = nextConfigByEnv[process.env.NODE_ENV];
