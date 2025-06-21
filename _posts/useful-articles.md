@@ -1,9 +1,9 @@
 ---
-title: Highly recommended resources for developers in 2024
-description: Check out a list of the best resources and blogs for developers in 2024.
-heading: Essential Tools and Guides Every Developer Should Utilize
+title: Highly recommended resources for developers in 2025
+description: Check out a list of the best resources and blogs for developers in 2025.
+heading: Essential Courses and Blogs Every Developer Should Utilize
 createDate: 2022-09-19T19:46:55.334Z
-updateDate: 2024-07-09T09:34:31.025Z
+updateDate: 2025-07-21
 keywords: [Resources for developers, Best Developer Websites, Tech News Resources, Awesome Web Development News Sources]
 categories: [Useful-Resources]
 featured: false
@@ -18,7 +18,8 @@ learning and maintaining knowledge.
 
 ## Courses
 
-- [frontendmasters.com](https://frontendmasters.com/) - one of the best platform for learning Frontend
+- [frontendmasters.com](https://frontendmasters.com/) - one of the best platforms for learning Frontend
+- [boot.dev](https://www.boot.dev?bannerlord=shramko) - IMHO the best platform to learn backend with GO or TypeScript
 - [egghead.io](https://egghead.io/) - high quality, concise web development screencasts
 - [epicreact.dev](https://www.epicreact.dev/) - probably the best course on React
 - [freecodecamp.org/](https://www.freecodecamp.org/) - free verified certifications
@@ -32,6 +33,10 @@ learning and maintaining knowledge.
   toward software developers.
 - [scrimba.com](https://v2.scrimba.com/home) - interactive courses and tutorials. Watch the video and write the code directly
   online
+- [thecrashcourse.com](https://thecrashcourse.com/topic/computerscience/) - simple crash course about computer science
+- [https://pwn.college/](https://pwn.college/) - Learn to Hack! 🤓
+
+> [nand2tetris.org](https://www.nand2tetris.org/) - my favorite in CS. It is free and a hidden gem in the tech community. It is a course that walks you through how to build a computer from scratch, hence the name. You start with a NAND electrical logic gate and slowly build up to making Tetris.
 
 ## Blogs
 
@@ -39,7 +44,7 @@ learning and maintaining knowledge.
 - [Dan Abramov](https://overreacted.io/) - co-author of Redux and Create React App
 - [Kent C. Dodds](https://kentcdodds.com/) - React, Testing end more
 - [Lea Verou](https://lea.verou.me/) - CSS secrets book author
-- [Dr. Axel Rauschmayer](https://2ality.com/) - one of the best blog about JS Core
+- [Dr. Axel Rauschmayer](https://2ality.com/) - one of the best blogs about JS Core
 - [Lin Clark](https://www.code-cartoons.com/) - nice cartoons about development
 - [Josh Comeau](https://www.joshwcomeau.com/) - nice tutorials about React and Web
 - [Addy Osmani](https://addyosmani.com/blog/) - engineering Manager at Google working on Chrome
@@ -51,7 +56,7 @@ learning and maintaining knowledge.
 - [leetcode.com](https://leetcode.com/) - probably a better place to practice solving problems
   for <abbr title="Facebook, Amazon, Apple, Netflix and Google">FAANG</abbr>
 - [hackerrank.com](https://www.hackerrank.com/) - place where you can prepare for Interviews
-- [codewars.com](https://www.codewars.com/) - achieve code mastery through challenge
+- [codewars.com](https://www.codewars.com/) - achieve code mastery through challenges
 
 ## YouTube
 
@@ -60,7 +65,7 @@ learning and maintaining knowledge.
 - [Low Level JavaScript](https://www.youtube.com/c/LowLevelJavaScript) - channel goes deep into the heart of low level
   programming
 - [Coding Garden](https://www.youtube.com/c/CodingGarden) - nice realtime coding sessions
-- [Google Chrome Developers](https://www.youtube.com/c/GoogleChromeDevelopers) - all you need know about web
+- [Google Chrome Developers](https://www.youtube.com/c/GoogleChromeDevelopers) - all you need to know about web
 - [Computerphile](https://www.youtube.com/user/Computerphile) - videos all about computers and computer stuff
 
 > It seems all for now! Don’t forget to share the link with friends 🫡
