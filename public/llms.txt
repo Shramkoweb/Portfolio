@@ -1,0 +1,89 @@
+# Serhii Shramko's Portfolio
+
+> This is the personal portfolio and blog of Serhii Shramko, a Senior Software Engineer specializing in frontend development. This site showcases his professional experience, blog posts, and code snippets.
+
+This website is built using Next.js, TypeScript, and Tailwind CSS. It's an open-source project, and the source code is available on GitHub. The content is written in Markdown.
+
+## Key Information
+
+- [About](https://shramko.dev/about): Detailed information about Serhii Shramko's professional experience, skills, and background.
+- [Blog](https://shramko.dev/blog): Articles on web development, including topics like React, Next.js, TypeScript, and performance optimization.
+- [Snippets](https://shramko.dev/snippets): A collection of useful code snippets for various programming tasks.
+- [Dashboard](https://shramko.dev/dashboard): A personal dashboard displaying real-time data from GitHub and other sources.
+- [Gear](https://shramko.dev/gear): A curated list of hardware and software that Serhii uses for development and daily tasks.
+- [Product Hunt](https://www.producthunt.com/@shramko_dev): A personal Product Hunt page with projects.
+
+## Projects
+
+- [Quizlet Quicklist](https://shramko.dev/quizlet-list): A tool to enhance Quizlet by allowing users to create and manage study lists quickly.
+- [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): A utility to reset progress on Udemy courses.
+
+## Social & Professional Links
+
+- [GitHub](https://github.com/shramkoweb): Find the source code for this portfolio and other projects.
+- [LinkedIn](https://www.linkedin.com/in/shramko-dev/): Professional profile and recommendations.
+
+## Blog Posts
+
+- [Apollo GraphQL Certification](https://shramko.dev/blog/apollo-graphql-certification)
+- [What is Astro Framework](https://shramko.dev/blog/astro)
+- [Astro Image on Vercel](https://shramko.dev/blog/astro-image-on-vercel)
+- [Class Naming Conventions](https://shramko.dev/blog/class-naming-conventions)
+- [Conventional Commits](https://shramko.dev/blog/conventional-commits)
+- [Cross Browser Testing](https://shramko.dev/blog/cross-browser-testing)
+- [Difference Between Absolute and Relative URL](https://shramko.dev/blog/difference-between-absolute-and-relative-url)
+- [Dirname Error](https://shramko.dev/blog/dirname-error)
+- [Discriminated Unions in TypeScript](https://shramko.dev/blog/discriminated-unions)
+- [Dispatch table in javascript](https://shramko.dev/blog/dispatch-tables)
+- [Eslint with TypeScript](https://shramko.dev/blog/eslint-with-typescript)
+- [Expressions vs Statements](https://shramko.dev/blog/expressions-statements)
+- [For-in vs For-of](https://shramko.dev/blog/for-in-vs-for-of)
+- [Generic Type Parameters in TypeScript](https://shramko.dev/blog/generic-type-parameters)
+- [Gitignore is Not Enough](https://shramko.dev/blog/gitignore-is-not-enough)
+- [How to Create SSH Keys](https://shramko.dev/blog/how-to-create-ssh-keys)
+- [Introducing the new shramko.dev](https://shramko.dev/blog/introducing-the-new-shramko.dev)
+- [JavaScript Naming Conventions](https://shramko.dev/blog/javascript-naming-conventions)
+- [JS Arrays](https://shramko.dev/blog/js-arrays)
+- [Linktree](https://shramko.dev/blog/linktree)
+- [Npm Semantic Versioning](https://shramko.dev/blog/npm-semantic-versioning)
+- [What is Nvm](https://shramko.dev/blog/nvm)
+- [Phpstorm Allow Network](https://shramko.dev/blog/phpstorm-allow-network)
+- [PNPM](https://shramko.dev/blog/pnpm)
+- [Postgres Connect URL](https://shramko.dev/blog/postgres-connect-url)
+- [React Flexbox Grid](https://shramko.dev/blog/react-flexbox-grid)
+- [React Hooks Pitfalls](https://shramko.dev/blog/react-hooks-pitfalls)
+- [React Rerender](https://shramko.dev/blog/react-rerender)
+- [Unsubscribe Immediately](https://shramko.dev/blog/unsubscribe-immediately)
+- [Useful Articles](https://shramko.dev/blog/useful-articles)
+
+## Code Snippets
+
+- [Check if Character is a Letter in JavaScript](https://shramko.dev/snippets/check-if-character-is-a-letter-in-javascript)
+- [Common CSS Classes](https://shramko.dev/snippets/common-css-classes)
+- [Compare Dates](https://shramko.dev/snippets/compare-dates)
+- [Countries SQL](https://shramko.dev/snippets/countries-sql)
+- [CSS Selection](https://shramko.dev/snippets/css-selection)
+- [Debounce](https://shramko.dev/snippets/debounce)
+- [Deep Clone](https://shramko.dev/snippets/deep-clone)
+- [Detect Caps Lock](https://shramko.dev/snippets/detect-caps-lock)
+- [Distributive Omit](https://shramko.dev/snippets/distributive-omit)
+- [Environment](https://shramko.dev/snippets/environment)
+- [Generate Range](https://shramko.dev/snippets/generate-range)
+- [How to Capitalize First Letter of String in JavaScript](https://shramko.dev/snippets/how-to-capitalize-first-letter-of-string-in-javascript)
+- [How to Check if File Exists (Node)](https://shramko.dev/snippets/how-to-check-if-file-exists-node)
+- [How to Get the Current URL with JavaScript](https://shramko.dev/snippets/how-to-get-the-current-url-with-javascript)
+- [How to Remove Query](https://shramko.dev/snippets/how-to-remove-query)
+- [Is Absolute URL](https://shramko.dev/snippets/is-absolute-url)
+- [Is Element in Viewport](https://shramko.dev/snippets/is-element-in-viewport)
+- [Is Email Valid Regex](https://shramko.dev/snippets/is-email-valid-regex)
+- [Lazy Loading Images with Intersection Observer](https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer)
+- [Move Cursor](https://shramko.dev/snippets/move-cursor)
+- [Postgres Install MacOS](https://shramko.dev/snippets/postgres-install-macos)
+- [Random](https://shramko.dev/snippets/random)
+- [Remove Duplicates Array](https://shramko.dev/snippets/remove-duplicates-array)
+- [Sleep](https://shramko.dev/snippets/sleep)
+- [Sort an Array of Objects in JavaScript](https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript)
+- [Use Has Mounted](https://shramko.dev/snippets/use-has-mounted)
+- [Use Toggle React Hook](https://shramko.dev/snippets/use-toggle-react-hook)
+- [Visually Hidden](https://shramko.dev/snippets/visually-hidden)
+- [Window Crypto](https://shramko.dev/snippets/window-crypto)
