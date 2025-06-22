@@ -54,7 +54,7 @@ This website is built using Next.js, TypeScript, and Tailwind CSS. It's an open-
 - [React Hooks Pitfalls](https://shramko.dev/blog/react-hooks-pitfalls)
 - [React Rerender](https://shramko.dev/blog/react-rerender)
 - [Unsubscribe Immediately](https://shramko.dev/blog/unsubscribe-immediately)
-- [Useful Articles](https://shramko.dev/blog/useful-articles)
+- [My "every programmer should know" list - 2025](https://shramko.dev/blog/useful-articles)
 
 ## Code Snippets
 
