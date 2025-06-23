@@ -273,7 +273,7 @@ function IndexPage(props: IndexPageProps) {
 }
 
 export async function getStaticProps(): Promise<
-GetStaticPropsResult<IndexPageProps>
+  GetStaticPropsResult<IndexPageProps>
 > {
   const posts = await getPosts();
   const otherPosts = posts

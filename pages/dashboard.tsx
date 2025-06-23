@@ -35,8 +35,7 @@ export default function Dashboard() {
         </h1>
         <div className="mb-8">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            This is my personal dashboard, built with
-            {' '}
+            This is my personal dashboard, built with{' '}
             <a
               className="text-[#60a5fa] underline"
               href="https://nextjs.org/docs/pages/building-your-application/routing/api-routes"
@@ -44,8 +43,7 @@ export default function Dashboard() {
               target="_blank"
             >
               Next.js API
-            </a>
-            {' '}
+            </a>{' '}
             routes deployed as serverless functions. I use this dashboard to
             track various metrics across platforms like GitHub, and more in the
             near future.

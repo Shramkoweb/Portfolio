@@ -8,9 +8,10 @@ import firefoxStore from '../public/static/images/firefox-store.webp';
 
 function UdemyResetProgressPage() {
   useEffect(() => {
-    const registerView = () => fetch('/api/views/udemy-reset-progress-page', {
-      method: 'POST',
-    });
+    const registerView = () =>
+      fetch('/api/views/udemy-reset-progress-page', {
+        method: 'POST',
+      });
 
     registerView();
   }, []);

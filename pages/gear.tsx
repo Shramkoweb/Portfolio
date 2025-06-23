@@ -98,7 +98,9 @@ function GearPage() {
           </ul>
           <h2 id="other">Other</h2>
           <ul>
-            <li><s>Golf GTI</s></li>
+            <li>
+              <s>Golf GTI</s>
+            </li>
             <li>BMW 428 XDrive&ensp;🚗💨</li>
             <li>Apple iPhone 13 Pro</li>
             <li>Apple Watch 8th</li>

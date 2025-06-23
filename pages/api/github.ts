@@ -31,13 +31,13 @@ export default async function handler(
     const mineRepos = repos.filter((repo: { fork: boolean }) => !repo.fork);
     const stars = mineRepos.reduce(starReducer, 0);
 
-    // With edge error we have error
+    // With the edge error we have error
     // https://github.com/getsentry/sentry-javascript/issues/5667
     return res.status(200).json({
       stars,
       followers: user.followers,
     });
-  } catch (err) {
+  } catch {
     return res.status(500).json({
       error: {
         message: 'Internal Server Error',
