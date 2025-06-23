@@ -4,7 +4,12 @@ import { ViewCounter } from '@/components/view-counter';
 
 describe('ViewCounter component', () => {
   beforeAll(() => {
-    global.fetch = jest.fn();
+    global.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ total: 100 }),
+      });
+    });
   });
 
   afterAll(() => {

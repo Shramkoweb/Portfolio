@@ -29,6 +29,6 @@ describe('404 page', () => {
   test('send sentry error only on initial render', () => {
     render(<NotFoundPage />);
 
-    expect(Sentry.captureException).toBeCalledTimes(1);
+    expect(Sentry.captureException).toHaveBeenCalledTimes(1);
   });
 });

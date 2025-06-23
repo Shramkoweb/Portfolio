@@ -23,7 +23,9 @@ export function ViewCounter(props: ViewCounterProps) {
         });
 
         if (!response.ok) {
-          const error = new Error(`HTTP error! status: ${response.status}`) as Error & { status: number; url: string };
+          const error = new Error(
+            `HTTP error! status: ${response.status}`,
+          ) as Error & { status: number; url: string };
           error.status = response.status;
           error.url = `/api/views/${slug}`;
           throw error;
@@ -40,9 +42,6 @@ export function ViewCounter(props: ViewCounterProps) {
             timestamp: new Date().toISOString(),
           },
         });
-
-        // eslint-disable-next-line
-        console.error('Failed to register view:', error);
       }
     };
 
