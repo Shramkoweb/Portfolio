@@ -61,7 +61,7 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       height={300}
       priority={priority}
       sizes="100vw"
-      // eslint-disable-next-line react/jsx-props-no-spreading
+       
       {...restProps}
     />
   );

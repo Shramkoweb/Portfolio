@@ -182,7 +182,6 @@ function ArticlePage(props: ArticlePageProps) {
             </p>
           </div>
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
-            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 

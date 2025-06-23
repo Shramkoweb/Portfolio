@@ -118,7 +118,6 @@ function SnippetPage(props: SnippetPageProps) {
           </div>
         </div>
         <div className="prose dark:prose-dark w-full">
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <MDXRemote {...content} components={MDXComponents} />
         </div>
       </article>

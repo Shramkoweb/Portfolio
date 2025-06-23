@@ -40,7 +40,6 @@ function PrivacyPolicy() {
           content="This is the privacy policy for the Quizlet QuickList Web Extension. Learn how your data is handled securely."
         />
         <meta property="twitter:image" key="twitter:image" content={QUIZLET_APP_OG_IMAGE} />
-        {/* eslint-disable-next-line react/no-danger */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

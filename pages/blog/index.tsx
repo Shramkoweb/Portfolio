@@ -44,7 +44,6 @@ function BlogPage(props: BlogPageProps) {
           content="Serhii Shramko Blog"
           key="og:site_name"
         />
-        {/* eslint-disable-next-line react/no-danger */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
