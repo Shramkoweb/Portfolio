@@ -5,9 +5,7 @@ const GH_HEADERS = new Headers({
 });
 
 const starReducer = (acc: number, repo: { stargazers_count: number }) => {
-  const result = acc + repo.stargazers_count;
-
-  return result;
+  return acc + repo.stargazers_count;
 };
 
 export default async function handler(

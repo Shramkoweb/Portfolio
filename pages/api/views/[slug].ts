@@ -24,7 +24,7 @@ export default async function handler(
       });
 
       return res.status(200).json({
-        total: views.count.toString(),
+        total: views.count,
       });
     }
 
@@ -35,7 +35,7 @@ export default async function handler(
         },
       });
 
-      return res.status(200).json({ total: views?.count.toString() });
+      return res.status(200).json({ total: views?.count });
     }
   } catch {
     return res.status(500).json({
