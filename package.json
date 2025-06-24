@@ -9,7 +9,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "postbuild": "next-sitemap",
+    "postbuild": " next-sitemap --config next-sitemap.config.cjs",
     "postinstall": "prisma generate",
     "pre-commit": "",
     "pre-push": "pnpm run lint",
