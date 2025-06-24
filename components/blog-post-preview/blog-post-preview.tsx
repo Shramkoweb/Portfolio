@@ -18,18 +18,16 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
   const views = data?.total;
 
   return (
-    <Link href={Routes.BlogPost(slug)} className="w-full">
-      <div className="mb-8 w-full">
-        <div className="font-medium flex flex-col justify-between md:flex-row">
-          <h3 className="mb-2 w-full text-lg text-gray-900 dark:text-gray-100 md:text-xl">
-            {heading}
-          </h3>
-          <p className="mb-4 w-32 text-left text-gray-500 md:mb-0 md:text-right">
-            {`${views ? views.toLocaleString() : '---'} views`}
-          </p>
-        </div>
-        <p className="text-gray-600 dark:text-gray-400">{excerpt}</p>
+    <Link href={Routes.BlogPost(slug)}>
+      <div className="font-medium flex flex-col justify-between md:flex-row">
+        <h3 className="mb-2 w-full text-lg text-gray-900 dark:text-gray-100 md:text-xl">
+          {heading}
+        </h3>
+        <p className="mb-4 w-32 text-left text-gray-500 md:mb-0 md:text-right">
+          {`${views ? views.toLocaleString() : '---'} views`}
+        </p>
       </div>
+      <p className="text-gray-600 dark:text-gray-400">{excerpt}</p>
     </Link>
   );
 }

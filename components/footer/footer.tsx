@@ -12,7 +12,7 @@ export function Footer() {
       role="contentinfo"
       className="mx-auto flex w-full max-w-3xl flex-col items-start justify-center"
     >
-      <hr className="mb-8 w-full border-gray-200 border-1 dark:border-gray-800" />
+      <hr className="mb-16 w-full border-gray-200 border-1 dark:border-gray-800" />
       <div className="grid w-full max-w-3xl grid-cols-1 gap-4 pb-12 sm:grid-cols-2 md:grid-cols-4">
         <ul className="flex flex-col space-y-4">
           <li>

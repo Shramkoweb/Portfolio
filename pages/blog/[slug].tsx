@@ -185,12 +185,12 @@ function ArticlePage(props: ArticlePageProps) {
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 
-          <div className="mt-16 w-full">
-            <hr />
-            {relatedPosts && relatedPosts.length > 0 && (
+          {relatedPosts && relatedPosts.length > 0 && (
+            <div className="mt-16 w-full">
+              <hr className="border-gray-200 border-1 dark:border-gray-800" />
               <AlsoBlock relatedPosts={relatedPosts} />
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
             <p>Share it:</p>
@@ -223,7 +223,7 @@ export async function getStaticProps({
   params,
 }: GetStaticPropsContext<Params>): Promise<
   GetStaticPropsResult<ArticlePageProps>
-  > {
+> {
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
@@ -236,7 +236,9 @@ export async function getStaticProps({
       const postCategories = post.data.categories;
       const currentCategories = data.categories;
       const categorySet = new Set(currentCategories);
-      const overlapCount = postCategories.filter((cat) => categorySet.has(cat)).length;
+      const overlapCount = postCategories.filter((cat) =>
+        categorySet.has(cat),
+      ).length;
 
       return {
         slug: post.data.slug,

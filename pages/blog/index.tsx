@@ -100,7 +100,7 @@ function BlogPage(props: BlogPageProps) {
                 title, slug, heading, description,
               },
             }) => (
-              <li key={title}>
+              <li key={title} className='mb-8 last:mb-0'>
                 <BlogPostPreview
                   slug={slug}
                   heading={heading}

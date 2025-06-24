@@ -21,14 +21,15 @@ interface CategoryPageProps {
 }
 
 function CategoryPage(props: CategoryPageProps) {
-  const {
-    posts, categories, category, seoDescription, seoKeywords, seoTitle,
-  } = props;
+  const { posts, categories, category, seoDescription, seoKeywords, seoTitle } =
+    props;
   const postsLength = posts.length;
   const displayCategory = formatCategoryName(category);
 
   const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = posts.filter((post) => filterByHeading(post, searchValue));
+  const filteredBlogPosts = posts.filter((post) =>
+    filterByHeading(post, searchValue),
+  );
 
   return (
     <>
@@ -74,14 +75,17 @@ function CategoryPage(props: CategoryPageProps) {
             No articles found.
           </p>
         )}
-        {filteredBlogPosts.map(({ data }) => (
-          <BlogPostPreview
-            key={data.title}
-            slug={data.slug}
-            heading={data.heading}
-            excerpt={data.description}
-          />
-        ))}
+        <ul>
+          {filteredBlogPosts.map(({ data }) => (
+            <li key={data.title} className="mb-8 last:mb-0">
+              <BlogPostPreview
+                slug={data.slug}
+                heading={data.heading}
+                excerpt={data.description}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
@@ -109,9 +113,12 @@ export async function getStaticProps(
   const postCategory = categories.find(
     (item) => item.toLowerCase() === context.params?.category,
   );
-  const seoDescription = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].description;
-  const seoKeywords = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].keywords;
-  const seoTitle = categoryToSeoData[postCategory?.toLowerCase() as PostCategory].title;
+  const seoDescription =
+    categoryToSeoData[postCategory?.toLowerCase() as PostCategory].description;
+  const seoKeywords =
+    categoryToSeoData[postCategory?.toLowerCase() as PostCategory].keywords;
+  const seoTitle =
+    categoryToSeoData[postCategory?.toLowerCase() as PostCategory].title;
 
   return {
     props: {
