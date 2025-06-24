@@ -64,7 +64,7 @@ export function Code({ children, className }: CodeProps) {
   }, []);
 
   return (
-    <div className="relative overflow-x-clip">
+    <pre ref={codeRef} className={`relative ${className ?? ''}`}>
       <button
         onClick={handleCopy}
         type="button"
@@ -73,9 +73,7 @@ export function Code({ children, className }: CodeProps) {
       >
         {copyStatus === 'success' ? <CheckIcon /> : <CopyIcon />}
       </button>
-      <pre ref={codeRef} className={className}>
-        {children}
-      </pre>
-    </div>
+      <div className="overflow-x-scroll">{children}</div>
+    </pre>
   );
 }
