@@ -17,7 +17,21 @@ const config = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }]
+    '^.+\\.(js|jsx|ts|tsx)$': [
+      'babel-jest',
+      {
+        presets: [
+          [
+            'next/babel',
+            {
+              'preset-react': {
+                runtime: 'automatic',
+              },
+            },
+          ],
+        ],
+      },
+    ],
   },
   transformIgnorePatterns: [
     '/node_modules/',
