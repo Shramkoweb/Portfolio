@@ -57,7 +57,6 @@ export function Code({ children, className }: CodeProps) {
       setCopyStatus('error');
       setTimeout(() => setCopyStatus('idle'), 2000);
       // TODO: Implement manual copy method & Error handling
-      // eslint-disable-next-line no-console
       console.error('Failed to copy:', err);
     }
   }, []);

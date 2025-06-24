@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { prisma } from 'lib/prisma';
 
-// eslint-disable-next-line consistent-return
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -24,7 +23,7 @@ export default async function handler(
       });
 
       return res.status(200).json({
-        total: views.count.toString(),
+        total: views.count,
       });
     }
 
@@ -35,9 +34,9 @@ export default async function handler(
         },
       });
 
-      return res.status(200).json({ total: views?.count.toString() });
+      return res.status(200).json({ total: views?.count });
     }
-  } catch (err) {
+  } catch {
     return res.status(500).json({
       error: {
         message: 'Internal Server Error',

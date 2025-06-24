@@ -17,6 +17,12 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
     const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
     const fileContents = await readFile(fullPath, 'utf8');
 
+    const matterResult = matter(fileContents);
+
+    if (!matterResult || !matterResult.data) {
+      throw new Error(`Invalid markdown format for slug: ${slug}`);
+    }
+
     const {
       data: {
         heading,
@@ -29,7 +35,8 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         updateDate,
       },
       content,
-    } = matter(fileContents);
+    } = matterResult;
+
     const { text } = readingTime(content);
 
     return {

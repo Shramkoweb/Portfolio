@@ -15,5 +15,5 @@ export const filterByAdvanceReact = (post: Post) => post.data.categories
   .map((category) => category.toLowerCase())
   .includes(PostCategory.AdvancedReact.toLowerCase() as PostCategory);
 
-// eslint-disable-next-line max-len
+ 
 export const filterByHeading = (post: Post, heading: string) => post.data.heading.toLowerCase().includes(heading.toLowerCase());

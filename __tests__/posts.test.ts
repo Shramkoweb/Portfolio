@@ -45,24 +45,31 @@ jest.mock('node:fs/promises', () => ({
   readdir: jest.fn(),
 }));
 
-jest.mock('gray-matter', () => jest.fn((fileContents) => ({
-  data: {
-    heading: 'Test Heading',
-    title: 'Test Title',
-    description: 'Test Description',
-    categories: [PostCategory.JS],
-    featured: false,
-    keywords: ['test'],
-    createDate: '2024-01-01',
-    updateDate: '2024-01-01',
-  },
-  content: fileContents,
-})));
+// Mock gray-matter to return a valid structure
+jest.mock('gray-matter', () => {
+  return function mockMatter() {
+    return {
+      data: {
+        heading: 'Test Heading',
+        title: 'Test Title',
+        description: 'Test Description',
+        categories: ['JS'],
+        featured: false,
+        keywords: ['test'],
+        createDate: '2024-01-01',
+        updateDate: '2024-01-01',
+      },
+      content: 'Test content',
+    };
+  };
+});
 
-jest.mock('reading-time', () => ({
-  __esModule: true,
-  default: jest.fn(() => ({ text: '2 min read' })),
-}));
+// Fix reading-time mock
+jest.mock('reading-time', () => {
+  return function mockReadingTime() {
+    return { text: '2 min read' };
+  };
+});
 
 describe('Posts API', () => {
   beforeEach(() => {
@@ -110,8 +117,8 @@ describe('Posts API', () => {
     it('should return unique categories from all posts', async () => {
       (readdir as jest.Mock).mockResolvedValueOnce(['post-1.md', 'post-2.md']);
       (readFile as jest.Mock)
-        .mockResolvedValueOnce(JSON.stringify(mockPosts[0]))
-        .mockResolvedValueOnce(JSON.stringify(mockPosts[1]));
+        .mockResolvedValueOnce('Test content 1')
+        .mockResolvedValueOnce('Test content 2');
 
       const categories = await getPostsCategories();
       expect(Array.isArray(categories)).toBe(true);

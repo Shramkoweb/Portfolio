@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <ThemeProvider attribute="class">
         <Layout>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Component {...pageProps} />
           <SpeedInsights />
           <Analytics />
