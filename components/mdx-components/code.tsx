@@ -47,7 +47,9 @@ export function Code({ children, className }: CodeProps) {
   );
 
   const handleCopy = useCallback(async () => {
-    if (!codeRef.current?.textContent) return;
+    if (!codeRef.current?.textContent) {
+      return;
+    }
 
     try {
       await navigator.clipboard.writeText(codeRef.current.textContent);
@@ -62,7 +64,7 @@ export function Code({ children, className }: CodeProps) {
   }, []);
 
   return (
-    <pre ref={codeRef} className={`relative ${className ?? ''}`}>
+    <div className="relative overflow-x-clip">
       <button
         onClick={handleCopy}
         type="button"
@@ -71,7 +73,9 @@ export function Code({ children, className }: CodeProps) {
       >
         {copyStatus === 'success' ? <CheckIcon /> : <CopyIcon />}
       </button>
-      {children}
-    </pre>
+      <pre ref={codeRef} className={className}>
+        {children}
+      </pre>
+    </div>
   );
 }
