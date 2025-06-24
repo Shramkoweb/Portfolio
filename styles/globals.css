@@ -2,6 +2,8 @@
 @plugin "@tailwindcss/typography";
 @config "../tailwind.config.js";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 ::selection {
   @apply bg-emerald-500;
   color: #fefefe;
