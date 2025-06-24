@@ -15,7 +15,7 @@ export default async function handler(
       },
     });
 
-    return res.status(200).json({ total: count });
+    return res.status(200).json({ total: Number(count ?? 0) });
   } catch {
     return res.status(500).json({
       error: {
