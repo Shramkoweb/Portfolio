@@ -117,7 +117,7 @@ function SnippetPage(props: SnippetPageProps) {
             </div>
           </div>
         </div>
-        <div className="prose dark:prose-dark w-full">
+        <div className="prose dark:prose-dark w-full max-w-none">
           <MDXRemote {...content} components={MDXComponents} />
         </div>
       </article>
