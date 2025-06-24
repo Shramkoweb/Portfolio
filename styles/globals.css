@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@config "../tailwind.config.js";
 
 ::selection {
   @apply bg-emerald-500;
