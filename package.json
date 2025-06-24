@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
     "build": "prisma generate && next build",
