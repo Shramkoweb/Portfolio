@@ -29,6 +29,15 @@ html {
   scroll-margin-top: 1.125rem;
 }
 
+.prose {
+  color: var(--tw-prose-body);
+  --tw-prose-body: #333333;
+}
+
+.dark .prose {
+  --tw-prose-body: #eaeaea;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 
