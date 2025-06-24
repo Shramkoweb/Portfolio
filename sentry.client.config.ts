@@ -6,6 +6,7 @@ Sentry.init({
   dsn: SENTRY_DSN,
   tracesSampleRate: 1,
   debug: false,
+  sendDefaultPii: true,
   replaysOnErrorSampleRate: 1.0,
   replaysSessionSampleRate: 0.1,
   ignoreErrors: [
