@@ -44,7 +44,7 @@ html {
 }
 
 .prose a {
-  @apply transition-colors no-underline;
+  @apply transition-all;
 }
 
 .prose .anchor:after {
