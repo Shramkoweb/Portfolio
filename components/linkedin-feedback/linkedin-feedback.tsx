@@ -25,7 +25,7 @@ function LinkedinFeedback(props: Props) {
                   alt={`${feedback.author.name} avatar`}
                 />
 
-                <div className="flex flex-col ml-2">
+                <div className="flex flex-col ml-3">
                   <span className="text-gray-700 dark:text-gray-300">
                     {feedback.author.name}
                   </span>

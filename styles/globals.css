@@ -34,6 +34,10 @@ html {
   --tw-prose-body: #333333;
 }
 
+.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  margin: 0;
+}
+
 .dark .prose {
   --tw-prose-body: #eaeaea;
 }
