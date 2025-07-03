@@ -14,7 +14,7 @@ interface BlogPostPreviewProps {
 export function BlogPostPreview(props: BlogPostPreviewProps) {
   const { slug, heading, excerpt } = props;
 
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
+  const { data } = useSWR<Views>(`/api/views?slug=${slug}`, fetcher);
   const views = data?.total;
 
   return (

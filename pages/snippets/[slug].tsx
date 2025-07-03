@@ -33,7 +33,7 @@ function SnippetPage(props: SnippetPageProps) {
   });
 
   useEffect(() => {
-    const registerView = () => fetch(`/api/views/${slug}`, {
+    const registerView = () => fetch(`/api/views?slug=${slug}`, {
       method: 'POST',
     });
 

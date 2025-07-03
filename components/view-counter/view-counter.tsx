@@ -12,36 +12,33 @@ interface ViewCounterProps {
 export function ViewCounter(props: ViewCounterProps) {
   const { slug } = props;
 
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
+  const { data } = useSWR<Views>(`/api/views?slug=${slug}`, fetcher);
   const views = data?.total;
 
   useEffect(() => {
     const registerView = async () => {
       try {
-        const response = await fetch(`/api/views/${slug}`, {
+        await fetch(`/api/views?slug=${slug}`, {
           method: 'POST',
         });
-
-        if (!response.ok) {
-          const error = new Error(
-            `HTTP error! status: ${response.status}`,
-          ) as Error & { status: number; url: string };
-          error.status = response.status;
-          error.url = `/api/views/${slug}`;
-          throw error;
-        }
-      } catch (error) {
-        Sentry.captureException(error, {
-          tags: {
-            section: 'view-counter',
-            slug,
+      } catch (error: unknown) {
+        console.error(error);
+        Sentry.captureException(
+          {
+            error,
+            endpoint: `/api/views?slug=${slug}`,
           },
-          extra: {
-            error: JSON.stringify(error),
-            endpoint: `/api/views/${slug}`,
-            timestamp: new Date().toISOString(),
+          {
+            tags: {
+              section: 'view-counter',
+              slug,
+            },
+            extra: {
+              error: JSON.stringify(error),
+              timestamp: new Date().toISOString(),
+            },
           },
-        });
+        );
       }
     };
 

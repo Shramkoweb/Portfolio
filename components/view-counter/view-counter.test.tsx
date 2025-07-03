@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
+import { fetcher } from '@/lib/fetcher';
 
 import { ViewCounter } from '@/components/view-counter';
 
@@ -17,16 +18,37 @@ describe('ViewCounter component', () => {
   });
 
   test('Fetch views with SWC', () => {
-    const slug = 'test-article-slug';
+    const slug = 'test-slug';
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve({ total: '100' }),
+      }),
+    ) as jest.Mock;
     render(<ViewCounter slug={slug} />);
+    expect(global.fetch).toHaveBeenCalledWith(
+      `/api/views?slug=${slug}`,
+      expect.anything(),
+    );
+  });
 
-    // undefined because its get fetch from SWC
+  it('should register a view', async () => {
+    const slug = 'test-slug';
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ total: '100' }),
+      }),
+    ) as jest.Mock;
+    render(<ViewCounter slug={slug} />);
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledTimes(2);
+    });
     expect(global.fetch).toHaveBeenNthCalledWith(
       1,
-      `/api/views/${slug}`,
-      undefined,
+      `/api/views?slug=${slug}`,
+      fetcher,
     );
-    expect(global.fetch).toHaveBeenNthCalledWith(2, `/api/views/${slug}`, {
+    expect(global.fetch).toHaveBeenNthCalledWith(2, `/api/views?slug=${slug}`, {
       method: 'POST',
     });
   });
