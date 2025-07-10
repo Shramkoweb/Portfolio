@@ -8,7 +8,7 @@ export function DashboardCard(props: DashboardCardProps) {
   const { header, link, metric } = props;
 
   return (
-    <a className="flex max-w-72" target="_blank" rel="noopener" href={link} aria-label={header}>
+    <a className="flex w-full" target="_blank" rel="noopener" href={link} aria-label={header}>
       <div className="w-full rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
         <div className="flex items-center text-gray-900 dark:text-gray-100">
           {header}
