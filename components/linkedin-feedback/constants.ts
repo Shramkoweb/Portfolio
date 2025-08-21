@@ -18,7 +18,7 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
     author: {
       name: 'Oleksandr Holovchenko',
       avatar:
-        'https://media.licdn.com/dms/image/v2/C4E03AQEh44QiS-ZVJA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1625395130042?e=1754524800&v=beta&t=XZSRUr7vz9JkuRXLYDekn-ALrfeJS8sFtiApzB9l1YA',
+        'https://media.licdn.com/dms/image/v2/C4E03AQEh44QiS-ZVJA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1625395130042?e=1758758400&v=beta&t=lJUPY8erMLv77A5be-O7f2jSqWycrGONPXPBqpq27Xk',
       position: 'Software Engineer',
       company: {
         name: 'MacPaw',
@@ -33,7 +33,7 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
       name: 'Anton Slesariev',
       position: 'Senior Frontend Engineer',
       avatar:
-        'https://media.licdn.com/dms/image/v2/C4E03AQHa0t09lIdvHw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1637844097215?e=1754524800&v=beta&t=tiBiE7ob4z2RG6SiTDI-hGDn32kyflXgfNPpY8yQ4pM',
+        'https://media.licdn.com/dms/image/v2/C4E03AQHa0t09lIdvHw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1637844097215?e=1758758400&v=beta&t=K8v4bKb6H0MAe3PrBemgD20tpGH_fDeICjA2XZAp5_w',
       company: {
         name: 'Readdle',
         url: 'https://readdle.com/',
