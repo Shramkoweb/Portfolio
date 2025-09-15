@@ -3,8 +3,8 @@ title: Adding SSH Keys to Your GitHub Account
 heading: How to add SSH keys to your GitHub account
 description: Learn how to add SSH keys to your GitHub account. Boost your account's security and ease your workflow by securely connecting your local machine to your GitHub repositories.
 createDate: 2023-12-08T01:07:13.290Z
-updateDate: 2023-12-08T01:07:13.290Z
-keywords: [ Adding SSH Keys, GitHub Account, Git Terminal, Existing SSH Keys, Generating SSH Key, SSH public key, SSH Key to GitHub Account ]
+updateDate: 2025-09-15T12:29:00.000Z
+keywords: [ Adding SSH Keys, GitHub Account, Git Terminal, Existing SSH Keys, Generating SSH Key, SSH public key, SSH Key to GitHub Account, ed25519 ]
 categories: [ Tutorial, Project-Setup ]
 featured: false
 ---
@@ -14,7 +14,7 @@ featured: false
 Hello everyone!
 
 Today, we are going to walk through the process of adding [SSH keys](https://www.ssh.com/academy/ssh-keys) to a GitHub
-account.
+account using the modern and secure ed25519 algorithm.
 
 Before we begin, make sure you have Git installed on your system. If you haven't done this already, head over to
 the [Git website](https://git-scm.com/downloads), download the latest version, and install it.
@@ -36,24 +36,29 @@ This command lists all the files in your .ssh directory. If you don't find any, 
 
 Your SSH keys might use one of the following algorithms:
 
-- ⛔️ DSA: It’s unsafe and even no longer supported since OpenSSH version 7, you need to upgrade it!
-- 🥴 RSA: It depends on key size. If it has 3072 or 4096-bit length, then you’re good. Less than that, you probably want
-  to
-  upgrade it. The 1024-bit length is even considered unsafe.
+- ⛔️ DSA: It's unsafe and even no longer supported since OpenSSH version 7, you need to upgrade it!
+- 🥴 RSA: It depends on key size. If it has 3072 or 4096-bit length, then you're good. Less than that, you probably want
+  to upgrade it. The 1024-bit length is even considered unsafe.
 - 👌 ECDSA: It depends on how well your machine can generate a random number that will be used to create a signature.
-  There’s also a trustworthiness concern on the NIST curves that being used by ECDSA.
-- 🥳 Ed25519: It’s the most recommended public-key algorithm available today!
+  There's also a trustworthiness concern on the NIST curves that being used by ECDSA.
+- 🥳 Ed25519: It's the most recommended public-key algorithm available today! This is what we'll use in this guide.
 
 ### Step 2: Generating a New SSH key
 
 In your terminal, paste the following command:
 
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "shramko.dev@gmail.com"
+$ ssh-keygen -t ed25519 -C "shramko.dev@gmail.com"
 ```
 
 Replace `shramko.dev@gmail.com` with the email address you used to create your GitHub account. Then, you will be
 prompted to "Enter a file in which to save the key," - press Enter to accept the default file location.
+
+**Note:** If you're using a legacy system that doesn't support ed25519, you can use RSA with 4096 bits instead:
+
+```bash
+$ ssh-keygen -t rsa -b 4096 -C "shramko.dev@gmail.com"
+```
 
 ### Step 3: Adding Your SSH key to the ssh-agent
 
@@ -66,10 +71,10 @@ $ eval "$(ssh-agent -s)"
 Then, add your new SSH key to the ssh-agent:
 
 ```bash
-$ ssh-add ~/.ssh/id_rsa
+$ ssh-add ~/.ssh/id_ed25519
 ```
 
-Note: replace "id_rsa" with the name of your key if you have used a different one.
+Note: If you used RSA instead, replace "id_ed25519" with "id_rsa".
 
 ### Step 4: Adding the SSH key to Your GitHub Account
 
@@ -81,7 +86,17 @@ Note: replace "id_rsa" with the name of your key if you have used a different on
 To copy the SSH key, go back to your terminal and type:
 
 ```bash
-$ clip < ~/.ssh/id_rsa.pub
+$ clip < ~/.ssh/id_ed25519.pub
+```
+
+**For Linux users, use:**
+```bash
+$ cat ~/.ssh/id_ed25519.pub
+```
+
+**For macOS users, you can also use:**
+```bash
+$ pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
 Paste the key into the 'Key' input on GitHub, then click 'Add SSH Key'.
@@ -99,4 +114,4 @@ $ ssh -T git@github.com
 You should see a message welcoming you: "Hi [Your GitHub username]! You've successfully authenticated, but GitHub does
 not provide shell access."
 
-You've now successfully added an SSH Key to your GitHub account.
+You've now successfully added a modern, secure ed25519 SSH Key to your GitHub account.
