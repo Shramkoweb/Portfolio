@@ -6,6 +6,7 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
       name: 'Roman Kolisnyk ',
       position: 'Frontend UI Lead',
       avatar: '/static/images/about/kolisnyk.jpeg',
+      linkedinLink: 'https://www.linkedin.com/in/ramapitek/',
       company: {
         name: 'AirSlate',
         url: 'https://www.airslate.com/',
@@ -17,9 +18,9 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
   {
     author: {
       name: 'Oleksandr Holovchenko',
-      avatar:
-        '/static/images/about/holovchenko.jpeg',
+      avatar: '/static/images/about/holovchenko.jpeg',
       position: 'Software Engineer',
+      linkedinLink: 'https://www.linkedin.com/in/algolj/',
       company: {
         name: 'MacPaw',
         url: 'https://macpaw.com/',
@@ -32,8 +33,8 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
     author: {
       name: 'Anton Slesariev',
       position: 'Senior Frontend Engineer',
-      avatar:
-        '/static/images/about/slesariev.jpeg',
+      avatar: '/static/images/about/slesariev.jpeg',
+      linkedinLink: 'https://www.linkedin.com/in/sonarct/',
       company: {
         name: 'Readdle',
         url: 'https://readdle.com/',
