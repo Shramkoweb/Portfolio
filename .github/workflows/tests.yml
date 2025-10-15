@@ -23,10 +23,3 @@ jobs:
           CI: true
       - name: Run tests
         run: pnpm run test:ci
-      - name: code coverage
-        uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: pnpm run test:coverage
-          debug: true
