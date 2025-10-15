@@ -79,7 +79,7 @@ function GearPage() {
           <ul>
             <li>
               <a
-                href="https://preply.com/en/?pref=OTc2NzkwOQ==&id=1733275008.074286"
+                href="https://preply.com/en/invite/OTc2NzkwOQ==?id=1733275008.074286"
                 target="_blank"
                 rel="noopener"
               >
