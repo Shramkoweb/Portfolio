@@ -26,9 +26,15 @@ function LinkedinFeedback(props: Props) {
                 />
 
                 <div className="flex flex-col ml-3">
-                  <span className="text-gray-700 dark:text-gray-300">
-                    {feedback.author.name}
-                  </span>
+                  <a
+                    href={feedback.author.linkedinLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <h3 className='not-prose'>
+                      {feedback.author.name}
+                    </h3>
+                  </a>
                   <p className="m-0 text-gray-700 dark:text-gray-300 text-xs">
                     {`${feedback.author.position} `}
                     <a

@@ -69,6 +69,7 @@ type LinkedinFeedbackAuthor = {
   position: string;
   avatar: string;
   company: LinkedinCompany;
+  linkedinLink: string;
 };
 
 export type TLinkedinFeedback = {
