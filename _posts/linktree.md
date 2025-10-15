@@ -153,7 +153,7 @@ export default defineConfig({
 
 ## Deploying to Vercel
 
-[Vercel makes deploying](https://vercel.com/docs/frameworks/astro) Astro projects a breeze. Here's how I did it:
+[Vercel makes deploying](https://vercel.com/docs/frameworks/frontend/astro) Astro projects a breeze. Here's how I did it:
 
 1. I pushed my project to a GitHub repository.
 2. I connected my Vercel account to my GitHub account.

@@ -207,7 +207,7 @@ module.exports = nextConfigByEnv[process.env.NODE_ENV];
 your database schema, it's easier than ever to manage your data.
 Whether you have an existing database or you're starting from scratch, Prisma has you covered.
 
-When combining Prisma with Next.js, you can skip the [CRUD](https://www.codecademy.com/article/what-is-crud) boilerplate
+When combining Prisma with Next.js, you can skip the [CRUD](https://www.codecademy.com/article/what-is-crud-explained) boilerplate
 and directly query the database.
 Less code means less bugs.
 

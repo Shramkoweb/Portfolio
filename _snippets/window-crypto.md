@@ -47,4 +47,4 @@ console.log(myUUID); // Outputs something like '3b241101-e2bb-4255-8caf-4136c566
 - [MDN Web Docs - window.crypto.randomUUID()](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)
 - [Can I use window.crypto.randomUUID()?](https://caniuse.com/mdn-api_crypto_randomuuid)
 - [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
-- [RFC 4122 - A Universally Unique IDentifier (UUID) URN Namespace](https://tools.ietf.org/html/rfc4122)
+- [RFC 4122 - A Universally Unique IDentifier (UUID) URN Namespace](https://datatracker.ietf.org/doc/html/rfc4122)

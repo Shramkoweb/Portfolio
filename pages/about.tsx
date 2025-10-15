@@ -172,7 +172,7 @@ function AboutPage() {
           <h3 className="m-0 mb-4">
             Software Engineer at&ensp;
             <a
-              href="https://lawrina.org/"
+              href="https://loio.com/"
               rel="noopener noreferrer"
               target="_blank"
             >
