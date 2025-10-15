@@ -5,7 +5,7 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
     author: {
       name: 'Roman Kolisnyk ',
       position: 'Frontend UI Lead',
-      avatar: 'https://avatars.githubusercontent.com/u/26679133?v=4',
+      avatar: '/static/images/about/kolisnyk.jpeg',
       company: {
         name: 'AirSlate',
         url: 'https://www.airslate.com/',
@@ -18,7 +18,7 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
     author: {
       name: 'Oleksandr Holovchenko',
       avatar:
-        'https://media.licdn.com/dms/image/v2/C4E03AQEh44QiS-ZVJA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1625395130042?e=1758758400&v=beta&t=lJUPY8erMLv77A5be-O7f2jSqWycrGONPXPBqpq27Xk',
+        '/static/images/about/holovchenko.jpeg',
       position: 'Software Engineer',
       company: {
         name: 'MacPaw',
@@ -33,7 +33,7 @@ export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
       name: 'Anton Slesariev',
       position: 'Senior Frontend Engineer',
       avatar:
-        'https://media.licdn.com/dms/image/v2/C4E03AQHa0t09lIdvHw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1637844097215?e=1758758400&v=beta&t=K8v4bKb6H0MAe3PrBemgD20tpGH_fDeICjA2XZAp5_w',
+        '/static/images/about/slesariev.jpeg',
       company: {
         name: 'Readdle',
         url: 'https://readdle.com/',
