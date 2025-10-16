@@ -50,7 +50,7 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         description,
         readTime: text,
         createDate: Date.parse(createDate),
-        updateDate: Date.parse(updateDate),
+        updateDate: updateDate ? Date.parse(updateDate) : null,
       },
       content,
     };
