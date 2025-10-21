@@ -53,8 +53,7 @@ interface ButtonProps {
 }
 
 function Button({ className }: ButtonProps) {
-  return <button className = { className } > Click
-  me < /button>;
+  return <button className={className}> Click me </button>;
 }
 ```
 
@@ -62,10 +61,10 @@ Now, if you try to pass an invalid class name to the Button component, you'll ge
 
 ```tsx
 // ✅ This is valid
-<Button className = "btn-red-small" / >
+<Button className="btn-red-small" />
 
 // ❌ This is not valid - TypeScript will show an error
-<Button className = "btn-yellow-small" / >
+<Button className="btn-yellow-small" />
 ```
 
 Template literal types are a powerful new tool in the TypeScript toolbox. They can help you write more expressive, more
