@@ -65,8 +65,8 @@ const nextConfig = {
       }
     ];
   },
-  serverRuntimeConfig: {
-    appReleaseVersion: new Date().valueOf()
+  env: {
+    APP_RELEASE_VERSION: new Date().valueOf().toString()
   },
   images: {
     remotePatterns: [

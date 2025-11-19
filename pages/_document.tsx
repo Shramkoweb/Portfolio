@@ -1,11 +1,8 @@
 import { Head, Html, Main, NextScript } from 'next/document';
-import getConfig from 'next/config';
 
 export default function Document() {
-  const { serverRuntimeConfig } = getConfig();
-
   return (
-    <Html lang="en" data-relese={serverRuntimeConfig.appReleaseVersion}>
+    <Html lang="en" data-relese={process.env.APP_RELEASE_VERSION}>
       <Head>
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
