@@ -3,7 +3,7 @@ import readingTime from 'reading-time';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
 
-import { Post, PostCategory } from '@/lib/types';
+import { Post, PostCategory, PostMetadata } from '@/lib/types';
 import { extractMarkdownSlug } from '@/lib/utils';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
@@ -68,6 +68,12 @@ export async function getPosts(): Promise<Post[]> {
     .map(getPostBySlug);
 
   return Promise.all(postPromises);
+}
+
+export async function getPostsMetadata(): Promise<PostMetadata[]> {
+  const posts = await getPosts();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  return posts.map(({ content, ...post }) => post);
 }
 
 export async function getPostSlugs() {
