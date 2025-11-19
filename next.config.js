@@ -69,6 +69,7 @@ const nextConfig = {
     APP_RELEASE_VERSION: new Date().valueOf().toString()
   },
   images: {
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: 'https',
