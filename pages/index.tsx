@@ -79,7 +79,15 @@ function IndexPage(props: IndexPageProps) {
               Serhii Shramko
             </h1>
             <h2 className="mb-4 text-gray-700 dark:text-gray-200">
-              Senior Software Engineer
+              Senior Software Engineer at&ensp;
+              <a
+                href="https://betterme.world/"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="underline decoration-gray-400 hover:decoration-gray-600 dark:decoration-gray-500 dark:hover:decoration-gray-300"
+              >
+                BetterMe
+              </a>
             </h2>
             <p className="text-gray-600 dark:text-gray-400">Hi there 🖐 🇺🇦</p>
             <p className="text-gray-600 dark:text-gray-400">
