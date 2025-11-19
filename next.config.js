@@ -65,10 +65,11 @@ const nextConfig = {
       }
     ];
   },
-  serverRuntimeConfig: {
-    appReleaseVersion: new Date().valueOf()
+  env: {
+    APP_RELEASE_VERSION: new Date().valueOf().toString()
   },
   images: {
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: 'https',

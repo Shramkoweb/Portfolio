@@ -92,6 +92,63 @@ function AboutPage() {
 
           <div className="flex justify-between">
             <em className="text-gray-300 text-xs">
+              <time dateTime="2025-01">January 2025</time>
+              &ensp;–&ensp;
+              Present
+            </em>
+            <em className="text-gray-300 text-xs">Boston, MA</em>
+          </div>
+
+          <h3 className="m-0 mb-4">
+            Senior Software Engineer at&ensp;
+            <a
+              href="https://betterme.world/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              BetterMe
+            </a>
+          </h3>
+
+          <p className="text-sm">
+            BetterMe — digital health & wellness platform with{' '}
+            <strong>100M+ downloads</strong>.
+          </p>
+
+          <ul className="text-sm">
+            <li>
+              Served as <strong>Technical Lead & hands-on architect</strong> for
+              a new <strong>B2B admin platform</strong>, drove front- and
+              back-end architecture (Next.js, Nest.JS, Refine, Redux),
+              established scalable infrastructure, CI/CD and a design system,
+              coordinated delivery across the team, and was accountable for
+              production readiness.
+            </li>
+
+            <li>
+              Built <strong>centralized monitoring</strong> with{' '}
+              <strong>Elasticsearch and Kibana</strong>, enabling real-time
+              issue detection and <strong>100% coverage</strong> of critical
+              flows; reduced incident response time (MTTR).
+            </li>
+
+            <li>
+              Introduced <strong>automated testing</strong> with Playwright
+              (E2E) and Jest (unit/integration), increased coverage, cut
+              regression bugs, and shortened the manual QA cycle.
+            </li>
+
+            <li>
+              Led <strong>React, TypeScript, React upskilling programs</strong>;
+              established shared patterns =&gt; less review time, higher code
+              quality, faster prod deploys.
+            </li>
+          </ul>
+
+          <hr />
+
+          <div className="flex justify-between">
+            <em className="text-gray-300 text-xs">
               <time dateTime="2021-11">November 2021</time>
               &ensp;–&ensp;
               <time dateTime="2024-12">December 2024</time>
