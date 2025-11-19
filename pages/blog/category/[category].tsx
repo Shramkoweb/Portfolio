@@ -10,6 +10,7 @@ import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
 import { SearchInput } from '@/components/search-input';
+import { NoResults } from '@/components/no-results';
 
 interface CategoryPageProps {
   posts: Post[];
@@ -70,22 +71,21 @@ function CategoryPage(props: CategoryPageProps) {
         <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
           Articles
         </h2>
-        {!filteredBlogPosts.length && (
-          <p className="mb-4 text-gray-600 dark:text-gray-400">
-            No articles found.
-          </p>
+        {!filteredBlogPosts.length ? (
+          <NoResults searchValue={searchValue} />
+        ) : (
+          <ul className="w-full">
+            {filteredBlogPosts.map(({ data }) => (
+              <li key={data.title} className="mb-8 last:mb-0">
+                <BlogPostPreview
+                  slug={data.slug}
+                  heading={data.heading}
+                  excerpt={data.description}
+                />
+              </li>
+            ))}
+          </ul>
         )}
-        <ul>
-          {filteredBlogPosts.map(({ data }) => (
-            <li key={data.title} className="mb-8 last:mb-0">
-              <BlogPostPreview
-                slug={data.slug}
-                heading={data.heading}
-                excerpt={data.description}
-              />
-            </li>
-          ))}
-        </ul>
       </div>
     </>
   );
