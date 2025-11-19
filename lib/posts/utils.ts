@@ -17,3 +17,42 @@ export const filterByAdvanceReact = (post: Post | PostMetadata) => post.data.cat
 
  
 export const filterByHeading = (post: Post | PostMetadata, heading: string) => post.data.heading.toLowerCase().includes(heading.toLowerCase());
+
+export const getYearFromPost = (post: Post | PostMetadata): number => {
+  const date = new Date(post.data.createDate);
+  return date.getFullYear();
+};
+
+export type YearSeparator = {
+  type: 'year-separator';
+  year: number;
+};
+
+export type PostWithSeparator = PostMetadata | YearSeparator;
+
+export const isYearSeparator = (item: PostWithSeparator): item is YearSeparator => {
+  return 'type' in item && item.type === 'year-separator';
+};
+
+export const addYearSeparators = (posts: PostMetadata[]): PostWithSeparator[] => {
+  if (posts.length === 0) return [];
+
+  const result: PostWithSeparator[] = [];
+  let currentYear: number | null = null;
+
+  posts.forEach((post) => {
+    const postYear = getYearFromPost(post);
+    
+    if (currentYear !== postYear) {
+      result.push({
+        type: 'year-separator',
+        year: postYear,
+      });
+      currentYear = postYear;
+    }
+    
+    result.push(post);
+  });
+
+  return result;
+};
