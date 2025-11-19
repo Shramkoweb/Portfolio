@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import { useState } from 'react';
 
-import { getPosts, getPostsCategories } from '@/lib/posts/api';
+import { getPostsMetadata, getPostsCategories } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
-import { Post, PostCategory } from '@/lib/types';
+import { PostMetadata, PostCategory } from '@/lib/types';
 import { Categories } from '@/components/categories';
 
 interface BlogPageProps {
-  posts: Post[];
+  posts: PostMetadata[];
   categories: PostCategory[];
 }
 
@@ -116,7 +116,7 @@ function BlogPage(props: BlogPageProps) {
 }
 
 export async function getStaticProps() {
-  const posts = await getPosts();
+  const posts = await getPostsMetadata();
   const categories = await getPostsCategories();
   const sortedPosts = posts.sort(sortByBirthtime);
 

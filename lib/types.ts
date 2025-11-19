@@ -26,6 +26,8 @@ export type Post = {
   content: string;
 };
 
+export type PostMetadata = Omit<Post, 'content'>;
+
 export enum PostCategory {
   JS = 'js',
   Vercel = 'vercel',
