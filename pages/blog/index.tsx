@@ -3,9 +3,10 @@ import { useState } from 'react';
 
 import { getPostsMetadata, getPostsCategories } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
-import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
+import { filterByHeading, sortByBirthtime, addYearSeparators, isYearSeparator } from '@/lib/posts/utils';
 import { PostMetadata, PostCategory } from '@/lib/types';
 import { Categories } from '@/components/categories';
+import { NoResults } from '@/components/no-results';
 
 interface BlogPageProps {
   posts: PostMetadata[];
@@ -18,6 +19,8 @@ function BlogPage(props: BlogPageProps) {
 
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) => filterByHeading(post, searchValue));
+  const isSearching = searchValue.length > 0;
+  const postsWithSeparators = isSearching ? filteredBlogPosts : addYearSeparators(filteredBlogPosts);
 
   return (
     <>
@@ -93,23 +96,48 @@ function BlogPage(props: BlogPageProps) {
         <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
           Articles
         </h2>
-        <ul>
-          {filteredBlogPosts.map(
-            ({
-              data: {
-                title, slug, heading, description,
-              },
-            }) => (
-              <li key={title} className='mb-8 last:mb-0'>
-                <BlogPostPreview
-                  slug={slug}
-                  heading={heading}
-                  excerpt={description}
-                />
-              </li>
-            ),
-          )}
-        </ul>
+        {filteredBlogPosts.length === 0 && isSearching ? (
+          <NoResults searchValue={searchValue} />
+        ) : (
+          <ul className="w-full">
+            {isSearching ? (
+              filteredBlogPosts.map((post) => (
+                <li key={post.data.title} className='mb-8 last:mb-0'>
+                  <BlogPostPreview
+                    slug={post.data.slug}
+                    heading={post.data.heading}
+                    excerpt={post.data.description}
+                  />
+                </li>
+              ))
+            ) : (
+              postsWithSeparators.map((item) => {
+                if (isYearSeparator(item)) {
+                  return (
+                    <li key={`year-${item.year}`} className="mb-8">
+                      <div className="flex items-center gap-4">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                          {item.year}
+                        </h3>
+                        <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+                      </div>
+                    </li>
+                  );
+                }
+                
+                return (
+                  <li key={item.data.title} className='mb-8 last:mb-0'>
+                    <BlogPostPreview
+                      slug={item.data.slug}
+                      heading={item.data.heading}
+                      excerpt={item.data.description}
+                    />
+                  </li>
+                );
+              })
+            )}
+          </ul>
+        )}
       </div>
     </>
   );
