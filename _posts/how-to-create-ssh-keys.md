@@ -17,7 +17,7 @@ Today, we are going to walk through the process of adding [SSH keys](https://www
 account using the modern and secure ed25519 algorithm.
 
 Before we begin, make sure you have Git installed on your system. If you haven't done this already, head over to
-the [Git website](https://git-scm.com/downloads), download the latest version, and install it.
+the [Git website](https://git-scm.com/install/), download the latest version, and install it.
 
 Here is a step-by-step guide:
 
