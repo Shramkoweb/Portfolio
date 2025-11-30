@@ -134,6 +134,12 @@ export const categoryToSeoData = {
       'Learn SEO fundamentals for developers. Master meta tags, structured data, performance optimization, and technical SEO best practices.',
     keywords: 'SEO, Web Development, Optimization',
   },
+  [PostCategory.AI]: {
+    title: 'AI Tools for Developers: Practical Applications',
+    description:
+      'Explore AI tools and techniques for software development. Learn to use AI assistants, code generation, and automation in your workflow.',
+    keywords: 'AI, Machine Learning, Developer Tools',
+  },
 };
 
 export const isProduction = () => process.env.NODE_ENV === Environment.Production;

@@ -4,7 +4,7 @@ heading: "SEO Audit with AI: 56 Posts, One Afternoon"
 description: I used Cursor AI to audit SEO across 56 blog posts in one afternoon. Meta descriptions, broken links, and alt text — all fixed systematically.
 createDate: 2025-11-30T22:00:00.000Z
 keywords: [AI SEO audit, Cursor AI, meta descriptions, developer blog SEO, content optimization]
-categories: [SEO, Productivity, Tools, Opinion]
+categories: [AI, SEO, Productivity, Tools, Opinion]
 featured: false
 ---
 
