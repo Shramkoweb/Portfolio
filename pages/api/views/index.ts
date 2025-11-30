@@ -15,6 +15,12 @@ export default async function handler(
       },
     });
 
+    // Cache for 5 minutes, stale-while-revalidate for 10 minutes
+    res.setHeader(
+      'Cache-Control',
+      's-maxage=300, stale-while-revalidate=600'
+    );
+
     return res.status(200).json({ total: Number(count ?? 0) });
   } catch {
     return res.status(500).json({

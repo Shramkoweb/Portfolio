@@ -29,6 +29,12 @@ export default async function handler(
     const mineRepos = repos.filter((repo: { fork: boolean }) => !repo.fork);
     const stars = mineRepos.reduce(starReducer, 0);
 
+    // Cache for 1 hour, stale-while-revalidate for 24 hours
+    res.setHeader(
+      'Cache-Control',
+      's-maxage=3600, stale-while-revalidate=86400'
+    );
+
     // With the edge error we have error
     // https://github.com/getsentry/sentry-javascript/issues/5667
     return res.status(200).json({
