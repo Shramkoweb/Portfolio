@@ -1,7 +1,7 @@
 ---
 title: Adding SSH Keys to Your GitHub Account
 heading: How to add SSH keys to your GitHub account
-description: Learn how to add SSH keys to your GitHub account. Boost your account's security and ease your workflow by securely connecting your local machine to your GitHub repositories.
+description: Learn how to add SSH keys to your GitHub account. Boost security and ease your workflow by connecting your local machine to GitHub repositories.
 createDate: 2023-12-08T01:07:13.290Z
 updateDate: 2025-09-15T12:29:00.000Z
 keywords: [ Adding SSH Keys, GitHub Account, Git Terminal, Existing SSH Keys, Generating SSH Key, SSH public key, SSH Key to GitHub Account, ed25519 ]
@@ -17,7 +17,7 @@ Today, we are going to walk through the process of adding [SSH keys](https://www
 account using the modern and secure ed25519 algorithm.
 
 Before we begin, make sure you have Git installed on your system. If you haven't done this already, head over to
-the [Git website](https://git-scm.com/downloads), download the latest version, and install it.
+the [Git website](https://git-scm.com/install/), download the latest version, and install it.
 
 Here is a step-by-step guide:
 

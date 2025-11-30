@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 
-const DESCRIPTION = 'Front-end developer, JavaScript enthusiast and mentor.';
+const DESCRIPTION = 'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js. Practical tutorials, code snippets, and tips for web developers.';
 const TITLE = 'Serhii Shramko – Developer, writer, creator.';
 const IMAGE = 'https://shramko.dev/static/images/twittersite.png';
 

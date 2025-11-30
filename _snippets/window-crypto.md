@@ -1,7 +1,7 @@
 ---
 title: "Generating UUIDs in JavaScript: Best Practices"
 heading: Generating UUIDs in JavaScript
-description: Learn how to generate universally unique identifiers (UUIDs) in JavaScript using window.crypto.randomUUID().
+description: Generate UUIDs in JavaScript using window.crypto.randomUUID(). Copy-paste snippet for creating universally unique identifiers in browser environments.
 createDate: 2024-09-28T18:23:42.844Z
 keywords: [
   window.crypto.randomUUID,

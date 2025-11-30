@@ -1,7 +1,7 @@
 ---
 title: useToggle React Hook
 heading: useToggle
-description: A hook to toggle a boolean value with useToggle.
+description: Simple useToggle React hook for managing boolean state. Toggle between true and false with a clean API. Perfect for modals, dropdowns, and dark mode switches.
 createDate: 2024-10-30
 keywords: [
   useToggle hook,

@@ -1,7 +1,7 @@
 ---
 heading: Generic Type Parameters in TypeScript
 title: What is a generic type parameter T in TypeScript?
-description: Understanding Generics Parameters naming conventions.
+description: Learn TypeScript generic type parameter naming conventions. Understand when to use T, K, V and when descriptive names like TKey make your code more readable.
 createDate: 2025-05-31T15:01:43.973Z
 keywords: [
   "TypeScript generics",

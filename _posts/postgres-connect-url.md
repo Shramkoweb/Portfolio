@@ -1,7 +1,7 @@
 ---
 title: Use Postgres Connect URLs for DB Connections
 heading: Postgres connect to database with URL
-description: How to connect postgres database with URL
+description: Learn how to connect to PostgreSQL using a connection URL string. Simple guide for Node.js, DataGrip, or any client supporting URL-based database connections.
 createDate: 2023-02-09T12:43:36.700Z
 updateDate: 2023-02-09T12:43:36.700Z
 keywords: [DataGrip connect, database connection ulr, postgres connect url, how to connect to database]

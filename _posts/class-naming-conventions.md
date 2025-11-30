@@ -1,7 +1,7 @@
 ---
 title: Advanced HTML Class Naming Strategies for CSS Efficiency
 heading: "Mastering HTML Class Naming: Boosting CSS Efficiency"
-description: Discover the art of crafting clean and organized HTML class names while enhancing CSS naming conventions. Learn how to create maintainable, scalable, and SEO-friendly code with the latest best practices.
+description: Discover the art of crafting clean HTML class names with BEM methodology. Learn to create maintainable, scalable, and SEO-friendly CSS code.
 createDate: 2023-10-25T19:12:07.231Z
 keywords: [ css naming conventions, name convention css, css class naming conventions, css class name convention, html id naming convention, naming css, html id name convention, html class naming conventions ]
 categories: [ CSS, HTML, Clean-Code ]
@@ -16,7 +16,7 @@ As a web developer, you understand the importance of keeping your codebase clean
 aspects of achieving this goal is following HTML class naming conventions.
 
 In this article, we'll delve into the world of HTML class naming conventions, with a specific focus on
-the [BEM](https://how.dev/answers/what-is-a-css-class-naming-convention) (Block,
+the [BEM](https://www.educative.io/answers/what-is-a-css-class-naming-convention) (Block,
 Element, Modifier) methodology.
 We'll explore how this approach enhances CSS naming conventions, improves code readability, and makes your codebase more
 organized.
@@ -164,7 +164,7 @@ For further reading on CSS and HTML best practices, consider checking out these 
 - [Scaler's CSS Class Naming Convention Article](https://www.scaler.com/topics/css-class-naming-convention/)
 - [StackOverflow Discussion on CSS Class Naming Conventions](https://stackoverflow.com/questions/7927193/css-class-naming-convention)
 - [HackerNoon's Article on CSS Organization and Naming Conventions](https://hackernoon.com/best-practice-in-css-organisation-and-naming-conventions-4d103ujy)
-- [Dev.to Article on CSS Naming Conventions](https://dev.to/ziizium/css-naming-conventions-5gd6)
+- [CSS Naming Conventions on CSS-Tricks](https://css-tricks.com/bem-101/)
 - [LinkedIn Discussion on HTML Class and ID Naming](https://www.linkedin.com/advice/1/how-do-you-name-html-classes-ids-skills-html)
 
 These references will provide you with comprehensive insights into web development best practices, ensuring you're

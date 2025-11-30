@@ -1,7 +1,7 @@
 ---
 title: "Mastering Grid Creation Using Flexbox in React: A Step-by-Step Guide"
 heading: "How to create a grid with flexbox in React"
-description: Creating a flexbox-based Grid component with BEM methodology and clsx
+description: Learn how to build a reusable flexbox-based Grid component in React using BEM methodology and clsx for clean class management.
 createDate: 2022-10-09T20:40:12.461Z
 updateDate: 2022-10-10T00:35:10.461Z
 keywords: [ react flexbox grid, flexbox css, react js grid, react flexbox, react grid system, classnames, clsx ]
@@ -12,10 +12,10 @@ featured: false
 <Image src="grid.jpeg" alt="Retro background with grid lines and neon" />
 
 Often in the life of a web developer, you need to make a grid, but the limitations of the browser (Internet Explorer 😭)
-do not allow you to use, for example, [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout).
+do not allow you to use, for example, [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout).
 
 This is
-where [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox)
+where [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts)
 comes to the rescue. He is our friend, brother and helper. 🫡
 
 This post is about how to create a flexbox-based grid component in React. The component should be reusable and painless

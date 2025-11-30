@@ -1,7 +1,7 @@
 ---
 title: "How to Compare Dates in JavaScript: Check Date Ranges Easily"
 heading: Check if date is between two dates
-description: Checks if a date is between two other dates with code examples
+description: JavaScript function to check if a date falls between two other dates. Uses getTime() for accurate comparison. Perfect for date validation and booking systems.
 createDate: 2023-03-05T21:57:31.886Z
 keywords: [JS snippet, JS Date Snippet, check if date is between two dates, date getTime method, getTime JS]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "CSS Custom Text Selection: A Guide to Improving UX"
 heading: CSS - Custom text selection
-description: Changes the styling of text selection.
+description: Customize text selection highlighting with CSS ::selection pseudo-element. Change background color, text color, and styles when users select content.
 createDate: 2023-03-05T20:59:59.512Z
 keywords: [CSS snippet, CSS selection, CSS examples, change selection CSS]
 ---

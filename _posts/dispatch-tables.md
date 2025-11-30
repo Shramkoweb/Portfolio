@@ -1,7 +1,7 @@
 ---
 title: "Dispatch Tables in JavaScript: A Clean Code Approach"
 heading: Dispatch table in javascript
-description: Polymorphism and Dispatch Tables in JS
+description: Replace messy switch statements with dispatch tables in JavaScript. Learn this clean code pattern for handling multiple conditions with maintainable code.
 createDate: 2022-08-28T08:04:18.720Z
 updateDate: 2022-08-28T10:28:54.920Z
 keywords: [Switch statement in javascript, Dynamic Dispatch, Dispatch Tables, Conditionals in JavaScript, Polymorphism in JavaScript]

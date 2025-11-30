@@ -1,6 +1,6 @@
 ---
 title: Highly recommended resources for developers in 2025
-description: Check out a list of the best resources and blogs for developers in 2025.
+description: Curated list of the best resources, blogs, and websites every developer should know in 2025. Essential reading for staying up-to-date.
 heading: My "every programmer should know" list - 2025
 createDate: 2022-09-19T19:46:55.334Z
 updateDate: 2025-07-21

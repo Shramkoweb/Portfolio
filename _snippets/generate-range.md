@@ -1,7 +1,7 @@
 ---
 title: "How to Use the Range Function in JavaScript: A Simple Guide"
 heading: Range Function
-description: Generate an array of numbers in a range using JavaScript.
+description: Create an array of sequential numbers with a JavaScript range function. Similar to Python's range(), generates number sequences with optional step values.
 createDate: 2024-07-12
 keywords: [
   JavaScript range function,

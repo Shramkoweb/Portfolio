@@ -1,7 +1,7 @@
 ---
 title: Email Validation in TypeScript – Regex Function
 heading: Validate Email in JavaScript
-description: Learn how to implement a TypeScript function for validating email addresses using regular expressions and type safety. This guide covers email validation best practices and implementation details.
+description: TypeScript function for validating email addresses using regex. Copy-paste snippet with type safety for form validation in your web applications.
 createDate: 2025-05-14
 keywords: [
   "email validation",

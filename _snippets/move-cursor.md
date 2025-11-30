@@ -1,7 +1,7 @@
 ---
 title: How to Move Cursor to the End of Input Field with JavaScript
 heading: Move cursor to the end of input
-description: How to move cursor to the end of input with JavaScript
+description: JavaScript snippet to programmatically move the text cursor to the end or beginning of an input field. Useful for form validation and auto-focus features.
 createDate: 2023-03-22T00:11:17.662Z
 keywords: [move cursor to the end of input, change cursor in javascript, javascript move cursor to end of contenteditable, javascript move cursor to beginning of input]
 ---

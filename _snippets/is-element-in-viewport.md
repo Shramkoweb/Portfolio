@@ -1,7 +1,7 @@
 ---
 title: JavaScript Techniques for Checking Element Visibility in the Viewport
 heading: How to Check if an Element is in the Viewport in JavaScript
-description: Discover how to check if an element is in the viewport using JavaScript. This guide explains both the modern Intersection Observer API and a manual method, ideal for lazy loading, animations, and more.
+description: Check if an element is visible in the viewport using JavaScript. Covers Intersection Observer API and manual methods for lazy loading and animations.
 createDate: 2024-05-20T19:09:55.954Z
 keywords: [JavaScript viewport check, Element in viewport, Intersection Observer API, JavaScript visibility detection, Lazy loading JavaScript, Detect element in viewport, JavaScript viewport detection, Viewport animation trigger, JavaScript scroll detection, Check if element is visible, Manual viewport check JavaScript, Web development viewport, Viewport lazy loading, JavaScript intersection observer tutorial, Efficient viewport detection JavaScript]
 ---

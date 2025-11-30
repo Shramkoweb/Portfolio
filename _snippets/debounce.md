@@ -1,7 +1,7 @@
 ---
 title: Debounce snippet function in modern TypeScript
 heading: Debounce
-description: A debounce function in TypeScript.
+description: Copy-paste debounce function in TypeScript. Delay function execution until user stops typing or triggering events. Includes React usage example.
 createDate: 2025-05-15
 keywords: [
   debounce,

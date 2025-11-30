@@ -1,7 +1,7 @@
 ---
 title: "JavaScript Random Number Generation: Best Practices"
 heading: Random number generator
-description: Generate a random number in a range using JavaScript.
+description: JavaScript function to generate random numbers within a range. Works with integers and floats. Copy-paste snippet using Math.random() for any project.
 createDate: 2024-07-11
 keywords: [
   JavaScript getRandom function,

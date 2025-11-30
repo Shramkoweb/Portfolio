@@ -1,7 +1,7 @@
 ---
 title: "JavaScript Expressions vs Statements: What's the Difference?"
 heading: Expressions vs Statements
-description: Understand the important distinction expressions vs statements in JavaScript
+description: Learn the difference between expressions and statements in JavaScript. Understanding this distinction helps you write better code and avoid syntax errors.
 keywords: [JS, CS, ES Modules]
 categories: [JS, Clean-Code]
 createDate: 2022-07-27T21:27:20Z

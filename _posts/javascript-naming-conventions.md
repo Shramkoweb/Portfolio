@@ -1,7 +1,7 @@
 ---
 title: "JavaScript Naming Conventions: A Complete Guide for Clean Code"
 heading: Why Are JavaScript Naming Conventions Important?
-description: Master JavaScript naming conventions with this comprehensive guide. Learn best practices for naming variables, functions, classes, and more to write cleaner, more maintainable code.
+description: Master JavaScript naming conventions with this guide. Learn best practices for naming variables, functions, and classes to write cleaner code.
 createDate: 2025-02-02T09:00:00.000Z
 keywords: [ javascript naming conventions, javascript best practices, clean code javascript, javascript naming patterns, javascript variable naming, javascript coding standards, js naming convention, javascript class naming ]
 categories: [ JS, TS, Tutorial, Project-Setup, Opinion, Tools ]

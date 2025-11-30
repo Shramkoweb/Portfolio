@@ -1,7 +1,7 @@
 ---
 title: How I Got Apollo GraphQL Certification for Free
 heading: GraphQL Certified – How I earned my certification
-description: Astro is a new Javascript framework, so discover what makes it special and what are its core features.
+description: My journey to getting Apollo GraphQL certification for free. Learn about the exam structure, preparation tips, and how to earn your credential.
 createDate: 2025-03-13T09:01:43.973Z
 keywords: [ GraphQL, Apollo Odyssey, Apollo Odyssey Learning Platform, Apollo Graph Developer - Associate, Apollo Graph Developer - Professional, GraphQL Certification exam, GraphQL Certifications, graphql certification professional, graphql certification free, apollo graphql certification answers, apollo graphql professional certification ]
 categories: [ Certifications ]

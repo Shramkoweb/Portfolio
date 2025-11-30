@@ -1,7 +1,7 @@
 ---
 title: "Exploring the Astro Framework: A Comprehensive Guide"
 heading: What is Astro Framework?
-description: Astro is a new Javascript framework, so discover what makes it special and what are its core features.
+description: Comprehensive guide to the Astro framework. Learn what makes it special, explore its core features, and understand why it's great for static sites.
 createDate: 2023-03-16T09:01:43.973Z
 keywords: [ astro js, astro framework, astro js tutorial, what is astro, how to build fast, cms javascript framework ]
 categories: [ JS, TS, Astro, JamStack ]
