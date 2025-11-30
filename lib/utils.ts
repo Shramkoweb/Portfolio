@@ -128,6 +128,12 @@ export const categoryToSeoData = {
       'Master advanced React patterns: render props, compound components, custom hooks, and performance optimization techniques.',
     keywords: 'React, Frontend, JavaScript',
   },
+  [PostCategory.SEO]: {
+    title: 'SEO for Developers: Optimize Your Web Projects',
+    description:
+      'Learn SEO fundamentals for developers. Master meta tags, structured data, performance optimization, and technical SEO best practices.',
+    keywords: 'SEO, Web Development, Optimization',
+  },
 };
 
 export const isProduction = () => process.env.NODE_ENV === Environment.Production;

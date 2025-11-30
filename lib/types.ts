@@ -48,6 +48,7 @@ export enum PostCategory {
   Tools = 'tools',
   Certifications = 'certifications',
   AdvancedReact = 'advanced-react',
+  SEO = 'seo',
 }
 
 export enum Feedback {
