@@ -1,7 +1,7 @@
 ---
 heading: Node Version Manager 
 title: Managing Node Versions Made Easy with Node Version Manager (NVM) 
-description: NVM, or Node Version Manager. What is it and why we should use it?
+description: Learn how to install and use Node Version Manager (NVM) to switch between Node.js versions. Essential for projects with different Node version requirements.
 createDate: 2023-02-25T17:21:50.063Z
 updateDate: 2023-02-25T17:21:50.063Z
 keywords: [what is nvm node, what is nvm in linux, brew install nvm, install nvm, install nvm windows, nvm set default, nvm set default node version]

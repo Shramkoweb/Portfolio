@@ -1,7 +1,7 @@
 ---
 title: "SQL Countries Table Example: How to Create and Query Efficiently"
 heading: SQL countries table
-description: Sql dump of all the countries, country codes
+description: Ready-to-use SQL insert statements for a countries table with names, ISO codes, and phone codes. Perfect for seeding your database with real country data.
 createDate: 2023-02-15T21:11:53.432Z
 keywords: [SQL snippet, countries SQL table, SQL table, SQL example, SQL examples]
 ---

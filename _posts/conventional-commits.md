@@ -1,7 +1,7 @@
 ---
 title: "Conventional Commits enhance your coding practices"
 heading: Conventional Commits
-description: Discover how Conventional Commits can enhance your work and project's readability.
+description: Master Conventional Commits to write clear, structured commit messages. Learn the format, types like feat and fix, and how to automate changelog generation.
 createDate: 2024-07-23T22:52:26.716Z
 updateDate: 2025-05-25T15:59:10.754Z
 keywords: [

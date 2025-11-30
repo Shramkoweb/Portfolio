@@ -9,7 +9,7 @@ function GearPage() {
       <Head>
         <title>Gear | Serhii Shramko</title>
         <meta
-          content="Here's what gear I'm currently using for coding and live."
+          content="Explore my coding setup: MacBook Pro M3, PhpStorm IDE, headphones, and essential apps. Hardware and software I use daily for development and productivity."
           name="description"
           key="description"
         />

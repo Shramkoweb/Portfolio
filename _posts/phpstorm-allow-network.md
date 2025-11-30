@@ -1,7 +1,7 @@
 ---
 title: "Enabling Network Connections on Startup in PHPStorm"
 heading: PHPStorm Allow Network Connections on Startup
-description: How to fix PHPStorm network connections error on startup
+description: Fix the "allow network connections" popup appearing every time PHPStorm starts on macOS. Quick codesign solution to stop repeated permission requests.
 createDate: 2022-10-26T16:49:52.889Z
 updateDate: 2022-10-26T16:49:52.889Z
 keywords: [do you want the application to accept incoming network connections, accept incoming network connections]

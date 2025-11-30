@@ -1,7 +1,7 @@
 ---
 title: "Presenting the Revamped shramko.dev: Explore the Exciting Updates!"
 heading: "Introducing the new shramko.dev"
-description: How I built a modern portfolio and a list of technologies used to create it.
+description: A deep dive into building my developer portfolio with Next.js, React, and Tailwind CSS. Learn about the tech stack, design decisions, and features.
 createDate: 2022-08-13T13:31:25.041Z
 updateDate: 2025-05-16T14:58:41.719Z
 keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]

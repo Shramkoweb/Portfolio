@@ -1,7 +1,7 @@
 ---
 title: "Absolute vs Relative URL: Which One Should You Use"
 heading: Difference between absolute and relative URL in HTML
-description: Everything you need to know about link addresses. Absolute link vs relative
+description: Understand when to use absolute vs relative URLs in HTML. Clear examples showing how each type works, their pros and cons, and best practices for web links.
 createDate: 2022-10-21T21:57:25.439Z
 updateDate: 2022-10-21T21:57:25.439Z
 keywords: [ absolute and relative links, absolute url example, absolute url html, absolute url, absolute url vs relative url, absolute or relative ]

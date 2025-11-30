@@ -28,7 +28,7 @@ function SnippetsPage(props: SnippetsPageProps) {
           key="og:site_name"
         />
         <meta
-          content="A collection of code snippets – including serverless functions, Node.js scripts, CSS tricks and JS examples"
+          content="Reusable code snippets for JavaScript, TypeScript, React, Node.js, and CSS. Copy-paste solutions for common programming tasks and patterns."
           name="description"
           key="description"
         />

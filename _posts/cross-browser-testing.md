@@ -1,7 +1,7 @@
 ---
 title: Cross-Browser Compatibility – Testing Guide
 heading: Cross-browser testing
-description: Cross-browser testing and how to test your site with Browserstack
+description: Learn how to test your website across different browsers and devices using BrowserStack. Ensure cross-browser compatibility without maintaining a device lab.
 createDate: 2023-02-24T22:06:42.844Z
 updateDate: 2023-02-24T22:06:42.844Z
 keywords: [browserstack, browserstack dev tools, android browser with dev tools, browserstack devices, browser with developer tools for ios]
