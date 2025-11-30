@@ -1,9 +1,6 @@
-import { useEffect } from 'react';
 import useSWR from 'swr';
-import * as Sentry from '@sentry/nextjs';
 
 import { Views } from '@/lib/types';
-import { fetcher } from '@/lib/fetcher';
 
 interface ViewCounterProps {
   slug: string;
@@ -12,41 +9,14 @@ interface ViewCounterProps {
 export function ViewCounter(props: ViewCounterProps) {
   const { slug } = props;
 
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  const views = data?.total;
+  const { data } = useSWR<Views>(
+    `/api/views/${slug}`,
+    (url) => fetch(url, { method: 'POST' }).then((res) => res.json()),
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
 
-  useEffect(() => {
-    const registerView = async () => {
-      try {
-        const response = await fetch(`/api/views/${slug}`, {
-          method: 'POST',
-        });
-
-        if (!response.ok) {
-          const error = new Error(
-            `HTTP error! status: ${response.status}`,
-          ) as Error & { status: number; url: string };
-          error.status = response.status;
-          error.url = `/api/views/${slug}`;
-          throw error;
-        }
-      } catch (error) {
-        Sentry.captureException(error, {
-          tags: {
-            section: 'view-counter',
-            slug,
-          },
-          extra: {
-            error: JSON.stringify(error),
-            endpoint: `/api/views/${slug}`,
-            timestamp: new Date().toISOString(),
-          },
-        });
-      }
-    };
-
-    registerView();
-  }, [slug]);
-
-  return <span>{`${views ? views.toLocaleString() : '---'} views`}</span>;
+  return <span>{`${data?.total?.toLocaleString() ?? '---'} views`}</span>;
 }
