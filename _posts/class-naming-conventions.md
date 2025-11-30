@@ -164,7 +164,7 @@ For further reading on CSS and HTML best practices, consider checking out these 
 - [Scaler's CSS Class Naming Convention Article](https://www.scaler.com/topics/css-class-naming-convention/)
 - [StackOverflow Discussion on CSS Class Naming Conventions](https://stackoverflow.com/questions/7927193/css-class-naming-convention)
 - [HackerNoon's Article on CSS Organization and Naming Conventions](https://hackernoon.com/best-practice-in-css-organisation-and-naming-conventions-4d103ujy)
-- [Dev.to Article on CSS Naming Conventions](https://dev.to/ziizium/css-naming-conventions-5gd6)
+- [CSS Naming Conventions on CSS-Tricks](https://css-tricks.com/bem-101/)
 - [LinkedIn Discussion on HTML Class and ID Naming](https://www.linkedin.com/advice/1/how-do-you-name-html-classes-ids-skills-html)
 
 These references will provide you with comprehensive insights into web development best practices, ensuring you're

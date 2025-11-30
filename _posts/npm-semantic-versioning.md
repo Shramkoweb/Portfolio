@@ -75,7 +75,7 @@ mean:
 
 - **Broke after an update?** Check if a major version sneaked in. Temporarily pin the version <br/>`"package": "1.2.3"`
   until you fix things.
-- **Confused by symbols?** Use [semver.npmjs.com](https://semver.npmjs.com/) to test what versions your rules allow.
+- **Confused by symbols?** Use [semver.org](https://semver.org/) to understand semantic versioning rules.
 
 ---
 
