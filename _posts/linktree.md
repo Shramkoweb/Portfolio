@@ -1,7 +1,7 @@
 ---
 title: "Building a Link Tree with Astro.js and Vercel: A Step-by-Step Guide"
 heading: "My personal Linktree with Astro.js and Vercel"
-description: "Learn how to build a fast, efficient link tree website using Astro.js, deploy it with Vercel, set up a custom subdomain, and implement Vercel Analytics for performance insights."
+description: "Learn how to build a fast link tree with Astro.js and Vercel. Set up a custom subdomain and implement analytics for performance insights."
 createDate: 2024-08-30T10:00:00.000Z
 keywords: [ "astro.js", "vercel", "link tree", "web development", "static site generation", "custom domain", "vercel analytics", "deployment", "performance optimization" ]
 categories: [ "Astro", "Vercel", "Tutorial" ]
