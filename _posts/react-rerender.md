@@ -8,7 +8,7 @@ categories: [ Advanced-React, Tutorial, JS, TS, React ]
 featured: false
 ---
 
-<Image alt="" src="react-rerender.png" priority={true} />
+<Image alt="React Re-Renders article cover illustration" src="react-rerender.png" priority={true} />
 
 Hi, react [Andy](https://en.wiktionary.org/wiki/react_Andy)!
 
@@ -27,7 +27,7 @@ That’s why I’m launching a [series of articles](/blog/category/advanced-reac
 Understanding re-renders in React is crucial for performance. You need to understand what triggers them. Know how they
 move through the app. Learn what happens during a re-render and why it matters.
 
-<Image alt="" src="react-meme.png" />
+<Image alt="Meme about React re-renders" src="react-meme.png" />
 
 ## The problem
 
@@ -86,7 +86,7 @@ hurt performance.
 
 First, let’s take a closer look at what exactly is happening and why this delay occurs.
 
-<Image alt="" src="rerender.png" />
+<Image alt="Diagram showing React component tree re-rendering when state updates" src="rerender.png" />
 
 When we click the button, we trigger the `setIsOpen` setter function, which updates the `isOpen` state from `false` to
 `true`. As a result, the `App` component that holds this state re-renders itself.
@@ -103,7 +103,7 @@ state update was initiated will be re-rendered.
 The key point to remember is that React never re-renders components "up" the render tree. If a state update occurs in
 the middle of the component tree, only the components "down" the tree will be re-rendered.
 
-<Image alt="" src="rerender-state.png" />
+<Image alt="Diagram showing re-renders propagating down the component tree from state update" src="rerender-state.png" />
 
 When a component is wrapped in `React.memo`, `React` will interrupt its default re-rendering process and first evaluate
 whether the `props` have changed. If there are no changes to the `props`, re-renders will be halted. However, if even a
@@ -113,7 +113,7 @@ It's important to note that effectively preventing re-renders through memoizatio
 considerations. For a deeper understanding, it is advisable to explore these concepts further in new articles. (Comming
 soon...)
 
-<Image alt="" src="react-memo.png" />
+<Image alt="Diagram showing how React.memo prevents unnecessary re-renders" src="react-memo.png" />
 
 
 Wrapping components with `React.memo` can indeed help prevent unnecessary re-renders in certain scenarios. However, it's
@@ -155,7 +155,7 @@ const App = () => {
 };
 ```
 
-<Image alt="" src="rerender-performance-fix.png" />
+<Image alt="Diagram showing performance improvement after moving state to a separate component" src="rerender-performance-fix.png" />
 
 Consequently, the modal dialog appears immediately. We resolved a significant performance issue using a straightforward
 composition technique!
