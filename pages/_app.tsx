@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SWRConfig } from 'swr';
 
 import { isProduction } from '@/lib/utils';
 
@@ -16,11 +17,19 @@ function MyApp({ Component, pageProps }: AppProps) {
       {isProduction() && <GoogleAnalytics />}
 
       <ThemeProvider attribute="class">
-        <Layout>
-          <Component {...pageProps} />
-          <SpeedInsights />
-          <Analytics />
-        </Layout>
+        <SWRConfig
+          value={{
+            revalidateOnFocus: false,
+            revalidateOnReconnect: false,
+            dedupingInterval: 60000, // 1 minute
+          }}
+        >
+          <Layout>
+            <Component {...pageProps} />
+            <SpeedInsights />
+            <Analytics />
+          </Layout>
+        </SWRConfig>
       </ThemeProvider>
     </>
   );

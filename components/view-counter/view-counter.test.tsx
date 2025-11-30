@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import { ViewCounter } from '@/components/view-counter';
 
 describe('ViewCounter component', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     global.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: true,
@@ -12,22 +12,29 @@ describe('ViewCounter component', () => {
     });
   });
 
-  afterAll(() => {
+  afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('Fetch views with SWC', () => {
+  test('Fetches views with GET via SWR', () => {
     const slug = 'test-article-slug';
     render(<ViewCounter slug={slug} />);
 
-    // undefined because its get fetch from SWC
-    expect(global.fetch).toHaveBeenNthCalledWith(
-      1,
+    // SWR fetcher uses GET (no method specified)
+    expect(global.fetch).toHaveBeenCalledWith(
       `/api/views/${slug}`,
       undefined,
     );
-    expect(global.fetch).toHaveBeenNthCalledWith(2, `/api/views/${slug}`, {
-      method: 'POST',
+  });
+
+  test('Registers view with POST via useEffect', async () => {
+    const slug = 'test-article-slug';
+    render(<ViewCounter slug={slug} />);
+
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledWith(`/api/views/${slug}`, {
+        method: 'POST',
+      });
     });
   });
 });
