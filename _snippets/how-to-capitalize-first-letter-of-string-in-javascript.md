@@ -1,7 +1,7 @@
 ---
 title: How to Capitalize the First Letter of a String in JavaScript
 heading: Capitalize the First Letter of a String in JavaScript
-description: Learn how to capitalize the first letter of a string in JavaScript using various methods and best practices.
+description: Capitalize the first letter of a string in JavaScript. Copy-paste function with examples for toUpperCase, charAt, and slice string manipulation.
 createDate: 2024-10-13
 keywords: [ JavaScript, String manipulation, Capitalize first letter, Programming, Coding tips ]
 ---

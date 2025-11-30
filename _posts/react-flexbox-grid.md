@@ -1,7 +1,7 @@
 ---
 title: "Mastering Grid Creation Using Flexbox in React: A Step-by-Step Guide"
 heading: "How to create a grid with flexbox in React"
-description: Creating a flexbox-based Grid component with BEM methodology and clsx
+description: Learn how to build a reusable flexbox-based Grid component in React using BEM methodology and clsx for clean class management.
 createDate: 2022-10-09T20:40:12.461Z
 updateDate: 2022-10-10T00:35:10.461Z
 keywords: [ react flexbox grid, flexbox css, react js grid, react flexbox, react grid system, classnames, clsx ]

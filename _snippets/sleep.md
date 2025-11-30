@@ -1,7 +1,7 @@
 ---
 title: "Sleep in JavaScript: How to Pause Execution"
 heading: Sleep in JavaScript
-description: Learn how to pause the execution of a JavaScript program for a given number of seconds.
+description: Learn how to pause JavaScript execution with a sleep function. Create delays using Promises and async/await for timing control in your code.
 createDate: 2024-10-18
 keywords: [
   sleep in JavaScript,

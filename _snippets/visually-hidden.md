@@ -1,7 +1,7 @@
 ---
 title: Making Elements Visually Hidden for Screen Readers and Accessibility
 heading: Visually Hidden
-description: Hide content visually while keeping it accessible to screen readers using the visually hidden CSS technique.
+description: CSS snippet to hide content visually while keeping it accessible to screen readers. Essential technique for web accessibility and WCAG compliance.
 createDate: 2024-07-12
 keywords: [
   visually hidden CSS,

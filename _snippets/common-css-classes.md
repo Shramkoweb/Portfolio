@@ -1,7 +1,7 @@
 ---
 title: Essential CSS Class Names Every Developer Should Know
 heading: Common CSS Class Names
-description: Explore the world of CSS class names and learn how to use common words in your classes, following the Block Element Modifier (BEM) methodology for structured and maintainable web styling. Dive into the best practices of CSS naming and create a more organized codebase.
+description: Essential CSS class names every developer should know. Common naming patterns following BEM methodology for structured, maintainable, and organized styles.
 createDate: 2023-10-25
 keywords: [ Common CSS class names, BEM methodology, CSS naming conventions, Structured web styling, Block Element Modifier, CSS best practices, Naming conventions in CSS ]
 ---
