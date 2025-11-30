@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const GH_HEADERS = new Headers({
-  Authorization: `Bauer ${process.env.GITHUB_TOKEN}`,
+  Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
 });
 
 const starReducer = (acc: number, repo: { stargazers_count: number }) => {
