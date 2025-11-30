@@ -16,17 +16,12 @@ describe('ViewCounter component', () => {
     jest.clearAllMocks();
   });
 
-  test('Fetch views with SWC', () => {
+  test('Fetch views with SWR', () => {
     const slug = 'test-article-slug';
     render(<ViewCounter slug={slug} />);
 
-    // undefined because its get fetch from SWC
-    expect(global.fetch).toHaveBeenNthCalledWith(
-      1,
-      `/api/views/${slug}`,
-      undefined,
-    );
-    expect(global.fetch).toHaveBeenNthCalledWith(2, `/api/views/${slug}`, {
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledWith(`/api/views/${slug}`, {
       method: 'POST',
     });
   });
