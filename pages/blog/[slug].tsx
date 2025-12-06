@@ -25,6 +25,7 @@ import {
   TwitterShare,
 } from '@/components/share-button';
 import { AlsoBlock } from '@/components/also-block';
+import { FloatingReactions } from '@/components/floating-reactions';
 
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
@@ -130,6 +131,10 @@ function ArticlePage(props: ArticlePageProps) {
               <li>
                 <TelegramShare />
               </li>
+            </ul>
+            <div className="w-8 border-t border-gray-300 dark:border-gray-700 my-4" />
+            <ul className="flex flex-col gap-2">
+              <FloatingReactions slug={slug} />
             </ul>
           </aside>
         </div>
