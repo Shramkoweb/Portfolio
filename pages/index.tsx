@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
+import { MoveRight, Atom } from 'lucide-react';
 import { Routes } from '@/lib/routes';
 
 import { getPosts } from '@/lib/posts/api';
@@ -104,20 +105,7 @@ function IndexPage(props: IndexPageProps) {
               className="mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
             >
               Read more about me
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 8L22 12L18 16" />
-                <path d="M2 12H22" />
-              </svg>
+              <MoveRight size={24} />
             </Link>
           </div>
           <div
@@ -169,18 +157,7 @@ function IndexPage(props: IndexPageProps) {
           <h2 className="mt-12 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl flex items-start gap-2">
             Advanced React{' '}
             <span aria-hidden="true" className="w-6 h-6">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                viewBox="0 0 24 24"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M15.407 8.593c4.6 4.6 6.802 9.853 4.92 11.735-1.88 1.881-7.135-.322-11.734-4.921S1.791 5.554 3.673 3.672c1.88-1.881 7.134.322 11.734 4.921" />
-                <path d="M8.594 8.593c-4.6 4.6-6.803 9.853-4.921 11.735s7.135-.322 11.734-4.921 6.803-9.853 4.921-11.735-7.135.322-11.734 4.921M11.75 12h.5" />
-              </svg>
+              <Atom className="w-6 h-6" strokeWidth={1.5} />
             </span>
           </h2>
 
@@ -200,20 +177,7 @@ function IndexPage(props: IndexPageProps) {
             className="mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
           >
             Read more about React
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M18 8L22 12L18 16" />
-              <path d="M2 12H22" />
-            </svg>
+            <MoveRight size={24} />
           </Link>
         </div>
 
@@ -260,20 +224,7 @@ function IndexPage(props: IndexPageProps) {
           className="mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
         >
           Read more posts
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M18 8L22 12L18 16" />
-            <path d="M2 12H22" />
-          </svg>
+          <MoveRight size={24} />
         </Link>
       </section>
     </>
