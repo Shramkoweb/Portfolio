@@ -58,6 +58,31 @@ export enum Feedback {
   Blank = 'blank',
 }
 
+// Reactions
+export const VALID_REACTION_TYPES = ['heart', 'beer', 'trophy'] as const;
+
+export type ReactionType = (typeof VALID_REACTION_TYPES)[number];
+
+export type ReactionsResponse = {
+  reactions: Record<ReactionType, number>;
+};
+
+export interface ReactionConfig {
+  type: ReactionType;
+  emoji: string;
+  label: string;
+}
+
+export const REACTIONS: ReactionConfig[] = [
+  { type: 'heart', emoji: '❤️', label: 'Love it' },
+  { type: 'beer', emoji: '🍺', label: 'Cheers' },
+  { type: 'trophy', emoji: '🏆', label: 'Champion' },
+];
+
+export function isValidReactionType(type: string): type is ReactionType {
+  return VALID_REACTION_TYPES.includes(type as ReactionType);
+}
+
 export type Snippet = {
   data: BaseFrontmatter;
   content: string;

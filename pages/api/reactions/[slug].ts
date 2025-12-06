@@ -1,22 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { prisma } from 'lib/prisma';
-
-const VALID_REACTION_TYPES = ['heart', 'beer', 'trophy'] as const;
-
-type ReactionType = (typeof VALID_REACTION_TYPES)[number];
-
-type ReactionsResponse = {
-  reactions: Record<ReactionType, number>;
-};
+import {
+  VALID_REACTION_TYPES,
+  ReactionType,
+  ReactionsResponse,
+  isValidReactionType,
+} from '@/lib/types';
 
 type ErrorResponse = {
   error: { message: string };
 };
-
-function isValidReactionType(type: string): type is ReactionType {
-  return VALID_REACTION_TYPES.includes(type as ReactionType);
-}
 
 export default async function handler(
   req: NextApiRequest,

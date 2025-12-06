@@ -1,18 +1,7 @@
 import useSWR, { mutate } from 'swr';
 
 import { fetcher } from '@/lib/fetcher';
-
-type ReactionType = 'heart' | 'beer' | 'trophy';
-
-type ReactionsResponse = {
-  reactions: Record<ReactionType, number>;
-};
-
-const REACTIONS: { type: ReactionType; emoji: string; label: string }[] = [
-  { type: 'heart', emoji: '❤️', label: 'Love it' },
-  { type: 'beer', emoji: '🍺', label: 'Cheers' },
-  { type: 'trophy', emoji: '🏆', label: 'Champion' },
-];
+import { REACTIONS, ReactionsResponse, ReactionType } from '@/lib/types';
 
 interface FloatingReactionsProps {
   slug: string;
