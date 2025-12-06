@@ -1,7 +1,14 @@
+import { Beer, Heart, Trophy } from 'lucide-react';
 import useSWR, { mutate } from 'swr';
 
 import { fetcher } from '@/lib/fetcher';
-import { REACTIONS, ReactionsResponse, ReactionType } from '@/lib/types';
+import { ReactionsResponse, ReactionType } from '@/lib/types';
+
+const REACTIONS = [
+  { type: 'heart' as const, icon: Heart, label: 'Love it' },
+  { type: 'beer' as const, icon: Beer, label: 'Cheers' },
+  { type: 'trophy' as const, icon: Trophy, label: 'Champion' },
+];
 
 interface FloatingReactionsProps {
   slug: string;
@@ -46,7 +53,7 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
 
   return (
     <>
-      {REACTIONS.map(({ type, emoji, label }) => {
+      {REACTIONS.map(({ type, icon: Icon, label }) => {
         const count = data?.reactions?.[type] ?? 0;
 
         return (
@@ -57,9 +64,7 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
               className="flex items-center justify-center w-[44px] h-[44px] relative group cursor-pointer"
               aria-label={label}
             >
-              <span className="text-xl transition-transform group-hover:scale-125 group-active:scale-95">
-                {emoji}
-              </span>
+              <Icon size={24} strokeWidth={2} className="text-gray-600 dark:text-gray-400 transition-transform group-hover:scale-125 group-hover:text-gray-900 dark:group-hover:text-gray-100 group-active:scale-95" />
               {count > 0 && (
                 <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 text-[10px] font-medium bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full flex items-center justify-center">
                   {count > 99 ? '99+' : count}

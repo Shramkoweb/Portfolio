@@ -119,6 +119,10 @@ function ArticlePage(props: ArticlePageProps) {
         <div>
           <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">
             <ul className="flex flex-col gap-2">
+              <FloatingReactions slug={slug} />
+            </ul>
+            <div className="w-8 border-t border-gray-300 dark:border-gray-700 my-4" />
+            <ul className="flex flex-col gap-2">
               <li>
                 <TwitterShare />
               </li>
@@ -131,10 +135,6 @@ function ArticlePage(props: ArticlePageProps) {
               <li>
                 <TelegramShare />
               </li>
-            </ul>
-            <div className="w-8 border-t border-gray-300 dark:border-gray-700 my-4" />
-            <ul className="flex flex-col gap-2">
-              <FloatingReactions slug={slug} />
             </ul>
           </aside>
         </div>
