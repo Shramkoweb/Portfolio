@@ -14,7 +14,7 @@ export function ShareButton(props: PropsWithChildren<ShareButtonProps>) {
 
   return (
     <button
-      className="flex items-center justify-center w-[44px] h-[44px] cursor-pointer"
+      className="flex items-center justify-center w-[44px] h-[44px] cursor-pointer hover:scale-125 transition-transform"
       onClick={handleButtonClick}
       type="button"
       aria-label={ariaLabel}

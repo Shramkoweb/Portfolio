@@ -52,7 +52,7 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
             <button
               type="button"
               onClick={() => handleReaction(type)}
-              className="flex items-center justify-center w-[44px] h-[44px] relative group"
+              className="flex items-center justify-center w-[44px] h-[44px] relative group cursor-pointer"
               aria-label={label}
             >
               <span className="text-xl transition-transform group-hover:scale-125 group-active:scale-95">
