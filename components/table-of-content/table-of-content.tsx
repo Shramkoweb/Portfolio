@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ChevronRight } from 'lucide-react';
 
 export interface Heading {
   id: string;
@@ -26,15 +27,9 @@ export function TableOfContent({ headings }: TableOfContentProps) {
         aria-controls="toc-list"
       >
         <span>Table of Contents</span>
-        <svg
+        <ChevronRight
           className={`transition-transform duration-200 w-4 h-4 ${open ? 'rotate-90' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+        />
       </button>
       <ul
         id="toc-list"
