@@ -22,6 +22,51 @@ module.exports = {
       "7xl": "5rem",
     },
     extend: {
+      keyframes: {
+        'burst-1': {
+          '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
+          '100%': { transform: 'translate(-12px, -16px) scale(0)', opacity: '0' },
+        },
+        'burst-2': {
+          '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
+          '100%': { transform: 'translate(12px, -14px) scale(0)', opacity: '0' },
+        },
+        'burst-3': {
+          '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
+          '100%': { transform: 'translate(-16px, 4px) scale(0)', opacity: '0' },
+        },
+        'burst-4': {
+          '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
+          '100%': { transform: 'translate(16px, 6px) scale(0)', opacity: '0' },
+        },
+        'burst-5': {
+          '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
+          '100%': { transform: 'translate(-8px, 14px) scale(0)', opacity: '0' },
+        },
+        'burst-6': {
+          '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
+          '100%': { transform: 'translate(10px, 12px) scale(0)', opacity: '0' },
+        },
+        'ring-burst': {
+          '0%': { transform: 'scale(0.5)', opacity: '1' },
+          '100%': { transform: 'scale(1.5)', opacity: '0' },
+        },
+        'bounce-pop': {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.3)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        'burst-1': 'burst-1 0.5s ease-out forwards',
+        'burst-2': 'burst-2 0.5s ease-out forwards',
+        'burst-3': 'burst-3 0.5s ease-out forwards',
+        'burst-4': 'burst-4 0.5s ease-out forwards',
+        'burst-5': 'burst-5 0.5s ease-out forwards',
+        'burst-6': 'burst-6 0.5s ease-out forwards',
+        'ring-burst': 'ring-burst 0.4s ease-out forwards',
+        'bounce-pop': 'bounce-pop 0.3s ease-out',
+      },
       colors: {
         gray: {
           0: "#fff",
