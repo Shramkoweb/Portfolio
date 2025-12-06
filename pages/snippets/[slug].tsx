@@ -23,19 +23,19 @@ function SnippetPage(props: SnippetPageProps) {
   const {
     content,
     slug,
-    data: {
-      title, heading, description, createDate, updateDate, keywords,
-    },
+    data: { title, heading, description, createDate, updateDate, keywords },
   } = props;
 
   const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
     dateStyle: 'medium',
+    timeZone: 'UTC',
   });
 
   useEffect(() => {
-    const registerView = () => fetch(`/api/views/${slug}`, {
-      method: 'POST',
-    });
+    const registerView = () =>
+      fetch(`/api/views/${slug}`, {
+        method: 'POST',
+      });
 
     registerView();
   }, [slug]);
@@ -133,7 +133,7 @@ export async function getStaticProps({
   params,
 }: GetStaticPropsContext<Params>): Promise<
   GetStaticPropsResult<SnippetPageProps>
-  > {
+> {
   const { data, content } = await getSnippetBySlug(params?.slug);
   const html = await compileMDX(content);
 

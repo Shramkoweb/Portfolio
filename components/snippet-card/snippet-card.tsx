@@ -9,6 +9,7 @@ export function SnippetCard(props: SnippetCardProps) {
 
   const formattedDate = new Date(createDate).toLocaleDateString('en-us', {
     dateStyle: 'medium',
+    timeZone: 'UTC',
   });
 
   return (
