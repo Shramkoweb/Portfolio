@@ -36,6 +36,8 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
       if (response.ok) {
         const newData = await response.json();
         mutate(cacheKey, newData, false);
+      } else {
+        mutate(cacheKey);
       }
     } catch {
       mutate(cacheKey);
