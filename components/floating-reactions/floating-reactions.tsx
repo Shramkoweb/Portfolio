@@ -47,7 +47,7 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
   return (
     <>
       {REACTIONS.map(({ type, emoji, label }) => {
-        const count = data?.reactions[type] ?? 0;
+        const count = data?.reactions?.[type] ?? 0;
 
         return (
           <li key={type}>
