@@ -3,6 +3,7 @@ title: Debounce snippet function in modern TypeScript
 heading: Debounce
 description: Copy-paste debounce function in TypeScript. Delay function execution until user stops typing or triggering events. Includes React usage example.
 createDate: 2025-05-15
+updateDate: 2025-12-07
 keywords: [
   debounce,
   debounce function,
@@ -71,3 +72,5 @@ function MouseTracker() {
   );
 }
 ```
+
+> When using debounce in React, be mindful of performance. Learn more about [React re-renders](/blog/react-rerender) and [custom hooks pitfalls](/blog/react-hooks-pitfalls).

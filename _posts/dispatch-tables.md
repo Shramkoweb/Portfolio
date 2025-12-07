@@ -3,7 +3,7 @@ title: "Dispatch Tables in JavaScript: A Clean Code Approach"
 heading: Dispatch table in javascript
 description: Replace messy switch statements with dispatch tables in JavaScript. Learn this clean code pattern for handling multiple conditions with maintainable code.
 createDate: 2022-08-28T08:04:18.720Z
-updateDate: 2022-08-28T10:28:54.920Z
+updateDate: 2025-12-01
 keywords: [Switch statement in javascript, Dynamic Dispatch, Dispatch Tables, Conditionals in JavaScript, Polymorphism in JavaScript]
 categories: [JS, Clean-Code]
 featured: false
@@ -134,3 +134,4 @@ Will it look and read much better? I use [dispatch tables](/blog/introducing-the
 - [Example in CLI parser app](https://github.com/Shramkoweb/CLI-diff-generator/blob/develop/src/parsers.js#L31)
 - [Naming Conventions for Key-Value Maps](https://softwareas.com/naming-conventions-for-key-value-maps/)
 - [Dispatch table](https://en.wikipedia.org/wiki/Dispatch_table)
+- [The Early Return Pattern](/blog/the-early-return-pattern-in-javascript) - another clean code pattern for simplifying conditionals

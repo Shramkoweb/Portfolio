@@ -3,6 +3,7 @@ title: "SQL Countries Table Example: How to Create and Query Efficiently"
 heading: SQL countries table
 description: Ready-to-use SQL insert statements for a countries table with names, ISO codes, and phone codes. Perfect for seeding your database with real country data.
 createDate: 2023-02-15T21:11:53.432Z
+updateDate: 2025-12-07
 keywords: [SQL snippet, countries SQL table, SQL table, SQL example, SQL examples]
 ---
 
@@ -275,3 +276,5 @@ VALUES ('AF', 'Afghanistan'),
 ```
 
 Feel free to use 🫡.
+
+> Need to connect to PostgreSQL? Check out [how to connect with a URL string](/blog/postgres-connect-url).

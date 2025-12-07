@@ -3,6 +3,7 @@ title: Advanced HTML Class Naming Strategies for CSS Efficiency
 heading: "Mastering HTML Class Naming: Boosting CSS Efficiency"
 description: Discover the art of crafting clean HTML class names with BEM methodology. Learn to create maintainable, scalable, and SEO-friendly CSS code.
 createDate: 2023-10-25T19:12:07.231Z
+updateDate: 2025-12-07
 keywords: [ css naming conventions, name convention css, css class naming conventions, css class name convention, html id naming convention, naming css, html id name convention, html class naming conventions ]
 categories: [ CSS, HTML, Clean-Code ]
 featured: false
@@ -172,3 +173,5 @@ equipped with the knowledge to create outstanding web pages.
 
 If you're looking for more examples and guidelines for BEM class name you can find it on my snippet page
 about [Common CSS Class Names](/snippets/common-css-classes).
+
+For JavaScript variable and function naming, check out my [JavaScript Naming Conventions](/blog/javascript-naming-conventions) guide.

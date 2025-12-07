@@ -79,4 +79,9 @@ DataGrip.
 
 <Image alt src="db-datagrip.png" priority={true} alt="S.Shramko personal site screenshot"/>
 
+## Related Content
+
+- [Installing PostgreSQL on macOS](/snippets/postgres-install-macos) - step-by-step setup guide
+- [SQL Countries Table](/snippets/countries-sql) - ready-to-use seed data for your database
+
 

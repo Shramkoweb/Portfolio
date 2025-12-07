@@ -3,7 +3,7 @@ title: "Absolute vs Relative URL: Which One Should You Use"
 heading: Difference between absolute and relative URL in HTML
 description: Understand when to use absolute vs relative URLs in HTML. Clear examples showing how each type works, their pros and cons, and best practices for web links.
 createDate: 2022-10-21T21:57:25.439Z
-updateDate: 2022-10-21T21:57:25.439Z
+updateDate: 2025-12-07
 keywords: [ absolute and relative links, absolute url example, absolute url html, absolute url, absolute url vs relative url, absolute or relative ]
 categories: [ JS, HTML ]
 featured: false
@@ -117,3 +117,4 @@ Examples that we discussed today.
 - [Site where I drew pictures](https://okso.app/)
 - [Nice tutorial about how DNS works](https://howdns.works/)
 - [What is a URL](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL)
+- [Check if URL is Absolute](/snippets/is-absolute-url) - utility function to validate absolute URLs

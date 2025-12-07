@@ -3,6 +3,7 @@ title: Astro.js Image Component on Vercel
 heading: How to Build an Astro.js Image Component on Vercel
 description: Fix Astro.js image component issues when deploying to Vercel. Learn how to configure Sharp image service correctly and avoid common deployment errors.
 createDate: 2024-09-13T21:01:43.973Z
+updateDate: 2025-12-07
 keywords: [ Astro.js, Image Component, Vercel, Sharp, Image Service, Astro Image Error, Astro Image Fix, Astro Image Vercel, Astro Image Component, Astro Image Deployment, Astro Image Error Fix]
 categories: [ Astro, Vercel, Tutorial ]
 featured: false
@@ -57,3 +58,5 @@ Done and deployed. Now it works perfectly on Vercel.
 <Image src="astro-image.png" alt="Astro Image works on Vercel" />
 
 How I built my linktree website you can read in my [previous article](/blog/linktree).
+
+> New to Astro? Check out my comprehensive [Astro Framework guide](/blog/astro) to get started.
