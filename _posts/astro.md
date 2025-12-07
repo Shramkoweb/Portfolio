@@ -3,6 +3,7 @@ title: "Exploring the Astro Framework: A Comprehensive Guide"
 heading: What is Astro Framework?
 description: Comprehensive guide to the Astro framework. Learn what makes it special, explore its core features, and understand why it's great for static sites.
 createDate: 2023-03-16T09:01:43.973Z
+updateDate: 2025-12-07
 keywords: [ astro js, astro framework, astro js tutorial, what is astro, how to build fast, cms javascript framework ]
 categories: [ JS, TS, Astro, JamStack ]
 featured: false
@@ -271,3 +272,6 @@ If you're interested in learning more about Astro, here are some useful links to
 - [Are SPAs better than MPAs? | HTTP 203](https://www.youtube.com/watch?v=ivLhf3hq7eM)
 - [Astro usage in npm and ratings](https://bestofjs.org/projects/astro)
 
+## My Astro Projects
+
+- [Building a Link Tree](/blog/linktree) - my personal linktree with Astro and Vercel
