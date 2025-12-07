@@ -242,7 +242,8 @@ export async function getStaticProps(): Promise<
   const featuredPosts = posts.filter(filterByFeatured).sort(sortByBirthtime);
   const advancedReactPosts = posts
     .filter(filterByAdvanceReact)
-    .sort(sortByBirthtime);
+    .sort(sortByBirthtime)
+    .reverse();
 
   return {
     props: {
