@@ -1,4 +1,5 @@
 import { PostCategory } from '@/lib/types';
+import { GRADIENT_FROM_COLORS, GRADIENT_TO_COLORS } from '@/lib/constants';
 
 const Environment = {
   Production: 'production',
@@ -142,10 +143,37 @@ export const categoryToSeoData = {
   },
 };
 
-export const isProduction = () => process.env.NODE_ENV === Environment.Production;
+export const isProduction = () =>
+  process.env.NODE_ENV === Environment.Production;
 
 export const extractMarkdownSlug = (fileName: string): string => {
   const lastDotIndex = fileName.lastIndexOf('.');
 
   return lastDotIndex === -1 ? fileName : fileName.slice(0, lastDotIndex);
 };
+
+function hashString(str: string, seed: number = 0): number {
+  let hash = seed;
+  for (let i = 0; i < str.length; i++) {
+    hash = Math.imul(hash ^ str.charCodeAt(i), 2654435761);
+  }
+  return Math.abs(hash ^ (hash >>> 16));
+}
+
+export function generateGradient(slug: string): string {
+  const hash1 = hashString(slug, 1);
+  const hash2 = hashString(slug, 2);
+
+  const fromIndex = hash1 % GRADIENT_FROM_COLORS.length;
+  let toIndex = hash2 % GRADIENT_TO_COLORS.length;
+
+  // Ensure from and to colors are different
+  if (toIndex === fromIndex) {
+    toIndex = (toIndex + 5) % GRADIENT_TO_COLORS.length;
+  }
+
+  const fromColor = GRADIENT_FROM_COLORS[fromIndex];
+  const toColor = GRADIENT_TO_COLORS[toIndex];
+
+  return `bg-gradient-to-r ${fromColor} ${toColor}`;
+}

@@ -4,9 +4,10 @@ import Head from 'next/head';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
-import { MoveRight, Atom } from 'lucide-react';
-import { Routes } from '@/lib/routes';
+import { Atom, MoveRight } from 'lucide-react';
 
+import { Routes } from '@/lib/routes';
+import { generateGradient } from '@/lib/utils';
 import { getPosts } from '@/lib/posts/api';
 import {
   filterByAdvanceReact,
@@ -20,24 +21,6 @@ import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
 
 import smile from 'public/static/images/smile.webp';
 import tongue from 'public/static/images/tongue.webp';
-
-const GRADIENTS = [
-  'bg-gradient-to-r from-green-300 via-blue-500 to-purple-600',
-  'bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400',
-  'bg-gradient-to-r from-purple-400 to-yellow-400',
-  'bg-gradient-to-r from-purple-200 to-purple-800',
-  'bg-gradient-to-r from-purple-400 to-blue-600',
-  'bg-gradient-to-r from-green-300 to-purple-400',
-];
-
-const REACT_GRADIENTS = [
-  'bg-gradient-to-r from-amber-200 via-emerald-400 to-indigo-600',
-  'bg-gradient-to-r from-rose-400 via-pink-500 to-cyan-300',
-  'bg-gradient-to-r from-teal-300 to-violet-500',
-  'bg-gradient-to-r from-blue-300 to-blue-800',
-  'bg-gradient-to-r from-yellow-200 to-orange-600',
-  'bg-gradient-to-r from-slate-300 to-sky-500',
-];
 
 interface IndexPageProps {
   featuredPosts: Post[];
@@ -143,11 +126,11 @@ function IndexPage(props: IndexPageProps) {
           Featured Posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map(({ data: { slug, heading } }, index) => (
+          {featuredPosts.map(({ data: { slug, heading } }) => (
             <BlogPostSquarePreview
               heading={heading}
               slug={slug}
-              classNames={GRADIENTS[index]}
+              classNames={generateGradient(slug)}
               key={slug}
             />
           ))}
@@ -162,11 +145,11 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-            {advancedReactPosts.map(({ data: { slug, heading } }, index) => (
+            {advancedReactPosts.map(({ data: { slug, heading } }) => (
               <BlogPostSquarePreview
                 heading={heading}
                 slug={slug}
-                classNames={REACT_GRADIENTS[index]}
+                classNames={generateGradient(slug)}
                 key={slug}
               />
             ))}
