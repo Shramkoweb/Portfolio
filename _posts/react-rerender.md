@@ -110,8 +110,7 @@ whether the `props` have changed. If there are no changes to the `props`, re-ren
 single `prop` is modified, the re-rendering will proceed as usual.
 
 It's important to note that effectively preventing re-renders through memoization is a nuanced topic with various
-considerations. For a deeper understanding, it is advisable to explore these concepts further in new articles. (Comming
-soon...)
+considerations. For a deeper understanding, it is advisable to explore these concepts further in new articles. (Coming soon... or read about [Elements, Children as Props, and Re-Renders](/blog/react-elements-children))
 
 <Image alt="Diagram showing how React.memo prevents unnecessary re-renders" src="react-memo.png" />
 

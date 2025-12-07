@@ -161,4 +161,4 @@ This ensures that the minimal required area re-renders, preventing unnecessary u
 The key lesson: carefully handle state encapsulation within custom hooks. Keep state management local and focused to
 optimize your React application's performance and responsiveness.
 
-> P.S Memoization and other performance optimizations will be covered in future posts.
+> P.S Memoization and other performance optimizations will be covered in future posts. Meanwhile, you can read about [Elements, Children as Props, and Re-Renders](/blog/react-elements-children).
