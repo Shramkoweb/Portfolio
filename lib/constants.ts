@@ -23,6 +23,26 @@ export const GRADIENT_FROM_COLORS = [
   'from-rose-500',
 ];
 
+export const GRADIENT_VIA_COLORS = [
+  'via-red-500',
+  'via-orange-500',
+  'via-amber-500',
+  'via-yellow-500',
+  'via-lime-500',
+  'via-green-500',
+  'via-emerald-500',
+  'via-teal-500',
+  'via-cyan-500',
+  'via-sky-500',
+  'via-blue-500',
+  'via-indigo-500',
+  'via-violet-500',
+  'via-purple-500',
+  'via-fuchsia-500',
+  'via-pink-500',
+  'via-rose-500',
+];
+
 export const GRADIENT_TO_COLORS = [
   'to-red-500',
   'to-orange-500',

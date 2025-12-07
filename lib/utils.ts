@@ -1,5 +1,5 @@
 import { PostCategory } from '@/lib/types';
-import { GRADIENT_FROM_COLORS, GRADIENT_TO_COLORS } from '@/lib/constants';
+import { GRADIENT_FROM_COLORS, GRADIENT_VIA_COLORS, GRADIENT_TO_COLORS } from '@/lib/constants';
 
 const Environment = {
   Production: 'production',
@@ -164,16 +164,21 @@ export function generateGradient(slug: string): string {
   const hash1 = hashString(slug, 1);
   const hash2 = hashString(slug, 2);
 
-  const fromIndex = hash1 % GRADIENT_FROM_COLORS.length;
-  let toIndex = hash2 % GRADIENT_TO_COLORS.length;
+  const colorsCount = GRADIENT_FROM_COLORS.length;
 
-  // Ensure from and to colors are different
-  if (toIndex === fromIndex) {
-    toIndex = (toIndex + 5) % GRADIENT_TO_COLORS.length;
+  const fromIndex = hash1 % colorsCount;
+  let toIndex = hash2 % colorsCount;
+
+  if (Math.abs(toIndex - fromIndex) < 2) {
+    toIndex = (fromIndex + 5 + (hash2 % 8)) % colorsCount;
   }
 
+  // Via color is the midpoint between from and to for smooth transition
+  const viaIndex = Math.floor((fromIndex + toIndex) / 2);
+
   const fromColor = GRADIENT_FROM_COLORS[fromIndex];
+  const viaColor = GRADIENT_VIA_COLORS[viaIndex];
   const toColor = GRADIENT_TO_COLORS[toIndex];
 
-  return `bg-gradient-to-r ${fromColor} ${toColor}`;
+  return `bg-gradient-to-r ${fromColor} ${viaColor} ${toColor}`;
 }
