@@ -52,6 +52,8 @@ const App = () => {
 };
 ```
 
+<Image src="elements.png" alt="" />
+
 If you run this, the app will crawl. Every pixel you scroll triggers a state update in `App`. Since `App` re-renders,
 React re-renders everything inside it. The "moving state down" trick won't work easily here because the `div` wraps the
 content. The state needs to be high up.
