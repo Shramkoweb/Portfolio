@@ -106,3 +106,8 @@ this! 🛠️
 ---  
 
 *P.S. Sharing is caring. Forward this to a teammate who still edits `package.json` versions by hand. 😉*
+
+## Related Articles
+
+- [Migrate to pnpm](/blog/pnpm) - faster package management with better disk efficiency
+- [Conventional Commits](/blog/conventional-commits) - structured commit messages for automated versioning

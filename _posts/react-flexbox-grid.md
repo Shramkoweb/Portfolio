@@ -185,5 +185,6 @@ Therefore, below I share additional materials that may be useful:
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox Froggy Game](https://flexboxfroggy.com/)
 - [React bootstrap Grid system](https://react-bootstrap.github.io/docs/layout/grid/)
+- [CSS Class Naming Conventions](/blog/class-naming-conventions) - learn more about BEM methodology used in this example
 
 

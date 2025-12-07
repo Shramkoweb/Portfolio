@@ -314,3 +314,8 @@ easier to understand, maintain, and debug.
 
 Remember, the goal isn't to follow these rules blindly, but to use them as guidelines to write more readable and
 maintainable code. The best naming convention is one that your entire team understands and follows consistently.
+
+## Related Content
+
+- [CSS Class Naming Conventions](/blog/class-naming-conventions) - BEM methodology for HTML/CSS
+- [Common CSS Class Names](/snippets/common-css-classes) - practical BEM class name examples

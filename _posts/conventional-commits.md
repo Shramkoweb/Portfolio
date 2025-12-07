@@ -3,7 +3,7 @@ title: "Conventional Commits enhance your coding practices"
 heading: Conventional Commits
 description: Master Conventional Commits to write clear, structured commit messages. Learn the format, types like feat and fix, and how to automate changelog generation.
 createDate: 2024-07-23T22:52:26.716Z
-updateDate: 2025-05-25T15:59:10.754Z
+updateDate: 2025-12-07
 keywords: [
   Conventional Commits for JavaScript Development,
   Effective Conventional Commits in Next.js Projects,
@@ -358,5 +358,7 @@ jobs:
 I hope this blog post has inspired you to delve into conventional commits.
 
 Initially, conventional commits might seem a bit odd, and you might find yourself questioning the format as you make
-commits. However, they soon become second nature, and you’ll appreciate their impact on your software engineering
+commits. However, they soon become second nature, and you'll appreciate their impact on your software engineering
 practices.
+
+> Conventional commits pair well with [Semantic Versioning](/blog/npm-semantic-versioning) for automated package releases.

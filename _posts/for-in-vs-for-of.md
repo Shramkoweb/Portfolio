@@ -3,7 +3,7 @@ title: "JavaScript Loops: for...in vs for...of"
 heading: for...in vs for...of Loops
 description: Understand the key differences between for...in and for...of loops in JavaScript. Learn when to use each for iterating over arrays, objects, and iterables.
 createDate: 2022-08-17T20:19:07.728Z
-updateDate: 2022-08-17T20:19:07.728Z
+updateDate: 2025-12-07
 keywords: [arrays in js, How to iterate in JS, Loops in JS]
 categories: [JS]
 featured: false
@@ -185,3 +185,5 @@ In this post, we understood how for loops work and the difference between `for..
 
 Loops are an integral part of any programming language, as they are constantly used in places where you need to perform
 the same type of tasks several times.
+
+> Want to learn more about arrays? Check out my [JavaScript Arrays guide](/blog/js-arrays) covering essential methods like map, filter, and reduce.
