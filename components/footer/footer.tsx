@@ -9,7 +9,6 @@ import { Routes } from '@/lib/routes';
 export function Footer() {
   return (
     <footer
-      role="contentinfo"
       className="mx-auto flex w-full max-w-3xl flex-col items-start justify-center"
     >
       <hr className="mb-16 w-full border-gray-200 border-1 dark:border-gray-800" />
