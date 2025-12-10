@@ -97,7 +97,6 @@ function IndexPage(props: IndexPageProps) {
             onMouseLeave={handleHover}
           >
             <Image
-              role="presentation"
               alt="Serhii Shramko's avatar - smile iOS emoji"
               src={smile}
               quality={100}
@@ -109,7 +108,6 @@ function IndexPage(props: IndexPageProps) {
               priority
             />
             <Image
-              role="presentation"
               alt="Serhii Shramko's avatar - tongue iOS emoji"
               src={tongue}
               quality={100}
