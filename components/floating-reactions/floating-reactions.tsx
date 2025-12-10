@@ -86,7 +86,7 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
               type="button"
               onClick={() => handleReaction(type)}
               className="flex items-center justify-center w-[44px] h-[44px] relative group cursor-pointer"
-              aria-label={label}
+              aria-label={`${label}${count > 0 ? `, ${count} reaction${count !== 1 ? 's' : ''}` : ''}`}
             >
               {/* Burst particles */}
               {isAnimating && (
@@ -130,6 +130,7 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
               />
               {count > 0 && (
                 <span
+                  aria-live="polite"
                   className={`
                     absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 text-[10px] font-medium
                     bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300

@@ -35,7 +35,7 @@ export function Code({ children, className }: CodeProps) {
         onClick={handleCopy}
         type="button"
         className="copy-button absolute top-2 right-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
-        aria-label="Copy code"
+        aria-label={copyStatus === 'success' ? 'Copied!' : 'Copy code'}
       >
         {copyStatus === 'success' ? (
           <Check className="w-4 h-4 text-green-500" aria-hidden="true" />
@@ -45,6 +45,13 @@ export function Code({ children, className }: CodeProps) {
             aria-hidden="true"
           />
         )}
+        <span
+          role="status"
+          aria-live="polite"
+          className="sr-only"
+        >
+          {copyStatus === 'success' ? 'Code copied to clipboard' : ''}
+        </span>
       </button>
       <div className="overflow-x-scroll">{children}</div>
     </pre>
