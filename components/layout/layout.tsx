@@ -70,8 +70,8 @@ export function Layout({ children }: PropsWithChildren) {
         className="flex flex-col justify-center bg-gray-50 px-8 dark:bg-gray-900"
       >
         {children}
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }
