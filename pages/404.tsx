@@ -23,8 +23,17 @@ function NotFoundPage() {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 text-black dark:text-white">
           YOU&apos;RE IN THE WRONG PLACE
         </h1>
-        <video loop autoPlay muted className="mb-8 w-full">
+        <video
+          loop
+          autoPlay
+          muted
+          playsInline
+          aria-label="Animated illustration of a confused traveler, representing a page not found"
+          className="mb-8 w-full"
+        >
           <source src="/static/images/404.mp4" type="video/mp4" />
+          Your browser does not support the video tag. The page you are looking
+          for was not found.
         </video>
         <Link
           href="/"
