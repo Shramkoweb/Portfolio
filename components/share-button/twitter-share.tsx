@@ -12,7 +12,7 @@ export function TwitterShare() {
 
   return (
     <ShareButton onClick={handleClick} ariaLabel="Share this post on Twitter">
-      <Twitter size={24} />
+      <Twitter size={24} aria-hidden="true" />
     </ShareButton>
   );
 }

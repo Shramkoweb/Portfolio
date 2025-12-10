@@ -25,15 +25,11 @@ export function ThemeChanger() {
       onClick={handleClick}
     >
       {mounted && (
-        <span
-          role="presentation"
-        >
-          {resolvedTheme === Theme.dark ? (
-            <MoonStar size={24} />
-          ) : (
-            <Sun size={24} />
-          )}
-        </span>
+        resolvedTheme === Theme.dark ? (
+          <MoonStar size={24} aria-hidden="true" />
+        ) : (
+          <Sun size={24} aria-hidden="true" />
+        )
       )}
     </button>
   );

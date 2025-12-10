@@ -12,7 +12,7 @@ export function LinkedInShare() {
 
   return (
     <ShareButton onClick={handleClick} ariaLabel="Share this post on LinkedIn">
-      <Linkedin size={24} />
+      <Linkedin size={24} aria-hidden="true" />
     </ShareButton>
   );
 }

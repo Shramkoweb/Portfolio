@@ -6,9 +6,27 @@ import { fetcher } from '@/lib/fetcher';
 import { ReactionsResponse, ReactionType } from '@/lib/types';
 
 const REACTIONS = [
-  { type: 'heart' as const, icon: Heart, label: 'Love it', color: 'text-rose-500', bgColor: 'bg-rose-500' },
-  { type: 'beer' as const, icon: Beer, label: 'Cheers', color: 'text-amber-500', bgColor: 'bg-amber-500' },
-  { type: 'trophy' as const, icon: Trophy, label: 'Champion', color: 'text-yellow-500', bgColor: 'bg-yellow-500' },
+  {
+    type: 'heart' as const,
+    icon: Heart,
+    label: 'Love it',
+    color: 'text-rose-500',
+    bgColor: 'bg-rose-500',
+  },
+  {
+    type: 'beer' as const,
+    icon: Beer,
+    label: 'Cheers',
+    color: 'text-amber-500',
+    bgColor: 'bg-amber-500',
+  },
+  {
+    type: 'trophy' as const,
+    icon: Trophy,
+    label: 'Champion',
+    color: 'text-yellow-500',
+    bgColor: 'bg-yellow-500',
+  },
 ];
 
 interface FloatingReactionsProps {
@@ -73,19 +91,34 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
               {/* Burst particles */}
               {isAnimating && (
                 <>
-                  <span className={`absolute w-2 h-2 rounded-full ${bgColor} animate-burst-1`} />
-                  <span className={`absolute w-2 h-2 rounded-full ${bgColor} animate-burst-2`} />
-                  <span className={`absolute w-1.5 h-1.5 rounded-full ${bgColor} animate-burst-3`} />
-                  <span className={`absolute w-1.5 h-1.5 rounded-full ${bgColor} animate-burst-4`} />
-                  <span className={`absolute w-1 h-1 rounded-full ${bgColor} animate-burst-5`} />
-                  <span className={`absolute w-1 h-1 rounded-full ${bgColor} animate-burst-6`} />
+                  <span
+                    className={`absolute w-2 h-2 rounded-full ${bgColor} animate-burst-1`}
+                  />
+                  <span
+                    className={`absolute w-2 h-2 rounded-full ${bgColor} animate-burst-2`}
+                  />
+                  <span
+                    className={`absolute w-1.5 h-1.5 rounded-full ${bgColor} animate-burst-3`}
+                  />
+                  <span
+                    className={`absolute w-1.5 h-1.5 rounded-full ${bgColor} animate-burst-4`}
+                  />
+                  <span
+                    className={`absolute w-1 h-1 rounded-full ${bgColor} animate-burst-5`}
+                  />
+                  <span
+                    className={`absolute w-1 h-1 rounded-full ${bgColor} animate-burst-6`}
+                  />
                 </>
               )}
               {/* Ring burst */}
               {isAnimating && (
-                <span className={`absolute w-8 h-8 rounded-full border-2 ${color.replace('text-', 'border-')} animate-ring-burst`} />
+                <span
+                  className={`absolute w-8 h-8 rounded-full border-2 ${color.replace('text-', 'border-')} animate-ring-burst`}
+                />
               )}
               <Icon
+                aria-hidden="true"
                 size={24}
                 strokeWidth={2}
                 className={`

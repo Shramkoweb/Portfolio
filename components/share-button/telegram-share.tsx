@@ -12,7 +12,7 @@ export function TelegramShare() {
 
   return (
     <ShareButton onClick={handleClick} ariaLabel="Share this post on Telegram">
-      <Send size={24} />
+      <Send size={24} aria-hidden="true" />
     </ShareButton>
   );
 }

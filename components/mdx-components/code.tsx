@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Check, Copy } from 'lucide-react';
 
 interface CodeProps {
   children: string;
@@ -38,9 +38,12 @@ export function Code({ children, className }: CodeProps) {
         aria-label="Copy code"
       >
         {copyStatus === 'success' ? (
-          <Check className="w-4 h-4 text-green-500" />
+          <Check className="w-4 h-4 text-green-500" aria-hidden="true" />
         ) : (
-          <Copy className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+          <Copy
+            className="w-4 h-4 text-gray-600 dark:text-gray-400"
+            aria-hidden="true"
+          />
         )}
       </button>
       <div className="overflow-x-scroll">{children}</div>

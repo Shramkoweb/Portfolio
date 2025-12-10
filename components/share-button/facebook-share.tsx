@@ -12,7 +12,7 @@ export function FacebookShare() {
 
   return (
     <ShareButton onClick={handleClick} ariaLabel="Share this post on Facebook">
-      <Facebook size={24} />
+      <Facebook size={24} aria-hidden="true" />
     </ShareButton>
   );
 }

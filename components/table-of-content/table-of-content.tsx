@@ -16,9 +16,7 @@ export function TableOfContent({ headings }: TableOfContentProps) {
   if (!headings.length) return null;
 
   return (
-    <nav
-      aria-label="Table of contents"
-    >
+    <nav aria-label="Table of contents">
       <button
         type="button"
         className="flex items-center gap-2 font-bold text-base focus:outline-none text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -28,6 +26,7 @@ export function TableOfContent({ headings }: TableOfContentProps) {
       >
         <span>Table of Contents</span>
         <ChevronRight
+          aria-hidden="true"
           className={`transition-transform duration-200 w-4 h-4 ${open ? 'rotate-90' : ''}`}
         />
       </button>
@@ -40,7 +39,10 @@ export function TableOfContent({ headings }: TableOfContentProps) {
         }}
       >
         {headings.map((heading) => (
-          <li key={heading.id} style={{ paddingLeft: `${(heading.level - 1) * 1.25}rem` }}>
+          <li
+            key={heading.id}
+            style={{ paddingLeft: `${(heading.level - 1) * 1.25}rem` }}
+          >
             <a
               href={`#${heading.id}`}
               className="block py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors text-sm"

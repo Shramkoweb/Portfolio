@@ -34,7 +34,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
           </h3>
         </div>
         <div className="flex items-center text-gray-800 dark:text-gray-200">
-          <Eye size={24} />
+          <Eye size={24} aria-hidden="true" />
           <span className="ml-2 align-baseline">
             {views ? views.toLocaleString() : '---'}
           </span>
