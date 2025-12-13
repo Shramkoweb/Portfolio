@@ -143,6 +143,8 @@ export async function getStaticProps({
       slug: params?.slug as string,
       content: html,
     },
+    // Regenerate page at most once per hour
+    revalidate: 3600,
   };
 }
 

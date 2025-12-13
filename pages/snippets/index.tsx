@@ -73,6 +73,8 @@ export async function getStaticProps() {
     props: {
       snippets: sortedSnippets,
     },
+    // Regenerate page at most once per hour
+    revalidate: 3600,
   };
 }
 
