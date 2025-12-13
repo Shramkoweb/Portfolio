@@ -5,7 +5,7 @@ const ContentSecurityPolicy = `
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com/ https://vercel.live/;
     style-src 'self' 'unsafe-inline';
     worker-src 'self' blob: data:;
-    img-src 'self' media.licdn.com avatars.githubusercontent.com;
+    img-src 'self';
     connect-src *;
     media-src 'self';
     font-src 'self';
