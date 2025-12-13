@@ -41,9 +41,12 @@ function AboutPage() {
               "@type": "ProfilePage",
               "url": "https://shramko.dev/about",
               "inLanguage": "en",
+              "dateModified": "2025-01-01",
               "mainEntity": {
                 "@type": "Person",
+                "@id": "https://shramko.dev/#person",
                 "name": "Serhii Shramko",
+                "description": "Senior Software Engineer specializing in React, TypeScript, and frontend architecture. Building scalable web applications and mentoring developers.",
                 "url": "https://shramko.dev/about",
                 "image": {
                   "@type": "ImageObject",
@@ -81,7 +84,6 @@ function AboutPage() {
                   "url": "https://betterme.world/"
                 },
                 "email": "shramko.dev@gmail.com",
-                "award": "Mentored more than 30 individuals in software development",
                 "workLocation": {
                   "@type": "Place",
                   "address": {
