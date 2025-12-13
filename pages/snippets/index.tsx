@@ -79,7 +79,6 @@ export async function getStaticProps() {
     props: {
       snippets: sortedSnippets,
     },
-    revalidate: 3600,
   };
 }
 
