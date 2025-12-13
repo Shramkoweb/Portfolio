@@ -46,6 +46,9 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'swr'],
+  },
   redirects: async () => {
     return [
       {
