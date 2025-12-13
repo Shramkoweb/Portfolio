@@ -60,8 +60,7 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       width={768}
       height={300}
       priority={priority}
-      sizes="100vw"
-       
+      sizes="(max-width: 768px) 100vw, 768px"
       {...restProps}
     />
   );

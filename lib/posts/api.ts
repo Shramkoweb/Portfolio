@@ -8,6 +8,48 @@ import { extractMarkdownSlug } from '@/lib/utils';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
+async function getPostMetadataBySlug(slug: string): Promise<PostMetadata> {
+  const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
+  const fileContents = await readFile(fullPath, 'utf8');
+
+  const matterResult = matter(fileContents);
+
+  if (!matterResult || !matterResult.data) {
+    throw new Error(`Invalid markdown format for slug: ${slug}`);
+  }
+
+  const {
+    data: {
+      heading,
+      title,
+      description,
+      categories,
+      featured,
+      keywords,
+      createDate,
+      updateDate,
+    },
+    content,
+  } = matterResult;
+
+  const { text } = readingTime(content);
+
+  return {
+    data: {
+      heading,
+      slug,
+      featured,
+      keywords,
+      title,
+      categories,
+      description,
+      readTime: text,
+      createDate: Date.parse(createDate),
+      updateDate: updateDate ? Date.parse(updateDate) : null,
+    },
+  };
+}
+
 export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {
     throw new Error('getPostBySlug: slug is required');
@@ -71,9 +113,14 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 export async function getPostsMetadata(): Promise<PostMetadata[]> {
-  const posts = await getPosts();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return posts.map(({ content, ...post }) => post);
+  const fileNames = await readdir(POSTS_DIRECTORY);
+  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+
+  const metadataPromises = markdownFiles
+    .map(extractMarkdownSlug)
+    .map(getPostMetadataBySlug);
+
+  return Promise.all(metadataPromises);
 }
 
 export async function getPostSlugs() {
@@ -84,9 +131,9 @@ export async function getPostSlugs() {
 }
 
 export async function getPostsCategories(): Promise<PostCategory[]> {
-  const posts: Post[] = await getPosts();
+  const posts = await getPostsMetadata();
 
-  const uniqueCategories = posts.reduce((acc: Set<PostCategory>, post: Post) => {
+  const uniqueCategories = posts.reduce((acc: Set<PostCategory>, post: PostMetadata) => {
     post.data.categories.forEach((category: PostCategory) => {
       acc.add(category);
     });
@@ -96,7 +143,7 @@ export async function getPostsCategories(): Promise<PostCategory[]> {
   return [...uniqueCategories];
 }
 
-export function filterPostsByCategory(posts: Post[], category: string): Post[] {
+export function filterPostsByCategory(posts: Post[] | PostMetadata[], category: string): Post[] | PostMetadata[] {
   return posts.filter((post) => post.data.categories.some(
     (element) => element.toLowerCase() === category.toLowerCase(),
   ));
@@ -104,5 +151,5 @@ export function filterPostsByCategory(posts: Post[], category: string): Post[] {
 
 export async function getPostsByCategory(category: string): Promise<Post[]> {
   const posts = await getPosts();
-  return filterPostsByCategory(posts, category);
+  return filterPostsByCategory(posts, category) as Post[];
 }
