@@ -2,10 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { prisma } from 'lib/prisma';
 import {
-  VALID_REACTION_TYPES,
-  ReactionType,
-  ReactionsResponse,
   isValidReactionType,
+  ReactionsResponse,
+  ReactionType,
+  VALID_REACTION_TYPES,
 } from '@/lib/types';
 
 type ErrorResponse = {
@@ -22,12 +22,19 @@ export default async function handler(
     if (req.method === 'GET') {
       const reactions = await prisma.reactions.findMany({
         where: { slug },
+        select: {
+          type: true,
+          count: true,
+        },
       });
+
+      const reactionMap = new Map(
+        reactions.map((r) => [r.type as ReactionType, Number(r.count)]),
+      );
 
       const reactionCounts = VALID_REACTION_TYPES.reduce(
         (acc, type) => {
-          const reaction = reactions.find((r) => r.type === type);
-          acc[type] = Number(reaction?.count ?? 0);
+          acc[type] = reactionMap.get(type) ?? 0;
           return acc;
         },
         {} as Record<ReactionType, number>,
@@ -65,12 +72,19 @@ export default async function handler(
 
       const reactions = await prisma.reactions.findMany({
         where: { slug },
+        select: {
+          type: true,
+          count: true,
+        },
       });
+
+      const reactionMap = new Map(
+        reactions.map((r) => [r.type as ReactionType, Number(r.count)]),
+      );
 
       const reactionCounts = VALID_REACTION_TYPES.reduce(
         (acc, reactionType) => {
-          const reaction = reactions.find((r) => r.type === reactionType);
-          acc[reactionType] = Number(reaction?.count ?? 0);
+          acc[reactionType] = reactionMap.get(reactionType) ?? 0;
           return acc;
         },
         {} as Record<ReactionType, number>,
