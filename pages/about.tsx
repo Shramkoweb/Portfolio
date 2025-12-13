@@ -93,8 +93,7 @@ function AboutPage() {
           <div className="flex justify-between">
             <em className="text-gray-300 text-xs">
               <time dateTime="2025-01">January 2025</time>
-              &ensp;–&ensp;
-              Present
+              &ensp;–&ensp; Present
             </em>
             <em className="text-gray-300 text-xs">Boston, MA</em>
           </div>
@@ -427,30 +426,35 @@ function AboutPage() {
               alt="Serhii Shramko smiling and holding a trophy, standing next to a woman holding a 500 UAH certificate in a casual office setting with a whiteboard in the background."
               placeholder="blur"
               src={tennis}
+              loading="lazy"
             />
             <Image
               className="pointer-events-none rounded-lg"
               alt="Serhii Shramko enjoying snacks and drinks with friends at a lively party"
               placeholder="blur"
               src={eat}
+              loading="lazy"
             />
             <Image
               className="pointer-events-none rounded-lg"
               alt="Serhii Shramko showing a red and black BMW to a friend in an outdoor parking lot."
               placeholder="blur"
               src={car}
+              loading="lazy"
             />
             <Image
               className="pointer-events-none rounded-lg"
               alt="Serhii Shramko and a friend examining the rear of a red sporty car in a parking garage"
               placeholder="blur"
               src={carBack}
+              loading="lazy"
             />
             <Image
               className="pointer-events-none rounded-lg"
               alt="Serhii Shramko and a friend standing outdoors in a bright, forested park, wearing casual outfits."
               placeholder="blur"
               src={standing}
+              loading="lazy"
             />
           </div>
         </div>

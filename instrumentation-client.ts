@@ -6,11 +6,9 @@ export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 
 Sentry.init({
   dsn: SENTRY_DSN,
-  tracesSampleRate: 1,
+  tracesSampleRate: 0.1,
   debug: false,
   sendDefaultPii: true,
-  replaysOnErrorSampleRate: 1.0,
-  replaysSessionSampleRate: 0.1,
   ignoreErrors: [
     // iOS Safari WebKit errors
     'undefined is not an object (evaluating \'window.webkit.messageHandlers\')',
@@ -26,12 +24,6 @@ Sentry.init({
     /^chrome:\/\//i,
     /^moz-extension:\/\//i,
     /^safari-extension:\/\//i,
-  ],
-  integrations: [
-    Sentry.replayIntegration({
-      maskAllText: false,
-      blockAllMedia: false,
-    }),
   ],
 });
 

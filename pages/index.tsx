@@ -116,6 +116,7 @@ function IndexPage(props: IndexPageProps) {
               className={clsx('absolute', {
                 'opacity-0': !isAvatarHovered,
               })}
+              loading="lazy"
             />
           </div>
         </div>
