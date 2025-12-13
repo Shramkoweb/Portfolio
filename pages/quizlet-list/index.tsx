@@ -69,8 +69,34 @@ function QuizletPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html:
-              '{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Quizlet QuickList","description":"A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.","url":"https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg","image":"https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg","brand":{"@type":"Brand","name":"Serhii Shramko Extensions"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"0.00","availability":"https://schema.org/InStock","url":"https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"},"applicationCategory":["BrowserApplication","EducationalApplication"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"5"}}',
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Quizlet QuickList",
+              "description": "A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.",
+              "url": "https://shramko.dev/quizlet-list",
+              "image": "https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg",
+              "author": {
+                "@type": "Person",
+                "@id": "https://shramko.dev/#person",
+                "name": "Serhii Shramko",
+                "url": "https://shramko.dev/about"
+              },
+              "operatingSystem": "Chrome, Firefox, Edge",
+              "applicationCategory": ["BrowserApplication", "EducationalApplication"],
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": "0.00",
+                "availability": "https://schema.org/InStock",
+                "url": "https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              },
+              "downloadUrl": [
+                "https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg",
+                "https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/",
+                "https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn"
+              ]
+            })
           }}
         />
       </Head>

@@ -178,13 +178,27 @@ export async function getStaticProps() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: "Serhii Shramko's Blog",
-    description: 'A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.',
-    blogPost: sortedPosts.slice(0, 25).map((post) => ({
+    '@id': 'https://shramko.dev/blog/#blog',
+    'name': "Serhii Shramko's Blog",
+    'url': 'https://shramko.dev/blog',
+    'description': 'A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.',
+    'inLanguage': 'en',
+    'publisher': {
+      '@type': 'Person',
+      '@id': 'https://shramko.dev/#person',
+      'name': 'Serhii Shramko',
+      'url': 'https://shramko.dev/about'
+    },
+    'blogPost': sortedPosts.slice(0, 25).map((post) => ({
       '@type': 'BlogPosting',
-      headline: post.data.heading,
-      description: post.data.description,
-      url: `https://shramko.dev/blog/${post.data.slug}`,
+      'headline': post.data.heading,
+      'description': post.data.description,
+      'url': `https://shramko.dev/blog/${post.data.slug}`,
+      'author': {
+        '@type': 'Person',
+        '@id': 'https://shramko.dev/#person',
+        'name': 'Serhii Shramko'
+      }
     })),
   };
 

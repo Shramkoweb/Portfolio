@@ -43,8 +43,39 @@ function PrivacyPolicy() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html:
-              '{"context":"https://schema.org","@type":"WebPage","mainEntity":{"@type":"WebPage","name":"Privacy Policy","description":"This is the privacy policy for the Quizlet QuickList Chrome Extension, explaining how we handle user data and privacy.","url":"https://shramko.dev/quizlet-list/privacy-policy","inLanguage":"en","datePublished":"2024-10-05","dateModified":"2024-10-05","publisher":{"@type":"Organization","name":"Quizlet QuickList","url":"https://shramko.dev/quizlet-list","contactPoint":{"@type":"ContactPoint","email":"shramko.dev@gmail.com","contactType":"Customer Support","areaServed":"Worldwide","availableLanguage":["English"]}},"author":{"@type":"Person","name":"Serhii Shramko","url":"https://shramko.dev/about"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shramko.dev/quizlet-list"},{"@type":"ListItem","position":2,"name":"Privacy Policy","item":"https://shramko.dev/quizlet-list/privacy-policy"}]}}}',
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Privacy Policy | Quizlet QuickList Web Extension",
+              "description": "Privacy policy for the Quizlet QuickList Web Extension explaining how we handle user data and privacy.",
+              "url": "https://shramko.dev/quizlet-list/privacy-policy",
+              "inLanguage": "en",
+              "datePublished": "2024-10-30",
+              "dateModified": "2024-10-30",
+              "author": {
+                "@type": "Person",
+                "@id": "https://shramko.dev/#person",
+                "name": "Serhii Shramko",
+                "url": "https://shramko.dev/about"
+              },
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Quizlet QuickList",
+                    "item": "https://shramko.dev/quizlet-list"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Privacy Policy",
+                    "item": "https://shramko.dev/quizlet-list/privacy-policy"
+                  }
+                ]
+              }
+            })
           }}
         />
       </Head>
