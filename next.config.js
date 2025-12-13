@@ -14,32 +14,32 @@ const ContentSecurityPolicy = `
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
   },
   {
     key: 'X-Frame-Options',
-    value: 'DENY'
+    value: 'DENY',
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
+    value: 'origin-when-cross-origin',
   },
   {
     key: 'X-Content-Type-Options',
-    value: 'nosniff'
+    value: 'nosniff',
   },
   {
     key: 'X-DNS-Prefetch-Control',
-    value: 'on'
+    value: 'on',
   },
   {
     key: 'X-XSS-Protection',
-    value: '1; mode=block'
+    value: '1; mode=block',
   },
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains; preload'
-  }
+    value: 'max-age=31536000; includeSubDomains; preload',
+  },
 ];
 
 /** @type {import('next').NextConfig} */
@@ -51,22 +51,22 @@ const nextConfig = {
       {
         source: '/blog/category/clean%20code',
         destination: '/blog/category/clean-code',
-        permanent: true
+        permanent: true,
       },
       {
         source: '/snippets/bem-classes',
         destination: '/snippets/common-css-classes',
-        permanent: true
+        permanent: true,
       },
       {
         source: '/static/serhii-shramko-resume.pdf',
         destination: '/static/serhii_shramko_frontend.pdf',
-        permanent: true
-      }
+        permanent: true,
+      },
     ];
   },
   env: {
-    APP_RELEASE_VERSION: new Date().valueOf().toString()
+    APP_RELEASE_VERSION: new Date().valueOf().toString(),
   },
   images: {
     qualities: [75, 100],
@@ -75,24 +75,24 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'media.licdn.com',
         port: '',
-        pathname: '/**'
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
         port: '',
-        pathname: '/**'
-      }
-    ]
+        pathname: '/**',
+      },
+    ],
   },
   async headers() {
     return [
       {
         source: '/:path*',
-        headers: securityHeaders
-      }
+        headers: securityHeaders,
+      },
     ];
-  }
+  },
 };
 
 const sentryBuildOptions = {
@@ -100,16 +100,20 @@ const sentryBuildOptions = {
   disableServerWebpackPlugin: true,
   disableClientWebpackPlugin: true,
   hideSourceMaps: true,
-  autoInstrumentServerFunctions: false,
-  autoInstrumentMiddleware: false,
-  disableLogger: true,
-  automaticVercelMonitors: true
+  webpack: {
+    autoInstrumentServerFunctions: false,
+    autoInstrumentMiddleware: false,
+    automaticVercelMonitors: true,
+    treeshake: {
+      removeDebugLogging: true,
+    },
+  },
 };
 
 const nextConfigByEnv = {
   production: withSentryConfig(nextConfig, sentryBuildOptions),
   test: nextConfig,
-  development: withSentryConfig(nextConfig, sentryBuildOptions)
+  development: withSentryConfig(nextConfig, sentryBuildOptions),
 };
 
 export default nextConfigByEnv[process.env.NODE_ENV];
