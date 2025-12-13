@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import {
   GetStaticPathsResult,
@@ -10,7 +11,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { MDXComponents } from '@/components/mdx-components';
 import React from 'react';
 
-import { getPostBySlug, getPosts, getPostSlugs } from '@/lib/posts/api';
+import { getPostBySlug, getPostSlugs, getPostsMetadata } from '@/lib/posts/api';
 import {
   compileMDX,
   extractHeadingsFromMarkdown,
@@ -24,8 +25,15 @@ import {
   TelegramShare,
   TwitterShare,
 } from '@/components/share-button';
-import { AlsoBlock } from '@/components/also-block';
-import { FloatingReactions } from '@/components/floating-reactions';
+
+const AlsoBlock = dynamic(() =>
+  import('@/components/also-block').then((mod) => mod.AlsoBlock),
+);
+const FloatingReactions = dynamic(() =>
+  import('@/components/floating-reactions').then(
+    (mod) => mod.FloatingReactions,
+  ),
+);
 
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
@@ -232,17 +240,15 @@ export async function getStaticProps({
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
-  const posts = await getPosts();
+  const postsMetadata = await getPostsMetadata();
 
-  // Related posts by overlapping categories
-  const relatedPosts = posts
+  const currentCategorySet = new Set(data.categories);
+
+  const relatedPosts = postsMetadata
     .filter((post) => post.data.slug !== data.slug)
     .map((post) => {
-      const postCategories = post.data.categories;
-      const currentCategories = data.categories;
-      const categorySet = new Set(currentCategories);
-      const overlapCount = postCategories.filter((cat) =>
-        categorySet.has(cat),
+      const overlapCount = post.data.categories.filter((cat) =>
+        currentCategorySet.has(cat),
       ).length;
 
       return {

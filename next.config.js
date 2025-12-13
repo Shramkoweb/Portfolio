@@ -46,6 +46,9 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'swr'],
+  },
   redirects: async () => {
     return [
       {
@@ -70,20 +73,6 @@ const nextConfig = {
   },
   images: {
     qualities: [75, 100],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'media.licdn.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
   },
   async headers() {
     return [

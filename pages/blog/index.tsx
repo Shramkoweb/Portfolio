@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Search } from 'lucide-react';
 
 import { getPostsMetadata, getPostsCategories } from '@/lib/posts/api';
@@ -12,6 +12,18 @@ import { NoResults } from '@/components/no-results';
 interface BlogPageProps {
   posts: PostMetadata[];
   categories: PostCategory[];
+  jsonLd?: {
+    '@context': string;
+    '@type': string;
+    name: string;
+    description: string;
+    blogPost: Array<{
+      '@type': string;
+      headline: string;
+      description: string;
+      url: string;
+    }>;
+  };
 }
 
 function BlogPage(props: BlogPageProps) {
@@ -19,9 +31,32 @@ function BlogPage(props: BlogPageProps) {
   const postsLength = posts.length;
 
   const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = posts.filter((post) => filterByHeading(post, searchValue));
-  const isSearching = searchValue.length > 0;
-  const postsWithSeparators = isSearching ? filteredBlogPosts : addYearSeparators(filteredBlogPosts);
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
+
+  // Debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchValue(searchValue);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchValue]);
+
+  // Memoize filtered results
+  const filteredBlogPosts = useMemo(
+    () => posts.filter((post) => filterByHeading(post, debouncedSearchValue)),
+    [posts, debouncedSearchValue],
+  );
+
+  const isSearching = debouncedSearchValue.length > 0;
+  const postsWithSeparators = useMemo(
+    () => (isSearching ? filteredBlogPosts : addYearSeparators(filteredBlogPosts)),
+    [isSearching, filteredBlogPosts],
+  );
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  }, []);
 
   return (
     <>
@@ -48,13 +83,14 @@ function BlogPage(props: BlogPageProps) {
           content="Serhii Shramko Blog"
           key="og:site_name"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html:
-              '{"@context":"https://schema.org","@type":"Blog","name":"Serhii Shramko\'s Blog","description":"A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.","blogPost":[{"@type":"BlogPosting","headline":"Discriminated Unions in TypeScript","description":"Discover how discriminated unions in TypeScript can help you write cleaner, safer, and more expressive code.","url":"https://shramko.dev/blog/discriminated-unions"},{"@type":"BlogPosting","headline":"How to Build an Astro.js Image Component on Vercel","description":"Learn how to create an image component in Astro.js and deploy it on Vercel correctly.","url":"https://shramko.dev/blog/astro-image-on-vercel"},{"@type":"BlogPosting","headline":"My Personal Linktree with Astro.js and Vercel","description":"Learn how to build a fast, efficient link tree website using Astro.js and Vercel.","url":"https://shramko.dev/blog/linktree"},{"@type":"BlogPosting","headline":"Conventional Commits","description":"Discover how Conventional Commits can enhance your work and project\'s readability.","url":"https://shramko.dev/blog/conventional-commits"},{"@type":"BlogPosting","headline":"How to Decrease Deployment Time by 44% with pnpm","description":"Learn how to efficiently migrate your project from npm to pnpm with this guide.","url":"https://shramko.dev/blog/pnpm"},{"@type":"BlogPosting","headline":"Unsubscribe from Email Newsletters Immediately","description":"Save time by unsubscribing from email newsletters promptly.","url":"https://shramko.dev/blog/unsubscribe-immediately"},{"@type":"BlogPosting","headline":"How to Add SSH Keys to Your GitHub Account","description":"Learn how to add SSH keys to your GitHub account for enhanced security.","url":"https://shramko.dev/blog/how-to-create-ssh-keys"},{"@type":"BlogPosting","headline":"Mastering HTML Class Naming: Boosting CSS Efficiency","description":"Discover the art of crafting clean and organized HTML class names to enhance CSS efficiency.","url":"https://shramko.dev/blog/class-naming-conventions"},{"@type":"BlogPosting","headline":"What is Astro Framework?","description":"Learn what makes the Astro.js framework special and its core features.","url":"https://shramko.dev/blog/astro"},{"@type":"BlogPosting","headline":"Node Version Manager","description":"Discover why you should use Node Version Manager (NVM) and how to use it.","url":"https://shramko.dev/blog/nvm"},{"@type":"BlogPosting","headline":"Cross-browser Testing","description":"Learn how to perform cross-browser testing and use Browserstack effectively.","url":"https://shramko.dev/blog/cross-browser-testing"},{"@type":"BlogPosting","headline":"Postgres Connect to Database with URL","description":"Learn how to connect to a Postgres database using a URL.","url":"https://shramko.dev/blog/postgres-connect-url"},{"@type":"BlogPosting","headline":"JavaScript 101: Arrays","description":"A comprehensive guide to JavaScript array methods.","url":"https://shramko.dev/blog/js-arrays"},{"@type":"BlogPosting","headline":"PHPStorm Allow Network Connections on Startup","description":"Learn how to fix PHPStorm network connection errors on startup.","url":"https://shramko.dev/blog/phpstorm-allow-network"},{"@type":"BlogPosting","headline":"Difference Between Absolute and Relative URL in HTML","description":"Everything you need to know about link addresses: absolute vs relative.","url":"https://shramko.dev/blog/difference-between-absolute-and-relative-url"},{"@type":"BlogPosting","headline":"How to Create a Grid with Flexbox in React","description":"Create a Flexbox-based Grid component using BEM and clsx in React.","url":"https://shramko.dev/blog/react-flexbox-grid"},{"@type":"BlogPosting","headline":"Essential Tools and Guides Every Developer Should Utilize","description":"A list of the best resources and blogs for developers in 2024.","url":"https://shramko.dev/blog/useful-articles"},{"@type":"BlogPosting","headline":"Dispatch Table in JavaScript","description":"Learn about polymorphism and dispatch tables in JavaScript.","url":"https://shramko.dev/blog/dispatch-tables"},{"@type":"BlogPosting","headline":"for...in vs for...of Loops","description":"Understand the difference between \'for...in\' and \'for...of\' loops in JavaScript.","url":"https://shramko.dev/blog/for-in-vs-for-of"},{"@type":"BlogPosting","headline":"Introducing the New Shramko.dev","description":"Learn how I built my modern portfolio and the technologies used.","url":"https://shramko.dev/blog/introducing-the-new-shramko.dev"},{"@type":"BlogPosting","headline":"How to Use ESLint with TypeScript","description":"A guide to setting up ESLint in your TypeScript project for better linting.","url":"https://shramko.dev/blog/eslint-with-typescript"},{"@type":"BlogPosting","headline":"Expressions vs Statements","description":"Understand the important differences between expressions and statements in JavaScript.","url":"https://shramko.dev/blog/expressions-statements"},{"@type":"BlogPosting","headline":"How to Fix \'__dirname is Not Defined in ES Module Scope\'","description":"Learn how to resolve the \'__dirname is not defined\' error in ES module scope.","url":"https://shramko.dev/blog/dirname-error"}]}',
-          }}
-        />
+        {props.jsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(props.jsonLd),
+            }}
+          />
+        )}
       </Head>
       <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
@@ -74,7 +110,8 @@ function BlogPage(props: BlogPageProps) {
             aria-label="Search articles"
             type="text"
             placeholder="Search articles"
-            onChange={(e) => setSearchValue(e.target.value)}
+            value={searchValue}
+            onChange={handleSearchChange}
             className="pr-10 block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
           />
           <Search
@@ -137,10 +174,25 @@ export async function getStaticProps() {
   const categories = await getPostsCategories();
   const sortedPosts = posts.sort(sortByBirthtime);
 
+  // Generate JSON-LD dynamically to reduce HTML size and improve maintainability
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: "Serhii Shramko's Blog",
+    description: 'A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.',
+    blogPost: sortedPosts.slice(0, 25).map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.data.heading,
+      description: post.data.description,
+      url: `https://shramko.dev/blog/${post.data.slug}`,
+    })),
+  };
+
   return {
     props: {
       posts: sortedPosts,
       categories,
+      jsonLd,
     },
   };
 }
