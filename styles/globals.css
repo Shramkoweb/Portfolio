@@ -207,7 +207,7 @@ input[type='email'] {
 .bg-pattern {
   background: radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#2f2f2f 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #2f2f2f 2px, currentColor 2px) -1px 0;
   background-size: 25px 25px, 50px 50px, 15px 15px, 15px 15px;
-  opacity: .8
+  opacity: 0.8;
 }
 
 .bg-pattern-waves {
@@ -215,6 +215,30 @@ input[type='email'] {
   background-image: radial-gradient(#2F2F2FFF 1.5px, transparent 0.5px), radial-gradient(currentColor 0.5px, currentColor 0.5px);
   background-size: 20px 20px;
   background-position: 0 0, 10px 10px;
+}
+
+.bg-circles {
+  opacity: 0.8;
+
+  --s: 82px;
+  --c1: #b2b2b2;
+  --c2: #ffffff;
+  --c3: #d9d9d9;
+
+  --_g: var(--c3) 0 120deg, #0000 0;
+  background: conic-gradient(from -60deg at 50% calc(100% / 3), var(--_g)),
+  conic-gradient(from 120deg at 50% calc(200% / 3), var(--_g)),
+  conic-gradient(from 60deg at calc(200% / 3), var(--c3) 60deg, var(--c2) 0 120deg, #0000 0),
+  conic-gradient(from 180deg at calc(100% / 3), var(--c1) 60deg, var(--_g)),
+  linear-gradient(90deg, var(--c1) calc(100% / 6), var(--c2) 0 50%,
+    var(--c1) 0 calc(500% / 6), var(--c2) 0);
+  background-size: calc(1.732 * var(--s)) var(--s);
+}
+
+.dark .bg-circles {
+  --c1: hsl(from currentColor h s calc(l - 5));
+  --c2: #2F2F2F;
+  --c3: currentColor;
 }
 
 @media (prefers-reduced-motion: reduce) {
