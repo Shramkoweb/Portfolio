@@ -31,50 +31,50 @@ move through the app. Learn what happens during a re-render and why it matters.
 
 ## The problem
 
-Imagine you’re an intern at a FAANG company. Your first task is to create a new React component. You’re asked to add a
-simple `button` that opens a `modal dialog` at the top of the app.
+Imagine you're an intern at a FAANG company. Your first task is to create a new React component. You're asked to add a
+simple `button` that opens a `settings panel` at the top of the dashboard.
 
 ```jsx
-const App = () => {
+const Dashboard = () => {
   // Some code here
-  return <div className="layout">
-    {/* The button should go somewhere here */}
-    <VerySlowComponent />
-    <AnotherComponent />
-    <OtherStuff />
+  return <div className="container">
+    {/* The trigger should go somewhere here */}
+    <ExpensiveDataGrid />
+    <AnalyticsWidget />
+    <ActivityFeed />
   </div>;
 };
 ```
 
-Then you implement it. The task seems trivial. We've all done it hundreds of times:
+Then you implement it. The task seems straightforward. We've all done it countless times:
 
 ```jsx
-const App = () => {
-  // Add state  
-  const [isOpen, setIsOpen] = useState(false);
+const Dashboard = () => {
+  // Add state
+  const [isExpanded, setIsExpanded] = useState(false);
 
   // Everything that is returned here will be re-rendered when the state is updated
   return <div>
-    {/* Add the button */}
-    <Button onClick={() => setIsOpen(true)}>
-      Open dialog
-    </Button>
+    {/* Add the trigger */}
+    <IconButton onClick={() => setIsExpanded(true)}>
+      Show settings
+    </IconButton>
 
-    {/* Add the dialog */}
-    {isOpen && <ModalDialog onClose={() => setIsOpen(false)} />}
+    {/* Add the panel */}
+    {isExpanded && <SettingsPanel onDismiss={() => setIsExpanded(false)} />}
 
-    <VerySlowComponent />
-    <AnotherComponent />
-    <OtherStuff />
+    <ExpensiveDataGrid />
+    <AnalyticsWidget />
+    <ActivityFeed />
   </div>;
 };
 ```
 
-You add [state](https://react.dev/learn/state-a-components-memory) to track if the dialog is open or closed. You include
-a button to change the state and render the dialog
+You add [state](https://react.dev/learn/state-a-components-memory) to track if the panel is expanded or collapsed. You include
+a button to change the state and render the panel
 based on this state.
 
-When you run the app, there’s a noticeable delay ⏰, **almost a second** — before the dialog appears.
+When you run the app, there's a noticeable delay ⏰, **almost a second** — before the panel appears.
 
 Experienced React developers might quickly suggest.
 
@@ -88,8 +88,8 @@ First, let’s take a closer look at what exactly is happening and why this dela
 
 <Image alt="Diagram showing React component tree re-rendering when state updates" src="rerender.png" />
 
-When we click the button, we trigger the `setIsOpen` setter function, which updates the `isOpen` state from `false` to
-`true`. As a result, the `App` component that holds this state re-renders itself.
+When we click the button, we trigger the `setIsExpanded` setter function, which updates the `isExpanded` state from `false` to
+`true`. As a result, the `Dashboard` component that holds this state re-renders itself.
 
 After the state updates and the `App` component re-renders, React must pass the new data to other dependent components.
 It automatically re-renders all components that the first component shows. It keeps going down the tree until it reaches
@@ -126,35 +126,35 @@ component structure.
 Let's move our logic in separated component.
 
 ```jsx
-const ButtonWithModalDialog = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const SettingsToggle = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return <>
-    <Button onClick={() => setIsOpen(true)}>
-      Open dialog
-    </Button>
+    <IconButton onClick={() => setIsExpanded(true)}>
+      Show settings
+    </IconButton>
 
-    {isOpen && <ModalDialog onClose={() => setIsOpen(false)} />}
+    {isExpanded && <SettingsPanel onDismiss={() => setIsExpanded(false)} />}
   </>;
 };
 ```
 
-And then render this new component in the `App`:
+And then render this new component in the `Dashboard`:
 
 ```jsx
-const App = () => {
+const Dashboard = () => {
   return <div>
-    // Our new component
-    <ButtonWithModalDialog />
+    {/* Our new component */}
+    <SettingsToggle />
 
-    <VerySlowComponent />
-    <AnotherComponent />
-    <OtherStuffComponent />
+    <ExpensiveDataGrid />
+    <AnalyticsWidget />
+    <ActivityFeed />
   </div>;
 };
 ```
 
 <Image alt="Diagram showing performance improvement after moving state to a separate component" src="rerender-performance-fix.png" />
 
-Consequently, the modal dialog appears immediately. We resolved a significant performance issue using a straightforward
+Consequently, the settings panel appears immediately. We resolved a significant performance issue using a straightforward
 composition technique!
