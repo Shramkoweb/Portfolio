@@ -19,16 +19,17 @@ When we handle state, component re-renders, and application performance in React
 help us keep our components clean and manageable. However, this simplicity can sometimes hide performance issues that we
 may not immediately notice.
 
-Consider a basic custom hook for toggling the visibility of a tooltip:
+Consider a basic custom hook for managing a dropdown menu:
 
 ```jsx
-const useTooltipToggle = () => {
-  const [visible, setVisible] = useState(false);
+const useDropdown = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return {
-    visible,
-    show: () => setVisible(true),
-    hide: () => setVisible(false),
+    isOpen,
+    open: () => setIsOpen(true),
+    close: () => setIsOpen(false),
+    toggle: () => setIsOpen(prev => !prev),
   };
 };
 ```
@@ -37,95 +38,87 @@ Using this hook in a component might look neat and clean:
 
 ```jsx
 const App = () => {
-  const {
-    visible,
-    show,
-    hide
-  } = useTooltipToggle();
+  const { isOpen, toggle, close } = useDropdown();
 
   return (
     <div className="app-container">
-      <button onMouseEnter={show} onMouseLeave={hide}>Hover me!</button>
-      {visible && <Tooltip text="Hello, Tooltip!" />}
-      <HeavyComputationComponent />
-      <AnotherIntensiveComponent />
+      <button onClick={toggle}>Menu</button>
+      {isOpen && <DropdownMenu onSelect={close} />}
+      <ExpensiveChart />
+      <DataGrid rows={1000} />
     </div>
   );
 };
 ```
 
-At first glance, this setup appears elegant—state logic neatly wrapped in the `useTooltipToggle` hook. However, this
-approach hides a subtle performance issue: whenever the tooltip visibility state changes, React re-renders the entire
+At first glance, this setup appears elegant—state logic neatly wrapped in the `useDropdown` hook. However, this
+approach hides a subtle performance issue: whenever the dropdown visibility state changes, React re-renders the entire
 `App` component, despite the state being limited to a small interaction.
 
 > Why? You can read more about react rerenders [here](/blog/react-rerender).
 
 ### Hidden States and Re-rendering Pitfalls
 
-Let's extend our custom hook to listen for a scroll event:
+Let's extend our custom hook to listen for window resize events:
 
 ```jsx
-const useTooltipToggle = () => {
-  const [scrollPosition, setScrollPosition] = useState(window.scrollY);
+const useDropdown = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleScroll = () => setScrollPosition(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return {
     // For example, this part of the code was simplified
-    visible: false,
-    show: () => {},
-    hide: () => {},
+    isOpen: false,
+    open: () => {},
+    close: () => {},
+    toggle: () => {},
   };
 };
 ```
 
-Now, every time the user scrolls, this hook updates the state internally. Even though the scrolling position isn't
+Now, every time the user resizes the window, this hook updates the state internally. Even though the window width isn't
 returned or directly used, it **triggers state changes**, causing the entire `App` to re-render unnecessarily.
 
 ### Nested Hooks Can Multiply Issues
 
 The problem worsens when custom hooks depend on other hooks indirectly. For example, consider another hook for tracking
-mouse movement:
+keyboard input:
 
 ```jsx
-const useMouseTracker = () => {
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0
-  });
+const useKeyboardListener = () => {
+  const [lastKey, setLastKey] = useState(null);
 
   useEffect(() => {
-    const updateMousePosition = (e) => setMousePosition({
-      x: e.clientX,
-      y: e.clientY
-    });
-    window.addEventListener('mousemove', updateMousePosition);
+    const handleKeyDown = (e) => setLastKey(e.key);
+    window.addEventListener('keydown', handleKeyDown);
 
-    return () => window.removeEventListener('mousemove', updateMousePosition);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  return null;
+  return lastKey;
 };
 
-const useTooltipToggle = () => {
-  useMouseTracker();
+const useDropdown = () => {
+  useKeyboardListener();
 
   return {
     // For example, this part of the code was simplified
-    visible: false,
-    show: () => {},
-    hide: () => {},
+    isOpen: false,
+    open: () => {},
+    close: () => {},
+    toggle: () => {},
   };
 };
 ```
 
-Even if `useTooltipToggle` does not directly use mouse position state, the `App` component still re-renders each time
-the mouse moves, since the state is updated inside the nested hook.
+Even if `useDropdown` does not directly use the last key pressed, the `App` component still re-renders each time
+a key is pressed, since the state is updated inside the nested hook.
 
 > Hiding stateful logic within hooks doesn't remove their performance impact. The
 > solution isn’t hiding complexity but smartly managing and isolating the state.
@@ -135,17 +128,13 @@ the mouse moves, since the state is updated inside the nested hook.
 To avoid such issues, encapsulate state logic in smaller components:
 
 ```jsx
-const Tooltip = () => {
-  const {
-    visible,
-    show,
-    hide
-  } = useTooltipToggle();
+const Dropdown = () => {
+  const { isOpen, toggle, close } = useDropdown();
 
   return (
     <>
-      <button onMouseEnter={show} onMouseLeave={hide}>Hover me!</button>
-      {visible && <Tooltip text="Hello, Tooltip!" />}
+      <button onClick={toggle}>Menu</button>
+      {isOpen && <DropdownMenu onSelect={close} />}
     </>
   );
 };
@@ -153,7 +142,7 @@ const Tooltip = () => {
 
 This ensures that the minimal required area re-renders, preventing unnecessary updates across the entire app.
 
-> In this solution, the `Tooltip` logic moved down from `App` to the own component. I described this approach in
+> In this solution, the `Dropdown` logic moved down from `App` to its own component. I described this approach in
 > [this article](/blog/react-rerender#moving-state-down).
 
 ### Key Takeaway
