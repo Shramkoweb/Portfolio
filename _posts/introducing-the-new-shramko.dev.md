@@ -4,8 +4,8 @@ heading: "Introducing the new shramko.dev"
 description: A deep dive into building my developer portfolio with Next.js, React, and Tailwind CSS. Learn about the tech stack, design decisions, and features.
 createDate: 2022-08-13T13:31:25.041Z
 updateDate: 2025-05-16T14:58:41.719Z
-keywords: [Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website]
-categories: [Project-Setup, React, Vercel]
+keywords: [ Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website ]
+categories: [ Project-Setup, React, Vercel ]
 featured: false
 ---
 
@@ -56,11 +56,13 @@ in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f8
 ## Key features
 
 - Dark and Light Mode
-- [Security headers](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L13) and [CSP](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L3)
+- [Security headers](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L13)
+  and [CSP](https://github.com/Shramkoweb/Portfolio/blob/develop/next.config.js#L3)
 - Feature post with [meta parsing](https://github.com/Shramkoweb/Portfolio/blame/develop/_posts/dirname-error.md#L7)
 - Error page with custom 404 page
 - Mobile and Responsive styling with Tailwind
-- Dynamic Open Graph tags and Twitter cards from [metadata](https://github.com/Shramkoweb/Portfolio/blob/develop/pages/blog/%5Bslug%5D.tsx#L61)
+- Dynamic Open Graph tags and Twitter cards
+  from [metadata](https://github.com/Shramkoweb/Portfolio/blob/develop/pages/blog/%5Bslug%5D.tsx#L61)
 - Accessibility (try to pass [WCAG 2.1 and WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/))
 - Next.js Api for simple express server
 - Realtime updates with SWR
@@ -108,7 +110,7 @@ No <abbr title="JavaScript">JS</abbr> and frameworks 😂.
 Each commit triggers a build and environment (Production | Preview) creation.
 And then we start multiple steps:
 
-> I have post about [ESLint with TypeScript](/blog/eslint-with-typescript) 
+> I have post about [ESLint with TypeScript](/blog/eslint-with-typescript)
 
 - ESLint & TypeScript: Linting the project for simple mistakes and Type checking
 - Checkly: Running end-to-end tests
@@ -207,7 +209,8 @@ module.exports = nextConfigByEnv[process.env.NODE_ENV];
 your database schema, it's easier than ever to manage your data.
 Whether you have an existing database or you're starting from scratch, Prisma has you covered.
 
-When combining Prisma with Next.js, you can skip the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) boilerplate
+When combining Prisma with Next.js, you can skip
+the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) boilerplate
 and directly query the database.
 Less code means less bugs.
 

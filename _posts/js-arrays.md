@@ -4,8 +4,8 @@ heading: "JavaScript 101: Arrays"
 description: Master JavaScript array methods with this beginner-friendly guide. Learn map, filter, reduce, find, and other essential methods with practical examples.
 createDate: 2022-11-25T17:39:11.486Z
 updateDate: 2022-11-25T17:39:11.486Z
-keywords: [javascript arrays, javascript array replace, js array concat, js array includes, javascript concatenate arrays, array includes javascript]
-categories: [JS, Tutorial]
+keywords: [ javascript arrays, javascript array replace, js array concat, js array includes, javascript concatenate arrays, array includes javascript ]
+categories: [ JS, Tutorial ]
 featured: false
 ---
 

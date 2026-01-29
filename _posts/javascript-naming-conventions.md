@@ -15,7 +15,8 @@ merely functional to professionally polished.
 ## Why Naming Matters in JavaScript
 
 Every time you write code, you're not just writing it for the computer - you're writing it for other developers (
-**including your future self** ). Good naming conventions serve as a form of documentation, making your code self-explanatory
+**including your future self** ). Good naming conventions serve as a form of documentation, making your code
+self-explanatory
 and reducing the cognitive load required to understand it.
 
 ## Core Principles of JavaScript Naming
@@ -47,7 +48,8 @@ JavaScript uses multiple naming conventions depending on the context:
 - `UPPER_SNAKE_CASE` for constants
 - `kebab-case` typically for CSS classes and HTML attributes
 
-JavaScript’s built-in APIs use camelCase (e.g., getElementById), PascalCase for classes (e.g., Date), and UPPER_SNAKE_CASE for constants (e.g., Math.PI). Align your code with these patterns.
+JavaScript’s built-in APIs use camelCase (e.g., getElementById), PascalCase for classes (e.g., Date), and
+UPPER_SNAKE_CASE for constants (e.g., Math.PI). Align your code with these patterns.
 
 ## Practical Naming Guidelines
 
@@ -67,7 +69,9 @@ const isActive = true;
 const hasPermission = user.checkAccess();
 ```
 
-> Another thing to remember at the conference is that the affirmative prefix shouldn't include a negation. This is because the negation operator (!) is most commonly used with Boolean values. So, a value named something like 'isNotAllowed' with the negation applied to it, '!isNotAllowed', can be quite misleading.
+> Another thing to remember at the conference is that the affirmative prefix shouldn't include a negation. This is
+> because the negation operator (!) is most commonly used with Boolean values. So, a value named something like '
+> isNotAllowed' with the negation applied to it, '!isNotAllowed', can be quite misleading.
 
 Naming recommendations for Boolean from [W3C](https://w3ctag.github.io/design-principles/#naming-booleans).
 
@@ -176,6 +180,7 @@ const UserRole = {
 ```
 
 #### Maps
+
 Also known as a dictionary data structure. This data structure is used for mapping one value to another.
 
 ```javascript
@@ -253,6 +258,7 @@ const retrieveInfo = () => {};
 ```
 
 ### 4. Different Languages
+
 ```javascript
 // Bad ❌
 const ユーザー名 = "John";
@@ -303,8 +309,9 @@ To help maintain consistent naming conventions, consider using:
 4. Team code review guidelines focused on naming
 
 ## Time Tested Naming Naming Conventions
+
 - [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html#naming)
-- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript?tab=readme-ov-file#naming-conventions) 
+- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript?tab=readme-ov-file#naming-conventions)
 
 ## Conclusion
 

@@ -4,8 +4,8 @@ heading: Postgres connect to database with URL
 description: Learn how to connect to PostgreSQL using a connection URL string. Simple guide for Node.js, DataGrip, or any client supporting URL-based database connections.
 createDate: 2023-02-09T12:43:36.700Z
 updateDate: 2023-02-09T12:43:36.700Z
-keywords: [DataGrip connect, database connection ulr, postgres connect url, how to connect to database]
-categories: [JS, Tutorial, Project-Setup]
+keywords: [ DataGrip connect, database connection ulr, postgres connect url, how to connect to database ]
+categories: [ JS, Tutorial, Project-Setup ]
 featured: false
 ---
 
@@ -83,5 +83,3 @@ DataGrip.
 
 - [Installing PostgreSQL on macOS](/snippets/postgres-install-macos) - step-by-step setup guide
 - [SQL Countries Table](/snippets/countries-sql) - ready-to-use seed data for your database
-
-

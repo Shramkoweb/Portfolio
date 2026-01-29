@@ -21,7 +21,8 @@ comes to the rescue. He is our friend, brother and helper. 🫡
 This post is about how to create a flexbox-based grid component in React. The component should be reusable and painless
 to configure.
 
-> If you have problems coming up with class names, I have a selection of [common class names](/snippets/common-css-classes#layout) on my blog
+> If you have problems coming up with class names, I have a selection
+> of [common class names](/snippets/common-css-classes#layout) on my blog
 
 ## Preparation
 
@@ -186,5 +187,3 @@ Therefore, below I share additional materials that may be useful:
 - [Flexbox Froggy Game](https://flexboxfroggy.com/)
 - [React bootstrap Grid system](https://react-bootstrap.github.io/docs/layout/grid/)
 - [CSS Class Naming Conventions](/blog/class-naming-conventions) - learn more about BEM methodology used in this example
-
-
