@@ -2,7 +2,8 @@ export const Routes = {
   Home: () => '/',
   Blog: () => '/blog',
   BlogPost: (slug: string) => `/blog/${slug}`,
-  BlogCategory: (category: string) => `/blog/category/${category.toLowerCase()}`,
+  BlogCategory: (category: string) =>
+    `/blog/category/${category.toLowerCase()}`,
   Snippets: () => '/snippets',
   Snippet: (slug: string) => `/snippets/${slug}`,
   About: () => '/about',
@@ -15,4 +16,5 @@ export const Routes = {
   Resume: () => '/static/serhii_shramko_frontend.pdf',
   GitHub: () => 'https://github.com/Shramkoweb',
   LinkTree: () => 'https://links.shramko.dev/',
+  NerdLift: () => 'https://nerdlift.io/',
 } as const;

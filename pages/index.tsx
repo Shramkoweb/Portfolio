@@ -92,7 +92,7 @@ function IndexPage(props: IndexPageProps) {
             </Link>
           </div>
           <div
-            className="shrink-0 block relative mr-auto mb-8 w-[128px] h-[128px] sm:mb-0"
+            className="shrink-0 block relative mr-auto mb-8 w-32 h-32 sm:mb-0"
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
           >
@@ -168,22 +168,32 @@ function IndexPage(props: IndexPageProps) {
             Projects
           </h2>
 
-          <div className="flex flex-col gap-8 md:flex-row">
-            <Link href={Routes.QuizletList()} className="w-full">
-              <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-[300px] bg-pattern dark:text-gray-900">
+          <div className="grid gap-8">
+            <a href={Routes.NerdLift()} target="_blank" className="w-full">
+              <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-circles dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
-                  Quizlet QuickList
+                  NerdLift ー Gym app
                 </h3>
               </div>
-            </Link>
+            </a>
 
-            <Link href={Routes.UdemyResetProgress()} className="w-full">
-              <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-[300px] bg-pattern-waves dark:text-gray-900">
-                <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
-                  Udemy Reset Progress
-                </h3>
-              </div>
-            </Link>
+            <div className="flex flex-col gap-8 md:flex-row">
+              <Link href={Routes.QuizletList()} className="w-full">
+                <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern dark:text-gray-900">
+                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+                    Quizlet QuickList
+                  </h3>
+                </div>
+              </Link>
+
+              <Link href={Routes.UdemyResetProgress()} className="w-full">
+                <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-waves dark:text-gray-900">
+                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+                    Udemy Reset Progress
+                  </h3>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
 
