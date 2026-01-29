@@ -8,45 +8,46 @@ categories: [ Advanced-React, Tutorial, React ]
 featured: false
 ---
 
-Hi, React developers!
+Welcome back, fellow React enthusiasts!
 
-In my previous [post](/blog/react-rerender), we explored the mechanics of re-renders and how to fix performance issues
-by "moving state down." We solved the "slow modal" problem by isolating the state into a smaller component, leaving the
-rest of the heavy app alone.
+Previously, we discussed [re-renders and the "moving state down" pattern](/blog/react-rerender). That technique works
+great when you can isolate stateful logic into a leaf component. But sometimes the architecture doesn't allow for that.
 
-But what happens when you can't move the state down?
+What do you do when state *must* live at the top, yet you don't want to tank performance?
 
-Imagine you are that same developer at a FAANG company. You’ve just optimized the modal, but now your PM asks for a new
-feature: a "scroll progress" block that wraps the entire main content area.
+Let's explore a real scenario. You're building a dashboard with a resizable sidebar. The sidebar width is controlled
+by dragging a handle, and the entire content area needs to respond to this width change.
 
-## The Problem
+## The Challenge
 
-The requirements are strict:
+Here's what you need:
 
-* A block that tracks the scroll position.
-* It wraps `VerySlowComponent`, `BunchOfStuff`, and `OtherStuffAlsoComplicated`.
-* As you scroll, a small UI element inside the wrapper needs to move/animate based on that scroll position.
+* A draggable divider that updates the sidebar width in real-time.
+* The sidebar wraps around `ExpensiveChart`, `DataGrid`, and `AnalyticsPanel`.
+* As you drag, the layout adjusts smoothly.
 
-Your first instinct might be to wrap everything in a div with an onScroll handler (or maybe try to hide the logic in
-a [custom hook](/blog/react-hooks-pitfalls), which often doesn't help):
+The naive approach puts the drag state at the top level (or perhaps tries to hide it in
+a [custom hook](/blog/react-hooks-pitfalls), which doesn't change anything):
 
 ```jsx
-const App = () => {
-  // We need this state for the moving block
-  const [scrollPosition, setScrollPosition] = useState(0);
+const Dashboard = () => {
+  const [sidebarWidth, setSidebarWidth] = useState(300);
 
-  const handleScroll = (e) => {
-    setScrollPosition(e.target.scrollTop);
+  const handleDrag = (e) => {
+    setSidebarWidth(e.clientX);
   };
 
   return (
-    <div className="scrollable-block" onScroll={handleScroll}>
-      <MovingBlock position={scrollPosition} />
+    <div className="dashboard-layout">
+      <div className="sidebar" style={{ width: sidebarWidth }}>
+        <DragHandle onDrag={handleDrag} />
 
-      {/* 😱 These will re-render on EVERY scroll event! */}
-      <VerySlowComponent />
-      <BunchOfStuff />
-      <OtherStuffAlsoComplicated />
+        {/* These re-render constantly while dragging! */}
+        <ExpensiveChart />
+        <DataGrid />
+        <AnalyticsPanel />
+      </div>
+      <MainContent />
     </div>
   );
 };
@@ -54,98 +55,98 @@ const App = () => {
 
 <Image src="elements.png" alt="" />
 
-If you run this, the app will crawl. Every pixel you scroll triggers a state update in `App`. Since `App` re-renders,
-React re-renders everything inside it. The "moving state down" trick won't work easily here because the `div` wraps the
-content. The state needs to be high up.
+This implementation will stutter badly. Every mouse movement fires a state update, causing `Dashboard` to re-render.
+When `Dashboard` re-renders, so does everything nested inside it. The "moving state down" approach fails here because
+the `sidebar` div needs to wrap the expensive components while also knowing about the width.
 
-Is `React.memo` the only escape hatch? No. There is a more elegant composition pattern that relies on understanding the
-difference between a Component and an Element.
+You might reach for `React.memo`, but there's a cleaner compositional approach that leverages how React handles
+elements.
 
-## The Solution: Children as Props
+## The Fix: Composition with Children
 
-Let’s extract that scroll logic into its own component, but with a twist. Instead of hard-coding the slow components
-inside, we accept them as children.
+Extract the resize logic into a dedicated component that accepts its contents as children:
 
 ```jsx
-const ScrollableWithMovingBlock = ({ children }) => {
-  const [position, setPosition] = useState(0);
+const ResizableSidebar = ({ children }) => {
+  const [width, setWidth] = useState(300);
 
-  const handleScroll = (e) => {
-    setPosition(e.target.scrollTop);
+  const handleDrag = (e) => {
+    setWidth(e.clientX);
   };
 
   return (
-    <div className="scrollable-block" onScroll={handleScroll}>
-      <MovingBlock position={position} />
+    <div className="sidebar" style={{ width }}>
+      <DragHandle onDrag={handleDrag} />
       {children}
     </div>
   );
 };
 ```
 
-Now, we rewrite our `App`:
+Refactor `Dashboard` to use this wrapper:
 
 ```jsx
-const App = () => {
+const Dashboard = () => {
   return (
-    <ScrollableWithMovingBlock>
-      {/* These are now passed as props! */}
-      <VerySlowComponent />
-      <BunchOfStuff />
-      <OtherStuffAlsoComplicated />
-    </ScrollableWithMovingBlock>
+    <div className="dashboard-layout">
+      <ResizableSidebar>
+        {/* Passed as props, not defined here */}
+        <ExpensiveChart />
+        <DataGrid />
+        <AnalyticsPanel />
+      </ResizableSidebar>
+      <MainContent />
+    </div>
   );
 };
 ```
 
-Result: The scroll animation is buttery smooth. The heavy components do not re-render, even though they appear "inside"
-the component that is updating 60 times a second.
+Now dragging is fluid. The expensive components stay untouched even though they visually live inside a component that
+updates dozens of times per second.
 
-## Why does this work? (The Deep Dive)
+## The Mechanics Behind It
 
-To understand this, we need to distinguish between a **Component** and an **Element**.
+This behavior stems from the distinction between **Components** and **Elements**.
 
-A **Component** is a function (e.g., `App` or `ScrollableWithMovingBlock`).
+A **Component** is the function itself (`Dashboard`, `ResizableSidebar`).
 
-An **Element** is an object that describes what to render (e.g., `{ type: 'div', props: ... }`).
+An **Element** is the object produced when JSX executes (`{ type: ExpensiveChart, props: {...} }`).
 
-When `App` renders, it creates the elements for `<VerySlowComponent />` and its friends. It passes these Element objects
-to `ScrollableWithMovingBlock` via the `children` prop.
+Here's what happens step by step:
 
-Now, look at the render timeline:
+1. `Dashboard` renders once and creates Element objects for `<ExpensiveChart />`, `<DataGrid />`, and
+   `<AnalyticsPanel />`.
+2. These Element objects get passed into `ResizableSidebar` through the `children` prop.
+3. User starts dragging. `ResizableSidebar` updates its `width` state repeatedly.
+4. `ResizableSidebar` re-executes, returning a new sidebar div with the updated width.
+5. React checks the `children` prop. Has the reference changed?
+6. No. `Dashboard` never re-rendered, so `children` points to the exact same objects in memory.
+7. React skips reconciling that entire subtree.
 
-1. **User Scrolls**: `ScrollableWithMovingBlock` updates its position state.
-2. **Re-render**: `ScrollableWithMovingBlock` re-executes its function.
-3. **The Return**: It returns a new `div` with the new `MovingBlock`. But for `{children}`, it uses the exact same
-   reference it received from `App`.
-4. **Reconciliation**: React looks at the `children` prop. It asks: "Did this object change?"
-5. **The Check**: Since `App` (the owner) didn't re-render, the children object is referentially identical (`===`).
-   React sees this and says, "Okay, no need to touch this subtree."
+The key insight: **React compares element references, not their visual position in the tree.**
 
-## Syntax Sugar
+## Understanding the JSX Transformation
 
-It's important to remember that `children` is just a prop like any other. The "nesting" syntax is just JSX sugar.
-Creating an element is just a [JavaScript expression](/blog/expressions-statements), not a statement. This code:
-
-```jsx
-<Parent>
-  <Child />
-</Parent>
-```
-
-Is strictly equivalent to this:
+Remember that `children` is an ordinary prop. The nested syntax is syntactic sugar.
+Elements are [expressions](/blog/expressions-statements), so these two snippets produce identical results:
 
 ```jsx
-<Parent children={<Child />} />
+<Wrapper>
+  <Content />
+</Wrapper>
 ```
 
-You could even name the prop `content` or `body` if you wanted. As long as the Element object is created in the parent
-scope (which isn't re-rendering) and passed down, the child will be preserved.
+```jsx
+<Wrapper children={<Content />} />
+```
 
-## Summary
+You could use any prop name: `content`, `slot`, `body`. The optimization works as long as the Element is created in a
+scope that doesn't re-render and then passed to the stateful component.
 
-In the previous article, we fixed performance by [moving state down](/blog/react-rerender#moving-state-down) into a
-child. Today we fixed it by passing the heavy UI down as props.
+## Wrapping Up
 
-Both strategies achieve the same goal: separating the part that changes from the part that remains static.
+The [previous article](/blog/react-rerender#moving-state-down) showed how pushing state into a child component
+prevents unnecessary re-renders. This article demonstrated the inverse: lifting static UI *out* of the stateful
+component by passing it as props.
 
+Both patterns serve the same purpose: decoupling what changes from what stays stable.
