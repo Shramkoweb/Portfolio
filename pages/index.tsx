@@ -169,14 +169,6 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid gap-8">
-            <a href={Routes.NerdLift()} target="_blank" className="w-full">
-              <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-circles dark:text-gray-900">
-                <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
-                  NerdLift ー Gym app
-                </h3>
-              </div>
-            </a>
-
             <div className="flex flex-col gap-8 md:flex-row">
               <Link href={Routes.QuizletList()} className="w-full">
                 <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern dark:text-gray-900">
