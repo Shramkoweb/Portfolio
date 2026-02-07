@@ -102,7 +102,7 @@ function BlogPage(props: BlogPageProps) {
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           In recent years, I&apos;ve poured a lot of time into writing, mostly
           on tech but occasionally venturing into other areas.{' '}
-          <strong>Over 1000 people</strong> read my articles every month, and
+          <strong>Over 2000 people</strong> read my articles every month, and
           I&apos;m thrilled to share my knowledge with you.
         </p>
         <div className="relative w-full mb-4">
@@ -150,7 +150,7 @@ function BlogPage(props: BlogPageProps) {
                     </li>
                   );
                 }
-                
+
                 return (
                   <li key={item.data.title} className='mb-8 last:mb-0'>
                     <BlogPostPreview
