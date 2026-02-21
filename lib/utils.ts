@@ -33,7 +33,7 @@ export const categoryToSeoData = {
       'Learn Astro.js from basics to advanced. Build fast static sites with partial hydration and seamless React, Vue, or Svelte integrations.',
     keywords: 'Astro, Frontend, Framework',
   },
-  [PostCategory.JamsSack]: {
+  [PostCategory.Jamstack]: {
     title: 'Master Jamstack Technology: Complete Overview',
     description:
       'Explore Jamstack architecture for fast, secure websites. Learn about static site generators, headless CMS, and serverless functions.',

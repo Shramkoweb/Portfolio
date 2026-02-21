@@ -35,7 +35,7 @@ export enum PostCategory {
   TS = 'ts',
   CSS = 'css',
   Astro = 'astro',
-  JamsSack = 'jamstack',
+  Jamstack = 'jamstack',
   HTML = 'html',
   CleanCode = 'clean-code',
   UsefulResources = 'useful-resources',
