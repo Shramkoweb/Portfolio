@@ -38,3 +38,6 @@ yarn-error.log*
 
 # Sentry
 .sentryclirc
+
+# Prisma generated client
+/generated

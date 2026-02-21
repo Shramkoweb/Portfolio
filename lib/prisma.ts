@@ -1,17 +1,11 @@
-import { PrismaClient } from '@prisma/client';
-import { isProduction } from '@/lib/utils';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '../generated/client';
 
- 
-/* https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices#solution */
+const pool = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
+const prisma = new PrismaClient({ adapter: pool });
 
-declare global {
-  // allow global `var` declarations
-   
-  var prisma: PrismaClient | undefined;
-}
+const globalForPrisma = global as unknown as { prisma: typeof prisma };
 
-export const prisma = global.prisma || new PrismaClient();
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
-if (!isProduction()) {
-  global.prisma = prisma;
-}
+export default prisma;
