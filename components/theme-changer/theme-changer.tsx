@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import { MoonStar, Sun } from 'lucide-react';
 
 enum Theme {
@@ -7,10 +7,8 @@ enum Theme {
   dark = 'dark',
 }
 export function ThemeChanger() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
   const { resolvedTheme, setTheme } = useTheme();
-
-  useEffect(() => setMounted(true), []);
 
   const handleClick = () => {
     setTheme(resolvedTheme === Theme.dark ? Theme.light : Theme.dark);
