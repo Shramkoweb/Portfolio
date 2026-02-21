@@ -5,13 +5,14 @@ import { PropsWithChildren } from 'react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 
-const DESCRIPTION = 'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js. Practical tutorials, code snippets, and tips for web developers.';
+const DESCRIPTION =
+  'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js. Practical tutorials, code snippets, and tips for web developers.';
 const TITLE = 'Serhii Shramko – Developer, writer, creator.';
 const IMAGE = 'https://shramko.dev/static/images/twittersite.png';
 
 export function Layout({ children }: PropsWithChildren) {
   const router = useRouter();
-  const ROUTER_PATH = router.asPath.split('?')[0];
+  const currentPath = router.asPath.split('?')[0];
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
@@ -26,13 +27,13 @@ export function Layout({ children }: PropsWithChildren) {
         <meta content={DESCRIPTION} name="description" key="description" />
         <meta
           property="og:url"
-          content={`https://shramko.dev${ROUTER_PATH}`}
+          content={`https://shramko.dev${currentPath}`}
           key="og:url"
         />
         <link
           rel="canonical"
           key="canonical"
-          href={`https://shramko.dev${ROUTER_PATH}`}
+          href={`https://shramko.dev${currentPath}`}
         />
         <meta property="og:type" content="website" key="og:type" />
         <meta

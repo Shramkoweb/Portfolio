@@ -12,7 +12,7 @@ interface TableOfContentProps {
 }
 
 export function TableOfContent({ headings }: TableOfContentProps) {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   if (!headings.length) return null;
 
   return (
@@ -20,22 +20,22 @@ export function TableOfContent({ headings }: TableOfContentProps) {
       <button
         type="button"
         className="flex items-center gap-2 font-bold text-base focus:outline-none text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
+        onClick={() => setIsOpen((v) => !v)}
+        aria-expanded={isOpen}
         aria-controls="toc-list"
       >
         <span>Table of Contents</span>
         <ChevronRight
           aria-hidden="true"
-          className={`transition-transform duration-200 w-4 h-4 ${open ? 'rotate-90' : ''}`}
+          className={`transition-transform duration-200 w-4 h-4 ${isOpen ? 'rotate-90' : ''}`}
         />
       </button>
       <ul
         id="toc-list"
-        className={`pl-0 transition-all duration-200 ${open ? 'max-h-[60vh] overflow-y-auto' : 'max-h-0 overflow-hidden'}`}
+        className={`pl-0 transition-all duration-200 ${isOpen ? 'max-h-[60vh] overflow-y-auto' : 'max-h-0 overflow-hidden'}`}
         style={{
-          opacity: open ? 1 : 0,
-          pointerEvents: open ? 'auto' : 'none',
+          opacity: isOpen ? 1 : 0,
+          pointerEvents: isOpen ? 'auto' : 'none',
         }}
       >
         {headings.map((heading) => (

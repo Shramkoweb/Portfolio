@@ -5,7 +5,7 @@ export function TelegramShare() {
   const handleClick = () => {
     window.open(
       `https://telegram.me/share/url?url=${window.location.href}&text=${document.title} Blog`,
-      'facebook-share-dialog',
+      'telegram-share-dialog',
       'width=800,height=600',
     );
   };
