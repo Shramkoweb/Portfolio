@@ -99,7 +99,8 @@ commonly used types:
 
 ## Leveraging AI with Conventional Commits
 
-AI-powered IDEs like **JetBrains'** suite of tools enhances your workflow by intelligently suggesting commit messages that
+AI-powered IDEs like **JetBrains'** suite of tools enhances your workflow by intelligently suggesting commit messages
+that
 adhere to Conventional Commits standards. These suggestions are contextually generated based on changes you've made,
 significantly streamlining the process and reducing the cognitive load of writing detailed commit messages.
 
@@ -361,4 +362,7 @@ Initially, conventional commits might seem a bit odd, and you might find yoursel
 commits. However, they soon become second nature, and you'll appreciate their impact on your software engineering
 practices.
 
-> Conventional commits pair well with [Semantic Versioning](/blog/npm-semantic-versioning) for automated package releases.
+> Conventional commits pair well with [Semantic Versioning](/blog/npm-semantic-versioning) for automated package
+> releases.
+
+> For a complete hook setup without husky, see [Git Hooks for Solo Developers](/blog/git-hooks-automation).

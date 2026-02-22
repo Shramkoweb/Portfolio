@@ -8,6 +8,7 @@ keywords: [ git info exclude, git assume unchanged, git local ignore, gitignore 
 categories: [ Opinion, Project-Setup, Tools ]
 featured: false
 ---
+
 <Image src="git.jpg" alt="Hand-drawn illustration of the Git logo inside a tilted square outline with three red dots connected by black lines, representing branches" priority={true} />
 
 When it comes to managing version control in your project with Git, `.gitignore` files typically handle most cases of
@@ -89,3 +90,5 @@ While `.gitignore` is a powerful tool, it’s not always enough on its own. By i
 
 Precise management leads to fewer headaches and cleaner commits, ensuring a smoother and more intuitive approach to
 version control.
+
+> For more git workflow automation, check out [Git Hooks for Solo Developers](/blog/git-hooks-automation).
