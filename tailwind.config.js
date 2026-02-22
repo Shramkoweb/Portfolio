@@ -1,8 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { spacing } = require("tailwindcss/defaultTheme");
+import defaultTheme from "tailwindcss/defaultTheme";
+import typography from "@tailwindcss/typography";
+
+const { spacing } = defaultTheme;
 
 /** @type {import("tailwindcss").Config} */
-module.exports = {
+const config = {
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -153,6 +155,7 @@ module.exports = {
   variants: {
     typography: ["dark"],
   },
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [typography],
 };
+
+export default config;
