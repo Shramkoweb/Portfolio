@@ -1,9 +1,9 @@
 ---
-title: How to Install PostgreSQL on macOS (2024 Guide)
+title: How to Install PostgreSQL on macOS
 heading: Installing PostgreSQL on macOS
 description: Step-by-step guide to install PostgreSQL on macOS using Homebrew. Learn how to set up the database server, create users, and connect to your local instance.
 createDate: 2023-10-04T15:51:46.141Z
-updateDate: 2025-06-10
+updateDate: 2026-02-21
 keywords: [ JS snippet, PostgreSQL Snippet, install PostgreSQL, postgres on MacOS ]
 ---
 

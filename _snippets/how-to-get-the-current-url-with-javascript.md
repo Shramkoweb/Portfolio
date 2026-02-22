@@ -1,5 +1,6 @@
 ---
-title: How to Get the Current URL with JavaScript (2024 Update)
+title: How to Get the Current URL with JavaScript
+updateDate: 2026-02-21
 heading: How to get the current URL with JavaScript
 description: Learn different methods to retrieve the current URL using JavaScript for analytics tracking, dynamic content updates, and more.
 createDate: 2024-03-20T23:39:45.492Z

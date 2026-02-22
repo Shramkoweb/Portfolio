@@ -3,6 +3,7 @@ title: Essential CSS Class Names Every Developer Should Know
 heading: Common CSS Class Names
 description: Essential CSS class names every developer should know. Common naming patterns following BEM methodology for structured, maintainable, and organized styles.
 createDate: 2023-10-25
+updateDate: 2026-02-21
 keywords: [ Common CSS class names, BEM methodology, CSS naming conventions, Structured web styling, Block Element Modifier, CSS best practices, Naming conventions in CSS ]
 ---
 
@@ -280,7 +281,7 @@ junior developers usually makes some errors in navigation blocks.
   <div class="entry__author author-entry">
     <img class="author-entry__img" src="userpic.png" alt="Vasilisa Sergeevich">
 
-    <a class "author-entry__link" href="#">Vasilisa Sergeevich</a>
+    <a class="author-entry__link" href="#">Vasilisa Sergeevich</a>
   </div>
 
   <div class="entry__content">

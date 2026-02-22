@@ -3,6 +3,7 @@ title: "React Hook Tutorial: How to Use the useHasMounted Hook"
 heading: useHasMounted
 description: Avert strange SSR problems with this useful React hook. Identify whether your rendering occurs on the client or server!
 createDate: 2024-07-11
+updateDate: 2026-02-21
 keywords: [
   React useEffect hook usage,
   Conditional rendering in React components,
@@ -20,7 +21,7 @@ keywords: [
 Hey there! Today, let's talk about a handy custom React hook called `useHasMounted`. This hook is quite useful when you
 want to conditionally render components or perform actions based on whether your component has mounted or not.
 
-After [React Server Components (RSC)](https://react.dev/reference/rsc/server-components) are released, this hook will be even more useful.
+With [React Server Components (RSC)](https://react.dev/reference/rsc/server-components) now stable, this hook is especially useful for code that must only run on the client.
 
 ```jsx
 import { useState, useEffect } from 'react';
