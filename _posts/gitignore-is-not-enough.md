@@ -90,5 +90,3 @@ While `.gitignore` is a powerful tool, it’s not always enough on its own. By i
 
 Precise management leads to fewer headaches and cleaner commits, ensuring a smoother and more intuitive approach to
 version control.
-
-> For more git workflow automation, check out [Git Hooks for Solo Developers](/blog/git-hooks-automation).
