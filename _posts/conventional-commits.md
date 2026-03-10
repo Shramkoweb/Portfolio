@@ -364,5 +364,3 @@ practices.
 
 > Conventional commits pair well with [Semantic Versioning](/blog/npm-semantic-versioning) for automated package
 > releases.
-
-> For a complete hook setup without husky, see [Git Hooks for Solo Developers](/blog/git-hooks-automation).

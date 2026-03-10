@@ -116,8 +116,5 @@ That's all 🎉.
 It's very easy to start using `ESlint`, but its contribution to code formatting and saving time is
 huge. Therefore, I recommend always using it.
 
-> Once ESLint is configured, you can [automate it with git hooks](/blog/git-hooks-automation) so it runs on every
-> commit.
-
 - [Create-React-App with TypeScript, ESLint, Prettier, and Github Actions](https://brygrill.medium.com/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
 - [What is ESLint?](https://hackernoon.com/what-is-eslint-how-do-i-set-it-up-on-atom-70f270f57296)
