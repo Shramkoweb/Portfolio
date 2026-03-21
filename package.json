@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.32.1",
   "type": "module",
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
