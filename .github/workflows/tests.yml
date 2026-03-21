@@ -1,25 +1,23 @@
 name: Tests
 on:
-  - push
-  - pull_request
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 22.x ]
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
-      - name: Install
-        run: pnpm i
+      - run: pnpm i --frozen-lockfile
         env:
           CI: true
-      - name: Run tests
-        run: pnpm run test:ci
+      - run: pnpm run test:ci
