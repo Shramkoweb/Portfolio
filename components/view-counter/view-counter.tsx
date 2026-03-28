@@ -24,7 +24,10 @@ export function ViewCounter(props: ViewCounterProps) {
 
     const register = () => {
       fetch(cacheKey, { method: 'POST' })
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) throw new Error(res.statusText);
+          return res.json();
+        })
         .then((newData) => {
           mutate(cacheKey, newData, false);
         })

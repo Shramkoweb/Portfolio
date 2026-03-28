@@ -23,10 +23,14 @@ export default async function handler(
         ? github.value
         : { stars: 0, followers: 0 };
 
-    // Cache for 5 minutes, stale-while-revalidate for 1 hour
+    const allSucceeded =
+      viewsResult.status === 'fulfilled' && github.status === 'fulfilled';
+
     res.setHeader(
       'Cache-Control',
-      's-maxage=300, stale-while-revalidate=3600',
+      allSucceeded
+        ? 's-maxage=300, stale-while-revalidate=3600'
+        : 's-maxage=30, stale-while-revalidate=60',
     );
 
     return res.status(200).json({

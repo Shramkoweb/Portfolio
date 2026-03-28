@@ -21,7 +21,12 @@ export async function fetchGitHubStats() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query: QUERY }),
+    signal: AbortSignal.timeout(5000),
   });
+
+  if (!response.ok) {
+    throw new Error(`GitHub API responded with ${response.status}`);
+  }
 
   const json = await response.json();
 
