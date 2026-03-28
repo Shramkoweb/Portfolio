@@ -22,6 +22,13 @@
   "engines": {
     "node": "24.x"
   },
+  "browserslist": [
+    "chrome >= 92",
+    "edge >= 92",
+    "firefox >= 90",
+    "safari >= 15.4",
+    "ios >= 15.4"
+  ],
   "dependencies": {
     "@prisma/adapter-pg": "7.6.0",
     "@prisma/client": "7.6.0",
