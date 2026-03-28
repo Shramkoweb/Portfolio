@@ -11,7 +11,7 @@ function UdemyResetProgressPage() {
     const registerView = () =>
       fetch('/api/views/udemy-reset-progress-page', {
         method: 'POST',
-      });
+      }).catch(() => {});
 
     registerView();
   }, []);
