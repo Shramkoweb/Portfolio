@@ -35,7 +35,7 @@ function SnippetPage(props: SnippetPageProps) {
     const registerView = () =>
       fetch(`/api/views/${slug}`, {
         method: 'POST',
-      });
+      }).catch(() => {});
 
     registerView();
   }, [slug]);
