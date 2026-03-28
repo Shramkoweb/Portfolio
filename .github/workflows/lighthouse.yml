@@ -39,6 +39,7 @@ jobs:
             ${{ github.event.deployment_status.target_url }}/
             ${{ github.event.deployment_status.target_url }}/blog
             ${{ github.event.deployment_status.target_url }}/about
+          runs: 3
           configPath: /tmp/lighthouserc.json
           budgetPath: .github/lighthouse-budget.json
           uploadArtifacts: true
