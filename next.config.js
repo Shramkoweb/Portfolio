@@ -95,16 +95,8 @@ const nextConfig = {
 
 const sentryBuildOptions = {
   silent: !process.env.CI,
-  disableServerWebpackPlugin: true,
-  disableClientWebpackPlugin: true,
-  hideSourceMaps: true,
-  webpack: {
-    autoInstrumentServerFunctions: false,
-    autoInstrumentMiddleware: false,
-    automaticVercelMonitors: true,
-    treeshake: {
-      removeDebugLogging: true,
-    },
+  bundleSizeOptimizations: {
+    excludeDebugStatements: true,
   },
 };
 
