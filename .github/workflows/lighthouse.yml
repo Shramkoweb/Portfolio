@@ -13,14 +13,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Create Lighthouse config
+        run: |
+          cat > /tmp/lighthouserc.json << 'TEMPLATE'
+          {
+            "ci": {
+              "collect": {
+                "settings": {
+                  "extraHeaders": {
+                    "x-vercel-protection-bypass": "BYPASS_SECRET_PLACEHOLDER"
+                  }
+                }
+              }
+            }
+          }
+          TEMPLATE
+          sed -i "s/BYPASS_SECRET_PLACEHOLDER/$VERCEL_BYPASS_SECRET/" /tmp/lighthouserc.json
+        env:
+          VERCEL_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
       - name: Lighthouse audit
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
-            ${{ github.event.deployment_status.target_url }}/?x-vercel-protection-bypass=${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
-            ${{ github.event.deployment_status.target_url }}/blog?x-vercel-protection-bypass=${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
-            ${{ github.event.deployment_status.target_url }}/about?x-vercel-protection-bypass=${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+            ${{ github.event.deployment_status.target_url }}/
+            ${{ github.event.deployment_status.target_url }}/blog
+            ${{ github.event.deployment_status.target_url }}/about
+          configPath: /tmp/lighthouserc.json
           budgetPath: .github/lighthouse-budget.json
           uploadArtifacts: true
       - name: Find PR number
