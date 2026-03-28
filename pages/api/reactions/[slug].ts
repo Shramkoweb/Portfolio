@@ -54,29 +54,30 @@ export default async function handler(
         });
       }
 
-      await prisma.reactions.upsert({
-        where: {
-          slug_type: { slug, type },
-        },
-        create: {
-          slug,
-          type,
-          count: 1,
-        },
-        update: {
-          count: {
-            increment: 1,
+      const [, reactions] = await prisma.$transaction([
+        prisma.reactions.upsert({
+          where: {
+            slug_type: { slug, type },
           },
-        },
-      });
-
-      const reactions = await prisma.reactions.findMany({
-        where: { slug },
-        select: {
-          type: true,
-          count: true,
-        },
-      });
+          create: {
+            slug,
+            type,
+            count: 1,
+          },
+          update: {
+            count: {
+              increment: 1,
+            },
+          },
+        }),
+        prisma.reactions.findMany({
+          where: { slug },
+          select: {
+            type: true,
+            count: true,
+          },
+        }),
+      ]);
 
       const reactionMap = new Map(
         reactions.map((r) => [r.type as ReactionType, Number(r.count)]),

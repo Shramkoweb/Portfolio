@@ -19,6 +19,7 @@ export default async function handler(
             increment: 1,
           },
         },
+        select: { count: true },
       });
 
       return res.status(200).json({
@@ -31,6 +32,7 @@ export default async function handler(
         where: {
           slug,
         },
+        select: { count: true },
       });
 
       // Cache for 1 minute, stale-while-revalidate for 2 minutes
@@ -38,6 +40,9 @@ export default async function handler(
 
       return res.status(200).json({ total: Number(views?.count ?? 0) });
     }
+    return res.status(405).json({
+      error: { message: 'Method not allowed' },
+    });
   } catch {
     return res.status(500).json({
       error: {

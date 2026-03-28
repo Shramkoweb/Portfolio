@@ -22,14 +22,28 @@ export function ViewCounter(props: ViewCounterProps) {
 
     hasRegisteredView.current = true;
 
-    fetch(cacheKey, { method: 'POST' })
-      .then((res) => res.json())
-      .then((newData) => {
-        mutate(cacheKey, newData, false);
-      })
-      .catch(() => {
-        hasRegisteredView.current = false;
-      });
+    const register = () => {
+      fetch(cacheKey, { method: 'POST' })
+        .then((res) => {
+          if (!res.ok) throw new Error(res.statusText);
+          return res.json();
+        })
+        .then((newData) => {
+          mutate(cacheKey, newData, false);
+        })
+        .catch(() => {
+          hasRegisteredView.current = false;
+        });
+    };
+
+    // Defer to idle time to avoid blocking INP
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(register);
+      return () => cancelIdleCallback(id);
+    }
+
+    const id = setTimeout(register, 150);
+    return () => clearTimeout(id);
   }, [cacheKey]);
 
   return <span>{`${data?.total?.toLocaleString() ?? '---'} views`}</span>;
