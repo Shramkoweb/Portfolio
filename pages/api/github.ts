@@ -1,51 +1,27 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
-const GH_HEADERS = new Headers({
-  Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-});
-
-const starReducer = (acc: number, repo: { stargazers_count: number }) => {
-  return acc + repo.stargazers_count;
-};
+import { fetchGitHubStats } from '@/lib/github';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  try {
-    const [userResponse, repositoriesResponse] = await Promise.all([
-      fetch('https://api.github.com/users/shramkoweb', {
-        headers: GH_HEADERS,
-      }),
-      fetch('https://api.github.com/users/shramkoweb/repos?per_page=100', {
-        headers: GH_HEADERS,
-      }),
-    ]);
-    const [user, repos] = await Promise.all([
-      userResponse.json(),
-      repositoriesResponse.json(),
-    ]);
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: { message: 'Method not allowed' } });
+  }
 
-    const mineRepos = repos.filter((repo: { fork: boolean }) => !repo.fork);
-    const stars = mineRepos.reduce(starReducer, 0);
+  try {
+    const { stars, followers } = await fetchGitHubStats();
 
     // Cache for 1 hour, stale-while-revalidate for 24 hours
     res.setHeader(
       'Cache-Control',
-      's-maxage=3600, stale-while-revalidate=86400'
+      's-maxage=3600, stale-while-revalidate=86400',
     );
 
-    // With the edge error we have error
-    // https://github.com/getsentry/sentry-javascript/issues/5667
-    return res.status(200).json({
-      stars,
-      followers: user.followers,
-    });
+    return res.status(200).json({ stars, followers });
   } catch {
     return res.status(500).json({
-      error: {
-        message: 'Internal Server Error',
-      },
+      error: { message: 'Internal Server Error' },
     });
   }
 }

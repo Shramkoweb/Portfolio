@@ -7,6 +7,12 @@ export type GitHub = {
   followers: number;
 };
 
+export type DashboardData = {
+  totalViews: number;
+  stars: number;
+  followers: number;
+};
+
 export type BaseFrontmatter = {
   slug: string;
   title: string;

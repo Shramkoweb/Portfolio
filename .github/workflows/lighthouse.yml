@@ -1,0 +1,49 @@
+name: Lighthouse CI
+on:
+  pull_request:
+permissions:
+  contents: read
+  pull-requests: write
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lighthouse audit
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://shramko.dev/
+            https://shramko.dev/blog
+            https://shramko.dev/about
+          budgetPath: .github/lighthouse-budget.json
+          uploadArtifacts: true
+      - name: Format results
+        id: format
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = ${{ steps.lighthouse.outputs.manifest }};
+            let comment = '## Lighthouse Results\n\n';
+            comment += '| URL | Performance | Accessibility | Best Practices | SEO |\n';
+            comment += '|-----|------------|---------------|----------------|-----|\n';
+            for (const result of results) {
+              const url = new URL(result.url).pathname || '/';
+              const perf = Math.round(result.summary.performance * 100);
+              const a11y = Math.round(result.summary.accessibility * 100);
+              const bp = Math.round(result.summary['best-practices'] * 100);
+              const seo = Math.round(result.summary.seo * 100);
+              comment += `| ${url} | ${perf} | ${a11y} | ${bp} | ${seo} |\n`;
+            }
+            core.setOutput('comment', comment);
+      - name: Post comment
+        if: always() && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: lighthouse
+          message: ${{ steps.format.outputs.comment }}
