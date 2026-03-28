@@ -13,7 +13,7 @@ function QuizletPage() {
   useEffect(() => {
     const registerView = () => fetch('/api/views/quizlet-page', {
       method: 'POST',
-    });
+    }).catch(() => {});
 
     registerView();
   }, []);

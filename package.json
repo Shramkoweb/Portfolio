@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "type": "module",
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
@@ -23,9 +23,9 @@
     "node": "24.x"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "7.5.0",
-    "@prisma/client": "7.5.0",
-    "@sentry/nextjs": "10.45.0",
+    "@prisma/adapter-pg": "7.6.0",
+    "@prisma/client": "7.6.0",
+    "@sentry/nextjs": "10.46.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
@@ -61,7 +61,7 @@
     "next-sitemap": "4.2.3",
     "postcss": "8.5.8",
     "prettier": "3.8.1",
-    "prisma": "7.5.0",
+    "prisma": "7.6.0",
     "reading-time": "1.5.0",
     "rehype": "13.0.2",
     "rehype-autolink-headings": "7.1.0",
@@ -79,6 +79,13 @@
       "@hono/node-server": ">=1.19.10",
       "effect": ">=3.20.0",
       "lodash": ">=4.17.23"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@prisma/engines",
+      "@sentry/cli",
+      "prisma",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }

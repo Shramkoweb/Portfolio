@@ -2,13 +2,18 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com/ https://vercel.live/;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://vercel.live;
     style-src 'self' 'unsafe-inline';
-    worker-src 'self' blob: data:;
-    img-src 'self';
-    connect-src *;
-    media-src 'self';
+    img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
+    connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://*.ingest.sentry.io https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live;
     font-src 'self';
+    worker-src 'self' blob:;
+    media-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
 `;
 
 const securityHeaders = [
@@ -22,7 +27,7 @@ const securityHeaders = [
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin',
+    value: 'strict-origin-when-cross-origin',
   },
   {
     key: 'X-Content-Type-Options',
@@ -34,11 +39,15 @@ const securityHeaders = [
   },
   {
     key: 'X-XSS-Protection',
-    value: '1; mode=block',
+    value: '0',
   },
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=31536000; includeSubDomains; preload',
+  },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
   },
 ];
 
@@ -86,16 +95,8 @@ const nextConfig = {
 
 const sentryBuildOptions = {
   silent: !process.env.CI,
-  disableServerWebpackPlugin: true,
-  disableClientWebpackPlugin: true,
-  hideSourceMaps: true,
-  webpack: {
-    autoInstrumentServerFunctions: false,
-    autoInstrumentMiddleware: false,
-    automaticVercelMonitors: true,
-    treeshake: {
-      removeDebugLogging: true,
-    },
+  bundleSizeOptimizations: {
+    excludeDebugStatements: true,
   },
 };
 

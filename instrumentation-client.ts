@@ -24,6 +24,8 @@ Sentry.init({
     /^chrome:\/\//i,
     /^moz-extension:\/\//i,
     /^safari-extension:\/\//i,
+    // Google Translate proxy
+    /translate\.goog/i,
   ],
 });
 
