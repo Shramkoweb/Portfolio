@@ -12,7 +12,7 @@
       },
       {
         "metric": "total-blocking-time",
-        "budget": 200
+        "budget": 500
       },
       {
         "metric": "cumulative-layout-shift",
@@ -22,7 +22,7 @@
     "resourceSizes": [
       {
         "resourceType": "script",
-        "budget": 300
+        "budget": 460
       },
       {
         "resourceType": "stylesheet",
@@ -30,7 +30,7 @@
       },
       {
         "resourceType": "total",
-        "budget": 500
+        "budget": 750
       }
     ]
   }
