@@ -110,3 +110,8 @@ the [instructions](https://www.browserstack.com/docs/live/local-testing).
 Unfortunately, I've only worked with this tool and don't have the experience to recommend anything else, but you can
 always [look at the competitors](https://www.g2.com/products/browserstack/competitors/alternatives) and try it
 yourself.
+
+## Further reading
+
+- [Introducing the New shramko.dev](/blog/introducing-the-new-shramko.dev) — how I built the blog, including cross-browser testing with BrowserStack
+- [Check if an Element Is in the Viewport](/snippets/is-element-in-viewport) — viewport detection snippet useful for debugging layout issues across browsers

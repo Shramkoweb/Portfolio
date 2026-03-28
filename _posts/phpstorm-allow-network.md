@@ -41,3 +41,8 @@ codesign -s "PHPStorm-network" -f /Applications/PhpStorm.app/
 
 Now restart PHPStorm, and it will ask you one last time to verify the incoming network connections, and after that it
 shouldn’t ask you again!
+
+## Further reading
+
+- [ESLint with TypeScript](/blog/eslint-with-typescript) — another IDE and tooling setup guide for a smoother development workflow
+- [Introducing the New shramko.dev](/blog/introducing-the-new-shramko.dev) — the full development setup behind building this blog

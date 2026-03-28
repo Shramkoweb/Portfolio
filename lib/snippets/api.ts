@@ -51,6 +51,11 @@ export async function getSnippets(): Promise<Snippet[]> {
   return Promise.all(snippetPromises);
 }
 
+export async function getSnippetsMetadata(): Promise<Omit<Snippet, 'content'>[]> {
+  const snippets = await getSnippets();
+  return snippets.map(({ data }) => ({ data }));
+}
+
 export async function getSnippetSlugs(): Promise<string[]> {
   const fileNames = await readdir(SNIPPETS_DIRECTORY);
   const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));

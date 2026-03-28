@@ -103,3 +103,8 @@ achieving better results.
 
 With NVM, you’ll be able to easily switch between different versions and keep your development
 environment updated.
+
+## Further reading
+
+- [pnpm — Fast, Disk Space Efficient Package Manager](/blog/pnpm) — a modern package manager that pairs well with NVM for Node.js projects
+- [How to Create SSH Keys](/blog/how-to-create-ssh-keys) — another essential developer environment setup step

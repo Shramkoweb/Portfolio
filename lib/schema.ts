@@ -10,7 +10,7 @@ const author = {
   url: `${SITE_URL}/about`,
 };
 
-export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?: string[] }) {
+export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?: string[]; wordCount?: number }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -30,13 +30,14 @@ export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?:
     },
     image: `${SITE_URL}/api/og?title=${encodeURIComponent(post.heading)}`,
     keywords: post.keywords,
-    articleSection: 'Technology',
+    ...(post.wordCount && { wordCount: post.wordCount }),
+    articleSection: post.categories?.[0] || 'Technology',
     inLanguage: 'en',
   };
 }
 
 export function generateTechArticleSchema(
-  snippet: BaseFrontmatter,
+  snippet: BaseFrontmatter & { programmingLanguage?: string },
   proficiencyLevel: 'Beginner' | 'Expert' = 'Beginner',
 ) {
   return {
@@ -59,6 +60,10 @@ export function generateTechArticleSchema(
     keywords: snippet.keywords,
     inLanguage: 'en',
     proficiencyLevel,
+    about: {
+      '@type': 'SoftwareSourceCode',
+      programmingLanguage: snippet.programmingLanguage || 'JavaScript',
+    },
   };
 }
 

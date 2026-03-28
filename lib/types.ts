@@ -41,7 +41,6 @@ export enum PostCategory {
   TS = 'ts',
   CSS = 'css',
   Astro = 'astro',
-  Jamstack = 'jamstack',
   HTML = 'html',
   CleanCode = 'clean-code',
   ProjectSetup = 'project-setup',

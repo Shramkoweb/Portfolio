@@ -45,6 +45,10 @@ const securityHeaders = [
     key: 'Strict-Transport-Security',
     value: 'max-age=31536000; includeSubDomains; preload',
   },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=()',
+  },
 ];
 
 /** @type {import('next').NextConfig} */
@@ -84,6 +88,11 @@ const nextConfig = {
       {
         source: '/blog/category/useful-resources',
         destination: '/blog/category/tools',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/jamstack',
+        destination: '/blog/category/astro',
         permanent: true,
       },
     ];

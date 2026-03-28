@@ -69,3 +69,8 @@ certification.
 
 I really commend the [Raphael Terrier](https://www.linkedin.com/in/raphaelterrier/)
 and [Michelle Mabuyo](https://www.linkedin.com/in/michellemabuyo/) for developing such an excellent learning course.
+
+## Further reading
+
+- [Useful Articles for Developers](/blog/useful-articles) — curated list of recommended developer resources
+- [Branded Types in TypeScript](/snippets/branded-types) — type safety technique useful for strongly-typed GraphQL schemas

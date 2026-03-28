@@ -80,3 +80,8 @@ The AI suggested appropriate descriptions based on the surrounding content in se
 The goal here isn't to automate away quality control. It's to make the tedious parts *fast enough* that you actually do them.
 
 By the end of the afternoon: **56 files** updated, **50+ meta descriptions** rewritten, **6 broken links** fixed, **12 empty alt attributes** filled.
+
+## Further reading
+
+- [Introducing the New shramko.dev](/blog/introducing-the-new-shramko.dev) — how the blog was built and the tech stack behind it
+- [Conventional Commits](/blog/conventional-commits) — another developer tooling practice that keeps your workflow consistent

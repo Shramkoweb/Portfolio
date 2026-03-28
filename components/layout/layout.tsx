@@ -50,7 +50,7 @@ export function Layout({ children }: PropsWithChildren) {
         <meta property="og:image:width" content="1200" key="og:image:width" />
         <meta property="og:image:height" content="630" key="og:image:height" />
         <meta property="og:locale" content="en_US" key="og:locale" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
         <meta
           name="twitter:creator"
           content="@shramkoweb"

@@ -121,3 +121,8 @@ function isDefined<T>(value: T | undefined | null): value is T {
 const values = [1, undefined, 2, null, 3];
 const definedValues = values.filter(isDefined); // number[]
 ```
+
+## Related
+
+- [Discriminated Unions in TypeScript](/blog/discriminated-unions) — another powerful type narrowing technique using tagged unions
+- [Branded Types](/snippets/branded-types) — enforce type safety at compile time with nominal typing patterns

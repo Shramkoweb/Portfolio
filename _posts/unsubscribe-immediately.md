@@ -23,3 +23,8 @@ To make it easier for you to deal with unnecessary newsletters and notifications
 - **[Unroll.me](https://unroll.me/):** This service helps you quickly unsubscribe from multiple newsletters simultaneously, saving you time and effort.
 
 - **[Mailstrom](https://mailstrom.co/):** Allows you to quickly and efficiently manage your email inbox by helping you sort and delete unwanted emails.
+
+## Further reading
+
+- [Useful Articles for Developers](/blog/useful-articles) — a curated collection of resources worth keeping in your inbox
+- [Conventional Commits](/blog/conventional-commits) — another small habit that improves your daily developer productivity

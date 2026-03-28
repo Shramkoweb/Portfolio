@@ -71,5 +71,7 @@ By using these two functions, you can easily move the cursor to the beginning or
 - [caniuse](https://caniuse.com/?search=setSelectionRange)
 - [Demo](https://emgbkp.csb.app/)
 
+## Related
 
-
+- [Detect Caps Lock with JavaScript](/snippets/detect-caps-lock) — another useful input field interaction pattern
+- [JavaScript Naming Conventions](/blog/javascript-naming-conventions) — best practices for naming functions and variables in JS

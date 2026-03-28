@@ -43,3 +43,8 @@ This will return the path portion of the URL.
 ## Conclusion
 
 These examples cover various methods to retrieve different parts of the current URL using JavaScript. Additionally, you can refer to the MDN Web Docs for more information on the [Location](https://developer.mozilla.org/en-US/docs/Web/API/Location) interface and its properties.
+
+## Related
+
+- [Absolute vs Relative URLs](/blog/difference-between-absolute-and-relative-url) — understand the difference between URL types
+- [How to Remove Query Parameters from a URL](/snippets/how-to-remove-query) — strip query strings from URLs in JavaScript

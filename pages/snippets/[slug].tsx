@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
@@ -7,7 +8,7 @@ import {
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
+import { getSnippetBySlug, getSnippetSlugs, getSnippetsMetadata } from '@/lib/snippets/api';
 import { compileMDX } from '@/lib/scripts/compiler';
 import { Snippet } from '@/lib/types';
 import {
@@ -18,9 +19,16 @@ import {
 import { MDXComponents } from '@/components/mdx-components';
 import React, { useEffect } from 'react';
 
+type RelatedSnippet = {
+  slug: string;
+  heading: string;
+  description: string;
+};
+
 type SnippetPageProps = Pick<Snippet, 'data'> & {
   content: MDXRemoteSerializeResult;
   slug: string;
+  relatedSnippets: RelatedSnippet[];
 };
 
 function SnippetPage(props: SnippetPageProps) {
@@ -28,6 +36,7 @@ function SnippetPage(props: SnippetPageProps) {
     content,
     slug,
     data: { title, heading, description, createDate, updateDate, keywords },
+    relatedSnippets,
   } = props;
 
   const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -152,6 +161,34 @@ function SnippetPage(props: SnippetPageProps) {
         <div className="prose dark:prose-dark w-full max-w-none">
           <MDXRemote {...content} components={MDXComponents} />
         </div>
+
+        {relatedSnippets.length > 0 && (
+          <div className="mt-16 w-full">
+            <hr className="border-gray-200 border-1 dark:border-gray-800" />
+            <section className="mt-12">
+              <h2 className="text-xl font-bold mb-4 prose dark:prose-dark max-w-none">
+                Related snippets:
+              </h2>
+              <ul className="grid grid-cols-1">
+                {relatedSnippets.map((snippet) => (
+                  <li key={snippet.slug} className="mb-4 last:mb-0">
+                    <Link
+                      href={`/snippets/${snippet.slug}`}
+                      className="block p-4 rounded-lg border border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    >
+                      <h3 className="font-medium text-gray-900 dark:text-gray-100">
+                        {snippet.heading}
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                        {snippet.description}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        )}
       </article>
     </>
   );
@@ -169,11 +206,36 @@ export async function getStaticProps({
   const { data, content } = await getSnippetBySlug(params?.slug);
   const html = await compileMDX(content);
 
+  const allSnippets = await getSnippetsMetadata();
+  const currentKeywordSet = new Set(
+    (data.keywords || []).map((k: string) => k.toLowerCase()),
+  );
+
+  const relatedSnippets = allSnippets
+    .filter((s) => s.data.slug !== data.slug)
+    .map((s) => {
+      const overlapCount = (s.data.keywords || []).filter((k: string) =>
+        currentKeywordSet.has(k.toLowerCase()),
+      ).length;
+
+      return {
+        slug: s.data.slug,
+        heading: s.data.heading,
+        description: s.data.description,
+        overlapCount,
+      };
+    })
+    .filter((s) => s.overlapCount > 0)
+    .sort((a, b) => b.overlapCount - a.overlapCount)
+    .slice(0, 3)
+    .map(({ slug, heading, description }) => ({ slug, heading, description }));
+
   return {
     props: {
       data,
       slug: params?.slug as string,
       content: html,
+      relatedSnippets,
     },
   };
 }

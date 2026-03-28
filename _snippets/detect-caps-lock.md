@@ -38,3 +38,8 @@ const passwordField = document.querySelector('#password');
 const warning = document.querySelector('#caps-warning');
 setupCapsLockDetection(passwordField, warning);
 ```
+
+## Related
+
+- [Email Validation with Regex](/snippets/is-email-valid-regex) — validate user input in forms with regex patterns
+- [JavaScript Naming Conventions](/blog/javascript-naming-conventions) — consistent naming patterns for JS code

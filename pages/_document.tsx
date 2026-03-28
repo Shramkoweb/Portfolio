@@ -8,6 +8,12 @@ export default function Document() {
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Serhii Shramko's Blog"
+          href="/feed.xml"
+        />
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
         <link

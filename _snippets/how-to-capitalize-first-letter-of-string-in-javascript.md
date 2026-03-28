@@ -20,3 +20,8 @@ const originalString = "hello world";
 const capitalizedString = capitalizeFirstLetter(originalString);
 console.log(capitalizedString); // Output: "Hello world"
 ```
+
+## Related
+
+- [JavaScript Naming Conventions](/blog/javascript-naming-conventions) — naming patterns that rely on capitalization like camelCase and PascalCase
+- [Check if Character is a Letter](/snippets/check-if-character-is-a-letter-in-javascript) — validate individual characters in a string

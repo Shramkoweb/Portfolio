@@ -49,3 +49,8 @@ console.log(const y);  // error!
 
 - [Expressions versus statements in JavaScript](https://2ality.com/2012/09/expressions-vs-statements.html)
 - [Expressions - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_operators)
+
+## Further reading
+
+- [The Early Return Pattern in JavaScript](/blog/the-early-return-pattern-in-javascript) — a clean code pattern that simplifies control flow with expressions
+- [Dispatch Tables](/blog/dispatch-tables) — replace verbose switch statements with a cleaner, expression-based approach

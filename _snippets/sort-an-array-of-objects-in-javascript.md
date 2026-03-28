@@ -59,3 +59,8 @@ console.log(data);
   { "name": "Mike", "age": 32, "city": "New York" }
 ]
 ```
+
+## Related
+
+- [JavaScript Arrays](/blog/js-arrays) — deep dive into array methods including sort, map, and filter
+- [Group By](/snippets/group-by) — group array elements by a property for organized data structures

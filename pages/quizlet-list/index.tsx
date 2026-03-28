@@ -22,6 +22,7 @@ function QuizletPage() {
     <>
       <Head>
         <title>Quizlet QuickList - Web Extension</title>
+        <meta name="robots" content="noindex, follow" />
         <meta
           name="description"
           key="description"

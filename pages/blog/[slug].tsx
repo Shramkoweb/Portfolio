@@ -11,7 +11,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { MDXComponents } from '@/components/mdx-components';
 import React from 'react';
 
-import { getPostBySlug, getPostSlugs, getPostsMetadata } from '@/lib/posts/api';
+import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
   generateBreadcrumbSchema,
@@ -30,9 +30,6 @@ import {
   TwitterShare,
 } from '@/components/share-button';
 
-const AlsoBlock = dynamic(() =>
-  import('@/components/also-block').then((mod) => mod.AlsoBlock),
-);
 const FloatingReactions = dynamic(() =>
   import('@/components/floating-reactions').then(
     (mod) => mod.FloatingReactions,
@@ -42,12 +39,7 @@ const FloatingReactions = dynamic(() =>
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
   headings: { text: string; level: number; id: string }[];
-  relatedPosts: Array<{
-    slug: string;
-    heading: string;
-    excerpt: string;
-    overlapCount: number;
-  }>;
+  wordCount: number;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -65,7 +57,6 @@ function ArticlePage(props: ArticlePageProps) {
       keywords,
     },
     headings,
-    relatedPosts,
   } = props;
 
   const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -140,7 +131,7 @@ function ArticlePage(props: ArticlePageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBlogPostingSchema(props.data)),
+          __html: JSON.stringify(generateBlogPostingSchema({ ...props.data, wordCount: props.wordCount })),
         }}
       />
       <script
@@ -230,13 +221,6 @@ function ArticlePage(props: ArticlePageProps) {
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 
-          {relatedPosts && relatedPosts.length > 0 && (
-            <div className="mt-16 w-full">
-              <hr className="border-gray-200 border-1 dark:border-gray-800" />
-              <AlsoBlock relatedPosts={relatedPosts} />
-            </div>
-          )}
-
           <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
             <p>Share it:</p>
             <ul className="flex gap-2">
@@ -272,34 +256,13 @@ export async function getStaticProps({
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
-  const postsMetadata = await getPostsMetadata();
-
-  const currentCategorySet = new Set(data.categories);
-
-  const relatedPosts = postsMetadata
-    .filter((post) => post.data.slug !== data.slug)
-    .map((post) => {
-      const overlapCount = post.data.categories.filter((cat) =>
-        currentCategorySet.has(cat),
-      ).length;
-
-      return {
-        slug: post.data.slug,
-        heading: post.data.heading,
-        excerpt: post.data.description,
-        overlapCount,
-      };
-    })
-    .filter((post) => post.overlapCount > 0)
-    .sort((a, b) => b.overlapCount - a.overlapCount)
-    .slice(0, 3);
-
+  const wordCount = content.split(/\s+/).filter(Boolean).length;
   return {
     props: {
       data,
       content: html,
       headings,
-      relatedPosts,
+      wordCount,
     },
   };
 }

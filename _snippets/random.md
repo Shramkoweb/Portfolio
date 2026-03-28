@@ -26,3 +26,8 @@ function getRandom(min, max) {
 const randomNumber = getRandom(1, 10); // Generates a random number between 1 and 10
 console.log(randomNumber); // Example output: 7
 ```
+
+## Related
+
+- [Range Function](/snippets/generate-range) — generate sequential number arrays in JavaScript
+- [Crypto Random Values](/snippets/window-crypto) — cryptographically secure random generation for security-sensitive use cases

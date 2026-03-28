@@ -27,3 +27,8 @@ access(file, constants.F_OK, (err) => {
   console.log(`${file} ${err ? 'does not exist' : 'exists'}`);
 });
 ```
+
+## Related
+
+- [Fix __dirname Error in ES Modules](/blog/dirname-error) — common Node.js file path issue when using ES modules
+- [Managing Node Versions with NVM](/blog/nvm) — set up and switch between Node.js versions
