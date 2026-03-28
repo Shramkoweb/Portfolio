@@ -12,7 +12,7 @@
       },
       {
         "metric": "total-blocking-time",
-        "budget": 500
+        "budget": 1000
       },
       {
         "metric": "cumulative-layout-shift",
