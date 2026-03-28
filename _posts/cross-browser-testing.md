@@ -5,7 +5,7 @@ description: Learn how to test your website across different browsers and device
 createDate: 2023-02-24T22:06:42.844Z
 updateDate: 2023-02-24T22:06:42.844Z
 keywords: [browserstack, browserstack dev tools, android browser with dev tools, browserstack devices, browser with developer tools for ios]
-categories: [Tutorial, Useful-Resources, Project-Setup]
+categories: [Tutorial, Tools, Project-Setup]
 featured: false
 ---
 

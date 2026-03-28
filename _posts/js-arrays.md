@@ -1,5 +1,5 @@
 ---
-title: "Mastering JavaScript Arrays: A Beginner's Guide to Essential Concepts"
+title: "JavaScript Arrays: Essential Methods for Beginners"
 heading: "JavaScript 101: Arrays"
 description: Master JavaScript array methods with this beginner-friendly guide. Learn map, filter, reduce, find, and other essential methods with practical examples.
 createDate: 2022-11-25T17:39:11.486Z

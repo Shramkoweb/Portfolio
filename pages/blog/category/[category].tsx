@@ -41,7 +41,7 @@ function CategoryPage(props: CategoryPageProps) {
         <meta content={seoKeywords} name="keywords" key="keywords" />
         <meta
           property="og:site_name"
-          content={`Blog category ${displayCategory} | Serhii Shramko`}
+          content="Serhii Shramko"
           key="og:site_name"
         />
         <meta
@@ -50,11 +50,23 @@ function CategoryPage(props: CategoryPageProps) {
           key="og:description"
         />
         <meta property="og:title" content={seoTitle} key="og:title" />
+        <meta
+          property="og:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(seoTitle)}`}
+          key="og:image"
+        />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
         <meta name="twitter:title" content={seoTitle} key="twitter:title" />
         <meta
           name="twitter:description"
           content={seoDescription}
           key="twitter:description"
+        />
+        <meta
+          name="twitter:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(seoTitle)}`}
+          key="twitter:image"
         />
       </Head>
       <script

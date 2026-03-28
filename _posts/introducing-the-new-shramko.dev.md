@@ -335,6 +335,8 @@ Quick list of why Next.js has been so good for me:
 
 > I wrote new article about another framework - Astro [here](/blog/astro) and [here](/blog/linktree) 😆.
 
+Since launching, I've also [run an AI-powered SEO audit](/blog/ai-seo-audit) across the entire blog to improve discoverability.
+
 ## Acknowledgements
 
 - The design was inspired by [Lee Robinson](https://github.com/leerob)

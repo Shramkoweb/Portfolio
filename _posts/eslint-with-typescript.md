@@ -1,5 +1,5 @@
 ---
-title: "Optimizing TypeScript Development with ESLint: A Comprehensive Guide"
+title: "ESLint with TypeScript: Setup and Configuration Guide"
 heading: How to use ESLint with TypeScript
 description: Step-by-step guide to configuring ESLint with TypeScript. Set up linting rules, integrate with your IDE, and catch errors before they reach production.
 createDate: 2022-08-02T19:51:19Z
@@ -24,6 +24,8 @@ tells you when you're not following the standard that you set in place.
 ```shell
 npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
+
+If you're using PhpStorm or another JetBrains IDE, you may also need to [allow network connections on startup](/blog/phpstorm-allow-network) to avoid repeated prompts.
 
 Next, add the `.eslintrc.json` configuration file to the project root.
 

@@ -10,6 +10,8 @@ const pathLevelToPriority = {
   3: 0.7
 };
 
+const EXCLUDED_PATHS = ['/dashboard', '/quizlet-list/privacy-policy'];
+
 const getPathDepthLevel = (path) => {
   if (path === '/') {
     return 0;
@@ -58,8 +60,12 @@ function getContentDate(urlPath) {
 module.exports = {
   siteUrl: 'https://shramko.dev',
   generateIndexSitemap: false,
-  exclude: ['/dashboard', '/quizlet-list/privacy-policy'],
+  exclude: EXCLUDED_PATHS,
   transform: async (config, path) => {
+    if (EXCLUDED_PATHS.includes(path)) {
+      return null;
+    }
+
     const contentDate = getContentDate(path);
 
     return {

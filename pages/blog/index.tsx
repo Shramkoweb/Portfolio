@@ -80,7 +80,7 @@ function BlogPage(props: BlogPageProps) {
         />
         <meta
           property="og:site_name"
-          content="Serhii Shramko Blog"
+          content="Serhii Shramko"
           key="og:site_name"
         />
         {props.jsonLd && (

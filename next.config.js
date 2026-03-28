@@ -71,6 +71,21 @@ const nextConfig = {
         destination: '/static/serhii_shramko_frontend.pdf',
         permanent: true,
       },
+      {
+        source: '/blog/category/habits',
+        destination: '/blog/category/productivity',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/certifications',
+        destination: '/blog/category/tutorial',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/useful-resources',
+        destination: '/blog/category/tools',
+        permanent: true,
+      },
     ];
   },
   env: {

@@ -69,12 +69,6 @@ export const categoryToSeoData = {
       'Follow step-by-step tutorials for web development tasks. From project setup to deployment, learn practical skills for your projects.',
     keywords: 'Tutorial, Guides, Tutorial',
   },
-  [PostCategory.UsefulResources]: {
-    title: 'Top Resources to Enhance Development Arsenal',
-    description:
-      'Curated developer resources, tools, and learning materials. Find the best blogs, docs, and libraries to accelerate your workflow.',
-    keywords: 'Resources, Development, Productivity',
-  },
   [PostCategory.ProjectSetup]: {
     title: 'Streamline Development: Efficient Project Setup',
     description:
@@ -105,23 +99,11 @@ export const categoryToSeoData = {
       'Boost developer productivity with strategies, shortcuts, and workflow optimizations. Work smarter, ship faster, stay balanced.',
     keywords: 'Productivity, Development, Efficiency',
   },
-  [PostCategory.Habits]: {
-    title: 'Healthy Coding Habits: A Success Guide',
-    description:
-      'Build sustainable coding habits for career success. Learn about continuous learning, code reviews, and routines for developers.',
-    keywords: 'Coding Habits, Development, Success',
-  },
   [PostCategory.Tools]: {
     title: 'Top Development Tools to Enhance Workflow',
     description:
       'Discover essential developer tools for coding, debugging, and deployment. Reviews of IDEs, extensions, and productivity apps.',
     keywords: 'Development Tools, Resources, Productivity',
-  },
-  [PostCategory.Certifications]: {
-    title: 'Certification: Get Your Certification',
-    description:
-      'Prepare for developer certifications with study guides and resources. Learn about GraphQL, cloud, and framework certifications.',
-    keywords: 'Certification, Resources, Certifications, Learning',
   },
   [PostCategory.AdvancedReact]: {
     title: 'Advanced React: Advanced Tips and Techniques',

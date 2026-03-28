@@ -82,7 +82,7 @@ function ArticlePage(props: ArticlePageProps) {
         <meta property="og:title" content={title} key="og:title" />
         <meta
           property="og:site_name"
-          content="Serhii Shramko Blog"
+          content="Serhii Shramko"
           key="og:site_name"
         />
         <meta

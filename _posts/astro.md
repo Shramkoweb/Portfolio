@@ -275,3 +275,4 @@ If you're interested in learning more about Astro, here are some useful links to
 ## My Astro Projects
 
 - [Building a Link Tree](/blog/linktree) - my personal linktree with Astro and Vercel
+- [Astro Image Component on Vercel](/blog/astro-image-on-vercel) - fixing image optimization for Vercel deployments
