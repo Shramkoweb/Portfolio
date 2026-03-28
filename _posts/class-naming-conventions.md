@@ -124,11 +124,11 @@ to understand and style.
   <header class="article-card__header">
     <h2 class="article-card__title">An Exciting Blog Post</h2>
   </header>
-  
+
   <div class="article-card__content">
     <p class="article-card__paragraph">...</p>
   </div>
-  
+
   <footer class="article-card__footer article-card__footer--featured">
     <a class="article-card__link" href="#">Read More</a>
   </footer>
@@ -141,7 +141,9 @@ also has a modifier indicating that it's featured.
 ### Enhancing HTML Element Selection
 
 By adhering to BEM methodology, you not only improve naming conventions for CSS but also enhance HTML element selection.
-This structured approach to naming classes makes it easier to target specific elements when applying styles.
+This structured approach to naming classes makes it easier to target specific elements when applying styles. For a
+practical example of targeting elements with CSS, see my snippet
+on [customizing text selection styles](/snippets/css-selection).
 
 ### CSS Properties and Background Colors
 
@@ -174,4 +176,5 @@ equipped with the knowledge to create outstanding web pages.
 If you're looking for more examples and guidelines for BEM class name you can find it on my snippet page
 about [Common CSS Class Names](/snippets/common-css-classes).
 
-For JavaScript variable and function naming, check out my [JavaScript Naming Conventions](/blog/javascript-naming-conventions) guide.
+For JavaScript variable and function naming, check out
+my [JavaScript Naming Conventions](/blog/javascript-naming-conventions) guide.

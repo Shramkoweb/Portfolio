@@ -27,7 +27,7 @@ Before diving into the migration process, it’s important to understand why pnp
 
 ## Installation of pnpm
 
-First, you need to install pnpm globally. You can do this by running:
+First, you need to install pnpm globally. Make sure you have the right Node.js version installed — if you manage multiple versions, [NVM](/blog/nvm) makes switching between them effortless. Then run:
 
 ```bash
 brew install pnpm
@@ -53,6 +53,7 @@ pnpm install
 ```
 
 This command will create a `pnpm-lock.yaml` file and install all the dependencies listed in your `package.json`.
+Understanding [how semantic versioning works in npm](/blog/npm-semantic-versioning) will help you predict exactly what gets installed.
 
 ### 3. Verify Dependency Installation
 

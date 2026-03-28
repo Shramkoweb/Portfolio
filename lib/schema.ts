@@ -35,7 +35,10 @@ export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?:
   };
 }
 
-export function generateTechArticleSchema(snippet: BaseFrontmatter) {
+export function generateTechArticleSchema(
+  snippet: BaseFrontmatter,
+  proficiencyLevel: 'Beginner' | 'Expert' = 'Beginner',
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
@@ -55,7 +58,7 @@ export function generateTechArticleSchema(snippet: BaseFrontmatter) {
     },
     keywords: snippet.keywords,
     inLanguage: 'en',
-    proficiencyLevel: 'Beginner',
+    proficiencyLevel,
   };
 }
 
@@ -85,5 +88,13 @@ export function generateWebSiteSchema() {
       'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js.',
     author,
     inLanguage: 'en',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }

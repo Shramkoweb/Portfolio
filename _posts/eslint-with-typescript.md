@@ -122,3 +122,4 @@ huge. Therefore, I recommend always using it.
 ## Related Content
 
 - [The satisfies Operator](/snippets/satisfies-operator) - a TypeScript operator that works well alongside strict ESLint rules
+- [Fix "__dirname Not Defined" in ES Modules](/blog/dirname-error) - a common Node.js pitfall when configuring TypeScript projects

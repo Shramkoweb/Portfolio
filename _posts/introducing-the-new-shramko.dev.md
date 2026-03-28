@@ -341,7 +341,7 @@ Quick list of why Next.js has been so good for me:
 
 ## Conclusion
 
-I can't tell you how much I've learned building this website. 🤓
+I can't tell you how much I've learned building this website, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
 
 I'm excited about the new design. And I just had fun doing it. I hope you enjoy it too!
 

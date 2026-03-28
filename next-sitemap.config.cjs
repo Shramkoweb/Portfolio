@@ -58,6 +58,7 @@ function getContentDate(urlPath) {
 module.exports = {
   siteUrl: 'https://shramko.dev',
   generateIndexSitemap: false,
+  exclude: ['/dashboard', '/quizlet-list/privacy-policy'],
   transform: async (config, path) => {
     const contentDate = getContentDate(path);
 

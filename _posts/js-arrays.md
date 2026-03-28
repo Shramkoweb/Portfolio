@@ -246,3 +246,4 @@ be useful to you.
 - [for...in vs for...of Loops](/blog/for-in-vs-for-of) - learn different ways to iterate over arrays
 - [Remove Duplicates from an Array](/snippets/remove-duplicates-array) - common array operation
 - [Sort an Array of Objects](/snippets/sort-an-array-of-objects-in-javascript) - sorting by multiple properties
+- [Generate a Range of Numbers](/snippets/generate-range) - quickly create sequential arrays

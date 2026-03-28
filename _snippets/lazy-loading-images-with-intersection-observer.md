@@ -7,7 +7,7 @@ keywords: [ Intersection Observer, lazy loading, TypeScript, image optimization,
 ---
 
 Intersection Observer API allows us to load images only when they're about to enter the viewport. This optimization
-technique significantly improves initial page load performance, especially for image-heavy pages.
+technique significantly improves initial page load performance, especially for image-heavy pages. You can also use the same API to [check if an element is in the viewport](/snippets/is-element-in-viewport) for other use cases beyond image loading.
 
 ## Implementation
 

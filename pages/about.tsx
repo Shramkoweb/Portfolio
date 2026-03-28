@@ -41,7 +41,7 @@ function AboutPage() {
               "@type": "ProfilePage",
               "url": "https://shramko.dev/about",
               "inLanguage": "en",
-              "dateModified": "2025-01-01",
+              "dateModified": new Date().toISOString().split('T')[0],
               "mainEntity": {
                 "@type": "Person",
                 "@id": "https://shramko.dev/#person",

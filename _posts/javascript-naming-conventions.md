@@ -43,7 +43,7 @@ While JavaScript is flexible enough to allow variable names in any language, sti
 
 JavaScript uses multiple naming conventions depending on the context:
 
-- `camelCase` for variables, functions, and methods
+- `camelCase` for variables, functions, and methods (e.g., when you need to [capitalize the first letter of a string](/snippets/how-to-capitalize-first-letter-of-string-in-javascript), the function name follows camelCase)
 - `PascalCase` for classes and constructor functions
 - `UPPER_SNAKE_CASE` for constants
 - `kebab-case` typically for CSS classes and HTML attributes

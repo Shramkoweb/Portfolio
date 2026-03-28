@@ -120,3 +120,4 @@ You've now successfully added a modern, secure ed25519 SSH Key to your GitHub ac
 
 - [Detect Environment](/snippets/environment) - check the runtime environment before executing commands
 - [.gitignore Is Not Enough](/blog/gitignore-is-not-enough) - protect your sensitive files beyond SSH keys
+- [Node Version Manager](/blog/nvm) - another essential developer setup step after configuring SSH

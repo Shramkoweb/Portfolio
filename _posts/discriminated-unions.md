@@ -1,5 +1,5 @@
 ---
-title: "Discriminated Unions in TypeScript: The Secret Sauce for Better Code"
+title: "Discriminated Unions in TypeScript: Write Safer Code"
 heading: Discriminated Unions in TypeScript
 description: Discover how discriminated unions in TypeScript help you write cleaner, safer code. Learn what they are, how to use them, and why they're great!
 createDate: 2024-09-14
