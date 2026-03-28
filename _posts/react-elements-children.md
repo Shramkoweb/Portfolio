@@ -53,7 +53,7 @@ const Dashboard = () => {
 };
 ```
 
-<Image src="elements.png" alt="" />
+<Image src="elements.png" alt="React DevTools showing component tree with Dashboard, Sidebar, and MainContent elements" />
 
 This implementation will stutter badly. Every mouse movement fires a state update, causing `Dashboard` to re-render.
 When `Dashboard` re-renders, so does everything nested inside it. The "moving state down" approach fails here because

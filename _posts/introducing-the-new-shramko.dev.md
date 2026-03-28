@@ -9,7 +9,7 @@ categories: [ Project-Setup, React, Vercel ]
 featured: false
 ---
 
-<Image alt src="my-site.jpeg" priority={true} alt="S.Shramko personal website screenshot"/>
+<Image src="my-site.jpeg" priority={true} alt="Screenshot of the redesigned shramko.dev homepage showing dark theme with featured blog posts" />
 
 I'm so excited to announce the launch of my brand-new website!
 

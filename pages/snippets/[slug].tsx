@@ -10,6 +10,10 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
 import { compileMDX } from '@/lib/scripts/compiler';
 import { Snippet } from '@/lib/types';
+import {
+  generateTechArticleSchema,
+  generateBreadcrumbSchema,
+} from '@/lib/schema';
 
 import { MDXComponents } from '@/components/mdx-components';
 import React, { useEffect } from 'react';
@@ -57,11 +61,21 @@ function SnippetPage(props: SnippetPageProps) {
           content={description}
           key="og:description"
         />
+        <meta
+          property="og:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
+          key="og:image"
+        />
         <meta name="twitter:title" content={title} key="twitter:title" />
         <meta
           name="twitter:description"
           content={description}
           key="twitter:description"
+        />
+        <meta
+          name="twitter:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
+          key="twitter:image"
         />
         <meta
           property="article:published_time"
@@ -88,6 +102,24 @@ function SnippetPage(props: SnippetPageProps) {
           key="article:author"
         />
       </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateTechArticleSchema(props.data)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateBreadcrumbSchema([
+              { name: 'Home', url: 'https://shramko.dev/' },
+              { name: 'Snippets', url: 'https://shramko.dev/snippets' },
+              { name: heading, url: `https://shramko.dev/snippets/${slug}` },
+            ]),
+          ),
+        }}
+      />
       <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
         <div className="flex justify-between w-full mb-8">
           <div>

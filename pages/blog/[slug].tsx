@@ -13,6 +13,10 @@ import React from 'react';
 
 import { getPostBySlug, getPostSlugs, getPostsMetadata } from '@/lib/posts/api';
 import {
+  generateBlogPostingSchema,
+  generateBreadcrumbSchema,
+} from '@/lib/schema';
+import {
   compileMDX,
   extractHeadingsFromMarkdown,
 } from '@/lib/scripts/compiler';
@@ -86,11 +90,21 @@ function ArticlePage(props: ArticlePageProps) {
           content={description}
           key="og:description"
         />
+        <meta
+          property="og:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
+          key="og:image"
+        />
         <meta name="twitter:title" content={title} key="twitter:title" />
         <meta
           name="twitter:description"
           content={description}
           key="twitter:description"
+        />
+        <meta
+          name="twitter:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
+          key="twitter:image"
         />
         <meta
           property="article:published_time"
@@ -123,6 +137,24 @@ function ArticlePage(props: ArticlePageProps) {
           />
         ))}
       </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBlogPostingSchema(props.data)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateBreadcrumbSchema([
+              { name: 'Home', url: 'https://shramko.dev/' },
+              { name: 'Blog', url: 'https://shramko.dev/blog' },
+              { name: heading, url: `https://shramko.dev/blog/${slug}` },
+            ]),
+          ),
+        }}
+      />
       <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
         <div>
           <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">

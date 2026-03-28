@@ -132,4 +132,4 @@ This migration helped me to reduce the time of deployment by **44%** and the siz
 
 <Image src="vercel-deployment.png" alt="Deployment time on vercel dashboard. Around 1 seccond" />
 
-More info how my blog works you can find there [How my site works under the hood](./introducing-the-new-shramko.dev)
+More info how my blog works you can find there [How my site works under the hood](/blog/introducing-the-new-shramko.dev)

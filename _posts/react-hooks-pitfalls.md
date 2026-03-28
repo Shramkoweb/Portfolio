@@ -151,3 +151,8 @@ The key lesson: carefully handle state encapsulation within custom hooks. Keep s
 optimize your React application's performance and responsiveness.
 
 > P.S Memoization and other performance optimizations will be covered in future posts. Meanwhile, you can read about [Elements, Children as Props, and Re-Renders](/blog/react-elements-children).
+
+## Related Content
+
+- [useClickOutside Hook](/snippets/use-click-outside) - a practical custom hook example that applies the patterns discussed above
+- [useMediaQuery Hook](/snippets/use-media-query) - another commonly used custom hook with proper cleanup

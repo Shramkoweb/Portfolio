@@ -79,3 +79,7 @@ isBetweenDates(
 Checking if a date falls between two other dates in JavaScript is a straightforward process using the
 `Date` object and its `getTime()` method. By comparing the timestamps of the dates, you can easily determine whether a
 given date falls between two other dates.
+
+## Related Content
+
+- [for...in vs for...of](/blog/for-in-vs-for-of) - iterating over date collections and other data structures
