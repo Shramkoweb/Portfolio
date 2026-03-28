@@ -28,8 +28,6 @@ export default function Document() {
           href="/static/favicons/safari-pinned-tab.svg"
           rel="mask-icon"
         />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <meta
           content="#f9fafb"
           name="theme-color"

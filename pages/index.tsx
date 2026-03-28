@@ -99,7 +99,7 @@ function IndexPage(props: IndexPageProps) {
             <Image
               alt="Serhii Shramko's avatar - smile iOS emoji"
               src={smile}
-              quality={100}
+              quality={75}
               width={128}
               height={128}
               className={clsx('absolute', {
@@ -110,7 +110,7 @@ function IndexPage(props: IndexPageProps) {
             <Image
               alt="Serhii Shramko's avatar - tongue iOS emoji"
               src={tongue}
-              quality={100}
+              quality={75}
               width={128}
               height={128}
               className={clsx('absolute', {

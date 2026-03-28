@@ -97,6 +97,9 @@ const sentryBuildOptions = {
   silent: !process.env.CI,
   bundleSizeOptimizations: {
     excludeDebugStatements: true,
+    excludeReplayShadowDom: true,
+    excludeReplayIframe: true,
+    excludeReplayWorker: true,
   },
 };
 
