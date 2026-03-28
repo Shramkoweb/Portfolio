@@ -79,6 +79,13 @@
       "@hono/node-server": ">=1.19.10",
       "effect": ">=3.20.0",
       "lodash": ">=4.17.23"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@prisma/engines",
+      "@sentry/cli",
+      "prisma",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
