@@ -95,10 +95,10 @@ function UdemyResetProgressPage() {
                 "priceCurrency": "USD",
                 "price": "0.00",
                 "availability": "https://schema.org/InStock",
-                "url": "https://chromewebstore.google.com/detail/udemy-reset-progress/lkoblfcegginogcfehfkakpmbpbipcoo"
+                "url": "https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
               },
               "downloadUrl": [
-                "https://chromewebstore.google.com/detail/udemy-reset-progress/lkoblfcegginogcfehfkakpmbpbipcoo",
+                "https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo",
                 "https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
               ]
             })

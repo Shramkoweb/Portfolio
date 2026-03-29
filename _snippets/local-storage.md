@@ -109,6 +109,6 @@ setItemWithExpiry('user-profile', userData, 5 * 60 * 1000);
 const cached = getItemWithExpiry<UserData>('user-profile');
 ```
 
-## Related Content
+## Related
 
 - [Common React Hooks Pitfalls](/blog/react-hooks-pitfalls) - best practices for custom hooks that use localStorage

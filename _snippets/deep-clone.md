@@ -62,6 +62,6 @@ function deepClone(obj) {
 
 > This manual version does not handle `Date`, `Map`, `Set`, or circular references. Prefer `structuredClone()` when possible.
 
-## Related Content
+## Related
 
 - [JavaScript Arrays](/blog/js-arrays) - working with JavaScript data structures including cloning arrays

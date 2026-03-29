@@ -52,8 +52,34 @@ export async function getSnippets(): Promise<Snippet[]> {
 }
 
 export async function getSnippetsMetadata(): Promise<Omit<Snippet, 'content'>[]> {
-  const snippets = await getSnippets();
-  return snippets.map(({ data }) => ({ data }));
+  const fileNames = await readdir(SNIPPETS_DIRECTORY);
+  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+
+  const metadataPromises = markdownFiles.map(async (fileName) => {
+    const slug = extractMarkdownSlug(fileName);
+    const fullPath = join(SNIPPETS_DIRECTORY, fileName);
+    const fileContents = await readFile(fullPath, 'utf8');
+
+    const {
+      data: {
+        title, heading, description, createDate, updateDate, keywords,
+      },
+    } = matter(fileContents);
+
+    return {
+      data: {
+        slug,
+        title,
+        heading,
+        description,
+        keywords,
+        createDate: Date.parse(createDate),
+        updateDate: updateDate ? Date.parse(updateDate) : null,
+      },
+    };
+  });
+
+  return Promise.all(metadataPromises);
 }
 
 export async function getSnippetSlugs(): Promise<string[]> {

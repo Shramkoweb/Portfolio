@@ -256,7 +256,13 @@ export async function getStaticProps({
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
-  const wordCount = content.split(/\s+/).filter(Boolean).length;
+  const plainText = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`]*`/g, '')
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/#{1,6}\s/g, '')
+    .replace(/[*_~>|-]/g, '');
+  const wordCount = plainText.split(/\s+/).filter(Boolean).length;
   return {
     props: {
       data,

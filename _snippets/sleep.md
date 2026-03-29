@@ -34,6 +34,6 @@ await sleep(1000);  // Wait for 1 second (1000 milliseconds)
 console.log("Task 2 finished after 1 second");
 ```
 
-## Related Content
+## Related
 
-- [Dispatch Tables in JavaScript](/blog/dispatch-tables) - clean code patterns for organizing async logic
+- [Copy to Clipboard](/snippets/copy-to-clipboard) - another async utility snippet using Promises

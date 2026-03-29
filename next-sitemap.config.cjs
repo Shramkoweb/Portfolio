@@ -49,8 +49,10 @@ function getContentDate(urlPath) {
     if (dateStr) {
       return new Date(dateStr).toISOString();
     }
-  } catch {
-    // File not found — fall through
+  } catch (error) {
+    if (error?.code !== 'ENOENT') {
+      console.error(`Error reading content date for ${urlPath}:`, error);
+    }
   }
 
   return null;
@@ -62,10 +64,6 @@ module.exports = {
   generateIndexSitemap: false,
   exclude: EXCLUDED_PATHS,
   transform: async (config, path) => {
-    if (EXCLUDED_PATHS.includes(path)) {
-      return null;
-    }
-
     const contentDate = getContentDate(path);
 
     return {

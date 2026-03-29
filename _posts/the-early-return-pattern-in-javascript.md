@@ -59,5 +59,5 @@ me—is just as important as writing for the machine.
 
 ## Related Content
 
-- [isAbsoluteUrl](/snippets/is-absolute-url) - a concise example of early return for URL validation
+- [Check if a URL is absolute](/snippets/is-absolute-url) - a concise example of early return for URL validation
 - [Expressions vs Statements](/blog/expressions-statements) - understand the building blocks behind guard clauses and control flow

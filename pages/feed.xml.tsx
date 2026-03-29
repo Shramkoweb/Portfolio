@@ -5,6 +5,15 @@ import { sortByBirthtime } from '@/lib/posts/utils';
 
 const SITE_URL = 'https://shramko.dev';
 
+function escapeXml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 function generateRssItem(post: {
   data: {
     slug: string;
@@ -15,8 +24,8 @@ function generateRssItem(post: {
 }) {
   return `    <item>
       <title><![CDATA[${post.data.heading}]]></title>
-      <link>${SITE_URL}/blog/${post.data.slug}</link>
-      <guid isPermaLink="true">${SITE_URL}/blog/${post.data.slug}</guid>
+      <link>${SITE_URL}/blog/${escapeXml(post.data.slug)}</link>
+      <guid isPermaLink="true">${SITE_URL}/blog/${escapeXml(post.data.slug)}</guid>
       <description><![CDATA[${post.data.description}]]></description>
       <pubDate>${new Date(post.data.createDate).toUTCString()}</pubDate>
     </item>`;

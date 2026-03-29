@@ -5,9 +5,14 @@ export const config = {
   runtime: 'edge',
 };
 
+const MAX_TITLE_LENGTH = 100;
+
 export default async function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const title = searchParams.get('title') ?? 'Serhii Shramko';
+  const rawTitle = searchParams.get('title') ?? 'Serhii Shramko';
+  const title = rawTitle.length > MAX_TITLE_LENGTH
+    ? `${rawTitle.slice(0, MAX_TITLE_LENGTH)}…`
+    : rawTitle;
 
   return new ImageResponse(
     (
