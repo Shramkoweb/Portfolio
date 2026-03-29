@@ -10,6 +10,13 @@ const pathLevelToPriority = {
   3: 0.7
 };
 
+const pathLevelToChangefreq = {
+  0: 'weekly',
+  1: 'weekly',
+  2: 'monthly',
+  3: 'monthly'
+};
+
 const EXCLUDED_PATHS = ['/feed.xml'];
 
 const getPathDepthLevel = (path) => {
@@ -67,9 +74,12 @@ module.exports = {
   transform: async (config, path) => {
     const contentDate = getContentDate(path);
 
+    const depth = getPathDepthLevel(path);
+
     return {
       loc: path,
-      priority: pathLevelToPriority[getPathDepthLevel(path)],
+      priority: pathLevelToPriority[depth],
+      changefreq: pathLevelToChangefreq[depth] || 'monthly',
       ...(contentDate && { lastmod: contentDate }),
       alternateRefs: config.alternateRefs ?? []
     };

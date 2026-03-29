@@ -55,6 +55,7 @@ function CategoryPage(props: CategoryPageProps) {
           content={`https://shramko.dev/api/og?title=${encodeURIComponent(seoTitle)}`}
           key="og:image"
         />
+        <meta property="og:image:alt" content={seoTitle} key="og:image:alt" />
         <meta property="og:image:width" content="1200" key="og:image:width" />
         <meta property="og:image:height" content="630" key="og:image:height" />
         <meta name="twitter:title" content={seoTitle} key="twitter:title" />

@@ -18,6 +18,32 @@ function NotFoundPage() {
           name="description"
           key="description"
         />
+        <meta name="robots" content="noindex, follow" />
+        <meta property="og:title" content="Page Not Found | Serhii Shramko" key="og:title" />
+        <meta
+          property="og:description"
+          content="Oops! The page you're looking for isn't here. Let's start by heading to the homepage."
+          key="og:description"
+        />
+        <meta
+          property="og:image"
+          content="https://shramko.dev/api/og?title=Page%20Not%20Found"
+          key="og:image"
+        />
+        <meta property="og:image:alt" content="Page Not Found – Serhii Shramko" key="og:image:alt" />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
+        <meta name="twitter:title" content="Page Not Found | Serhii Shramko" key="twitter:title" />
+        <meta
+          name="twitter:description"
+          content="Oops! The page you're looking for isn't here. Let's start by heading to the homepage."
+          key="twitter:description"
+        />
+        <meta
+          name="twitter:image"
+          content="https://shramko.dev/api/og?title=Page%20Not%20Found"
+          key="twitter:image"
+        />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 text-black dark:text-white">

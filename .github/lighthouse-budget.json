@@ -12,25 +12,47 @@
       },
       {
         "metric": "total-blocking-time",
-        "budget": 1000
+        "budget": 500
       },
       {
         "metric": "cumulative-layout-shift",
         "budget": 0.1
+      },
+      {
+        "metric": "interactive",
+        "budget": 3500
       }
     ],
     "resourceSizes": [
       {
         "resourceType": "script",
-        "budget": 460
+        "budget": 350
       },
       {
         "resourceType": "stylesheet",
         "budget": 100
       },
       {
+        "resourceType": "image",
+        "budget": 500
+      },
+      {
+        "resourceType": "font",
+        "budget": 100
+      },
+      {
         "resourceType": "total",
-        "budget": 750
+        "budget": 500
+      }
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "script",
+        "budget": 15
+      },
+      {
+        "resourceType": "total",
+        "budget": 40
       }
     ]
   }

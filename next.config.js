@@ -4,7 +4,7 @@ const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com/ https://vercel.live/;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
+    img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data:;
     connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://*.ingest.sentry.io https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live;
     font-src 'self';
     worker-src 'self' blob:;
@@ -126,7 +126,7 @@ const sentryBuildOptions = {
 const nextConfigByEnv = {
   production: withSentryConfig(nextConfig, sentryBuildOptions),
   test: nextConfig,
-  development: withSentryConfig(nextConfig, sentryBuildOptions),
+  development: nextConfig,
 };
 
 export default nextConfigByEnv[process.env.NODE_ENV];

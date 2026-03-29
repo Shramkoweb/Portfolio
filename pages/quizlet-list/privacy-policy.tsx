@@ -29,6 +29,13 @@ function PrivacyPolicy() {
           content="This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user."
         />
         <meta property="og:image" content={QUIZLET_APP_OG_IMAGE} key="og:image" />
+        <meta
+          property="og:image:alt"
+          content="Privacy Policy – Quizlet QuickList Web Extension"
+          key="og:image:alt"
+        />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta

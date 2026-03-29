@@ -4,6 +4,10 @@ export default function Document() {
   return (
     <Html lang="en" data-release={process.env.APP_RELEASE_VERSION}>
       <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        />
         <link rel="preconnect" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />

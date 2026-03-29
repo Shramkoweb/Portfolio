@@ -47,6 +47,13 @@ function UdemyResetProgressPage() {
           key="og:image"
         />
         <meta
+          property="og:image:alt"
+          content="Udemy Reset Progress – Browser Extension"
+          key="og:image:alt"
+        />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
+        <meta
           property="twitter:card"
           key="twitter:card"
           content="summary_large_image"

@@ -17,16 +17,34 @@ export default function Dashboard() {
           key="description"
         />
         <meta
-          content="
-          github stars
-          Serhii,
-          Serhii Shramko,
-          shramko,
-          personal dashboard,
-          next js api,
-          github followers"
+          content="github stars, Serhii Shramko, personal dashboard, next js api, github followers"
           name="keywords"
           key="keywords"
+        />
+        <meta property="og:title" content="Dashboard | Serhii Shramko" key="og:title" />
+        <meta
+          property="og:description"
+          content="My dashboard is built using Next.js API routes as serverless functions. It's personalized and easy to access."
+          key="og:description"
+        />
+        <meta
+          property="og:image"
+          content="https://shramko.dev/api/og?title=Dashboard"
+          key="og:image"
+        />
+        <meta property="og:image:alt" content="Dashboard – Serhii Shramko" key="og:image:alt" />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
+        <meta name="twitter:title" content="Dashboard | Serhii Shramko" key="twitter:title" />
+        <meta
+          name="twitter:description"
+          content="My dashboard is built using Next.js API routes as serverless functions. It's personalized and easy to access."
+          key="twitter:description"
+        />
+        <meta
+          name="twitter:image"
+          content="https://shramko.dev/api/og?title=Dashboard"
+          key="twitter:image"
         />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
