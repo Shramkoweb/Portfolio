@@ -99,4 +99,4 @@ function AnimatedComponent() {
 
 ## Related
 
-- [Understanding React Re-renders](/blog/react-rerender) - learn how hooks like this trigger re-renders and how to optimize them
+- [React Re-Renders: What Triggers Them and Why](/blog/react-rerender) - learn how hooks like this trigger re-renders and how to optimize them

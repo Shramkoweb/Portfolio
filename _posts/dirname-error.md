@@ -1,7 +1,7 @@
 ---
 title: "Fix “__dirname Not Defined” in ES Modules – Quick Guide"
 heading: How to fix "__dirname is not defined in ES module scope"
-description: Fix the "__dirname is not defined in ES module scope" error in Node.js. Recreate __dirname using import.meta.url.
+description: Fix the "__dirname is not defined in ES module scope" error in Node.js. Recreate __dirname and __filename using import.meta.url.
 createDate: 2022-07-25T10:01:01Z
 updateDate: 2022-09-25T12:03:53.360Z
 keywords: [__filename, Node, ES Modules, __dirname]

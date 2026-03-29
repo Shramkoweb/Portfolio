@@ -62,4 +62,4 @@ function CopyButton({ text }: { text: string }) {
 
 ## Related
 
-- [React Elements, Children, and Re-renders](/blog/react-elements-children) - React component patterns for building UI like copy buttons
+- [React Elements, Children as Props, and Re-Renders](/blog/react-elements-children) - React composition patterns that prevent unnecessary re-renders in interactive components
