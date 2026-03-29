@@ -10,7 +10,7 @@ const pathLevelToPriority = {
   3: 0.7
 };
 
-const EXCLUDED_PATHS = ['/dashboard', '/quizlet-list', '/quizlet-list/privacy-policy', '/udemy-reset-progress', '/gear', '/feed.xml'];
+const EXCLUDED_PATHS = ['/feed.xml'];
 
 const getPathDepthLevel = (path) => {
   if (path === '/') {

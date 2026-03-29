@@ -10,7 +10,7 @@ const author = {
   url: `${SITE_URL}/about`,
 };
 
-export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?: string[]; wordCount?: number }) {
+export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?: string[] }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -30,7 +30,6 @@ export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?:
     },
     image: `${SITE_URL}/api/og?title=${encodeURIComponent(post.heading)}`,
     keywords: post.keywords,
-    ...(post.wordCount && { wordCount: post.wordCount }),
     articleSection: post.categories?.[0] || 'Technology',
     inLanguage: 'en',
   };

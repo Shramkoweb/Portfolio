@@ -39,7 +39,6 @@ const FloatingReactions = dynamic(() =>
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
   headings: { text: string; level: number; id: string }[];
-  wordCount: number;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -131,7 +130,7 @@ function ArticlePage(props: ArticlePageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBlogPostingSchema({ ...props.data, wordCount: props.wordCount })),
+          __html: JSON.stringify(generateBlogPostingSchema({ ...props.data })),
         }}
       />
       <script
@@ -256,19 +255,12 @@ export async function getStaticProps({
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
-  const plainText = content
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/`[^`]*`/g, '')
-    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/#{1,6}\s/g, '')
-    .replace(/[*_~>|-]/g, '');
-  const wordCount = plainText.split(/\s+/).filter(Boolean).length;
+
   return {
     props: {
       data,
       content: html,
       headings,
-      wordCount,
     },
   };
 }

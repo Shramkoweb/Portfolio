@@ -105,4 +105,3 @@ function findInDb(id: DbUserId): User { /* ... */
 ## Related
 
 - [Discriminated Unions](/blog/discriminated-unions) - another approach to type-safe variants in TypeScript
-

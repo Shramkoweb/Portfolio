@@ -19,7 +19,6 @@ function UdemyResetProgressPage() {
     <>
       <Head>
         <title>How to Reset Udemy Course Progress - One-Click Solution</title>
-        <meta name="robots" content="noindex, follow" />
         <meta
           name="description"
           key="description"
