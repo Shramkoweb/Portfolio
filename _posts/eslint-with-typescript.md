@@ -121,7 +121,7 @@ huge. Therefore, I recommend always using it.
 - [Create-React-App with TypeScript, ESLint, Prettier, and Github Actions](https://brygrill.medium.com/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
 - [What is ESLint?](https://hackernoon.com/what-is-eslint-how-do-i-set-it-up-on-atom-70f270f57296)
 
-## Related Content
+## Related
 
 - [The satisfies Operator](/snippets/satisfies-operator) - a TypeScript operator that works well alongside strict ESLint rules
 - [Fix "__dirname Not Defined" in ES Modules](/blog/dirname-error) - a common Node.js pitfall when configuring TypeScript projects

@@ -176,7 +176,7 @@ self (and your teammates) will thank you!
 
 Happy coding, and may your types always be discriminated! 🚀✨
 
-## Related Content
+## Related
 
 - [Branded Types in TypeScript](/snippets/branded-types) - another pattern for type-safe identifiers
 - [Type Predicates](/snippets/type-predicates) - use type predicates to narrow discriminated unions at runtime

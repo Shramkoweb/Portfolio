@@ -116,7 +116,7 @@ not provide shell access."
 
 You've now successfully added a modern, secure ed25519 SSH Key to your GitHub account.
 
-## Related Content
+## Related
 
 - [Detect Environment](/snippets/environment) - check the runtime environment before executing commands
 - [.gitignore Is Not Enough](/blog/gitignore-is-not-enough) - protect your sensitive files beyond SSH keys

@@ -200,7 +200,7 @@ P // Properties/Props type
 > I love conventions and wrote a lot of articles about them.
 > Check out about [conventional commits](/blog/conventional-commits) and [JavaScript Naming](/blog/javascript-naming-conventions) for more.
 
-## Related Content
+## Related
 
 - [Template Literal Types](/snippets/template-literal-types) - template literal types leverage generics for powerful string patterns
 - [The satisfies Operator](/snippets/satisfies-operator) - satisfies uses type inference alongside generics

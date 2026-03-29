@@ -188,6 +188,6 @@ the same type of tasks several times.
 
 > Want to learn more about arrays? Check out my [JavaScript Arrays guide](/blog/js-arrays) covering essential methods like map, filter, and reduce.
 
-## Related Content
+## Related
 
 - [Remove Duplicates from Array](/snippets/remove-duplicates-array) - a handy snippet for array deduplication

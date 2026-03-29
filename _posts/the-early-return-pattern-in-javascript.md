@@ -57,7 +57,7 @@ The beauty of early return is that it clears `mental space`.
 It’s funny how these little patterns sneak up on you. Today’s code reminded me that writing for humans, including future
 me—is just as important as writing for the machine.
 
-## Related Content
+## Related
 
 - [Check if a URL is absolute](/snippets/is-absolute-url) - a concise example of early return for URL validation
 - [Expressions vs Statements](/blog/expressions-statements) - understand the building blocks behind guard clauses and control flow

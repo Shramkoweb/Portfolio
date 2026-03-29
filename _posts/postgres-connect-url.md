@@ -79,7 +79,7 @@ DataGrip.
 
 <Image src="db-datagrip.png" priority={true} alt="DataGrip connection dialog configured with PostgreSQL credentials" />
 
-## Related Content
+## Related
 
 - [Installing PostgreSQL on macOS](/snippets/postgres-install-macos) - step-by-step setup guide
 - [SQL Countries Table](/snippets/countries-sql) - ready-to-use seed data for your database

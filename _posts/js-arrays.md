@@ -241,7 +241,7 @@ The array has many methods, in this article I have shown the most used in my opi
 Further, you can learn more methods on the pages of MDN Web Docs, so I wish you inspiration and hope this article will
 be useful to you.
 
-## Related Content
+## Related
 
 - [for...in vs for...of Loops](/blog/for-in-vs-for-of) - learn different ways to iterate over arrays
 - [Remove Duplicates from an Array](/snippets/remove-duplicates-array) - common array operation
