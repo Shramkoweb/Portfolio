@@ -14,13 +14,34 @@ function GearPage() {
           key="description"
         />
         <meta
-          content="
-          gear for coding,
-          software for coding,
-          IDE,
-          PhpStorm"
+          content="gear for coding, software for coding, IDE, PhpStorm"
           name="keywords"
           key="keywords"
+        />
+        <meta property="og:title" content="Gear | Serhii Shramko" key="og:title" />
+        <meta
+          property="og:description"
+          content="Explore my coding setup: MacBook Pro M3, PhpStorm IDE, headphones, and essential apps. Hardware and software I use daily for development and productivity."
+          key="og:description"
+        />
+        <meta
+          property="og:image"
+          content="https://shramko.dev/api/og?title=My%20Gear"
+          key="og:image"
+        />
+        <meta property="og:image:alt" content="My Gear – Serhii Shramko" key="og:image:alt" />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
+        <meta name="twitter:title" content="Gear | Serhii Shramko" key="twitter:title" />
+        <meta
+          name="twitter:description"
+          content="Explore my coding setup: MacBook Pro M3, PhpStorm IDE, headphones, and essential apps. Hardware and software I use daily for development and productivity."
+          key="twitter:description"
+        />
+        <meta
+          name="twitter:image"
+          content="https://shramko.dev/api/og?title=My%20Gear"
+          key="twitter:image"
         />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-8 w-full">

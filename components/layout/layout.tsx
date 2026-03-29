@@ -18,10 +18,6 @@ export function Layout({ children }: PropsWithChildren) {
     <div className="bg-gray-50 dark:bg-gray-900">
       <Head>
         <title>{TITLE}</title>
-        <meta
-          name="viewport"
-          content="width=device-width , initial-scale=1.0"
-        />
         <meta name="robots" content="follow, index" />
         <meta content={DESCRIPTION} name="description" key="description" />
         <meta
@@ -33,6 +29,18 @@ export function Layout({ children }: PropsWithChildren) {
           rel="canonical"
           key="canonical"
           href={`https://shramko.dev${currentPath}`}
+        />
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href={`https://shramko.dev${currentPath}`}
+          key="hreflang-en"
+        />
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href={`https://shramko.dev${currentPath}`}
+          key="hreflang-default"
         />
         <meta property="og:type" content="website" key="og:type" />
         <meta
@@ -47,6 +55,11 @@ export function Layout({ children }: PropsWithChildren) {
         />
         <meta property="og:title" content={TITLE} key="og:title" />
         <meta property="og:image" content={IMAGE} key="og:image" />
+        <meta
+          property="og:image:alt"
+          content="Serhii Shramko – Developer, writer, creator."
+          key="og:image:alt"
+        />
         <meta property="og:image:width" content="1200" key="og:image:width" />
         <meta property="og:image:height" content="630" key="og:image:height" />
         <meta property="og:locale" content="en_US" key="og:locale" />

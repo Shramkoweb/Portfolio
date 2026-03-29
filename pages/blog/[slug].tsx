@@ -85,6 +85,9 @@ function ArticlePage(props: ArticlePageProps) {
           content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
           key="og:image"
         />
+        <meta property="og:image:alt" content={title} key="og:image:alt" />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
         <meta name="twitter:title" content={title} key="twitter:title" />
         <meta
           name="twitter:description"
@@ -129,19 +132,17 @@ function ArticlePage(props: ArticlePageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateBlogPostingSchema({ ...props.data })),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              generateBreadcrumbSchema([
-                { name: 'Home', url: 'https://shramko.dev/' },
-                { name: 'Blog', url: 'https://shramko.dev/blog' },
-                { name: heading, url: `https://shramko.dev/blog/${slug}` },
-              ]),
-            ),
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                generateBlogPostingSchema({ ...props.data }),
+                generateBreadcrumbSchema([
+                  { name: 'Home', url: 'https://shramko.dev/' },
+                  { name: 'Blog', url: 'https://shramko.dev/blog' },
+                  { name: heading, url: `https://shramko.dev/blog/${slug}` },
+                ]),
+              ],
+            }),
           }}
         />
       </Head>

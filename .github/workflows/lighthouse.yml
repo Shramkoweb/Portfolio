@@ -22,8 +22,21 @@ jobs:
                 "settings": {
                   "extraHeaders": {
                     "x-vercel-protection-bypass": "BYPASS_SECRET_PLACEHOLDER"
-                  }
+                  },
+                  "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+                  "skipAudits": ["installable-manifest", "service-worker"]
                 }
+              },
+              "assert": {
+                "assertions": {
+                  "categories:performance": ["error", { "minScore": 0.9 }],
+                  "categories:accessibility": ["error", { "minScore": 0.95 }],
+                  "categories:best-practices": ["error", { "minScore": 0.9 }],
+                  "categories:seo": ["error", { "minScore": 0.95 }]
+                }
+              },
+              "upload": {
+                "target": "temporary-public-storage"
               }
             }
           }
@@ -39,6 +52,9 @@ jobs:
             ${{ github.event.deployment_status.target_url }}/
             ${{ github.event.deployment_status.target_url }}/blog
             ${{ github.event.deployment_status.target_url }}/about
+            ${{ github.event.deployment_status.target_url }}/snippets
+            ${{ github.event.deployment_status.target_url }}/blog/ai-seo-audit
+            ${{ github.event.deployment_status.target_url }}/snippets/branded-types
           runs: 3
           configPath: /tmp/lighthouserc.json
           budgetPath: .github/lighthouse-budget.json
@@ -63,17 +79,28 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const results = ${{ steps.lighthouse.outputs.manifest }};
+            const manifest = ${{ steps.lighthouse.outputs.manifest }};
+            const thresholds = { performance: 90, accessibility: 95, 'best-practices': 90, seo: 95 };
+            const badge = (score, threshold) => score >= threshold ? '\u2705' : '\u274C';
             let comment = '## Lighthouse Results\n\n';
             comment += '| URL | Performance | Accessibility | Best Practices | SEO |\n';
-            comment += '|-----|------------|---------------|----------------|-----|\n';
-            for (const result of results) {
+            comment += '|-----|:----------:|:-------------:|:--------------:|:---:|\n';
+            for (const result of manifest) {
               const url = new URL(result.url).pathname || '/';
               const perf = Math.round(result.summary.performance * 100);
               const a11y = Math.round(result.summary.accessibility * 100);
               const bp = Math.round(result.summary['best-practices'] * 100);
               const seo = Math.round(result.summary.seo * 100);
-              comment += `| ${url} | ${perf} | ${a11y} | ${bp} | ${seo} |\n`;
+              comment += `| ${url} | ${badge(perf, thresholds.performance)} ${perf} | ${badge(a11y, thresholds.accessibility)} ${a11y} | ${badge(bp, thresholds['best-practices'])} ${bp} | ${badge(seo, thresholds.seo)} ${seo} |\n`;
+            }
+            const links = JSON.parse('${{ steps.lighthouse.outputs.links }}');
+            if (links && Object.keys(links).length > 0) {
+              comment += '\n<details><summary>Report Links</summary>\n\n';
+              for (const [url, link] of Object.entries(links)) {
+                const path = new URL(url).pathname || '/';
+                comment += `- [${path}](${link})\n`;
+              }
+              comment += '\n</details>\n';
             }
             core.setOutput('comment', comment);
       - name: Post comment

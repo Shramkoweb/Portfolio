@@ -66,6 +66,9 @@ function SnippetPage(props: SnippetPageProps) {
           content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
           key="og:image"
         />
+        <meta property="og:image:alt" content={title} key="og:image:alt" />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
         <meta name="twitter:title" content={title} key="twitter:title" />
         <meta
           name="twitter:description"
@@ -104,19 +107,17 @@ function SnippetPage(props: SnippetPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateTechArticleSchema(props.data)),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              generateBreadcrumbSchema([
-                { name: 'Home', url: 'https://shramko.dev/' },
-                { name: 'Snippets', url: 'https://shramko.dev/snippets' },
-                { name: heading, url: `https://shramko.dev/snippets/${slug}` },
-              ]),
-            ),
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                generateTechArticleSchema(props.data),
+                generateBreadcrumbSchema([
+                  { name: 'Home', url: 'https://shramko.dev/' },
+                  { name: 'Snippets', url: 'https://shramko.dev/snippets' },
+                  { name: heading, url: `https://shramko.dev/snippets/${slug}` },
+                ]),
+              ],
+            }),
           }}
         />
       </Head>
