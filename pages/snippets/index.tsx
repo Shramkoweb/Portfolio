@@ -25,7 +25,7 @@ function SnippetsPage(props: SnippetsPageProps) {
         />
         <meta
           property="og:site_name"
-          content="Serhii Shramko Snippets"
+          content="Serhii Shramko"
           key="og:site_name"
         />
         <meta

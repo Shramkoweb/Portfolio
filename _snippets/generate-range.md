@@ -54,3 +54,8 @@ range(2, 8); // Output: [2, 3, 4, 5, 6, 7]
 ```javascript
 range(1, 10, 2); // Output: [1, 3, 5, 7, 9]
 ```
+
+## Related
+
+- [JavaScript Arrays](/blog/js-arrays) — deep dive into array methods and best practices
+- [Remove Duplicates from an Array](/snippets/remove-duplicates-array) — useful array utility for deduplication

@@ -99,6 +99,41 @@ function QuizletPage() {
             })
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Is Quizlet QuickList free?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Quizlet QuickList is totally free to use."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need a Quizlet account to use Quizlet QuickList?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, you don't need one, but Quizlet QuickList works great with Quizlet if you want to use flashcards."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I use Quizlet QuickList on any website?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! As long as you can highlight the text, you can add words to your list."
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">

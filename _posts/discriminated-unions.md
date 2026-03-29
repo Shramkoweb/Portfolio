@@ -1,5 +1,5 @@
 ---
-title: "Discriminated Unions in TypeScript: The Secret Sauce for Better Code"
+title: "Discriminated Unions in TypeScript: Write Safer Code"
 heading: Discriminated Unions in TypeScript
 description: Discover how discriminated unions in TypeScript help you write cleaner, safer code. Learn what they are, how to use them, and why they're great!
 createDate: 2024-09-14
@@ -175,3 +175,9 @@ Next time you're dealing with a bunch of related but different types, give discr
 self (and your teammates) will thank you!
 
 Happy coding, and may your types always be discriminated! 🚀✨
+
+## Related
+
+- [Branded Types in TypeScript](/snippets/branded-types) - another pattern for type-safe identifiers
+- [Type Predicates](/snippets/type-predicates) - use type predicates to narrow discriminated unions at runtime
+- [Generic Type Parameters](/blog/generic-type-parameters) - combine generics with unions for flexible APIs

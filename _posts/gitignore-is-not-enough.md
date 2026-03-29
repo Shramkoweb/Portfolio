@@ -51,6 +51,8 @@ wish to ignore:
 Now, your IDE settings, log files, or local environment configurations will no longer clutter your Git status or lead to
 accidental commits without interrupting your teammates’ workflow.
 
+While you’re streamlining your Git setup, don’t forget to [add SSH keys to your GitHub account](/blog/how-to-create-ssh-keys) for secure, passwordless authentication.
+
 ### Temporarily Ignoring Changes with git update-index
 
 At some point, you’ll find it necessary to tweak files you’re already tracking, but you have no intention of committing

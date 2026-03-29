@@ -32,7 +32,7 @@ function CustomLink(
   return (
     <a
       target="_blank"
-      rel="noopener nofollow"
+      rel="noopener"
       href={href}
       className={className}
     >

@@ -48,3 +48,8 @@ console.log(isValidEmail('invalid.email@com')); // false - incomplete domain
 console.log(isValidEmail('no@dots')); // false - missing TLD 
 console.log(isValidEmail('spaces in@email.com')); // false - contains spaces
  ```
+
+## Related
+
+- [JavaScript Naming Conventions](/blog/javascript-naming-conventions) - naming validation functions and other identifiers consistently
+- [Detect Caps Lock](/snippets/detect-caps-lock) - another useful form input validation helper

@@ -43,4 +43,9 @@ console.log(isLetter('!')); // false
 > This method is the most marvelous 🦄
 >
 > Letters have different uppercase and lowercase versions, while non-letters (like numbers and special characters)
-> remain unchanged when using these case conversion methods. 
+> remain unchanged when using these case conversion methods.
+
+## Related
+
+- [JavaScript Naming Conventions](/blog/javascript-naming-conventions) — best practices for naming variables and functions in JS
+- [Email Validation with Regex](/snippets/is-email-valid-regex) — another common validation pattern in JavaScript

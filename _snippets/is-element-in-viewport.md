@@ -61,3 +61,8 @@ if (isElementInViewport(element)) {
 ```
 
 This function calculates the bounding rectangle of the element and checks if it lies within the viewport boundaries.
+
+## Related
+
+- [Lazy Loading Images with Intersection Observer](/snippets/lazy-loading-images-with-intersection-observer) — practical use of the same Intersection Observer API
+- [Cross-Browser Testing](/blog/cross-browser-testing) — ensure viewport detection works across all browsers

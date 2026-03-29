@@ -11,7 +11,11 @@ import { ParsedUrlQuery } from 'querystring';
 import { MDXComponents } from '@/components/mdx-components';
 import React from 'react';
 
-import { getPostBySlug, getPostSlugs, getPostsMetadata } from '@/lib/posts/api';
+import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
+import {
+  generateBlogPostingSchema,
+  generateBreadcrumbSchema,
+} from '@/lib/schema';
 import {
   compileMDX,
   extractHeadingsFromMarkdown,
@@ -26,9 +30,6 @@ import {
   TwitterShare,
 } from '@/components/share-button';
 
-const AlsoBlock = dynamic(() =>
-  import('@/components/also-block').then((mod) => mod.AlsoBlock),
-);
 const FloatingReactions = dynamic(() =>
   import('@/components/floating-reactions').then(
     (mod) => mod.FloatingReactions,
@@ -38,12 +39,6 @@ const FloatingReactions = dynamic(() =>
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
   headings: { text: string; level: number; id: string }[];
-  relatedPosts: Array<{
-    slug: string;
-    heading: string;
-    excerpt: string;
-    overlapCount: number;
-  }>;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -61,7 +56,6 @@ function ArticlePage(props: ArticlePageProps) {
       keywords,
     },
     headings,
-    relatedPosts,
   } = props;
 
   const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -78,7 +72,7 @@ function ArticlePage(props: ArticlePageProps) {
         <meta property="og:title" content={title} key="og:title" />
         <meta
           property="og:site_name"
-          content="Serhii Shramko Blog"
+          content="Serhii Shramko"
           key="og:site_name"
         />
         <meta
@@ -86,11 +80,21 @@ function ArticlePage(props: ArticlePageProps) {
           content={description}
           key="og:description"
         />
+        <meta
+          property="og:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
+          key="og:image"
+        />
         <meta name="twitter:title" content={title} key="twitter:title" />
         <meta
           name="twitter:description"
           content={description}
           key="twitter:description"
+        />
+        <meta
+          name="twitter:image"
+          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
+          key="twitter:image"
         />
         <meta
           property="article:published_time"
@@ -122,6 +126,24 @@ function ArticlePage(props: ArticlePageProps) {
             content={category}
           />
         ))}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateBlogPostingSchema({ ...props.data })),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateBreadcrumbSchema([
+                { name: 'Home', url: 'https://shramko.dev/' },
+                { name: 'Blog', url: 'https://shramko.dev/blog' },
+                { name: heading, url: `https://shramko.dev/blog/${slug}` },
+              ]),
+            ),
+          }}
+        />
       </Head>
       <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
         <div>
@@ -198,13 +220,6 @@ function ArticlePage(props: ArticlePageProps) {
             <MDXRemote {...content} components={MDXComponents} />
           </div>
 
-          {relatedPosts && relatedPosts.length > 0 && (
-            <div className="mt-16 w-full">
-              <hr className="border-gray-200 border-1 dark:border-gray-800" />
-              <AlsoBlock relatedPosts={relatedPosts} />
-            </div>
-          )}
-
           <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
             <p>Share it:</p>
             <ul className="flex gap-2">
@@ -240,34 +255,12 @@ export async function getStaticProps({
   const { data, content } = await getPostBySlug(params?.slug);
   const html = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
-  const postsMetadata = await getPostsMetadata();
-
-  const currentCategorySet = new Set(data.categories);
-
-  const relatedPosts = postsMetadata
-    .filter((post) => post.data.slug !== data.slug)
-    .map((post) => {
-      const overlapCount = post.data.categories.filter((cat) =>
-        currentCategorySet.has(cat),
-      ).length;
-
-      return {
-        slug: post.data.slug,
-        heading: post.data.heading,
-        excerpt: post.data.description,
-        overlapCount,
-      };
-    })
-    .filter((post) => post.overlapCount > 0)
-    .sort((a, b) => b.overlapCount - a.overlapCount)
-    .slice(0, 3);
 
   return {
     props: {
       data,
       content: html,
       headings,
-      relatedPosts,
     },
   };
 }

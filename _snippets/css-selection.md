@@ -62,3 +62,8 @@ p::selection {
 That's it! With these simple steps, you can create a custom text selection that will make your website stand out and
 improve the user experience. Keep in mind that not all browsers support all CSS selectors, so be sure to [test your code
 on multiple browsers to ensure compatibility](/blog/cross-browser-testing).
+
+## Related
+
+- [Common CSS Classes](/snippets/common-css-classes) — reusable CSS utility patterns for everyday styling
+- [Class Naming Conventions](/blog/class-naming-conventions) — best practices for writing clean, maintainable CSS class names

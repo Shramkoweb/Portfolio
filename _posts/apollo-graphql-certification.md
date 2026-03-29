@@ -4,7 +4,7 @@ heading: GraphQL Certified – How I earned my certification
 description: My journey to getting Apollo GraphQL certification for free. Learn about the exam structure, preparation tips, and how to earn your credential.
 createDate: 2025-03-13T09:01:43.973Z
 keywords: [ GraphQL, Apollo Odyssey, Apollo Odyssey Learning Platform, Apollo Graph Developer - Associate, Apollo Graph Developer - Professional, GraphQL Certification exam, GraphQL Certifications, graphql certification professional, graphql certification free, apollo graphql certification answers, apollo graphql professional certification ]
-categories: [ Certifications ]
+categories: [ Tutorial ]
 featured: true
 ---
 
@@ -69,3 +69,8 @@ certification.
 
 I really commend the [Raphael Terrier](https://www.linkedin.com/in/raphaelterrier/)
 and [Michelle Mabuyo](https://www.linkedin.com/in/michellemabuyo/) for developing such an excellent learning course.
+
+## Further reading
+
+- [Useful Articles for Developers](/blog/useful-articles) — curated list of recommended developer resources
+- [Branded Types in TypeScript](/snippets/branded-types) — type safety technique useful for strongly-typed GraphQL schemas

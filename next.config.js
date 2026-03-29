@@ -45,6 +45,10 @@ const securityHeaders = [
     key: 'Strict-Transport-Security',
     value: 'max-age=31536000; includeSubDomains; preload',
   },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=()',
+  },
 ];
 
 /** @type {import('next').NextConfig} */
@@ -69,6 +73,26 @@ const nextConfig = {
       {
         source: '/static/serhii-shramko-resume.pdf',
         destination: '/static/serhii_shramko_frontend.pdf',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/habits',
+        destination: '/blog/category/productivity',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/certifications',
+        destination: '/blog/category/tutorial',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/useful-resources',
+        destination: '/blog/category/tools',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/jamstack',
+        destination: '/blog/category/astro',
         permanent: true,
       },
     ];

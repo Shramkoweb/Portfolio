@@ -5,7 +5,7 @@ heading: My "every programmer should know" list - 2025
 createDate: 2022-09-19T19:46:55.334Z
 updateDate: 2025-07-21
 keywords: [Resources for developers, Best Developer Websites, Tech News Resources, Awesome Web Development News Sources]
-categories: [Useful-Resources]
+categories: [Tools]
 featured: false
 ---
 
@@ -35,6 +35,7 @@ learning and maintaining knowledge.
   online
 - [thecrashcourse.com](https://thecrashcourse.com/topic/computerscience/) - simple crash course about computer science
 - [https://pwn.college/](https://pwn.college/) - Learn to Hack! 🤓
+- [Apollo GraphQL Certification](/blog/apollo-graphql-certification) - how I got certified for free
 
 > [nand2tetris.org](https://www.nand2tetris.org/) - my favorite in CS. It is free and a hidden gem in the tech community. It is a course that walks you through how to build a computer from scratch, hence the name. You start with a NAND electrical logic gate and slowly build up to making Tetris.
 

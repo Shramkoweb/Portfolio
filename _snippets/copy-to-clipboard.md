@@ -59,3 +59,7 @@ function CopyButton({ text }: { text: string }) {
 
 > The Clipboard API requires a [secure context](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) (
 > HTTPS or localhost). It won't work on plain HTTP pages.
+
+## Related
+
+- [React Elements, Children as Props, and Re-Renders](/blog/react-elements-children) - React composition patterns that prevent unnecessary re-renders in interactive components

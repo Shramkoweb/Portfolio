@@ -71,3 +71,7 @@ Now, if you try to pass an invalid class name to the Button component, you'll ge
 
 Template literal types are a powerful new tool in the TypeScript toolbox. They can help you write more expressive, more
 type-safe, and more maintainable code.
+
+## Related
+
+- [Generic Type Parameters](/blog/generic-type-parameters) - learn how generics power template literal types

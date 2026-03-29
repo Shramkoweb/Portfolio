@@ -1,5 +1,5 @@
 ---
-title: "Mastering JavaScript Arrays: A Beginner's Guide to Essential Concepts"
+title: "JavaScript Arrays: Essential Methods for Beginners"
 heading: "JavaScript 101: Arrays"
 description: Master JavaScript array methods with this beginner-friendly guide. Learn map, filter, reduce, find, and other essential methods with practical examples.
 createDate: 2022-11-25T17:39:11.486Z
@@ -241,8 +241,9 @@ The array has many methods, in this article I have shown the most used in my opi
 Further, you can learn more methods on the pages of MDN Web Docs, so I wish you inspiration and hope this article will
 be useful to you.
 
-## Related Content
+## Related
 
 - [for...in vs for...of Loops](/blog/for-in-vs-for-of) - learn different ways to iterate over arrays
 - [Remove Duplicates from an Array](/snippets/remove-duplicates-array) - common array operation
 - [Sort an Array of Objects](/snippets/sort-an-array-of-objects-in-javascript) - sorting by multiple properties
+- [Generate a Range of Numbers](/snippets/generate-range) - quickly create sequential arrays

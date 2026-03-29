@@ -5,7 +5,7 @@ description: Comprehensive guide to the Astro framework. Learn what makes it spe
 createDate: 2023-03-16T09:01:43.973Z
 updateDate: 2025-12-07
 keywords: [ astro js, astro framework, astro js tutorial, what is astro, how to build fast, cms javascript framework ]
-categories: [ JS, TS, Astro, JamStack ]
+categories: [ JS, TS, Astro ]
 featured: false
 ---
 
@@ -275,3 +275,4 @@ If you're interested in learning more about Astro, here are some useful links to
 ## My Astro Projects
 
 - [Building a Link Tree](/blog/linktree) - my personal linktree with Astro and Vercel
+- [Astro Image Component on Vercel](/blog/astro-image-on-vercel) - fixing image optimization for Vercel deployments

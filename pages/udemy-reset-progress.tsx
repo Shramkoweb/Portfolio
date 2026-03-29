@@ -71,6 +71,38 @@ function UdemyResetProgressPage() {
           key="twitter:site"
           content="@shramkoweb"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Udemy Reset Progress",
+              "description": "A browser extension that lets you reset any Udemy course progress with a single click.",
+              "url": "https://shramko.dev/udemy-reset-progress",
+              "image": UDEMY_RESET_APP_OG_IMAGE,
+              "author": {
+                "@type": "Person",
+                "@id": "https://shramko.dev/#person",
+                "name": "Serhii Shramko",
+                "url": "https://shramko.dev/about"
+              },
+              "operatingSystem": "Chrome, Firefox, Edge",
+              "applicationCategory": ["BrowserApplication", "EducationalApplication"],
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": "0.00",
+                "availability": "https://schema.org/InStock",
+                "url": "https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
+              },
+              "downloadUrl": [
+                "https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo",
+                "https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
+              ]
+            })
+          }}
+        />
       </Head>
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">

@@ -96,3 +96,7 @@ function AnimatedComponent() {
 
 > The initial state returns `false` during SSR to avoid hydration mismatches. The correct value is set on the client
 > after mount. If you need to avoid layout shift, see [useHasMounted](/snippets/use-has-mounted).
+
+## Related
+
+- [React Re-Renders: What Triggers Them and Why](/blog/react-rerender) - learn how hooks like this trigger re-renders and how to optimize them

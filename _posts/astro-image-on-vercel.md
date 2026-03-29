@@ -4,15 +4,18 @@ heading: How to Build an Astro.js Image Component on Vercel
 description: Fix Astro.js image component issues when deploying to Vercel. Learn how to configure Sharp image service correctly and avoid common deployment errors.
 createDate: 2024-09-13T21:01:43.973Z
 updateDate: 2025-12-07
-keywords: [ Astro.js, Image Component, Vercel, Sharp, Image Service, Astro Image Error, Astro Image Fix, Astro Image Vercel, Astro Image Component, Astro Image Deployment, Astro Image Error Fix]
+keywords: [ Astro.js, Image Component, Vercel, Sharp, Image Service, Astro Image Error, Astro Image Fix, Astro Image Vercel, Astro Image Component, Astro Image Deployment, Astro Image Error Fix ]
 categories: [ Astro, Vercel, Tutorial ]
 featured: false
 ---
 
 ## Astro.js Image Component
 
-When I built [my linktree](https://links.shramko.dev/) website I forgot to use [Image component](https://docs.astro.build/en/guides/images/) in
-Astro.js.<br></br>I used the `img` tag instead. So after learning about the Image component in Astro.js, I decided to
+When I built [my linktree](https://links.shramko.dev/) website I forgot to
+use [Image component](https://docs.astro.build/en/guides/images/) in
+Astro.js.<br></br>I used the `img` tag instead, with no optimization
+or [lazy loading](/snippets/lazy-loading-images-with-intersection-observer). So after learning about the Image component
+in Astro.js, I decided to
 add it.
 
 ```tsx

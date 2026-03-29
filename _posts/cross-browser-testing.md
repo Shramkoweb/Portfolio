@@ -5,7 +5,7 @@ description: Learn how to test your website across different browsers and device
 createDate: 2023-02-24T22:06:42.844Z
 updateDate: 2023-02-24T22:06:42.844Z
 keywords: [browserstack, browserstack dev tools, android browser with dev tools, browserstack devices, browser with developer tools for ios]
-categories: [Tutorial, Useful-Resources, Project-Setup]
+categories: [Tutorial, Tools, Project-Setup]
 featured: false
 ---
 
@@ -110,3 +110,8 @@ the [instructions](https://www.browserstack.com/docs/live/local-testing).
 Unfortunately, I've only worked with this tool and don't have the experience to recommend anything else, but you can
 always [look at the competitors](https://www.g2.com/products/browserstack/competitors/alternatives) and try it
 yourself.
+
+## Further reading
+
+- [Introducing the New shramko.dev](/blog/introducing-the-new-shramko.dev) — how I built the blog, including cross-browser testing with BrowserStack
+- [Check if an Element Is in the Viewport](/snippets/is-element-in-viewport) — viewport detection snippet useful for debugging layout issues across browsers

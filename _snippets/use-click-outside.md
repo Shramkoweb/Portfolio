@@ -77,3 +77,7 @@ function Dropdown() {
 
 > This hook listens on `mousedown` and `touchstart` instead of `click`. This prevents the dropdown from closing and
 > immediately reopening when the toggle button is inside the ref.
+
+## Related
+
+- [Common React Hooks Pitfalls](/blog/react-hooks-pitfalls) - avoid common mistakes when building custom hooks like this one

@@ -8,6 +8,7 @@ import { Atom, MoveRight } from 'lucide-react';
 
 import { Routes } from '@/lib/routes';
 import { generateGradient } from '@/lib/utils';
+import { generateWebSiteSchema } from '@/lib/schema';
 import { getPosts } from '@/lib/posts/api';
 import {
   filterByAdvanceReact,
@@ -54,6 +55,12 @@ function IndexPage(props: IndexPageProps) {
         react developer"
           key="keywords"
           name="keywords"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebSiteSchema()),
+          }}
         />
       </Head>
       <section className="mx-auto flex max-w-3xl flex-col items-start justify-center border-gray-200 pb-16 dark:border-gray-700">

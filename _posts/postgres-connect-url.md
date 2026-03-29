@@ -18,7 +18,7 @@ That is, without credentials such as `user`, `password`, etc.
 
 It's [official PostgreSQL format for connection URLs](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
 
-<Image alt src="postgresql-connection-string.png" priority={true} alt="S.Shramko personal site screenshot"/>
+<Image src="postgresql-connection-string.png" priority={true} alt="PostgreSQL connection URL string format showing protocol, user, password, host, port, and database" />
 
 ### Base URL and path
 
@@ -28,7 +28,7 @@ Here's an example of a base URL and path structure using uppercase placeholder v
 postgresql://USER:PASSWORD@HOST:PORT/DATABASE
 ```
 
-<Image alt src="db-table.png" priority={true} alt="S.Shramko personal site screenshot"/>
+<Image src="db-table.png" priority={true} alt="PostgreSQL base URL and path structure with placeholder values for user, password, host, port, and database" />
 
 ## How this site connects to the database
 
@@ -77,9 +77,9 @@ datasource db {
 You can use same credentials like `HOST`, `PORT`, `USER`, `PASSWORD`, `DATABSE` for connection to Database with
 DataGrip.
 
-<Image alt src="db-datagrip.png" priority={true} alt="S.Shramko personal site screenshot"/>
+<Image src="db-datagrip.png" priority={true} alt="DataGrip connection dialog configured with PostgreSQL credentials" />
 
-## Related Content
+## Related
 
 - [Installing PostgreSQL on macOS](/snippets/postgres-install-macos) - step-by-step setup guide
 - [SQL Countries Table](/snippets/countries-sql) - ready-to-use seed data for your database

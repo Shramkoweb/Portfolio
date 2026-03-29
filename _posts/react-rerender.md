@@ -1,5 +1,5 @@
 ---
-title: "Understanding React Re-Renders: What Triggers Them and Why They Matter"
+title: "React Re-Renders: What Triggers Them and Why"
 heading: React Re-Renders
 description: Dive into the mechanics of React re-renders — learn what causes them, how they impact performance, and how to manage them effectively.
 createDate: 2025-05-03T09:01:43.973Z

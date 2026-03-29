@@ -9,7 +9,7 @@ categories: [ Project-Setup, React, Vercel ]
 featured: false
 ---
 
-<Image alt src="my-site.jpeg" priority={true} alt="S.Shramko personal website screenshot"/>
+<Image src="my-site.jpeg" priority={true} alt="Screenshot of the redesigned shramko.dev homepage showing dark theme with featured blog posts" />
 
 I'm so excited to announce the launch of my brand-new website!
 
@@ -335,13 +335,15 @@ Quick list of why Next.js has been so good for me:
 
 > I wrote new article about another framework - Astro [here](/blog/astro) and [here](/blog/linktree) 😆.
 
+Since launching, I've also [run an AI-powered SEO audit](/blog/ai-seo-audit) across the entire blog to improve discoverability.
+
 ## Acknowledgements
 
 - The design was inspired by [Lee Robinson](https://github.com/leerob)
 
 ## Conclusion
 
-I can't tell you how much I've learned building this website. 🤓
+I can't tell you how much I've learned building this website, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
 
 I'm excited about the new design. And I just had fun doing it. I hope you enjoy it too!
 

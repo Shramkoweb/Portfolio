@@ -22,7 +22,6 @@ export function Layout({ children }: PropsWithChildren) {
           name="viewport"
           content="width=device-width , initial-scale=1.0"
         />
-        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="robots" content="follow, index" />
         <meta content={DESCRIPTION} name="description" key="description" />
         <meta
@@ -48,8 +47,10 @@ export function Layout({ children }: PropsWithChildren) {
         />
         <meta property="og:title" content={TITLE} key="og:title" />
         <meta property="og:image" content={IMAGE} key="og:image" />
+        <meta property="og:image:width" content="1200" key="og:image:width" />
+        <meta property="og:image:height" content="630" key="og:image:height" />
         <meta property="og:locale" content="en_US" key="og:locale" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
         <meta
           name="twitter:creator"
           content="@shramkoweb"

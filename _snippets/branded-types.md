@@ -102,3 +102,6 @@ function findInDb(id: DbUserId): User { /* ... */
 > Branded types pair nicely with [type predicates](/snippets/type-predicates) for runtime validation that TypeScript
 > understands.
 
+## Related
+
+- [Discriminated Unions](/blog/discriminated-unions) - another approach to type-safe variants in TypeScript
