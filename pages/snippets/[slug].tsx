@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
@@ -8,7 +7,7 @@ import {
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import { getSnippetBySlug, getSnippetSlugs, getSnippetsMetadata } from '@/lib/snippets/api';
+import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
 import { compileMDX } from '@/lib/scripts/compiler';
 import { Snippet } from '@/lib/types';
 import {
