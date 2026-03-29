@@ -102,25 +102,25 @@ function SnippetPage(props: SnippetPageProps) {
           content="https://shramko.dev"
           key="article:author"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateTechArticleSchema(props.data)),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateBreadcrumbSchema([
+                { name: 'Home', url: 'https://shramko.dev/' },
+                { name: 'Snippets', url: 'https://shramko.dev/snippets' },
+                { name: heading, url: `https://shramko.dev/snippets/${slug}` },
+              ]),
+            ),
+          }}
+        />
       </Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateTechArticleSchema(props.data)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            generateBreadcrumbSchema([
-              { name: 'Home', url: 'https://shramko.dev/' },
-              { name: 'Snippets', url: 'https://shramko.dev/snippets' },
-              { name: heading, url: `https://shramko.dev/snippets/${slug}` },
-            ]),
-          ),
-        }}
-      />
       <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
         <div className="flex justify-between w-full mb-8">
           <div>

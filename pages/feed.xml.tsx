@@ -14,6 +14,10 @@ function escapeXml(str: string): string {
     .replace(/'/g, '&apos;');
 }
 
+function escapeCData(str: string): string {
+  return str.replace(/\]\]>/g, ']]]]><![CDATA[>');
+}
+
 function generateRssItem(post: {
   data: {
     slug: string;
@@ -23,10 +27,10 @@ function generateRssItem(post: {
   };
 }) {
   return `    <item>
-      <title><![CDATA[${post.data.heading}]]></title>
+      <title><![CDATA[${escapeCData(post.data.heading)}]]></title>
       <link>${SITE_URL}/blog/${escapeXml(post.data.slug)}</link>
       <guid isPermaLink="true">${SITE_URL}/blog/${escapeXml(post.data.slug)}</guid>
-      <description><![CDATA[${post.data.description}]]></description>
+      <description><![CDATA[${escapeCData(post.data.description)}]]></description>
       <pubDate>${new Date(post.data.createDate).toUTCString()}</pubDate>
     </item>`;
 }
@@ -40,6 +44,7 @@ function generateRss(
       createDate: number;
     };
   }>,
+  lastBuildDate: string,
 ) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -48,7 +53,7 @@ function generateRss(
     <link>${SITE_URL}/blog</link>
     <description>Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js.</description>
     <language>en</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
 ${posts.map(generateRssItem).join('\n')}
   </channel>
@@ -59,7 +64,12 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   const posts = await getPostsMetadata();
   const sortedPosts = posts.sort(sortByBirthtime);
 
-  const rss = generateRss(sortedPosts);
+  const latestDate = sortedPosts.reduce((max, post) => {
+    const date = post.data.updateDate || post.data.createDate;
+    return date > max ? date : max;
+  }, sortedPosts[0]?.data.createDate ?? Date.now());
+
+  const rss = generateRss(sortedPosts, new Date(latestDate).toUTCString());
 
   res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
   res.setHeader(

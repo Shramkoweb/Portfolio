@@ -10,7 +10,21 @@ const author = {
   url: `${SITE_URL}/about`,
 };
 
+function toIsoDate(value?: number | null): string | null {
+  if (value == null) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
 export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?: string[] }) {
+  const datePublished = toIsoDate(post.createDate);
+
+  if (!datePublished) {
+    throw new Error(`Invalid createDate for blog post "${post.slug}"`);
+  }
+
+  const dateModified = toIsoDate(post.updateDate);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -18,10 +32,8 @@ export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?:
     headline: post.heading,
     description: post.description,
     url: `${SITE_URL}/blog/${post.slug}`,
-    datePublished: new Date(post.createDate).toISOString(),
-    ...(post.updateDate && {
-      dateModified: new Date(post.updateDate).toISOString(),
-    }),
+    datePublished,
+    ...(dateModified && { dateModified }),
     author,
     publisher: author,
     mainEntityOfPage: {
@@ -39,6 +51,14 @@ export function generateTechArticleSchema(
   snippet: BaseFrontmatter & { programmingLanguage?: string },
   proficiencyLevel: 'Beginner' | 'Expert' = 'Beginner',
 ) {
+  const datePublished = toIsoDate(snippet.createDate);
+
+  if (!datePublished) {
+    throw new Error(`Invalid createDate for snippet "${snippet.slug}"`);
+  }
+
+  const dateModified = toIsoDate(snippet.updateDate);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
@@ -46,10 +66,8 @@ export function generateTechArticleSchema(
     headline: snippet.heading,
     description: snippet.description,
     url: `${SITE_URL}/snippets/${snippet.slug}`,
-    datePublished: new Date(snippet.createDate).toISOString(),
-    ...(snippet.updateDate && {
-      dateModified: new Date(snippet.updateDate).toISOString(),
-    }),
+    datePublished,
+    ...(dateModified && { dateModified }),
     author,
     publisher: author,
     mainEntityOfPage: {

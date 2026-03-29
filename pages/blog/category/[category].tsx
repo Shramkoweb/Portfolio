@@ -68,22 +68,22 @@ function CategoryPage(props: CategoryPageProps) {
           content={`https://shramko.dev/api/og?title=${encodeURIComponent(seoTitle)}`}
           key="twitter:image"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateBreadcrumbSchema([
+                { name: 'Home', url: 'https://shramko.dev/' },
+                { name: 'Blog', url: 'https://shramko.dev/blog' },
+                {
+                  name: displayCategory,
+                  url: `https://shramko.dev/blog/category/${category.toLowerCase()}`,
+                },
+              ]),
+            ),
+          }}
+        />
       </Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            generateBreadcrumbSchema([
-              { name: 'Home', url: 'https://shramko.dev/' },
-              { name: 'Blog', url: 'https://shramko.dev/blog' },
-              {
-                name: displayCategory,
-                url: `https://shramko.dev/blog/category/${category.toLowerCase()}`,
-              },
-            ]),
-          ),
-        }}
-      />
       <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
           {displayCategory}

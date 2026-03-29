@@ -41,8 +41,9 @@ function getContentDate(urlPath) {
 
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const updateMatch = content.match(/updateDate:\s*(.+)/);
-    const createMatch = content.match(/createDate:\s*(.+)/);
+    const frontmatter = content.match(/^---\r?\n([\s\S]*?)\r?\n---/m)?.[1] ?? '';
+    const updateMatch = frontmatter.match(/^updateDate:\s*(.+)$/m);
+    const createMatch = frontmatter.match(/^createDate:\s*(.+)$/m);
 
     const dateStr = updateMatch ? updateMatch[1].trim() : createMatch ? createMatch[1].trim() : null;
 
@@ -69,7 +70,7 @@ module.exports = {
     return {
       loc: path,
       priority: pathLevelToPriority[getPathDepthLevel(path)],
-      lastmod: contentDate || new Date().toISOString(),
+      ...(contentDate && { lastmod: contentDate }),
       alternateRefs: config.alternateRefs ?? []
     };
   }

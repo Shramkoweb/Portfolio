@@ -126,25 +126,25 @@ function ArticlePage(props: ArticlePageProps) {
             content={category}
           />
         ))}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateBlogPostingSchema({ ...props.data })),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateBreadcrumbSchema([
+                { name: 'Home', url: 'https://shramko.dev/' },
+                { name: 'Blog', url: 'https://shramko.dev/blog' },
+                { name: heading, url: `https://shramko.dev/blog/${slug}` },
+              ]),
+            ),
+          }}
+        />
       </Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBlogPostingSchema({ ...props.data })),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            generateBreadcrumbSchema([
-              { name: 'Home', url: 'https://shramko.dev/' },
-              { name: 'Blog', url: 'https://shramko.dev/blog' },
-              { name: heading, url: `https://shramko.dev/blog/${slug}` },
-            ]),
-          ),
-        }}
-      />
       <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
         <div>
           <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">
