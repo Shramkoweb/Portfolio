@@ -15,6 +15,7 @@ import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
   generateBreadcrumbSchema,
+  generateFAQPageSchema,
 } from '@/lib/schema';
 import {
   compileMDX,
@@ -54,6 +55,7 @@ function ArticlePage(props: ArticlePageProps) {
       createDate,
       categories = [],
       keywords,
+      faq,
     },
     headings,
   } = props;
@@ -129,7 +131,9 @@ function ArticlePage(props: ArticlePageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateBlogPostingSchema({ ...props.data })),
+            __html: JSON.stringify(
+              generateBlogPostingSchema({ ...props.data }),
+            ),
           }}
         />
         <script
@@ -144,6 +148,14 @@ function ArticlePage(props: ArticlePageProps) {
             ),
           }}
         />
+        {faq && faq.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(generateFAQPageSchema(faq)),
+            }}
+          />
+        )}
       </Head>
       <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
         <div>
@@ -169,7 +181,7 @@ function ArticlePage(props: ArticlePageProps) {
           </aside>
         </div>
 
-        <section className="lg:ml-[-44px] w-full">
+        <section className="lg:-ml-11 w-full">
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
             {heading}
           </h1>

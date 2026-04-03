@@ -1,4 +1,4 @@
-import { BaseFrontmatter } from '@/lib/types';
+import { BaseFrontmatter, FAQItem } from '@/lib/types';
 
 const SITE_URL = 'https://shramko.dev';
 const AUTHOR_ID = `${SITE_URL}/#person`;
@@ -95,6 +95,21 @@ export function generateBreadcrumbSchema(
       position: index + 1,
       name: item.name,
       item: item.url,
+    })),
+  };
+}
+
+export function generateFAQPageSchema(faq: FAQItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
     })),
   };
 }
