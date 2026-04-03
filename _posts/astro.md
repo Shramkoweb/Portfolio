@@ -1,278 +1,447 @@
 ---
-title: "Exploring the Astro Framework: A Comprehensive Guide"
-heading: What is Astro Framework?
-description: Comprehensive guide to the Astro framework. Learn what makes it special, explore its core features, and understand why it's great for static sites.
+title: "Astro Framework Guide: Build Faster Sites in 2026"
+heading: "What Is Astro? The Complete Framework Guide for 2026"
+description: "Master the Astro framework with this hands-on guide. Islands Architecture, Content Collections, View Transitions, and client directives with code examples."
 createDate: 2023-03-16T09:01:43.973Z
-updateDate: 2025-12-07
-keywords: [ astro js, astro framework, astro js tutorial, what is astro, how to build fast, cms javascript framework ]
+updateDate: 2026-04-03
+keywords: [ astro framework guide, what is astro, astro islands architecture, astro client directives, astro content collections, astro vs nextjs, astro tutorial 2026 ]
 categories: [ JS, TS, Astro ]
 featured: false
+faq:
+  - question: "Is Astro good for SEO?"
+    answer: "Yes. Astro ships zero JavaScript by default and renders HTML at build time, giving search engines fully-rendered pages with fast load times. Built-in support for sitemaps, canonical URLs, and Open Graph meta makes it one of the best frameworks for SEO."
+  - question: "Can I use React components in Astro?"
+    answer: "Yes. Astro is UI-agnostic and supports React, Preact, Vue, Svelte, Solid, and Lit. Add the React integration with npx astro add react, then import .jsx/.tsx components into any .astro file and hydrate them with a client directive."
+  - question: "Is Astro only for static sites?"
+    answer: "No. Astro supports SSR, hybrid rendering, and Server Islands. You can deploy dynamic, authenticated apps on Node.js, Deno, Cloudflare Workers, and other runtimes."
+  - question: "Do I need to know React to use Astro?"
+    answer: "No. Astro has its own .astro component syntax using plain HTML, CSS, and JavaScript. You can build an entire site without any UI framework. React, Vue, or Svelte are optional for interactive islands only."
 ---
 
 <Image src="astro.jpg" alt="Astro Framework Logo" />
 
-Astro is a framework for building static sites and web applications. It is built on top of modern web technologies like
-JavaScript, HTML, and CSS, and uses a component-based architecture to make it easy to build and maintain complex web
-projects. With Astro, you can build websites and applications that are fast, efficient, and easy to scale.
+**Astro is a web framework that ships zero JavaScript by default, delivering lightning-fast websites through its Islands Architecture.** This Astro framework guide covers everything you need to build content-driven sites — blogs, marketing pages, docs, and e-commerce storefronts. Astro renders HTML at build time and hydrates only the interactive components you choose.
 
-## Key Features
+As of 2026, Astro 6.x powers over 1.3 million weekly npm downloads and holds 57K+ GitHub stars. It ranked **#1 in satisfaction** among meta-frameworks in the [State of JS 2025](https://2025.stateofjs.com/en-US/libraries/meta-frameworks/) survey — with a 39% gap over Next.js. In January 2026, [Cloudflare acquired Astro](https://blog.cloudflare.com/astro-joins-cloudflare/), signaling long-term investment in the framework's future.
 
-Astro offers several key features that make it a powerful tool for building modern web projects.
-These include:
+> **Why Astro over Next.js?** If your site is primarily content (blogs, docs, landing pages), Astro delivers smaller bundles and faster page loads — no React runtime ships unless you need it. Next.js excels for highly interactive apps. Choose the right tool for the job.
 
-- **Performance**: Astro is designed to be fast and efficient, with built-in optimizations that help to reduce page load
-  times and improve overall site performance.
-- **Ease of use**: Astro is designed to be easy to use, with a simple and intuitive syntax that makes it easy to create
-  complex web projects.
-- **Themes**: Astro has an impressive array of ready-made [themes](https://astro.build/themes/) and templates to get
-  started quickly.
-- **Zero JS, by default**: No JavaScript runtime.
-- **Component-based** architecture: Astro uses a component-based architecture that makes it easy to build and maintain
-  complex web projects.
-- **Template directives**: Astro's template directives make it easy to create reusable components that can be used
-  throughout your site or application.
-- **Built-in CMS functionality**:  Tailwind, MDX, and 100+ other integrations to choose from.
-- **UI-agnostic**: Supports React, Preact, Svelte, Vue, Solid, and more.
+## TL;DR
 
-## Creating Your First Astro Project
+- **Zero JS by default** — Astro renders static HTML; no JavaScript ships unless you opt in
+- **Islands Architecture** — hydrate only interactive components, not the entire page
+- **UI-agnostic** — use React, Vue, Svelte, Solid, or plain HTML in the same project
+- **Content Collections** — type-safe content management with schema validation
+- **View Transitions** — native page transitions without a SPA framework
+- **Server Islands** — defer server-rendered components with `server:defer`
 
-To create your first Astro project, you'll need to install the Astro CLI. You can do this by running the following
-command:
+## Islands Architecture
 
-```shell
-# create a new project with npm
-npm create astro@latest
+Astro pioneered the [Islands Architecture](https://docs.astro.build/en/concepts/islands/) for the web. Think of your page as an ocean of static HTML with small "islands" of interactivity.
+
+```md:src/pages/index.astro
+---
+// Static content — ships as HTML, zero JS
+import Header from '../components/Header.astro';
+import Newsletter from '../components/Newsletter.tsx';
+import Footer from '../components/Footer.astro';
+---
+
+<Header />
+
+<main>
+  <h1>Welcome to my site</h1>
+  <p>This paragraph is static HTML. No JavaScript needed.</p>
+
+  <!-- This React component is an interactive "island" -->
+  <Newsletter client:visible />
+</main>
+
+<Footer />
 ```
 
-Then navigate to the project directory and start the development server by running the following commands:
+The `Header`, `Footer`, and all HTML ship as plain markup. Only the `Newsletter` component loads JavaScript — and only when it scrolls into view. This is why Astro sites score 90+ on Lighthouse by default.
+
+## Content Collections and the Content Layer API
+
+[Content Collections](https://docs.astro.build/en/guides/content-collections/) give you type-safe access to Markdown, MDX, JSON, and YAML content. Define a schema, and Astro validates your frontmatter at build time.
+
+```ts:src/content.config.ts
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/data/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog };
+// Output: type-safe collection with validated frontmatter
+```
+
+Query your content with full [TypeScript](/blog/discriminated-unions) autocompletion:
+
+```md:src/pages/blog/index.astro
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+// Output: Array of type-safe blog post objects
+---
+
+<ul>
+  {posts.map(post => (
+    <li>
+      <a href={`/blog/${post.id}`}>{post.data.title}</a>
+    </li>
+  ))}
+</ul>
+```
+
+The Content Layer API (Astro 5+) extends this to external sources — CMS platforms, databases, or APIs — using the same type-safe interface. See the [Content Layer docs](https://docs.astro.build/en/guides/content-collections/#the-content-layer) for details.
+
+## View Transitions
+
+Astro provides native [View Transitions](https://docs.astro.build/en/guides/view-transitions/) that create smooth page navigation without client-side routing.
+
+```md:src/layouts/Base.astro
+---
+import { ViewTransitions } from 'astro:transitions';
+---
+
+<html>
+  <head>
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+```
+
+Add per-element animations with the `transition:animate` directive:
+
+```md
+<h1 transition:animate="slide">Page Title</h1>
+<article transition:animate="fade">Content here</article>
+```
+
+> **Gotcha:** Scripts run only on initial page load by default. If you need code to run on every navigation, listen for the `astro:page-load` event:
+
+```html
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // Runs on every page navigation
+    console.log('Page loaded');
+  });
+</script>
+```
+
+## Server Islands
+
+[Server Islands](https://docs.astro.build/en/guides/server-islands/) (Astro 5+) let you defer specific components to render on the server at request time while the rest of the page is statically cached.
+
+```md:src/pages/product.astro
+---
+import ProductInfo from '../components/ProductInfo.astro';
+import UserCart from '../components/UserCart.astro';
+---
+
+<!-- Static: cached at the CDN edge -->
+<ProductInfo />
+
+<!-- Dynamic: rendered per-request on the server -->
+<UserCart server:defer>
+  <p slot="fallback">Loading cart...</p>
+</UserCart>
+```
+
+This is perfect for personalized content (user carts, dashboards) on otherwise static pages. The static parts serve instantly from the CDN while the dynamic island streams in.
+
+## Creating Your First Project
 
 ```shell
+# Create a new Astro 6.x project
+npm create astro@latest
+
+# Start the dev server
 npm run dev
 ```
 
 <Image src="astro-dev.jpeg" alt="Astro welcome screen on localhost" />
 
-This will start a live Astro development server, which will automatically rebuild your site as you make changes to your
-code.
-
-## File-based routing
-
-One of the key features of Astro is its file-based routing system. With this system, developers can easily create routes
-and pages for their websites by simply creating files in the appropriate directories. This makes it easy to create and
-manage complex routing structures without the need for additional configuration or setup.
-
-### Static routes
-
-Any `.astro` page elements, as well as Markdown and MDX files (with extensions ".md" and ".mdx"), located in the `
-src/pages/` directory, will be automatically transformed into pages on your website. The page's URL will match its path
-and file name within the "src/pages/" directory.
+Astro scaffolds a project with file-based routing, TypeScript support, and zero configuration. Add integrations like React, Tailwind, or MDX with one command:
 
 ```shell
-# Example: Static routes for site.com
-src/pages/index.astro             -> site.com/
-src/pages/about.astro             -> site.com/about
-src/pages/about/index.astro       -> site.com/about # Nested folder with index file
-src/pages/about/career.astro      -> site.com/about/career
-src/pages/articles/1.md           -> site.com/articles/1
+npx astro add react mdx
 ```
 
-### Dynamic routes
+## File-Based Routing
 
-In an Astro page file, it's possible to define dynamic route parameters within the file name. This allows for the
-creation of multiple pages that match the specified parameter.
+Astro uses [file-based routing](https://docs.astro.build/en/guides/routing/). Files in `src/pages/` become pages on your site:
 
-For instance, by using the file name `src/pages/users/[user].astro`, you can generate a user's page for each user
-featured on your blog. The `user` in the file name serves as a parameter that can be accessed within the page.
+```shell
+# Static routes
+src/pages/index.astro        → site.com/
+src/pages/about.astro         → site.com/about
+src/pages/blog/first-post.md  → site.com/blog/first-post
+```
 
-Because all routes must be determined at build time, a dynamic route must export a `getStaticPaths()` that returns an
-array of objects with a params property. Each of these objects will generate a corresponding route.
+Dynamic routes use bracket syntax with `getStaticPaths()`:
 
-```md:src/pages/users/[user].astro
+```md:src/pages/blog/[slug].astro
 ---
-export function getStaticPaths() {
-  return [
-    {params: {user: 'Serhii'}},
-    {params: {user: 'Roman'}},
-    {params: {user: 'Alexander'}},
-  ];
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
 
-const { user } = Astro.params;
+const { post } = Astro.props;
+// Output: renders a page for each blog post
 ---
 
-<div>Hello, {user}!</div>
+<h1>{post.data.title}</h1>
 ```
 
 ## Astro Component Structure
 
-The Astro component consists of two primary components: the Component Script and the Component Template.
+Every `.astro` component has two parts: the Component Script (frontmatter) and the Component Template.
 
-```md:src/components/Component.astro
+```md:src/components/Greeting.astro
 ---
-// Component Script (JavaScript)
----
-<!-- Component Template (HTML + JS Expressions) -->
-```
-
-## Astro slots
-
-The `<slot />` element is a placeholder for external HTML content, allowing you to inject (or “slot”) child elements
-from other files into your component template.
-
-By default, all child elements passed to a component will be rendered in its `<slot />`
-
-```md:src/components/Wrapper.astro
----
-const { title } = Astro.props
+// Component Script — runs at build time
+const { name } = Astro.props;
+const greeting = `Hello, ${name}!`;
 ---
 
-<div class="wrapper">
-  <h1 class="wrapper__title">{title}</h1>
-  <slot />  <!-- children will go here -->
-</div>
-```
+<!-- Component Template — outputs HTML -->
+<h1>{greeting}</h1>
 
-```md:src/pages/content.astro
----
-import Wrapper from '../components/Wrapper.astro';
----
-
-<Wrapper title="Main Page">
-  <p>Here is some stuff.</p>
-</Wrapper>
-```
-
-## Data Fetching
-
-All Astro components have access to the global [fetch()](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch)
-function in their component script to make HTTP requests to APIs.
-
-This fetch call will be executed at build time, and the data will be available to the component template for generating
-dynamic HTML. If SSR mode is enabled, any fetch calls will be executed at runtime.
-
-I use [randomuser.me](https://randomuser.me/) API to this example. Please, read the documentation before.
-
-```md:src/components/User.astro
----
-import Avatar from '../components/Avatar.jsx';
-
-const response = await fetch('https://randomuser.me/api/');
-const { results } = await response.json();
-const [ user ] = results;
----
-<!-- Data fetched at build can be rendered in HTML -->
-<h1>{user.name.first} {user.name.last}</h1>
-<p>{user.email}</p>
-
-<!-- Data fetched at build can be passed to components as props -->
-<Avatar picture={user.picture.large} />
-```
-
-> Before using React inside Astro add [integration](https://docs.astro.build/en/guides/integrations-guide/react/)
-
-<Image src="astro-dev.gif" alt="Data fetching in Astro" />
-
-You can read more about data fetching in [official documentation](https://docs.astro.build/en/guides/data-fetching/).
-
-## Styles & CSS
-
-You can either compose your own CSS code within an Astro component or bring in your preferred CSS library, such as
-[Tailwind](https://github.com/withastro/astro/tree/main/packages/integrations/tailwind). Additionally, Astro supports
-sophisticated styling languages like `Sass` and `Less`.
-
-```md:src/components/Component.astro
 <style>
-  h1 { color: orange; }
+  h1 { color: navy; }
 </style>
 ```
 
-Astro supports a wide amount of popular styling techniques out of the box:
+Use [slots](https://docs.astro.build/en/basics/astro-components/#slots) to pass child content into components:
 
-- Import a local stylesheet
-- Use a \<style\> block anywhere in `.astro` files and the CSS will be scoped to that component
-- [CSS modules](https://css-tricks.com/css-modules-part-1-need/)
-- [CSS Preprocessors](https://docs.astro.build/en/guides/styling/#css-preprocessors) [Sass/Less/Stylus]
+```md:src/components/Wrapper.astro
+---
+const { title } = Astro.props;
+---
 
-> The [styling doc](https://docs.astro.build/en/guides/styling/) has more detail.
-
-## Template Directives
-
-By default, a UI Framework component is not hydrated in the client. If no client:* directive is provided, its HTML is
-rendered onto the page without JavaScript.
-
-### client:load
-
-- **Priority**: High
-- **Useful for**: UI elements that require immediate interactivity and should be visible right away
-
-> Load and hydrate the component JavaScript immediately on page load.
-
-```jsx
-<BuyButton client:load />
+<div class="wrapper">
+  <h1>{title}</h1>
+  <slot />  <!-- children render here -->
+</div>
 ```
 
-### client:idle
+## Client Directives (Hydration)
 
-- **Priority**: Medium
-- **Useful for**: UI elements with lower priority that do not require immediate interactivity
+By default, UI framework components render as static HTML with **no JavaScript**. Use `client:*` directives to hydrate interactive [islands](https://docs.astro.build/en/concepts/islands/).
 
-> Load and hydrate the component JavaScript once the page is done with its initial load.
+| Directive | Priority | When It Loads | Use Case |
+|-----------|----------|---------------|----------|
+| `client:load` | High | Immediately on page load | Buttons, modals, forms |
+| `client:idle` | Medium | After page finishes loading | Analytics, non-critical widgets |
+| `client:visible` | Low | When scrolled into viewport | Below-fold carousels, comments |
+| `client:media` | Low | When CSS media query matches | Mobile-only sidebars |
+| `client:only` | — | Client-only, no SSR HTML | Components needing `window` |
 
-```jsx
-<BuyButton client:idle />
-```
+### The #1 Beginner Mistake
 
-### client:visible
-
-- **Priority**: Low
-- **Useful for**: UI elements with low priority can be positioned either far down the page or require significant
-  resources to load. In case the user never sees such elements, it would be preferable not to load them at all
-
-> Load and hydrate the component JavaScript once the component has entered the user’s viewport.
+"Why isn't my `onClick` working?" — Because you forgot the client directive.
 
 ```jsx
-<ImageCarousel client:visible />
+// ❌ Wrong — renders as static HTML, no JavaScript runs
+<Counter />
 ```
-
-### client:media
-
-- **Priority**: Low
-- **Useful for**: Elements that might only be visible on certain screen sizes.
-
-> Loads and hydrates the component JavaScript once a certain CSS media query is met.
 
 ```jsx
-<Sidebar client:media="(max-width: 1024px)" />
+// ✅ Correct — hydrates the component on page load
+<Counter client:load />
 ```
 
-### client:only
+Without a `client:*` directive, your React/Vue/Svelte component renders HTML only. Event handlers, state, and effects won't work. See the [client directives reference](https://docs.astro.build/en/reference/directives-reference/#client-directives).
 
-Skips HTML server rendering, and renders only on the client.
+Use `client:only="react"` when a component has no meaningful server-rendered HTML or depends on browser-only APIs like `window` or `localStorage`.
+
+## Data Fetching
+
+Astro supports two primary data fetching patterns.
+
+**Content Collections** (recommended for local content):
+
+```md
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+// Output: type-safe array of blog posts
+---
+```
+
+**Global `fetch()`** for external APIs:
+
+```md:src/pages/users.astro
+---
+const response = await fetch('https://api.github.com/users/octocat');
+const user = await response.json();
+// Output: { login: "octocat", name: "The Octocat", ... }
+---
+
+<h1>{user.name}</h1>
+<p>{user.bio}</p>
+```
+
+> Before using React components for fetched data, add the [React integration](https://docs.astro.build/en/guides/integrations-guide/react/).
+
+<Image src="astro-dev.gif" alt="Data fetching in Astro" />
+
+**Build-time vs runtime:** In static mode (default), `fetch()` runs at build time. With [SSR enabled](https://docs.astro.build/en/guides/on-demand-rendering/), it runs on each request. Read more in the [data fetching docs](https://docs.astro.build/en/guides/data-fetching/).
+
+## Styles & CSS
+
+Astro scopes `<style>` blocks to their component by default — no CSS leaks:
+
+```md:src/components/Card.astro
+<style>
+  /* Only applies to <h2> inside this component */
+  h2 { color: navy; }
+</style>
+
+<h2>Scoped heading</h2>
+```
+
+**Tailwind CSS v4** setup uses the Vite plugin (the `@astrojs/tailwind` integration is deprecated in Astro 5+):
+
+```shell
+npm install tailwindcss @tailwindcss/vite
+```
+
+```ts:astro.config.mjs
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
+```
+
+```css:src/styles/global.css
+@import 'tailwindcss';
+```
+
+Astro also supports [Sass, Less, and CSS Modules](https://docs.astro.build/en/guides/styling/) out of the box.
+
+> **Gotcha:** Styles inside `<style>` blocks cannot target elements inside `<astro-island>` wrappers. Use `:global()` or Tailwind utility classes for hydrated framework components.
+
+## Astro vs Next.js: When to Use Each
+
+Both are excellent frameworks, but they solve different problems.
+
+| | Astro | Next.js |
+|---|---|---|
+| **Best for** | Content sites, blogs, docs, marketing | Interactive apps, dashboards, SaaS |
+| **Default JS** | Zero | Full React runtime |
+| **Rendering** | Static-first, opt-in SSR | SSR-first, opt-in static |
+| **UI framework** | Any (or none) | React only |
+| **Learning curve** | Low (HTML-first) | Medium (React required) |
+
+**Choose Astro** when your site is mostly content with pockets of interactivity. **Choose Next.js** when every page needs heavy client-side state and routing. You can always use React components in Astro for the interactive parts — get the best of both worlds.
+
+## Common Mistakes
+
+### Forgetting `client:*` directives
 
 ```jsx
-<ReactComponent client:only="react" />
-<SvelteComponent client:only="svelte" />
-<Component client:only="vue" />
+// ❌ No interactivity — renders as static HTML
+<ReactForm />
 ```
 
-## Do you need to learn the Astro?
+```jsx
+// ✅ Hydrated — event handlers and state work
+<ReactForm client:load />
+```
 
-At the [moment](https://2022.stateofjs.com/en-US/libraries/rendering-frameworks/), Astro is considered a very
-interesting framework that most people want to learn and understand. So be the first to figure it out 🚀.
+### Using the deprecated Tailwind integration
 
-<Image src="astro-state.jpeg" alt="Astro framework interest on stateofjs" />
+```shell
+# ❌ Deprecated in Astro 5+
+npx astro add tailwind
+```
+
+```shell
+# ✅ Use the Vite plugin instead
+npm install tailwindcss @tailwindcss/vite
+```
+
+### Ignoring `astro:page-load` with View Transitions
+
+```html
+<!-- ❌ Only runs on first page load -->
+<script>
+  document.querySelector('.menu').addEventListener('click', toggle);
+</script>
+```
+
+```html
+<!-- ✅ Runs on every navigation -->
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelector('.menu').addEventListener('click', toggle);
+  });
+</script>
+```
+
+### Fetching content without Content Collections
+
+```md
+---
+// ❌ Manual glob — no type safety, no validation
+const posts = await Astro.glob('../content/blog/*.md');
+---
+```
+
+```md
+---
+// ✅ Type-safe with schema validation (Astro 5+)
+import { getCollection } from 'astro:content';
+const posts = await getCollection('blog');
+---
+```
+
+## Why Learn Astro in 2026?
+
+Astro ranked **#1 in satisfaction** among meta-frameworks in the [State of JS 2025](https://2025.stateofjs.com/en-US/libraries/meta-frameworks/) survey — a 39% gap over Next.js. With ~1.3M weekly npm downloads and 57K+ GitHub stars, it's one of the fastest-growing web frameworks.
+
+In January 2026, [Cloudflare acquired Astro](https://blog.cloudflare.com/astro-joins-cloudflare/), bringing enterprise backing and deeper edge computing integration. The ecosystem continues to grow with [Starlight](https://starlight.astro.build/) (documentation framework) powering docs for Cloudflare, Sentry, and Stripe.
+
+Whether you're building a personal blog, a [link tree](/blog/linktree), or deploying [images on Vercel](/blog/astro-image-on-vercel), Astro keeps your sites fast by default.
 
 ## Useful Links
-
-If you're interested in learning more about Astro, here are some useful links to get you started:
 
 - [Astro home page](https://astro.build/)
 - [Astro documentation](https://docs.astro.build/en/getting-started/)
 - [Astro GitHub repository](https://github.com/withastro/astro)
+- [Astro integrations directory](https://astro.build/integrations/)
+- [Starlight — documentation framework built on Astro](https://starlight.astro.build/)
+- [State of JS 2025 — meta-frameworks](https://2025.stateofjs.com/en-US/libraries/meta-frameworks/)
 - [Are SPAs better than MPAs? | HTTP 203](https://www.youtube.com/watch?v=ivLhf3hq7eM)
-- [Astro usage in npm and ratings](https://bestofjs.org/projects/astro)
 
 ## My Astro Projects
 
-- [Building a Link Tree](/blog/linktree) - my personal linktree with Astro and Vercel
-- [Astro Image Component on Vercel](/blog/astro-image-on-vercel) - fixing image optimization for Vercel deployments
+- [Building a Link Tree](/blog/linktree) — my personal linktree with Astro and Vercel
+- [Astro Image Component on Vercel](/blog/astro-image-on-vercel) — fixing image optimization for Vercel deployments
