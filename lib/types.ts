@@ -23,11 +23,17 @@ export type BaseFrontmatter = {
   updateDate: number | null;
 };
 
+export type FAQItem = {
+  question: string;
+  answer: string;
+};
+
 export type Post = {
   data: BaseFrontmatter & {
     readTime: string;
     featured: boolean;
     categories: PostCategory[];
+    faq?: FAQItem[];
   };
   content: string;
 };
