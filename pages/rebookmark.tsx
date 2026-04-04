@@ -161,7 +161,7 @@ function RebookmarkPage() {
             </strong>
           </p>
         ) : (
-          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex gap-3 w-full">
+          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex flex-col md:flex-row gap-3 w-full">
             <input
               type="email"
               value={email}
@@ -193,7 +193,7 @@ function RebookmarkPage() {
           </p>
         )}
 
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-gray-500 dark:text-gray-400 hidden md:block">
           <em>
             The UI below is an early concept — the final product will look even
             better.
@@ -201,13 +201,13 @@ function RebookmarkPage() {
         </p>
 
         {/* Section label: Extension */}
-        <p className="not-prose text-xs font-medium uppercase tracking-widest text-gray-400 dark:text-gray-500 mt-10 mb-4">
+        <p className="not-prose text-xs font-medium uppercase tracking-widest text-gray-400 dark:text-gray-500 mt-10 mb-4 hidden md:block">
           Chrome Extension
         </p>
 
         {/* Triage Card Mockup */}
         <div
-          className="not-prose my-4 mx-auto w-full max-w-sm select-none"
+          className="not-prose my-4 mx-auto w-full max-w-sm select-none hidden md:block"
           aria-hidden="true"
         >
           <div className="rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-sm overflow-hidden">
@@ -295,7 +295,7 @@ function RebookmarkPage() {
 
         {/* Extension Popup Mockup */}
         <div
-          className="not-prose my-4 mx-auto w-full max-w-sm select-none"
+          className="not-prose my-4 mx-auto w-full max-w-sm select-none hidden md:block"
           aria-hidden="true"
         >
           <div className="rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-sm overflow-hidden">
@@ -377,12 +377,12 @@ function RebookmarkPage() {
         </div>
 
         {/* Section label: Web App */}
-        <p className="not-prose text-xs font-medium uppercase tracking-widest text-gray-400 dark:text-gray-500 mt-10 mb-4">
+        <p className="not-prose text-xs font-medium uppercase tracking-widest text-gray-400 dark:text-gray-500 mt-10 mb-4 hidden md:block">
           Web Dashboard
         </p>
 
         {/* Dashboard Mockup */}
-        <div className="not-prose my-4 w-full select-none" aria-hidden="true">
+        <div className="not-prose my-4 w-full select-none hidden md:block" aria-hidden="true">
           <div className="rounded-xl border border-gray-200 bg-white text-gray-900 overflow-hidden">
             {/* Dashboard header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
@@ -781,7 +781,7 @@ function RebookmarkPage() {
             </strong>
           </p>
         ) : (
-          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex gap-3 w-full">
+          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex flex-col md:flex-row gap-3 w-full">
             <input
               type="email"
               value={email}

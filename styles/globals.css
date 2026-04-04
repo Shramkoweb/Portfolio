@@ -46,6 +46,7 @@ html {
 
 .dark .prose {
   --tw-prose-body: #eaeaea;
+  --tw-prose-headings: #fafafa;
 }
 
 .prose .anchor {
