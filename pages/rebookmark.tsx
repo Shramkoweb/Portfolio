@@ -200,81 +200,84 @@ function RebookmarkPage() {
           className="not-prose my-4 mx-auto w-full max-w-sm select-none"
           aria-hidden="true"
         >
-          <div className="rounded-xl border border-gray-200 bg-white text-gray-900 overflow-hidden">
+          <div className="rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-sm overflow-hidden">
             {/* Top bar */}
-            <div className="flex items-center justify-between px-5 py-3 text-xs text-gray-500">
-              <span>🔥 12 day streak</span>
-              <span>142 of 1,847 processed</span>
+            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-50">
+              <span className="text-xs font-medium text-gray-500">
+                🔥 12 day streak
+              </span>
+              <span className="text-[11px] text-gray-400">
+                142 / 1,847 processed
+              </span>
             </div>
 
             {/* Card content */}
-            <div className="px-5 pb-5 flex flex-col items-center text-center">
+            <div className="px-5 py-5 flex flex-col items-center text-center">
               {/* Favicon */}
-              <div className="w-10 h-10 rounded-full bg-orange-50 border border-orange-100 flex items-center justify-center text-sm font-semibold text-orange-600 mb-2">
+              <div className="w-11 h-11 rounded-full bg-orange-50 flex items-center justify-center text-sm font-bold text-orange-500 mb-3 shadow-sm">
                 M
               </div>
-              <p className="text-xs text-gray-400 mb-3">
+              <p className="text-[11px] text-gray-400 mb-2">
                 medium.com · 12 min read
               </p>
-              <h4 className="text-base font-semibold leading-snug mb-3">
+              <h4 className="text-[15px] font-semibold leading-snug mb-2.5">
                 Why senior engineers should write more and code less
               </h4>
-              <p className="text-xs leading-relaxed text-gray-500 mb-3">
-                The author argues that after 5+ years of experience,
-                documentation, RFCs and technical writing create more impact
-                than code. Includes a framework for evaluating your leverage.{' '}
-                <span className="inline-block border border-gray-200 rounded px-1.5 py-0.5 text-[10px] text-gray-400">
-                  AI summary
+              <p className="text-xs leading-relaxed text-gray-400 mb-3.5">
+                After 5+ years, documentation and RFCs create more impact than
+                code. A framework for evaluating your leverage.{' '}
+                <span className="inline-block bg-gray-100 rounded px-1.5 py-0.5 text-[10px] text-gray-500 font-medium">
+                  AI
                 </span>
               </p>
 
               {/* Tags */}
-              <div className="flex gap-1.5 mb-4">
-                <span className="rounded-full border border-gray-200 px-2.5 py-0.5 text-[11px] text-gray-500">
+              <div className="flex gap-1.5 mb-5">
+                <span className="rounded-full bg-gray-50 border border-gray-100 px-2.5 py-0.5 text-[11px] text-gray-500">
                   career
                 </span>
-                <span className="rounded-full border border-gray-200 px-2.5 py-0.5 text-[11px] text-gray-500">
+                <span className="rounded-full bg-gray-50 border border-gray-100 px-2.5 py-0.5 text-[11px] text-gray-500">
                   engineering
                 </span>
-                <span className="rounded-full border border-gray-200 px-2.5 py-0.5 text-[11px] text-gray-500">
+                <span className="rounded-full bg-gray-50 border border-gray-100 px-2.5 py-0.5 text-[11px] text-gray-500">
                   writing
                 </span>
               </div>
 
               {/* Action buttons */}
-              <div className="flex gap-2 w-full mb-4">
-                <span className="flex-1 py-2 rounded-lg border border-green-200 text-green-700 text-sm font-medium text-center">
+              <div className="flex gap-2 w-full mb-5">
+                <span className="flex-1 py-2.5 rounded-xl bg-green-50 border border-green-100 text-green-700 text-sm font-medium text-center">
                   Open
                 </span>
-                <span className="flex-1 py-2 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium text-center">
+                <span className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium text-center">
                   Later
                 </span>
-                <span className="flex-1 py-2 rounded-lg border border-red-200 text-red-600 text-sm font-medium text-center">
+                <span className="flex-1 py-2.5 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-medium text-center">
                   Delete
                 </span>
               </div>
 
               {/* Decay row */}
-              <div className="flex items-center gap-2 text-xs text-gray-400">
+              <div className="flex items-center gap-2.5 text-[11px] text-gray-400">
                 <span>Saved 47 days ago</span>
-                <div className="flex gap-0.5">
-                  <div className="w-2.5 h-2.5 rounded-sm bg-green-700" />
-                  <div className="w-2.5 h-2.5 rounded-sm bg-yellow-700" />
-                  <div className="w-2.5 h-2.5 rounded-sm bg-stone-400" />
-                  <div className="w-2.5 h-2.5 rounded-sm bg-stone-300" />
-                  <div className="w-2.5 h-2.5 rounded-sm bg-stone-200" />
+                <div className="flex gap-[3px]">
+                  <div className="w-3 h-3 rounded-[3px] bg-green-600" />
+                  <div className="w-3 h-3 rounded-[3px] bg-yellow-600" />
+                  <div className="w-3 h-3 rounded-[3px] bg-stone-400" />
+                  <div className="w-3 h-3 rounded-[3px] bg-stone-300" />
+                  <div className="w-3 h-3 rounded-[3px] bg-stone-200" />
                 </div>
               </div>
             </div>
 
             {/* Bottom progress */}
             <div className="border-t border-gray-100 px-5 py-3">
-              <div className="flex justify-between text-[11px] text-gray-400 mb-1.5">
+              <div className="flex justify-between text-[11px] text-gray-400 mb-2">
                 <span>142 processed</span>
                 <span>1,705 remaining</span>
               </div>
-              <div className="h-1 rounded-full bg-gray-100">
-                <div className="h-1 rounded-full bg-green-700 w-[7.7%]" />
+              <div className="h-1.5 rounded-full bg-gray-100">
+                <div className="h-1.5 rounded-full bg-green-600 w-[7.7%]" />
               </div>
             </div>
           </div>
@@ -285,37 +288,41 @@ function RebookmarkPage() {
           className="not-prose my-4 mx-auto w-full max-w-sm select-none"
           aria-hidden="true"
         >
-          <div className="rounded-xl border border-gray-200 bg-white text-gray-900 overflow-hidden">
+          <div className="rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-sm overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-100">
-              <span className="text-sm font-semibold">Rebookmark</span>
-              <span className="text-xs text-gray-400">🔥 12</span>
+              <span className="text-sm font-bold tracking-tight">
+                Rebookmark
+              </span>
+              <span className="text-xs text-gray-400 font-medium">
+                🔥 12
+              </span>
             </div>
 
             {/* Stats */}
-            <div className="px-5 pt-4 pb-3">
-              <div className="grid grid-cols-3 gap-2 mb-3">
-                <div className="rounded-lg border border-gray-100 px-3 py-2.5">
-                  <div className="text-lg font-semibold leading-none mb-0.5">
+            <div className="px-5 pt-4 pb-3.5">
+              <div className="grid grid-cols-3 gap-2 mb-3.5">
+                <div className="rounded-xl bg-gray-50 px-3 py-3">
+                  <div className="text-lg font-bold leading-none mb-1">
                     1,847
                   </div>
                   <div className="text-[11px] text-gray-400">Total</div>
                 </div>
-                <div className="rounded-lg border border-gray-100 px-3 py-2.5">
-                  <div className="text-lg font-semibold leading-none mb-0.5">
+                <div className="rounded-xl bg-green-50 px-3 py-3">
+                  <div className="text-lg font-bold leading-none mb-1 text-green-700">
                     142
                   </div>
                   <div className="text-[11px] text-gray-400">Processed</div>
                 </div>
-                <div className="rounded-lg border border-gray-100 px-3 py-2.5">
-                  <div className="text-lg font-semibold leading-none mb-0.5">
+                <div className="rounded-xl bg-gray-50 px-3 py-3">
+                  <div className="text-lg font-bold leading-none mb-1">
                     23
                   </div>
                   <div className="text-[11px] text-gray-400">Deleted</div>
                 </div>
               </div>
-              <div className="h-1 rounded-full bg-gray-100 mb-1.5">
-                <div className="h-1 rounded-full bg-blue-500 w-[7.7%]" />
+              <div className="h-1.5 rounded-full bg-gray-100 mb-1.5">
+                <div className="h-1.5 rounded-full bg-green-600 w-[7.7%]" />
               </div>
               <p className="text-[11px] text-gray-400">
                 7.7% of library processed
@@ -323,10 +330,12 @@ function RebookmarkPage() {
             </div>
 
             {/* Next bookmark */}
-            <div className="px-5 pb-4 border-t border-gray-100 pt-3">
-              <p className="text-xs text-gray-400 mb-2.5">Next bookmark:</p>
+            <div className="px-5 pb-4 border-t border-gray-100 pt-3.5">
+              <p className="text-[11px] uppercase tracking-wider text-gray-300 font-medium mb-2.5">
+                Next bookmark
+              </p>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-green-50 border border-green-100 flex items-center justify-center text-xs font-semibold text-green-600 shrink-0">
+                <div className="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center text-xs font-bold text-green-600 shrink-0 shadow-sm">
                   G
                 </div>
                 <div className="min-w-0">
@@ -337,24 +346,24 @@ function RebookmarkPage() {
                 </div>
               </div>
               <div className="flex gap-2">
-                <span className="flex-1 py-1.5 rounded-lg border border-green-200 text-green-700 text-xs font-medium text-center">
+                <span className="flex-1 py-2 rounded-xl bg-green-50 border border-green-100 text-green-700 text-xs font-medium text-center">
                   Open
                 </span>
-                <span className="flex-1 py-1.5 rounded-lg border border-gray-200 text-gray-600 text-xs font-medium text-center">
+                <span className="flex-1 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-medium text-center">
                   Later
                 </span>
-                <span className="flex-1 py-1.5 rounded-lg border border-red-200 text-red-600 text-xs font-medium text-center">
+                <span className="flex-1 py-2 rounded-xl bg-red-50 border border-red-100 text-red-600 text-xs font-medium text-center">
                   Delete
                 </span>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="border-t border-gray-100 px-5 py-2.5 flex gap-2">
-              <span className="flex-1 py-1.5 rounded-lg border border-gray-200 text-gray-500 text-[11px] font-medium text-center">
+            <div className="border-t border-gray-100 px-5 py-3 flex gap-2">
+              <span className="flex-1 py-2 rounded-xl bg-gray-50 text-gray-500 text-[11px] font-medium text-center">
                 Open dashboard
               </span>
-              <span className="flex-1 py-1.5 rounded-lg border border-gray-200 text-gray-500 text-[11px] font-medium text-center">
+              <span className="flex-1 py-2 rounded-xl bg-gray-50 text-gray-500 text-[11px] font-medium text-center">
                 Import bookmarks
               </span>
             </div>
