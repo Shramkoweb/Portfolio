@@ -711,19 +711,19 @@ function RebookmarkPage() {
 
         <ul>
           <li>
-            <strong>Raindrop, Pinboard, Chrome bookmarks</strong> = where you{' '}
-            <em>save</em> links. Rebookmark = how you <em>actually read</em>{' '}
-            them.
+            <strong>Raindrop, Pinboard, Chrome bookmarks</strong> — that&#39;s
+            where you <em>save</em> links. Rebookmark is how you{' '}
+            <em>actually read</em> them.
           </li>
           <li>
-            <strong>Pocket shut down</strong> in July 2025. Millions of
-            &#34;read later&#34; links vanished. Rebookmark works on top of your
-            existing tools — your bookmarks stay where they are.
+            <strong>Your bookmarks stay where they are.</strong> Rebookmark
+            works on top of your existing tools — no new silo, no Pocket-style
+            shutdown risk.
           </li>
           <li>
             <strong>Zero switching cost.</strong> Install the extension, import
-            your bookmarks, start triaging. Nothing to migrate, nothing to
-            learn.
+            your bookmarks, start reading. Nothing to migrate, nothing to
+            configure.
           </li>
         </ul>
 
@@ -762,7 +762,7 @@ function RebookmarkPage() {
         <p>
           <strong>Q: When will it be available?</strong>
           <br />
-          A: I&#39;m actively building it. Waitlist subscribers get early
+          A: Launch is planned for May 2026. Waitlist subscribers get early
           access.
         </p>
 
