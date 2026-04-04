@@ -66,23 +66,24 @@ function RebookmarkPage() {
           key="og:description"
           content="Chrome extension that brings forgotten bookmarks back on a smart schedule. Join the waitlist."
         />
+        <meta property="og:url" key="og:url" content="https://shramko.dev/rebookmark" />
         <meta
-          property="twitter:card"
+          name="twitter:card"
           key="twitter:card"
           content="summary_large_image"
         />
         <meta
-          property="twitter:title"
+          name="twitter:title"
           key="twitter:title"
           content="Rebookmark — Your Bookmarks Aren't Dead"
         />
         <meta
-          property="twitter:description"
+          name="twitter:description"
           key="twitter:description"
           content="Chrome extension that brings forgotten bookmarks back on a smart schedule. Join the waitlist."
         />
         <meta
-          property="twitter:site"
+          name="twitter:site"
           key="twitter:site"
           content="@shramkoweb"
         />
@@ -160,12 +161,13 @@ function RebookmarkPage() {
             </strong>
           </p>
         ) : (
-          <form onSubmit={handleSubmit} className="not-prose flex gap-3 w-full">
+          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex gap-3 w-full">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
+              aria-label="Email address"
               required
               className="flex-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 dark:focus:border-gray-400 dark:focus:ring-gray-400"
             />
@@ -180,13 +182,13 @@ function RebookmarkPage() {
         )}
 
         {status === 'invalid' && (
-          <p>
+          <p role="alert">
             <em>Please enter a valid email address.</em>
           </p>
         )}
 
         {status === 'error' && (
-          <p>
+          <p role="alert">
             <em>Something went wrong. Please try again.</em>
           </p>
         )}
@@ -228,9 +230,9 @@ function RebookmarkPage() {
               <p className="text-[11px] text-gray-400 mb-2">
                 medium.com · 12 min read
               </p>
-              <h4 className="text-[15px] font-semibold leading-snug mb-2.5">
+              <p className="text-[15px] font-semibold leading-snug mb-2.5">
                 Why senior engineers should write more and code less
-              </h4>
+              </p>
               <p className="text-xs leading-relaxed text-gray-400 mb-3.5">
                 After 5+ years, documentation and RFCs create more impact than
                 code. A framework for evaluating your leverage.{' '}
@@ -268,7 +270,7 @@ function RebookmarkPage() {
               {/* Decay row */}
               <div className="flex items-center gap-2.5 text-[11px] text-gray-400">
                 <span>Saved 47 days ago</span>
-                <div className="flex gap-[3px]">
+                <div className="flex gap-0.75">
                   <div className="w-3 h-3 rounded-[3px] bg-green-600" />
                   <div className="w-3 h-3 rounded-[3px] bg-yellow-600" />
                   <div className="w-3 h-3 rounded-[3px] bg-stone-400" />
@@ -729,42 +731,39 @@ function RebookmarkPage() {
 
         <h2>FAQ</h2>
 
-        <p>
-          <strong>Q: Does this replace Raindrop / Chrome bookmarks?</strong>
-          <br />
-          A: No. Rebookmark works on top of them. Your bookmarks stay where they
-          are — we just help you come back to them.
-        </p>
+        <dl>
+          <dt>Does this replace Raindrop / Chrome bookmarks?</dt>
+          <dd>
+            No. Rebookmark works on top of them. Your bookmarks stay where they
+            are — we just help you come back to them.
+          </dd>
 
-        <p>
-          <strong>Q: Pocket shut down. Is this a replacement?</strong>
-          <br />
-          A: Rebookmark isn&#39;t a read-it-later app. But if you have hundreds
-          of saved links you never returned to, it solves the same underlying
-          problem: actually reading what you saved.
-        </p>
+          <dt>Pocket shut down. Is this a replacement?</dt>
+          <dd>
+            Rebookmark isn&#39;t a read-it-later app. But if you have hundreds
+            of saved links you never returned to, it solves the same underlying
+            problem: actually reading what you saved.
+          </dd>
 
-        <p>
-          <strong>Q: What happens if I stop using it?</strong>
-          <br />
-          A: Nothing. Your bookmarks stay in Chrome / Raindrop / wherever they
-          are. Rebookmark never moves or deletes your source bookmarks.
-        </p>
+          <dt>What happens if I stop using it?</dt>
+          <dd>
+            Nothing. Your bookmarks stay in Chrome / Raindrop / wherever they
+            are. Rebookmark never moves or deletes your source bookmarks.
+          </dd>
 
-        <p>
-          <strong>Q: Will it cost anything?</strong>
-          <br />
-          A: Rebookmark will be free at launch. A Pro tier with AI features and
-          advanced analytics may come later, but the core experience will always
-          be free.
-        </p>
+          <dt>Will it cost anything?</dt>
+          <dd>
+            Rebookmark will be free at launch. A Pro tier with AI features and
+            advanced analytics may come later, but the core experience will
+            always be free.
+          </dd>
 
-        <p>
-          <strong>Q: When will it be available?</strong>
-          <br />
-          A: Launch is planned for May 2026. Waitlist subscribers get early
-          access.
-        </p>
+          <dt>When will it be available?</dt>
+          <dd>
+            Launch is planned for May 2026. Waitlist subscribers get early
+            access.
+          </dd>
+        </dl>
 
         {/* CTA #2 */}
         <h2>Join the Waitlist</h2>
@@ -779,12 +778,13 @@ function RebookmarkPage() {
             </strong>
           </p>
         ) : (
-          <form onSubmit={handleSubmit} className="not-prose flex gap-3 w-full">
+          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex gap-3 w-full">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
+              aria-label="Email address"
               required
               className="flex-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 dark:focus:border-gray-400 dark:focus:ring-gray-400"
             />
@@ -799,13 +799,13 @@ function RebookmarkPage() {
         )}
 
         {status === 'invalid' && (
-          <p>
+          <p role="alert">
             <em>Please enter a valid email address.</em>
           </p>
         )}
 
         {status === 'error' && (
-          <p>
+          <p role="alert">
             <em>Something went wrong. Please try again.</em>
           </p>
         )}
