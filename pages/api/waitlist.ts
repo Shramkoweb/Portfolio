@@ -4,25 +4,6 @@ import prisma from 'lib/prisma';
 
 const MAX_EMAIL_LENGTH = 255;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX = 5;
-
-const ipTimestamps = new Map<string, number[]>();
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const timestamps = ipTimestamps.get(ip) ?? [];
-  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-
-  if (recent.length >= RATE_LIMIT_MAX) {
-    return true;
-  }
-
-  recent.push(now);
-  ipTimestamps.set(ip, recent);
-
-  return false;
-}
 
 export default async function handler(
   req: NextApiRequest,
@@ -30,17 +11,6 @@ export default async function handler(
 ) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const ip =
-    (Array.isArray(req.headers['x-forwarded-for'])
-      ? req.headers['x-forwarded-for'][0]
-      : req.headers['x-forwarded-for']?.split(',')[0]?.trim()) ??
-    req.socket.remoteAddress ??
-    'unknown';
-
-  if (isRateLimited(ip)) {
-    return res.status(429).json({ error: 'Too many requests' });
   }
 
   const { email } = req.body;
