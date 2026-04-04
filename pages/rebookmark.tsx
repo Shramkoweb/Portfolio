@@ -255,28 +255,28 @@ function RebookmarkPage() {
               </div>
 
               {/* Action buttons */}
-              <div className="flex gap-2 w-full mb-5">
+              <div className="flex gap-2 w-full mb-2">
                 <span className="flex-1 py-2.5 rounded-xl bg-green-50 border border-green-100 text-green-700 text-sm font-medium text-center">
                   Open
                 </span>
                 <span className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium text-center">
-                  Later
+                  Skip
                 </span>
-                <span className="flex-1 py-2.5 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-medium text-center">
-                  Delete
+                <span className="flex-1 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-500 text-sm font-medium text-center">
+                  Dismiss
                 </span>
               </div>
+              <p className="text-[11px] text-gray-400 mb-5 text-center">
+                or{' '}
+                <span className="underline underline-offset-2">keep forever</span>
+              </p>
 
               {/* Decay row */}
               <div className="flex items-center gap-2.5 text-[11px] text-gray-400">
                 <span>Saved 47 days ago</span>
-                <div className="flex gap-0.75">
-                  <div className="w-3 h-3 rounded-[3px] bg-green-600" />
-                  <div className="w-3 h-3 rounded-[3px] bg-yellow-600" />
-                  <div className="w-3 h-3 rounded-[3px] bg-stone-400" />
-                  <div className="w-3 h-3 rounded-[3px] bg-stone-300" />
-                  <div className="w-3 h-3 rounded-[3px] bg-stone-200" />
-                </div>
+                <span className="rounded-full bg-amber-50 border border-amber-100 px-2 py-0.5 text-[10px] text-amber-600 font-medium">
+                  skipped 2&times;
+                </span>
               </div>
             </div>
 
@@ -324,7 +324,7 @@ function RebookmarkPage() {
                 </div>
                 <div className="rounded-xl bg-gray-50 px-3 py-3">
                   <div className="text-lg font-bold leading-none mb-1">23</div>
-                  <div className="text-[11px] text-gray-400">Deleted</div>
+                  <div className="text-[11px] text-gray-400">Dismissed</div>
                 </div>
               </div>
               <div className="h-1.5 rounded-full bg-gray-100 mb-1.5">
@@ -356,10 +356,10 @@ function RebookmarkPage() {
                   Open
                 </span>
                 <span className="flex-1 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-medium text-center">
-                  Later
+                  Skip
                 </span>
-                <span className="flex-1 py-2 rounded-xl bg-red-50 border border-red-100 text-red-600 text-xs font-medium text-center">
-                  Delete
+                <span className="flex-1 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-500 text-xs font-medium text-center">
+                  Dismiss
                 </span>
               </div>
             </div>
@@ -416,7 +416,7 @@ function RebookmarkPage() {
                   <div className="text-2xl font-bold leading-none mb-1 text-gray-500">
                     23
                   </div>
-                  <div className="text-[11px] text-gray-400">Deleted</div>
+                  <div className="text-[11px] text-gray-400">Dismissed</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold leading-none mb-1 text-amber-600">
@@ -476,25 +476,19 @@ function RebookmarkPage() {
               {/* Filter pills */}
               <div className="flex gap-1.5 mb-4 flex-wrap">
                 <span className="rounded-full bg-gray-900 text-white px-3 py-1 text-[11px] font-medium">
-                  All
+                  Queue
                 </span>
                 <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] text-gray-500">
-                  New
+                  Read
                 </span>
                 <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] text-gray-500">
-                  Snoozed
+                  Kept
+                </span>
+                <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] text-gray-500">
+                  Dismissed
                 </span>
                 <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] text-gray-500">
                   Dead links
-                </span>
-                <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] text-gray-500">
-                  dev
-                </span>
-                <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] text-gray-500">
-                  career
-                </span>
-                <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] text-gray-500">
-                  design
                 </span>
               </div>
 
@@ -526,15 +520,15 @@ function RebookmarkPage() {
                       Open
                     </span>
                     <span className="rounded-md border border-gray-200 px-2.5 py-1 text-[11px] text-gray-500">
-                      Later
+                      Skip
                     </span>
                     <span className="rounded-md border border-gray-200 px-2.5 py-1 text-[11px] text-gray-400">
-                      X
+                      Dismiss
                     </span>
                   </div>
                 </div>
 
-                {/* Item 2 — with AI */}
+                {/* Item 2 — with AI + skipped badge */}
                 <div className="px-4 py-3 flex items-center gap-3">
                   <div className="w-7 h-7 rounded-full bg-orange-50 border border-orange-100 flex items-center justify-center text-[10px] font-semibold text-orange-600 shrink-0">
                     M
@@ -543,9 +537,14 @@ function RebookmarkPage() {
                     <p className="text-sm font-medium truncate">
                       Why senior engineers should write more and code less
                     </p>
-                    <p className="text-[11px] text-gray-400">
-                      medium.com · saved 47 days ago
-                    </p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <p className="text-[11px] text-gray-400">
+                        medium.com · saved 47 days ago
+                      </p>
+                      <span className="rounded-full bg-amber-50 border border-amber-100 px-1.5 py-0.5 text-[9px] text-amber-600 font-medium">
+                        skipped 2&times;
+                      </span>
+                    </div>
                     <div className="flex gap-1 mt-1 items-center">
                       <span className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] text-gray-400">
                         career
@@ -563,10 +562,10 @@ function RebookmarkPage() {
                       Open
                     </span>
                     <span className="rounded-md border border-gray-200 px-2.5 py-1 text-[11px] text-gray-500">
-                      Later
+                      Skip
                     </span>
                     <span className="rounded-md border border-gray-200 px-2.5 py-1 text-[11px] text-gray-400">
-                      X
+                      Dismiss
                     </span>
                   </div>
                 </div>
@@ -588,11 +587,11 @@ function RebookmarkPage() {
                     </span>
                   </div>
                   <span className="rounded-md border border-gray-200 px-2.5 py-1 text-[11px] text-gray-400 shrink-0">
-                    Delete
+                    Dismiss
                   </span>
                 </div>
 
-                {/* Item 4 — decaying */}
+                {/* Item 4 — frequently skipped */}
                 <div className="px-4 py-3 flex items-center gap-3">
                   <div className="w-7 h-7 rounded-full bg-purple-50 border border-purple-100 flex items-center justify-center text-[10px] font-semibold text-purple-600 shrink-0">
                     F
@@ -601,21 +600,18 @@ function RebookmarkPage() {
                     <p className="text-sm font-medium truncate">
                       The art of finishing projects
                     </p>
-                    <p className="text-[11px] text-gray-400">
-                      flaviocopes.com · saved 92 days ago
-                    </p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <p className="text-[11px] text-gray-400">
+                        flaviocopes.com · saved 92 days ago
+                      </p>
+                      <span className="rounded-full bg-amber-50 border border-amber-100 px-1.5 py-0.5 text-[9px] text-amber-600 font-medium">
+                        skipped 5&times;
+                      </span>
+                    </div>
                     <div className="flex gap-1 mt-1 items-center">
                       <span className="rounded-full border border-gray-200 px-2 py-0.5 text-[10px] text-gray-400">
                         productivity
                       </span>
-                      <div className="flex gap-0.5 ml-1">
-                        <div className="w-2 h-2 rounded-sm bg-red-700" />
-                        <div className="w-2 h-2 rounded-sm bg-red-400" />
-                        <div className="w-2 h-2 rounded-sm bg-stone-400" />
-                        <div className="w-2 h-2 rounded-sm bg-stone-300" />
-                        <div className="w-2 h-2 rounded-sm bg-stone-200" />
-                      </div>
-                      <span className="text-[9px] text-gray-400">decaying</span>
                     </div>
                   </div>
                 </div>
@@ -629,13 +625,13 @@ function RebookmarkPage() {
               </div>
               <div className="flex items-end gap-2 h-20 mb-2">
                 {[
-                  { read: 40, snoozed: 20, deleted: 10 },
-                  { read: 55, snoozed: 25, deleted: 5 },
-                  { read: 35, snoozed: 15, deleted: 15 },
-                  { read: 50, snoozed: 20, deleted: 10 },
-                  { read: 60, snoozed: 15, deleted: 5 },
-                  { read: 20, snoozed: 10, deleted: 0 },
-                  { read: 0, snoozed: 0, deleted: 0 },
+                  { read: 40, skipped: 20, dismissed: 10 },
+                  { read: 55, skipped: 25, dismissed: 5 },
+                  { read: 35, skipped: 15, dismissed: 15 },
+                  { read: 50, skipped: 20, dismissed: 10 },
+                  { read: 60, skipped: 15, dismissed: 5 },
+                  { read: 20, skipped: 10, dismissed: 0 },
+                  { read: 0, skipped: 0, dismissed: 0 },
                 ].map((day, i) => (
                   <div
                     key={i}
@@ -647,11 +643,11 @@ function RebookmarkPage() {
                     />
                     <div
                       className="bg-gray-300"
-                      style={{ height: `${day.snoozed}%` }}
+                      style={{ height: `${day.skipped}%` }}
                     />
                     <div
                       className="bg-gray-500 rounded-b-sm"
-                      style={{ height: `${day.deleted}%` }}
+                      style={{ height: `${day.dismissed}%` }}
                     />
                   </div>
                 ))}
@@ -672,11 +668,11 @@ function RebookmarkPage() {
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-sm bg-gray-300" />
-                  <span className="text-[10px] text-gray-400">Snoozed: 8</span>
+                  <span className="text-[10px] text-gray-400">Skipped: 8</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-sm bg-gray-500" />
-                  <span className="text-[10px] text-gray-400">Deleted: 5</span>
+                  <span className="text-[10px] text-gray-400">Dismissed: 5</span>
                 </div>
               </div>
             </div>
@@ -695,8 +691,8 @@ function RebookmarkPage() {
             badge or email digest
           </li>
           <li>
-            <strong>Triage in 30 seconds</strong> — Open it, Snooze it, or
-            Delete it forever
+            <strong>Triage in 30 seconds</strong> — Open, Skip, Keep, or
+            Dismiss. Nothing is ever deleted
           </li>
           <li>
             <strong>Watch your graveyard shrink</strong> — track stats, streaks,
@@ -743,6 +739,13 @@ function RebookmarkPage() {
             Rebookmark isn&#39;t a read-it-later app. But if you have hundreds
             of saved links you never returned to, it solves the same underlying
             problem: actually reading what you saved.
+          </dd>
+
+          <dt>What does &quot;Dismiss&quot; do? Is my bookmark gone?</dt>
+          <dd>
+            No. Dismiss just removes the bookmark from your daily queue —
+            like dismissing a notification. The bookmark stays in Chrome, and
+            you can always restore it from the Rebookmark web dashboard.
           </dd>
 
           <dt>What happens if I stop using it?</dt>
