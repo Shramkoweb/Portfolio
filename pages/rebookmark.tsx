@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useState } from 'react';
 function RebookmarkPage() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<
-    'idle' | 'loading' | 'success' | 'error'
+    'idle' | 'loading' | 'success' | 'invalid' | 'error'
   >('idle');
 
   useEffect(() => {
@@ -30,6 +30,8 @@ function RebookmarkPage() {
       if (res.ok || res.status === 409) {
         setStatus('success');
         setEmail('');
+      } else if (res.status === 400) {
+        setStatus('invalid');
       } else {
         setStatus('error');
       }
@@ -177,6 +179,12 @@ function RebookmarkPage() {
           </form>
         )}
 
+        {status === 'invalid' && (
+          <p>
+            <em>Please enter a valid email address.</em>
+          </p>
+        )}
+
         {status === 'error' && (
           <p>
             <em>Something went wrong. Please try again.</em>
@@ -294,9 +302,7 @@ function RebookmarkPage() {
               <span className="text-sm font-bold tracking-tight">
                 Rebookmark
               </span>
-              <span className="text-xs text-gray-400 font-medium">
-                🔥 12
-              </span>
+              <span className="text-xs text-gray-400 font-medium">🔥 12</span>
             </div>
 
             {/* Stats */}
@@ -315,9 +321,7 @@ function RebookmarkPage() {
                   <div className="text-[11px] text-gray-400">Processed</div>
                 </div>
                 <div className="rounded-xl bg-gray-50 px-3 py-3">
-                  <div className="text-lg font-bold leading-none mb-1">
-                    23
-                  </div>
+                  <div className="text-lg font-bold leading-none mb-1">23</div>
                   <div className="text-[11px] text-gray-400">Deleted</div>
                 </div>
               </div>
@@ -792,6 +796,12 @@ function RebookmarkPage() {
               {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
             </button>
           </form>
+        )}
+
+        {status === 'invalid' && (
+          <p>
+            <em>Please enter a valid email address.</em>
+          </p>
         )}
 
         {status === 'error' && (
