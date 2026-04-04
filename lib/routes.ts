@@ -11,6 +11,7 @@ export const Routes = {
   Dashboard: () => '/dashboard',
   UdemyResetProgress: () => '/udemy-reset-progress',
   QuizletList: () => '/quizlet-list',
+  Rebookmark: () => '/rebookmark',
 
   // External links
   Resume: () => '/static/serhii_shramko_frontend.pdf',

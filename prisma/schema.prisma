@@ -20,3 +20,9 @@ model reactions {
 
   @@unique([slug, type])
 }
+
+model waitlist {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+}
