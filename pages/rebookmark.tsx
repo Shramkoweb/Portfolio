@@ -118,29 +118,76 @@ function RebookmarkPage() {
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Rebookmark: Your Bookmarks Aren&#39;t Dead. They&#39;re Just
-          Sleeping.
+          Your Bookmarks Aren&#39;t Dead. They&#39;re Just Sleeping.
         </h1>
 
-        <p>
-          You save dozens of bookmarks every week — articles, tutorials, tools,
-          interesting threads. You tell yourself{' '}
-          <em>&#34;I&#39;ll read this later.&#34;</em> But later never comes.
+        <p className="text-lg text-gray-600 dark:text-gray-300">
+          You have 1,000+ bookmarks. When was the last time you opened one?
         </p>
 
         <p>
-          You have hundreds of unread bookmarks collecting dust. The problem
-          isn&#39;t organizing them better — it&#39;s having no reason to go
-          back.
+          Every week you save articles, tutorials, tools, threads. You tell
+          yourself <em>&#34;I&#39;ll read this later.&#34;</em> But later never
+          comes. The result: a graveyard of good intentions collecting dust in
+          your browser.
         </p>
 
         <p>
-          That&#39;s why I&#39;m building <strong>Rebookmark</strong> — a
-          Chrome extension that brings your forgotten bookmarks back, one at a
-          time, on a smart schedule. It works on top of your existing bookmarks.
-          No migration. No new app to learn. Think of it as{' '}
-          <strong>Duolingo for your bookmarks</strong> — it doesn&#39;t
-          organize them, it makes you actually come back to them.
+          <strong>Rebookmark</strong> is a Chrome extension + web app that
+          brings your forgotten bookmarks back — one at a time, on a smart
+          schedule. No new bookmark manager to learn. No migration. It works{' '}
+          <strong>on top</strong> of Chrome bookmarks, Raindrop.io, or any HTML
+          export. Think of it as <strong>Duolingo for your bookmarks</strong> —
+          it doesn&#39;t organize them, it makes you actually come back to them.
+        </p>
+
+        {/* CTA #1 */}
+        <h2>Get Early Access</h2>
+
+        <p>
+          Rebookmark is in active development and will be{' '}
+          <strong>free to use at launch</strong>. Join the waitlist to get early
+          access.
+        </p>
+
+        {status === 'success' ? (
+          <p>
+            <strong>
+              You&#39;re on the list! We&#39;ll notify you when Rebookmark is
+              ready.
+            </strong>
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} className="not-prose flex gap-3 w-full">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              required
+              className="flex-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 dark:focus:border-gray-400 dark:focus:ring-gray-400"
+            />
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="rounded-md bg-gray-800 dark:bg-gray-200 px-5 py-2 text-sm font-medium text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-300 disabled:opacity-50 transition-colors"
+            >
+              {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
+            </button>
+          </form>
+        )}
+
+        {status === 'error' && (
+          <p>
+            <em>Something went wrong. Please try again.</em>
+          </p>
+        )}
+
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          <em>
+            The UI below is an early concept — the final product will look even
+            better.
+          </em>
         </p>
 
         {/* Section label: Extension */}
@@ -149,7 +196,10 @@ function RebookmarkPage() {
         </p>
 
         {/* Triage Card Mockup */}
-        <div className="not-prose my-4 mx-auto w-full max-w-sm select-none" aria-hidden="true">
+        <div
+          className="not-prose my-4 mx-auto w-full max-w-sm select-none"
+          aria-hidden="true"
+        >
           <div className="rounded-xl border border-gray-200 bg-white text-gray-900 overflow-hidden">
             {/* Top bar */}
             <div className="flex items-center justify-between px-5 py-3 text-xs text-gray-500">
@@ -172,8 +222,7 @@ function RebookmarkPage() {
               <p className="text-xs leading-relaxed text-gray-500 mb-3">
                 The author argues that after 5+ years of experience,
                 documentation, RFCs and technical writing create more impact
-                than code. Includes a framework for evaluating your
-                leverage.{' '}
+                than code. Includes a framework for evaluating your leverage.{' '}
                 <span className="inline-block border border-gray-200 rounded px-1.5 py-0.5 text-[10px] text-gray-400">
                   AI summary
                 </span>
@@ -232,7 +281,10 @@ function RebookmarkPage() {
         </div>
 
         {/* Extension Popup Mockup */}
-        <div className="not-prose my-4 mx-auto w-full max-w-sm select-none" aria-hidden="true">
+        <div
+          className="not-prose my-4 mx-auto w-full max-w-sm select-none"
+          aria-hidden="true"
+        >
           <div className="rounded-xl border border-gray-200 bg-white text-gray-900 overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-100">
@@ -403,9 +455,7 @@ function RebookmarkPage() {
               {/* Bookmark queue */}
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-semibold">Bookmark queue</span>
-                <span className="text-xs text-gray-400">
-                  1,705 in queue
-                </span>
+                <span className="text-xs text-gray-400">1,705 in queue</span>
               </div>
 
               {/* Filter pills */}
@@ -550,9 +600,7 @@ function RebookmarkPage() {
                         <div className="w-2 h-2 rounded-sm bg-stone-300" />
                         <div className="w-2 h-2 rounded-sm bg-stone-200" />
                       </div>
-                      <span className="text-[9px] text-gray-400">
-                        decaying
-                      </span>
+                      <span className="text-[9px] text-gray-400">decaying</span>
                     </div>
                   </div>
                 </div>
@@ -574,7 +622,10 @@ function RebookmarkPage() {
                   { read: 20, snoozed: 10, deleted: 0 },
                   { read: 0, snoozed: 0, deleted: 0 },
                 ].map((day, i) => (
-                  <div key={i} className="flex-1 flex flex-col gap-0.5 justify-end h-full">
+                  <div
+                    key={i}
+                    className="flex-1 flex flex-col gap-0.5 justify-end h-full"
+                  >
                     <div
                       className="bg-green-700 rounded-t-sm"
                       style={{ height: `${day.read}%` }}
@@ -606,158 +657,11 @@ function RebookmarkPage() {
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-sm bg-gray-300" />
-                  <span className="text-[10px] text-gray-400">
-                    Snoozed: 8
-                  </span>
+                  <span className="text-[10px] text-gray-400">Snoozed: 8</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-sm bg-gray-500" />
-                  <span className="text-[10px] text-gray-400">
-                    Deleted: 5
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Section label: Settings */}
-        <p className="not-prose text-xs font-medium uppercase tracking-widest text-gray-400 dark:text-gray-500 mt-10 mb-4">
-          Settings
-        </p>
-
-        {/* Settings Mockup */}
-        <div className="not-prose my-4 w-full select-none" aria-hidden="true">
-          <div className="rounded-xl border border-gray-200 bg-white text-gray-900 overflow-hidden">
-            {/* Sources */}
-            <div className="px-6 py-5">
-              <h4 className="text-sm font-semibold mb-3">Bookmark sources</h4>
-              <div className="rounded-xl border border-gray-100 divide-y divide-gray-100">
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">Chrome bookmarks</p>
-                    <p className="text-[11px] text-gray-400">
-                      1,847 bookmarks imported
-                    </p>
-                  </div>
-                  <span className="text-xs text-green-600 font-medium">
-                    Connected
-                  </span>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">Raindrop.io</p>
-                    <p className="text-[11px] text-gray-400">
-                      Import collections via API
-                    </p>
-                  </div>
-                  <span className="rounded-lg border border-gray-200 px-3 py-1.5 text-[11px] text-gray-500">
-                    Connect
-                  </span>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">HTML file</p>
-                    <p className="text-[11px] text-gray-400">
-                      Import from any browser
-                    </p>
-                  </div>
-                  <span className="rounded-lg border border-gray-200 px-3 py-1.5 text-[11px] text-gray-500">
-                    Upload
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Resurfacing */}
-            <div className="px-6 pb-5">
-              <h4 className="text-sm font-semibold mb-3">Resurfacing</h4>
-              <div className="rounded-xl border border-gray-100 divide-y divide-gray-100">
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">Bookmarks per day</p>
-                    <p className="text-[11px] text-gray-400">
-                      How many to surface daily
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-20 h-1.5 rounded-full bg-gray-100 relative">
-                      <div className="absolute left-0 top-0 h-1.5 w-[30%] rounded-full bg-gray-900" />
-                      <div className="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-gray-900 left-[30%] -translate-x-1/2" />
-                    </div>
-                    <span className="text-sm font-semibold w-4 text-right">
-                      3
-                    </span>
-                  </div>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">Email digest</p>
-                    <p className="text-[11px] text-gray-400">
-                      Daily email at 8:00 AM
-                    </p>
-                  </div>
-                  {/* Toggle ON */}
-                  <div className="w-9 h-5 rounded-full bg-blue-500 relative">
-                    <div className="w-4 h-4 rounded-full bg-white absolute right-0.5 top-0.5 shadow-sm" />
-                  </div>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">Pause resurfacing</p>
-                    <p className="text-[11px] text-gray-400">
-                      Temporarily stop all reminders
-                    </p>
-                  </div>
-                  {/* Toggle OFF */}
-                  <div className="w-9 h-5 rounded-full bg-gray-200 relative">
-                    <div className="w-4 h-4 rounded-full bg-white absolute left-0.5 top-0.5 shadow-sm" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* AI */}
-            <div className="px-6 pb-5">
-              <div className="flex items-center gap-2 mb-3">
-                <h4 className="text-sm font-semibold">AI features</h4>
-                <span className="rounded border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-400 font-medium">
-                  Pro
-                </span>
-              </div>
-              <div className="rounded-xl border border-gray-100 divide-y divide-gray-100">
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">Auto-tags</p>
-                    <p className="text-[11px] text-gray-400">
-                      Automatically tag new bookmarks
-                    </p>
-                  </div>
-                  <div className="w-9 h-5 rounded-full bg-blue-500 relative">
-                    <div className="w-4 h-4 rounded-full bg-white absolute right-0.5 top-0.5 shadow-sm" />
-                  </div>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">AI summaries</p>
-                    <p className="text-[11px] text-gray-400">
-                      1-2 sentence page description
-                    </p>
-                  </div>
-                  <div className="w-9 h-5 rounded-full bg-blue-500 relative">
-                    <div className="w-4 h-4 rounded-full bg-white absolute right-0.5 top-0.5 shadow-sm" />
-                  </div>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium">Dead link detection</p>
-                    <p className="text-[11px] text-gray-400">
-                      Find and flag broken bookmarks
-                    </p>
-                  </div>
-                  <div className="w-9 h-5 rounded-full bg-blue-500 relative">
-                    <div className="w-4 h-4 rounded-full bg-white absolute right-0.5 top-0.5 shadow-sm" />
-                  </div>
+                  <span className="text-[10px] text-gray-400">Deleted: 5</span>
                 </div>
               </div>
             </div>
@@ -769,52 +673,90 @@ function RebookmarkPage() {
         <ol>
           <li>
             <strong>Import</strong> your existing bookmarks from Chrome,
-            Raindrop.io, or an HTML export
+            Raindrop.io, or an HTML export — takes 10 seconds
           </li>
           <li>
-            <strong>Get a daily dose</strong> of forgotten bookmarks delivered
-            to your browser badge
+            <strong>Get a daily dose</strong> of forgotten bookmarks via browser
+            badge or email digest
           </li>
           <li>
-            <strong>Triage</strong> each one — Read it, Snooze it, or Delete it
+            <strong>Triage in 30 seconds</strong> — Open it, Snooze it, or
+            Delete it forever
           </li>
           <li>
-            <strong>Track your progress</strong> as your bookmark graveyard
-            shrinks day by day
+            <strong>Watch your graveyard shrink</strong> — track stats, streaks,
+            and library health over time
           </li>
         </ol>
 
-        <h2>Features</h2>
+        <h2>This Is NOT Another Bookmark Manager</h2>
+
+        <p>
+          You already have a place to save bookmarks. You don&#39;t need another
+          one. What you need is a <strong>reason to go back</strong>.
+        </p>
 
         <ul>
           <li>
-            <strong>Smart resurfacing schedule</strong> — spaced repetition
-            algorithm that brings bookmarks back at increasing intervals
+            <strong>Raindrop, Pinboard, Chrome bookmarks</strong> = where you{' '}
+            <em>save</em> links. Rebookmark = how you <em>actually read</em>{' '}
+            them.
           </li>
           <li>
-            <strong>Zero friction</strong> — click the badge, triage in 30
-            seconds, done
+            <strong>Pocket shut down</strong> in July 2025. Millions of
+            &#34;read later&#34; links vanished. Rebookmark works on top of your
+            existing tools — your bookmarks stay where they are.
           </li>
           <li>
-            <strong>AI-powered tags & summaries</strong> — know what a bookmark
-            is about before opening it
-          </li>
-          <li>
-            <strong>Dead link detection</strong> — automatically finds and
-            flags broken bookmarks
-          </li>
-          <li>
-            <strong>Library health score</strong> — visualize how healthy your
-            bookmark collection is
+            <strong>Zero switching cost.</strong> Install the extension, import
+            your bookmarks, start triaging. Nothing to migrate, nothing to
+            learn.
           </li>
         </ul>
 
-        <h2>Join the Waitlist</h2>
+        <h2>FAQ</h2>
 
         <p>
-          Rebookmark is currently in development. Leave your email to get early
+          <strong>Q: Does this replace Raindrop / Chrome bookmarks?</strong>
+          <br />
+          A: No. Rebookmark works on top of them. Your bookmarks stay where they
+          are — we just help you come back to them.
+        </p>
+
+        <p>
+          <strong>Q: Pocket shut down. Is this a replacement?</strong>
+          <br />
+          A: Rebookmark isn&#39;t a read-it-later app. But if you have hundreds
+          of saved links you never returned to, it solves the same underlying
+          problem: actually reading what you saved.
+        </p>
+
+        <p>
+          <strong>Q: What happens if I stop using it?</strong>
+          <br />
+          A: Nothing. Your bookmarks stay in Chrome / Raindrop / wherever they
+          are. Rebookmark never moves or deletes your source bookmarks.
+        </p>
+
+        <p>
+          <strong>Q: Will it cost anything?</strong>
+          <br />
+          A: Rebookmark will be free at launch. A Pro tier with AI features and
+          advanced analytics may come later, but the core experience will always
+          be free.
+        </p>
+
+        <p>
+          <strong>Q: When will it be available?</strong>
+          <br />
+          A: I&#39;m actively building it. Waitlist subscribers get early
           access.
         </p>
+
+        {/* CTA #2 */}
+        <h2>Join the Waitlist</h2>
+
+        <p>Free at launch. Waitlist subscribers get access first.</p>
 
         {status === 'success' ? (
           <p>
@@ -824,10 +766,7 @@ function RebookmarkPage() {
             </strong>
           </p>
         ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="not-prose flex gap-3 w-full"
-          >
+          <form onSubmit={handleSubmit} className="not-prose flex gap-3 w-full">
             <input
               type="email"
               value={email}
@@ -841,7 +780,7 @@ function RebookmarkPage() {
               disabled={status === 'loading'}
               className="rounded-md bg-gray-800 dark:bg-gray-200 px-5 py-2 text-sm font-medium text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-300 disabled:opacity-50 transition-colors"
             >
-              {status === 'loading' ? 'Joining...' : 'Join'}
+              {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
             </button>
           </form>
         )}
@@ -851,30 +790,6 @@ function RebookmarkPage() {
             <em>Something went wrong. Please try again.</em>
           </p>
         )}
-
-        <h2>FAQ</h2>
-
-        <p>
-          <strong>Q: Does Rebookmark replace my bookmark manager?</strong>
-          <br />
-          A: No. Rebookmark works on top of Chrome bookmarks or Raindrop.io. It
-          doesn&#39;t store or organize bookmarks — it just helps you come back
-          to them.
-        </p>
-
-        <p>
-          <strong>Q: How much will it cost?</strong>
-          <br />
-          A: Free tier includes up to 200 bookmarks and 3 per day. Pro ($4/mo)
-          unlocks unlimited bookmarks, AI summaries, email digests, and more.
-        </p>
-
-        <p>
-          <strong>Q: When will it be available?</strong>
-          <br />
-          A: I&#39;m building it right now. Join the waitlist above to get early
-          access.
-        </p>
       </section>
     </>
   );
