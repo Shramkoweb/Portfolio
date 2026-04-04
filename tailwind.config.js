@@ -124,6 +124,9 @@ const config = {
               color: theme("colors.gray.100"),
               "scroll-margin-top": spacing[4],
             },
+            dt: {
+              color: theme("colors.gray.100"),
+            },
             hr: { borderColor: theme("colors.gray.700") },
             ol: {
               li: {
