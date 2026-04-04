@@ -211,6 +211,17 @@ input[type='email'] {
   background-position: 0 0, 10px 10px;
 }
 
+.bg-pattern-rebookmark {
+  opacity: 0.8;
+  background: repeating-linear-gradient(
+    -45deg,
+    currentColor,
+    currentColor 10px,
+    #2f2f2f 10px,
+    #2f2f2f 12px
+  );
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   *,
