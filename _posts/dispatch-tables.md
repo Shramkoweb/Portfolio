@@ -4,8 +4,8 @@ heading: Dispatch table in javascript
 description: Replace messy switch statements with dispatch tables in JavaScript. Learn this clean code pattern for handling multiple conditions with maintainable code.
 createDate: 2022-08-28T08:04:18.720Z
 updateDate: 2025-12-01
-keywords: [Switch statement in javascript, Dynamic Dispatch, Dispatch Tables, Conditionals in JavaScript, Polymorphism in JavaScript]
-categories: [JS, Clean-Code]
+keywords: [ Switch statement in javascript, Dynamic Dispatch, Dispatch Tables, Conditionals in JavaScript, Polymorphism in JavaScript ]
+categories: [ JS, Clean-Code ]
 featured: false
 ---
 
@@ -127,11 +127,105 @@ const nextConfigByEnv = {
 module.exports = nextConfigByEnv[process.env.NODE_ENV];
 ```
 
-Will it look and read much better? I use [dispatch tables](/blog/introducing-the-new-shramko.dev#monitoring-with-sentry) in my projects, and I can say that it is a very convenient.
+Will it look and read much better? I use [dispatch tables](/blog/introducing-the-new-shramko.dev#monitoring-with-sentry)
+in my projects, and I can say that it is a very convenient.
+
+## Production example: CSP headers per environment
+
+Here's a more advanced real-world example. Imagine you need to
+configure [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) headers differently for each
+environment — local development needs relaxed rules, while production should be locked down.
+
+Without a dispatch table, you might end up with a chain of `if/else` blocks checking the environment for every
+directive. Instead, we can define per-environment config as a lookup object:
+
+```ts
+type TEnv = 'development' | 'stage' | 'production' | 'local';
+
+const ENV = process.env.NEXT_PUBLIC_NODE_ENV as TEnv;
+
+interface EnvConfig {
+  imageSrc: string[];
+  connectSrc: string[];
+  scriptSrc?: string[];
+}
+
+const envConfig: Record<TEnv, EnvConfig> = {
+  local: {
+    imageSrc: [
+      'https://dev.cdn.example.com',
+      'https://stage.cdn.example.com',
+      'https://cdn.example.com',
+      'https://images.example.com',
+    ],
+    connectSrc: [
+      'http://localhost:3001',
+      'https://api.dev.example.com',
+      'https://api-1.dev.example.com',
+      'https://api.stage.example.com',
+      'https://api.example.com',
+    ],
+    scriptSrc: ["'unsafe-eval'"],
+  },
+  development: {
+    imageSrc: ['https://dev.cdn.example.com', 'https://images.example.com'],
+    connectSrc: [
+      'https://api.dev.example.com',
+      'https://api-1.dev.example.com',
+    ],
+  },
+  stage: {
+    imageSrc: ['https://stage.cdn.example.com', 'https://images.example.com'],
+    connectSrc: ['https://api.stage.example.com'],
+  },
+  production: {
+    imageSrc: ['https://cdn.example.com', 'https://images.example.com'],
+    connectSrc: ['https://api.example.com'],
+  },
+};
+
+const { imageSrc, connectSrc, scriptSrc = [] } = envConfig[ENV];
+```
+
+The key line is `envConfig[ENV]` — a single lookup replaces what could be four separate `if` branches with duplicated
+destructuring logic.
+
+Then we compose the full CSP header by spreading the environment-specific values into the shared directives:
+
+```ts
+const CSP_DIRECTIVES: Record<string, string[]> = {
+  'default-src': ["'self'"],
+  'script-src': [
+    "'self'",
+    "'unsafe-inline'",
+    'https://www.googletagmanager.com',
+    'https://cdn.analytics.example.com',
+    ...scriptSrc,
+  ],
+  'style-src': ["'self'", "'unsafe-inline'"],
+  'img-src': ["'self'", ...imageSrc],
+  'font-src': ["'self'"],
+  'frame-src': ["'self'", 'https://embed.example.com'],
+  'object-src': ["'none'"],
+  'base-uri': ["'self'"],
+  'form-action': ["'self'"],
+  'connect-src': [
+    "'self'",
+    'https://sentry.example.com',
+    'https://analytics.example.com',
+    ...connectSrc,
+  ],
+  'frame-ancestors': ["'none'"],
+};
+```
+
+Notice how the dispatch table cleanly separates **what varies** (per-environment URLs) from **what's shared** (the CSP
+structure). Adding a new environment is just adding a new key to `envConfig` — no control flow to touch.
 
 ## Useful links
 
 - [Example in CLI parser app](https://github.com/Shramkoweb/CLI-diff-generator/blob/develop/src/parsers.js#L31)
 - [Naming Conventions for Key-Value Maps](https://softwareas.com/naming-conventions-for-key-value-maps/)
 - [Dispatch table](https://en.wikipedia.org/wiki/Dispatch_table)
-- [The Early Return Pattern](/blog/the-early-return-pattern-in-javascript) - another clean code pattern for simplifying conditionals
+- [The Early Return Pattern](/blog/the-early-return-pattern-in-javascript) - another clean code pattern for simplifying
+  conditionals
