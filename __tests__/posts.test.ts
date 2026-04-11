@@ -121,7 +121,20 @@ describe('Posts API', () => {
         .mockResolvedValueOnce('Test content 2');
 
       const categories = await getPostsCategories();
+
       expect(Array.isArray(categories)).toBe(true);
+      // gray-matter mock returns categories: ['JS'] for each post
+      // so we expect deduplicated result
+      expect(categories).toContain('JS');
+      expect(categories.length).toBeGreaterThan(0);
+    });
+
+    it('should return empty array when no posts exist', async () => {
+      (readdir as jest.Mock).mockResolvedValueOnce([]);
+
+      const categories = await getPostsCategories();
+
+      expect(categories).toEqual([]);
     });
   });
 

@@ -1,9 +1,12 @@
-import { Post, PostCategory, Snippet } from '@/lib/types';
+import { Post, PostCategory, PostMetadata, Snippet } from '@/lib/types';
 import {
+  addYearSeparators,
   filterByAdvanceReact,
   filterByFeatured,
   filterByHeading,
   filterByNotFeatured,
+  getYearFromPost,
+  isYearSeparator,
   sortByBirthtime,
 } from '@/lib/posts/utils';
 
@@ -152,6 +155,102 @@ describe('Post Utils', () => {
 
     it('should work with partial matches', () => {
       expect(filterByHeading(mockPost1, 'st Po')).toBe(true);
+    });
+  });
+
+  describe('getYearFromPost', () => {
+    it('should extract year from post createDate', () => {
+      expect(getYearFromPost(mockPost1)).toBe(2021);
+    });
+
+    it('should handle different years', () => {
+      const post2025: PostMetadata = {
+        data: {
+          createDate: new Date('2025-03-15').getTime(),
+          updateDate: null,
+          featured: false,
+          categories: [PostCategory.JS],
+          heading: 'Post 2025',
+          slug: 'post-2025',
+          description: '',
+          title: '',
+          readTime: '',
+          keywords: [],
+        },
+      };
+      expect(getYearFromPost(post2025)).toBe(2025);
+    });
+  });
+
+  describe('isYearSeparator', () => {
+    it('should return true for year separator objects', () => {
+      expect(isYearSeparator({ type: 'year-separator', year: 2021 })).toBe(true);
+    });
+
+    it('should return false for post metadata', () => {
+      expect(isYearSeparator(mockPost1.data as unknown as PostMetadata)).toBe(false);
+    });
+  });
+
+  describe('addYearSeparators', () => {
+    const makePostMeta = (year: number, slug: string): PostMetadata => ({
+      data: {
+        createDate: new Date(`${year}-06-15`).getTime(),
+        updateDate: null,
+        featured: false,
+        categories: [PostCategory.JS],
+        heading: slug,
+        slug,
+        description: '',
+        title: '',
+        readTime: '',
+        keywords: [],
+      },
+    });
+
+    it('should return empty array for empty input', () => {
+      expect(addYearSeparators([])).toEqual([]);
+    });
+
+    it('should add separator before single post', () => {
+      const posts = [makePostMeta(2024, 'only-post')];
+      const result = addYearSeparators(posts);
+
+      expect(result).toHaveLength(2);
+      expect(result[0]).toEqual({ type: 'year-separator', year: 2024 });
+      expect(result[1]).toBe(posts[0]);
+    });
+
+    it('should add separators between posts of different years', () => {
+      const posts = [
+        makePostMeta(2024, 'post-a'),
+        makePostMeta(2024, 'post-b'),
+        makePostMeta(2023, 'post-c'),
+        makePostMeta(2022, 'post-d'),
+      ];
+      const result = addYearSeparators(posts);
+
+      expect(result).toEqual([
+        { type: 'year-separator', year: 2024 },
+        posts[0],
+        posts[1],
+        { type: 'year-separator', year: 2023 },
+        posts[2],
+        { type: 'year-separator', year: 2022 },
+        posts[3],
+      ]);
+    });
+
+    it('should not add extra separators for same-year posts', () => {
+      const posts = [
+        makePostMeta(2024, 'post-a'),
+        makePostMeta(2024, 'post-b'),
+        makePostMeta(2024, 'post-c'),
+      ];
+      const result = addYearSeparators(posts);
+
+      expect(result).toHaveLength(4); // 1 separator + 3 posts
+      expect(result[0]).toEqual({ type: 'year-separator', year: 2024 });
     });
   });
 });

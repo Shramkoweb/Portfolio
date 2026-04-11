@@ -3,35 +3,38 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { PostReaction } from '@/components/post-reaction';
 
 describe('PostReaction component', () => {
-  test('Render with initial state', () => {
+  test('renders initial state with question and buttons', () => {
     render(<PostReaction />);
 
-    const title = screen.getByRole('heading', {
-      name: 'Was this article helpful ?',
-    });
-    const description = screen.getByText('Help me improve my blog');
-
-    expect(title).toBeInTheDocument();
-    expect(description).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Was this article helpful ?' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Help me improve my blog')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Yes' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'No' })).toBeInTheDocument();
   });
 
-  describe('reactions click:', () => {
-    test('worthless', () => {
-      render(<PostReaction />);
+  test('clicking "Yes" shows thank you and hides buttons', () => {
+    render(<PostReaction />);
 
-      const worthlessReactionButton = screen.getByRole('button', {
-        name: 'No',
-      });
-      fireEvent.click(worthlessReactionButton);
-    });
+    fireEvent.click(screen.getByRole('button', { name: 'Yes' }));
 
-    test('helpful', () => {
-      render(<PostReaction />);
+    expect(
+      screen.getByRole('heading', { name: 'Thanks for the feedback!' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Yes' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'No' })).not.toBeInTheDocument();
+  });
 
-      const worthlessReactionButton = screen.getByRole('button', {
-        name: 'Yes',
-      });
-      fireEvent.click(worthlessReactionButton);
-    });
+  test('clicking "No" shows sorry message and hides buttons', () => {
+    render(<PostReaction />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'No' }));
+
+    expect(
+      screen.getByRole('heading', { name: 'Sorry to hear that.' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/let me know/i)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Yes' })).not.toBeInTheDocument();
   });
 });
