@@ -21,34 +21,29 @@ and libraries I used to make this site.
 Here are the [cloc](https://github.com/AlDanial/cloc) stats:
 
 ```shell
-cloc --exclude-dir=node_modules .
-      358 text files.
-      329 unique files.                              
-      191 files ignored.
-
-T=0.07 s (2903.5 files/s, 389492.6 lines/s)
+cloc --vcs=git .
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-JavaScript                     143           6476           7897          13153
-YAML                             3           2172              0           8278
-Markdown                        56           1420              4           4523
-TypeScript                      86            461             17           4177
-XML                             12              0              0           1008
-JSON                            19              0              0            271
-CSS                              2             40              1            190
-diff                             1              0             20             23
+YAML                             4           2444              0           9422
+TypeScript                     111            823             24           7012
+Markdown                        74           2107              8           6693
+JavaScript                       8             37             17            448
+CSS                              2             47              1            229
+JSON                             6              0              0            204
+XML                              2              0              0            110
+Text                             3             12              0             81
+Prisma Schema                    1              5              0             23
+SQL                              1              9              6             21
 SVG                              1              0              0             17
-Prisma Schema                    1              2              0             12
 INI                              1              2              0             11
 Bourne Shell                     2              2              0              4
-Text                             2              0              0              4
 -------------------------------------------------------------------------------
-SUM:                           329          10575           7939          31671
+SUM:                           216           5488             56          24275
 -------------------------------------------------------------------------------
 ```
 
-> Update: Line of Code on <time dateTime="2025-05-16">16 May 2025</time>
+> Update: Line of Code on <time dateTime="2026-04-11">11 April 2026</time>
 
 The first commit was
 in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f85ec7576de8a82c5b7fad835).
