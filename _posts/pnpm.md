@@ -131,6 +131,6 @@ So simply just copy the [above code](#2-update-cicd-pipelines) and paste it in y
 
 This migration helped me to reduce the time of deployment by **44%** and the size of `node_modules` by **5%**.
 
-<Image src="vercel-deployment.png" alt="Deployment time on vercel dashboard. Around 1 seccond" />
+<Image src="vercel-deployment.png" alt="Vercel deployment dashboard showing build time of approximately one second after migrating to pnpm" />
 
 More info how my blog works you can find there [How my site works under the hood](/blog/introducing-the-new-shramko.dev)

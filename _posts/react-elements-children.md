@@ -53,7 +53,7 @@ const Dashboard = () => {
 };
 ```
 
-<Image src="elements.png" alt="React DevTools showing component tree with Dashboard, Sidebar, and MainContent elements" />
+<Image src="elements.png" alt="React DevTools screenshot titled 'The Problem: Re-rendering Everything' showing App component with scrollPosition state triggering re-renders on BunchOfStuff and VerySlowComponent children" />
 
 This implementation will stutter badly. Every mouse movement fires a state update, causing `Dashboard` to re-render.
 When `Dashboard` re-renders, so does everything nested inside it. The "moving state down" approach fails here because

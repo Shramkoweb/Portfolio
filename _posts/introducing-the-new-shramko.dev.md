@@ -100,7 +100,7 @@ Here is how the [original design](https://shramkoweb.github.io/homepage/) looked
 A plain <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> page.
 No <abbr title="JavaScript">JS</abbr>, no frameworks 😂.
 
-<Image src="old-site.jpg" alt="S.Shramko personal old website screenshot"/>
+<Image src="old-site.jpg" alt="Previous version of shramko.dev hosted on GitHub Pages showing resume layout with experience and tech stack sections"/>
 
 ## 🚀 Deploy
 
@@ -114,7 +114,7 @@ Every commit triggers a Vercel build and creates either a Production or Preview 
 
 All three must pass before the site ships to production.
 
-<Image src="deploy.jpeg" alt="Deploy process screenshot on Vercel"/>
+<Image src="deploy.jpeg" alt="Vercel deployment overview showing 100 scores for Virtual Experience, First Contentful Paint, Largest Contentful Paint, Cumulative Layout Shift, and Total Blocking Time"/>
 
 ## MDX Compilation
 
@@ -314,7 +314,7 @@ The site runs on Next.js 16 with React 19 — still on the Pages Router, which r
 - **Ecosystem depth**: The React and Node.js ecosystems provide a package for nearly every need, from MDX compilation to Prisma database access
 - **Performance defaults**: SWC compilation, automatic code splitting, image optimization with configurable quality levels
 
-<Image src="framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" alt="A meme in which a person tries to choose between two red buttons."/>
+<Image src="framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" alt="Two-button meme: a sweating man choosing between 'Learn yet another framework' and 'Lose my job'"/>
 
 > I wrote articles about another framework — Astro [here](/blog/astro) and [here](/blog/linktree) 😆.
 

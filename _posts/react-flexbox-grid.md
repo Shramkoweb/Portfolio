@@ -9,7 +9,7 @@ categories: [ React, CSS, Tutorial ]
 featured: false
 ---
 
-<Image src="grid.jpeg" alt="Retro background with grid lines and neon" />
+<Image src="grid.jpeg" alt="Retro synthwave landscape with neon grid lines and glowing sunset, representing CSS Grid layout concept" />
 
 Often in the life of a web developer, you need to make a grid, but the limitations of the browser (Internet Explorer 😭)
 do not allow you to use, for example, [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout).

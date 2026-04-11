@@ -9,7 +9,7 @@ categories: [ CSS, HTML, Clean-Code ]
 featured: false
 ---
 
-<Image src="html.jpg" alt="White smartphone on two softbound books" />
+<Image src="html.jpg" alt="Smartphone resting on stacked CSS and JavaScript programming books on a white desk" />
 
 ## HTML Class Naming Conventions with BEM Methodology: Enhancing CSS Naming Conventions
 

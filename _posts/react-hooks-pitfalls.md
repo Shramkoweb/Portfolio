@@ -13,7 +13,7 @@ featured: false
 In a previous post we covered [How React Re-Renders Work](/blog/react-rerender). But today, we'll take a closer look at
 the hidden pitfalls of custom hooks in React.
 
-<Image alt="Hand-drawn diagram showing 'Custom React Hooks' as the main title with small hook illustrations, 'useEffect ( )' written in blue text on the left, and the React logo (atomic symbol) in blue on the bottom right." src="hooks.jpg" priority={true} />
+<Image alt="Hand-drawn cover image with 'Custom React Hooks' title, useEffect() in blue, fishing hook illustrations, and the React logo" src="hooks.jpg" priority={true} />
 
 When we handle state, component re-renders, and application performance in React, custom hooks are a powerful tool that
 help us keep our components clean and manageable. However, this simplicity can sometimes hide performance issues that we

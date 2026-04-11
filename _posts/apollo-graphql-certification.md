@@ -12,14 +12,14 @@ If you’re interested in GraphQL but haven’t had the chance to explore it dir
 [Apollo Odyssey](https://www.apollographql.com/tutorials/) is the perfect solution to help you understand how it all
 fits together!
 
-<Image alt="Apollo Graph Developer - Associate certificate. Serhii Shramko" src="graphql-certificate.png" priority={true} />
+<Image alt="Apollo Certified Graph Developer Associate certificate issued to Serhii Shramko on 3/12/2025" src="graphql-certificate.png" priority={true} />
 
 ## Apollo Odyssey: Free Learning Platform
 
 The learning platform features a variety of paths, combining video tutorials with written guides that include quizzes
 and code challenges for reinforcement.
 
-<Image alt="Apollo Odyssey: Learning Platform video" src="graphql-apollo-odyssey.png" />
+<Image alt="Apollo Odyssey learning platform video showing Track Card data structure with fields: title, thumbnail, length, module count, author name, and author picture" src="graphql-apollo-odyssey.png" />
 
 
 To earn
@@ -42,7 +42,7 @@ always make me smile. 😀
 As you work your way through the four required tutorials, you will be creating a real-world application called
 `Catstronauts`.
 
-<Image alt="Catstronauts project. React & GraphQL application" src="catstronauts.png" />
+<Image alt="Catstronauts demo app built with React and GraphQL showing a grid of cat-themed space course cards" src="catstronauts.png" />
 
 This project consists of a frontend client built with _TypeScript_ and _React_, alongside a backend server that utilizes
 _Node.js_ as its runtime environment and [Apollo Server](https://www.apollographql.com/docs/apollo-server) as a

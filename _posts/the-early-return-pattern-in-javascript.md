@@ -20,7 +20,7 @@ faq:
     answer: "The direct performance impact is negligible. However, in async code a guard clause that returns before an await avoids unnecessary network calls, which is a real performance win."
 ---
 
-<Image src="exit.jpg" alt="Early return pattern in JavaScript — an exit sign representing how guard clauses let functions exit early" />
+<Image src="exit.jpg" alt="Glowing green EXIT sign hanging from a ceiling, representing how early return pattern lets functions exit before reaching the end" />
 
 **The early return pattern** (also called guard clauses or the bouncer pattern) is a technique where you exit a function as soon as a precondition fails, instead of wrapping your main logic in nested `if` blocks. It reduces nesting, lowers cognitive load, and makes your functions dramatically easier to read.
 

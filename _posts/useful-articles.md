@@ -9,7 +9,7 @@ categories: [Tools]
 featured: false
 ---
 
-<Image alt="Astronaut with book in open space. Black background with stars" src="books.jpeg" priority={true} />
+<Image alt="Illustration of an astronaut in space absorbing knowledge from a floating book connected to their helmet" src="books.jpeg" priority={true} />
 
 > “Knowledge must be shared”.
 

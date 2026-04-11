@@ -8,7 +8,7 @@ categories: [AI, SEO, Productivity, Tools, Opinion]
 featured: false
 ---
 
-<Image src="seo.jpg" alt="Ahrefs SEO audit dashboard showing website health score and issues" priority={true} />
+<Image src="seo.jpg" alt="Website analytics dashboard showing real-time user count, traffic graphs, revenue metrics, and top countries" priority={true} />
 
 I've been putting off an SEO audit of my blog for months. With **30+** articles and **20+** code snippets, the task felt overwhelming. Reviewing each meta description, checking for broken links, validating alt text — it's the kind of work that's *easy to procrastinate* on indefinitely.
 
@@ -42,7 +42,7 @@ That last constraint — *"never sacrifice clarity for SEO"* — is crucial. I'v
 
 ## What the SEO Audit Found
 
-<Image src="ahrefs-audit.png" alt="Ahrefs Site Audit results showing SEO issues to fix" />
+<Image src="ahrefs-audit.png" alt="Ahrefs Site Audit project history for shramko.dev showing 100% health score across 370 crawls with URLs crawled and total issues charts" />
 
 **Before:**
 ```text

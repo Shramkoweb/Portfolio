@@ -20,7 +20,7 @@ categories: [ JS, TS, Tutorial, Project-Setup, Opinion, Tools ]
 featured: false
 ---
 
-<Image src="conventional-commits.jpg" alt="Conventional Commits. A close up of a text description on a computer screen." />
+<Image src="conventional-commits.jpg" alt="Git commit history with colorful branch graph showing conventional commit messages in a dark IDE" />
 
 I first came across Conventional Commits during my time at [MacPaw](/about), but initially, I didn't give much thought
 to these unique commit messages.
@@ -82,7 +82,7 @@ commonly used types:
 
 ## Cheat Sheet for Conventional Commits
 
-<Image src="conventional-commits-cheatsheet.png" alt="Conventional Commits Cheatsheet" />
+<Image src="conventional-commits-cheatsheet.png" alt="Conventional Commits cheatsheet table listing commit types: feat, fix, chore, docs, style, refactor, perf, test, build, ci, and revert with descriptions and examples" />
 
 | Type     | Description                | Example                          |
 |:---------|:---------------------------|:---------------------------------|
@@ -297,7 +297,7 @@ npx husky init
 
 Conventional commits can be parsed by tools, and a very nice use-case is that of generating release changelogs.
 
-<Image src="changelog.png" alt="Changelog created from Conventional commits on GitHub page" />
+<Image src="changelog.png" alt="Auto-generated CHANGELOG v4.1.0 on GitHub showing categorized features and bug fixes from conventional commits" />
 
 #### Semantic Release:
 

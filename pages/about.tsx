@@ -111,7 +111,7 @@ function AboutPage() {
         <div className="w-full mb-8 flex">
           <Image
             className="rounded-lg"
-            alt="Serhii Shramko taking a photo with a vintage camera in a modern indoor setting."
+            alt="Serhii Shramko holding a vintage FED-5 film camera up to his eye in a black-and-white portrait"
             src={about}
             width={1269}
             height={846}

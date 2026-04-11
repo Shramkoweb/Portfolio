@@ -9,7 +9,7 @@ categories: [ JS, Node ]
 featured: false
 ---
 
-<Image src="node-post.jpg" alt="Laptop with cone on screen with bloored background" />
+<Image src="node-post.jpg" alt="Laptop displaying code in a dark IDE on a dimly lit industrial surface" />
 
 [NVM](https://github.com/nvm-sh/nvm), or Node Version Manager, is essential for managing multiple versions of Node.js on
 our development environment.

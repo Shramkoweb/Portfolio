@@ -18,7 +18,7 @@ faq:
     answer: "No. Astro has its own .astro component syntax using plain HTML, CSS, and JavaScript. You can build an entire site without any UI framework. React, Vue, or Svelte are optional for interactive islands only."
 ---
 
-<Image src="astro.jpg" alt="Astro Framework Logo" />
+<Image src="astro.jpg" alt="Astro framework logo on a dark starry background" />
 
 **Astro is a web framework that ships zero JavaScript by default, delivering lightning-fast websites through its Islands Architecture.** This Astro framework guide covers everything you need to build content-driven sites — blogs, marketing pages, docs, and e-commerce storefronts. Astro renders HTML at build time and hydrates only the interactive components you choose.
 

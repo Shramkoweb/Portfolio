@@ -19,7 +19,7 @@ So I decided to write a small article about this topic.
 <abbr title="Uniform Resource Locator">URL</abbr> - is a string that indicates the address of a document or file on the
 Internet.
 
-<Image src="anatomy.png" alt="Anatomy of URL" inverted />
+<Image src="anatomy.png" alt="URL anatomy diagram breaking down https://shramko.dev/blog into scheme, domain name, and path to file" inverted />
 
 ### Scheme
 
@@ -65,7 +65,7 @@ An important point, we add `/` to the address at the beginning.
 <a href="/about">About page</a>
 ```
 
-<Image src="root-example.png" alt="Relative to the root of the site example" inverted />
+<Image src="root-example.png" alt="Diagram showing how a root-relative link /about resolves from shramko.dev/blog to shramko.dev/about" inverted />
 
 ### Relative path from the current document
 
@@ -78,7 +78,7 @@ An important point, we do not add `/` to the address at the beginning.
 <a href="category/js">JS category of Blog</a>
 ```
 
-<Image src="location.png" alt="Relative path from the current document example" inverted />
+<Image src="location.png" alt="Diagram showing how a relative path category/js appends to the current URL shramko.dev/blog resulting in shramko.dev/blog/category/js" inverted />
 
 ## Absolute links
 
@@ -111,7 +111,7 @@ Add `#anatomy-of-a-url` to the current URL in your browser.
 
 Examples that we discussed today.
 
-<Image src="cheat-sheet.png" alt="Relative and Absolute paths Cheat Sheet" inverted />
+<Image src="cheat-sheet.png" alt="Cheat sheet comparing absolute URLs, root-relative paths, relative paths, and fragment links with examples" inverted />
 
 ## Useful links
 

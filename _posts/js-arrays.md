@@ -9,7 +9,7 @@ categories: [ JS, Tutorial ]
 featured: false
 ---
 
-<Image src="fruits.png" alt="ES modules structure diagram" priority={true} />
+<Image src="fruits.png" alt="JavaScript array illustration showing const fruits with six fruit emoji elements and their zero-based index positions" priority={true} />
 
 ## Syntax
 

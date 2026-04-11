@@ -9,7 +9,7 @@ categories: [JS, Node]
 featured: false
 ---
 
-<Image src="es-module.png" alt="ES modules structure diagram" priority={true} />
+<Image src="es-module.png" alt="ES module dependency graph with main.js as entry point importing from counter.js and display.js" priority={true} />
 
 ## Problem
 

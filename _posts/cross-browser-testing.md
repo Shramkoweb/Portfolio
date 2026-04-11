@@ -72,7 +72,7 @@ and test your site without installing Windows ☠️.
 If you want to quickly see how the site looks on many devices and browsers, you can
 take [screenshots](https://www.browserstack.com/screenshots) of the pages you want.
 
-<img src="/static/images/screenshots.gif" alt="Animated image with how site can look on browserstack app"/>
+<img src="/static/images/screenshots.gif" alt="Animated GIF demonstrating cross-browser screenshot comparisons in BrowserStack"/>
 
 Yes, I know that my site does not work on IE. I did it on purpose. [IE 11 Must die](https://death-to-ie11.com/) 👾
 
@@ -84,7 +84,7 @@ visually and click on it, but also open the developer tools in the browser and t
 Browserstack can help with this. The DevTools tab opened familiar developer tools such as `Console`, `Network` and
 others.
 
-<Image src="dev-tools.jpg" alt="Developer tools" />
+<Image src="dev-tools.jpg" alt="Chrome DevTools open in a browser window showing the Elements panel" />
 
 At this moment, several options are supported on the mobile phone:
 

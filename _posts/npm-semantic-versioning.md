@@ -12,7 +12,7 @@ featured: false
 Let's talk about version numbers in your `package.json`. You've probably seen versions like `1.2.3` or `^4.5.0`—but what
 do they *actually* mean?
 
-<Image src="semver.jpg" alt="but it works on *my* machine  joke" />
+<Image src="semver.jpg" alt="Pulp Fiction meme: 'Semantic Versioning — do you speak it?' with Samuel L. Jackson pointing a gun" />
 
 ---
 
@@ -125,7 +125,7 @@ They work together: symbols say "what's allowed," the lock file says "what's ins
 4. **Commit `package-lock.json`** to avoid "but it works on *my* machine" moments. This file locks down every tiny
    detail.
 
-<Image src="ops.jpg" alt="but it works on *my* machine  joke" />
+<Image src="ops.jpg" alt="DevOps comic by Daniel Stori: Before DevOps 'It works on my machine!' vs After DevOps 'It works on my container!'" />
 
 ## **When Things Go Sideways**
 
