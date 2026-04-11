@@ -196,7 +196,7 @@ The client-side instrumentation filters out noise from browser extensions, Safar
 
 [Prisma 7](https://www.prisma.io/nextjs) with the `@prisma/adapter-pg` driver powers three models — page view tracking, post reactions, and a waitlist:
 
-```prisma
+```groovy
 generator client {
   provider = "prisma-client"
   output   = "../generated"
