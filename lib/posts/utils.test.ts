@@ -11,6 +11,7 @@ describe('Post Utils', () => {
   const mockPost1: Post = {
     data: {
       createDate: 1625097600000, // 2021-07-01
+      updateDate: null,
       featured: true,
       categories: [PostCategory.React],
       heading: 'Test Post 1',
@@ -26,6 +27,7 @@ describe('Post Utils', () => {
   const mockPost2: Post = {
     data: {
       createDate: 1627776000000, // 2021-08-01
+      updateDate: null,
       featured: false,
       categories: [PostCategory.AdvancedReact],
       heading: 'Test Post 2',
@@ -41,6 +43,7 @@ describe('Post Utils', () => {
   const mockSnippet: Snippet = {
     data: {
       createDate: 1630454400000, // 2021-09-01
+      updateDate: null,
       heading: 'Test Snippet',
       slug: 'test-snippet',
       description: '',
@@ -88,6 +91,7 @@ describe('Post Utils', () => {
       const regularPost: Post = {
         data: {
           createDate: 1625097600000,
+          updateDate: null,
           featured: false,
           categories: [PostCategory.JS],
           heading: 'Regular Post',
@@ -116,6 +120,7 @@ describe('Post Utils', () => {
       const post: Post = {
         data: {
           createDate: 1625097600000,
+          updateDate: null,
           featured: false,
           categories: [PostCategory.AdvancedReact],
           heading: 'Test',
