@@ -19,6 +19,7 @@ export function Header() {
           <HeaderLink href={Routes.About()} text="About" />
           <HeaderLink href={Routes.Dashboard()} text="Dashboard" />
           <HeaderLink href={Routes.Snippets()} text="Snippets" />
+          <HeaderLink href={Routes.Bookmarks()} text="Bookmarks" />
         </div>
         <div className="flex items-center justify-center">
           <Link
