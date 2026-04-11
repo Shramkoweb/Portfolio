@@ -45,4 +45,4 @@ if (isNode) {
 }
 ```
 
-> I have great example where it can be used in my another snippet - [Generating UUIDs in JavaScript](/snippets/window-crypto).
+> I have a great example where it can be used in another snippet - [Generating UUIDs in JavaScript](/snippets/window-crypto).

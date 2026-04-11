@@ -10,12 +10,12 @@ keywords: [SQL snippet, countries SQL table, SQL table, SQL example, SQL example
 I'm currently working on my [Nest.js](https://nestjs.com/) backend project and I needed to add data to the countries
 table.
 
-Usually I use [mockaroo.com](https://www.mockaroo.com/) for mocking data, but in this case when you generate schema like
+Usually I use [mockaroo.com](https://www.mockaroo.com/) for mocking data. When you generate a schema like
 this:
 
 <Image src="mock-schema.png" alt="mockaroo.com example" />
 
-But unfortunately in this case you get a lot of duplicates 🤯.
+Unfortunately, in this case you get a lot of duplicates 🤯.
 
 Therefore, I decided to share a ready-made SQL request for database seeding for countries.
 
@@ -267,7 +267,7 @@ VALUES ('AF', 'Afghanistan'),
        ('VE', 'Venezuela'),
        ('VN', 'Viet Nam'),
        ('VG', 'Virgin Islands, British'),
-       ('VI', 'Virgin Islands, U.s.'),
+       ('VI', 'Virgin Islands, U.S.'),
        ('WF', 'Wallis and Futuna'),
        ('EH', 'Western Sahara'),
        ('YE', 'Yemen'),

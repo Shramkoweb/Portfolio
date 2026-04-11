@@ -123,7 +123,7 @@ component structure.
 
 ## Moving state down
 
-Let's move our logic in separated component.
+Let's move our logic into a separate component.
 
 ```jsx
 const SettingsToggle = () => {

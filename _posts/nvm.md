@@ -93,7 +93,7 @@ installed, you can use Brew to install NVM just as you would with Linux or macOS
 
 The easiest way to install NVM on Linux is to use Brew. Simply open your terminal and then enter `brew install nvm`.
 
-Before it install Brew 🍻
+Before that, install Brew 🍻
 
 ## Recap
 

@@ -40,7 +40,7 @@ Your SSH keys might use one of the following algorithms:
 - 🥴 RSA: It depends on key size. If it has 3072 or 4096-bit length, then you're good. Less than that, you probably want
   to upgrade it. The 1024-bit length is even considered unsafe.
 - 👌 ECDSA: It depends on how well your machine can generate a random number that will be used to create a signature.
-  There's also a trustworthiness concern on the NIST curves that being used by ECDSA.
+  There's also a trustworthiness concern about the NIST curves that are being used by ECDSA.
 - 🥳 Ed25519: It's the most recommended public-key algorithm available today! This is what we'll use in this guide.
 
 ### Step 2: Generating a New SSH key

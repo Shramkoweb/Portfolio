@@ -250,20 +250,20 @@ function UdemyResetProgressPage() {
         <p>
           <strong>Q: Is this extension safe to use?</strong>
           <br />
-          A: Absolutely! It only interacts with Udemy official interface and
+          A: Absolutely! It only interacts with Udemy's official interface and
           doesn&#39;t store any data.
         </p>
 
         <p>
           <strong>Q: Will this affect my Udemy account status?</strong>
           <br />
-          A: No. This extension absolutely safe to use.
+          A: No. This extension is absolutely safe to use.
         </p>
 
         <p>
           <strong>Q: Can I use it on other learning platforms?</strong>
           <br />
-          A: No, it&#39;s specifically designed for Udemy interface.
+          A: No, it&#39;s specifically designed for the Udemy interface.
         </p>
 
         <div className="mt-8 text-center w-full">

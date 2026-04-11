@@ -200,7 +200,7 @@ function AboutPage() {
             </li>
 
             <li>
-              Led <strong>React, TypeScript, React upskilling programs</strong>;
+              Led <strong>React, TypeScript upskilling programs</strong>;
               established shared patterns =&gt; less review time, higher code
               quality, faster prod deploys.
             </li>
@@ -229,7 +229,7 @@ function AboutPage() {
           </h3>
 
           <p className="text-sm">
-            MacPaw develops software for iOS and MacOS. Their products include
+            MacPaw develops software for iOS and macOS. Their products include
             CleanMyMac, Setapp, Gemini Photos and more. MacPaw‘s active user
             base exceeds <strong>30 million</strong> worldwide. Every fifth Mac
             on Earth has at least one app by MacPaw.
@@ -342,12 +342,12 @@ function AboutPage() {
 
           <div className="flex justify-between">
             <em className="text-gray-300 text-xs">
-              <time dateTime="2019-10">October 2018</time>
+              <time dateTime="2018-10">October 2018</time>
               &ensp;–&ensp;
               <time dateTime="2020-10">October 2020</time>
             </em>
 
-            <em className="text-gray-300 text-xs">Brookline, Ma</em>
+            <em className="text-gray-300 text-xs">Brookline, MA</em>
           </div>
 
           <h3 className="m-0 mb-4">
@@ -364,7 +364,7 @@ function AboutPage() {
           <p className="text-sm">
             A global leader in document management, serving more than
             <strong> 100 million users</strong> worldwide. One of four Ukrainian
-            unicorn 🦄 company.
+            unicorn 🦄 companies.
           </p>
 
           <ul className="text-sm">

@@ -308,7 +308,7 @@ To help maintain consistent naming conventions, consider using:
 3. IDE extensions for code style enforcement
 4. Team code review guidelines focused on naming
 
-## Time Tested Naming Naming Conventions
+## Time-Tested Naming Conventions
 
 - [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html#naming)
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript?tab=readme-ov-file#naming-conventions)

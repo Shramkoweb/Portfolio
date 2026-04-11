@@ -40,7 +40,7 @@ console.log(isValidEmail('multiple@dots.co.uk'));
 console.log(isValidEmail('name+tag@example.com'));
 
 // Invalid cases ❌ 
-console.log(isValidEmail('')); // - empty string 
+console.log(isValidEmail('')); // false - empty string
 console.log(isValidEmail(null as any)); // false - null input 
 console.log(isValidEmail(undefined as any)); // false - undefined input 
 console.log(isValidEmail('a'.repeat(255))); // false - exceeds max length (RFC 5321) 

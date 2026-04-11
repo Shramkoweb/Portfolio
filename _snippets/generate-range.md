@@ -38,7 +38,7 @@ JavaScript's developers often need a quick and efficient way to generate a seque
 an
 array of values for a loop or generating a series of steps, a range function can be incredibly useful.
 
-> Many popular solutions, even Lodash's `_.range,` are not efficient if we read the V8 blog and understand how Arrays
+> Many popular solutions, even Lodash's `_.range`, are not efficient if we read the V8 blog and understand how Arrays
 > work. I will describe these topics in a future post.
 
 ## Examples

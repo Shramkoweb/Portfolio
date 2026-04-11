@@ -4,7 +4,7 @@ heading: Postgres connect to database with URL
 description: Learn how to connect to PostgreSQL using a connection URL string. Simple guide for Node.js, DataGrip, or any client supporting URL-based database connections.
 createDate: 2023-02-09T12:43:36.700Z
 updateDate: 2023-02-09T12:43:36.700Z
-keywords: [ DataGrip connect, database connection ulr, postgres connect url, how to connect to database ]
+keywords: [ DataGrip connect, database connection url, postgres connect url, how to connect to database ]
 categories: [ JS, Tutorial, Project-Setup ]
 featured: false
 ---
@@ -74,7 +74,7 @@ datasource db {
 
 ### Use Datagrip to connect Postgres
 
-You can use same credentials like `HOST`, `PORT`, `USER`, `PASSWORD`, `DATABSE` for connection to Database with
+You can use the same credentials like `HOST`, `PORT`, `USER`, `PASSWORD`, `DATABASE` for connection to Database with
 DataGrip.
 
 <Image src="db-datagrip.png" priority={true} alt="DataGrip connection dialog configured with PostgreSQL credentials" />

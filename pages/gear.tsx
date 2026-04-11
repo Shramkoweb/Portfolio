@@ -28,13 +28,13 @@ function GearPage() {
           My Gear
         </h1>
         <p className="text-gray-700 dark:text-gray-300 mt-2 mb-8">
-          Here is what gear I am currently using for coding and live.
+          Here is what gear I am currently using for coding and life.
         </p>
 
         <div className="w-full mb-8 flex">
           <Image
             className="rounded-lg"
-            alt="Serhii Shramko is sitting at a table on front of a computer and coding"
+            alt="Serhii Shramko is sitting at a table in front of a computer and coding"
             src={gear}
             width={1000}
             height={667}

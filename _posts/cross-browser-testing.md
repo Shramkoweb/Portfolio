@@ -14,7 +14,7 @@ featured: false
 During site development, we usually test our site only in the browser installed on our computer, but in the world of
 browsers there are dozens, and maybe even thousands, of versions.
 
-Therefore, cross-browser development and testing are considered a good tone in site development.
+Therefore, cross-browser development and testing are considered good practice in site development.
 
 ## Cross-browser development
 
@@ -42,7 +42,7 @@ All these questions are solved by the tools that we will discuss with you today.
 
 ## Browserstack
 
-What is Browserstack? It is cross browser testing tools that help us to test our sites on real devices and operating
+What is Browserstack? It is a cross-browser testing tool that helps us to test our sites on real devices and operating
 systems remotely. From Windows to macOS and iPhone.
 
 <Image src="browserstack.jpg" alt="Browserstack main page UI" />

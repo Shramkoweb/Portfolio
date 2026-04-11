@@ -128,7 +128,7 @@ module.exports = nextConfigByEnv[process.env.NODE_ENV];
 ```
 
 Will it look and read much better? I use [dispatch tables](/blog/introducing-the-new-shramko.dev#monitoring-with-sentry)
-in my projects, and I can say that it is a very convenient.
+in my projects, and I can say that it is very convenient.
 
 ## Production example: CSP headers per environment
 

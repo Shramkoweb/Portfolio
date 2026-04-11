@@ -389,7 +389,7 @@ function QuizletPage() {
         </p>
 
         <p>
-          <strong>Q: Where I can find Privacy Policy page?</strong>
+          <strong>Q: Where can I find the Privacy Policy page?</strong>
           <br />
           A:{' '}
           <Link href="/quizlet-list/privacy-policy">Privacy policy page</Link>

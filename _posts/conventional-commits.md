@@ -32,7 +32,7 @@ Here’s why you might want to give them a try too! 😃
 ## What Are Conventional Commits?
 
 Conventional Commits is a specification that provides a simple, structured convention for commit messages.
-It allows to write messages that are easy to read and maintain, and which convey the specific intent behind each
+It allows you to write messages that are easy to read and maintain, and which convey the specific intent behind each
 change.
 
 The conventional commit message format is straightforward. It starts with a **type**, optionally followed by a **scope
@@ -99,7 +99,7 @@ commonly used types:
 
 ## Leveraging AI with Conventional Commits
 
-AI-powered IDEs like **JetBrains'** suite of tools enhances your workflow by intelligently suggesting commit messages
+AI-powered IDEs like **JetBrains'** suite of tools enhance your workflow by intelligently suggesting commit messages
 that
 adhere to Conventional Commits standards. These suggestions are contextually generated based on changes you've made,
 significantly streamlining the process and reducing the cognitive load of writing detailed commit messages.
@@ -118,7 +118,7 @@ Understanding the theory behind Conventional Commits is one thing, but seeing ho
 scenarios can be extremely helpful. Below are some examples illustrating how to write effective, clear, and standardized
 commit messages.
 
-> Here example of commits from [my GitHub](https://github.com/Shramkoweb/Portfolio/commits/develop/)
+> Here is an example of commits from [my GitHub](https://github.com/Shramkoweb/Portfolio/commits/develop/)
 
 ### Example 1: Adding a New Feature
 

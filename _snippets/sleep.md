@@ -16,7 +16,7 @@ Many programming languages have a built-in sleep function that pauses a programâ
 seconds, often making it easier to add delays. However, JavaScript, being an asynchronous and non-blocking language,
 doesnâ€™t come with such a built-in feature.
 
-This is simple code snippet that demonstrates how to create a `sleep` function in JavaScript that pauses the execution.
+This is a simple code snippet that demonstrates how to create a `sleep` function in JavaScript that pauses the execution.
 
 ```javascript
 function sleep(ms) {

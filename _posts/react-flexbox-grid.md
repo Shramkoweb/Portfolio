@@ -132,7 +132,7 @@ You can see how SASS code is transformed into CSS [here](https://www.sassmeister
 ```jsx
 import clsx from 'clsx';
 
-const GridRow = (pops) => {
+const GridRow = (props) => {
   const {
     children,
     columns,

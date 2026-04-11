@@ -27,7 +27,7 @@ What can you do in this case?
 
 To get the current file directory, we'll want to use a combination of a global variable and a few built-in methods:
 
-- `import.meta.url` to get the current file's as a URL
+- `import.meta.url` to get the current file as a URL
 - `url.fileURLToPath` to change the URL to a path
 - `path.dirname` to get the directory name
 

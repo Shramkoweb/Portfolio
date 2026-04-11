@@ -89,7 +89,7 @@ TypeScript's got your back here. It knows exactly what properties are available 
 
 ## Pro Tip: Don't Forget Any Cases!
 
-Want to make sure you've covered all your ? Here's a neat trick:
+Want to make sure you've covered all your cases? Here's a neat trick:
 
 ```typescript
 function assertNever(x: never): never {

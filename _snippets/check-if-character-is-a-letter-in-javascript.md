@@ -25,7 +25,7 @@ console.log(isLetter('z')); // true
 console.log(isLetter('5')); // false
 ```
 
-> Why it works [ASCII](https://en.wikipedia.org/wiki/ASCII)
+> Why it works: [ASCII](https://en.wikipedia.org/wiki/ASCII)
 
 ## Using String Methods
 

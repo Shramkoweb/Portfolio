@@ -16,7 +16,7 @@ about as well, but formatting is one of those things that we can adjust right aw
 
 ## ESLint and TSLint
 
-[ESLint](https://eslint.org/) is statically analyzes your code to quickly find problems. It looks at your code, and
+[ESLint](https://eslint.org/) statically analyzes your code to quickly find problems. It looks at your code, and
 tells you when you're not following the standard that you set in place.
 
 ## Installation and setup

@@ -37,7 +37,7 @@ function useHasMounted() {
 }
 ```
 
-> Be careful with **any** custom React Hooks you write. They can trigger re-renders because underhood they use **useState**.
+> Be careful with **any** custom React Hooks you write. They can trigger re-renders because under the hood they use **useState**.
 > For more information, check out [article about re-renders](/blog/react-rerender).
 
 ## Why use it?

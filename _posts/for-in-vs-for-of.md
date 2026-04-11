@@ -11,7 +11,7 @@ featured: false
 
 ## The For Loop
 
-There are many ways to iterate in JavaScript, and probably one of the most common is for a loop.
+There are many ways to iterate in JavaScript, and probably one of the most common is a for loop.
 
 The for statement is a type of loop that will use up to three optional expressions to implement the repeated execution
 of a code block.

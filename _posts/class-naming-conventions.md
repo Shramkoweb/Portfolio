@@ -173,7 +173,7 @@ For further reading on CSS and HTML best practices, consider checking out these 
 These references will provide you with comprehensive insights into web development best practices, ensuring you're
 equipped with the knowledge to create outstanding web pages.
 
-If you're looking for more examples and guidelines for BEM class name you can find it on my snippet page
+If you're looking for more examples and guidelines for BEM class names, you can find them on my snippet page
 about [Common CSS Class Names](/snippets/common-css-classes).
 
 For JavaScript variable and function naming, check out

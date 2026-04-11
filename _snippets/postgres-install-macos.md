@@ -8,7 +8,7 @@ keywords: [ JS snippet, PostgreSQL Snippet, install PostgreSQL, postgres on MacO
 ---
 
 > I use PostgreSQL for my projects, and I want to share with you how to install it on macOS.
-Yea can read a little bit more about how my website works in my article [How I built my blog with Next.js](/blog/introducing-the-new-shramko.dev).
+You can read a little bit more about how my website works in my article [How I built my blog with Next.js](/blog/introducing-the-new-shramko.dev).
 
 ## Step 1: Homebrew Installation
 
@@ -67,7 +67,7 @@ to your newly created database, use:
 psql -d mydatabase
 ```
 
-## Step 6: Setting a Password (Optional)*
+## Step 6: Setting a Password (Optional)
 
 By default, PostgreSQL is installed without a password. It's highly recommended to set a password for the `postgres`
 user to enhance security. To do this, run:

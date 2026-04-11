@@ -63,7 +63,7 @@ console.log(fruits[0]); // 🍎
 console.log(fruits[2]); // 🍊
 
 // Get last element of array
-console.log(fruits[fruits.length]); // 🍓
+console.log(fruits[fruits.length - 1]); // 🍓
 ```
 
 ## Array methods and properties
@@ -72,7 +72,7 @@ Arrays provide a lot of methods and properties.
 
 ### Array properties
 
-The Array does not have a lot of property 😂.
+The Array does not have a lot of properties 😂.
 
 #### Array length
 
@@ -130,8 +130,8 @@ The `.find()` method will return the **_first element_** in the array that match
 ```js
 const employees = [/* See DATA_SAMPLE */]
 
-// Find employe with name 'Serhii'
-const serhii = employees.find((employe) => employe.name === 'Serhii');
+// Find employee with name 'Serhii'
+const serhii = employees.find((employee) => employee.name === 'Serhii');
 
 // or with object destructuring
 const serhii = employees.find(({ name }) => name === 'Serhii');
@@ -175,7 +175,7 @@ The `.join()` method creates and returns a new string by concatenating all eleme
 
 ```js
 // Before .join() we must transform each object in array to string
-const foematedOutput = employees
+const formattedOutput = employees
   .map(({ name }) => name) // Transform employee object to name string
   .join("\n"); // "\n" – add newline after each element
 ```
@@ -194,9 +194,9 @@ The `.every()` method checks that every single item in your array matches some c
 
 ```js
 
-const isAdult = (employe) => employe.age > 18;
+const isAdult = (employee) => employee.age > 18;
 
-// Check is every our employe older than 18 age
+// Check is every our employee older than 18 age
 const isEveryEmployeeYoung = employees.every(isAdult); // true
 ```
 
@@ -206,10 +206,10 @@ The `.some()` method checks that at least one item in your array matches some cr
 
 ```js
 
-const isAdult = (employe) => employe.age > 18;
+const isAdult = (employee) => employee.age > 18;
 
-// Check is every our employe older than 18 age
-const isEveryEmployeeYoung = employees.every(isAdult); // true
+// Check if at least one employee is older than 18
+const isSomeEmployeeAdult = employees.some(isAdult); // true
 ```
 
 #### Check if at least one item includes in your array
@@ -230,8 +230,8 @@ The `.forEach()` method executes a provided function once for each array element
 It doesn't return a value though. It's useful for side effects.
 
 ```js
-// Print to console name of each employe
-employees.forEach((employe) => console.log(employe.name))
+// Print to console name of each employee
+employees.forEach((employee) => console.log(employee.name))
 ```
 
 ## Conclusion

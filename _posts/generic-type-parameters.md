@@ -107,7 +107,7 @@ interface ApiClient<ResponseData, ErrorType> {
 }
 ```
 
-This is especially valuable in domain - specific code where the generic types have special meaning in your business logic.
+This is especially valuable in domain-specific code where the generic types have special meaning in your business logic.
 
 ## The Repository Pattern Example
 

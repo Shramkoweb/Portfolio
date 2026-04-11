@@ -124,7 +124,7 @@ function PrivacyPolicy() {
           <h3>c) Word List Data:</h3>
           <p>
             The words you add to your list through the Quizlet QuickList
-            Extension are stored locally on your device, using browser&#39;s
+            Extension are stored locally on your device, using the browser&#39;s
             local storage. This data is not accessible to us, and we do not
             share it with any third party. You have full control over your word
             list, and you can delete or modify it at any time.

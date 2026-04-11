@@ -19,7 +19,7 @@ So how to fix it?
 ## Generate a new certificate in Keychain Access
 
 - Open Keychain Access and from the main menu open **Certificate Assistant** then click on **Create a Certificate**
-- Fill out the follow:
+- Fill out the following:
   - Name: PHPStorm-network (can be any)
   - Identity: Self-Signed Root
   - Certificate Type: Code Signing

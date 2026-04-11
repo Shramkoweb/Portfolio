@@ -171,7 +171,7 @@ Let's explore some common words and phrases used within CSS classes following th
 
 You can read important information
 about [difference between absolute and relative URL in HTML](/blog/difference-between-absolute-and-relative-url) because
-junior developers usually makes some errors in navigation blocks.
+junior developers usually make some errors in navigation blocks.
 
 ```html
 

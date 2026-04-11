@@ -10,9 +10,9 @@ featured: false
 
 ## Introduction
 
-<Image src="pnpm-logo.png" alt="pnpm logo on gay background" />
+<Image src="pnpm-logo.png" alt="pnpm logo on gray background" />
 
-I found article from Vercel
+I found an article from Vercel
 about [Projects using pnpm can now be deployed with zero configuration](https://vercel.com/changelog/projects-using-pnpm-can-now-be-deployed-with-zero-configuration)
 and I wanted to try it.
 

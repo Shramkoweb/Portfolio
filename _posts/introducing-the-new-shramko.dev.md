@@ -13,7 +13,7 @@ featured: false
 
 I'm so excited to announce the launch of my brand-new website!
 
-For over 2 month, I worked on a complete rewrite of shramko.dev. I just want to give you an overview of the technologies
+For over 2 months, I worked on a complete rewrite of shramko.dev. I just want to give you an overview of the technologies
 and libraries I used to make this site.
 
 ## Overview
@@ -173,7 +173,7 @@ Monitoring is an essential part of development.
 It’s usually one of the first things you’d want to do after setting up an existing project or getting started with a new
 one. Without monitoring, it will be challenging to detect issues in your application or how to resolve them.
 
-> There example of some kind of ["dispatch table" pattern](/blog/dispatch-tables).
+> Here is an example of some kind of ["dispatch table" pattern](/blog/dispatch-tables).
 
 ```tsx
 const { withSentryConfig } = require("@sentry/nextjs");
@@ -212,7 +212,7 @@ Whether you have an existing database or you're starting from scratch, Prisma ha
 When combining Prisma with Next.js, you can skip
 the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) boilerplate
 and directly query the database.
-Less code means less bugs.
+Less code means fewer bugs.
 
 ### Heroku Postgres
 
