@@ -75,32 +75,36 @@ function UdemyResetProgressPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": "Udemy Reset Progress",
-              "description": "A browser extension that lets you reset any Udemy course progress with a single click.",
-              "url": "https://shramko.dev/udemy-reset-progress",
-              "image": UDEMY_RESET_APP_OG_IMAGE,
-              "author": {
-                "@type": "Person",
-                "@id": "https://shramko.dev/#person",
-                "name": "Serhii Shramko",
-                "url": "https://shramko.dev/about"
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'Udemy Reset Progress',
+              description:
+                'A browser extension that lets you reset any Udemy course progress with a single click.',
+              url: 'https://shramko.dev/udemy-reset-progress',
+              image: UDEMY_RESET_APP_OG_IMAGE,
+              author: {
+                '@type': 'Person',
+                '@id': 'https://shramko.dev/#person',
+                name: 'Serhii Shramko',
+                url: 'https://shramko.dev/about',
               },
-              "operatingSystem": "Chrome, Firefox, Edge",
-              "applicationCategory": ["BrowserApplication", "EducationalApplication"],
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "USD",
-                "price": "0.00",
-                "availability": "https://schema.org/InStock",
-                "url": "https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
+              operatingSystem: 'Chrome, Firefox, Edge',
+              applicationCategory: [
+                'BrowserApplication',
+                'EducationalApplication',
+              ],
+              offers: {
+                '@type': 'Offer',
+                priceCurrency: 'USD',
+                price: '0.00',
+                availability: 'https://schema.org/InStock',
+                url: 'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
               },
-              "downloadUrl": [
-                "https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo",
-                "https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
-              ]
-            })
+              downloadUrl: [
+                'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
+                'https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/',
+              ],
+            }),
           }}
         />
       </Head>
@@ -154,7 +158,7 @@ function UdemyResetProgressPage() {
             aria-label="Udemy Reset Progress on Firefox Add-ons"
           >
             <Image
-              className="w-[156px]"
+              className="w-39"
               role="presentation"
               src={firefoxStore}
               alt="Download Udemy Reset Progress for Firefox"
@@ -250,7 +254,7 @@ function UdemyResetProgressPage() {
         <p>
           <strong>Q: Is this extension safe to use?</strong>
           <br />
-          A: Absolutely! It only interacts with Udemy's official interface and
+          A: Absolutely! It only interacts with Udemy&#39;s official interface and
           doesn&#39;t store any data.
         </p>
 

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, ChangeEvent } from 'react';
 import { Search } from 'lucide-react';
 
 import { getPostsMetadata, getPostsCategories } from '@/lib/posts/api';
@@ -54,7 +54,7 @@ function BlogPage(props: BlogPageProps) {
     [isSearching, filteredBlogPosts],
   );
 
-  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   }, []);
 
