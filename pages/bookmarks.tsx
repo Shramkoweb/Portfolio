@@ -19,6 +19,7 @@ interface BookmarkItem {
 interface BookmarkSection {
   id: string;
   title: string;
+  navLabel: string;
   icon: React.ElementType;
   description: string;
   items: BookmarkItem[];
@@ -28,6 +29,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   {
     id: 'books',
     title: 'The Staff Engineer Reading List',
+    navLabel: 'Reading List',
     icon: BookOpen,
     description:
       'I keep lending these out and buying new copies. If someone asks me where to start, I send at least three of these.',
@@ -92,6 +94,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   {
     id: 'engineering-blogs',
     title: 'Engineering Blogs I Actually Read',
+    navLabel: 'Engineering Blogs',
     icon: Newspaper,
     description: 'Blogs I actually open. Everything else is noise.',
     items: [
@@ -142,6 +145,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   {
     id: 'tools',
     title: 'Developer Tools Worth Your Time',
+    navLabel: 'Developer Tools',
     icon: Wrench,
     description:
       'Not a "top 50 tools" listicle. These are the ones I actually have open right now.',
@@ -181,6 +185,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   {
     id: 'ai-tools',
     title: 'AI in My Engineering Workflow',
+    navLabel: 'AI Tools',
     icon: Sparkles,
     description: 'These are in my daily rotation, not a wishlist.',
     items: [
@@ -218,6 +223,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   {
     id: 'learning',
     title: 'Courses That Still Challenge Me',
+    navLabel: 'Courses',
     icon: Lightbulb,
     description:
       'Seven years in and I still take courses. The syllabus just got weirder.',
@@ -263,6 +269,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   {
     id: 'newsletters',
     title: 'Newsletters and Podcasts',
+    navLabel: 'Newsletters & Podcasts',
     icon: Globe,
     description: 'What actually lands in my inbox and earbuds every week.',
     items: [
@@ -301,6 +308,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   {
     id: 'oss-contributions',
     title: 'Open Source Contributions',
+    navLabel: 'Open Source',
     icon: Users,
     description:
       'Translations, mentorship, community. Arctic Code Vault Contributor, 4x Pull Shark.',
@@ -455,7 +463,7 @@ function BookmarksPage() {
                   className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:border-gray-400 hover:text-black dark:border-gray-700 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white"
                 >
                   <section.icon size={14} />
-                  {section.title.split(' ').slice(0, 2).join(' ')}
+                  {section.navLabel}
                 </a>
               </li>
             ))}
