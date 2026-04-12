@@ -9,6 +9,7 @@ export const Routes = {
   Dashboard: () => '/dashboard',
   UdemyResetProgress: () => '/udemy-reset-progress',
   QuizletList: () => '/quizlet-list',
+  Bookmarks: () => '/bookmarks',
   Rebookmark: () => '/rebookmark',
 
   // External links
