@@ -39,17 +39,17 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'Orosz wrote this over four years after leaving Uber. Junior to staff, all in one book. I wish someone handed me this in 2020 instead of me figuring it out the hard way.',
       },
       {
-        title: "The Staff Engineer's Path by Tanya Reilly",
-        url: 'https://www.oreilly.com/library/view/the-staff-engineers/9781098118723/',
-        description:
-          'If Larson is the map, Reilly is the field manual. How to run projects across teams, how to think big-picture, how to actually help people grow. Less inspirational, more useful.',
-      },
-      {
         title:
           'Staff Engineer: Leadership Beyond the Management Track by Will Larson',
         url: 'https://staffeng.com/book',
         description:
           'Before this book, "staff engineer" was just a title to me. Larson made it concrete — what you actually do, how you set direction, why alignment matters. The Stripe and Slack stories helped.',
+      },
+      {
+        title: "The Staff Engineer's Path by Tanya Reilly",
+        url: 'https://www.oreilly.com/library/view/the-staff-engineers/9781098118723/',
+        description:
+          'If Larson is the map, Reilly is the field manual. How to run projects across teams, how to think big-picture, how to actually help people grow. Less inspirational, more useful.',
       },
       {
         title: 'Just Enough Software Architecture by George Fairbanks',
@@ -64,10 +64,16 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'A novel about an IT disaster. Read it in two sittings. DevOps and Theory of Constraints finally clicked for me through the story, not from slides at a conference.',
       },
       {
+        title: 'The Goal by Eliyahu M. Goldratt',
+        url: 'https://www.amazon.com/Goal-Process-Ongoing-Improvement/dp/0884271951',
+        description:
+          'The book Phoenix Project is based on. Manufacturing, not software — but the bottleneck thinking applies everywhere. Read Phoenix Project first, then this to understand the theory underneath.',
+      },
+      {
         title: 'Designing Data-Intensive Applications by Martin Kleppmann',
         url: 'https://dataintensive.net/',
         description:
-          'Frontend engineer reading a distributed systems book — sounds weird, but after this I stopped writing client code that fights the backend. Replication, partitioning, consistency models. Dense but worth it.',
+          'Frontend engineer reading a distributed systems book — sounds weird, but after this I stopped writing client code that fights the backend.',
       },
       {
         title: "You Don't Know JS by Kyle Simpson",
@@ -75,14 +81,19 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
         description:
           'I picked this up around 2021, three years into my career. Thought I knew JS. Was wrong. Closures, prototypes, the event loop — Kyle Simpson explains what actually happens at the engine level.',
       },
+      {
+        title: 'Code by Charles Petzold',
+        url: 'https://www.amazon.com/Code-Language-Computer-Hardware-Software/dp/0137909101',
+        description:
+          'Starts with flashlights and Morse code, ends with you understanding how a CPU works. Pairs well with CS50.',
+      },
     ],
   },
   {
     id: 'engineering-blogs',
     title: 'Engineering Blogs I Actually Read',
     icon: Newspaper,
-    description:
-      'Six blogs I actually open. Everything else is noise.',
+    description: 'Blogs I actually open. Everything else is noise.',
     items: [
       {
         title: 'The Pragmatic Engineer by Gergely Orosz',
@@ -97,28 +108,34 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'Real stories from staff engineers at Stripe, Slack, Dropbox. Not theory — how they actually spend their days.',
       },
       {
-        title: 'Kent C. Dodds Blog',
-        url: 'https://kentcdodds.com/blog',
-        description:
-          'His testing trophy replaced the testing pyramid on my team. He maintains the libraries he writes about, which is rare.',
-      },
-      {
         title: 'web.dev by Google',
         url: 'https://web.dev/',
         description:
           'Where we settle arguments about Core Web Vitals and accessibility at work. Source of truth for web platform stuff.',
       },
       {
-        title: 'Josh W. Comeau Blog',
-        url: 'https://www.joshwcomeau.com/',
+        title: '2ality by Dr. Axel Rauschmayer',
+        url: 'https://2ality.com/',
         description:
-          'Best CSS explanations on the internet. Interactive demos that make flexbox and grid click. I send his stuff to every dev I mentor.',
+          'Deep JS and TC39 proposals explained clearly. When a new ECMAScript feature drops, Axel has the best writeup before anyone else.',
+      },
+      {
+        title: 'Joel on Software',
+        url: 'https://www.joelonsoftware.com/',
+        description:
+          'Joel Spolsky co-founded Stack Overflow and Trello. His old posts on hiring, specs, and the Joel Test aged better than most software books. Still relevant 20 years later.',
       },
       {
         title: 'Smashing Magazine',
         url: 'https://www.smashingmagazine.com/',
         description:
           'Been reading it since I started coding. Long-form front-end articles that go deeper than the average dev.to post.',
+      },
+      {
+        title: 'Josh W. Comeau Blog',
+        url: 'https://www.joshwcomeau.com/',
+        description:
+          'Best CSS explanations on the internet. Interactive demos that make flexbox and grid click. I send his stuff to every dev I mentor.',
       },
     ],
   },
@@ -136,16 +153,28 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'I uninstalled Spotlight, Alfred, and three menu bar apps the day I set this up. Clipboard history alone saves me 20 minutes a day. Pure Love ❤️',
       },
       {
-        title: 'Sentry',
-        url: 'https://sentry.io/',
+        title: 'NotePlan',
+        url: 'https://noteplan.co/',
         description:
-          'Gets wired in on day one of every project. Got burned once shipping without it.',
+          'Daily planner for standups, idea backlog for side projects, and my brag doc for performance reviews. Markdown + calendar + tasks in one app.',
       },
       {
-        title: 'Checkly',
-        url: 'https://www.checklyhq.com/',
+        title: 'PhpStorm',
+        url: 'https://www.jetbrains.com/phpstorm/',
         description:
-          'Runs Playwright checks against shramko.dev on a schedule. I found out my OG images broke from a Checkly alert, not from a user complaint. That is the whole pitch.',
+          'I love WebStorm, but PhpStorm gives me built-in database tools like DataGrip. One IDE for code and DB queries. Worth it for that alone.',
+      },
+      {
+        title: 'Cursor',
+        url: 'https://cursor.com/',
+        description:
+          'VS Code fork with AI baked in. I switch between this and PhpStorm depending on the project. Good for quick edits and AI-assisted prototyping.',
+      },
+      {
+        title: 'f.lux',
+        url: 'https://justgetflux.com/',
+        description:
+          'Warms the screen color at night. Small thing, but my eyes stopped hurting after late coding sessions.',
       },
     ],
   },
@@ -165,19 +194,24 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
         title: 'OpenAI Codex',
         url: 'https://openai.com/index/openai-codex/',
         description:
-          'My fallback when Claude tokens run out. GPT 5.3 on Codex Extra High is solid — async tasks, migrations, dependency upgrades. Review the diff and move on.',
+          'My fallback when Claude tokens run out. GPT 5.3 on Codex Extra High is solid.',
       },
       {
         title: 'Claude AI',
         url: 'https://claude.ai/',
         description:
-          'My rubber duck. Architecture decisions, RFC drafts, thinking through tradeoffs before bringing them to the team.',
+          'My rubber duck 🦆. Architecture decisions, RFC drafts, thinking through tradeoffs before bringing them to the team.',
       },
       {
         title: 'Perplexity AI',
         url: 'https://www.perplexity.ai/',
+        description: 'Replaced Google for technical and daily searches.',
+      },
+      {
+        title: 'LMArena Leaderboard',
+        url: 'https://arena.ai/leaderboard',
         description:
-          'Replaced Google for technical searches. Finds actual docs instead of SEO spam.',
+          'How I pick which model to use. Blind Elo rankings from real users, not marketing benchmarks.',
       },
     ],
   },
@@ -186,7 +220,7 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
     title: 'Courses That Still Challenge Me',
     icon: Lightbulb,
     description:
-      'Seven years in and I still take courses. The difference is what I pick now.',
+      'Seven years in and I still take courses. The syllabus just got weirder.',
     items: [
       {
         title: 'CS50: Introduction to Computer Science — Harvard',
@@ -195,10 +229,22 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'Took this years into my career. Filled gaps in algorithms and memory that self-teaching left. Malan is the best lecturer I have seen.',
       },
       {
+        title: 'Frontend Masters',
+        url: 'https://frontendmasters.com/',
+        description:
+          'My go-to when I need to go deep on one thing. Their TypeScript and system design workshops are particularly good.',
+      },
+      {
         title: 'Boot.dev — Backend Development Courses',
-        url: 'https://www.boot.dev/',
+        url: 'https://www.boot.dev/?bannerlord=shramko',
         description:
           'Go, Python, algorithms, distributed systems. I use it to get outside my frontend bubble. Helps me talk to backend engineers without guessing.',
+      },
+      {
+        title: 'iximiuz Labs',
+        url: 'https://labs.iximiuz.com/',
+        description:
+          'Hands-on container, networking, and Linux labs. The kind of infra knowledge that makes you dangerous in a good way during incident calls.',
       },
       {
         title: 'Total TypeScript by Matt Pocock',
@@ -211,12 +257,6 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
         url: 'https://testingjavascript.com/',
         description:
           'Built our testing culture at MacPaw around this. Static analysis through E2E. I still link it when onboarding new people.',
-      },
-      {
-        title: 'Frontend Masters',
-        url: 'https://frontendmasters.com/',
-        description:
-          'My go-to when I need to go deep on one thing. Their TypeScript and system design workshops are particularly good.',
       },
     ],
   },
@@ -233,18 +273,6 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'Gergely Orosz on big tech culture, comp, and hiring. I read this before making career decisions.',
       },
       {
-        title: 'JavaScript Weekly',
-        url: 'https://javascriptweekly.com/',
-        description:
-          'Every Friday. Best JS roundup out there. Subscribed since 2019, still open every issue. Some of my posts ended up here too.',
-      },
-      {
-        title: 'Bytes.dev',
-        url: 'https://bytes.dev/',
-        description:
-          'JS newsletter that is actually fun to read. Twice a week, never boring.',
-      },
-      {
         title: 'React Status',
         url: 'https://react.statuscode.com/',
         description:
@@ -257,10 +285,16 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'Wes Bos and Scott Tolinski. Good energy, real depth. I listen on the way to the gym.',
       },
       {
-        title: 'The Changelog',
-        url: 'https://changelog.com/',
+        title: 'JavaScript Weekly',
+        url: 'https://javascriptweekly.com/',
         description:
-          'Long interviews with maintainers of tools we all depend on. Context no README gives you.',
+          'Every Friday. Best JS roundup out there. Subscribed since 2019, still open every issue. Some of my posts ended up here too.',
+      },
+      {
+        title: 'Bytes.dev',
+        url: 'https://bytes.dev/',
+        description:
+          'JS newsletter that is actually fun to read. Never boring.',
       },
     ],
   },
@@ -282,12 +316,6 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
         url: 'https://stateofjs.com/en-US',
         description:
           'Official Ukrainian translator for both annual surveys. They shape how the industry tracks adoption — now accessible to Ukrainian devs.',
-      },
-      {
-        title: 'Kottans — Mentorship Program',
-        url: 'https://github.com/kottans',
-        description:
-          'Mentored 30+ devs. Code reviews on GitHub, 1-on-1 calls, curriculum work. Open source education for Ukrainian developers.',
       },
     ],
   },
