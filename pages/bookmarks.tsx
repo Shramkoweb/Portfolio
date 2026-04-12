@@ -321,6 +321,8 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
   },
 ];
 
+let position = 0;
+
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -330,11 +332,17 @@ const JSON_LD = {
   description:
     'Curated developer bookmarks from a senior software engineer: open source projects, staff-level engineering books, programming blogs, developer tools, and learning resources.',
   inLanguage: 'en',
+  datePublished: '2026-04-12',
+  dateModified: '2026-04-12',
   author: {
     '@type': 'Person',
     '@id': 'https://shramko.dev/#person',
     name: 'Serhii Shramko',
     url: 'https://shramko.dev/about',
+  },
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': 'https://shramko.dev/#website',
   },
   breadcrumb: {
     '@type': 'BreadcrumbList',
@@ -353,14 +361,23 @@ const JSON_LD = {
       },
     ],
   },
-  hasPart: BOOKMARK_SECTIONS.flatMap((section) =>
-    section.items.map((item) => ({
-      '@type': 'WebPage',
-      name: item.title,
-      url: item.url,
-      description: item.description,
-    })),
-  ),
+  mainEntity: {
+    '@type': 'ItemList',
+    name: 'Developer Bookmarks',
+    numberOfItems: BOOKMARK_SECTIONS.reduce(
+      (sum, s) => sum + s.items.length,
+      0,
+    ),
+    itemListElement: BOOKMARK_SECTIONS.flatMap((section) =>
+      section.items.map((item) => ({
+        '@type': 'ListItem',
+        position: ++position,
+        name: item.title,
+        url: item.url,
+        description: item.description,
+      })),
+    ),
+  },
 };
 
 function BookmarksPage() {
