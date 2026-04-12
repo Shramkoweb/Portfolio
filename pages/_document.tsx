@@ -2,7 +2,11 @@ import { Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang="en" data-release={process.env.APP_RELEASE_VERSION}>
+    <Html
+      lang="en"
+      data-release={process.env.APP_RELEASE_VERSION}
+      data-scroll-behavior="smooth"
+    >
       <Head>
         <link rel="preconnect" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
