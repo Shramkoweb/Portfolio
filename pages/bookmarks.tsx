@@ -473,8 +473,11 @@ function BookmarksPage() {
         <div className="w-full space-y-12">
           {BOOKMARK_SECTIONS.map((section) => (
             <section key={section.id} id={section.id}>
-              <h2 className="flex items-center gap-2 text-xl font-bold text-black dark:text-white md:text-2xl">
-                <section.icon size={22} className="text-gray-500" />
+              <h2 className="flex items-start gap-2 text-xl font-bold text-black dark:text-white md:text-2xl md:items-center">
+                <section.icon
+                  size={22}
+                  className="mt-2 md:m-0 shrink-0 text-gray-500"
+                />
                 {section.title}
               </h2>
               <p className="mt-1 mb-6 text-sm text-gray-600 dark:text-gray-400">
