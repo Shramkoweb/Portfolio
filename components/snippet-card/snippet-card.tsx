@@ -15,7 +15,7 @@ export function SnippetCard(props: SnippetCardProps) {
   return (
     <Link
       href={`/snippets/${slug}`}
-      className="flex h-full w-full flex-col justify-between rounded border bg-white p-4 border-grey-200 dark:border-gray-800 dark:bg-gray-900"
+      className="flex h-full w-full flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900"
     >
       <h2 className="text-left text-lg font-medium text-gray-900 dark:text-gray-100">
         {title}
