@@ -29,7 +29,7 @@ export function Header() {
             href={Routes.Resume()}
             download
             title="PDF document. Serhii Shramko - Resume. 105 KB"
-            className="ml-12 hidden rounded-lg border border-gray-200 p-1 transition-colors duration-200 hover:bg-gray-200 sm:px-3 sm:py-2 md:inline-block dark:border-gray-800 dark:hover:bg-gray-800"
+            className="ml-12 hidden rounded-lg border border-gray-200 p-1 transition-[color,background-color,transform] duration-200 hover:bg-gray-200 active:scale-[0.97] sm:px-3 sm:py-2 md:inline-block dark:border-gray-800 dark:hover:bg-gray-800"
           >
             Resume
           </Link>

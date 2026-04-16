@@ -143,9 +143,10 @@ function UdemyResetProgressPage() {
             rel="nofollow noopener"
             href="https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo"
             aria-label="Udemy Reset Progress on Chrome Web Store"
+            className="transition-transform duration-200 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
           >
             <Image
-              className="w-44 border rounded-md"
+              className="w-44 border border-gray-200 dark:border-gray-800 rounded-lg"
               role="presentation"
               alt="Download Udemy Reset Progress for Chrome"
               src={chromeStore}
@@ -156,6 +157,7 @@ function UdemyResetProgressPage() {
             rel="nofollow noopener"
             href="https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/"
             aria-label="Udemy Reset Progress on Firefox Add-ons"
+            className="transition-transform duration-200 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
           >
             <Image
               className="w-39"
