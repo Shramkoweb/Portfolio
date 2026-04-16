@@ -37,7 +37,7 @@ export function PostReaction() {
   });
 
   return (
-    <div className="flex flex-col p-6 sm:p-8 border border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900 rounded-md w-full mt-16">
+    <div className="flex flex-col p-6 sm:p-8 border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 rounded-lg w-full mt-16">
       <div className={wrapperClassName}>
         <div className="flex items-center">
           <div className="flex flex-col">
@@ -58,7 +58,7 @@ export function PostReaction() {
             <li>
               <button
                 onClick={handleYesClick}
-                className="w-[100px] border text-black dark:text-white border-gray-300 dark:border-gray-700 p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+                className="w-[100px] border text-black dark:text-white border-gray-200 dark:border-gray-800 p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 active:scale-[0.97]"
                 type="button"
               >
                 Yes
@@ -67,7 +67,7 @@ export function PostReaction() {
             <li>
               <button
                 onClick={handleNoClick}
-                className="w-[100px] border text-black dark:text-white border-gray-400 dark:border-gray-700  p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+                className="w-[100px] border text-black dark:text-white border-gray-200 dark:border-gray-800 p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 active:scale-[0.97]"
                 type="button"
               >
                 No

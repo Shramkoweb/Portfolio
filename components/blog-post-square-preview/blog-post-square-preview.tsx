@@ -23,7 +23,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
       key={slug}
       href={`/blog/${slug}`}
       className={clsx(
-        'w-full transform hover:scale-[1.025] transition-all rounded-xl bg-gradient-to-r p-1',
+        'w-full hover:scale-[1.02] transition-transform duration-200 ease-out-expo rounded-lg bg-linear-to-r p-1 active:scale-[0.98]',
         classNames,
       )}
     >
