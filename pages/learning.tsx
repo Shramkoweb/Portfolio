@@ -112,6 +112,7 @@ const LEARNING_ITEMS: LearningItem[] = [
   },
   {
     title: 'Full Stack Fundamentals',
+    url: 'https://frontendmasters.com/courses/fullstack-v3/',
   },
   {
     title: 'Pure React',
@@ -135,74 +136,92 @@ const LEARNING_ITEMS: LearningItem[] = [
   },
   {
     title: 'Intermediate React Native, v2',
+    url: 'https://frontendmasters.com/courses/intermediate-react-native-v2/',
     author: 'Kadi Kraman',
   },
   {
     title: 'React Native, v3',
+    url: 'https://frontendmasters.com/courses/react-native-v3/',
     author: 'Kadi Kraman',
   },
   {
     title: 'Introduction to Dev Tools, v3',
+    url: 'https://frontendmasters.com/courses/dev-tools/',
     author: 'Jon Kuperman',
   },
   {
     title: 'Intermediate React, v5',
+    url: 'https://frontendmasters.com/courses/intermediate-react-v5/',
     author: 'Brian Holt',
   },
   {
     title: 'Complete Intro to React, v8',
+    url: 'https://frontendmasters.com/courses/complete-react-v8/',
     author: 'Brian Holt',
   },
   {
     title: 'JavaScript: The Hard Parts, v2',
+    url: 'https://frontendmasters.com/courses/javascript-hard-parts-v2/',
     author: 'Will Sentance',
   },
   {
     title: 'Getting a Software Engineering Job, v3',
+    url: 'https://frontendmasters.com/courses/getting-a-job-v3/',
     author: 'Jerome Hardaway',
   },
   {
     title: 'Modern Search Engine Optimization (SEO)',
+    url: 'https://frontendmasters.com/courses/modern-seo/',
     author: 'Mike North',
   },
   {
     title: 'Introduction to Next.js',
+    url: 'https://frontendmasters.com/courses/next-js-v3/',
     author: 'Scott Moss',
   },
   {
     title: 'Tao of React',
+    url: 'https://www.taoofreact.com/',
     author: 'Alex Kondov',
   },
   {
     title: "The Imposter's Handbook, Season 2",
+    url: 'https://bigmachine.io/products/the-imposters-handbook/',
     author: 'Rob Conery',
   },
   {
     title: 'Naming Things',
+    url: 'https://www.namingthings.co/',
     author: 'Tom Benner',
   },
   {
     title: "The Engineer's Survival Guide",
+    url: 'https://www.engineerssurvivalguide.com/',
     author: 'Merih Taze',
   },
   {
     title: 'Domain-Driven Design',
+    url: 'https://www.domainlanguage.com/ddd/',
     author: 'Eric Evans',
   },
   {
     title: 'Building Evolutionary Architectures',
+    url: 'https://evolutionaryarchitecture.com/',
     author: 'Neal Ford',
   },
   {
     title: 'Make',
+    url: 'https://readmake.com/',
     author: 'Pieter Levels',
   },
   {
     title: 'TypeScript in 50 Lessons',
+    url: 'https://typescript-book.com/',
     author: 'Stefan Baumgartner',
   },
   {
     title: 'The SaaS Playbook',
+    url: 'https://saasplaybook.com/',
     author: 'Rob Walling',
   },
   {
@@ -212,10 +231,12 @@ const LEARNING_ITEMS: LearningItem[] = [
   },
   {
     title: 'Software Engineering at Google',
+    url: 'https://abseil.io/resources/swe-book',
     author: 'Titus Winters et al.',
   },
   {
     title: 'Designing Data-Intensive Applications',
+    url: 'https://dataintensive.net/',
     author: 'Martin Kleppmann',
   },
 ];
@@ -257,7 +278,7 @@ function LearningPage() {
         </h1>
         <div className="mb-8">
           <p className="text-gray-600 dark:text-gray-400">
-            Books, courses and projects I have learned from
+            Books, courses and projects I have learned from. WORK IN PROGRESS 🤣
           </p>
         </div>
 
