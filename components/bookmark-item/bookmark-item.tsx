@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export interface BookmarkItemProps {
   title: string;
@@ -22,7 +22,7 @@ export function BookmarkItem(props: BookmarkItemProps) {
             {title}
           </h3>
           {url && (
-            <ExternalLink
+            <ArrowUpRight
               aria-hidden="true"
               className="ml-1 h-4 w-4 shrink-0 text-gray-400"
             />

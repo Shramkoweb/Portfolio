@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface DashboardCardProps {
   header: string;
@@ -20,7 +20,7 @@ export function DashboardCard(props: DashboardCardProps) {
       <div className="w-full rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
         <div className="flex items-center text-gray-900 dark:text-gray-100">
           {header}
-          {link && <ExternalLink aria-hidden="true" className="ml-1 h-4 w-4" />}
+          {link && <ArrowUpRight aria-hidden="true" className="ml-1 h-4 w-4" />}
         </div>
         <span className="mt-2 text-3xl font-bold text-black spacing-sm dark:text-white">
           {metric?.toLocaleString() ?? '---'}
