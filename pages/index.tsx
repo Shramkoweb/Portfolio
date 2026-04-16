@@ -136,12 +136,13 @@ function IndexPage(props: IndexPageProps) {
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl animate-fade-in-up-1">
           Featured Posts
         </h2>
-        <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3 animate-fade-in-up-2">
-          {featuredPosts.map(({ data: { slug, heading } }) => (
+        <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
+          {featuredPosts.map(({ data: { slug, heading } }, index) => (
             <BlogPostSquarePreview
               heading={heading}
               slug={slug}
               classNames={generateGradient(slug)}
+              animationDelay={index + 2}
               key={slug}
             />
           ))}
@@ -156,11 +157,12 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-            {advancedReactPosts.map(({ data: { slug, heading } }) => (
+            {advancedReactPosts.map(({ data: { slug, heading } }, index) => (
               <BlogPostSquarePreview
                 heading={heading}
                 slug={slug}
                 classNames={generateGradient(slug)}
+                animationDelay={index + 1}
                 key={slug}
               />
             ))}
@@ -216,11 +218,12 @@ function IndexPage(props: IndexPageProps) {
           Latest posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {otherPosts.map(({ data: { slug, heading } }) => (
+          {otherPosts.map(({ data: { slug, heading } }, index) => (
             <BlogPostSquarePreview
               heading={heading}
               slug={slug}
               classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+              animationDelay={index + 1}
               key={slug}
             />
           ))}
