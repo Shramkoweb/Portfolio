@@ -14,7 +14,7 @@ function SearchInput(props: SearchInputProps) {
         type="text"
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="pr-10 block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg transition-[border-color,box-shadow] duration-150 dark:border-gray-800 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
+        className="pr-10 block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg transition-[border-color] duration-150 ease-out-expo dark:border-gray-800 dark:bg-gray-800 dark:text-gray-100"
       />
       <Search
         aria-hidden="true"
