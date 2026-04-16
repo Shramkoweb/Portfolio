@@ -202,6 +202,12 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'My fallback when Claude tokens run out. GPT 5.3 on Codex Extra High is solid.',
       },
       {
+        title: 'OpenCode',
+        url: 'https://opencode.ai/',
+        description:
+          'Open-source alternative to Claude Code. I keep it around for when I want to swap models mid-task or just need a lighter CLI. Works well with Qwen and GLM-5 — handy if you want to test cheaper models on real tasks.',
+      },
+      {
         title: 'Claude AI',
         url: 'https://claude.ai/',
         description:
