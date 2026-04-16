@@ -11,7 +11,8 @@ interface TableOfContentProps {
   headings: Heading[];
 }
 
-export function TableOfContent({ headings }: TableOfContentProps) {
+export function TableOfContent(props: TableOfContentProps) {
+  const { headings } = props;
   const [isOpen, setIsOpen] = useState(false);
   if (!headings.length) return null;
 
@@ -19,7 +20,7 @@ export function TableOfContent({ headings }: TableOfContentProps) {
     <nav aria-label="Table of contents">
       <button
         type="button"
-        className="flex items-center gap-2 font-bold text-base focus:outline-none text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        className="flex items-center gap-2 font-semibold text-base text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 ease-out-expo"
         onClick={() => setIsOpen((v) => !v)}
         aria-expanded={isOpen}
         aria-controls="toc-list"
@@ -27,12 +28,12 @@ export function TableOfContent({ headings }: TableOfContentProps) {
         <span>Table of Contents</span>
         <ChevronRight
           aria-hidden="true"
-          className={`transition-transform duration-200 w-4 h-4 ${isOpen ? 'rotate-90' : ''}`}
+          className={`transition-transform duration-200 ease-out-expo w-4 h-4 ${isOpen ? 'rotate-90' : ''}`}
         />
       </button>
       <ul
         id="toc-list"
-        className={`pl-0 transition-all duration-200 ${isOpen ? 'max-h-[60vh] overflow-y-auto' : 'max-h-0 overflow-hidden'}`}
+        className={`pl-0 transition-[max-height,opacity] duration-200 ease-out-expo ${isOpen ? 'max-h-[60vh] overflow-y-auto' : 'max-h-0 overflow-hidden'}`}
         style={{
           opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? 'auto' : 'none',
@@ -45,7 +46,7 @@ export function TableOfContent({ headings }: TableOfContentProps) {
           >
             <a
               href={`#${heading.id}`}
-              className="block py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors text-sm"
+              className="block py-1 text-gray-700 dark:text-gray-300 underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo text-sm"
             >
               {heading.text}
             </a>

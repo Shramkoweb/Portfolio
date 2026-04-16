@@ -2,7 +2,8 @@ interface NoResultsProps {
   searchValue: string;
 }
 
-export function NoResults({ searchValue }: NoResultsProps) {
+export function NoResults(props: NoResultsProps) {
+  const { searchValue } = props;
   return (
     <div className="w-full py-12 text-center">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">

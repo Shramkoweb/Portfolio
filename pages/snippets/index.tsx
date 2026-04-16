@@ -4,7 +4,7 @@ import { sortByBirthtime } from '@/lib/posts/utils';
 
 import { getSnippets } from '@/lib/snippets/api';
 
-import { SnippetCard } from '@/components/snippet-card';
+import { ResourceCard } from '@/components/resource-card';
 
 interface SnippetsPageProps {
   snippets: Snippet[];
@@ -57,13 +57,15 @@ function SnippetsPage(props: SnippetsPageProps) {
         </div>
         <ul className="grid w-full grid-cols-1 gap-4 my-2 mt-4 sm:grid-cols-2">
           {snippets.map(({ data: { heading, slug, createDate } }) => (
-            <li key={heading}>
-              <SnippetCard
-                slug={slug}
-                title={heading}
-                createDate={createDate}
-              />
-            </li>
+            <ResourceCard
+              key={heading}
+              title={heading}
+              url={`/snippets/${slug}`}
+              description={new Date(createDate).toLocaleDateString('en-us', {
+                dateStyle: 'medium',
+                timeZone: 'UTC',
+              })}
+            />
           ))}
         </ul>
       </section>

@@ -10,7 +10,8 @@ const DESCRIPTION =
 const TITLE = 'Serhii Shramko – Developer, writer, creator.';
 const IMAGE = 'https://shramko.dev/static/images/twittersite.png';
 
-export function Layout({ children }: PropsWithChildren) {
+export function Layout(props: PropsWithChildren) {
+  const { children } = props;
   const router = useRouter();
   const currentPath = router.asPath.split('?')[0];
 
@@ -50,7 +51,11 @@ export function Layout({ children }: PropsWithChildren) {
         <meta property="og:image:width" content="1200" key="og:image:width" />
         <meta property="og:image:height" content="630" key="og:image:height" />
         <meta property="og:locale" content="en_US" key="og:locale" />
-        <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter:card"
+        />
         <meta
           name="twitter:creator"
           content="@shramkoweb"
@@ -68,7 +73,8 @@ export function Layout({ children }: PropsWithChildren) {
       <Header />
       <main
         id="skip"
-        className="flex flex-col justify-center bg-gray-50 px-8 dark:bg-gray-900"
+        className="flex flex-col justify-center bg-gray-50 px-8 dark:bg-gray-900 animate-fade-in-up"
+        key={router.asPath}
       >
         {children}
       </main>

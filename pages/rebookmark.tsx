@@ -169,12 +169,12 @@ function RebookmarkPage() {
               placeholder="you@example.com"
               aria-label="Email address"
               required
-              className="flex-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 dark:focus:border-gray-400 dark:focus:ring-gray-400"
+              className="flex-1 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 transition-[border-color] duration-150 ease-out-expo"
             />
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="rounded-md bg-gray-800 dark:bg-gray-200 px-5 py-2 text-sm font-medium text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-300 disabled:opacity-50 transition-colors"
+              className="rounded-lg bg-gray-800 dark:bg-gray-200 px-5 py-2 text-sm font-medium text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-[background-color,transform] duration-200 ease-out-expo active:scale-[0.97]"
             >
               {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
             </button>
@@ -789,12 +789,12 @@ function RebookmarkPage() {
               placeholder="you@example.com"
               aria-label="Email address"
               required
-              className="flex-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 dark:focus:border-gray-400 dark:focus:ring-gray-400"
+              className="flex-1 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 transition-[border-color] duration-150 ease-out-expo"
             />
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="rounded-md bg-gray-800 dark:bg-gray-200 px-5 py-2 text-sm font-medium text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-300 disabled:opacity-50 transition-colors"
+              className="rounded-lg bg-gray-800 dark:bg-gray-200 px-5 py-2 text-sm font-medium text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-[background-color,transform] duration-200 ease-out-expo active:scale-[0.97]"
             >
               {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
             </button>

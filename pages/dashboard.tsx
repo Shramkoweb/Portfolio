@@ -30,14 +30,14 @@ export default function Dashboard() {
         />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white animate-fade-in-up">
           Dashboard
         </h1>
-        <div className="mb-8">
+        <div className="mb-8 animate-fade-in-up-1">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             This is my personal dashboard, built with{' '}
             <a
-              className="text-[#60a5fa] underline"
+              className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
               href="https://nextjs.org/docs/pages/building-your-application/routing/api-routes"
               rel="noopener"
               target="_blank"
@@ -49,16 +49,16 @@ export default function Dashboard() {
             near future.
           </p>
         </div>
-        <h2 className="mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white animate-fade-in-up-2">
           Statistics
         </h2>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full animate-fade-in-up-3">
           <DaysAsSoftwareEngineer />
           <BlogViewsCard />
           <GithubFollowers />
           <GitHubStars />
         </div>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full animate-fade-in-up-4">
           <MonthlyUsers />
         </div>
       </section>

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { Routes } from '@/lib/routes';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CrossIcon, MenuIcon } from '@/components/mobile-menu/icons';
 
@@ -36,9 +36,10 @@ export function MobileMenu() {
   }
 
   useEffect(
-    () => function cleanup() {
-      activatePageScroll();
-    },
+    () =>
+      function cleanup() {
+        activatePageScroll();
+      },
     [],
   );
 
@@ -61,37 +62,37 @@ export function MobileMenu() {
             'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
           )}
         >
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+          <li className="border-b border-gray-200 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             <Link href={Routes.Home()} className="flex w-auto pb-4">
               Home
             </Link>
           </li>
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+          <li className="border-b border-gray-200 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             <Link href={Routes.About()} className="flex w-auto pb-4">
               About
             </Link>
           </li>
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+          <li className="border-b border-gray-200 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             <Link href={Routes.Blog()} className="flex w-auto pb-4">
               Blog
             </Link>
           </li>
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+          <li className="border-b border-gray-200 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             <Link href={Routes.Dashboard()} className="flex w-auto pb-4">
               Dashboard
             </Link>
           </li>
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+          <li className="border-b border-gray-200 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             <Link href={Routes.Snippets()} className="flex w-auto pb-4">
               Snippets
             </Link>
           </li>
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+          <li className="border-b border-gray-200 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             <Link href={Routes.Bookmarks()} className="flex w-auto pb-4">
               Bookmarks
             </Link>
           </li>
-          <li className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+          <li className="border-b border-gray-200 text-sm font-semibold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             <Link
               href={Routes.Resume()}
               download

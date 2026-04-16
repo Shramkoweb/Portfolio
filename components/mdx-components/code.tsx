@@ -6,7 +6,8 @@ interface CodeProps {
   className?: string;
 }
 
-export function Code({ children, className }: CodeProps) {
+export function Code(props: CodeProps) {
+  const { children, className } = props;
   const codeRef = useRef<HTMLPreElement>(null);
   const [copyStatus, setCopyStatus] = useState<'idle' | 'success' | 'error'>(
     'idle',
@@ -45,11 +46,7 @@ export function Code({ children, className }: CodeProps) {
             aria-hidden="true"
           />
         )}
-        <span
-          role="status"
-          aria-live="polite"
-          className="sr-only"
-        >
+        <span role="status" aria-live="polite" className="sr-only">
           {copyStatus === 'success' ? 'Code copied to clipboard' : ''}
         </span>
       </button>

@@ -35,10 +35,7 @@ describe('ViewCounter component', () => {
       render(<ViewCounter slug={slug} />);
     });
 
-    expect(global.fetch).toHaveBeenCalledWith(
-      `/api/views/${slug}`,
-      undefined,
-    );
+    expect(global.fetch).toHaveBeenCalledWith(`/api/views/${slug}`, undefined);
   });
 
   test('Registers view with POST via useEffect', async () => {

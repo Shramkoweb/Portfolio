@@ -25,30 +25,38 @@ const config = {
       "7xl": "5rem",
     },
     extend: {
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.23, 1, 0.32, 1)',
+        'in-out-expo': 'cubic-bezier(0.77, 0, 0.175, 1)',
+      },
       keyframes: {
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         'burst-1': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(-12px, -16px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(-12px, -16px) scale(0.1)', opacity: '0' },
         },
         'burst-2': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(12px, -14px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(12px, -14px) scale(0.1)', opacity: '0' },
         },
         'burst-3': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(-16px, 4px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(-16px, 4px) scale(0.1)', opacity: '0' },
         },
         'burst-4': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(16px, 6px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(16px, 6px) scale(0.1)', opacity: '0' },
         },
         'burst-5': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(-8px, 14px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(-8px, 14px) scale(0.1)', opacity: '0' },
         },
         'burst-6': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(10px, 12px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(10px, 12px) scale(0.1)', opacity: '0' },
         },
         'ring-burst': {
           '0%': { transform: 'scale(0.5)', opacity: '1' },
@@ -61,14 +69,21 @@ const config = {
         },
       },
       animation: {
-        'burst-1': 'burst-1 0.5s ease-out forwards',
-        'burst-2': 'burst-2 0.5s ease-out forwards',
-        'burst-3': 'burst-3 0.5s ease-out forwards',
-        'burst-4': 'burst-4 0.5s ease-out forwards',
-        'burst-5': 'burst-5 0.5s ease-out forwards',
-        'burst-6': 'burst-6 0.5s ease-out forwards',
+        'burst-1': 'burst-1 0.35s ease-out forwards',
+        'burst-2': 'burst-2 0.35s ease-out forwards',
+        'burst-3': 'burst-3 0.35s ease-out forwards',
+        'burst-4': 'burst-4 0.35s ease-out forwards',
+        'burst-5': 'burst-5 0.35s ease-out forwards',
+        'burst-6': 'burst-6 0.35s ease-out forwards',
         'ring-burst': 'ring-burst 0.4s ease-out forwards',
         'bounce-pop': 'bounce-pop 0.3s ease-out',
+        'fade-in-up': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) both',
+        'fade-in-up-1': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 50ms both',
+        'fade-in-up-2': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 100ms both',
+        'fade-in-up-3': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 150ms both',
+        'fade-in-up-4': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 200ms both',
+        'fade-in-up-5': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 250ms both',
+        'fade-in-up-6': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 300ms both',
       },
       colors: {
         gray: {
@@ -89,11 +104,17 @@ const config = {
           css: {
             color: theme("colors.gray.700"),
             a: {
-              color: theme("colors.blue.500"),
+              color: theme("colors.gray.800"),
+              textDecoration: "underline",
+              textDecorationColor: theme("colors.gray.300"),
+              textUnderlineOffset: "3px",
+              textDecorationThickness: "1px",
+              fontWeight: "inherit",
+              transition: "text-decoration-color 150ms cubic-bezier(0.23, 1, 0.32, 1)",
               "&:hover": {
-                color: theme("colors.blue.700"),
+                textDecorationColor: theme("colors.gray.500"),
               },
-              code: { color: theme("colors.blue.400") },
+              code: { color: "inherit" },
             },
             "h2,h3,h4": {
               "scroll-margin-top": spacing[4],
@@ -110,11 +131,16 @@ const config = {
           css: {
             color: theme("colors.gray.200"),
             a: {
-              color: theme("colors.blue.400"),
+              color: theme("colors.gray.100"),
+              textDecorationColor: theme("colors.gray.600"),
+              textDecorationThickness: "1px",
+              textUnderlineOffset: "3px",
+              fontWeight: "inherit",
+              transition: "text-decoration-color 150ms cubic-bezier(0.23, 1, 0.32, 1)",
               "&:hover": {
-                color: theme("colors.blue.600"),
+                textDecorationColor: theme("colors.gray.400"),
               },
-              code: { color: theme("colors.blue.400") },
+              code: { color: "inherit" },
             },
             blockquote: {
               borderLeftColor: theme("colors.gray.700"),

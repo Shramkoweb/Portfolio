@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import {
@@ -23,6 +22,7 @@ import {
 } from '@/lib/scripts/compiler';
 import { Post } from '@/lib/types';
 import { TableOfContent } from '@/components/table-of-content';
+import { Tag } from '@/components/tag';
 import { ViewCounter } from '@/components/view-counter/view-counter';
 import {
   FacebookShare,
@@ -186,15 +186,14 @@ function ArticlePage(props: ArticlePageProps) {
             {heading}
           </h1>
           <TableOfContent headings={headings} />
-          <ul className="text-gray-700 dark:text-gray-300 text-sm flex gap-4 mt-4 mb-4 flex-wrap">
+          <ul className="text-sm flex gap-2 mt-4 mb-4 flex-wrap">
             {categories.map((category) => (
               <li key={category}>
-                <Link
-                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                <Tag
+                  variant="inline"
+                  label={`#${category.toLowerCase()}`}
                   href={`/blog/category/${category.toLowerCase()}`}
-                >
-                  #{category.toLowerCase()}
-                </Link>
+                />
               </li>
             ))}
           </ul>

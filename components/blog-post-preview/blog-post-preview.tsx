@@ -18,16 +18,19 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
   const views = data?.total;
 
   return (
-    <Link href={Routes.BlogPost(slug)}>
-      <div className="font-medium flex flex-col justify-between md:flex-row">
-        <h3 className="mb-2 w-full text-lg text-gray-900 dark:text-gray-100 md:text-xl">
+    <Link
+      href={Routes.BlogPost(slug)}
+      className="group block rounded-lg border border-gray-200 bg-white p-4 transition-[border-color,transform] duration-150 ease-out-expo hover:border-gray-300 active:scale-[0.97] dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
+    >
+      <div className="flex flex-col justify-between gap-1 md:flex-row md:items-start">
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 md:text-lg">
           {heading}
         </h3>
-        <p className="mb-4 w-32 text-left text-gray-500 md:mb-0 md:text-right">
+        <p className="shrink-0 text-sm text-gray-500 dark:text-gray-400 md:text-right">
           {`${views ? views.toLocaleString() : '---'} views`}
         </p>
       </div>
-      <p className="text-gray-600 dark:text-gray-400">{excerpt}</p>
+      <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">{excerpt}</p>
     </Link>
   );
 }

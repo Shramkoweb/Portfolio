@@ -13,9 +13,6 @@ export function DaysAsSoftwareEngineer() {
   const timeString = `${years}y, ${months}m`;
 
   return (
-    <DashboardCard
-      header="Time as Software Engineer"
-      metric={timeString}
-    />
+    <DashboardCard header="Time as Software Engineer" metric={timeString} />
   );
 }

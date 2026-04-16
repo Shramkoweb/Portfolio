@@ -33,14 +33,15 @@ interface FloatingReactionsProps {
   slug: string;
 }
 
-export function FloatingReactions({ slug }: FloatingReactionsProps) {
+export function FloatingReactions(props: FloatingReactionsProps) {
+  const { slug } = props;
   const cacheKey = `/api/reactions/${slug}`;
   const { data } = useSWR<ReactionsResponse>(cacheKey, fetcher);
   const [animating, setAnimating] = useState<ReactionType | null>(null);
 
   const handleReaction = async (type: ReactionType) => {
     setAnimating(type);
-    setTimeout(() => setAnimating(null), 600);
+    setTimeout(() => setAnimating(null), 400);
 
     mutate(
       cacheKey,
@@ -85,7 +86,7 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
             <button
               type="button"
               onClick={() => handleReaction(type)}
-              className="flex items-center justify-center w-[44px] h-[44px] relative group cursor-pointer"
+              className="flex items-center justify-center w-[44px] h-[44px] relative group cursor-pointer hover:scale-110 active:scale-[0.97] transition-transform duration-200 ease-out-expo"
               aria-label={`${label}${count > 0 ? `, ${count} reaction${count !== 1 ? 's' : ''}` : ''}`}
             >
               {/* Burst particles */}
@@ -122,10 +123,9 @@ export function FloatingReactions({ slug }: FloatingReactionsProps) {
                 size={24}
                 strokeWidth={2}
                 className={`
-                  transition-all duration-200
+                  transition-colors duration-200 ease-out-expo
                   ${isAnimating ? `${color} scale-125` : 'text-gray-600 dark:text-gray-400'}
-                  group-hover:scale-125 group-hover:text-gray-900 dark:group-hover:text-gray-100
-                  group-active:scale-95
+                  group-hover:text-gray-900 dark:group-hover:text-gray-100
                 `}
               />
               {count > 0 && (

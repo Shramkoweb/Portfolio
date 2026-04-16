@@ -66,22 +66,24 @@ function IndexPage(props: IndexPageProps) {
       <section className="mx-auto flex max-w-3xl flex-col items-start justify-center border-gray-200 pb-16 dark:border-gray-700">
         <div className="flex flex-col-reverse items-start sm:flex-row">
           <div className="flex flex-col pr-8">
-            <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+            <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl animate-fade-in-up">
               Serhii Shramko
             </h1>
-            <h2 className="mb-4 text-gray-700 dark:text-gray-200">
+            <h2 className="mb-4 text-gray-700 dark:text-gray-200 animate-fade-in-up-1">
               Senior Software Engineer at&ensp;
               <a
                 href="https://betterme.world/"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="underline decoration-gray-400 hover:decoration-gray-600 dark:decoration-gray-500 dark:hover:decoration-gray-300"
+                className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
               >
                 BetterMe
               </a>
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">Hi there 🖐 🇺🇦</p>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600 dark:text-gray-400 animate-fade-in-up-2">
+              Hi there 🖐 🇺🇦
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 animate-fade-in-up-2">
               I am an experienced software engineer with extensive knowledge of
               front-end development, with laser-focus on &ensp;
               <abbr title="A JavaScript library for building user interfaces">
@@ -92,10 +94,13 @@ function IndexPage(props: IndexPageProps) {
             </p>
             <Link
               href="/about"
-              className="mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+              className="group mt-6 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200 animate-fade-in-up-3"
             >
               Read more about me
-              <MoveRight size={24} />
+              <MoveRight
+                size={24}
+                className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
+              />
             </Link>
           </div>
           <div
@@ -128,15 +133,16 @@ function IndexPage(props: IndexPageProps) {
           </div>
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl animate-fade-in-up-1">
           Featured Posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map(({ data: { slug, heading } }) => (
+          {featuredPosts.map(({ data: { slug, heading } }, index) => (
             <BlogPostSquarePreview
               heading={heading}
               slug={slug}
               classNames={generateGradient(slug)}
+              animationDelay={index + 2}
               key={slug}
             />
           ))}
@@ -151,11 +157,12 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-            {advancedReactPosts.map(({ data: { slug, heading } }) => (
+            {advancedReactPosts.map(({ data: { slug, heading } }, index) => (
               <BlogPostSquarePreview
                 heading={heading}
                 slug={slug}
                 classNames={generateGradient(slug)}
+                animationDelay={index + 1}
                 key={slug}
               />
             ))}
@@ -163,10 +170,13 @@ function IndexPage(props: IndexPageProps) {
 
           <Link
             href="/blog/category/advanced-react"
-            className="mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+            className="group mt-6 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
           >
             Read more about React
-            <MoveRight size={24} />
+            <MoveRight
+              size={24}
+              className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
+            />
           </Link>
         </div>
 
@@ -176,26 +186,29 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid gap-8">
-            <Link href={Routes.Rebookmark()} className="w-full">
-              <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-rebookmark dark:text-gray-900">
-                <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+            <Link href={Routes.Rebookmark()} className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]">
+              <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
+                <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                   Rebookmark
                 </h3>
               </div>
             </Link>
 
             <div className="flex flex-col gap-8 md:flex-row">
-              <Link href={Routes.QuizletList()} className="w-full">
-                <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern dark:text-gray-900">
-                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+              <Link href={Routes.QuizletList()} className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]">
+                <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern dark:border-gray-800 dark:text-gray-900">
+                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Quizlet QuickList
                   </h3>
                 </div>
               </Link>
 
-              <Link href={Routes.UdemyResetProgress()} className="w-full">
-                <div className="hover:scale-[1.025] transition-all flex w-full items-center justify-center rounded-lg border-2 border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-waves dark:text-gray-900">
-                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+              <Link
+                href={Routes.UdemyResetProgress()}
+                className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
+              >
+                <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern-waves dark:border-gray-800 dark:text-gray-900">
+                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Udemy Reset Progress
                   </h3>
                 </div>
@@ -208,11 +221,12 @@ function IndexPage(props: IndexPageProps) {
           Latest posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {otherPosts.map(({ data: { slug, heading } }) => (
+          {otherPosts.map(({ data: { slug, heading } }, index) => (
             <BlogPostSquarePreview
               heading={heading}
               slug={slug}
               classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+              animationDelay={index + 1}
               key={slug}
             />
           ))}
@@ -220,10 +234,13 @@ function IndexPage(props: IndexPageProps) {
 
         <Link
           href="/blog"
-          className="mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-all hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+          className="group mt-6 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
         >
           Read more posts
-          <MoveRight size={24} />
+          <MoveRight
+            size={24}
+            className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
+          />
         </Link>
       </section>
     </>

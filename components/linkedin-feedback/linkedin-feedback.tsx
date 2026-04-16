@@ -31,9 +31,7 @@ function LinkedinFeedback(props: Props) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <h3 className='not-prose'>
-                      {feedback.author.name}
-                    </h3>
+                    <h3 className="not-prose">{feedback.author.name}</h3>
                   </a>
                   <p className="m-0 text-gray-700 dark:text-gray-300 text-xs">
                     {`${feedback.author.position} `}
