@@ -94,7 +94,7 @@ function IndexPage(props: IndexPageProps) {
             </p>
             <Link
               href="/about"
-              className="group mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200 animate-fade-in-up-3"
+              className="group mt-6 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200 animate-fade-in-up-3"
             >
               Read more about me
               <MoveRight
@@ -170,7 +170,7 @@ function IndexPage(props: IndexPageProps) {
 
           <Link
             href="/blog/category/advanced-react"
-            className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
+            className="group mt-6 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
           >
             Read more about React
             <MoveRight
@@ -234,7 +234,7 @@ function IndexPage(props: IndexPageProps) {
 
         <Link
           href="/blog"
-          className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
+          className="group mt-6 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
         >
           Read more posts
           <MoveRight
