@@ -4,15 +4,14 @@ export function BookmarkNav(props: BookmarkNavProps) {
   const { sections } = props;
 
   return (
-    <nav aria-label="Bookmark sections" className="mb-8 w-full">
-      <ul className="flex flex-wrap gap-2">
+    <nav aria-label="Bookmark sections" className="mb-10 w-full">
+      <ul className="flex flex-wrap gap-2 text-gray-600 dark:text-gray-400">
         {sections.map((section) => (
           <li key={section.id}>
             <a
               href={`#${section.id}`}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:border-gray-400 hover:text-black dark:border-gray-700 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white"
+              className="inline-block rounded-lg border-2 border-gray-200 px-3 py-2 transition-all hover:scale-105 dark:border-gray-700"
             >
-              <section.icon size={14} />
               {section.navLabel}
             </a>
           </li>
