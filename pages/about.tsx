@@ -115,7 +115,7 @@ function AboutPage() {
             src={about}
             width={1269}
             height={846}
-            sizes="100vw"
+            sizes="(min-width: 768px) 768px, 100vw"
             priority
           />
         </div>
