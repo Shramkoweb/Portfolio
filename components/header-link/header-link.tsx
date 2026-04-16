@@ -7,7 +7,8 @@ interface HeaderLinkProps {
   text: string;
 }
 
-export function HeaderLink({ href, text }: HeaderLinkProps) {
+export function HeaderLink(props: HeaderLinkProps) {
+  const { href, text } = props;
   const router = useRouter();
   const isActive = router.asPath === href;
 

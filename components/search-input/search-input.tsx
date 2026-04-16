@@ -5,10 +5,8 @@ interface SearchInputProps {
   placeholder?: string;
 }
 
-function SearchInput({
-  onChange,
-  placeholder = 'Search articles',
-}: SearchInputProps) {
+function SearchInput(props: SearchInputProps) {
+  const { onChange, placeholder = 'Search articles' } = props;
   return (
     <div className="relative w-full mb-4">
       <input

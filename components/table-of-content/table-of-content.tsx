@@ -11,7 +11,8 @@ interface TableOfContentProps {
   headings: Heading[];
 }
 
-export function TableOfContent({ headings }: TableOfContentProps) {
+export function TableOfContent(props: TableOfContentProps) {
+  const { headings } = props;
   const [isOpen, setIsOpen] = useState(false);
   if (!headings.length) return null;
 

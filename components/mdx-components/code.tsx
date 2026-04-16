@@ -6,7 +6,8 @@ interface CodeProps {
   className?: string;
 }
 
-export function Code({ children, className }: CodeProps) {
+export function Code(props: CodeProps) {
+  const { children, className } = props;
   const codeRef = useRef<HTMLPreElement>(null);
   const [copyStatus, setCopyStatus] = useState<'idle' | 'success' | 'error'>(
     'idle',

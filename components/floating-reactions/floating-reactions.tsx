@@ -33,7 +33,8 @@ interface FloatingReactionsProps {
   slug: string;
 }
 
-export function FloatingReactions({ slug }: FloatingReactionsProps) {
+export function FloatingReactions(props: FloatingReactionsProps) {
+  const { slug } = props;
   const cacheKey = `/api/reactions/${slug}`;
   const { data } = useSWR<ReactionsResponse>(cacheKey, fetcher);
   const [animating, setAnimating] = useState<ReactionType | null>(null);

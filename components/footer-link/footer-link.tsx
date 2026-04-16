@@ -5,11 +5,8 @@ interface FooterLinkProps {
   rel?: string;
 }
 
-export function FooterLink({
-  href,
-  children,
-  rel = 'noopener',
-}: PropsWithChildren<FooterLinkProps>) {
+export function FooterLink(props: PropsWithChildren<FooterLinkProps>) {
+  const { href, children, rel = 'noopener' } = props;
   return (
     <a
       className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"

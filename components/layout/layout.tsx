@@ -10,7 +10,8 @@ const DESCRIPTION =
 const TITLE = 'Serhii Shramko – Developer, writer, creator.';
 const IMAGE = 'https://shramko.dev/static/images/twittersite.png';
 
-export function Layout({ children }: PropsWithChildren) {
+export function Layout(props: PropsWithChildren) {
+  const { children } = props;
   const router = useRouter();
   const currentPath = router.asPath.split('?')[0];
 
