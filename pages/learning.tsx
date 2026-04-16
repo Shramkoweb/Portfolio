@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { GraduationCap, Sparkles } from 'lucide-react';
 
-import { BookmarkNav } from '@/components/bookmark-nav';
+import { Tag } from '@/components/tag';
 import { BookmarkSection } from '@/components/bookmark-section';
 
 interface LearningItem {
@@ -1417,12 +1417,15 @@ function LearningPage() {
           </p>
         </div>
 
-        <BookmarkNav
-          sections={LEARNING_SECTIONS.map((section) => ({
-            id: section.id,
-            navLabel: section.navLabel,
-          }))}
-        />
+        <nav aria-label="Learning sections" className="mb-10 w-full">
+          <ul className="flex flex-wrap gap-2 text-gray-600 dark:text-gray-400">
+            {LEARNING_SECTIONS.map((section) => (
+              <li key={section.id}>
+                <Tag label={section.navLabel} href={`#${section.id}`} />
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="w-full space-y-16">
           {LEARNING_SECTIONS.map((section) => (
