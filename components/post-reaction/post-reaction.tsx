@@ -11,7 +11,7 @@ const responseTextByFeedback = {
   [Feedback.Worthless]: {
     title: 'Sorry to hear that.',
     subtitle:
-      '<a class="underline text-[#3b82f6] hover:text-[#2563eb]" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
+      '<a style="text-decoration: underline; text-decoration-color: #999; text-underline-offset: 2px; text-decoration-thickness: 1px; transition: text-decoration-color 200ms ease" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
   },
   [Feedback.Blank]: {
     title: 'Was this article helpful ?',

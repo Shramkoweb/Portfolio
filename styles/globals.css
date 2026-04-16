@@ -64,7 +64,7 @@ html {
 }
 
 .prose a {
-  @apply transition-all;
+  transition: text-decoration-color 200ms ease;
 }
 
 .prose .anchor:after {
@@ -82,7 +82,7 @@ html {
 }
 
 .prose pre {
-  @apply border border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900;
+  @apply border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900;
 }
 
 .prose code:not([class*='language-']) {
@@ -172,7 +172,7 @@ pre {
 }
 
 .rehype-code-title {
-  @apply px-5 py-2 font-mono text-xs font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-700 dark:bg-gray-800;
+  @apply px-5 py-2 font-mono text-xs font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-800 dark:bg-gray-800;
 }
 
 .rehype-code-title + pre {
@@ -244,7 +244,15 @@ input[type='email'] {
 
 /* Only apply hover transforms on devices with fine pointers */
 @media (hover: hover) and (pointer: fine) {
-  .hover\:-translate-y-0\.5:hover {
-    --tw-translate-y: -0.125rem;
+  .hover\:scale-\[1\.02\]:hover {
+    --tw-scale-x: 1.02;
+    --tw-scale-y: 1.02;
+  }
+}
+
+@media not all and (hover: hover) and (pointer: fine) {
+  .hover\:scale-\[1\.02\]:hover {
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
   }
 }

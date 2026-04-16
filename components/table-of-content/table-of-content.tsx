@@ -46,7 +46,7 @@ export function TableOfContent(props: TableOfContentProps) {
           >
             <a
               href={`#${heading.id}`}
-              className="block py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors duration-200 text-sm"
+              className="block py-1 text-gray-700 dark:text-gray-300 underline decoration-gray-300 decoration-1 underline-offset-2 hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200 text-sm"
             >
               {heading.text}
             </a>

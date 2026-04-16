@@ -190,7 +190,7 @@ function ArticlePage(props: ArticlePageProps) {
             {categories.map((category) => (
               <li key={category}>
                 <Link
-                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
+                  className="underline decoration-gray-300 decoration-1 underline-offset-2 hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200"
                   href={`/blog/category/${category.toLowerCase()}`}
                 >
                   #{category.toLowerCase()}

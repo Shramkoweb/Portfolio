@@ -66,22 +66,24 @@ function IndexPage(props: IndexPageProps) {
       <section className="mx-auto flex max-w-3xl flex-col items-start justify-center border-gray-200 pb-16 dark:border-gray-700">
         <div className="flex flex-col-reverse items-start sm:flex-row">
           <div className="flex flex-col pr-8">
-            <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+            <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl animate-fade-in-up">
               Serhii Shramko
             </h1>
-            <h2 className="mb-4 text-gray-700 dark:text-gray-200">
+            <h2 className="mb-4 text-gray-700 dark:text-gray-200 animate-fade-in-up-1">
               Senior Software Engineer at&ensp;
               <a
                 href="https://betterme.world/"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="underline decoration-gray-400 hover:decoration-gray-600 dark:decoration-gray-500 dark:hover:decoration-gray-300"
+                className="underline decoration-gray-300 decoration-1 underline-offset-2 hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200"
               >
                 BetterMe
               </a>
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">Hi there 🖐 🇺🇦</p>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600 dark:text-gray-400 animate-fade-in-up-2">
+              Hi there 🖐 🇺🇦
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 animate-fade-in-up-2">
               I am an experienced software engineer with extensive knowledge of
               front-end development, with laser-focus on &ensp;
               <abbr title="A JavaScript library for building user interfaces">
@@ -92,10 +94,13 @@ function IndexPage(props: IndexPageProps) {
             </p>
             <Link
               href="/about"
-              className="group mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-colors duration-200 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+              className="group mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200 animate-fade-in-up-3"
             >
               Read more about me
-              <MoveRight size={24} className="transition-transform duration-200 group-hover:translate-x-1" />
+              <MoveRight
+                size={24}
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              />
             </Link>
           </div>
           <div
@@ -109,7 +114,7 @@ function IndexPage(props: IndexPageProps) {
               quality={75}
               width={128}
               height={128}
-              className={clsx('absolute transition-opacity duration-300', {
+              className={clsx('absolute', {
                 'opacity-0': isAvatarHovered,
               })}
               priority
@@ -120,7 +125,7 @@ function IndexPage(props: IndexPageProps) {
               quality={75}
               width={128}
               height={128}
-              className={clsx('absolute transition-opacity duration-300', {
+              className={clsx('absolute', {
                 'opacity-0': !isAvatarHovered,
               })}
               priority
@@ -163,10 +168,13 @@ function IndexPage(props: IndexPageProps) {
 
           <Link
             href="/blog/category/advanced-react"
-            className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-colors duration-200 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+            className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
           >
             Read more about React
-            <MoveRight size={24} className="transition-transform duration-200 group-hover:translate-x-1" />
+            <MoveRight
+              size={24}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
           </Link>
         </div>
 
@@ -177,7 +185,7 @@ function IndexPage(props: IndexPageProps) {
 
           <div className="grid gap-8">
             <Link href={Routes.Rebookmark()} className="w-full">
-              <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.98] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
+              <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                   Rebookmark
                 </h3>
@@ -186,7 +194,7 @@ function IndexPage(props: IndexPageProps) {
 
             <div className="flex flex-col gap-8 md:flex-row">
               <Link href={Routes.QuizletList()} className="w-full">
-                <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.98] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern dark:border-gray-800 dark:text-gray-900">
+                <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern dark:border-gray-800 dark:text-gray-900">
                   <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Quizlet QuickList
                   </h3>
@@ -194,7 +202,7 @@ function IndexPage(props: IndexPageProps) {
               </Link>
 
               <Link href={Routes.UdemyResetProgress()} className="w-full">
-                <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.98] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-waves dark:border-gray-800 dark:text-gray-900">
+                <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-waves dark:border-gray-800 dark:text-gray-900">
                   <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Udemy Reset Progress
                   </h3>
@@ -220,10 +228,13 @@ function IndexPage(props: IndexPageProps) {
 
         <Link
           href="/blog"
-          className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-colors duration-200 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+          className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
         >
           Read more posts
-          <MoveRight size={24} className="transition-transform duration-200 group-hover:translate-x-1" />
+          <MoveRight
+            size={24}
+            className="transition-transform duration-200 group-hover:translate-x-1"
+          />
         </Link>
       </section>
     </>
