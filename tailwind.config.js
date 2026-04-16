@@ -104,12 +104,13 @@ const config = {
           css: {
             color: theme("colors.gray.700"),
             a: {
-              color: "inherit",
+              color: theme("colors.gray.800"),
               textDecoration: "underline",
               textDecorationColor: theme("colors.gray.300"),
-              textUnderlineOffset: "2px",
+              textUnderlineOffset: "3px",
               textDecorationThickness: "1px",
               fontWeight: "inherit",
+              transition: "text-decoration-color 200ms ease",
               "&:hover": {
                 textDecorationColor: theme("colors.gray.500"),
               },
@@ -130,8 +131,12 @@ const config = {
           css: {
             color: theme("colors.gray.200"),
             a: {
-              color: "inherit",
+              color: theme("colors.gray.100"),
               textDecorationColor: theme("colors.gray.600"),
+              textDecorationThickness: "1px",
+              textUnderlineOffset: "3px",
+              fontWeight: "inherit",
+              transition: "text-decoration-color 200ms ease",
               "&:hover": {
                 textDecorationColor: theme("colors.gray.400"),
               },
