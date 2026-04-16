@@ -8,7 +8,7 @@ export interface ResourceCardProps {
 }
 
 const cardClasses =
-  'flex flex-col gap-2 rounded-lg border border-gray-200 bg-white p-4 transition-[shadow,transform] duration-200 ease-out-expo hover:shadow-md hover:shadow-gray-200/50 hover:-translate-y-0.5 active:scale-[0.98] dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20';
+  'flex flex-col gap-2 rounded-lg border border-gray-200 bg-white p-4 transition-[border-color,transform] duration-150 ease-out-expo hover:border-gray-300 active:scale-[0.97] dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700';
 
 function CardContent(props: ResourceCardProps) {
   const { title, url, description } = props;

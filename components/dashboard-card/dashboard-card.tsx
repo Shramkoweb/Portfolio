@@ -17,7 +17,7 @@ export function DashboardCard(props: DashboardCardProps) {
       href={link}
       aria-label={header}
     >
-      <div className="w-full rounded-lg border border-gray-200 bg-white p-4 transition-[shadow,transform] duration-200 ease-out-expo hover:shadow-md hover:shadow-gray-200/50 hover:-translate-y-0.5 active:scale-[0.98] dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20">
+      <div className="w-full rounded-lg border border-gray-200 bg-white p-4 transition-[border-color,transform] duration-150 ease-out-expo hover:border-gray-300 active:scale-[0.97] dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700">
         <div className="flex items-start justify-between gap-3">
           <span className="text-gray-900 dark:text-gray-100">{header}</span>
           {link && (
