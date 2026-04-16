@@ -37,7 +37,7 @@ export default function Dashboard() {
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             This is my personal dashboard, built with{' '}
             <a
-              className="underline decoration-gray-300 decoration-1 underline-offset-2 hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200"
+              className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200"
               href="https://nextjs.org/docs/pages/building-your-application/routing/api-routes"
               rel="noopener"
               target="_blank"

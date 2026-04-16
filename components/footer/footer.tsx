@@ -119,7 +119,7 @@ export function Footer() {
             YEAR_OF_CREATE,
             new Date().getFullYear(),
           )}{' '}
-          <Link href="/about" className="underline decoration-gray-300 decoration-1 underline-offset-2 hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200">Serhii Shramko</Link>
+          <Link href="/about" className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200">Serhii Shramko</Link>
         </small>
       </div>
     </footer>
