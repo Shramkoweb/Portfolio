@@ -27,7 +27,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
         classNames,
       )}
     >
-      <div className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded-lg p-4">
+      <div className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded p-4">
         <div className="flex flex-col md:flex-row justify-between">
           <h3 className="text-lg font-medium mb-6 sm:mb-10 w-full text-gray-900 dark:text-gray-100 tracking-tight">
             {heading}

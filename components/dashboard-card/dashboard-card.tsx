@@ -11,7 +11,7 @@ export function DashboardCard(props: DashboardCardProps) {
 
   return (
     <a
-      className="flex w-full"
+      className="flex w-full rounded-lg"
       target="_blank"
       rel="noopener"
       href={link}
