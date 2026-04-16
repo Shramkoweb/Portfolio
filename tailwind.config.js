@@ -36,27 +36,27 @@ const config = {
         },
         'burst-1': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(-12px, -16px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(-12px, -16px) scale(0.1)', opacity: '0' },
         },
         'burst-2': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(12px, -14px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(12px, -14px) scale(0.1)', opacity: '0' },
         },
         'burst-3': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(-16px, 4px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(-16px, 4px) scale(0.1)', opacity: '0' },
         },
         'burst-4': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(16px, 6px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(16px, 6px) scale(0.1)', opacity: '0' },
         },
         'burst-5': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(-8px, 14px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(-8px, 14px) scale(0.1)', opacity: '0' },
         },
         'burst-6': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-          '100%': { transform: 'translate(10px, 12px) scale(0)', opacity: '0' },
+          '100%': { transform: 'translate(10px, 12px) scale(0.1)', opacity: '0' },
         },
         'ring-burst': {
           '0%': { transform: 'scale(0.5)', opacity: '1' },
@@ -69,12 +69,12 @@ const config = {
         },
       },
       animation: {
-        'burst-1': 'burst-1 0.5s ease-out forwards',
-        'burst-2': 'burst-2 0.5s ease-out forwards',
-        'burst-3': 'burst-3 0.5s ease-out forwards',
-        'burst-4': 'burst-4 0.5s ease-out forwards',
-        'burst-5': 'burst-5 0.5s ease-out forwards',
-        'burst-6': 'burst-6 0.5s ease-out forwards',
+        'burst-1': 'burst-1 0.35s ease-out forwards',
+        'burst-2': 'burst-2 0.35s ease-out forwards',
+        'burst-3': 'burst-3 0.35s ease-out forwards',
+        'burst-4': 'burst-4 0.35s ease-out forwards',
+        'burst-5': 'burst-5 0.35s ease-out forwards',
+        'burst-6': 'burst-6 0.35s ease-out forwards',
         'ring-burst': 'ring-burst 0.4s ease-out forwards',
         'bounce-pop': 'bounce-pop 0.3s ease-out',
         'fade-in-up': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) both',
@@ -110,7 +110,7 @@ const config = {
               textUnderlineOffset: "3px",
               textDecorationThickness: "1px",
               fontWeight: "inherit",
-              transition: "text-decoration-color 200ms ease",
+              transition: "text-decoration-color 150ms cubic-bezier(0.23, 1, 0.32, 1)",
               "&:hover": {
                 textDecorationColor: theme("colors.gray.500"),
               },
@@ -136,7 +136,7 @@ const config = {
               textDecorationThickness: "1px",
               textUnderlineOffset: "3px",
               fontWeight: "inherit",
-              transition: "text-decoration-color 200ms ease",
+              transition: "text-decoration-color 150ms cubic-bezier(0.23, 1, 0.32, 1)",
               "&:hover": {
                 textDecorationColor: theme("colors.gray.400"),
               },

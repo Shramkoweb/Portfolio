@@ -16,7 +16,7 @@ export function Footer() {
             <li>
               <Link
                 href="/"
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 Home
               </Link>
@@ -24,7 +24,7 @@ export function Footer() {
             <li>
               <Link
                 href="/about"
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 About
               </Link>
@@ -32,7 +32,7 @@ export function Footer() {
             <li>
               <Link
                 href="/blog"
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 Blog
               </Link>
@@ -54,7 +54,7 @@ export function Footer() {
                 href="https://github.com/Shramkoweb/Portfolio/issues/new"
                 target="_blank"
                 rel="nofollow noopener"
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 Report an Issue
               </a>
@@ -64,7 +64,7 @@ export function Footer() {
             <li>
               <Link
                 href={Routes.Gear()}
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 My Gear
               </Link>
@@ -72,7 +72,7 @@ export function Footer() {
             <li>
               <Link
                 href="/dashboard"
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 Dashboard
               </Link>
@@ -80,7 +80,7 @@ export function Footer() {
             <li>
               <Link
                 href="/snippets"
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 Snippets
               </Link>
@@ -88,7 +88,7 @@ export function Footer() {
             <li>
               <Link
                 href="/learning"
-                className="text-gray-600 transition-[color,transform] duration-200 hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 Learning
               </Link>
@@ -119,7 +119,7 @@ export function Footer() {
             YEAR_OF_CREATE,
             new Date().getFullYear(),
           )}{' '}
-          <Link href="/about" className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200">Serhii Shramko</Link>
+          <Link href="/about" className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo">Serhii Shramko</Link>
         </small>
       </div>
     </footer>

@@ -75,7 +75,7 @@ function IndexPage(props: IndexPageProps) {
                 href="https://betterme.world/"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-200"
+                className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
               >
                 BetterMe
               </a>
@@ -94,12 +94,12 @@ function IndexPage(props: IndexPageProps) {
             </p>
             <Link
               href="/about"
-              className="group mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200 animate-fade-in-up-3"
+              className="group mt-8 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200 animate-fade-in-up-3"
             >
               Read more about me
               <MoveRight
                 size={24}
-                className="transition-transform duration-200 group-hover:translate-x-1"
+                className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
               />
             </Link>
           </div>
@@ -168,12 +168,12 @@ function IndexPage(props: IndexPageProps) {
 
           <Link
             href="/blog/category/advanced-react"
-            className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
+            className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
           >
             Read more about React
             <MoveRight
               size={24}
-              className="transition-transform duration-200 group-hover:translate-x-1"
+              className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
             />
           </Link>
         </div>
@@ -184,7 +184,7 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid gap-8">
-            <Link href={Routes.Rebookmark()} className="w-full">
+            <Link href={Routes.Rebookmark()} className="w-full rounded-lg">
               <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                   Rebookmark
@@ -193,7 +193,7 @@ function IndexPage(props: IndexPageProps) {
             </Link>
 
             <div className="flex flex-col gap-8 md:flex-row">
-              <Link href={Routes.QuizletList()} className="w-full">
+              <Link href={Routes.QuizletList()} className="w-full rounded-lg">
                 <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern dark:border-gray-800 dark:text-gray-900">
                   <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Quizlet QuickList
@@ -201,7 +201,7 @@ function IndexPage(props: IndexPageProps) {
                 </div>
               </Link>
 
-              <Link href={Routes.UdemyResetProgress()} className="w-full">
+              <Link href={Routes.UdemyResetProgress()} className="w-full rounded-lg">
                 <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-waves dark:border-gray-800 dark:text-gray-900">
                   <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Udemy Reset Progress
@@ -228,12 +228,12 @@ function IndexPage(props: IndexPageProps) {
 
         <Link
           href="/blog"
-          className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
+          className="group mt-8 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
         >
           Read more posts
           <MoveRight
             size={24}
-            className="transition-transform duration-200 group-hover:translate-x-1"
+            className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
           />
         </Link>
       </section>

@@ -37,7 +37,7 @@ function NotFoundPage() {
         </video>
         <Link
           href="/"
-          className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-lg text-black dark:text-white transition-[background-color,transform] duration-200 hover:bg-gray-300 dark:hover:bg-gray-700 active:scale-[0.97]"
+          className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-lg text-black dark:text-white transition-[background-color,transform] duration-200 ease-out-expo hover:bg-gray-300 dark:hover:bg-gray-700 active:scale-[0.97]"
         >
           Home
         </Link>

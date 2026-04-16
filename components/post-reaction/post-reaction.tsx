@@ -11,7 +11,7 @@ const responseTextByFeedback = {
   [Feedback.Worthless]: {
     title: 'Sorry to hear that.',
     subtitle:
-      '<a style="text-decoration: underline; text-decoration-color: #999; text-underline-offset: 2px; text-decoration-thickness: 1px; transition: text-decoration-color 200ms ease" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
+      '<a style="text-decoration: underline; text-decoration-color: #999; text-underline-offset: 3px; text-decoration-thickness: 1px; transition: text-decoration-color 150ms cubic-bezier(0.23, 1, 0.32, 1)" href="mailto:shramko.dev@gmail.com?subject=Improve Article">Get in touch</a> to let me know what I could do better.',
   },
   [Feedback.Blank]: {
     title: 'Was this article helpful ?',
@@ -58,7 +58,7 @@ export function PostReaction() {
             <li>
               <button
                 onClick={handleYesClick}
-                className="w-[100px] border text-black dark:text-white border-gray-200 dark:border-gray-800 p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 active:scale-[0.97]"
+                className="w-[100px] border text-black dark:text-white border-gray-200 dark:border-gray-800 p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-[color,background-color,transform] duration-200 ease-out-expo active:scale-[0.97]"
                 type="button"
               >
                 Yes
@@ -67,7 +67,7 @@ export function PostReaction() {
             <li>
               <button
                 onClick={handleNoClick}
-                className="w-[100px] border text-black dark:text-white border-gray-200 dark:border-gray-800 p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 active:scale-[0.97]"
+                className="w-[100px] border text-black dark:text-white border-gray-200 dark:border-gray-800 p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-[color,background-color,transform] duration-200 ease-out-expo active:scale-[0.97]"
                 type="button"
               >
                 No
