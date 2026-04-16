@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import { BookmarkNav } from '@/components/bookmark-nav';
+import { BookmarkSection } from '@/components/bookmark-section';
 import {
-  Bookmark,
   BookOpen,
   Globe,
   Lightbulb,
@@ -460,61 +461,18 @@ function BookmarksPage() {
           engineering opinions on one page.
         </p>
 
-        <nav aria-label="Bookmark sections" className="mb-8 w-full">
-          <ul className="flex flex-wrap gap-2">
-            {BOOKMARK_SECTIONS.map((section) => (
-              <li key={section.id}>
-                <a
-                  href={`#${section.id}`}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:border-gray-400 hover:text-black dark:border-gray-700 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white"
-                >
-                  <section.icon size={14} />
-                  {section.navLabel}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <BookmarkNav sections={BOOKMARK_SECTIONS} />
 
         <div className="w-full space-y-12">
           {BOOKMARK_SECTIONS.map((section) => (
-            <section key={section.id} id={section.id}>
-              <h2 className="flex items-start gap-2 text-xl font-bold text-black dark:text-white md:text-2xl md:items-center">
-                <section.icon
-                  size={22}
-                  className="mt-2 md:m-0 shrink-0 text-gray-500"
-                />
-                {section.title}
-              </h2>
-              <p className="mt-1 mb-6 text-sm text-gray-600 dark:text-gray-400">
-                {section.description}
-              </p>
-              <ul className="space-y-4">
-                {section.items.map((item) => (
-                  <li key={item.title}>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group block rounded-lg border border-gray-200 p-4 transition-all hover:border-gray-400 hover:shadow-sm dark:border-gray-800 dark:hover:border-gray-600"
-                    >
-                      <div className="flex items-start justify-between gap-2">
-                        <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400">
-                          {item.title}
-                        </h3>
-                        <Bookmark
-                          size={16}
-                          className="mt-1 shrink-0 text-gray-400 transition-colors group-hover:text-blue-500"
-                        />
-                      </div>
-                      <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                        {item.description}
-                      </p>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
+            <BookmarkSection
+              key={section.id}
+              id={section.id}
+              title={section.title}
+              icon={section.icon}
+              description={section.description}
+              items={section.items}
+            />
           ))}
         </div>
       </section>
