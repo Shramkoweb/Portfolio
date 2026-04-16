@@ -85,6 +85,14 @@ export function Footer() {
                 Snippets
               </Link>
             </li>
+            <li>
+              <Link
+                href="/learning"
+                className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              >
+                Learning
+              </Link>
+            </li>
           </ul>
           <ul className="flex flex-col space-y-4">
             <li>
