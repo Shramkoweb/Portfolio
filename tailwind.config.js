@@ -27,6 +27,7 @@ const config = {
     extend: {
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.23, 1, 0.32, 1)',
+        'in-out-expo': 'cubic-bezier(0.77, 0, 0.175, 1)',
       },
       keyframes: {
         'fade-in-up': {
@@ -80,6 +81,9 @@ const config = {
         'fade-in-up-1': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 50ms both',
         'fade-in-up-2': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 100ms both',
         'fade-in-up-3': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 150ms both',
+        'fade-in-up-4': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 200ms both',
+        'fade-in-up-5': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 250ms both',
+        'fade-in-up-6': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 300ms both',
       },
       colors: {
         gray: {
@@ -100,11 +104,16 @@ const config = {
           css: {
             color: theme("colors.gray.700"),
             a: {
-              color: theme("colors.blue.500"),
+              color: "inherit",
+              textDecoration: "underline",
+              textDecorationColor: theme("colors.gray.300"),
+              textUnderlineOffset: "2px",
+              textDecorationThickness: "1px",
+              fontWeight: "inherit",
               "&:hover": {
-                color: theme("colors.blue.700"),
+                textDecorationColor: theme("colors.gray.500"),
               },
-              code: { color: theme("colors.blue.400") },
+              code: { color: "inherit" },
             },
             "h2,h3,h4": {
               "scroll-margin-top": spacing[4],
@@ -121,11 +130,12 @@ const config = {
           css: {
             color: theme("colors.gray.200"),
             a: {
-              color: theme("colors.blue.400"),
+              color: "inherit",
+              textDecorationColor: theme("colors.gray.600"),
               "&:hover": {
-                color: theme("colors.blue.600"),
+                textDecorationColor: theme("colors.gray.400"),
               },
-              code: { color: theme("colors.blue.400") },
+              code: { color: "inherit" },
             },
             blockquote: {
               borderLeftColor: theme("colors.gray.700"),
