@@ -18,7 +18,10 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
   const views = data?.total;
 
   return (
-    <Link href={Routes.BlogPost(slug)}>
+    <Link
+      href={Routes.BlogPost(slug)}
+      className="group block -mx-3 px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+    >
       <div className="font-medium flex flex-col justify-between md:flex-row">
         <h3 className="mb-2 w-full text-lg text-gray-900 dark:text-gray-100 md:text-xl">
           {heading}

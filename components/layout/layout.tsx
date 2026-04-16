@@ -73,7 +73,8 @@ export function Layout(props: PropsWithChildren) {
       <Header />
       <main
         id="skip"
-        className="flex flex-col justify-center bg-gray-50 px-8 dark:bg-gray-900"
+        className="flex flex-col justify-center bg-gray-50 px-8 dark:bg-gray-900 animate-fade-in-up"
+        key={router.asPath}
       >
         {children}
       </main>

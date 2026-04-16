@@ -33,7 +33,7 @@ export function TableOfContent(props: TableOfContentProps) {
       </button>
       <ul
         id="toc-list"
-        className={`pl-0 transition-all duration-200 ${isOpen ? 'max-h-[60vh] overflow-y-auto' : 'max-h-0 overflow-hidden'}`}
+        className={`pl-0 transition-[max-height,opacity] duration-200 ease-out-expo ${isOpen ? 'max-h-[60vh] overflow-y-auto' : 'max-h-0 overflow-hidden'}`}
         style={{
           opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? 'auto' : 'none',
@@ -46,7 +46,7 @@ export function TableOfContent(props: TableOfContentProps) {
           >
             <a
               href={`#${heading.id}`}
-              className="block py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors text-sm"
+              className="block py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors duration-200 text-sm"
             >
               {heading.text}
             </a>

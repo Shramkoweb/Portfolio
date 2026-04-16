@@ -123,7 +123,7 @@ export function FloatingReactions(props: FloatingReactionsProps) {
                 size={24}
                 strokeWidth={2}
                 className={`
-                  transition-all duration-200
+                  transition-[color,transform] duration-200 ease-out-expo
                   ${isAnimating ? `${color} scale-125` : 'text-gray-600 dark:text-gray-400'}
                   group-hover:scale-125 group-hover:text-gray-900 dark:group-hover:text-gray-100
                   group-active:scale-95

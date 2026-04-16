@@ -9,7 +9,7 @@ export function FooterLink(props: PropsWithChildren<FooterLinkProps>) {
   const { href, children, rel = 'noopener' } = props;
   return (
     <a
-      className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+      className="text-gray-600 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
       target="_blank"
       rel={rel}
       href={href}
