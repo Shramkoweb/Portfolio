@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { Routes } from '@/lib/routes';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CrossIcon, MenuIcon } from '@/components/mobile-menu/icons';
 
@@ -36,9 +36,10 @@ export function MobileMenu() {
   }
 
   useEffect(
-    () => function cleanup() {
-      activatePageScroll();
-    },
+    () =>
+      function cleanup() {
+        activatePageScroll();
+      },
     [],
   );
 

@@ -45,11 +45,7 @@ export function Code({ children, className }: CodeProps) {
             aria-hidden="true"
           />
         )}
-        <span
-          role="status"
-          aria-live="polite"
-          className="sr-only"
-        >
+        <span role="status" aria-live="polite" className="sr-only">
           {copyStatus === 'success' ? 'Code copied to clipboard' : ''}
         </span>
       </button>

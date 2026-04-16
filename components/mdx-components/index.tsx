@@ -6,12 +6,13 @@ import { Code } from './code';
 
 function CustomLink(
   props: JSX.IntrinsicAttributes &
-  ClassAttributes<HTMLAnchorElement> &
-  AnchorHTMLAttributes<HTMLAnchorElement>,
+    ClassAttributes<HTMLAnchorElement> &
+    AnchorHTMLAttributes<HTMLAnchorElement>,
 ) {
   const { href, children, className } = props;
-  const isInternalLink = href
-    && (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
+  const isInternalLink =
+    href &&
+    (href.startsWith('/') || href.startsWith('.') || href.startsWith('#'));
   const isItLinkTree = href && href === Routes.LinkTree();
 
   if (isItLinkTree) {
@@ -30,12 +31,7 @@ function CustomLink(
   }
 
   return (
-    <a
-      target="_blank"
-      rel="noopener"
-      href={href}
-      className={className}
-    >
+    <a target="_blank" rel="noopener" href={href} className={className}>
       {children}
     </a>
   );

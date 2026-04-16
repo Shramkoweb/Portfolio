@@ -22,8 +22,12 @@ describe('PostReaction component', () => {
     expect(
       screen.getByRole('heading', { name: 'Thanks for the feedback!' }),
     ).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'Yes' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'No' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: 'Yes' }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: 'No' }),
+    ).not.toBeInTheDocument();
   });
 
   test('clicking "No" shows sorry message and hides buttons', () => {
@@ -35,6 +39,8 @@ describe('PostReaction component', () => {
       screen.getByRole('heading', { name: 'Sorry to hear that.' }),
     ).toBeInTheDocument();
     expect(screen.getByText(/let me know/i)).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'Yes' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: 'Yes' }),
+    ).not.toBeInTheDocument();
   });
 });
