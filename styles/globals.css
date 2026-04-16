@@ -241,3 +241,10 @@ input[type='email'] {
     scroll-behavior: auto !important;
   }
 }
+
+/* Only apply hover transforms on devices with fine pointers */
+@media (hover: hover) and (pointer: fine) {
+  .hover\:-translate-y-0\.5:hover {
+    --tw-translate-y: -0.125rem;
+  }
+}
