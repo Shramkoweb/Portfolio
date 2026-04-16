@@ -4,7 +4,7 @@ import { sortByBirthtime } from '@/lib/posts/utils';
 
 import { getSnippets } from '@/lib/snippets/api';
 
-import { BookmarkItem } from '@/components/bookmark-item';
+import { ResourceCard } from '@/components/resource-card';
 
 interface SnippetsPageProps {
   snippets: Snippet[];
@@ -57,7 +57,7 @@ function SnippetsPage(props: SnippetsPageProps) {
         </div>
         <ul className="grid w-full grid-cols-1 gap-4 my-2 mt-4 sm:grid-cols-2">
           {snippets.map(({ data: { heading, slug, createDate } }) => (
-            <BookmarkItem
+            <ResourceCard
               key={heading}
               title={heading}
               url={`/snippets/${slug}`}

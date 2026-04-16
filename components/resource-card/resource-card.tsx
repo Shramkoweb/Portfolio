@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
-export interface BookmarkItemProps {
+export interface ResourceCardProps {
   title: string;
   url?: string;
   description?: string;
@@ -10,7 +10,7 @@ export interface BookmarkItemProps {
 const cardClasses =
   'flex flex-col gap-2 rounded-lg border border-gray-200 bg-white p-4 transition-shadow duration-200 hover:shadow-md hover:shadow-gray-200/50 dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20';
 
-function CardContent(props: BookmarkItemProps) {
+function CardContent(props: ResourceCardProps) {
   const { title, url, description } = props;
 
   return (
@@ -39,7 +39,7 @@ function isExternalUrl(url: string): boolean {
   return url.startsWith('http://') || url.startsWith('https://');
 }
 
-export function BookmarkItem(props: BookmarkItemProps) {
+export function ResourceCard(props: ResourceCardProps) {
   const { url } = props;
 
   if (url && !isExternalUrl(url)) {

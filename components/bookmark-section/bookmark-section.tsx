@@ -1,13 +1,13 @@
 import { type ElementType } from 'react';
 
-import { BookmarkItem, BookmarkItemProps } from '@/components/bookmark-item';
+import { ResourceCard, ResourceCardProps } from '@/components/resource-card';
 
 export interface BookmarkSectionProps {
   id: string;
   title: string;
   icon: ElementType;
   description?: string;
-  items: BookmarkItemProps[];
+  items: ResourceCardProps[];
 }
 
 export function BookmarkSection(props: BookmarkSectionProps) {
@@ -37,7 +37,12 @@ export function BookmarkSection(props: BookmarkSectionProps) {
 
       <ul className="space-y-3">
         {items.map((item) => (
-          <BookmarkItem key={item.title} {...item} />
+          <ResourceCard
+            key={item.title}
+            title={item.title}
+            url={item.url}
+            description={item.description}
+          />
         ))}
       </ul>
 
