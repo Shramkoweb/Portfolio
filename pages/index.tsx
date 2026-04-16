@@ -186,26 +186,29 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid gap-8">
-            <Link href={Routes.Rebookmark()} className="w-full rounded-lg">
-              <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
-                <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+            <Link href={Routes.Rebookmark()} className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]">
+              <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
+                <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                   Rebookmark
                 </h3>
               </div>
             </Link>
 
             <div className="flex flex-col gap-8 md:flex-row">
-              <Link href={Routes.QuizletList()} className="w-full rounded-lg">
-                <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern dark:border-gray-800 dark:text-gray-900">
-                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+              <Link href={Routes.QuizletList()} className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]">
+                <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern dark:border-gray-800 dark:text-gray-900">
+                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Quizlet QuickList
                   </h3>
                 </div>
               </Link>
 
-              <Link href={Routes.UdemyResetProgress()} className="w-full rounded-lg">
-                <div className="hover:scale-[1.02] transition-transform duration-200 ease-out-expo active:scale-[0.97] flex w-full items-center justify-center rounded-lg border border-gray-200 p-4 text-center text-gray-100 h-75 bg-pattern-waves dark:border-gray-800 dark:text-gray-900">
-                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg p-4 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
+              <Link
+                href={Routes.UdemyResetProgress()}
+                className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
+              >
+                <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern-waves dark:border-gray-800 dark:text-gray-900">
+                  <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Udemy Reset Progress
                   </h3>
                 </div>
