@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import { BookmarkNav } from '@/components/bookmark-nav';
-import { BookmarkSection } from '@/components/bookmark-section';
 import {
   BookOpen,
   Globe,
@@ -10,6 +8,9 @@ import {
   Users,
   Wrench,
 } from 'lucide-react';
+
+import { BookmarkNav } from '@/components/bookmark-nav';
+import { BookmarkSection } from '@/components/bookmark-section';
 
 interface BookmarkItem {
   title: string;
@@ -455,15 +456,22 @@ function BookmarksPage() {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Bookmarks
         </h1>
-        <p className="text-gray-700 dark:text-gray-300 mt-2 mb-8">
-          Books I actually re-read, tools I have open right now, blogs that
-          changed how I write code, and AI tools I use every day. Seven years of
-          engineering opinions on one page.
-        </p>
+        <div className="mb-8">
+          <p className="text-gray-600 dark:text-gray-400">
+            Books I actually re-read, tools I have open right now, blogs that
+            changed how I write code, and AI tools I use every day. Seven years
+            of engineering opinions on one page.
+          </p>
+        </div>
 
-        <BookmarkNav sections={BOOKMARK_SECTIONS} />
+        <BookmarkNav
+          sections={BOOKMARK_SECTIONS.map((section) => ({
+            id: section.id,
+            navLabel: section.navLabel,
+          }))}
+        />
 
-        <div className="w-full space-y-12">
+        <div className="w-full space-y-16">
           {BOOKMARK_SECTIONS.map((section) => (
             <BookmarkSection
               key={section.id}
