@@ -8,6 +8,7 @@ import { filterByHeading, sortByBirthtime, addYearSeparators, isYearSeparator } 
 import { PostMetadata, PostCategory } from '@/lib/types';
 import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
+import { YearSeparator } from '@/components/year-separator';
 
 interface BlogPageProps {
   posts: PostMetadata[];
@@ -141,12 +142,7 @@ function BlogPage(props: BlogPageProps) {
                 if (isYearSeparator(item)) {
                   return (
                     <li key={`year-${item.year}`} className="mb-8">
-                      <div className="flex items-center gap-4">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                          {item.year}
-                        </h3>
-                        <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
-                      </div>
+                      <YearSeparator year={item.year} />
                     </li>
                   );
                 }

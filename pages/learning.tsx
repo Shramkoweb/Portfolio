@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import { GraduationCap, Sparkles } from 'lucide-react';
 
 import { Tag } from '@/components/tag';
-import { BookmarkSection } from '@/components/bookmark-section';
+import { ResourceCard } from '@/components/resource-card';
+import { YearSeparator } from '@/components/year-separator';
 
 interface LearningItem {
   title: string;
@@ -14,20 +14,14 @@ interface LearningItem {
 
 interface LearningSection {
   id: string;
-  title: string;
-  navLabel: string;
-  icon: React.ElementType;
-  description?: string;
+  year: string;
   items: LearningItem[];
 }
 
 const LEARNING_SECTIONS: LearningSection[] = [
   {
     id: '2026',
-    title: '2026',
-    navLabel: '2026',
-    icon: Sparkles,
-    description: 'Current year of learning',
+    year: '2026',
     items: [
       {
         title: 'lisette',
@@ -52,9 +46,7 @@ const LEARNING_SECTIONS: LearningSection[] = [
   },
   {
     id: '2025',
-    title: '2025',
-    navLabel: '2025',
-    icon: GraduationCap,
+    year: '2025',
     items: [
       {
         title: 'From Day Zero to Zero Day',
@@ -141,9 +133,7 @@ const LEARNING_SECTIONS: LearningSection[] = [
   },
   {
     id: '2024',
-    title: '2024',
-    navLabel: '2024',
-    icon: GraduationCap,
+    year: '2024',
     items: [
       {
         title: 'Mastering Postgres',
@@ -234,9 +224,7 @@ const LEARNING_SECTIONS: LearningSection[] = [
   },
   {
     id: '2023',
-    title: '2023',
-    navLabel: '2023',
-    icon: GraduationCap,
+    year: '2023',
     items: [
       {
         title: 'Indexing Beyond the Basics',
@@ -381,9 +369,7 @@ const LEARNING_SECTIONS: LearningSection[] = [
   },
   {
     id: '2022',
-    title: '2022',
-    navLabel: '2022',
-    icon: GraduationCap,
+    year: '2022',
     items: [
       {
         title: 'Computer Networking: A Top-Down Approach',
@@ -529,9 +515,7 @@ const LEARNING_SECTIONS: LearningSection[] = [
   },
   {
     id: '2021',
-    title: '2021',
-    navLabel: '2021',
-    icon: GraduationCap,
+    year: '2021',
     items: [
       {
         title: 'Learning Patterns',
@@ -663,9 +647,7 @@ const LEARNING_SECTIONS: LearningSection[] = [
   },
   {
     id: '2020',
-    title: '2020',
-    navLabel: '2020',
-    icon: GraduationCap,
+    year: '2020',
     items: [
       {
         title: 'Functional Programming in JavaScript',
@@ -1061,9 +1043,7 @@ const LEARNING_SECTIONS: LearningSection[] = [
   },
   {
     id: '2019',
-    title: '2019',
-    navLabel: '2019',
-    icon: GraduationCap,
+    year: '2019',
     items: [
       {
         title: 'JavaScript: The Hard Parts',
@@ -1421,30 +1401,33 @@ function LearningPage() {
           <ul className="flex flex-wrap gap-2 text-gray-600 dark:text-gray-400">
             {LEARNING_SECTIONS.map((section) => (
               <li key={section.id}>
-                <Tag label={section.navLabel} href={`#${section.id}`} />
+                <Tag label={section.year} href={`#${section.id}`} />
               </li>
             ))}
           </ul>
         </nav>
 
-        <div className="w-full space-y-16">
+        <ul className="w-full">
           {LEARNING_SECTIONS.map((section) => (
-            <BookmarkSection
-              key={section.id}
-              id={section.id}
-              title={section.title}
-              icon={section.icon}
-              description={section.description}
-              items={section.items.map((item) => ({
-                title: item.author
-                  ? `${item.title} · ${item.author}`
-                  : item.title,
-                url: item.url,
-                description: item.description || item.date,
-              }))}
-            />
+            <li key={section.id} id={section.id} className="mb-8">
+              <div className="mb-4">
+                <YearSeparator year={section.year} as="h2" />
+              </div>
+              <ul className="space-y-3">
+                {section.items.map((item) => (
+                  <ResourceCard
+                    key={item.title}
+                    title={item.author
+                      ? `${item.title} · ${item.author}`
+                      : item.title}
+                    url={item.url}
+                    description={item.description || item.date}
+                  />
+                ))}
+              </ul>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </>
   );
