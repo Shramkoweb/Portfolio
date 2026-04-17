@@ -30,7 +30,6 @@ import {
   TelegramShare,
   TwitterShare,
 } from '@/components/share-button';
-import { RssLink } from '@/components/rss-link';
 
 const FloatingReactions = dynamic(() =>
   import('@/components/floating-reactions').then(
