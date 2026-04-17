@@ -11,7 +11,7 @@ featured: false
 
 <Image src="my-site.jpeg" priority={true} alt="Screenshot of the redesigned shramko.dev homepage showing dark theme with featured blog posts" />
 
-What started as a two-month rewrite in the summer of 2022 has turned into a nearly four-year engineering project — 930+ commits, 33 blog posts, 41 code snippets, and a full-stack architecture that I keep pushing forward with every new version of the JavaScript ecosystem.
+What started as a two-month rewrite in the summer of 2022 has turned into a nearly four-year engineering project — 940+ commits, 33 blog posts, 41 code snippets, and a full-stack architecture that I keep pushing forward with every new version of the JavaScript ecosystem.
 
 Here is an overview of what powers shramko.dev today.
 
@@ -91,7 +91,6 @@ The services running behind the scenes:
 - [GitHub Actions](https://github.com/features/actions): CI pipeline — lint, test, and Lighthouse workflows
 - [Sentry](https://sentry.io/welcome/): Error tracking and performance monitoring (10% trace sampling) via Next.js instrumentation hooks
 - [Vercel Analytics](https://vercel.com/analytics) + [Speed Insights](https://vercel.com/docs/speed-insights): Real-user metrics
-- [Google Analytics](https://analytics.google.com/): Traffic analytics via Google Tag Manager
 
 ## 🍭 The new look
 
@@ -108,7 +107,7 @@ Every commit triggers a Vercel build and creates either a Production or Preview 
 
 > I have a post about [ESLint with TypeScript](/blog/eslint-with-typescript)
 
-- **Lint** — ESLint 9 (flat config) with `eslint-config-next/typescript` and `core-web-vitals` rulesets
+- **Lint** — [oxlint](https://oxc.rs/docs/guide/usage/linter) for fast, zero-config linting across the entire codebase
 - **Test** — Jest 30 runs the full suite in CI mode
 - **Lighthouse CI** — Three runs per URL (`/`, `/blog`, `/about`) against the preview deploy, with results posted as a sticky PR comment
 
@@ -126,7 +125,7 @@ import remarkGfm from ‘remark-gfm’;
 import rehypeSlug from ‘rehype-slug’;
 import rehypeCodeTitles from ‘rehype-code-titles’;
 import rehypeAutolinkHeadings from ‘rehype-autolink-headings’;
-import rehypePrism from ‘rehype-prism-plus’;
+import rehypeShiki from ‘@shikijs/rehype’;
 
 export const compileMDX = async (content: string) =>
   serialize(content, {
@@ -135,7 +134,16 @@ export const compileMDX = async (content: string) =>
       rehypePlugins: [
         rehypeSlug,
         rehypeCodeTitles,
-        rehypePrism,
+        [
+          rehypeShiki,
+          {
+            themes: {
+              light: ‘github-light’,
+              dark: ‘github-dark’
+            },
+            defaultColor: false
+          }
+        ],
         [
           rehypeAutolinkHeadings,
           {
@@ -162,35 +170,39 @@ import { MDXComponents } from ‘@/components/mdx-components’;
 
 ## Monitoring with Sentry
 
-Sentry is integrated through Next.js instrumentation hooks — a pattern that replaced the older `withSentryConfig` wrapper and gives separate initialization paths for Node.js and Edge runtimes:
+Sentry is wired in through two layers. The server side uses Next.js instrumentation hooks to capture errors and filter out network noise like `ECONNRESET` and `ETIMEDOUT`. Events without a stacktrace are dropped before they leave the server — a simple `beforeSend` guard that keeps the dashboard clean:
 
 ```typescript
 import * as Sentry from ‘@sentry/nextjs’;
 
 export function register() {
-  if (process.env.NEXT_RUNTIME === ‘edge’) {
-    Sentry.init({
-      dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-      sendDefaultPii: true,
-      tracesSampleRate: 0.1,
-    });
-  }
-
-  if (process.env.NEXT_RUNTIME === ‘nodejs’) {
-    Sentry.init({
-      dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-      sendDefaultPii: true,
-      tracesSampleRate: 0.1,
-    });
-  }
+  Sentry.init({
+    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    environment: process.env.NODE_ENV,
+    release: process.env.APP_RELEASE_VERSION,
+    sendDefaultPii: true,
+    tracesSampleRate: 0.1,
+    ignoreErrors: [
+      ‘ECONNRESET’,
+      ‘ECONNREFUSED’,
+      ‘ETIMEDOUT’,
+      ‘UND_ERR_CONNECT_TIMEOUT’,
+    ],
+    beforeSend(event) {
+      if (!event.exception?.values?.some((e) => e.stacktrace)) {
+        return null;
+      }
+      return event;
+    },
+  });
 }
 
 export const onRequestError = Sentry.captureRequestError;
 ```
 
-The client-side instrumentation filters out noise from browser extensions, Safari WebKit quirks, and `ResizeObserver` loops — the kind of false positives that would otherwise drown the real signal.
+The client-side instrumentation filters out a different class of noise — browser extensions, Safari WebKit quirks, `ResizeObserver` loops, and Google Translate proxy URLs — the kind of false positives that would otherwise drown the real signal.
 
-> The Next.js config still uses a ["dispatch table" pattern](/blog/dispatch-tables) to select the right Sentry build options per environment.
+> The Next.js config uses a ["dispatch table" pattern](/blog/dispatch-tables) to select the right Sentry build options per environment, wrapping the config with `withSentryConfig` only in production.
 
 ## Database and Prisma
 
@@ -339,11 +351,11 @@ Since launching, I have also [run an AI-powered SEO audit](/blog/ai-seo-audit) a
 
 The project enforces quality at multiple checkpoints:
 
-- **ESLint 9** with flat config, extending `eslint-config-next/typescript` and `core-web-vitals`
+- **[oxlint](https://oxc.rs/docs/guide/usage/linter)** — a fast, Rust-based linter that replaced ESLint with zero-config setup and 136 rules
 - **Prettier** for consistent formatting (single quotes, trailing commas, 80-char width)
 - **Conventional Commits** enforced by [commitlint](https://commitlint.js.org/) via a `commit-msg` git hook
 - **Pre-push hook** that runs the full linter before code leaves the local machine
-- **Browserslist** targeting Chrome 92+, Edge 92+, Firefox 90+, Safari 15.4+, and iOS 15.4+
+- **Browserslist** set to `baseline widely available`, which targets browsers with broad cross-engine support
 
 ## Acknowledgements
 
