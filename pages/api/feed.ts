@@ -1,10 +1,13 @@
-import { GetServerSidePropsContext } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 import { generateRss } from '@/lib/feed';
 import { getPostsMetadata } from '@/lib/posts/api';
 import { sortByBirthtime } from '@/lib/posts/utils';
 
-export async function getServerSideProps({ res }: GetServerSidePropsContext) {
+export default async function handler(
+  _req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const posts = await getPostsMetadata();
   const sortedPosts = posts.sort(sortByBirthtime);
 
@@ -20,12 +23,5 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
     'Cache-Control',
     'public, s-maxage=3600, stale-while-revalidate=86400',
   );
-  res.write(rss);
-  res.end();
-
-  return { props: {} };
-}
-
-export default function FeedPage() {
-  return null;
+  res.status(200).send(rss);
 }

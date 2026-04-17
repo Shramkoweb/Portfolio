@@ -58,6 +58,14 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'swr'],
   },
+  rewrites: async () => {
+    return [
+      {
+        source: '/feed.xml',
+        destination: '/api/feed',
+      },
+    ];
+  },
   redirects: async () => {
     return [
       {
