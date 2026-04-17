@@ -30,10 +30,6 @@ const config = {
         'in-out-expo': 'cubic-bezier(0.77, 0, 0.175, 1)',
       },
       keyframes: {
-        'fade-in-up': {
-          '0%': { opacity: '0', transform: 'translateY(8px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
         'burst-1': {
           '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
           '100%': { transform: 'translate(-12px, -16px) scale(0.1)', opacity: '0' },
@@ -77,13 +73,6 @@ const config = {
         'burst-6': 'burst-6 0.35s ease-out forwards',
         'ring-burst': 'ring-burst 0.4s ease-out forwards',
         'bounce-pop': 'bounce-pop 0.3s ease-out',
-        'fade-in-up': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) both',
-        'fade-in-up-1': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 50ms both',
-        'fade-in-up-2': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 100ms both',
-        'fade-in-up-3': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 150ms both',
-        'fade-in-up-4': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 200ms both',
-        'fade-in-up-5': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 250ms both',
-        'fade-in-up-6': 'fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) 300ms both',
       },
       colors: {
         gray: {

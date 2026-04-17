@@ -30,10 +30,10 @@ export default function Dashboard() {
         />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white animate-fade-in-up">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Dashboard
         </h1>
-        <div className="mb-8 animate-fade-in-up-1">
+        <div className="mb-8">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             This is my personal dashboard, built with{' '}
             <a
@@ -49,16 +49,16 @@ export default function Dashboard() {
             near future.
           </p>
         </div>
-        <h2 className="mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white animate-fade-in-up-2">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
           Statistics
         </h2>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full animate-fade-in-up-3">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
           <DaysAsSoftwareEngineer />
           <BlogViewsCard />
           <GithubFollowers />
           <GitHubStars />
         </div>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full animate-fade-in-up-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
           <MonthlyUsers />
         </div>
       </section>

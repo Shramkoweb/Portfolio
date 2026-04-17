@@ -66,10 +66,10 @@ function IndexPage(props: IndexPageProps) {
       <section className="mx-auto flex max-w-3xl flex-col items-start justify-center border-gray-200 pb-16 dark:border-gray-700">
         <div className="flex flex-col-reverse items-start sm:flex-row">
           <div className="flex flex-col pr-8">
-            <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl animate-fade-in-up">
+            <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
               Serhii Shramko
             </h1>
-            <h2 className="mb-4 text-gray-700 dark:text-gray-200 animate-fade-in-up-1">
+            <h2 className="mb-4 text-gray-700 dark:text-gray-200">
               Senior Software Engineer at&ensp;
               <a
                 href="https://betterme.world/"
@@ -80,10 +80,10 @@ function IndexPage(props: IndexPageProps) {
                 BetterMe
               </a>
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 animate-fade-in-up-2">
+            <p className="text-gray-600 dark:text-gray-400">
               Hi there 🖐 🇺🇦
             </p>
-            <p className="text-gray-600 dark:text-gray-400 animate-fade-in-up-2">
+            <p className="text-gray-600 dark:text-gray-400">
               I am an experienced software engineer with extensive knowledge of
               front-end development, with laser-focus on &ensp;
               <abbr title="A JavaScript library for building user interfaces">
@@ -94,7 +94,7 @@ function IndexPage(props: IndexPageProps) {
             </p>
             <Link
               href="/about"
-              className="group mt-6 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200 animate-fade-in-up-3"
+              className="group mt-6 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
             >
               Read more about me
               <MoveRight
@@ -133,16 +133,15 @@ function IndexPage(props: IndexPageProps) {
           </div>
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl animate-fade-in-up-1">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
           Featured Posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map(({ data: { slug, heading } }, index) => (
+          {featuredPosts.map(({ data: { slug, heading } }) => (
             <BlogPostSquarePreview
               heading={heading}
               slug={slug}
               classNames={generateGradient(slug)}
-              animationDelay={index + 2}
               key={slug}
             />
           ))}
@@ -157,12 +156,11 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-            {advancedReactPosts.map(({ data: { slug, heading } }, index) => (
+            {advancedReactPosts.map(({ data: { slug, heading } }) => (
               <BlogPostSquarePreview
                 heading={heading}
                 slug={slug}
                 classNames={generateGradient(slug)}
-                animationDelay={index + 1}
                 key={slug}
               />
             ))}
@@ -186,7 +184,10 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid gap-8">
-            <Link href={Routes.Rebookmark()} className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]">
+            <Link
+              href={Routes.Rebookmark()}
+              className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
+            >
               <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                   Rebookmark
@@ -195,7 +196,10 @@ function IndexPage(props: IndexPageProps) {
             </Link>
 
             <div className="flex flex-col gap-8 md:flex-row">
-              <Link href={Routes.QuizletList()} className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]">
+              <Link
+                href={Routes.QuizletList()}
+                className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
+              >
                 <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern dark:border-gray-800 dark:text-gray-900">
                   <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
                     Quizlet QuickList
@@ -221,12 +225,11 @@ function IndexPage(props: IndexPageProps) {
           Latest posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {otherPosts.map(({ data: { slug, heading } }, index) => (
+          {otherPosts.map(({ data: { slug, heading } }) => (
             <BlogPostSquarePreview
               heading={heading}
               slug={slug}
               classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
-              animationDelay={index + 1}
               key={slug}
             />
           ))}

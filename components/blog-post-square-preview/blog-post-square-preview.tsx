@@ -10,18 +10,13 @@ interface BlogPostPreviewProps {
   heading: string;
   slug: string;
   classNames: string;
-  animationDelay?: number;
 }
 
 export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
-  const { heading, slug, classNames, animationDelay } = props;
+  const { heading, slug, classNames } = props;
 
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = data?.total;
-
-  const staggerClass = animationDelay !== undefined
-    ? `animate-fade-in-up-${animationDelay}`
-    : undefined;
 
   return (
     <Link
@@ -30,7 +25,6 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
       className={clsx(
         'w-full rounded-lg bg-linear-to-r p-1 will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]',
         classNames,
-        staggerClass,
       )}
     >
       <div className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded p-4">
