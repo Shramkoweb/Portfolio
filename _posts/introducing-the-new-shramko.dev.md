@@ -11,7 +11,7 @@ featured: false
 
 <Image src="my-site.jpeg" priority={true} alt="Screenshot of the redesigned shramko.dev homepage showing dark theme with featured blog posts" />
 
-What started as a two-month rewrite in the summer of 2022 has turned into a nearly four-year engineering project — 900+ commits, 33 blog posts, 39 code snippets, and a full-stack architecture that I keep pushing forward with every new version of the JavaScript ecosystem.
+What started as a two-month rewrite in the summer of 2022 has turned into a nearly four-year engineering project — 930+ commits, 33 blog posts, 41 code snippets, and a full-stack architecture that I keep pushing forward with every new version of the JavaScript ecosystem.
 
 Here is an overview of what powers shramko.dev today.
 
@@ -73,7 +73,7 @@ The core stack:
 
 - [React 19](https://react.dev/): The UI layer
 - [Next.js 16](https://nextjs.org/): Framework for hybrid static and server rendering (Pages Router)
-- [TypeScript 5.9](https://www.typescriptlang.org): Strict mode, path aliases, ES2022 target
+- [TypeScript 6](https://www.typescriptlang.org): Strict mode, path aliases, ES2022 target
 - [Prisma 7](https://www.prisma.io): Type-safe ORM with the `@prisma/adapter-pg` driver
 - [SWR 2](https://swr.vercel.app/): Stale-while-revalidate data fetching
 - [Jest 30](https://jestjs.io/) + [Testing Library](https://testing-library.com/): Unit and component testing with V8 coverage
@@ -247,58 +247,73 @@ const views = await prisma.views.upsert({
 
 ## Testing
 
-Tests run on every push and every pull request through [GitHub Actions](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/workflows/tests.yml). The suite has grown from 9 test suites and 37 tests in 2022 to 13 suites and 94 tests today, covering components, utilities, content parsing, schema generation, and page rendering.
+Tests run on every push and every pull request through [GitHub Actions](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/workflows/tests.yml). The suite has grown from 9 test suites and 37 tests in 2022 to 23 suites and 158 tests today, covering API routes, components, utilities, content parsing, schema generation, and page rendering.
 
-Current coverage on <time dateTime="2026-04-11">11 April 2026</time>:
+Current coverage on <time dateTime="2026-04-17">17 April 2026</time>:
 
 ```shell
-------------------------------|---------|----------|---------|---------|------------------------------
-File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
-------------------------------|---------|----------|---------|---------|------------------------------
-All files                     |   91.12 |    78.76 |   72.05 |   91.12 |
- components/blog-post-preview |     100 |     37.5 |     100 |     100 |
-  blog-post-preview.tsx       |     100 |    33.33 |     100 |     100 | 18-27
-  index.ts                    |     100 |       40 |     100 |     100 | 1
- components/categories        |     100 |    57.14 |     100 |     100 |
-  categories.tsx              |     100 |      100 |     100 |     100 |
-  index.ts                    |     100 |       40 |     100 |     100 | 1
- components/footer            |     100 |      100 |     100 |     100 |
-  get-copyright.ts            |     100 |      100 |     100 |     100 |
- components/no-results        |      24 |      100 |       0 |      24 |
-  index.ts                    |     100 |      100 |     100 |     100 |
-  no-results.tsx              |   20.83 |      100 |       0 |   20.83 | 6-24
- components/post-reaction     |   99.21 |    73.33 |     100 |   99.21 |
-  index.ts                    |     100 |       40 |     100 |     100 | 1
-  post-reaction.tsx           |     100 |      100 |     100 |     100 |
-  use-feedback-reducer.ts     |   97.82 |    83.33 |     100 |   97.82 | 25
- components/search-input      |     100 |      100 |     100 |     100 |
-  index.ts                    |     100 |      100 |     100 |     100 |
-  search-input.tsx            |     100 |      100 |     100 |     100 |
- components/view-counter      |   88.23 |     62.5 |     100 |   88.23 |
-  index.ts                    |     100 |       40 |     100 |     100 | 1
-  view-counter.tsx            |      88 |    72.72 |     100 |      88 | 20-21,35,41-43
- lib                          |     100 |    97.29 |   48.14 |     100 |
-  constants.ts                |     100 |      100 |     100 |     100 |
-  fetcher.ts                  |     100 |      100 |     100 |     100 |
-  routes.ts                   |     100 |      100 |    7.14 |     100 |
-  schema.ts                   |     100 |    95.23 |     100 |     100 | 70
-  types.ts                    |     100 |      100 |     100 |     100 |
-  utils.ts                    |     100 |      100 |      80 |     100 |
- lib/posts                    |   92.62 |    84.61 |    87.5 |   92.62 |
-  api.ts                      |   89.93 |    73.91 |      75 |   89.93 | 18-19,67-68,109-117,157-159
-  utils.ts                    |     100 |      100 |     100 |     100 |
- lib/scripts                  |      55 |      100 |      50 |      55 |
-  compiler.ts                 |      55 |      100 |      50 |      55 | 9-26
- pages                        |     100 |      100 |     100 |     100 |
-  404.tsx                     |     100 |      100 |     100 |     100 |
- pages/blog                   |   73.36 |     62.5 |      50 |   73.36 |
-  index.tsx                   |   73.36 |     62.5 |      50 |   73.36 | 39,87-92,126,130-138,173-212
-------------------------------|---------|----------|---------|---------|------------------------------
+------------------------------|---------|----------|---------|---------|-------------------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s             
+------------------------------|---------|----------|---------|---------|-------------------------------
+All files                     |   93.28 |    83.26 |   86.17 |   93.28 |                               
+ components/blog-post-preview |     100 |     37.5 |     100 |     100 |                               
+  blog-post-preview.tsx       |     100 |    33.33 |     100 |     100 | 18-30                         
+  index.ts                    |     100 |       40 |     100 |     100 | 1                             
+ components/categories        |     100 |    57.14 |     100 |     100 |                               
+  categories.tsx              |     100 |      100 |     100 |     100 |                               
+  index.ts                    |     100 |       40 |     100 |     100 | 1                             
+ components/footer            |     100 |      100 |     100 |     100 |                               
+  get-copyright.ts            |     100 |      100 |     100 |     100 |                               
+ components/mobile-menu       |     100 |      100 |     100 |     100 |                               
+  icons.tsx                   |     100 |      100 |     100 |     100 |                               
+  mobile-menu.tsx             |     100 |      100 |     100 |     100 |                               
+ components/post-reaction     |   99.21 |    73.33 |     100 |   99.21 |                               
+  index.ts                    |     100 |       40 |     100 |     100 | 1                             
+  post-reaction.tsx           |     100 |      100 |     100 |     100 |                               
+  use-feedback-reducer.ts     |   97.82 |    83.33 |     100 |   97.82 | 25                            
+ components/search-input      |     100 |      100 |     100 |     100 |                               
+  index.ts                    |     100 |      100 |     100 |     100 |                               
+  search-input.tsx            |     100 |      100 |     100 |     100 |                               
+ components/share-button      |     100 |      100 |     100 |     100 |                               
+  share-button.tsx            |     100 |      100 |     100 |     100 |                               
+ components/theme-changer     |   94.73 |    57.14 |     100 |   94.73 |                               
+  index.ts                    |     100 |       40 |     100 |     100 | 1                             
+  theme-changer.tsx           |   94.59 |    66.66 |     100 |   94.59 | 32-33                         
+ components/view-counter      |   88.23 |     62.5 |     100 |   88.23 |                               
+  index.ts                    |     100 |       40 |     100 |     100 | 1                             
+  view-counter.tsx            |      88 |    72.72 |     100 |      88 | 20-21,35,41-43                
+ lib                          |     100 |    98.27 |   75.75 |     100 |                               
+  constants.ts                |     100 |      100 |     100 |     100 |                               
+  feed.ts                     |     100 |      100 |     100 |     100 |                               
+  fetcher.ts                  |     100 |      100 |     100 |     100 |                               
+  github.ts                   |     100 |      100 |     100 |     100 |                               
+  routes.ts                   |     100 |      100 |   53.33 |     100 |                               
+  schema.ts                   |     100 |    95.23 |     100 |     100 | 69                            
+  types.ts                    |     100 |      100 |     100 |     100 |                               
+  utils.ts                    |     100 |      100 |      80 |     100 |                               
+ lib/posts                    |   92.62 |    84.61 |    87.5 |   92.62 |                               
+  api.ts                      |   89.93 |    73.91 |      75 |   89.93 | 18-19,67-68,109-117,157-159   
+  utils.ts                    |     100 |      100 |     100 |     100 |                               
+ lib/scripts                  |      55 |      100 |      50 |      55 |                               
+  compiler.ts                 |      55 |      100 |      50 |      55 | 9-26                          
+ pages                        |     100 |      100 |     100 |     100 |                               
+  404.tsx                     |     100 |      100 |     100 |     100 |                               
+ pages/api                    |   96.63 |     93.1 |     100 |   96.63 |                               
+  dashboard.ts                |    91.3 |    83.33 |     100 |    91.3 | 42-45                         
+  github.ts                   |     100 |      100 |     100 |     100 |                               
+  waitlist.ts                 |     100 |      100 |     100 |     100 |                               
+ pages/api/reactions          |     100 |    93.33 |     100 |     100 |                               
+  [slug].ts                   |     100 |    93.33 |     100 |     100 | 88                            
+ pages/api/views              |     100 |      100 |     100 |     100 |                               
+  [slug].ts                   |     100 |      100 |     100 |     100 |                               
+ pages/blog                   |   73.63 |     62.5 |      50 |   73.63 |                               
+  index.tsx                   |   73.63 |     62.5 |      50 |   73.63 | 46,96-101,138,142-150,178-218 
+------------------------------|---------|----------|---------|---------|-------------------------------
 
-Test Suites: 13 passed, 13 total
-Tests:       94 passed, 94 total
+Test Suites: 23 passed, 23 total
+Tests:       158 passed, 158 total
 Snapshots:   0 total
-Time:        3.645 s
+Time:        1.444 s
 Ran all test suites.
 ```
 
@@ -336,6 +351,6 @@ The project enforces quality at multiple checkpoints:
 
 ## Conclusion
 
-What I have learned building this site over four years would fill a book. The stack has evolved from plain HTML to Next.js 16 with React 19. The database grew from nothing to three Prisma models. The test suite went from 37 tests to 94. And the content — 33 posts, 39 snippets — keeps growing, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
+What I have learned building this site over four years would fill a book. The stack has evolved from plain HTML to Next.js 16 with React 19. The database grew from nothing to three Prisma models. The test suite went from 37 tests to 158. And the content — 33 posts, 41 snippets — keeps growing, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
 
 The project is still developing. You can see open features or suggest new ones [here](https://github.com/Shramkoweb/Portfolio/issues).

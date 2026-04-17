@@ -13,7 +13,10 @@ const config = {
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
     '^@/lib/(.*)$': '<rootDir>/lib/$1',
+    '^lib/prisma$': '<rootDir>/lib/prisma',
+    '\\.(css)$': '<rootDir>/__mocks__/styleMock.js',
   },
+  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transform: {
