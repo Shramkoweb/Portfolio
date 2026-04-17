@@ -1,5 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
+import { SITE_URL } from '@/lib/constants';
+
 export default function Document() {
   return (
     <Html
@@ -16,7 +18,7 @@ export default function Document() {
           rel="alternate"
           type="application/rss+xml"
           title="Serhii Shramko's Blog"
-          href="/feed.xml"
+          href={`${SITE_URL}/feed.xml`}
         />
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />

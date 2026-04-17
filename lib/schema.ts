@@ -1,6 +1,5 @@
 import { BaseFrontmatter, FAQItem } from '@/lib/types';
-
-const SITE_URL = 'https://shramko.dev';
+import { SITE_URL } from '@/lib/constants';
 const AUTHOR_ID = `${SITE_URL}/#person`;
 
 const author = {
