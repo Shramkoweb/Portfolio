@@ -199,8 +199,9 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt="Screenshot showing a webpage with a visible Quizlet QuickList extension on the right side. The extension contains a list of words, including “Emotion,” “About,” etc.” There are buttons to clear the list or copy it."
+          alt=”Screenshot showing a webpage with a visible Quizlet QuickList extension on the right side. The extension contains a list of words, including “Emotion,” “About,” etc.” There are buttons to clear the list or copy it.”
           src={firstImage}
+          sizes=”(min-width: 768px) 768px, 100vw”
           priority
         />
 
@@ -251,8 +252,9 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt="A screenshot of a webpage displaying highlighted text. A context menu is opened, with the option “Add to Quizlet QuickList” highlighted. This indicates the ability to quickly add a selected word to the Quizlet QuickList extension from a webpage."
+          alt=”A screenshot of a webpage displaying highlighted text. A context menu is opened, with the option “Add to Quizlet QuickList” highlighted. This indicates the ability to quickly add a selected word to the Quizlet QuickList extension from a webpage.”
           src={secondImage}
+          sizes=”(min-width: 768px) 768px, 100vw”
         />
 
         <p>
@@ -266,8 +268,9 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt="A screenshot of a browser window showing the “Quizlet QuickList” Web extension. The list is currently empty, with a message that reads “No words added yet.” Below the message, there is an input field labeled “Enter a word,” a “Clear List” button, and a “Copy” button. "
+          alt=”A screenshot of a browser window showing the “Quizlet QuickList” Web extension. The list is currently empty, with a message that reads “No words added yet.” Below the message, there is an input field labeled “Enter a word,” a “Clear List” button, and a “Copy” button. “
           src={thirdImage}
+          sizes=”(min-width: 768px) 768px, 100vw”
         />
 
         <p>
@@ -279,8 +282,9 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt="A screenshot showing the Quizlet flashcard set creation interface. On the left, the user is creating a flashcard set titled “My first flashcard set.” Each flashcard has an English term and its corresponding Spanish definition."
+          alt=”A screenshot showing the Quizlet flashcard set creation interface. On the left, the user is creating a flashcard set titled “My first flashcard set.” Each flashcard has an English term and its corresponding Spanish definition.”
           src={fourthImage}
+          sizes=”(min-width: 768px) 768px, 100vw”
           priority
         />
 

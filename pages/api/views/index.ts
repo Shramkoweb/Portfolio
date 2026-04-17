@@ -1,23 +1,31 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from 'lib/prisma';
 
+export type AllViewsResponse = {
+  views: Record<string, number>;
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: { message: 'Method not allowed' } });
+  }
+
   try {
-    const {
-      _sum: { count },
-    } = await prisma.views.aggregate({
-      _sum: {
-        count: true,
-      },
+    const allViews = await prisma.views.findMany({
+      select: { slug: true, count: true },
     });
 
-    // Cache for 5 minutes, stale-while-revalidate for 10 minutes
-    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+    const views: Record<string, number> = {};
+    for (const row of allViews) {
+      views[row.slug] = Number(row.count);
+    }
 
-    return res.status(200).json({ total: Number(count ?? 0) });
+    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
+
+    return res.status(200).json({ views });
   } catch {
     return res.status(500).json({
       error: {

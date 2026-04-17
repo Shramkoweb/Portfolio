@@ -3,7 +3,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrism from 'rehype-prism-plus';
+import rehypeShiki from '@shikijs/rehype';
 
 export const compileMDX = async (content: string) =>
   serialize(content, {
@@ -12,7 +12,16 @@ export const compileMDX = async (content: string) =>
       rehypePlugins: [
         rehypeSlug,
         rehypeCodeTitles,
-        rehypePrism,
+        [
+          rehypeShiki,
+          {
+            themes: {
+              light: 'github-light',
+              dark: 'github-dark'
+            },
+            defaultColor: false
+          }
+        ],
         [
           rehypeAutolinkHeadings,
           {

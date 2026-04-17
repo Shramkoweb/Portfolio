@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
+import useSWR from 'swr';
 import { Atom, MoveRight } from 'lucide-react';
 
 import { Routes } from '@/lib/routes';
@@ -17,8 +18,10 @@ import {
   sortByBirthtime,
 } from '@/lib/posts/utils';
 import { Post } from '@/lib/types';
+import { fetcher } from '@/lib/fetcher';
 
 import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
+import type { AllViewsResponse } from '@/pages/api/views';
 
 import smile from 'public/static/images/smile.webp';
 import tongue from 'public/static/images/tongue.webp';
@@ -31,6 +34,9 @@ interface IndexPageProps {
 
 function IndexPage(props: IndexPageProps) {
   const { featuredPosts, otherPosts, advancedReactPosts } = props;
+
+  const { data: viewsData } = useSWR<AllViewsResponse>('/api/views', fetcher);
+  const allViews = viewsData?.views;
 
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
 
@@ -117,6 +123,7 @@ function IndexPage(props: IndexPageProps) {
               className={clsx('absolute', {
                 'opacity-0': isAvatarHovered,
               })}
+              sizes="128px"
               priority
             />
             <Image
@@ -128,6 +135,7 @@ function IndexPage(props: IndexPageProps) {
               className={clsx('absolute', {
                 'opacity-0': !isAvatarHovered,
               })}
+              sizes="128px"
               priority
             />
           </div>
@@ -142,6 +150,7 @@ function IndexPage(props: IndexPageProps) {
               heading={heading}
               slug={slug}
               classNames={generateGradient(slug)}
+              views={allViews?.[slug]}
               key={slug}
             />
           ))}
@@ -161,6 +170,7 @@ function IndexPage(props: IndexPageProps) {
                 heading={heading}
                 slug={slug}
                 classNames={generateGradient(slug)}
+                views={allViews?.[slug]}
                 key={slug}
               />
             ))}
@@ -186,7 +196,7 @@ function IndexPage(props: IndexPageProps) {
           <div className="grid gap-8">
             <Link
               href={Routes.Rebookmark()}
-              className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
+              className="w-full rounded-lg transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
             >
               <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern-rebookmark dark:border-gray-800 dark:text-gray-900">
                 <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
@@ -198,7 +208,7 @@ function IndexPage(props: IndexPageProps) {
             <div className="flex flex-col gap-8 md:flex-row">
               <Link
                 href={Routes.QuizletList()}
-                className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
+                className="w-full rounded-lg transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
               >
                 <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern dark:border-gray-800 dark:text-gray-900">
                   <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
@@ -209,7 +219,7 @@ function IndexPage(props: IndexPageProps) {
 
               <Link
                 href={Routes.UdemyResetProgress()}
-                className="w-full rounded-lg will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
+                className="w-full rounded-lg transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
               >
                 <div className="flex w-full items-end justify-start rounded-lg border border-gray-200 p-6 text-gray-100 h-48 md:h-64 bg-pattern-waves dark:border-gray-800 dark:text-gray-900">
                   <h3 className="bg-gray-800 m-0 w-fit rounded-lg px-4 py-2 text-lg font-medium tracking-tight dark:text-gray-100 md:text-lg">
@@ -230,6 +240,7 @@ function IndexPage(props: IndexPageProps) {
               heading={heading}
               slug={slug}
               classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+              views={allViews?.[slug]}
               key={slug}
             />
           ))}

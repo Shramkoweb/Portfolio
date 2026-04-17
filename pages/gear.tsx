@@ -38,7 +38,7 @@ function GearPage() {
             src={gear}
             width={1000}
             height={667}
-            sizes="100vw"
+            sizes="(min-width: 768px) 768px, 100vw"
             priority
           />
         </div>

@@ -134,7 +134,7 @@ const sentryBuildOptions = {
 const nextConfigByEnv = {
   production: withSentryConfig(nextConfig, sentryBuildOptions),
   test: nextConfig,
-  development: withSentryConfig(nextConfig, sentryBuildOptions),
+  development: nextConfig,
 };
 
 export default nextConfigByEnv[process.env.NODE_ENV];

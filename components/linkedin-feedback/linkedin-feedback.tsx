@@ -18,8 +18,9 @@ function LinkedinFeedback(props: Props) {
             <blockquote className="p-0 m-0 border-0">
               <cite className="flex">
                 <Image
-                  width={100}
-                  height={100}
+                  width={64}
+                  height={64}
+                  sizes="64px"
                   className="m-0 w-16 h-16 rounded-lg"
                   src={feedback.author.avatar}
                   alt={`${feedback.author.name} avatar`}

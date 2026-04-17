@@ -1,29 +1,23 @@
 import Link from 'next/link';
 import clsx from 'clsx';
-import useSWR from 'swr';
 import { Eye } from 'lucide-react';
-
-import { Views } from '@/lib/types';
-import { fetcher } from '@/lib/fetcher';
 
 interface BlogPostPreviewProps {
   heading: string;
   slug: string;
   classNames: string;
+  views?: number;
 }
 
 export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
-  const { heading, slug, classNames } = props;
-
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  const views = data?.total;
+  const { heading, slug, classNames, views } = props;
 
   return (
     <Link
       key={slug}
       href={`/blog/${slug}`}
       className={clsx(
-        'w-full rounded-lg bg-linear-to-r p-1 will-change-transform transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]',
+        'w-full rounded-lg bg-linear-to-r p-1 transition-transform duration-300 ease-out-expo hover:scale-[1.02] active:scale-[0.97]',
         classNames,
       )}
     >
@@ -36,7 +30,7 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
         <div className="flex items-center text-gray-500 dark:text-gray-400">
           <Eye size={24} aria-hidden="true" />
           <span className="ml-2 align-baseline">
-            {views ? views.toLocaleString() : (
+            {views !== undefined ? views.toLocaleString() : (
               <span className="inline-block h-4 w-10 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
             )}
           </span>

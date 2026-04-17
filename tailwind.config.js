@@ -1,5 +1,4 @@
 import defaultTheme from "tailwindcss/defaultTheme";
-import typography from "@tailwindcss/typography";
 
 const { spacing } = defaultTheme;
 
@@ -173,7 +172,7 @@ const config = {
   variants: {
     typography: ["dark"],
   },
-  plugins: [typography],
+  plugins: [],
 };
 
 export default config;

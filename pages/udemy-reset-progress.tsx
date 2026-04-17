@@ -150,6 +150,7 @@ function UdemyResetProgressPage() {
               role="presentation"
               alt="Download Udemy Reset Progress for Chrome"
               src={chromeStore}
+              sizes="176px"
             />
           </a>
           <a
@@ -164,6 +165,7 @@ function UdemyResetProgressPage() {
               role="presentation"
               src={firefoxStore}
               alt="Download Udemy Reset Progress for Firefox"
+              sizes="156px"
             />
           </a>
         </div>

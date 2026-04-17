@@ -96,16 +96,17 @@ html {
 }
 
 .prose pre {
-  @apply border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900;
+  @apply border border-gray-200 dark:border-gray-800;
 }
 
-.prose code:not([class*='language-']) {
+.prose code:not(pre code) {
   @apply text-gray-800 dark:text-gray-200 px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 font-medium text-nowrap text-[0.9em];
 }
 
 .prose pre code {
-  @apply text-gray-800 dark:text-gray-200 p-0;
+  @apply p-0;
   border: initial;
+  background: transparent;
 }
 
 .prose > :first-child:not(img) {
@@ -122,58 +123,16 @@ html {
   filter: invert(1);
 }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata,
-.token.punctuation {
-  @apply text-gray-700 dark:text-gray-300;
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
 }
 
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-  @apply text-green-500;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  @apply text-purple-500;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.token.regex,
-.token.important,
-.token.variable,
-.language-css .token.string,
-.style .token.string {
-  @apply text-yellow-500;
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-  @apply text-blue-500;
-}
-
-.token.function,
-.token.class-name {
-  @apply text-pink-500;
-}
-
-code[class*='language-'],
-pre[class*='language-'] {
-  @apply text-gray-800 dark:text-gray-50;
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
 
 pre::-webkit-scrollbar {
@@ -230,17 +189,14 @@ input[type='email'] {
   --s: 80px;
   --c1: currentColor;
   --c2: #2f2f2f;
-  --_g:
-    var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%, var(--c1) 36% 45%,
-    var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%,
-    #0000 96%;
+  --_g: var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%, var(--c1) 36% 45%,
+  var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%,
+  #0000 96%;
   opacity: 0.6;
-  background:
-    radial-gradient(50% 50% at 100% 0, var(--_g)),
-    radial-gradient(50% 50% at 0 100%, var(--_g)),
-    radial-gradient(50% 50%, var(--_g)),
-    radial-gradient(50% 50%, var(--_g)) calc(var(--s) / 2) calc(var(--s) / 2)
-    var(--c1);
+  background: radial-gradient(50% 50% at 100% 0, var(--_g)),
+  radial-gradient(50% 50% at 0 100%, var(--_g)),
+  radial-gradient(50% 50%, var(--_g)),
+  radial-gradient(50% 50%, var(--_g)) calc(var(--s) / 2) calc(var(--s) / 2) var(--c1);
   background-size: var(--s) var(--s);
 }
 

@@ -3,7 +3,7 @@ jest.mock('remark-gfm', () => jest.fn());
 jest.mock('rehype-slug', () => jest.fn());
 jest.mock('rehype-code-titles', () => jest.fn());
 jest.mock('rehype-autolink-headings', () => jest.fn());
-jest.mock('rehype-prism-plus', () => jest.fn());
+jest.mock('@shikijs/rehype', () => jest.fn());
 
 import { extractHeadingsFromMarkdown } from '@/lib/scripts/compiler';
 
