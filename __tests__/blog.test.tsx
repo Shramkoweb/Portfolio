@@ -54,7 +54,7 @@ describe('Blog Page', () => {
     render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
     const blogPostsLinks = screen.getAllByRole('link');
 
-    expect(blogPostsLinks).toHaveLength(POSTS.length);
+    expect(blogPostsLinks).toHaveLength(POSTS.length + 1);
   });
 
   test('on search correct filtered exist articles', () => {

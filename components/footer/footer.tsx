@@ -37,6 +37,14 @@ export function Footer() {
                 Blog
               </Link>
             </li>
+            <li>
+              <Link
+                href="/feed.xml"
+                className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+              >
+                RSS Feed
+              </Link>
+            </li>
           </ul>
           <ul className="flex flex-col space-y-4">
             <li>

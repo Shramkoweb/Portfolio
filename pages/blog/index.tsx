@@ -1,11 +1,17 @@
 import Head from 'next/head';
-import { useState, useMemo, useCallback, useEffect, ChangeEvent } from 'react';
-import { Search } from 'lucide-react';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
+import { Rss, Search } from 'lucide-react';
 
-import { getPostsMetadata, getPostsCategories } from '@/lib/posts/api';
+import { getPostsCategories, getPostsMetadata } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
-import { filterByHeading, sortByBirthtime, addYearSeparators, isYearSeparator } from '@/lib/posts/utils';
-import { PostMetadata, PostCategory } from '@/lib/types';
+import {
+  addYearSeparators,
+  filterByHeading,
+  isYearSeparator,
+  sortByBirthtime,
+} from '@/lib/posts/utils';
+import { PostCategory, PostMetadata } from '@/lib/types';
 import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
 import { YearSeparator } from '@/components/year-separator';
@@ -51,7 +57,8 @@ function BlogPage(props: BlogPageProps) {
 
   const isSearching = debouncedSearchValue.length > 0;
   const postsWithSeparators = useMemo(
-    () => (isSearching ? filteredBlogPosts : addYearSeparators(filteredBlogPosts)),
+    () =>
+      isSearching ? filteredBlogPosts : addYearSeparators(filteredBlogPosts),
     [isSearching, filteredBlogPosts],
   );
 
@@ -63,7 +70,8 @@ function BlogPage(props: BlogPageProps) {
     <>
       <Head>
         <title>
-          What&apos;s New at Software Engineering? | The Serhii Shramko&apos;s Blog
+          What&apos;s New at Software Engineering? | The Serhii Shramko&apos;s
+          Blog
         </title>
         <meta
           content="Join me on a journey through the world of software engineering. Learn about TypeScript, JavaScript, and Next.js, and discover new ways to improve your code."
@@ -101,10 +109,15 @@ function BlogPage(props: BlogPageProps) {
           </span>
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          In recent years, I&apos;ve poured a lot of time into writing, mostly
-          on tech but occasionally venturing into other areas.{' '}
-          <strong>Over 2000 people </strong>read my articles every month, and
-          I&apos;m thrilled to share my knowledge with you.
+          Guides and deep dives on JavaScript, TypeScript, React, and
+          Next.js — from practical patterns to production pitfalls.{' '}
+          <Link
+            href="/feed.xml"
+            className="inline-flex items-center gap-1 text-gray-900 dark:text-white underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
+          >
+            <Rss size={14} aria-hidden="true" />
+            RSS
+          </Link>
         </p>
         <div className="relative w-full mb-4">
           <input
@@ -115,9 +128,7 @@ function BlogPage(props: BlogPageProps) {
             onChange={handleSearchChange}
             className="pr-10 block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg transition-[border-color] duration-150 ease-out-expo dark:border-gray-800 dark:bg-gray-800 dark:text-gray-100"
           />
-          <Search
-            className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
-          />
+          <Search className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300" />
         </div>
         <Categories categories={categories} />
         <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
@@ -127,37 +138,35 @@ function BlogPage(props: BlogPageProps) {
           <NoResults searchValue={searchValue} />
         ) : (
           <ul className="w-full">
-            {isSearching ? (
-              filteredBlogPosts.map((post) => (
-                <li key={post.data.title} className='mb-8 last:mb-0'>
-                  <BlogPostPreview
-                    slug={post.data.slug}
-                    heading={post.data.heading}
-                    excerpt={post.data.description}
-                  />
-                </li>
-              ))
-            ) : (
-              postsWithSeparators.map((item) => {
-                if (isYearSeparator(item)) {
-                  return (
-                    <li key={`year-${item.year}`} className="mb-8">
-                      <YearSeparator year={item.year} />
-                    </li>
-                  );
-                }
-
-                return (
-                  <li key={item.data.title} className='mb-8 last:mb-0'>
+            {isSearching
+              ? filteredBlogPosts.map((post) => (
+                  <li key={post.data.title} className="mb-8 last:mb-0">
                     <BlogPostPreview
-                      slug={item.data.slug}
-                      heading={item.data.heading}
-                      excerpt={item.data.description}
+                      slug={post.data.slug}
+                      heading={post.data.heading}
+                      excerpt={post.data.description}
                     />
                   </li>
-                );
-              })
-            )}
+                ))
+              : postsWithSeparators.map((item) => {
+                  if (isYearSeparator(item)) {
+                    return (
+                      <li key={`year-${item.year}`} className="mb-8">
+                        <YearSeparator year={item.year} />
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li key={item.data.title} className="mb-8 last:mb-0">
+                      <BlogPostPreview
+                        slug={item.data.slug}
+                        heading={item.data.heading}
+                        excerpt={item.data.description}
+                      />
+                    </li>
+                  );
+                })}
           </ul>
         )}
       </div>
@@ -175,26 +184,27 @@ export async function getStaticProps() {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     '@id': 'https://shramko.dev/blog/#blog',
-    'name': "Serhii Shramko's Blog",
-    'url': 'https://shramko.dev/blog',
-    'description': 'A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.',
-    'inLanguage': 'en',
-    'publisher': {
+    name: "Serhii Shramko's Blog",
+    url: 'https://shramko.dev/blog',
+    description:
+      'A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.',
+    inLanguage: 'en',
+    publisher: {
       '@type': 'Person',
       '@id': 'https://shramko.dev/#person',
-      'name': 'Serhii Shramko',
-      'url': 'https://shramko.dev/about'
+      name: 'Serhii Shramko',
+      url: 'https://shramko.dev/about',
     },
-    'blogPost': sortedPosts.slice(0, 25).map((post) => ({
+    blogPost: sortedPosts.slice(0, 25).map((post) => ({
       '@type': 'BlogPosting',
-      'headline': post.data.heading,
-      'description': post.data.description,
-      'url': `https://shramko.dev/blog/${post.data.slug}`,
-      'author': {
+      headline: post.data.heading,
+      description: post.data.description,
+      url: `https://shramko.dev/blog/${post.data.slug}`,
+      author: {
         '@type': 'Person',
         '@id': 'https://shramko.dev/#person',
-        'name': 'Serhii Shramko'
-      }
+        name: 'Serhii Shramko',
+      },
     })),
   };
 
