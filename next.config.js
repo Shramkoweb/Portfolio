@@ -123,6 +123,7 @@ const nextConfig = {
 
 const sentryBuildOptions = {
   silent: !process.env.CI,
+  telemetry: false,
   bundleSizeOptimizations: {
     excludeDebugStatements: true,
     excludeReplayShadowDom: true,
