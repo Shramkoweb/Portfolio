@@ -26,12 +26,15 @@ export function ThemeChanger() {
       className="ml-4 inline-flex h-11 w-11 items-center justify-center rounded-lg hover:scale-105 text-gray-800 dark:text-gray-200 transition-transform duration-200 ease-out-expo active:scale-[0.97]"
       onClick={handleClick}
     >
-      {mounted &&
-        (resolvedTheme === Theme.dark ? (
+      {mounted ? (
+        resolvedTheme === Theme.dark ? (
           <MoonStar size={24} aria-hidden="true" />
         ) : (
           <Sun size={24} aria-hidden="true" />
-        ))}
+        )
+      ) : (
+        <span className="inline-block h-6 w-6" />
+      )}
     </button>
   );
 }

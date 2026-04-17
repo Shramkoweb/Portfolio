@@ -46,6 +46,7 @@ export function TableOfContent(props: TableOfContentProps) {
           >
             <a
               href={`#${heading.id}`}
+              tabIndex={isOpen ? undefined : -1}
               className="block py-1 text-gray-700 dark:text-gray-300 underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo text-sm"
             >
               {heading.text}
