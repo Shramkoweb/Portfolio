@@ -152,10 +152,6 @@ pre {
   @apply mt-0 rounded-t-none;
 }
 
-.highlight-line {
-  @apply block px-4 -mx-4 bg-gray-200 border-l-4 border-blue-500 dark:bg-gray-800;
-}
-
 /* Remove Safari input shadow on mobile */
 input[type='text'],
 input[type='email'] {
