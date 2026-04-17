@@ -117,6 +117,7 @@ function AboutPage() {
             height={846}
             sizes="(min-width: 768px) 768px, 100vw"
             priority
+            fetchPriority="high"
           />
         </div>
 

@@ -40,6 +40,7 @@ function GearPage() {
             height={667}
             sizes="(min-width: 768px) 768px, 100vw"
             priority
+            fetchPriority="high"
           />
         </div>
         <div className="prose dark:prose-dark w-full">
