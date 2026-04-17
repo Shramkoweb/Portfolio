@@ -4,18 +4,13 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SWRConfig } from 'swr';
 
-import { isProduction } from '@/lib/utils';
-
 import { Layout } from '@/components/layout';
-import { GoogleAnalytics } from '@/components/google-analytics';
 
 import 'styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {isProduction() && <GoogleAnalytics />}
-
       <ThemeProvider attribute="class">
         <SWRConfig
           value={{

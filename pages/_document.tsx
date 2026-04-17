@@ -13,7 +13,6 @@ export default function Document() {
         <link rel="preconnect" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link
           rel="alternate"
           type="application/rss+xml"

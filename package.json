@@ -23,11 +23,7 @@
     "node": "24.x"
   },
   "browserslist": [
-    "chrome >= 92",
-    "edge >= 92",
-    "firefox >= 90",
-    "safari >= 15.4",
-    "ios >= 15.4"
+    "baseline widely available"
   ],
   "dependencies": {
     "@prisma/adapter-pg": "7.7.0",
@@ -55,7 +51,6 @@
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@testing-library/user-event": "14.6.1",
-    "@types/gtag.js": "0.0.20",
     "@types/jest": "30.0.0",
     "@types/node": "24.12.2",
     "@types/react": "19.2.14",

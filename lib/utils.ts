@@ -1,12 +1,6 @@
 import { PostCategory } from '@/lib/types';
 import { GRADIENT_FROM_COLORS, GRADIENT_VIA_COLORS, GRADIENT_TO_COLORS } from '@/lib/constants';
 
-const Environment = {
-  Production: 'production',
-  Test: 'test',
-  Development: 'development',
-};
-
 export function formatCategoryName(category: PostCategory): string {
   if (!category) {
     return '';
@@ -118,9 +112,6 @@ export const categoryToSeoData = {
     keywords: 'AI, Machine Learning, Developer Tools',
   },
 };
-
-export const isProduction = () =>
-  process.env.NODE_ENV === Environment.Production;
 
 export const extractMarkdownSlug = (fileName: string): string => {
   const lastDotIndex = fileName.lastIndexOf('.');
