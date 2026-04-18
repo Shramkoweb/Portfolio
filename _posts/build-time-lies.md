@@ -122,9 +122,16 @@ const highlightCache = new Map();
 Themes and language grammars load once. A shared `Map` caches highlighted code blocks across pages. The pre-created
 highlighter gets passed directly to each `compileMDX` call instead of creating a new one.
 
-The category route dropped from 45.8s to 2.8s. Most categories now generate in under 363ms. But — honesty note — the "
-before" was measured on Vercel with 1 worker and the "after" was local with 13 workers. Two variables changed, not one.
-I trust the direction, not the exact ratio.
+Same Vercel infrastructure, same 1 worker:
+
+| Metric                    | Before     | After      |
+| ------------------------- | ---------- | ---------- |
+| Static generation total   | 13.4 s     | 6.7 s      |
+| `/blog/category` route    | 45,771 ms  | 7,396 ms   |
+| Category per-page         | 6,663 ms   | 461 ms     |
+| `/blog/[slug]` route      | 43,168 ms  | 27,770 ms  |
+
+The category route dropped from 45.8s to 7.4s. Individual categories went from 6,663ms to 461ms. Static generation cut in half.
 
 ## Three things I got wrong
 
