@@ -90,7 +90,7 @@ type LinkedinFeedbackAuthor = {
   linkedinLink: string;
 };
 
-export type TLinkedinFeedback = {
+export type LinkedinFeedback = {
   author: LinkedinFeedbackAuthor;
   postDate: string;
   text: string;
