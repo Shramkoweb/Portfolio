@@ -1,10 +1,20 @@
 ---
-title: "JavaScript Naming Conventions: A Complete Guide for Clean Code"
+title: 'JavaScript Naming Conventions: A Complete Guide for Clean Code'
 heading: Why Are JavaScript Naming Conventions Important?
 description: Master JavaScript naming conventions with this guide. Learn best practices for naming variables, functions, and classes to write cleaner code.
 createDate: 2025-02-02T09:00:00.000Z
-keywords: [ javascript naming conventions, javascript best practices, clean code javascript, javascript naming patterns, javascript variable naming, javascript coding standards, js naming convention, javascript class naming ]
-categories: [ JS, TS, Tutorial, Project-Setup, Opinion, Tools ]
+keywords:
+  [
+    javascript naming conventions,
+    javascript best practices,
+    clean code javascript,
+    javascript naming patterns,
+    javascript variable naming,
+    javascript coding standards,
+    js naming convention,
+    javascript class naming,
+  ]
+categories: [JS, TS, Tutorial, Project-Setup, Opinion, Tools]
 featured: false
 ---
 
@@ -168,14 +178,14 @@ Use PascalCase for enum names and UPPER_SNAKE_CASE for enum values:
 const userRoles = {
   admin: 'admin',
   editor: 'editor',
-  viewer: 'viewer'
+  viewer: 'viewer',
 };
 
 // Good ✅
 const UserRole = {
   ADMIN: 'admin',
   EDITOR: 'editor',
-  VIEWER: 'viewer'
+  VIEWER: 'viewer',
 };
 ```
 
@@ -188,33 +198,39 @@ Also known as a dictionary data structure. This data structure is used for mappi
 const userRole = {
   [AccountType.SUPERVISOR]: 'Supervisor',
   [AccountType.VISITOR]: 'Visitor',
-}
+};
 
 const REDIRECTING = {
   '/teams': '/supervisor-panel',
   '/account': '/authenticate',
-}
+};
 
 const UserPermissions = {
-  [AccountType.SUPERVISOR]: [AccessLevel.USER_ADMINISTRATION, AccessLevel.TEAM_ADMINISTRATION],
+  [AccountType.SUPERVISOR]: [
+    AccessLevel.USER_ADMINISTRATION,
+    AccessLevel.TEAM_ADMINISTRATION,
+  ],
   [AccountType.VISITOR]: [AccessLevel.PROFILE_MANAGEMENT],
-}
+};
 
 // Good ✅
 const userRoleToReadable = {
   [AccountType.SUPERVISOR]: 'Supervisor',
   [AccountType.VISITOR]: 'Visitor',
-}
+};
 
 const pagePathToRedirectPath = {
   '/teams': '/supervisor-panel',
   '/account': '/authenticate',
-}
+};
 
 const userRoleToPermissions = {
-  [AccountType.SUPERVISOR]: [AccessLevel.USER_ADMINISTRATION, AccessLevel.TEAM_ADMINISTRATION],
+  [AccountType.SUPERVISOR]: [
+    AccessLevel.USER_ADMINISTRATION,
+    AccessLevel.TEAM_ADMINISTRATION,
+  ],
   [AccountType.VISITOR]: [AccessLevel.PROFILE_MANAGEMENT],
-}
+};
 ```
 
 ## Common Pitfalls to Avoid
@@ -261,10 +277,10 @@ const retrieveInfo = () => {};
 
 ```javascript
 // Bad ❌
-const ユーザー名 = "John";
+const ユーザー名 = 'John';
 
 // Good ✅
-const userName = "John";
+const userName = 'John';
 ```
 
 ## Types & Interfaces
@@ -274,26 +290,26 @@ Names of types and interfaces should be written in `PascalCase` notation.
 ```typescript
 // Bad  ❌
 type TUser = {
-  firstName: string
-  lastName: string
-}
+  firstName: string;
+  lastName: string;
+};
 
 interface userServiceInterface {
-  findByEmail: (email: string) => User
+  findByEmail: (email: string) => User;
 }
 
 // Good ✅
 type User = {
-  firstName: string
-  lastName: string
-}
+  firstName: string;
+  lastName: string;
+};
 
 interface UserServiceContract {
-  findByEmail: (email: string) => User
+  findByEmail: (email: string) => User;
 }
 
 interface IUserService {
-  findByEmail: (email: string) => User
+  findByEmail: (email: string) => User;
 }
 ```
 

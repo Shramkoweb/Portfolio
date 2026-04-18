@@ -4,7 +4,13 @@ description: Curated list of the best resources, blogs, and websites every devel
 heading: My "every programmer should know" list - 2025
 createDate: 2022-09-19T19:46:55.334Z
 updateDate: 2025-07-21
-keywords: [Resources for developers, Best Developer Websites, Tech News Resources, Awesome Web Development News Sources]
+keywords:
+  [
+    Resources for developers,
+    Best Developer Websites,
+    Tech News Resources,
+    Awesome Web Development News Sources,
+  ]
 categories: [Tools]
 featured: false
 ---

@@ -1,22 +1,22 @@
-import Head from 'next/head';
+import { ParsedUrlQuery } from 'querystring';
+
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next';
-import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import Head from 'next/head';
+import React, { useEffect } from 'react';
 
-import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
-import { compileMDX } from '@/lib/scripts/compiler';
-import { Snippet } from '@/lib/types';
+import { MDXComponents } from '@/components/mdx-components';
 import {
   generateTechArticleSchema,
   generateBreadcrumbSchema,
 } from '@/lib/schema';
-
-import { MDXComponents } from '@/components/mdx-components';
-import React, { useEffect } from 'react';
+import { compileMDX } from '@/lib/scripts/compiler';
+import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
+import { Snippet } from '@/lib/types';
 
 type SnippetPageProps = Pick<Snippet, 'data'> & {
   content: MDXRemoteSerializeResult;

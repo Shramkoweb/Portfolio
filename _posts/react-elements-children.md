@@ -1,10 +1,18 @@
 ---
-title: "React Elements, Children as Props, and Re-Renders"
-heading: "Elements & Children Props"
-description: "Learn how React elements work and how passing children as props can optimize performance by preventing unnecessary re-renders."
+title: 'React Elements, Children as Props, and Re-Renders'
+heading: 'Elements & Children Props'
+description: 'Learn how React elements work and how passing children as props can optimize performance by preventing unnecessary re-renders.'
 createDate: 2025-12-07T10:00:00.000Z
-keywords: [ react elements, children prop, react performance, re-renders, react optimization, composition ]
-categories: [ Advanced-React, Tutorial, React ]
+keywords:
+  [
+    react elements,
+    children prop,
+    react performance,
+    re-renders,
+    react optimization,
+    composition,
+  ]
+categories: [Advanced-React, Tutorial, React]
 featured: false
 ---
 
@@ -13,7 +21,7 @@ Welcome back, fellow React enthusiasts!
 Previously, we discussed [re-renders and the "moving state down" pattern](/blog/react-rerender). That technique works
 great when you can isolate stateful logic into a leaf component. But sometimes the architecture doesn't allow for that.
 
-What do you do when state *must* live at the top, yet you don't want to tank performance?
+What do you do when state _must_ live at the top, yet you don't want to tank performance?
 
 Let's explore a real scenario. You're building a dashboard with a resizable sidebar. The sidebar width is controlled
 by dragging a handle, and the entire content area needs to respond to this width change.
@@ -22,9 +30,9 @@ by dragging a handle, and the entire content area needs to respond to this width
 
 Here's what you need:
 
-* A draggable divider that updates the sidebar width in real-time.
-* The sidebar wraps around `ExpensiveChart`, `DataGrid`, and `AnalyticsPanel`.
-* As you drag, the layout adjusts smoothly.
+- A draggable divider that updates the sidebar width in real-time.
+- The sidebar wraps around `ExpensiveChart`, `DataGrid`, and `AnalyticsPanel`.
+- As you drag, the layout adjusts smoothly.
 
 The naive approach puts the drag state at the top level (or perhaps tries to hide it in
 a [custom hook](/blog/react-hooks-pitfalls), which doesn't change anything):
@@ -146,7 +154,7 @@ scope that doesn't re-render and then passed to the stateful component.
 ## Wrapping Up
 
 The [previous article](/blog/react-rerender#moving-state-down) showed how pushing state into a child component
-prevents unnecessary re-renders. This article demonstrated the inverse: lifting static UI *out* of the stateful
+prevents unnecessary re-renders. This article demonstrated the inverse: lifting static UI _out_ of the stateful
 component by passing it as props.
 
 Both patterns serve the same purpose: decoupling what changes from what stays stable.

@@ -1,21 +1,22 @@
 ---
-title: "useClickOutside React Hook: Detect Clicks Outside an Element"
+title: 'useClickOutside React Hook: Detect Clicks Outside an Element'
 heading: useClickOutside
 description: React hook to detect clicks outside a component. Close dropdowns, modals, and popovers when users click outside. TypeScript, zero dependencies.
 createDate: 2026-01-11
-keywords: [
-  useClickOutside,
-  useClickOutside React hook,
-  click outside React,
-  detect click outside element,
-  close dropdown on click outside,
-  close modal on click outside,
-  React outside click,
-  useOnClickOutside,
-  React ref click outside,
-  click outside hook TypeScript,
-  dismiss popover on click outside,
-]
+keywords:
+  [
+    useClickOutside,
+    useClickOutside React hook,
+    click outside React,
+    detect click outside element,
+    close dropdown on click outside,
+    close modal on click outside,
+    React outside click,
+    useOnClickOutside,
+    React ref click outside,
+    click outside hook TypeScript,
+    dismiss popover on click outside,
+  ]
 ---
 
 Detect when a user clicks outside a referenced element. The go-to pattern for closing dropdowns, modals, popovers, and
@@ -24,7 +25,7 @@ context menus.
 ```typescript
 function useClickOutside(
   ref: React.RefObject<HTMLElement | null>,
-  handler: (event: MouseEvent | TouchEvent) => void
+  handler: (event: MouseEvent | TouchEvent) => void,
 ) {
   React.useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
@@ -59,9 +60,7 @@ function Dropdown() {
 
   return (
     <div ref={dropdownRef}>
-      <button onClick={() => setIsOpen(!isOpen)}>
-        Menu
-      </button>
+      <button onClick={() => setIsOpen(!isOpen)}>Menu</button>
 
       {isOpen && (
         <ul role="menu">

@@ -1,22 +1,23 @@
 ---
-title: "Conventional Commits enhance your coding practices"
+title: 'Conventional Commits enhance your coding practices'
 heading: Conventional Commits
 description: Master Conventional Commits to write clear, structured commit messages. Learn the format, types like feat and fix, and how to automate changelog generation.
 createDate: 2024-07-23T22:52:26.716Z
 updateDate: 2025-12-07
-keywords: [
-  Conventional Commits for JavaScript Development,
-  Effective Conventional Commits in Next.js Projects,
-  Standardizing Commit Messages for Junior Developers,
-  Streamlining JavaScript Workflow with Conventional Commits,
-  Enhancing Next.js Code Management with Commit Standards,
-  How Conventional Commits Improve Coding Practices,
-  Integrating Conventional Commits in Front-End Development,
-  Commit Message Best Practices for JavaScript,
-  Boosting Blog Quality with Conventional Commits,
-  Conventional Commits Tools for Junior Developers
-]
-categories: [ JS, TS, Tutorial, Project-Setup, Opinion, Tools ]
+keywords:
+  [
+    Conventional Commits for JavaScript Development,
+    Effective Conventional Commits in Next.js Projects,
+    Standardizing Commit Messages for Junior Developers,
+    Streamlining JavaScript Workflow with Conventional Commits,
+    Enhancing Next.js Code Management with Commit Standards,
+    How Conventional Commits Improve Coding Practices,
+    Integrating Conventional Commits in Front-End Development,
+    Commit Message Best Practices for JavaScript,
+    Boosting Blog Quality with Conventional Commits,
+    Conventional Commits Tools for Junior Developers,
+  ]
+categories: [JS, TS, Tutorial, Project-Setup, Opinion, Tools]
 featured: false
 ---
 
@@ -85,7 +86,7 @@ commonly used types:
 <Image src="conventional-commits-cheatsheet.png" alt="Conventional Commits cheatsheet table listing commit types: feat, fix, chore, docs, style, refactor, perf, test, build, ci, and revert with descriptions and examples" />
 
 | Type     | Description                | Example                          |
-|:---------|:---------------------------|:---------------------------------|
+| :------- | :------------------------- | :------------------------------- |
 | feat     | New feature                | feat(ui): add dark mode          |
 | fix      | Bug fix                    | fix(api): resolve login issue    |
 | docs     | Documentation only changes | docs(readme): update setup guide |

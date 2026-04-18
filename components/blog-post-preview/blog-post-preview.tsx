@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { Routes } from '@/lib/routes';
 import useSWR from 'swr';
 
-import { Views } from '@/lib/types';
 import { fetcher } from '@/lib/fetcher';
+import { Routes } from '@/lib/routes';
+import { Views } from '@/lib/types';
 
 interface BlogPostPreviewProps {
   slug: string;
@@ -30,7 +30,9 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
           {`${views ? views.toLocaleString() : '---'} views`}
         </p>
       </div>
-      <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">{excerpt}</p>
+      <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+        {excerpt}
+      </p>
     </Link>
   );
 }

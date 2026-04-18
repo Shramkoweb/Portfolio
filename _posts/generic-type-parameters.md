@@ -3,28 +3,29 @@ heading: Generic Type Parameters in TypeScript
 title: What is a generic type parameter T in TypeScript?
 description: Learn TypeScript generic type parameter naming conventions. Understand when to use T, K, V and when descriptive names like TKey make your code more readable.
 createDate: 2025-05-31T15:01:43.973Z
-keywords: [
-  "TypeScript generics",
-  "generic type parameters",
-  "TypeScript T parameter",
-  "generic naming conventions",
-  "TypeScript generic syntax",
-  "generic types TypeScript",
-  "TypeScript T U V parameters",
-  "descriptive generic names",
-  "TypeScript code conventions",
-  "generic type naming",
-  "TypeScript best practices",
-  "generic functions TypeScript",
-  "type parameter conventions",
-  "TypeScript utility types",
-  "repository pattern TypeScript",
-  "generic interfaces TypeScript",
-  "TypeScript clean code",
-  "type safety TypeScript",
-  "generic constraints TypeScript",
-  "TypeScript programming patterns"
-]
+keywords:
+  [
+    'TypeScript generics',
+    'generic type parameters',
+    'TypeScript T parameter',
+    'generic naming conventions',
+    'TypeScript generic syntax',
+    'generic types TypeScript',
+    'TypeScript T U V parameters',
+    'descriptive generic names',
+    'TypeScript code conventions',
+    'generic type naming',
+    'TypeScript best practices',
+    'generic functions TypeScript',
+    'type parameter conventions',
+    'TypeScript utility types',
+    'repository pattern TypeScript',
+    'generic interfaces TypeScript',
+    'TypeScript clean code',
+    'type safety TypeScript',
+    'generic constraints TypeScript',
+    'TypeScript programming patterns',
+  ]
 categories: [TS, Clean-Code, Opinion, Tutorial]
 featured: true
 ---
@@ -114,14 +115,12 @@ This is especially valuable in domain-specific code where the generic types have
 Here's where descriptive naming really pays off:
 
 ```typescript
-
 interface Repository<Entity, Key> {
   findById(id: Key): Promise<Entity | null>;
   save(entity: Entity): Promise<Key>;
   delete(id: Key): Promise<void>;
   findAll(): Promise<Entity[]>;
 }
-
 
 class UserRepository implements Repository<User, string> {
   // Implementation details...
@@ -162,39 +161,39 @@ Here's what I've learned from years of writing TypeScript:
 
 ### Use single letters when:
 
-- Writing utility functions that work with any type 
-- The generic's role is obvious from context 
+- Writing utility functions that work with any type
+- The generic's role is obvious from context
 - You're following established patterns (like `map<T, U>`)
 
 ### Use descriptive names when:
 
-- The generics have a specific domain meaning 
-- You have multiple related type parameters 
+- The generics have a specific domain meaning
+- You have multiple related type parameters
 - Code clarity would suffer with single letters
 
 ### Stay consistent:
 
-- Whatever convention your team chooses, apply it everywhere 
-- Don't mix T prefixes with non-prefixed names randomly 
+- Whatever convention your team chooses, apply it everywhere
+- Don't mix T prefixes with non-prefixed names randomly
 - Document your team's preferred style
 
 ## Common Single-Letter Conventions
 
 ```typescript
-T // Primary type parameter
-U, V, W // Additional type parameters (alphabetical order)
-K // Key type (in mappings, records)
-V // Value type (in key-value structures)
-E // Element type (in collections)
-R // Return type
-P // Properties/Props type
+T; // Primary type parameter
+(U, V, W); // Additional type parameters (alphabetical order)
+K; // Key type (in mappings, records)
+V; // Value type (in key-value structures)
+E; // Element type (in collections)
+R; // Return type
+P; // Properties/Props type
 ```
 
 ## Wrapping Up
 
-- **Consistency beats perfection** – pick a style and stick with it 
-- **Context is king – choose names** that make sense for your specific use case 
-- **When in doubt, be descriptive** – clarity trumps brevity in complex code 
+- **Consistency beats perfection** – pick a style and stick with it
+- **Context is king – choose names** that make sense for your specific use case
+- **When in doubt, be descriptive** – clarity trumps brevity in complex code
 - **Follow your team's conventions** – consistency across the codebase matters most
 
 > I love conventions and wrote a lot of articles about them.

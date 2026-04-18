@@ -1,20 +1,21 @@
 ---
-title: "JavaScript Deep Clone: How to Safely Copy Objects"
+title: 'JavaScript Deep Clone: How to Safely Copy Objects'
 heading: Deep Clone an Object in JavaScript
 description: Create deep clones of JavaScript objects including nested structures. Copy-paste function using structuredClone for reliable object duplication.
 createDate: 2024-09-04T22:06:42.844Z
 updateDate: 2026-02-21
-keywords: [
-  deep clone object,
-  deep clone in JavaScript,
-  deep clone object in JavaScript,
-  structuredClone,
-  structuredClone JavaScript,
-  deep clone object example,
-  deep clone object function,
-  deep copy vs shallow copy,
-  JavaScript copy nested object,
-]
+keywords:
+  [
+    deep clone object,
+    deep clone in JavaScript,
+    deep clone object in JavaScript,
+    structuredClone,
+    structuredClone JavaScript,
+    deep clone object example,
+    deep clone object function,
+    deep copy vs shallow copy,
+    JavaScript copy nested object,
+  ]
 ---
 
 ## structuredClone (recommended)
@@ -26,7 +27,7 @@ const original = {
   a: 1,
   b: {
     c: 2,
-    d: [3, 4]
+    d: [3, 4],
   },
   date: new Date(),
 };
@@ -54,8 +55,7 @@ function deepClone(obj) {
   }
 
   return Object.fromEntries(
-    Object.entries(obj)
-      .map(([key, value]) => [key, deepClone(value)])
+    Object.entries(obj).map(([key, value]) => [key, deepClone(value)]),
   );
 }
 ```

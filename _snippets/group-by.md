@@ -1,22 +1,23 @@
 ---
-title: "Group Array by Key in JavaScript and TypeScript"
+title: 'Group Array by Key in JavaScript and TypeScript'
 heading: Group Array by Key
 description: Group an array of objects by a property value in TypeScript. Covers Object.groupBy, Map.groupBy, and a manual fallback for older environments.
 createDate: 2026-02-21
-keywords: [
-  group array by key,
-  group by JavaScript,
-  groupBy TypeScript,
-  Object.groupBy,
-  Map.groupBy,
-  group array of objects by property,
-  JavaScript array groupBy,
-  lodash groupBy alternative,
-  categorize array JavaScript,
-  array reduce group,
-  group items by field,
-  TypeScript array utility,
-]
+keywords:
+  [
+    group array by key,
+    group by JavaScript,
+    groupBy TypeScript,
+    Object.groupBy,
+    Map.groupBy,
+    group array of objects by property,
+    JavaScript array groupBy,
+    lodash groupBy alternative,
+    categorize array JavaScript,
+    array reduce group,
+    group items by field,
+    TypeScript array utility,
+  ]
 ---
 
 Grouping an array of objects by a property is one of the most common data transformations in frontend code. Modern
@@ -61,7 +62,7 @@ const byPriceRange = Map.groupBy(products, (product) => {
   return 'premium';
 });
 
-byPriceRange.get('budget');  // [Shirt, Pants, Apple]
+byPriceRange.get('budget'); // [Shirt, Pants, Apple]
 byPriceRange.get('premium'); // [Phone, Laptop]
 ```
 

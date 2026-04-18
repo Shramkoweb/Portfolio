@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import clsx from 'clsx';
 import { Eye } from 'lucide-react';
+import Link from 'next/link';
 
 interface BlogPostPreviewProps {
   heading: string;
@@ -31,7 +31,10 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
           <Eye size={24} aria-hidden="true" />
           <span className="ml-2 align-baseline">
             {views !== undefined ? (
-              <>{views.toLocaleString()}<span className="sr-only"> views</span></>
+              <>
+                {views.toLocaleString()}
+                <span className="sr-only"> views</span>
+              </>
             ) : (
               <span className="inline-block h-4 w-10 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
             )}

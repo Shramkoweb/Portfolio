@@ -1,9 +1,9 @@
-import { serialize } from 'next-mdx-remote/serialize';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import rehypeCodeTitles from 'rehype-code-titles';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
+import { serialize } from 'next-mdx-remote/serialize';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
 export const compileMDX = async (content: string) =>
   serialize(content, {
@@ -17,22 +17,22 @@ export const compileMDX = async (content: string) =>
           {
             themes: {
               light: 'github-light',
-              dark: 'github-dark'
+              dark: 'github-dark',
             },
-            defaultColor: false
-          }
+            defaultColor: false,
+          },
         ],
         [
           rehypeAutolinkHeadings,
           {
             properties: {
-              className: ['anchor']
-            }
-          }
-        ]
+              className: ['anchor'],
+            },
+          },
+        ],
       ],
-      format: 'mdx'
-    }
+      format: 'mdx',
+    },
   });
 
 export function extractHeadingsFromMarkdown(markdown: string) {
@@ -42,7 +42,10 @@ export function extractHeadingsFromMarkdown(markdown: string) {
   while ((match = headingRegex.exec(markdown)) !== null) {
     const level = match[1].length;
     const text = match[2].replace(/[*_`~]/g, '').trim();
-    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const id = text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
     headings.push({ text, level, id });
   }
   return headings;

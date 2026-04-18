@@ -1,11 +1,12 @@
 ---
-title: "ESLint with TypeScript: Setup and Configuration Guide"
+title: 'ESLint with TypeScript: Setup and Configuration Guide'
 heading: How to use ESLint with TypeScript
 description: Step-by-step guide to configuring ESLint with TypeScript. Set up linting rules, integrate with your IDE, and catch errors before they reach production.
 createDate: 2022-08-02T19:51:19Z
 updateDate: 2022-08-02T20:00:45.784Z
-keywords: [ TS, TypeScript, ESLint, Project Setup, Optimizing TypeScript Development ]
-categories: [ TS, Project-Setup ]
+keywords:
+  [TS, TypeScript, ESLint, Project Setup, Optimizing TypeScript Development]
+categories: [TS, Project-Setup]
 featured: false
 ---
 
@@ -39,9 +40,7 @@ In it, use the following start configuration.
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -99,10 +98,7 @@ to use. For example:
 {
   "rules": {
     "curly": "error",
-    "quotes": [
-      "error",
-      "double"
-    ]
+    "quotes": ["error", "double"]
   }
 }
 ```
@@ -124,4 +120,4 @@ huge. Therefore, I recommend always using it.
 ## Related
 
 - [The satisfies Operator](/snippets/satisfies-operator) - a TypeScript operator that works well alongside strict ESLint rules
-- [Fix "__dirname Not Defined" in ES Modules](/blog/dirname-error) - a common Node.js pitfall when configuring TypeScript projects
+- [Fix "\_\_dirname Not Defined" in ES Modules](/blog/dirname-error) - a common Node.js pitfall when configuring TypeScript projects

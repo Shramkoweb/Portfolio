@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import BlogPage from '@/pages/blog';
 import { Post, PostCategory } from '@/lib/types';
+import BlogPage from '@/pages/blog';
 
 jest.mock('@/lib/posts/api');
 jest.mock('@/components/categories');

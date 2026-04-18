@@ -17,11 +17,11 @@ actions and control actions, but don't become values.
 `Expression` returns (expresses) a value. Each of the following lines contains an expression:
 
 ```js
-100 // this is a literal that expresses number 100
+100; // this is a literal that expresses number 100
 
-getUserName() // expresses Serhii
+getUserName(); // expresses Serhii
 
-5 + 2 // expresses 7
+5 + 2; // expresses 7
 ```
 
 `Statements` produce or control actions, but do not turn into values:
@@ -32,7 +32,7 @@ let x; // declare a variable 'x'
 function foo() {} // declare a function 'foo'
 
 function bar() {
-  return null // return is also a statement
+  return null; // return is also a statement
 }
 ```
 

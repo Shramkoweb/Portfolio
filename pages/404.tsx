@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Head from 'next/head';
 import * as Sentry from '@sentry/nextjs';
+import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect } from 'react';
 
 function NotFoundPage() {

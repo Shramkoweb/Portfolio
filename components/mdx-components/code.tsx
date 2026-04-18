@@ -1,5 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
+import { useCallback, useRef, useState } from 'react';
 
 interface CodeProps {
   children: string;

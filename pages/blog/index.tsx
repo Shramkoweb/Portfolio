@@ -1,10 +1,13 @@
-import Head from 'next/head';
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
-import Link from 'next/link';
 import { Rss, Search } from 'lucide-react';
+import Head from 'next/head';
+import Link from 'next/link';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { getPostsCategories, getPostsMetadata } from '@/lib/posts/api';
 import { BlogPostPreview } from '@/components/blog-post-preview';
+import { Categories } from '@/components/categories';
+import { NoResults } from '@/components/no-results';
+import { YearSeparator } from '@/components/year-separator';
+import { getPostsCategories, getPostsMetadata } from '@/lib/posts/api';
 import {
   addYearSeparators,
   filterByHeading,
@@ -12,9 +15,6 @@ import {
   sortByBirthtime,
 } from '@/lib/posts/utils';
 import { PostCategory, PostMetadata } from '@/lib/types';
-import { Categories } from '@/components/categories';
-import { NoResults } from '@/components/no-results';
-import { YearSeparator } from '@/components/year-separator';
 
 interface BlogPageProps {
   posts: PostMetadata[];
@@ -109,8 +109,8 @@ function BlogPage(props: BlogPageProps) {
           </span>
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          Guides and deep dives on JavaScript, TypeScript, React, and
-          Next.js — from practical patterns to production pitfalls.{' '}
+          Guides and deep dives on JavaScript, TypeScript, React, and Next.js —
+          from practical patterns to production pitfalls.{' '}
           <Link
             href="/feed.xml"
             className="inline-flex items-center gap-1 text-gray-900 dark:text-white underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
@@ -128,7 +128,10 @@ function BlogPage(props: BlogPageProps) {
             onChange={handleSearchChange}
             className="pr-10 block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg transition-[border-color] duration-150 ease-out-expo dark:border-gray-800 dark:bg-gray-800 dark:text-gray-100"
           />
-          <Search aria-hidden="true" className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300" />
+          <Search
+            aria-hidden="true"
+            className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
+          />
         </div>
         <Categories categories={categories} />
         <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">

@@ -1,15 +1,25 @@
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { ParsedUrlQuery } from 'querystring';
+
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next';
-import { ParsedUrlQuery } from 'querystring';
-import { MDXComponents } from '@/components/mdx-components';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import React from 'react';
 
+import { MDXComponents } from '@/components/mdx-components';
+import {
+  FacebookShare,
+  LinkedInShare,
+  TelegramShare,
+  TwitterShare,
+} from '@/components/share-button';
+import { TableOfContent } from '@/components/table-of-content';
+import { Tag } from '@/components/tag';
+import { ViewCounter } from '@/components/view-counter/view-counter';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
@@ -21,15 +31,6 @@ import {
   extractHeadingsFromMarkdown,
 } from '@/lib/scripts/compiler';
 import { Post } from '@/lib/types';
-import { TableOfContent } from '@/components/table-of-content';
-import { Tag } from '@/components/tag';
-import { ViewCounter } from '@/components/view-counter/view-counter';
-import {
-  FacebookShare,
-  LinkedInShare,
-  TelegramShare,
-  TwitterShare,
-} from '@/components/share-button';
 
 const FloatingReactions = dynamic(() =>
   import('@/components/floating-reactions').then(

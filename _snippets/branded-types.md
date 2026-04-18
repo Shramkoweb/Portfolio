@@ -1,21 +1,22 @@
 ---
-title: "Branded Types in TypeScript: Never Mix Up IDs Again"
+title: 'Branded Types in TypeScript: Never Mix Up IDs Again'
 heading: Branded Types
 description: Use TypeScript branded types (nominal types) to prevent mixing up strings and numbers that represent different things. Stop userId/orderId bugs at compile time.
 createDate: 2025-12-01
-keywords: [
-  TypeScript branded types,
-  nominal types TypeScript,
-  TypeScript opaque types,
-  type branding,
-  TypeScript ID types,
-  prevent string mixup,
-  TypeScript type safety,
-  branded primitives,
-  TypeScript advanced patterns,
-  TypeScript utility types,
-  phantom types TypeScript
-]
+keywords:
+  [
+    TypeScript branded types,
+    nominal types TypeScript,
+    TypeScript opaque types,
+    type branding,
+    TypeScript ID types,
+    prevent string mixup,
+    TypeScript type safety,
+    branded primitives,
+    TypeScript advanced patterns,
+    TypeScript utility types,
+    phantom types TypeScript,
+  ]
 ---
 
 Ever passed a `userId` where you meant `orderId`? They're both strings, TypeScript doesn't care, and now you've got a
@@ -38,10 +39,12 @@ type ProductId = Brand<string, 'ProductId'>;
 ## The Problem
 
 ```typescript
-function getOrder(orderId: string): Order { /* ... */
+function getOrder(orderId: string): Order {
+  /* ... */
 }
 
-function getUser(userId: string): User { /* ... */
+function getUser(userId: string): User {
+  /* ... */
 }
 
 const order = getOrder(userId); // No error, but totally wrong!
@@ -52,10 +55,12 @@ Both functions accept `string`. TypeScript sees no issue. Your production databa
 ## The Solution
 
 ```typescript
-function getOrder(orderId: OrderId): Order { /* ... */
+function getOrder(orderId: OrderId): Order {
+  /* ... */
 }
 
-function getUser(userId: UserId): User { /* ... */
+function getUser(userId: UserId): User {
+  /* ... */
 }
 
 const order = getOrder(userId);
@@ -81,9 +86,9 @@ function createOrderId(id: string): OrderId {
 const userId = createUserId('user_123');
 const orderId = createOrderId('order_456');
 
-getUser(userId);   // Works
+getUser(userId); // Works
 getOrder(orderId); // Works
-getUser(orderId);  // Error!
+getUser(orderId); // Error!
 ```
 
 ## Usage
@@ -95,7 +100,8 @@ type ApiUserId = Brand<number, 'ApiUserId'>;
 type DbUserId = Brand<number, 'DbUserId'>;
 
 // Can't accidentally use API IDs in database queries
-function findInDb(id: DbUserId): User { /* ... */
+function findInDb(id: DbUserId): User {
+  /* ... */
 }
 ```
 

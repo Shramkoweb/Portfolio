@@ -1,6 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 import prisma from 'lib/prisma';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const MAX_EMAIL_LENGTH = 255;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

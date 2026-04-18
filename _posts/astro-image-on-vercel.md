@@ -1,21 +1,29 @@
 ---
-title: "Fix: Could not find Sharp in Astro.js (Vercel Deploy)"
-heading: "How to Fix MissingSharp Error in Astro.js on Vercel"
-description: "Fix the [MissingSharp] Could not find Sharp error when deploying Astro.js to Vercel. Step-by-step Sharp image service setup and configuration guide."
+title: 'Fix: Could not find Sharp in Astro.js (Vercel Deploy)'
+heading: 'How to Fix MissingSharp Error in Astro.js on Vercel'
+description: 'Fix the [MissingSharp] Could not find Sharp error when deploying Astro.js to Vercel. Step-by-step Sharp image service setup and configuration guide.'
 createDate: 2024-09-13T21:01:43.973Z
 updateDate: 2026-04-03
-keywords: [ MissingSharp Astro, Could not find Sharp, Astro image Vercel, Astro Sharp configuration, Astro image optimization, Astro deployment error ]
-categories: [ Astro, Vercel, Tutorial ]
+keywords:
+  [
+    MissingSharp Astro,
+    Could not find Sharp,
+    Astro image Vercel,
+    Astro Sharp configuration,
+    Astro image optimization,
+    Astro deployment error,
+  ]
+categories: [Astro, Vercel, Tutorial]
 featured: false
 faq:
-  - question: "Why does Astro Image work locally but fail on Vercel?"
+  - question: 'Why does Astro Image work locally but fail on Vercel?'
     answer: "Local development resolves Sharp from Astro's internal dependencies. Vercel's build environment needs Sharp as a direct project dependency to include the correct platform-specific binary. Fix it with pnpm add sharp."
-  - question: "Do I need Sharp for all Astro images?"
+  - question: 'Do I need Sharp for all Astro images?'
     answer: "Sharp is Astro's default image optimization service. If you only use external image CDNs like Cloudinary or Imgix, you can use passthroughImageService() instead. For local images, Sharp is recommended."
-  - question: "How do I optimize remote images in Astro?"
-    answer: "Add the image domain to the image.domains array in astro.config.mjs, provide explicit width and height attributes, and use the Image component with quality and format props."
-  - question: "Does this fix work on Netlify and Cloudflare too?"
-    answer: "Yes. The MissingSharp error can occur on any deployment platform. Installing Sharp as a direct dependency fixes it everywhere."
+  - question: 'How do I optimize remote images in Astro?'
+    answer: 'Add the image domain to the image.domains array in astro.config.mjs, provide explicit width and height attributes, and use the Image component with quality and format props.'
+  - question: 'Does this fix work on Netlify and Cloudflare too?'
+    answer: 'Yes. The MissingSharp error can occur on any deployment platform. Installing Sharp as a direct dependency fixes it everywhere.'
 ---
 
 <Image src="astro-image-error.png" alt="MissingSharp Could not find Sharp error in Astro.js Vercel build logs" />

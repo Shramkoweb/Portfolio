@@ -1,18 +1,19 @@
 ---
-title: "Generating UUIDs in JavaScript: Best Practices"
+title: 'Generating UUIDs in JavaScript: Best Practices'
 heading: Generating UUIDs in JavaScript
 description: Generate UUIDs in JavaScript using window.crypto.randomUUID(). Copy-paste snippet for creating universally unique identifiers in browser environments.
 createDate: 2024-09-28T18:23:42.844Z
-keywords: [
-  window.crypto.randomUUID,
-  generateUUIDJavaScript,
-  JavaScriptUUIDGeneration,
-  checkCodeEnvironmentJavaScript,
-  detectRuntimeEnvironmentJavaScript,
-  window.crypto,
-  uniqueIdentifiersJavaScript,
-  UUIDInBrowserAndNodeJS
-]
+keywords:
+  [
+    window.crypto.randomUUID,
+    generateUUIDJavaScript,
+    JavaScriptUUIDGeneration,
+    checkCodeEnvironmentJavaScript,
+    detectRuntimeEnvironmentJavaScript,
+    window.crypto,
+    uniqueIdentifiersJavaScript,
+    UUIDInBrowserAndNodeJS,
+  ]
 ---
 
 Have you ever needed to create unique identifiers in your JavaScript app? Say hello to `window.crypto.randomUUID()`.
@@ -42,8 +43,8 @@ console.log(myUUID); // Outputs something like '3b241101-e2bb-4255-8caf-4136c566
 
 • **Performance**: Generates UUIDs with minimal overhead from extra code.
 
-
 ## Useful links
+
 - [MDN Web Docs - window.crypto.randomUUID()](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)
 - [Can I use window.crypto.randomUUID()?](https://caniuse.com/mdn-api_crypto_randomuuid)
 - [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)

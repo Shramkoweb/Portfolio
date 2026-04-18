@@ -1,22 +1,23 @@
 ---
-title: "Type-Safe localStorage Wrapper in TypeScript"
+title: 'Type-Safe localStorage Wrapper in TypeScript'
 heading: Type-Safe localStorage
 description: A type-safe localStorage wrapper with JSON parsing, error handling, and expiry support. Drop-in replacement for raw localStorage calls in TypeScript projects.
 createDate: 2026-02-09
-keywords: [
-  localStorage TypeScript,
-  localStorage wrapper,
-  type-safe localStorage,
-  localStorage JSON parse,
-  localStorage helper,
-  localStorage utility,
-  localStorage get set,
-  localStorage with expiry,
-  JavaScript localStorage,
-  persist state localStorage,
-  localStorage error handling,
-  web storage API TypeScript,
-]
+keywords:
+  [
+    localStorage TypeScript,
+    localStorage wrapper,
+    type-safe localStorage,
+    localStorage JSON parse,
+    localStorage helper,
+    localStorage utility,
+    localStorage get set,
+    localStorage with expiry,
+    JavaScript localStorage,
+    persist state localStorage,
+    localStorage error handling,
+    web storage API TypeScript,
+  ]
 ---
 
 Raw `localStorage` calls are error-prone: no type safety, manual `JSON.parse` everywhere, and silent failures when
@@ -58,7 +59,7 @@ interface UserPreferences {
 setItem<UserPreferences>('preferences', {
   theme: 'dark',
   language: 'en',
-  fontSize: 16
+  fontSize: 16,
 });
 
 // Get — returns UserPreferences | null
@@ -81,7 +82,7 @@ interface StorageItem<T> {
 function setItemWithExpiry<T>(key: string, value: T, ttlMs: number): void {
   const item: StorageItem<T> = {
     value,
-    expiry: Date.now() + ttlMs
+    expiry: Date.now() + ttlMs,
   };
 
   setItem(key, item);

@@ -3,8 +3,21 @@ title: How I Got Apollo GraphQL Certification for Free
 heading: GraphQL Certified – How I earned my certification
 description: My journey to getting Apollo GraphQL certification for free. Learn about the exam structure, preparation tips, and how to earn your credential.
 createDate: 2025-03-13T09:01:43.973Z
-keywords: [ GraphQL, Apollo Odyssey, Apollo Odyssey Learning Platform, Apollo Graph Developer - Associate, Apollo Graph Developer - Professional, GraphQL Certification exam, GraphQL Certifications, graphql certification professional, graphql certification free, apollo graphql certification answers, apollo graphql professional certification ]
-categories: [ Tutorial ]
+keywords:
+  [
+    GraphQL,
+    Apollo Odyssey,
+    Apollo Odyssey Learning Platform,
+    Apollo Graph Developer - Associate,
+    Apollo Graph Developer - Professional,
+    GraphQL Certification exam,
+    GraphQL Certifications,
+    graphql certification professional,
+    graphql certification free,
+    apollo graphql certification answers,
+    apollo graphql professional certification,
+  ]
+categories: [Tutorial]
 featured: true
 ---
 
@@ -20,7 +33,6 @@ The learning platform features a variety of paths, combining video tutorials wit
 and code challenges for reinforcement.
 
 <Image alt="Apollo Odyssey learning platform video showing Track Card data structure with fields: title, thumbnail, length, module count, author name, and author picture" src="graphql-apollo-odyssey.png" />
-
 
 To earn
 the [Apollo Graph Developer - Associate certification](https://www.apollographql.com/tutorials/certifications/apollo-graph-associate),

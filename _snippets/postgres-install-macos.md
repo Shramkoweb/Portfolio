@@ -4,11 +4,12 @@ heading: Installing PostgreSQL on macOS
 description: Step-by-step guide to install PostgreSQL on macOS using Homebrew. Learn how to set up the database server, create users, and connect to your local instance.
 createDate: 2023-10-04T15:51:46.141Z
 updateDate: 2026-02-21
-keywords: [ JS snippet, PostgreSQL Snippet, install PostgreSQL, postgres on MacOS ]
+keywords:
+  [JS snippet, PostgreSQL Snippet, install PostgreSQL, postgres on MacOS]
 ---
 
 > I use PostgreSQL for my projects, and I want to share with you how to install it on macOS.
-You can read a little bit more about how my website works in my article [How I built my blog with Next.js](/blog/introducing-the-new-shramko.dev).
+> You can read a little bit more about how my website works in my article [How I built my blog with Next.js](/blog/introducing-the-new-shramko.dev).
 
 ## Step 1: Homebrew Installation
 

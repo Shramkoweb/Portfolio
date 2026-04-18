@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import NextLink from 'next/link';
 import clsx from 'clsx';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 
 interface HeaderLinkProps {
   href: string;

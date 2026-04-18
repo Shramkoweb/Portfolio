@@ -7,7 +7,7 @@ const pathLevelToPriority = {
   0: 1,
   1: 0.9,
   2: 0.8,
-  3: 0.7
+  3: 0.7,
 };
 
 const EXCLUDED_PATHS = ['/feed.xml'];
@@ -41,11 +41,16 @@ function getContentDate(urlPath) {
 
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const frontmatter = content.match(/^---\r?\n([\s\S]*?)\r?\n---/m)?.[1] ?? '';
+    const frontmatter =
+      content.match(/^---\r?\n([\s\S]*?)\r?\n---/m)?.[1] ?? '';
     const updateMatch = frontmatter.match(/^updateDate:\s*(.+)$/m);
     const createMatch = frontmatter.match(/^createDate:\s*(.+)$/m);
 
-    const dateStr = updateMatch ? updateMatch[1].trim() : createMatch ? createMatch[1].trim() : null;
+    const dateStr = updateMatch
+      ? updateMatch[1].trim()
+      : createMatch
+        ? createMatch[1].trim()
+        : null;
 
     if (dateStr) {
       return new Date(dateStr).toISOString();
@@ -71,7 +76,7 @@ module.exports = {
       loc: path,
       priority: pathLevelToPriority[getPathDepthLevel(path)],
       ...(contentDate && { lastmod: contentDate }),
-      alternateRefs: config.alternateRefs ?? []
+      alternateRefs: config.alternateRefs ?? [],
     };
-  }
+  },
 };

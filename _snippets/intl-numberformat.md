@@ -1,22 +1,23 @@
 ---
-title: "Intl.NumberFormat: Format Currency & Units in JavaScript"
+title: 'Intl.NumberFormat: Format Currency & Units in JavaScript'
 heading: Intl.NumberFormat
 description: Format currency, percentages, units, and compact numbers in JavaScript with Intl.NumberFormat — one native API, zero dependencies, full locale support.
 createDate: 2026-04-13
-keywords: [
-  Intl.NumberFormat JavaScript,
-  format currency JavaScript,
-  format number TypeScript,
-  compact number format,
-  format units JavaScript,
-  format percentage JavaScript,
-  locale number formatting,
-  i18n number format,
-  JavaScript currency formatter,
-  Intl API,
-  ECMAScript Internationalization,
-  format kilograms miles liters,
-]
+keywords:
+  [
+    Intl.NumberFormat JavaScript,
+    format currency JavaScript,
+    format number TypeScript,
+    compact number format,
+    format units JavaScript,
+    format percentage JavaScript,
+    locale number formatting,
+    i18n number format,
+    JavaScript currency formatter,
+    Intl API,
+    ECMAScript Internationalization,
+    format kilograms miles liters,
+  ]
 ---
 
 You reach for a library to format `1234.5` as `$1,234.50`. You don't need one. `Intl.NumberFormat` ships in every
@@ -32,15 +33,22 @@ const format = (value: number, options: FormatOptions, locale = 'en-US') =>
   new Intl.NumberFormat(locale, options).format(value);
 
 // Currency — respects locale-specific symbol placement and decimals
-export const formatCurrency = (value: number, currency = 'USD', locale?: string) =>
-  format(value, { style: 'currency', currency }, locale);
+export const formatCurrency = (
+  value: number,
+  currency = 'USD',
+  locale?: string,
+) => format(value, { style: 'currency', currency }, locale);
 
 // Units — kilograms, miles, liters, bytes, and dozens more
 export const formatUnit = (value: number, unit: string, locale?: string) =>
   format(value, { style: 'unit', unit, unitDisplay: 'short' }, locale);
 
 // Percent — expects 0.15, not 15
-export const formatPercent = (value: number, fractionDigits = 0, locale?: string) =>
+export const formatPercent = (
+  value: number,
+  fractionDigits = 0,
+  locale?: string,
+) =>
   format(
     value,
     {
@@ -59,20 +67,20 @@ export const formatCompact = (value: number, locale?: string) =>
 ## Usage
 
 ```typescript
-formatCurrency(1234.5);              // "$1,234.50"
+formatCurrency(1234.5); // "$1,234.50"
 formatCurrency(1234.5, 'EUR', 'de'); // "1.234,50 €"
 formatCurrency(1234.5, 'JPY', 'ja'); // "￥1,235"
 
-formatUnit(72, 'kilogram');          // "72 kg"
-formatUnit(150, 'mile-per-hour');    // "150 mph"
+formatUnit(72, 'kilogram'); // "72 kg"
+formatUnit(150, 'mile-per-hour'); // "150 mph"
 formatUnit(1_500_000, 'byte', 'en'); // "1,500,000 byte"
 
-formatPercent(0.1523, 1);            // "15.2%"
-formatPercent(0.5);                  // "50%"
+formatPercent(0.1523, 1); // "15.2%"
+formatPercent(0.5); // "50%"
 
-formatCompact(1234);                 // "1.2K"
-formatCompact(3_400_000);            // "3.4M"
-formatCompact(9_800_000_000, 'de');  // "9,8 Mrd."
+formatCompact(1234); // "1.2K"
+formatCompact(3_400_000); // "3.4M"
+formatCompact(9_800_000_000, 'de'); // "9,8 Mrd."
 ```
 
 ## When to use Intl.NumberFormat
@@ -94,7 +102,10 @@ library would need a separate plugin for each locale; the browser already has th
 cells, chart ticks), hoist one instance and call `.format()` in the loop — skip the helper.
 
 ```typescript
-const priceFmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+const priceFmt = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
 rows.forEach((r) => (r.display = priceFmt.format(r.amount)));
 ```
 

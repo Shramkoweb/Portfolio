@@ -1,7 +1,6 @@
-import useSWR from 'swr';
-
 import { fetcher } from 'lib/fetcher';
 import { DashboardData } from 'lib/types';
+import useSWR from 'swr';
 
 import { DashboardCard } from '@/components/dashboard-card/dashboard-card';
 

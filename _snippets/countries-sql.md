@@ -1,10 +1,11 @@
 ---
-title: "SQL Countries Table Example: How to Create and Query Efficiently"
+title: 'SQL Countries Table Example: How to Create and Query Efficiently'
 heading: SQL countries table
 description: Ready-to-use SQL insert statements for a countries table with names, ISO codes, and phone codes. Perfect for seeding your database with real country data.
 createDate: 2023-02-15T21:11:53.432Z
 updateDate: 2025-12-07
-keywords: [SQL snippet, countries SQL table, SQL table, SQL example, SQL examples]
+keywords:
+  [SQL snippet, countries SQL table, SQL table, SQL example, SQL examples]
 ---
 
 I'm currently working on my [Nest.js](https://nestjs.com/) backend project and I needed to add data to the countries

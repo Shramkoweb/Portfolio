@@ -1,9 +1,9 @@
 import Head from 'next/head';
 
 import { BlogViewsCard } from '@/components/dashboard-card/blog-views';
+import { DaysAsSoftwareEngineer } from '@/components/dashboard-card/days-as-engineer';
 import { GithubFollowers } from '@/components/dashboard-card/github-followers';
 import { GitHubStars } from '@/components/dashboard-card/github-stars';
-import { DaysAsSoftwareEngineer } from '@/components/dashboard-card/days-as-engineer';
 import { MonthlyUsers } from '@/components/dashboard-card/monthly-user';
 
 export default function Dashboard() {

@@ -1,5 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from 'lib/prisma';
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 import { fetchGitHubStats } from '@/lib/github';
 
 export default async function handler(
@@ -19,9 +20,7 @@ export default async function handler(
     const views =
       viewsResult.status === 'fulfilled' ? viewsResult.value._sum.count : 0;
     const gh =
-      github.status === 'fulfilled'
-        ? github.value
-        : { stars: 0, followers: 0 };
+      github.status === 'fulfilled' ? github.value : { stars: 0, followers: 0 };
 
     const allSucceeded =
       viewsResult.status === 'fulfilled' && github.status === 'fulfilled';

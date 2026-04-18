@@ -1,22 +1,23 @@
 ---
-title: "CSS Scroll-Driven Animations: Replace JavaScript with Pure CSS"
+title: 'CSS Scroll-Driven Animations: Replace JavaScript with Pure CSS'
 heading: Scroll-Driven Animations
 description: Pure CSS scroll-linked animations with scroll() and view() timelines. Build progress bars, fade-ins, and parallax effects without a single line of JavaScript.
 createDate: 2026-04-11
-keywords: [
-  scroll-driven animations,
-  CSS scroll animation,
-  animation-timeline,
-  scroll progress CSS,
-  view timeline CSS,
-  CSS parallax,
-  scroll-linked animation,
-  CSS animation-range,
-  scroll() CSS,
-  view() CSS,
-  CSS scroll progress bar,
-  fade in on scroll CSS,
-]
+keywords:
+  [
+    scroll-driven animations,
+    CSS scroll animation,
+    animation-timeline,
+    scroll progress CSS,
+    view timeline CSS,
+    CSS parallax,
+    scroll-linked animation,
+    CSS animation-range,
+    scroll() CSS,
+    view() CSS,
+    CSS scroll progress bar,
+    fade in on scroll CSS,
+  ]
 ---
 
 For years, scroll-linked effects meant shipping a JavaScript library — Intersection Observer hacks, `requestAnimationFrame` loops, or 45KB plugins like ScrollMagic. CSS scroll-driven animations replace all of that with two functions: `scroll()` and `view()`.
@@ -48,8 +49,12 @@ A fixed bar that fills as the user scrolls down the page:
 }
 
 @keyframes grow-progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 ```
 
@@ -94,8 +99,12 @@ The `animation-range: entry 10% entry 90%` controls when the animation starts an
 }
 
 @keyframes parallax {
-  from { transform: translateY(-50px); }
-  to { transform: translateY(50px); }
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(50px);
+  }
 }
 ```
 

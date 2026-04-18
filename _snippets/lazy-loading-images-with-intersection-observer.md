@@ -3,7 +3,17 @@ title: Lazy Load Images in TypeScript Using Observer
 heading: Lazy Loading Images
 description: Complete guide to implementing lazy loading for images using Intersection Observer API with TypeScript, including code examples and best practices
 createDate: 2025-02-02T00:00:00.000Z
-keywords: [ Intersection Observer, lazy loading, TypeScript, image optimization, web performance, JavaScript, frontend optimization, image loading ]
+keywords:
+  [
+    Intersection Observer,
+    lazy loading,
+    TypeScript,
+    image optimization,
+    web performance,
+    JavaScript,
+    frontend optimization,
+    image loading,
+  ]
 ---
 
 Intersection Observer API allows us to load images only when they're about to enter the viewport. This optimization
@@ -25,12 +35,12 @@ class LazyImageLoader {
     this.observer = new IntersectionObserver(this.handleIntersection, {
       root: options.root || null,
       rootMargin: options.rootMargin || '50px',
-      threshold: options.threshold || 0
+      threshold: options.threshold || 0,
     });
   }
 
   private handleIntersection = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const img = entry.target as HTMLImageElement;
         const dataSrc = img.getAttribute('data-src');
@@ -45,7 +55,7 @@ class LazyImageLoader {
   };
 
   public observe(images: NodeListOf<HTMLImageElement> | HTMLImageElement[]) {
-    images.forEach(img => this.observer.observe(img));
+    images.forEach((img) => this.observer.observe(img));
   }
 
   public disconnect() {
@@ -57,7 +67,14 @@ class LazyImageLoader {
 ## Usage
 
 ```html
-<img class="lazy" data-src="path/to/image.jpg" src="https://placehold.co/600x600" width="600" height="600" alt="Lazy loaded image">
+<img
+  class="lazy"
+  data-src="path/to/image.jpg"
+  src="https://placehold.co/600x600"
+  width="600"
+  height="600"
+  alt="Lazy loaded image"
+/>
 ```
 
 ```typescript

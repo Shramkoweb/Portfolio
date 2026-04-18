@@ -1,3 +1,5 @@
+import { readdir, readFile } from 'node:fs/promises';
+
 import {
   filterPostsByCategory,
   getPostBySlug,
@@ -5,7 +7,6 @@ import {
   getPostSlugs,
 } from '@/lib/posts/api';
 import { Post, PostCategory } from '@/lib/types';
-import { readdir, readFile } from 'node:fs/promises';
 
 const mockPosts: Post[] = [
   {

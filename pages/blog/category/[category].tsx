@@ -1,17 +1,16 @@
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
-import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
-
-import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
-import { Post, PostCategory } from '@/lib/types';
-import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
-import { generateBreadcrumbSchema } from '@/lib/schema';
 
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
-import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
-import { SearchInput } from '@/components/search-input';
 import { NoResults } from '@/components/no-results';
+import { SearchInput } from '@/components/search-input';
+import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
+import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
+import { generateBreadcrumbSchema } from '@/lib/schema';
+import { Post, PostCategory } from '@/lib/types';
+import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
 
 interface CategoryPageProps {
   posts: Post[];

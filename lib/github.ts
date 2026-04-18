@@ -31,7 +31,9 @@ export async function fetchGitHubStats() {
   const json = await response.json();
 
   if (json.errors || !json.data) {
-    throw new Error(json.errors?.[0]?.message ?? 'GitHub GraphQL request failed');
+    throw new Error(
+      json.errors?.[0]?.message ?? 'GitHub GraphQL request failed',
+    );
   }
 
   const stars = json.data.user.repositories.nodes.reduce(

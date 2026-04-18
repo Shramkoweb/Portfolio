@@ -46,5 +46,7 @@ export function ViewCounter(props: ViewCounterProps) {
     return () => clearTimeout(id);
   }, [cacheKey]);
 
-  return <span className="tabular-nums">{`${data?.total?.toLocaleString() ?? '---'} views`}</span>;
+  return (
+    <span className="tabular-nums">{`${data?.total?.toLocaleString() ?? '---'} views`}</span>
+  );
 }

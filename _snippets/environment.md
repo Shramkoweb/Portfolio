@@ -4,18 +4,19 @@ heading: Check in which environment the code is running
 description: Find out how to check if your JavaScript or TypeScript code is running in a browser or Node.js environment using simple code snippets
 createDate: 2024-09-13T20:35:42.844Z
 updateDate: 2026-02-21
-keywords: [
-  check environment,
-  check if code is running in browser,
-  check if code is running in Node.js,
-  check if code is running in browser or Node.js,
-  check if code is running in browser or Node.js in JavaScript,
-  check if code is running in browser or Node.js in TypeScript,
-  check if code is running in browser or Node.js in Node.js,
-  check if code is running in browser or Node.js in React,
-  check if code is running in browser or Node.js in Angular,
-  check if code is running in browser or Node.js in Vue.js
-]
+keywords:
+  [
+    check environment,
+    check if code is running in browser,
+    check if code is running in Node.js,
+    check if code is running in browser or Node.js,
+    check if code is running in browser or Node.js in JavaScript,
+    check if code is running in browser or Node.js in TypeScript,
+    check if code is running in browser or Node.js in Node.js,
+    check if code is running in browser or Node.js in React,
+    check if code is running in browser or Node.js in Angular,
+    check if code is running in browser or Node.js in Vue.js,
+  ]
 ---
 
 This snippet shows how to check in which environment the code is running.
@@ -24,13 +25,12 @@ APIs or Frameworks.
 
 ```typescript
 const isBrowser: boolean =
-  typeof window !== "undefined" &&
-  typeof window.document !== "undefined";
+  typeof window !== 'undefined' && typeof window.document !== 'undefined';
 ```
 
 ```typescript
 const isNode: boolean =
-  typeof process !== "undefined" &&
+  typeof process !== 'undefined' &&
   process.versions != null &&
   process.versions.node != null;
 ```

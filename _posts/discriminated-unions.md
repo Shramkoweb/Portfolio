@@ -1,10 +1,21 @@
 ---
-title: "Discriminated Unions in TypeScript: Write Safer Code"
+title: 'Discriminated Unions in TypeScript: Write Safer Code'
 heading: Discriminated Unions in TypeScript
 description: Discover how discriminated unions in TypeScript help you write cleaner, safer code. Learn what they are, how to use them, and why they're great!
 createDate: 2024-09-14
-keywords: [ "TypeScript", "Discriminated Unions", "Tagged Unions", "Sum Types", "Type Safety", "Code Clarity", "Exhaustiveness Checking", "Discriminated Unions and Destructuring", "TypeScript Discriminated Unions" ]
-categories: [ TS, Tutorial, Clean-Code ]
+keywords:
+  [
+    'TypeScript',
+    'Discriminated Unions',
+    'Tagged Unions',
+    'Sum Types',
+    'Type Safety',
+    'Code Clarity',
+    'Exhaustiveness Checking',
+    'Discriminated Unions and Destructuring',
+    'TypeScript Discriminated Unions',
+  ]
+categories: [TS, Tutorial, Clean-Code]
 featured: false
 ---
 
@@ -34,17 +45,17 @@ Here's what it looks like in action:
 
 ```typescript
 interface Taco {
-  kind: "taco";
+  kind: 'taco';
   shells: number;
 }
 
 interface Burrito {
-  kind: "burrito";
+  kind: 'burrito';
   length: number;
 }
 
 interface Nachos {
-  kind: "nachos";
+  kind: 'nachos';
   toppings: string[];
 }
 
@@ -75,11 +86,11 @@ Let's see how we can use our `MexicanFood` type:
 ```typescript
 function getCalories(food: MexicanFood): number {
   switch (food.kind) {
-    case "taco":
+    case 'taco':
       return food.shells * 200; // TypeScript knows it's a Taco!
-    case "burrito":
+    case 'burrito':
       return food.length * 100; // It's definitely a Burrito here
-    case "nachos":
+    case 'nachos':
       return food.toppings.length * 50; // Nacho time!
   }
 }
@@ -93,16 +104,16 @@ Want to make sure you've covered all your cases? Here's a neat trick:
 
 ```typescript
 function assertNever(x: never): never {
-  throw new Error("Unexpected food: " + x);
+  throw new Error('Unexpected food: ' + x);
 }
 
 function getCalories(food: MexicanFood): number {
   switch (food.kind) {
-    case "taco":
+    case 'taco':
       return food.shells * 200;
-    case "burrito":
+    case 'burrito':
       return food.length * 100;
-    case "nachos":
+    case 'nachos':
       return food.toppings.length * 50;
     default:
       return assertNever(food); // TypeScript will complain if you miss a case
@@ -120,8 +131,10 @@ a friendly reminder bot!
 Sometimes, you might want to use a discriminated union with tuples. Here's how you can do it:
 
 ```typescript
-type User = { id: number, name: string }; // User type
-type APIResponse = [success: true, data: User] | [success: false, error: string]; // Tuple type
+type User = { id: number; name: string }; // User type
+type APIResponse =
+  | [success: true, data: User]
+  | [success: false, error: string]; // Tuple type
 
 function handleResponse(response: APIResponse): void {
   const [success, data] = response;
@@ -134,10 +147,10 @@ function handleResponse(response: APIResponse): void {
     console.error(`Error: ${data}`);
   }
 }
-````
-
+```
 
 ## Discriminated Unions and Destructuring
+
 Discriminated unions are awesome, but they're not perfect. One of the main drawbacks is that you can't use them with destructuring.
 
 ```typescript
@@ -153,13 +166,13 @@ So, if you need to destructure your object, you'll have to do it the more explic
 ```typescript
 function getCalories(food: MexicanFood): number {
   switch (food.kind) {
-    case "taco":
+    case 'taco':
       const { shells } = food; // TypeScript knows it's a Taco! And you can destructure here
       return shells * 200;
-    case "burrito":
+    case 'burrito':
       const { length } = food;
       return length * 100;
-    case "nachos":
+    case 'nachos':
       const { toppings } = food;
       return toppings.length * 50;
   }

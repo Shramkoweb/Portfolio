@@ -1,4 +1,3 @@
-import { Post, PostCategory, PostMetadata, Snippet } from '@/lib/types';
 import {
   addYearSeparators,
   filterByAdvanceReact,
@@ -9,6 +8,7 @@ import {
   isYearSeparator,
   sortByBirthtime,
 } from '@/lib/posts/utils';
+import { Post, PostCategory, PostMetadata, Snippet } from '@/lib/types';
 
 describe('Post Utils', () => {
   const mockPost1: Post = {
@@ -184,11 +184,15 @@ describe('Post Utils', () => {
 
   describe('isYearSeparator', () => {
     it('should return true for year separator objects', () => {
-      expect(isYearSeparator({ type: 'year-separator', year: 2021 })).toBe(true);
+      expect(isYearSeparator({ type: 'year-separator', year: 2021 })).toBe(
+        true,
+      );
     });
 
     it('should return false for post metadata', () => {
-      expect(isYearSeparator(mockPost1.data as unknown as PostMetadata)).toBe(false);
+      expect(isYearSeparator(mockPost1.data as unknown as PostMetadata)).toBe(
+        false,
+      );
     });
   });
 

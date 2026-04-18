@@ -1,7 +1,9 @@
 import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 import React, { AnchorHTMLAttributes, ClassAttributes, JSX } from 'react';
+
 import { Routes } from '@/lib/routes';
+
 import { Code } from './code';
 
 function CustomLink(

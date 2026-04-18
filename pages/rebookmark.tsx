@@ -66,7 +66,11 @@ function RebookmarkPage() {
           key="og:description"
           content="Chrome extension that brings forgotten bookmarks back on a smart schedule. Join the waitlist."
         />
-        <meta property="og:url" key="og:url" content="https://shramko.dev/rebookmark" />
+        <meta
+          property="og:url"
+          key="og:url"
+          content="https://shramko.dev/rebookmark"
+        />
         <meta
           name="twitter:card"
           key="twitter:card"
@@ -82,11 +86,7 @@ function RebookmarkPage() {
           key="twitter:description"
           content="Chrome extension that brings forgotten bookmarks back on a smart schedule. Join the waitlist."
         />
-        <meta
-          name="twitter:site"
-          key="twitter:site"
-          content="@shramkoweb"
-        />
+        <meta name="twitter:site" key="twitter:site" content="@shramkoweb" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -161,7 +161,11 @@ function RebookmarkPage() {
             </strong>
           </p>
         ) : (
-          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex flex-col md:flex-row gap-3 w-full">
+          <form
+            onSubmit={handleSubmit}
+            aria-label="Join waitlist"
+            className="not-prose flex flex-col md:flex-row gap-3 w-full"
+          >
             <input
               type="email"
               value={email}
@@ -268,7 +272,9 @@ function RebookmarkPage() {
               </div>
               <p className="text-[11px] text-gray-400 mb-5 text-center">
                 or{' '}
-                <span className="underline underline-offset-2">keep forever</span>
+                <span className="underline underline-offset-2">
+                  keep forever
+                </span>
               </p>
 
               {/* Decay row */}
@@ -382,7 +388,10 @@ function RebookmarkPage() {
         </p>
 
         {/* Dashboard Mockup */}
-        <div className="not-prose my-4 w-full select-none hidden md:block" aria-hidden="true">
+        <div
+          className="not-prose my-4 w-full select-none hidden md:block"
+          aria-hidden="true"
+        >
           <div className="rounded-xl border border-gray-200 bg-white text-gray-900 overflow-hidden">
             {/* Dashboard header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
@@ -672,7 +681,9 @@ function RebookmarkPage() {
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-sm bg-gray-500" />
-                  <span className="text-[10px] text-gray-400">Dismissed: 5</span>
+                  <span className="text-[10px] text-gray-400">
+                    Dismissed: 5
+                  </span>
                 </div>
               </div>
             </div>
@@ -743,9 +754,9 @@ function RebookmarkPage() {
 
           <dt>What does &quot;Dismiss&quot; do? Is my bookmark gone?</dt>
           <dd>
-            No. Dismiss just removes the bookmark from your daily queue —
-            like dismissing a notification. The bookmark stays in Chrome, and
-            you can always restore it from the Rebookmark web dashboard.
+            No. Dismiss just removes the bookmark from your daily queue — like
+            dismissing a notification. The bookmark stays in Chrome, and you can
+            always restore it from the Rebookmark web dashboard.
           </dd>
 
           <dt>What happens if I stop using it?</dt>
@@ -781,7 +792,11 @@ function RebookmarkPage() {
             </strong>
           </p>
         ) : (
-          <form onSubmit={handleSubmit} aria-label="Join waitlist" className="not-prose flex flex-col md:flex-row gap-3 w-full">
+          <form
+            onSubmit={handleSubmit}
+            aria-label="Join waitlist"
+            className="not-prose flex flex-col md:flex-row gap-3 w-full"
+          >
             <input
               type="email"
               value={email}

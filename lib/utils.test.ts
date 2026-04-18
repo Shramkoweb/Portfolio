@@ -1,5 +1,9 @@
 import { PostCategory } from '@/lib/types';
-import { extractMarkdownSlug, formatCategoryName, generateGradient } from '@/lib/utils';
+import {
+  extractMarkdownSlug,
+  formatCategoryName,
+  generateGradient,
+} from '@/lib/utils';
 
 describe('formatCategoryName', () => {
   it('should return category as-is when no hyphens', () => {
@@ -8,7 +12,9 @@ describe('formatCategoryName', () => {
 
   it('should replace hyphens with spaces', () => {
     expect(formatCategoryName(PostCategory.CleanCode)).toBe('clean code');
-    expect(formatCategoryName(PostCategory.AdvancedReact)).toBe('advanced react');
+    expect(formatCategoryName(PostCategory.AdvancedReact)).toBe(
+      'advanced react',
+    );
     expect(formatCategoryName(PostCategory.ProjectSetup)).toBe('project setup');
   });
 
@@ -39,7 +45,9 @@ describe('generateGradient', () => {
   it('should return valid Tailwind gradient string', () => {
     const result = generateGradient('test-slug');
 
-    expect(result).toMatch(/^bg-gradient-to-r from-\w+-500 via-\w+-500 to-\w+-500$/);
+    expect(result).toMatch(
+      /^bg-gradient-to-r from-\w+-500 via-\w+-500 to-\w+-500$/,
+    );
   });
 
   it('should be deterministic — same slug always produces same gradient', () => {

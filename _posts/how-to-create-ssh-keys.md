@@ -4,8 +4,18 @@ heading: How to add SSH keys to your GitHub account
 description: Learn how to add SSH keys to your GitHub account. Boost security and ease your workflow by connecting your local machine to GitHub repositories.
 createDate: 2023-12-08T01:07:13.290Z
 updateDate: 2025-09-15T12:29:00.000Z
-keywords: [ Adding SSH Keys, GitHub Account, Git Terminal, Existing SSH Keys, Generating SSH Key, SSH public key, SSH Key to GitHub Account, ed25519 ]
-categories: [ Tutorial, Project-Setup ]
+keywords:
+  [
+    Adding SSH Keys,
+    GitHub Account,
+    Git Terminal,
+    Existing SSH Keys,
+    Generating SSH Key,
+    SSH public key,
+    SSH Key to GitHub Account,
+    ed25519,
+  ]
+categories: [Tutorial, Project-Setup]
 featured: false
 ---
 
@@ -90,11 +100,13 @@ $ clip < ~/.ssh/id_ed25519.pub
 ```
 
 **For Linux users, use:**
+
 ```bash
 $ cat ~/.ssh/id_ed25519.pub
 ```
 
 **For macOS users, you can also use:**
+
 ```bash
 $ pbcopy < ~/.ssh/id_ed25519.pub
 ```

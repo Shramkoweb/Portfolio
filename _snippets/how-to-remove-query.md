@@ -4,16 +4,17 @@ heading: How to Remove a Query String From a URL in JavaScript
 description: Snippet to remove a query string from a URL using JavaScript. Learn how to remove query parameters from a URL string.
 createDate: 2024-09-07
 updateDate: 2025-12-07
-keywords: [
-  JavaScript snippet,
-  remove query string from URL,
-  remove query parameters from URL,
-  remove query string JavaScript,
-  remove query parameters JavaScript,
-  remove query string from URL JavaScript,
-  remove query parameters from URL JavaScript,
-  remove query string from URL example
-]
+keywords:
+  [
+    JavaScript snippet,
+    remove query string from URL,
+    remove query parameters from URL,
+    remove query string JavaScript,
+    remove query parameters JavaScript,
+    remove query string from URL JavaScript,
+    remove query parameters from URL JavaScript,
+    remove query string from URL example,
+  ]
 ---
 
 To remove query parameters from a URL in JavaScript, you can use the following function:

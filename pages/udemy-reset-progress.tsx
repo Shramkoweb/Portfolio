@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 
 import { UDEMY_RESET_APP_OG_IMAGE } from '@/lib/constants';
+
 import chromeStore from '../public/static/images/chrome-store.png';
 import firefoxStore from '../public/static/images/firefox-store.webp';
 
@@ -258,8 +259,8 @@ function UdemyResetProgressPage() {
         <p>
           <strong>Q: Is this extension safe to use?</strong>
           <br />
-          A: Absolutely! It only interacts with Udemy&#39;s official interface and
-          doesn&#39;t store any data.
+          A: Absolutely! It only interacts with Udemy&#39;s official interface
+          and doesn&#39;t store any data.
         </p>
 
         <p>
