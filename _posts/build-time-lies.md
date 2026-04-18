@@ -8,11 +8,13 @@ keywords:
     Next.js build performance,
     build time regression,
     Shiki highlighting performance,
-    static generation optimization,
+    static generation batch timing,
     Vercel build logs,
+    getSingletonHighlighter,
+    compileMDX optimization,
   ]
-categories: [Opinion, Tools, Vercel]
-featured: false
+categories: [JS, Node, Vercel]
+featured: true
 ---
 
 ## The number that didn't move
@@ -21,7 +23,7 @@ I pushed a routine update to my portfolio — swapped Prettier for [oxfmt](https
 added [`@shikijs/transformers`](https://shiki.style/packages/transformers) for better syntax highlighting. Stack is
 Next.js 16, Turbopack, Prisma, Sentry, Vercel, pnpm. Nothing unusual.
 
-Checked the Vercel build log. Total build time: 48 seconds. Ran two more deploys to be sure. 47 seconds. 48 seconds.
+Checked the [Vercel build log](https://vercel.com/docs/deployments/logs). Total build time: 48 seconds. Ran two more deploys to be sure. 47 seconds. 48 seconds.
 Flat line.
 
 I almost closed the tab.
@@ -65,8 +67,8 @@ My hypothesis: the category page was fetching full post content — markdown bod
 A listing page shows titles, descriptions, and links. It doesn't render post bodies. If the data-fetching function
 pulled full content, it was doing unnecessary work.
 
-I checked the code. `getPostsByCategory` called `getPosts`, which reads every post file and returns the body. The
-category page never used the body. I switched it to `getPostsMetadata` — slug, title, description. No body. Two files,
+I checked the code. [`getPostsByCategory`](https://github.com/Shramkoweb/Portfolio/blob/47abb02/lib/posts/api.ts#L171-L174) called [`getPosts`](https://github.com/Shramkoweb/Portfolio/blob/47abb02/lib/posts/api.ts#L109-L120), which reads every post file and returns the body. The
+category page never used the body. I switched it to [`getPostsMetadata`](https://github.com/Shramkoweb/Portfolio/blob/843ae89/lib/posts/api.ts#L122-L133) — slug, title, description. No body. Two files,
 28 lines changed.
 
 Deployed. Checked the build log.
@@ -90,7 +92,7 @@ I stared at the build log longer and noticed something I'd skipped over. Look at
 Blog posts and category pages both showing exactly 6,663ms. Not approximately — _exactly_.
 Different routes, different code paths, identical timing.
 
-Next.js generates static pages in batches. The per-page time in the build log is the batch wall-clock time, not the
+Next.js [generates static pages in batches](https://nextjs.org/docs/app/api-reference/config/next-config-js/staticGeneration). The per-page time in the build log is the batch wall-clock time, not the
 individual page time. Every page in a batch gets assigned the same number — the slowest page in that batch.
 
 My category pages were fast. They were just stuck in the same batch as Shiki-heavy blog post compilations. The metadata
@@ -99,16 +101,16 @@ category pages weren't the bottleneck in their batch. The blog posts were.
 
 ## The real bottleneck
 
-So why were the blog posts slow? I dug into the Shiki integration.
+So why were the blog posts slow? I dug into the [Shiki integration](https://github.com/Shramkoweb/Portfolio/blob/47abb02/lib/scripts/compiler.ts).
 
-Every `compileMDX` call created a new `rehypeShiki` plugin instance. Each instance initialized a fresh Shiki
+Every [`compileMDX`](https://github.com/Shramkoweb/Portfolio/blob/47abb02/lib/scripts/compiler.ts#L9-L45) call created a new `rehypeShiki` plugin instance. Each instance initialized a fresh Shiki
 highlighter — loading the WASM engine, two themes, and grammars for every bundled language.
 
-> 75 pages = 75 highlighter initializations.
+> 34 pages = 34 highlighter initializations.
 
-The fix: use `@shikijs/rehype/core` with a single pre-created highlighter at module level.
+The fix: use `@shikijs/rehype/core` with a single [pre-created highlighter](https://github.com/Shramkoweb/Portfolio/blob/843ae89/lib/scripts/compiler.ts#L10-L19) at module level.
 
-```js
+```ts
 import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
 import { bundledLanguages, getSingletonHighlighter } from 'shiki';
 
@@ -144,7 +146,7 @@ concurrent, not sequential. Next.js generates multiple routes at the same time; 
 
 ## Three things I got wrong
 
-First, I thought the category page was the problem. It wasn't — it was innocent bystander in a slow batch.
+First, I thought the category page was the problem. It wasn't — it was an innocent bystander in a slow batch.
 
 Second, I thought `getPostsMetadata` vs `getPosts` was the fix. It was good code, but it didn't address the timing. I
 was looking at the right page and the wrong metric.

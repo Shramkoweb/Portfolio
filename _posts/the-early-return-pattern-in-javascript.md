@@ -18,7 +18,7 @@ keywords:
     nested if statements,
   ]
 categories: [JS, TS, Clean-Code, Tutorial]
-featured: true
+featured: false
 faq:
   - question: 'What is the early return pattern?'
     answer: 'The early return pattern is a coding technique where a function exits immediately when a precondition is not met, using return, throw, or continue. Instead of wrapping logic in nested if blocks, you handle edge cases at the top and keep the main logic flat.'
