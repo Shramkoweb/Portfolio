@@ -21,12 +21,14 @@ import { Snippet } from '@/lib/types';
 type SnippetPageProps = Pick<Snippet, 'data'> & {
   content: MDXRemoteSerializeResult;
   slug: string;
+  shikiCSS: string;
 };
 
 function SnippetPage(props: SnippetPageProps) {
   const {
     content,
     slug,
+    shikiCSS,
     data: { title, heading, description, createDate, updateDate, keywords },
   } = props;
 
@@ -48,6 +50,7 @@ function SnippetPage(props: SnippetPageProps) {
     <>
       <Head>
         <title>{title}</title>
+        {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
@@ -167,13 +170,14 @@ export async function getStaticProps({
   GetStaticPropsResult<SnippetPageProps>
 > {
   const { data, content } = await getSnippetBySlug(params?.slug);
-  const html = await compileMDX(content);
+  const { mdx, shikiCSS } = await compileMDX(content);
 
   return {
     props: {
       data,
       slug: params?.slug as string,
-      content: html,
+      content: mdx,
+      shikiCSS,
     },
   };
 }

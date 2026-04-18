@@ -1,12 +1,15 @@
 import rehypeShiki from '@shikijs/rehype';
+import { transformerStyleToClass } from '@shikijs/transformers';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
-export const compileMDX = async (content: string) =>
-  serialize(content, {
+export async function compileMDX(content: string) {
+  const transformer = transformerStyleToClass();
+
+  const mdx = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [
@@ -20,6 +23,7 @@ export const compileMDX = async (content: string) =>
               dark: 'github-dark',
             },
             defaultColor: false,
+            transformers: [transformer],
           },
         ],
         [
@@ -34,6 +38,11 @@ export const compileMDX = async (content: string) =>
       format: 'mdx',
     },
   });
+
+  const shikiCSS = transformer.getCSS();
+
+  return { mdx, shikiCSS };
+}
 
 export function extractHeadingsFromMarkdown(markdown: string) {
   const headingRegex = /^ {0,3}(#{1,6})[ \t]+(.+?)[ \t]*#*\s*$/gm;

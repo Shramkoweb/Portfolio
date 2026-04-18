@@ -59,6 +59,7 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       height={300}
       priority={priority}
       sizes="(max-width: 768px) 100vw, 768px"
+      style={{ width: '100%', height: 'auto' }}
       {...restProps}
     />
   );

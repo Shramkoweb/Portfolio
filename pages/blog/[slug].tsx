@@ -41,6 +41,7 @@ const FloatingReactions = dynamic(() =>
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
   headings: { text: string; level: number; id: string }[];
+  shikiCSS: string;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -59,6 +60,7 @@ function ArticlePage(props: ArticlePageProps) {
       faq,
     },
     headings,
+    shikiCSS,
   } = props;
 
   const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -70,6 +72,7 @@ function ArticlePage(props: ArticlePageProps) {
     <>
       <Head>
         <title>{title}</title>
+        {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
@@ -265,14 +268,15 @@ export async function getStaticProps({
   GetStaticPropsResult<ArticlePageProps>
 > {
   const { data, content } = await getPostBySlug(params?.slug);
-  const html = await compileMDX(content);
+  const { mdx, shikiCSS } = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
 
   return {
     props: {
       data,
-      content: html,
+      content: mdx,
       headings,
+      shikiCSS,
     },
   };
 }
