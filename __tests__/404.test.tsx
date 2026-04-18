@@ -20,15 +20,21 @@ describe('404 page', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  test('send sentry error on render', () => {
+  test('send sentry message with path on render', () => {
     render(<NotFoundPage />);
 
-    expect(Sentry.captureException).toHaveBeenCalledWith(new Error('404'));
+    expect(Sentry.captureMessage).toHaveBeenCalledWith(
+      `404: ${window.location.pathname}`,
+      {
+        level: 'info',
+        tags: { referrer: 'direct' },
+      },
+    );
   });
 
-  test('send sentry error only on initial render', () => {
+  test('send sentry message only on initial render', () => {
     render(<NotFoundPage />);
 
-    expect(Sentry.captureException).toHaveBeenCalledTimes(1);
+    expect(Sentry.captureMessage).toHaveBeenCalledTimes(1);
   });
 });

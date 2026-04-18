@@ -5,8 +5,10 @@ import { useEffect } from 'react';
 
 function NotFoundPage() {
   useEffect(() => {
-    // TODO refactor to some ErrorProvider
-    Sentry.captureException(new Error('404'));
+    Sentry.captureMessage(`404: ${window.location.pathname}`, {
+      level: 'info',
+      tags: { referrer: document.referrer || 'direct' },
+    });
   }, []);
 
   return (
