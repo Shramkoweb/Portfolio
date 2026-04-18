@@ -133,6 +133,8 @@ Same Vercel infrastructure, same 1 worker:
 
 The category route dropped from 45.8s to 7.4s. Individual categories went from 6,663ms to 461ms. Static generation cut in half.
 
+You might notice those route totals don't add up. Before the fix, `/blog/[slug]` showed 43s, `/blog/category` showed 45s, `/snippets` showed 14s — that's 102 seconds of work. But actual static generation took 13.4s. The route times are concurrent, not sequential. Next.js generates multiple routes at the same time; each route's clock runs in parallel. The total build went from 46s to 42s because static generation is only one piece — TypeScript checking, Turbopack compilation, and Sentry uploads don't get faster when you fix Shiki.
+
 ## Three things I got wrong
 
 First, I thought the category page was the problem. It wasn't — it was innocent bystander in a slow batch.
