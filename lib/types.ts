@@ -60,12 +60,6 @@ export enum PostCategory {
   AI = 'ai',
 }
 
-export enum Feedback {
-  Helpful = 'helpful',
-  Worthless = 'worthless',
-  Blank = 'blank',
-}
-
 // Reactions
 export const VALID_REACTION_TYPES = ['heart', 'beer', 'trophy'] as const;
 
