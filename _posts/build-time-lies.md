@@ -71,13 +71,13 @@ category page never used the body. I switched it to `getPostsMetadata` — slug,
 
 Deployed. Checked the build log.
 
-Numbers didn't move. Same six categories. Same 6,600ms each.
+**Numbers didn't move.** Same six categories. Same 6,600ms each.
 
 ## The actual problem
 
 I stared at the build log longer and noticed something I'd skipped over. Look at these two routes:
 
-```bash
+```text
 /blog/[slug]                     (43168 ms)
   /blog/ai-seo-audit             (6663 ms)
   /blog/apollo-graphql-certification (6663 ms)
@@ -87,8 +87,8 @@ I stared at the build log longer and noticed something I'd skipped over. Look at
   /blog/category/clean-code      (6663 ms)
 ```
 
-Blog posts and category pages both showing exactly 6,663ms. Not approximately — _exactly_. Different routes, different
-code paths, identical timing.
+Blog posts and category pages both showing exactly 6,663ms. Not approximately — _exactly_.
+Different routes, different code paths, identical timing.
 
 Next.js generates static pages in batches. The per-page time in the build log is the batch wall-clock time, not the
 individual page time. Every page in a batch gets assigned the same number — the slowest page in that batch.
@@ -102,8 +102,9 @@ category pages weren't the bottleneck in their batch. The blog posts were.
 So why were the blog posts slow? I dug into the Shiki integration.
 
 Every `compileMDX` call created a new `rehypeShiki` plugin instance. Each instance initialized a fresh Shiki
-highlighter — loading the WASM engine, two themes, and grammars for every bundled language. 75 pages = 75 highlighter
-initializations.
+highlighter — loading the WASM engine, two themes, and grammars for every bundled language.
+
+**75 pages = 75 highlighter initializations.**
 
 The fix: use `@shikijs/rehype/core` with a single pre-created highlighter at module level.
 
@@ -133,7 +134,12 @@ Same Vercel infrastructure, same 1 worker:
 
 The category route dropped from 45.8s to 7.4s. Individual categories went from 6,663ms to 461ms. Static generation cut in half.
 
-You might notice those route totals don't add up. Before the fix, `/blog/[slug]` showed 43s, `/blog/category` showed 45s, `/snippets` showed 14s — that's 102 seconds of work. But actual static generation took 13.4s. The route times are concurrent, not sequential. Next.js generates multiple routes at the same time; each route's clock runs in parallel. The total build went from 46s to 42s because static generation is only one piece — TypeScript checking, Turbopack compilation, and Sentry uploads don't get faster when you fix Shiki.
+You might notice those route totals don't add up. Before the fix, `/blog/[slug]` showed 43s, `/blog/category` showed
+45s, `/snippets` showed 14s — that's 102 seconds of work. But actual static generation took 13.4s. The route times are
+concurrent, not sequential. Next.js generates multiple routes at the same time; each route's clock runs in parallel.
+
+The total build went from 46s to 42s because static generation is only one piece — TypeScript checking, Turbopack
+compilation, and Sentry uploads don't get faster when you fix Shiki.
 
 ## Three things I got wrong
 
