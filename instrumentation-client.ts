@@ -26,6 +26,3 @@ Sentry.init({
     /translate\.goog/i,
   ],
 });
-
-export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
-
