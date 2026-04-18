@@ -11,7 +11,7 @@ keywords:
     static generation optimization,
     Vercel build logs,
   ]
-categories: [Opinion, Tools, Vercel]
+categories: [ Opinion, Tools, Vercel ]
 featured: false
 ---
 
@@ -33,7 +33,7 @@ Then I scrolled down to the per-page breakdown. Completely different story.
 The listing pages — homepage, blog index, snippets — got much faster:
 
 | Route       | Before   | After  |
-| ----------- | -------- | ------ |
+|-------------|----------|--------|
 | `/`         | 7,046 ms | 487 ms |
 | `/blog`     | 7,116 ms | 664 ms |
 | `/snippets` | 7,046 ms | 547 ms |
@@ -43,7 +43,7 @@ Roughly a 13x improvement. But the total build time didn't budge. Something else
 That something was `/blog/category/[category]`.
 
 | Metric           | Before       | After        |
-| ---------------- | ------------ | ------------ |
+|------------------|--------------|--------------|
 | Route total      | ~15.8 s      | ~45.8 s      |
 | Slowest category | ~1,000 ms    | ~6,600 ms    |
 | Typical range    | 900–1,100 ms | 500–6,600 ms |
@@ -108,7 +108,7 @@ highlighter — loading the WASM engine, two themes, and grammars for every bund
 
 The fix: use `@shikijs/rehype/core` with a single pre-created highlighter at module level.
 
-```typescript
+```js
 import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
 import { bundledLanguages, getSingletonHighlighter } from 'shiki';
 
@@ -125,14 +125,15 @@ highlighter gets passed directly to each `compileMDX` call instead of creating a
 
 Same Vercel infrastructure, same 1 worker:
 
-| Metric                    | Before     | After      |
-| ------------------------- | ---------- | ---------- |
-| Static generation total   | 13.4 s     | 6.7 s      |
-| `/blog/category` route    | 45,771 ms  | 7,396 ms   |
-| Category per-page         | 6,663 ms   | 461 ms     |
-| `/blog/[slug]` route      | 43,168 ms  | 27,770 ms  |
+| Metric                  | Before    | After     |
+|-------------------------|-----------|-----------|
+| Static generation total | 13.4 s    | 6.7 s     |
+| `/blog/category` route  | 45,771 ms | 7,396 ms  |
+| Category per-page       | 6,663 ms  | 461 ms    |
+| `/blog/[slug]` route    | 43,168 ms | 27,770 ms |
 
-The category route dropped from 45.8s to 7.4s. Individual categories went from 6,663ms to 461ms. Static generation cut in half.
+The category route dropped from 45.8s to 7.4s. Individual categories went from 6,663ms to 461ms. Static generation cut
+in half.
 
 You might notice those route totals don't add up. Before the fix, `/blog/[slug]` showed 43s, `/blog/category` showed
 45s, `/snippets` showed 14s — that's 102 seconds of work. But actual static generation took 13.4s. The route times are
