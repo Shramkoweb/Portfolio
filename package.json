@@ -2,12 +2,13 @@
   "name": "portfolio",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.33.0",
   "type": "module",
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
     "build": "next build",
     "dev": "next dev",
+    "format": "oxfmt --write",
+    "format:check": "oxfmt --check",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
@@ -19,12 +20,6 @@
     "test:ci": "jest --ci",
     "test:coverage": "jest --coverage"
   },
-  "engines": {
-    "node": "24.x"
-  },
-  "browserslist": [
-    "baseline widely available"
-  ],
   "dependencies": {
     "@prisma/adapter-pg": "7.7.0",
     "@prisma/client": "7.7.0",
@@ -60,9 +55,9 @@
     "jest-environment-jsdom": "30.3.0",
     "next-mdx-remote": "6.0.0",
     "next-sitemap": "4.2.3",
+    "oxfmt": "0.45.0",
     "oxlint": "1.60.0",
     "postcss": "8.5.10",
-    "prettier": "3.8.3",
     "prisma": "7.7.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "7.1.0",
@@ -72,6 +67,13 @@
     "tailwindcss": "4.2.2",
     "typescript": "6.0.3"
   },
+  "browserslist": [
+    "baseline widely available"
+  ],
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "pnpm@10.33.0",
   "pnpm": {
     "overrides": {
       "hono": ">=4.12.12",
