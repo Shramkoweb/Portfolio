@@ -11,6 +11,7 @@ export function Footer() {
     <footer className="flex flex-col justify-center px-8">
       <div className="mx-auto flex w-full max-w-3xl flex-col items-start justify-center">
         <hr className="mb-16 w-full border-gray-200 border dark:border-gray-800" />
+        <nav aria-label="Footer">
         <div className="grid w-full max-w-3xl grid-cols-1 gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-4">
           <ul className="flex flex-col space-y-4">
             <li>
@@ -65,6 +66,7 @@ export function Footer() {
                 className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
               >
                 Report an Issue
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             </li>
           </ul>
@@ -120,6 +122,7 @@ export function Footer() {
             </li>
           </ul>
         </div>
+        </nav>
         <small className="pb-4 text-xs text-gray-600 dark:text-gray-400">
           © Made with ❤️
           <br />

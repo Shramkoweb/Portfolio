@@ -1,6 +1,6 @@
-import { TLinkedinFeedback } from '@/lib/types';
+import { LinkedinFeedback } from '@/lib/types';
 
-export const LINKEDIN_FEEDBACK_LIST: TLinkedinFeedback[] = [
+export const LINKEDIN_FEEDBACK_LIST: LinkedinFeedback[] = [
   {
     author: {
       name: 'Roman Kolisnyk ',

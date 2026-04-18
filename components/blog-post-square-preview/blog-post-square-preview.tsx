@@ -30,7 +30,9 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
         <div className="flex items-center text-gray-500 dark:text-gray-400">
           <Eye size={24} aria-hidden="true" />
           <span className="ml-2 align-baseline">
-            {views !== undefined ? views.toLocaleString() : (
+            {views !== undefined ? (
+              <>{views.toLocaleString()}<span className="sr-only"> views</span></>
+            ) : (
               <span className="inline-block h-4 w-10 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
             )}
           </span>

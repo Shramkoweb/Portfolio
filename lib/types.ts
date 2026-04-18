@@ -60,13 +60,6 @@ export enum PostCategory {
   AI = 'ai',
 }
 
-export enum Feedback {
-  Helpful = 'helpful',
-  Worthless = 'worthless',
-  Blank = 'blank',
-}
-
-// Reactions
 export const VALID_REACTION_TYPES = ['heart', 'beer', 'trophy'] as const;
 
 export type ReactionType = (typeof VALID_REACTION_TYPES)[number];
@@ -97,7 +90,7 @@ type LinkedinFeedbackAuthor = {
   linkedinLink: string;
 };
 
-export type TLinkedinFeedback = {
+export type LinkedinFeedback = {
   author: LinkedinFeedbackAuthor;
   postDate: string;
   text: string;

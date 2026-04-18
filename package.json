@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "dev": "next dev",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",

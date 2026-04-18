@@ -25,7 +25,6 @@ export function Code(props: CodeProps) {
     } catch (err) {
       setCopyStatus('error');
       setTimeout(() => setCopyStatus('idle'), 2000);
-      // TODO: Implement manual copy method & Error handling
       console.error('Failed to copy:', err);
     }
   }, []);

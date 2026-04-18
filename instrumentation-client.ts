@@ -4,7 +4,7 @@ Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
   environment: process.env.NODE_ENV,
   release: process.env.APP_RELEASE_VERSION,
-  tracesSampleRate: 0.1,
+  tracesSampleRate: 0,
   debug: false,
   sendDefaultPii: true,
   ignoreErrors: [
@@ -18,14 +18,13 @@ Sentry.init({
 
   denyUrls: [
     // Browser extensions
-    /extensions\//i,
-    /^chrome:\/\//i,
+    /^chrome-extension:\/\//i,
     /^moz-extension:\/\//i,
     /^safari-extension:\/\//i,
+    /^safari-web-extension:\/\//i,
     // Google Translate proxy
     /translate\.goog/i,
   ],
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
-

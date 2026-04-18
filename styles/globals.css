@@ -26,6 +26,7 @@
 
 html {
   min-width: 360px;
+  scrollbar-gutter: stable;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -150,10 +151,6 @@ pre {
 
 .rehype-code-title + pre {
   @apply mt-0 rounded-t-none;
-}
-
-.highlight-line {
-  @apply block px-4 -mx-4 bg-gray-200 border-l-4 border-blue-500 dark:bg-gray-800;
 }
 
 /* Remove Safari input shadow on mobile */

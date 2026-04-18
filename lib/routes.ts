@@ -12,7 +12,6 @@ export const Routes = {
   Bookmarks: () => '/bookmarks',
   Rebookmark: () => '/rebookmark',
 
-  // External links
   Resume: () => '/static/serhii_shramko_frontend.pdf',
   GitHub: () => 'https://github.com/Shramkoweb',
   LinkTree: () => 'https://links.shramko.dev/',
