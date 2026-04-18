@@ -13,7 +13,7 @@
     "lint:fix": "oxlint --fix",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "postinstall": "prisma generate",
-    "pre-push": "pnpm run lint",
+    "pre-push": "pnpm run lint && pnpm run format:check",
     "prepare": "git config core.hooksPath .git-hooks",
     "start": "next start",
     "test": "jest",

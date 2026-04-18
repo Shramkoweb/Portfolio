@@ -6,5 +6,12 @@
   "printWidth": 80,
   "sortImports": true,
   "sortPackageJson": true,
-  "ignorePatterns": [".next/**", "out/**", "build/**", "coverage/**"]
+  "ignorePatterns": [
+    ".next/**",
+    "out/**",
+    "build/**",
+    "coverage/**",
+    "prisma/migrations/**",
+    "public/**"
+  ]
 }
