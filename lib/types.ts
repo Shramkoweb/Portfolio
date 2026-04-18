@@ -60,7 +60,6 @@ export enum PostCategory {
   AI = 'ai',
 }
 
-// Reactions
 export const VALID_REACTION_TYPES = ['heart', 'beer', 'trophy'] as const;
 
 export type ReactionType = (typeof VALID_REACTION_TYPES)[number];
