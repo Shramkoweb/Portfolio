@@ -18,10 +18,10 @@ Sentry.init({
 
   denyUrls: [
     // Browser extensions
-    /extensions\//i,
-    /^chrome:\/\//i,
+    /^chrome-extension:\/\//i,
     /^moz-extension:\/\//i,
     /^safari-extension:\/\//i,
+    /^safari-web-extension:\/\//i,
     // Google Translate proxy
     /translate\.goog/i,
   ],
