@@ -1,7 +1,8 @@
-import matter from 'gray-matter';
-import readingTime from 'reading-time';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
+
+import matter from 'gray-matter';
+import readingTime from 'reading-time';
 
 import { Post, PostCategory, PostMetadata } from '@/lib/types';
 import { extractMarkdownSlug } from '@/lib/utils';
@@ -101,13 +102,15 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
       content,
     };
   } catch (err) {
-    throw new Error(err as string);
+    throw new Error(String(err), { cause: err });
   }
 }
 
 export async function getPosts(): Promise<Post[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
-  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+  const markdownFiles = fileNames.filter((fileName) =>
+    fileName.endsWith('.md'),
+  );
 
   const postPromises = markdownFiles
     .map(extractMarkdownSlug)
@@ -118,7 +121,9 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostsMetadata(): Promise<PostMetadata[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
-  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+  const markdownFiles = fileNames.filter((fileName) =>
+    fileName.endsWith('.md'),
+  );
 
   const metadataPromises = markdownFiles
     .map(extractMarkdownSlug)
@@ -129,7 +134,9 @@ export async function getPostsMetadata(): Promise<PostMetadata[]> {
 
 export async function getPostSlugs() {
   const fileNames = await readdir(POSTS_DIRECTORY);
-  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+  const markdownFiles = fileNames.filter((fileName) =>
+    fileName.endsWith('.md'),
+  );
 
   return markdownFiles.map(extractMarkdownSlug);
 }
@@ -137,20 +144,28 @@ export async function getPostSlugs() {
 export async function getPostsCategories(): Promise<PostCategory[]> {
   const posts = await getPostsMetadata();
 
-  const uniqueCategories = posts.reduce((acc: Set<PostCategory>, post: PostMetadata) => {
-    post.data.categories.forEach((category: PostCategory) => {
-      acc.add(category);
-    });
-    return acc;
-  }, new Set<PostCategory>());
+  const uniqueCategories = posts.reduce(
+    (acc: Set<PostCategory>, post: PostMetadata) => {
+      post.data.categories.forEach((category: PostCategory) => {
+        acc.add(category);
+      });
+      return acc;
+    },
+    new Set<PostCategory>(),
+  );
 
   return [...uniqueCategories];
 }
 
-export function filterPostsByCategory(posts: Post[] | PostMetadata[], category: string): Post[] | PostMetadata[] {
-  return posts.filter((post) => post.data.categories.some(
-    (element) => element.toLowerCase() === category.toLowerCase(),
-  ));
+export function filterPostsByCategory(
+  posts: Post[] | PostMetadata[],
+  category: string,
+): Post[] | PostMetadata[] {
+  return posts.filter((post) =>
+    post.data.categories.some(
+      (element) => element.toLowerCase() === category.toLowerCase(),
+    ),
+  );
 }
 
 export async function getPostsByCategory(category: string): Promise<Post[]> {

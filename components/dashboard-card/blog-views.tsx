@@ -1,9 +1,8 @@
+import { DashboardData } from 'lib/types';
 import useSWR from 'swr';
 
-import { DashboardData } from 'lib/types';
-import { fetcher } from '@/lib/fetcher';
-
 import { DashboardCard } from '@/components/dashboard-card/dashboard-card';
+import { fetcher } from '@/lib/fetcher';
 
 export function BlogViewsCard() {
   const { data } = useSWR<DashboardData>('/api/dashboard', fetcher);

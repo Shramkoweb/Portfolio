@@ -1,7 +1,9 @@
 import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 import React, { AnchorHTMLAttributes, ClassAttributes, JSX } from 'react';
+
 import { Routes } from '@/lib/routes';
+
 import { Code } from './code';
 
 function CustomLink(
@@ -57,6 +59,7 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       height={300}
       priority={priority}
       sizes="(max-width: 768px) 100vw, 768px"
+      style={{ width: '100%', height: 'auto' }}
       {...restProps}
     />
   );

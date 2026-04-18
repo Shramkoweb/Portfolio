@@ -1,21 +1,22 @@
 ---
-title: "Copy to Clipboard in JavaScript: Modern Async Clipboard API"
+title: 'Copy to Clipboard in JavaScript: Modern Async Clipboard API'
 heading: Copy to Clipboard
 description: Copy text to clipboard using the modern Async Clipboard API in TypeScript. Includes a ready-to-use React copy button component with success feedback.
 createDate: 2026-02-15
-keywords: [
-  copy to clipboard JavaScript,
-  clipboard API,
-  navigator clipboard writeText,
-  copy text to clipboard,
-  copy button React,
-  copy to clipboard TypeScript,
-  JavaScript clipboard,
-  copy paste JavaScript,
-  click to copy,
-  clipboard writeText example,
-  copy code snippet button,
-]
+keywords:
+  [
+    copy to clipboard JavaScript,
+    clipboard API,
+    navigator clipboard writeText,
+    copy text to clipboard,
+    copy button React,
+    copy to clipboard TypeScript,
+    JavaScript clipboard,
+    copy paste JavaScript,
+    click to copy,
+    clipboard writeText example,
+    copy code snippet button,
+  ]
 ---
 
 The modern way to copy text to the clipboard. No hidden textareas, no `document.execCommand` — just the Async Clipboard

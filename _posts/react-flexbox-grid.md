@@ -1,11 +1,20 @@
 ---
-title: "Flexbox Grid in React: A Step-by-Step Guide"
-heading: "How to create a grid with flexbox in React"
+title: 'Flexbox Grid in React: A Step-by-Step Guide'
+heading: 'How to create a grid with flexbox in React'
 description: Learn how to build a reusable flexbox-based Grid component in React using BEM methodology and clsx for clean class management.
 createDate: 2022-10-09T20:40:12.461Z
 updateDate: 2022-10-10T00:35:10.461Z
-keywords: [ react flexbox grid, flexbox css, react js grid, react flexbox, react grid system, classnames, clsx ]
-categories: [ React, CSS, Tutorial ]
+keywords:
+  [
+    react flexbox grid,
+    flexbox css,
+    react js grid,
+    react flexbox,
+    react grid system,
+    classnames,
+    clsx,
+  ]
+categories: [React, CSS, Tutorial]
 featured: false
 ---
 
@@ -39,27 +48,17 @@ npm i clsx
 ## Step 1: Create React component architecture
 
 ```jsx
-const Grid = ({ children }) => (
-  <div className='grid'>
-    {children}
-  </div>
-);
+const Grid = ({ children }) => <div className="grid">{children}</div>;
 ```
 
 ```jsx
 const GridColumn = ({ children }) => (
-  <div className='grid__col'>
-    {children}
-  </div>
+  <div className="grid__col">{children}</div>
 );
 ```
 
 ```jsx
-const GridRow = ({ children }) => (
-  <div className='grid__row'>
-    {children}
-  </div>
-);
+const GridRow = ({ children }) => <div className="grid__row">{children}</div>;
 ```
 
 ## Step 2: Create styles with SCSS
@@ -133,20 +132,13 @@ You can see how SASS code is transformed into CSS [here](https://www.sassmeister
 import clsx from 'clsx';
 
 const GridRow = (props) => {
-  const {
-    children,
-    columns,
-  } = props;
+  const { children, columns } = props;
 
   const rootClasses = clsx('grid__row', {
     [`grid__row--col-${columns}`]: columns,
   });
 
-  return (
-    <div className={rootClasses}>
-      {children}
-    </div>
-  );
+  return <div className={rootClasses}>{children}</div>;
 };
 ```
 

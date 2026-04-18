@@ -1,5 +1,5 @@
-import { BaseFrontmatter, FAQItem } from '@/lib/types';
 import { SITE_URL } from '@/lib/constants';
+import { BaseFrontmatter, FAQItem } from '@/lib/types';
 const AUTHOR_ID = `${SITE_URL}/#person`;
 
 const author = {
@@ -15,7 +15,9 @@ function toIsoDate(value?: number | null): string | null {
   return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
-export function generateBlogPostingSchema(post: BaseFrontmatter & { categories?: string[] }) {
+export function generateBlogPostingSchema(
+  post: BaseFrontmatter & { categories?: string[] },
+) {
   const datePublished = toIsoDate(post.createDate);
 
   if (!datePublished) {

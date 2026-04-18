@@ -4,17 +4,18 @@ heading: Debounce
 description: Copy-paste debounce function in TypeScript. Delay function execution until user stops typing or triggering events. Includes React usage example.
 createDate: 2025-05-15
 updateDate: 2025-12-07
-keywords: [
-  debounce,
-  debounce function,
-  debounce function in Javascript,
-  debounce function in TypeScript,
-  code snippet,
-  JS snippet,
-  JS code snippet,
-  debounce function in JS,
-  debounce function in TS,
-]
+keywords:
+  [
+    debounce,
+    debounce function,
+    debounce function in Javascript,
+    debounce function in TypeScript,
+    code snippet,
+    JS snippet,
+    JS code snippet,
+    debounce function in JS,
+    debounce function in TS,
+  ]
 ---
 
 ```typescript
@@ -28,7 +29,7 @@ const debounce = (callback: TimerHandler, wait: number) => {
       callback.apply(null, args);
     }, wait);
   };
-}
+};
 ```
 
 ## Usage
@@ -45,24 +46,22 @@ interface MousePosition {
 function MouseTracker() {
   const [mousePosition, setMousePosition] = React.useState<MousePosition>({
     x: null,
-    y: null
+    y: null,
   });
 
   const handleMouseMove = React.useMemo(
-    () => debounce((event: React.MouseEvent) => {
-      setMousePosition({
-        x: event.clientX,
-        y: event.clientY
-      });
-    }, 250),
-    []
+    () =>
+      debounce((event: React.MouseEvent) => {
+        setMousePosition({
+          x: event.clientX,
+          y: event.clientY,
+        });
+      }, 250),
+    [],
   );
 
   return (
-    <div 
-      onMouseMove={handleMouseMove}
-      className="w-full h-screen bg-gray-100"
-    >
+    <div onMouseMove={handleMouseMove} className="w-full h-screen bg-gray-100">
       <p>
         Mouse X: {mousePosition.x}
         <br />

@@ -4,7 +4,16 @@ heading: Common CSS Class Names
 description: Essential CSS class names every developer should know. Common naming patterns following BEM methodology for structured, maintainable, and organized styles.
 createDate: 2023-10-25
 updateDate: 2026-02-21
-keywords: [ Common CSS class names, BEM methodology, CSS naming conventions, Structured web styling, Block Element Modifier, CSS best practices, Naming conventions in CSS ]
+keywords:
+  [
+    Common CSS class names,
+    BEM methodology,
+    CSS naming conventions,
+    Structured web styling,
+    Block Element Modifier,
+    CSS best practices,
+    Naming conventions in CSS,
+  ]
 ---
 
 Let's explore some common words and phrases used within CSS classes following the BEM guidelines.
@@ -122,7 +131,6 @@ Let's explore some common words and phrases used within CSS classes following th
 ### Simple List
 
 ```html
-
 <ul class="list">
   <li class="item">First</li>
   <li class="item">Second</li>
@@ -133,9 +141,8 @@ Let's explore some common words and phrases used within CSS classes following th
 ### User Image (User pic)
 
 ```html
-
 <div class="user">
-  <img class="user__img" src="user.png" alt="Serhii Shramko">
+  <img class="user__img" src="user.png" alt="Serhii Shramko" />
   <a class="user__link" href="#">Serhii Shramko</a>
 </div>
 ```
@@ -143,14 +150,13 @@ Let's explore some common words and phrases used within CSS classes following th
 ### Gallery
 
 ```html
-
 <div class="gallery">
   <ul class="gallery__list">
     <li class="gallery__item">
-      <img class="gallery__img" src="flowers.jpg" alt="Flowers on the field">
+      <img class="gallery__img" src="flowers.jpg" alt="Flowers on the field" />
     </li>
     <li class="gallery__item">
-      <img class="gallery__img" src="trees.jpg" alt="Trees on the field">
+      <img class="gallery__img" src="trees.jpg" alt="Trees on the field" />
     </li>
   </ul>
 </div>
@@ -159,7 +165,6 @@ Let's explore some common words and phrases used within CSS classes following th
 ### Navigation
 
 ```html
-
 <nav class="nav">
   <a class="nav__link nav__link--active">Home</a>
   <a class="nav__link" href="#">Secondary</a>
@@ -174,7 +179,6 @@ about [difference between absolute and relative URL in HTML](/blog/difference-be
 junior developers usually make some errors in navigation blocks.
 
 ```html
-
 <nav class="nav">
   <ul class="nav__list">
     <li class="nav__item nav__item--current">
@@ -196,14 +200,13 @@ junior developers usually make some errors in navigation blocks.
 ### Widget in Sidebar
 
 ```html
-
 <div class="widget">
   <h4 class="widget__title">Jelly</h4>
 
   <div class="widget__content">
     <p>
-      To cultivate a sociable and amiable jelly, you'll require a foam roll, two kilograms of sugar, three eggs, and
-      half a cup of acetone.
+      To cultivate a sociable and amiable jelly, you'll require a foam roll, two
+      kilograms of sugar, three eggs, and half a cup of acetone.
     </p>
 
     <a class="widget__link" href="#">More.</a>
@@ -214,7 +217,6 @@ junior developers usually make some errors in navigation blocks.
 ### News Block
 
 ```html
-
 <div class="news">
   <h2 class="news__title">News</h2>
 
@@ -230,9 +232,14 @@ junior developers usually make some errors in navigation blocks.
     </li>
 
     <li class="news__item item-news">
-      <h4 class="item-news__title">Scientists Clarify the Role of a Nail File in Nail Care</h4>
+      <h4 class="item-news__title">
+        Scientists Clarify the Role of a Nail File in Nail Care
+      </h4>
       <div class="item-news__text">
-        <p>British scientists highly rate the contribution of nail files to growing one-and-a-half-meter-long nails.</p>
+        <p>
+          British scientists highly rate the contribution of nail files to
+          growing one-and-a-half-meter-long nails.
+        </p>
 
         <a href="#" class="item-news__link">Don't Read More</a>
       </div>
@@ -244,23 +251,24 @@ junior developers usually make some errors in navigation blocks.
 ### Blog Article (Simple Version)
 
 ```html
-
 <article class="article">
   <h3 class="article__title">Exploring Chakras with a Bunch of Parsley</h3>
   <time datetime="23-05-1993" class="article__datetime">May 23</time>
 
   <div class="article__author author-article">
-    <img class="author-article__img" src="user.png" alt="Jon Wick">
+    <img class="author-article__img" src="user.png" alt="Jon Wick" />
     <a class="author-article__link" href="#">Jon Wick</a>
   </div>
 
   <div class="article__content">
-    Visit the market and buy a bunch of parsley, about 100 grams. Carefully sort it out, remove bugs and caterpillars.
-    Give the bugs to the cat for playtime, and let the caterpillars inhabit your cactus pot. Name one of them John and
-    the other Billy, and you'll have your very own Wild West. Now, back to that bunch of parsley. Gently stroke it
-    behind the ear, for yourself or your cat. Tie it with a satin ribbon, don't forget to make a bow. Congratulations!
-    You now have a fully domesticated bunch of parsley that will joyfully follow you around and sprout its seeds in your
-    slippers.
+    Visit the market and buy a bunch of parsley, about 100 grams. Carefully sort
+    it out, remove bugs and caterpillars. Give the bugs to the cat for playtime,
+    and let the caterpillars inhabit your cactus pot. Name one of them John and
+    the other Billy, and you'll have your very own Wild West. Now, back to that
+    bunch of parsley. Gently stroke it behind the ear, for yourself or your cat.
+    Tie it with a satin ribbon, don't forget to make a bow. Congratulations! You
+    now have a fully domesticated bunch of parsley that will joyfully follow you
+    around and sprout its seeds in your slippers.
   </div>
 </article>
 ```
@@ -268,27 +276,33 @@ junior developers usually make some errors in navigation blocks.
 ### Blog Article (Complex Version)
 
 ```html
-
 <article class="entry">
   <header class="entry__header">
     <h3 class="entry__title title-entry">
-      <a class="title-entry__link" href="#">Rubber Ducks as a Means of Self-Discovery</a>
+      <a class="title-entry__link" href="#"
+        >Rubber Ducks as a Means of Self-Discovery</a
+      >
     </h3>
 
     <time class="entry__datetime">May 32, 10:87</time>
   </header>
 
   <div class="entry__author author-entry">
-    <img class="author-entry__img" src="userpic.png" alt="Vasilisa Sergeevich">
+    <img
+      class="author-entry__img"
+      src="userpic.png"
+      alt="Vasilisa Sergeevich"
+    />
 
     <a class="author-entry__link" href="#">Vasilisa Sergeevich</a>
   </div>
 
   <div class="entry__content">
-    Retrieve a box from the attic with fifty rubber ducks left over from the New Year's celebration. Lay them out in the
-    shape of a pentagram on your room's floor, using the ducks and lit candles. Sit in the middle in a lotus position,
-    take a German-Portuguese dictionary in each hand, clear your throat, take a deep breath, and, with full commitment,
-    exclaim, "Quack!"
+    Retrieve a box from the attic with fifty rubber ducks left over from the New
+    Year's celebration. Lay them out in the shape of a pentagram on your room's
+    floor, using the ducks and lit candles. Sit in the middle in a lotus
+    position, take a German-Portuguese dictionary in each hand, clear your
+    throat, take a deep breath, and, with full commitment, exclaim, "Quack!"
   </div>
 
   <div class="entry__tags tags-entry">

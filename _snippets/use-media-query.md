@@ -1,22 +1,23 @@
 ---
-title: "useMediaQuery React Hook: Responsive Design in JavaScript"
+title: 'useMediaQuery React Hook: Responsive Design in JavaScript'
 heading: useMediaQuery
 description: React hook for responsive breakpoints in JavaScript. Detect screen size changes, dark mode preference, and other CSS media queries in React components.
 createDate: 2026-01-21
-keywords: [
-  useMediaQuery,
-  useMediaQuery React hook,
-  React responsive hook,
-  media query JavaScript,
-  detect screen size React,
-  responsive breakpoints React,
-  window matchMedia React,
-  React mobile detection,
-  prefers-color-scheme JavaScript,
-  responsive design hook,
-  CSS media query in JS,
-  React breakpoint hook,
-]
+keywords:
+  [
+    useMediaQuery,
+    useMediaQuery React hook,
+    React responsive hook,
+    media query JavaScript,
+    detect screen size React,
+    responsive breakpoints React,
+    window matchMedia React,
+    React mobile detection,
+    prefers-color-scheme JavaScript,
+    responsive design hook,
+    CSS media query in JS,
+    React breakpoint hook,
+  ]
 ---
 
 Subscribe to any CSS media query from React and re-render when it changes. Works for responsive breakpoints, dark mode
@@ -68,11 +69,7 @@ function Layout() {
 function ThemeProvider({ children }: { children: React.ReactNode }) {
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 
-  return (
-    <div className={prefersDark ? 'dark' : 'light'}>
-      {children}
-    </div>
-  );
+  return <div className={prefersDark ? 'dark' : 'light'}>{children}</div>;
 }
 ```
 
@@ -80,12 +77,14 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 ```tsx
 function AnimatedComponent() {
-  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = useMediaQuery(
+    '(prefers-reduced-motion: reduce)',
+  );
 
   return (
     <div
       style={{
-        transition: prefersReducedMotion ? 'none' : 'transform 0.3s ease'
+        transition: prefersReducedMotion ? 'none' : 'transform 0.3s ease',
       }}
     >
       Content

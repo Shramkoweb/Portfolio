@@ -1,5 +1,10 @@
+import {
+  escapeCData,
+  escapeXml,
+  generateRss,
+  generateRssItem,
+} from '@/lib/feed';
 import { PostCategory, PostMetadata } from '@/lib/types';
-import { escapeCData, escapeXml, generateRss, generateRssItem } from '@/lib/feed';
 
 const mockPost: PostMetadata = {
   data: {
@@ -42,7 +47,9 @@ describe('Feed Utils', () => {
     });
 
     it('should escape quotes and apostrophes', () => {
-      expect(escapeXml('"hello" \'world\'')).toBe('&quot;hello&quot; &apos;world&apos;');
+      expect(escapeXml('"hello" \'world\'')).toBe(
+        '&quot;hello&quot; &apos;world&apos;',
+      );
     });
 
     it('should escape all special chars in one string', () => {
@@ -70,7 +77,9 @@ describe('Feed Utils', () => {
     });
 
     it('should handle multiple ]]> sequences', () => {
-      expect(escapeCData('a]]>b]]>c')).toBe('a]]]]><![CDATA[>b]]]]><![CDATA[>c');
+      expect(escapeCData('a]]>b]]>c')).toBe(
+        'a]]]]><![CDATA[>b]]]]><![CDATA[>c',
+      );
     });
 
     it('should return empty string unchanged', () => {
@@ -87,12 +96,16 @@ describe('Feed Utils', () => {
     it('should include correct link and guid', () => {
       const item = generateRssItem(mockPost);
       expect(item).toContain('<link>https://shramko.dev/blog/test-post</link>');
-      expect(item).toContain('<guid isPermaLink="true">https://shramko.dev/blog/test-post</guid>');
+      expect(item).toContain(
+        '<guid isPermaLink="true">https://shramko.dev/blog/test-post</guid>',
+      );
     });
 
     it('should include description in CDATA', () => {
       const item = generateRssItem(mockPost);
-      expect(item).toContain('<description><![CDATA[A test post description]]></description>');
+      expect(item).toContain(
+        '<description><![CDATA[A test post description]]></description>',
+      );
     });
 
     it('should use createDate as pubDate when updateDate is null', () => {
@@ -133,8 +146,12 @@ describe('Feed Utils', () => {
         },
       };
       const item = generateRssItem(post);
-      expect(item).toContain('<title><![CDATA[Test]]]]><![CDATA[>Post]]></title>');
-      expect(item).toContain('<description><![CDATA[Desc]]]]><![CDATA[>ription]]></description>');
+      expect(item).toContain(
+        '<title><![CDATA[Test]]]]><![CDATA[>Post]]></title>',
+      );
+      expect(item).toContain(
+        '<description><![CDATA[Desc]]]]><![CDATA[>ription]]></description>',
+      );
     });
   });
 
@@ -148,7 +165,9 @@ describe('Feed Utils', () => {
 
     it('should include rss tag with atom namespace', () => {
       const rss = generateRss([], lastBuildDate);
-      expect(rss).toContain('<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">');
+      expect(rss).toContain(
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
+      );
     });
 
     it('should include channel metadata', () => {
@@ -170,7 +189,9 @@ describe('Feed Utils', () => {
 
     it('should include docs element', () => {
       const rss = generateRss([], lastBuildDate);
-      expect(rss).toContain('<docs>https://www.rssboard.org/rss-specification</docs>');
+      expect(rss).toContain(
+        '<docs>https://www.rssboard.org/rss-specification</docs>',
+      );
     });
 
     it('should include ttl element', () => {

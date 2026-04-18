@@ -1,5 +1,5 @@
 ---
-title: "JavaScript Loops: for...in vs for...of"
+title: 'JavaScript Loops: for...in vs for...of'
 heading: for...in vs for...of Loops
 description: Understand the key differences between for...in and for...of loops in JavaScript. Learn when to use each for iterating over arrays, objects, and iterables.
 createDate: 2022-08-17T20:19:07.728Z
@@ -64,11 +64,11 @@ const user = {
   age: 29,
   email: 'shramko.dev@gmail.com',
   country: 'Ukraine',
-  city: 'Kyiv'
-}
+  city: 'Kyiv',
+};
 
 for (const key in user) {
-  console.log(`user.${key} = ${user[key]}`)
+  console.log(`user.${key} = ${user[key]}`);
 }
 ```
 
@@ -93,17 +93,11 @@ with [Bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 The keys in the array are indexes (numbers).
 
 ```js
-const creatures = [
-  "octopus",
-  "squid",
-  "shark",
-  "seahorse",
-  "starfish",
-];
+const creatures = ['octopus', 'squid', 'shark', 'seahorse', 'starfish'];
 
 for (const index in creatures) {
   // We need access to creatures value by index
-  console.log(creatures[index])
+  console.log(creatures[index]);
 }
 ```
 
@@ -121,7 +115,7 @@ starfish
 const oceanCreature = 'Shark';
 
 for (const index in oceanCreature) {
-  console.log(oceanCreature[index])
+  console.log(oceanCreature[index]);
 }
 ```
 
@@ -141,7 +135,7 @@ arrays and strings, we can use the for...of statement. The `for...of` statement 
 In this example of a `for...of` loop, we will create an array and print each item in the array to the console.
 
 ```js
-const sharks = ["tiger", "great white", "hammerhead"];
+const sharks = ['tiger', 'great white', 'hammerhead'];
 
 // Print out each type of shark
 for (const shark of sharks) {
@@ -163,7 +157,7 @@ The `for...of` loop doesn't work with Objects because they don't have a [Symbol.
 You can try but you will get an error:
 
 ```js
-"Uncaught TypeError: Object is not iterable"
+'Uncaught TypeError: Object is not iterable';
 ```
 
 ### Iterating over a DOM collection

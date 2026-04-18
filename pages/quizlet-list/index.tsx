@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
+
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
 import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklist-3.png';
@@ -11,9 +12,10 @@ import fourthImage from '../../public/static/images/quizlet-list/quizlet-quickli
 
 function QuizletPage() {
   useEffect(() => {
-    const registerView = () => fetch('/api/views/quizlet-page', {
-      method: 'POST',
-    }).catch(() => {});
+    const registerView = () =>
+      fetch('/api/views/quizlet-page', {
+        method: 'POST',
+      }).catch(() => {});
 
     registerView();
   }, []);
@@ -44,7 +46,11 @@ function QuizletPage() {
           key="og:description"
           content="Simplify vocabulary learning with Quizlet QuickList. Easily gather and export word lists for studying on Quizlet."
         />
-        <meta property="og:image" content={QUIZLET_APP_OG_IMAGE} key="og:image" />
+        <meta
+          property="og:image"
+          content={QUIZLET_APP_OG_IMAGE}
+          key="og:image"
+        />
         <meta
           property="twitter:card"
           key="twitter:card"
@@ -60,7 +66,11 @@ function QuizletPage() {
           key="twitter:description"
           content="Make studying easier by gathering word lists and exporting them to Quizlet with Quizlet QuickList."
         />
-        <meta property="twitter:image" key="twitter:image" content={QUIZLET_APP_OG_IMAGE} />
+        <meta
+          property="twitter:image"
+          key="twitter:image"
+          content={QUIZLET_APP_OG_IMAGE}
+        />
         <meta
           property="twitter:site"
           key="twitter:site"
@@ -70,68 +80,73 @@ function QuizletPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": "Quizlet QuickList",
-              "description": "A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.",
-              "url": "https://shramko.dev/quizlet-list",
-              "image": "https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg",
-              "author": {
-                "@type": "Person",
-                "@id": "https://shramko.dev/#person",
-                "name": "Serhii Shramko",
-                "url": "https://shramko.dev/about"
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'Quizlet QuickList',
+              description:
+                'A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.',
+              url: 'https://shramko.dev/quizlet-list',
+              image:
+                'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg',
+              author: {
+                '@type': 'Person',
+                '@id': 'https://shramko.dev/#person',
+                name: 'Serhii Shramko',
+                url: 'https://shramko.dev/about',
               },
-              "operatingSystem": "Chrome, Firefox, Edge",
-              "applicationCategory": ["BrowserApplication", "EducationalApplication"],
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "USD",
-                "price": "0.00",
-                "availability": "https://schema.org/InStock",
-                "url": "https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              operatingSystem: 'Chrome, Firefox, Edge',
+              applicationCategory: [
+                'BrowserApplication',
+                'EducationalApplication',
+              ],
+              offers: {
+                '@type': 'Offer',
+                priceCurrency: 'USD',
+                price: '0.00',
+                availability: 'https://schema.org/InStock',
+                url: 'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
               },
-              "downloadUrl": [
-                "https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg",
-                "https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/",
-                "https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn"
-              ]
-            })
+              downloadUrl: [
+                'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+                'https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/',
+                'https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn',
+              ],
+            }),
           }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
                 {
-                  "@type": "Question",
-                  "name": "Is Quizlet QuickList free?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, Quizlet QuickList is totally free to use."
-                  }
+                  '@type': 'Question',
+                  name: 'Is Quizlet QuickList free?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Yes, Quizlet QuickList is totally free to use.',
+                  },
                 },
                 {
-                  "@type": "Question",
-                  "name": "Do I need a Quizlet account to use Quizlet QuickList?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No, you don't need one, but Quizlet QuickList works great with Quizlet if you want to use flashcards."
-                  }
+                  '@type': 'Question',
+                  name: 'Do I need a Quizlet account to use Quizlet QuickList?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: "No, you don't need one, but Quizlet QuickList works great with Quizlet if you want to use flashcards.",
+                  },
                 },
                 {
-                  "@type": "Question",
-                  "name": "Can I use Quizlet QuickList on any website?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Absolutely! As long as you can highlight the text, you can add words to your list."
-                  }
-                }
-              ]
-            })
+                  '@type': 'Question',
+                  name: 'Can I use Quizlet QuickList on any website?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Absolutely! As long as you can highlight the text, you can add words to your list.',
+                  },
+                },
+              ],
+            }),
           }}
         />
       </Head>
@@ -252,7 +267,9 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt={'A screenshot of a webpage displaying highlighted text. A context menu is opened, with the option "Add to Quizlet QuickList" highlighted. This indicates the ability to quickly add a selected word to the Quizlet QuickList extension from a webpage.'}
+          alt={
+            'A screenshot of a webpage displaying highlighted text. A context menu is opened, with the option "Add to Quizlet QuickList" highlighted. This indicates the ability to quickly add a selected word to the Quizlet QuickList extension from a webpage.'
+          }
           src={secondImage}
           sizes="(min-width: 768px) 768px, 100vw"
         />
@@ -268,7 +285,9 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt={'A screenshot of a browser window showing the "Quizlet QuickList" Web extension. The list is currently empty, with a message that reads "No words added yet." Below the message, there is an input field labeled "Enter a word," a "Clear List" button, and a "Copy" button.'}
+          alt={
+            'A screenshot of a browser window showing the "Quizlet QuickList" Web extension. The list is currently empty, with a message that reads "No words added yet." Below the message, there is an input field labeled "Enter a word," a "Clear List" button, and a "Copy" button.'
+          }
           src={thirdImage}
           sizes="(min-width: 768px) 768px, 100vw"
         />
@@ -282,7 +301,9 @@ function QuizletPage() {
 
         <Image
           role="presentation"
-          alt={'A screenshot showing the Quizlet flashcard set creation interface. On the left, the user is creating a flashcard set titled "My first flashcard set." Each flashcard has an English term and its corresponding Spanish definition.'}
+          alt={
+            'A screenshot showing the Quizlet flashcard set creation interface. On the left, the user is creating a flashcard set titled "My first flashcard set." Each flashcard has an English term and its corresponding Spanish definition.'
+          }
           src={fourthImage}
           sizes="(min-width: 768px) 768px, 100vw"
           priority
@@ -315,20 +336,16 @@ function QuizletPage() {
               rel="noopener noreferrer"
             >
               Chrome Web Store
-            </a>
-            {' '}
-            ,
-            {' '}
+            </a>{' '}
+            ,{' '}
             <a
               target="_blank"
               href="https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/"
               rel="noopener noreferrer"
             >
               Firefox Add-ons
-            </a>
-            {' '}
-            or
-            {' '}
+            </a>{' '}
+            or{' '}
             <a
               target="_blank"
               href="https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn"
@@ -340,8 +357,8 @@ function QuizletPage() {
           </li>
           <li>
             <strong>Highlight and Add Words:</strong> As you’re browsing and see
-            words you don&apos;t know, highlight them and click &quot;Add to Quizlet
-            QuickList&quot;.
+            words you don&apos;t know, highlight them and click &quot;Add to
+            Quizlet QuickList&quot;.
           </li>
           <li>
             <strong>Manage Your Word List:</strong> Ready to study? Copy your

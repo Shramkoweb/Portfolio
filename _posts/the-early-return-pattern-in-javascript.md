@@ -4,20 +4,32 @@ heading: The early return pattern in JavaScript
 description: Learn the early return pattern (guard clauses) in JavaScript and TypeScript. Reduce nesting, improve readability, and write cleaner functions with real-world examples.
 createDate: 2025-09-15T09:01:43.973Z
 updateDate: 2026-04-03T00:00:00.000Z
-keywords: [early return javascript, guard clauses javascript, javascript reduce nesting, early return vs nested if, javascript fail fast pattern, early return async await, early return typescript, arrow anti-pattern javascript, bouncer pattern, nested if statements]
+keywords:
+  [
+    early return javascript,
+    guard clauses javascript,
+    javascript reduce nesting,
+    early return vs nested if,
+    javascript fail fast pattern,
+    early return async await,
+    early return typescript,
+    arrow anti-pattern javascript,
+    bouncer pattern,
+    nested if statements,
+  ]
 categories: [JS, TS, Clean-Code, Tutorial]
 featured: true
 faq:
-  - question: "What is the early return pattern?"
-    answer: "The early return pattern is a coding technique where a function exits immediately when a precondition is not met, using return, throw, or continue. Instead of wrapping logic in nested if blocks, you handle edge cases at the top and keep the main logic flat."
-  - question: "Is early return bad practice?"
-    answer: "No. Early return is widely recommended and used in production codebases. The single exit point principle comes from 1970s structured programming and does not apply well to modern JavaScript."
-  - question: "What is the difference between early return and guard clause?"
-    answer: "They are the same concept. Guard clause refers to the conditional check, while early return describes the behavior of exiting the function. The bouncer pattern is another name for it."
-  - question: "When should you not use early return?"
-    answer: "Avoid early return in functions requiring cleanup logic unless you use try/finally. It is also unnecessary for simple one-liners or complex state machines where a switch statement is clearer."
-  - question: "Does early return improve performance?"
-    answer: "The direct performance impact is negligible. However, in async code a guard clause that returns before an await avoids unnecessary network calls, which is a real performance win."
+  - question: 'What is the early return pattern?'
+    answer: 'The early return pattern is a coding technique where a function exits immediately when a precondition is not met, using return, throw, or continue. Instead of wrapping logic in nested if blocks, you handle edge cases at the top and keep the main logic flat.'
+  - question: 'Is early return bad practice?'
+    answer: 'No. Early return is widely recommended and used in production codebases. The single exit point principle comes from 1970s structured programming and does not apply well to modern JavaScript.'
+  - question: 'What is the difference between early return and guard clause?'
+    answer: 'They are the same concept. Guard clause refers to the conditional check, while early return describes the behavior of exiting the function. The bouncer pattern is another name for it.'
+  - question: 'When should you not use early return?'
+    answer: 'Avoid early return in functions requiring cleanup logic unless you use try/finally. It is also unnecessary for simple one-liners or complex state machines where a switch statement is clearer.'
+  - question: 'Does early return improve performance?'
+    answer: 'The direct performance impact is negligible. However, in async code a guard clause that returns before an await avoids unnecessary network calls, which is a real performance win.'
 ---
 
 <Image src="exit.jpg" alt="Glowing green EXIT sign hanging from a ceiling, representing how early return pattern lets functions exit before reaching the end" />
@@ -32,7 +44,7 @@ That's when it clicked — again 🥳. Early return isn't just a coding pattern;
 
 ```javascript
 function processUser(user) {
-  if (!user) return;          // nothing to process
+  if (!user) return; // nothing to process
   if (!user.isActive) return; // skip inactive users
 
   sendWelcomeEmail(user);
@@ -150,9 +162,11 @@ Notice the `return` before each `res.status(...)`. This is critical in Express �
 ```javascript
 function validateForm(data) {
   if (!data.email) return { valid: false, error: 'Email is required' };
-  if (!data.email.includes('@')) return { valid: false, error: 'Invalid email' };
+  if (!data.email.includes('@'))
+    return { valid: false, error: 'Invalid email' };
   if (!data.password) return { valid: false, error: 'Password is required' };
-  if (data.password.length < 8) return { valid: false, error: 'Password too short' };
+  if (data.password.length < 8)
+    return { valid: false, error: 'Password too short' };
 
   return { valid: true, error: null };
 }

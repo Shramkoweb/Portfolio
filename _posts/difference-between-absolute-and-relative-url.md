@@ -1,11 +1,19 @@
 ---
-title: "Absolute vs Relative URL: Which One Should You Use"
+title: 'Absolute vs Relative URL: Which One Should You Use'
 heading: Difference between absolute and relative URL in HTML
 description: Understand when to use absolute vs relative URLs in HTML. Clear examples showing how each type works, their pros and cons.
 createDate: 2022-10-21T21:57:25.439Z
 updateDate: 2025-12-07
-keywords: [ absolute and relative links, absolute url example, absolute url html, absolute url, absolute url vs relative url, absolute or relative ]
-categories: [ JS, HTML ]
+keywords:
+  [
+    absolute and relative links,
+    absolute url example,
+    absolute url html,
+    absolute url,
+    absolute url vs relative url,
+    absolute or relative,
+  ]
+categories: [JS, HTML]
 featured: false
 ---
 
@@ -47,7 +55,7 @@ Now you are in `shramko.dev` domain.
 This is the path to the HTML file of this article. You can check it in the console if you write:
 
 ```javascript
-window.location.pathname
+window.location.pathname;
 ```
 
 For more ways to work with the current page address, see my snippet on [how to get the current URL with JavaScript](/snippets/how-to-get-the-current-url-with-javascript).

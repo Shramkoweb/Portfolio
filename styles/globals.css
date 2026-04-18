@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "@tailwindcss/typography";
 @config "../tailwind.config.js";
@@ -55,7 +55,7 @@ html {
   --tw-prose-body: #333333;
 }
 
-.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)) {
+.prose :where(img):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
   margin: 0;
 }
 
@@ -127,13 +127,19 @@ html {
 .shiki,
 .shiki span {
   color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
+}
+
+.shiki {
+  background-color: var(--shiki-light-bg, #fff);
 }
 
 .dark .shiki,
 .dark .shiki span {
   color: var(--shiki-dark);
-  background-color: var(--shiki-dark-bg);
+}
+
+.dark .shiki {
+  background-color: var(--shiki-dark-bg, #24292e);
 }
 
 pre::-webkit-scrollbar {
@@ -170,30 +176,60 @@ input[type='email'] {
 }
 
 .bg-pattern {
-  background: radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, currentColor 20%, currentColor 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#2f2f2f 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #2f2f2f 2px, currentColor 2px) -1px 0;
-  background-size: 25px 25px, 50px 50px, 15px 15px, 15px 15px;
+  background:
+    radial-gradient(
+      circle,
+      transparent 20%,
+      currentColor 20%,
+      currentColor 80%,
+      transparent 80%,
+      transparent
+    ),
+    radial-gradient(
+        circle,
+        transparent 20%,
+        currentColor 20%,
+        currentColor 80%,
+        transparent 80%,
+        transparent
+      )
+      25px 25px,
+    linear-gradient(#2f2f2f 2px, transparent 2px) 0 -1px,
+    linear-gradient(90deg, #2f2f2f 2px, currentColor 2px) -1px 0;
+  background-size:
+    25px 25px,
+    50px 50px,
+    15px 15px,
+    15px 15px;
   opacity: 0.6;
 }
 
 .bg-pattern-waves {
   opacity: 0.6;
-  background-image: radial-gradient(#2F2F2FFF 1.5px, transparent 0.5px), radial-gradient(currentColor 0.5px, currentColor 0.5px);
+  background-image:
+    radial-gradient(#2f2f2fff 1.5px, transparent 0.5px),
+    radial-gradient(currentColor 0.5px, currentColor 0.5px);
   background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
+  background-position:
+    0 0,
+    10px 10px;
 }
 
 .bg-pattern-rebookmark {
   --s: 80px;
   --c1: currentColor;
   --c2: #2f2f2f;
-  --_g: var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%, var(--c1) 36% 45%,
-  var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%,
-  #0000 96%;
+  --_g:
+    var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%,
+    var(--c1) 36% 45%, var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%,
+    var(--c1) 76% 85%, var(--c2) 86% 95%, #0000 96%;
   opacity: 0.6;
-  background: radial-gradient(50% 50% at 100% 0, var(--_g)),
-  radial-gradient(50% 50% at 0 100%, var(--_g)),
-  radial-gradient(50% 50%, var(--_g)),
-  radial-gradient(50% 50%, var(--_g)) calc(var(--s) / 2) calc(var(--s) / 2) var(--c1);
+  background:
+    radial-gradient(50% 50% at 100% 0, var(--_g)),
+    radial-gradient(50% 50% at 0 100%, var(--_g)),
+    radial-gradient(50% 50%, var(--_g)),
+    radial-gradient(50% 50%, var(--_g)) calc(var(--s) / 2) calc(var(--s) / 2)
+      var(--c1);
   background-size: var(--s) var(--s);
 }
 
@@ -202,7 +238,6 @@ input[type='email'] {
 .dark .bg-pattern-rebookmark {
   opacity: 0.8;
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   *,

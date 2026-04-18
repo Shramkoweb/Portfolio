@@ -3,7 +3,13 @@ title: How to Move Cursor to the End of Input Field with JavaScript
 heading: Move cursor to the end of input
 description: JavaScript snippet to programmatically move the text cursor to the end or beginning of an input field. Useful for form validation and auto-focus features.
 createDate: 2023-03-22T00:11:17.662Z
-keywords: [move cursor to the end of input, change cursor in javascript, javascript move cursor to end of contenteditable, javascript move cursor to beginning of input]
+keywords:
+  [
+    move cursor to the end of input,
+    change cursor in javascript,
+    javascript move cursor to end of contenteditable,
+    javascript move cursor to beginning of input,
+  ]
 ---
 
 How to move the cursor to the beginning or end of an input field using JavaScript:
@@ -16,20 +22,20 @@ How to move the cursor to the beginning or end of an input field using JavaScrip
   </head>
   <body>
     <label for="myInput">Type something here:</label>
-    <input id="myInput" type="text" value="Hello, World!">
+    <input id="myInput" type="text" value="Hello, World!" />
 
     <button onclick="moveCursorToBeginning()">Move Cursor to Beginning</button>
     <button onclick="moveCursorToEnd()">Move Cursor to End</button>
 
     <script>
       function moveCursorToBeginning() {
-        const input = document.getElementById("myInput");
+        const input = document.getElementById('myInput');
         input.focus();
         input.setSelectionRange(0, 0);
       }
 
       function moveCursorToEnd() {
-        const input = document.getElementById("myInput");
+        const input = document.getElementById('myInput');
         const length = input.value.length;
         input.focus();
         input.setSelectionRange(length, length);
@@ -55,7 +61,7 @@ set the selection range to the beginning of the input field (i.e., from index 0 
 
 ```js
 // Syntax
-setSelectionRange(selectionStart, selectionEnd) // 0, 0 moved the cursor to the start
+setSelectionRange(selectionStart, selectionEnd); // 0, 0 moved the cursor to the start
 ```
 
 ## Move cursor to the end

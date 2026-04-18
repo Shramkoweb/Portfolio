@@ -1,10 +1,18 @@
 ---
-title: "React Re-Renders: What Triggers Them and Why"
+title: 'React Re-Renders: What Triggers Them and Why'
 heading: React Re-Renders
 description: Dive into the mechanics of React re-renders — learn what causes them, how they impact performance, and how to manage them effectively.
 createDate: 2025-05-03T09:01:43.973Z
-keywords: [ react re-render, what triggers re-render in react, react performance, react optimization, useEffect and re-render, rendering lifecycle react ]
-categories: [ Advanced-React, Tutorial, JS, TS, React ]
+keywords:
+  [
+    react re-render,
+    what triggers re-render in react,
+    react performance,
+    react optimization,
+    useEffect and re-render,
+    rendering lifecycle react,
+  ]
+categories: [Advanced-React, Tutorial, JS, TS, React]
 featured: false
 ---
 
@@ -37,12 +45,14 @@ simple `button` that opens a `settings panel` at the top of the dashboard.
 ```jsx
 const Dashboard = () => {
   // Some code here
-  return <div className="container">
-    {/* The trigger should go somewhere here */}
-    <ExpensiveDataGrid />
-    <AnalyticsWidget />
-    <ActivityFeed />
-  </div>;
+  return (
+    <div className="container">
+      {/* The trigger should go somewhere here */}
+      <ExpensiveDataGrid />
+      <AnalyticsWidget />
+      <ActivityFeed />
+    </div>
+  );
 };
 ```
 
@@ -54,19 +64,19 @@ const Dashboard = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Everything that is returned here will be re-rendered when the state is updated
-  return <div>
-    {/* Add the trigger */}
-    <IconButton onClick={() => setIsExpanded(true)}>
-      Show settings
-    </IconButton>
+  return (
+    <div>
+      {/* Add the trigger */}
+      <IconButton onClick={() => setIsExpanded(true)}>Show settings</IconButton>
 
-    {/* Add the panel */}
-    {isExpanded && <SettingsPanel onDismiss={() => setIsExpanded(false)} />}
+      {/* Add the panel */}
+      {isExpanded && <SettingsPanel onDismiss={() => setIsExpanded(false)} />}
 
-    <ExpensiveDataGrid />
-    <AnalyticsWidget />
-    <ActivityFeed />
-  </div>;
+      <ExpensiveDataGrid />
+      <AnalyticsWidget />
+      <ActivityFeed />
+    </div>
+  );
 };
 ```
 
@@ -114,7 +124,6 @@ considerations. For a deeper understanding, it is advisable to explore these con
 
 <Image alt="Component tree diagram showing React.memo blocking re-renders on one branch while the other branch re-renders normally" src="react-memo.png" />
 
-
 Wrapping components with `React.memo` can indeed help prevent unnecessary re-renders in certain scenarios. However, it's
 important to note that using `React.memo` comes with its own set of complexities and caveats, which will be discussed in
 future articles. A more effective approach is to isolate the components that rely on specific state and encapsulate both
@@ -129,13 +138,13 @@ Let's move our logic into a separate component.
 const SettingsToggle = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  return <>
-    <IconButton onClick={() => setIsExpanded(true)}>
-      Show settings
-    </IconButton>
+  return (
+    <>
+      <IconButton onClick={() => setIsExpanded(true)}>Show settings</IconButton>
 
-    {isExpanded && <SettingsPanel onDismiss={() => setIsExpanded(false)} />}
-  </>;
+      {isExpanded && <SettingsPanel onDismiss={() => setIsExpanded(false)} />}
+    </>
+  );
 };
 ```
 
@@ -143,14 +152,16 @@ And then render this new component in the `Dashboard`:
 
 ```jsx
 const Dashboard = () => {
-  return <div>
-    {/* Our new component */}
-    <SettingsToggle />
+  return (
+    <div>
+      {/* Our new component */}
+      <SettingsToggle />
 
-    <ExpensiveDataGrid />
-    <AnalyticsWidget />
-    <ActivityFeed />
-  </div>;
+      <ExpensiveDataGrid />
+      <AnalyticsWidget />
+      <ActivityFeed />
+    </div>
+  );
 };
 ```
 

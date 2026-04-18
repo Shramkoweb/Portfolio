@@ -5,12 +5,11 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/test_coverage)](https://codeclimate.com/github/Shramkoweb/Portfolio/test_coverage)
 [![Star History Chart](https://api.star-history.com/svg?repos=Shramkoweb/Portfolio&type=Date)](https://star-history.com/#Shramkoweb/Portfolio&Date)
 
-
 # My portfolio and blog
 
 This repo contains the source code for [shramko.dev](https://shramko.dev). - in progress
 
-*Readme is also available in [Ukrainian](README.ua.md).* (in progress)
+_Readme is also available in [Ukrainian](README.ua.md)._ (in progress)
 
 ## Description
 
@@ -26,9 +25,11 @@ This repo contains the source code for [shramko.dev](https://shramko.dev). - in 
 - [Open Graph Protocol](https://ogp.me/) - implemented for better social media sharing and SEO optimization. Each page includes
 
 ## Monitors
+
 - [Status page](https://stats.uptimerobot.com/8lYYzuXNM9/792406216) - lifetime checker for my portfolio uptime ![Uptime Robot status Page](docs/uptime-robot.png)
 
-- [Dashboard]([https://portfolio-shramko.checklyhq.com/](https://portfolio-shramko.checkly-dashboards.com/?duration=30d)) this is where I run E2E tests and check build statuses ![Checkly monitor](docs/checkly.png)
+- [Dashboard](<[https://portfolio-shramko.checklyhq.com/](https://portfolio-shramko.checkly-dashboards.com/?duration=30d)>) this is where I run E2E tests and check build statuses ![Checkly monitor](docs/checkly.png)
 
 ## License
+
 This app is an open-source project released under the [MIT License](https://github.com/Shramkoweb/Portfolio/blob/develop/LICENSE).

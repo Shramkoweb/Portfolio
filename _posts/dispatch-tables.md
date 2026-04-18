@@ -1,11 +1,18 @@
 ---
-title: "Dispatch Tables in JavaScript: A Clean Code Approach"
+title: 'Dispatch Tables in JavaScript: A Clean Code Approach'
 heading: Dispatch table in javascript
 description: Replace messy switch statements with dispatch tables in JavaScript. Learn this clean code pattern for handling multiple conditions with maintainable code.
 createDate: 2022-08-28T08:04:18.720Z
 updateDate: 2025-12-01
-keywords: [ Switch statement in javascript, Dynamic Dispatch, Dispatch Tables, Conditionals in JavaScript, Polymorphism in JavaScript ]
-categories: [ JS, Clean-Code ]
+keywords:
+  [
+    Switch statement in javascript,
+    Dynamic Dispatch,
+    Dispatch Tables,
+    Conditionals in JavaScript,
+    Polymorphism in JavaScript,
+  ]
+categories: [JS, Clean-Code]
 featured: false
 ---
 
@@ -19,15 +26,15 @@ You can often see such code with a lot of `if`, and `switch` statements in tutor
 ```js
 function handleUserMove(direction) {
   if (direction === 'north') {
-    movePlayerTo("north");
+    movePlayerTo('north');
   } else if (direction === 'east') {
-    movePlayerTo("east");
+    movePlayerTo('east');
   } else if (direction === 'south') {
-    movePlayerTo("south");
+    movePlayerTo('south');
   } else if (direction === 'west') {
-    movePlayerTo("west");
+    movePlayerTo('west');
   } else {
-    console.error("Unknown direction");
+    console.error('Unknown direction');
   }
 }
 ```
@@ -39,20 +46,20 @@ We can use a `switch` statement:
 ```js
 function handleUserMove(direction) {
   switch (direction) {
-    case "north":
-      movePlayerTo("north");
+    case 'north':
+      movePlayerTo('north');
       break;
-    case "east":
-      movePlayerTo("east");
+    case 'east':
+      movePlayerTo('east');
       break;
-    case "south":
-      movePlayerTo("south");
+    case 'south':
+      movePlayerTo('south');
       break;
-    case "west":
-      movePlayerTo("west");
+    case 'west':
+      movePlayerTo('west');
       break;
     default:
-      console.error("Unknown direction");
+      console.error('Unknown direction');
   }
 }
 ```
@@ -66,11 +73,11 @@ So what can we do to simplify it?
 
 ```js
 const userInputToDirection = {
-  north: movePlayer("north"),
-  east: movePlayer("east"),
-  south: movePlayer("south"),
-  west: movePlayer("west")
-}
+  north: movePlayer('north'),
+  east: movePlayer('east'),
+  south: movePlayer('south'),
+  west: movePlayer('west'),
+};
 
 function handleUserMove(direction) {
   userInputToDirection[direction]();
@@ -100,7 +107,7 @@ like this:
 ```js
 const nextConfig = {
   /* Next.js config options here */
-}
+};
 
 let resultConfig;
 

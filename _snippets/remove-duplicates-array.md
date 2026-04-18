@@ -1,5 +1,5 @@
 ---
-title: "Effective Ways to Remove Duplicates from Arrays in JavaScript"
+title: 'Effective Ways to Remove Duplicates from Arrays in JavaScript'
 heading: Remove Duplicates from an Array
 description: Three simple ways to remove duplicate values from JavaScript arrays. Learn to use Set, filter with indexOf, and reduce methods with clear code examples.
 createDate: 2023-01-26T20:45:06.788Z
@@ -22,7 +22,9 @@ const uniqueNumbers = [...new Set(numbers)];
 
 ```js
 const uniqueNumbers = numbers.reduce((previousValue, currentValue) => {
-  return previousValue.includes(currentValue) ? previousValue : [...previousValue, currentValue];
+  return previousValue.includes(currentValue)
+    ? previousValue
+    : [...previousValue, currentValue];
 }, []);
 ```
 

@@ -1,21 +1,30 @@
 ---
-title: "Astro Framework Guide: Build Faster Sites in 2026"
-heading: "What Is Astro? The Complete Framework Guide for 2026"
-description: "Master the Astro framework with this hands-on guide. Islands Architecture, Content Collections, View Transitions, and client directives with code examples."
+title: 'Astro Framework Guide: Build Faster Sites in 2026'
+heading: 'What Is Astro? The Complete Framework Guide for 2026'
+description: 'Master the Astro framework with this hands-on guide. Islands Architecture, Content Collections, View Transitions, and client directives with code examples.'
 createDate: 2023-03-16T09:01:43.973Z
 updateDate: 2026-04-03
-keywords: [ astro framework guide, what is astro, astro islands architecture, astro client directives, astro content collections, astro vs nextjs, astro tutorial 2026 ]
-categories: [ JS, TS, Astro ]
+keywords:
+  [
+    astro framework guide,
+    what is astro,
+    astro islands architecture,
+    astro client directives,
+    astro content collections,
+    astro vs nextjs,
+    astro tutorial 2026,
+  ]
+categories: [JS, TS, Astro]
 featured: false
 faq:
-  - question: "Is Astro good for SEO?"
-    answer: "Yes. Astro ships zero JavaScript by default and renders HTML at build time, giving search engines fully-rendered pages with fast load times. Built-in support for sitemaps, canonical URLs, and Open Graph meta makes it one of the best frameworks for SEO."
-  - question: "Can I use React components in Astro?"
-    answer: "Yes. Astro is UI-agnostic and supports React, Preact, Vue, Svelte, Solid, and Lit. Add the React integration with npx astro add react, then import .jsx/.tsx components into any .astro file and hydrate them with a client directive."
-  - question: "Is Astro only for static sites?"
-    answer: "No. Astro supports SSR, hybrid rendering, and Server Islands. You can deploy dynamic, authenticated apps on Node.js, Deno, Cloudflare Workers, and other runtimes."
-  - question: "Do I need to know React to use Astro?"
-    answer: "No. Astro has its own .astro component syntax using plain HTML, CSS, and JavaScript. You can build an entire site without any UI framework. React, Vue, or Svelte are optional for interactive islands only."
+  - question: 'Is Astro good for SEO?'
+    answer: 'Yes. Astro ships zero JavaScript by default and renders HTML at build time, giving search engines fully-rendered pages with fast load times. Built-in support for sitemaps, canonical URLs, and Open Graph meta makes it one of the best frameworks for SEO.'
+  - question: 'Can I use React components in Astro?'
+    answer: 'Yes. Astro is UI-agnostic and supports React, Preact, Vue, Svelte, Solid, and Lit. Add the React integration with npx astro add react, then import .jsx/.tsx components into any .astro file and hydrate them with a client directive.'
+  - question: 'Is Astro only for static sites?'
+    answer: 'No. Astro supports SSR, hybrid rendering, and Server Islands. You can deploy dynamic, authenticated apps on Node.js, Deno, Cloudflare Workers, and other runtimes.'
+  - question: 'Do I need to know React to use Astro?'
+    answer: 'No. Astro has its own .astro component syntax using plain HTML, CSS, and JavaScript. You can build an entire site without any UI framework. React, Vue, or Svelte are optional for interactive islands only.'
 ---
 
 <Image src="astro.jpg" alt="Astro framework logo on a dark starry background" />
@@ -250,13 +259,13 @@ const { title } = Astro.props;
 
 By default, UI framework components render as static HTML with **no JavaScript**. Use `client:*` directives to hydrate interactive [islands](https://docs.astro.build/en/concepts/islands/).
 
-| Directive | Priority | When It Loads | Use Case |
-|-----------|----------|---------------|----------|
-| `client:load` | High | Immediately on page load | Buttons, modals, forms |
-| `client:idle` | Medium | After page finishes loading | Analytics, non-critical widgets |
-| `client:visible` | Low | When scrolled into viewport | Below-fold carousels, comments |
-| `client:media` | Low | When CSS media query matches | Mobile-only sidebars |
-| `client:only` | — | Client-only, no SSR HTML | Components needing `window` |
+| Directive        | Priority | When It Loads                | Use Case                        |
+| ---------------- | -------- | ---------------------------- | ------------------------------- |
+| `client:load`    | High     | Immediately on page load     | Buttons, modals, forms          |
+| `client:idle`    | Medium   | After page finishes loading  | Analytics, non-critical widgets |
+| `client:visible` | Low      | When scrolled into viewport  | Below-fold carousels, comments  |
+| `client:media`   | Low      | When CSS media query matches | Mobile-only sidebars            |
+| `client:only`    | —        | Client-only, no SSR HTML     | Components needing `window`     |
 
 ### The #1 Beginner Mistake
 
@@ -352,13 +361,13 @@ Astro also supports [Sass, Less, and CSS Modules](https://docs.astro.build/en/gu
 
 Both are excellent frameworks, but they solve different problems.
 
-| | Astro | Next.js |
-|---|---|---|
-| **Best for** | Content sites, blogs, docs, marketing | Interactive apps, dashboards, SaaS |
-| **Default JS** | Zero | Full React runtime |
-| **Rendering** | Static-first, opt-in SSR | SSR-first, opt-in static |
-| **UI framework** | Any (or none) | React only |
-| **Learning curve** | Low (HTML-first) | Medium (React required) |
+|                    | Astro                                 | Next.js                            |
+| ------------------ | ------------------------------------- | ---------------------------------- |
+| **Best for**       | Content sites, blogs, docs, marketing | Interactive apps, dashboards, SaaS |
+| **Default JS**     | Zero                                  | Full React runtime                 |
+| **Rendering**      | Static-first, opt-in SSR              | SSR-first, opt-in static           |
+| **UI framework**   | Any (or none)                         | React only                         |
+| **Learning curve** | Low (HTML-first)                      | Medium (React required)            |
 
 **Choose Astro** when your site is mostly content with pockets of interactivity. **Choose Next.js** when every page needs heavy client-side state and routing. You can always use React components in Astro for the interactive parts — get the best of both worlds.
 

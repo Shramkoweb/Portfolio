@@ -1,5 +1,9 @@
+import {
+  GRADIENT_FROM_COLORS,
+  GRADIENT_VIA_COLORS,
+  GRADIENT_TO_COLORS,
+} from '@/lib/constants';
 import { PostCategory } from '@/lib/types';
-import { GRADIENT_FROM_COLORS, GRADIENT_VIA_COLORS, GRADIENT_TO_COLORS } from '@/lib/constants';
 
 export function formatCategoryName(category: PostCategory): string {
   if (!category) {

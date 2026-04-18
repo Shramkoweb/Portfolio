@@ -1,23 +1,24 @@
 ---
-title: "TypeScript Type Predicates: Smart Type Guards for Safer Code"
+title: 'TypeScript Type Predicates: Smart Type Guards for Safer Code'
 heading: Type Predicates
 description: Learn how to use TypeScript type predicates to create powerful type guards that help the compiler understand your code better.
 createDate: 2025-10-16
-keywords: [
-  TypeScript type predicates,
-  type guards TypeScript,
-  TypeScript type narrowing,
-  TypeScript type checking,
-  is operator TypeScript,
-  user-defined type guards,
-  TypeScript filter type,
-  type predicate function,
-  TypeScript type safety,
-  TypeScript best practices,
-  type guards example,
-  TypeScript advanced types,
-  type narrowing function
-]
+keywords:
+  [
+    TypeScript type predicates,
+    type guards TypeScript,
+    TypeScript type narrowing,
+    TypeScript type checking,
+    is operator TypeScript,
+    user-defined type guards,
+    TypeScript filter type,
+    type predicate function,
+    TypeScript type safety,
+    TypeScript best practices,
+    type guards example,
+    TypeScript advanced types,
+    type narrowing function,
+  ]
 ---
 
 ## The Problem
@@ -27,7 +28,7 @@ Let's say you have an array of mixed types, and you want to filter it down to ju
 ```typescript
 const mixed = [1, 'hello', true, 'world', 42];
 
-const strings = mixed.filter(item => typeof item === 'string');
+const strings = mixed.filter((item) => typeof item === 'string');
 // Type: (string | number | boolean)[]
 ```
 

@@ -4,7 +4,14 @@ heading: Cross-browser testing
 description: Learn how to test your website across different browsers and devices using BrowserStack. Ensure cross-browser compatibility without maintaining a device lab.
 createDate: 2023-02-24T22:06:42.844Z
 updateDate: 2023-02-24T22:06:42.844Z
-keywords: [browserstack, browserstack dev tools, android browser with dev tools, browserstack devices, browser with developer tools for ios]
+keywords:
+  [
+    browserstack,
+    browserstack dev tools,
+    android browser with dev tools,
+    browserstack devices,
+    browser with developer tools for ios,
+  ]
 categories: [Tutorial, Tools, Project-Setup]
 featured: false
 ---
@@ -53,7 +60,6 @@ Browserstack allows you to test your site on different devices. To do this, it i
 browser you need and that's it, everything is ready for testing.
 
 <Image src="pixel-pro.jpg" alt="Google Pixel 7 testing screen in Browserstack" />
-
 
 The screenshot shows that the site is not just running in an emulator, but is a real device (Google Pixel 7Pro) with a
 serial number.

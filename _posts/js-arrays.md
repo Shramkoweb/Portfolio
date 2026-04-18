@@ -1,11 +1,19 @@
 ---
-title: "JavaScript Arrays: Essential Methods for Beginners"
-heading: "JavaScript 101: Arrays"
+title: 'JavaScript Arrays: Essential Methods for Beginners'
+heading: 'JavaScript 101: Arrays'
 description: Master JavaScript array methods with this beginner-friendly guide. Learn map, filter, reduce, find, and other essential methods with practical examples.
 createDate: 2022-11-25T17:39:11.486Z
 updateDate: 2022-11-25T17:39:11.486Z
-keywords: [ javascript arrays, javascript array replace, js array concat, js array includes, javascript concatenate arrays, array includes javascript ]
-categories: [ JS, Tutorial ]
+keywords:
+  [
+    javascript arrays,
+    javascript array replace,
+    js array concat,
+    js array includes,
+    javascript concatenate arrays,
+    array includes javascript,
+  ]
+categories: [JS, Tutorial]
 featured: false
 ---
 
@@ -128,7 +136,9 @@ Methods that add and remove items from the beginning or the end:
 The `.find()` method will return the **_first element_** in the array that matches a test you provide.
 
 ```js
-const employees = [/* See DATA_SAMPLE */]
+const employees = [
+  /* See DATA_SAMPLE */
+];
 
 // Find employee with name 'Serhii'
 const serhii = employees.find((employee) => employee.name === 'Serhii');
@@ -177,7 +187,7 @@ The `.join()` method creates and returns a new string by concatenating all eleme
 // Before .join() we must transform each object in array to string
 const formattedOutput = employees
   .map(({ name }) => name) // Transform employee object to name string
-  .join("\n"); // "\n" – add newline after each element
+  .join('\n'); // "\n" – add newline after each element
 ```
 
 ```shell:Output
@@ -193,7 +203,6 @@ Mykola
 The `.every()` method checks that every single item in your array matches some criteria.
 
 ```js
-
 const isAdult = (employee) => employee.age > 18;
 
 // Check is every our employee older than 18 age
@@ -205,7 +214,6 @@ const isEveryEmployeeYoung = employees.every(isAdult); // true
 The `.some()` method checks that at least one item in your array matches some criteria by compare function.
 
 ```js
-
 const isAdult = (employee) => employee.age > 18;
 
 // Check if at least one employee is older than 18
@@ -231,7 +239,7 @@ It doesn't return a value though. It's useful for side effects.
 
 ```js
 // Print to console name of each employee
-employees.forEach((employee) => console.log(employee.name))
+employees.forEach((employee) => console.log(employee.name));
 ```
 
 ## Conclusion

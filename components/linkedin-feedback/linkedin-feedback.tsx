@@ -1,5 +1,6 @@
-import type { LinkedinFeedback as LinkedinFeedbackType } from '@/lib/types';
 import Image from 'next/image';
+
+import type { LinkedinFeedback as LinkedinFeedbackType } from '@/lib/types';
 
 interface Props {
   feedbackList: LinkedinFeedbackType[];

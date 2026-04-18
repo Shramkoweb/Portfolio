@@ -4,7 +4,16 @@ updateDate: 2026-02-21
 heading: How to get the current URL with JavaScript
 description: Learn different methods to retrieve the current URL using JavaScript for analytics tracking, dynamic content updates, and more.
 createDate: 2024-03-20T23:39:45.492Z
-keywords: [how to get the current URL with javaScript, URL, window.location, document.URL, location.pathname, URLSearchParams, query parameters]
+keywords:
+  [
+    how to get the current URL with javaScript,
+    URL,
+    window.location,
+    document.URL,
+    location.pathname,
+    URLSearchParams,
+    query parameters,
+  ]
 ---
 
 When working with JavaScript, accessing the current page's URL is a common task for various purposes like analytics tracking, dynamic content updates, and more. In this guide, we'll explore different methods to achieve this.
@@ -15,7 +24,7 @@ The most straightforward method is by utilizing the `window.location` object, wh
 
 ```javascript
 const currentURL = window.location.href;
-console.log("Current URL:", currentURL);
+console.log('Current URL:', currentURL);
 ```
 
 This will return the complete URL of the current page, including any hash or query parameters.
@@ -26,7 +35,7 @@ Another approach is by accessing the `document.URL` property, which provides the
 
 ```javascript
 const currentURL = document.URL;
-console.log("Current URL:", currentURL);
+console.log('Current URL:', currentURL);
 ```
 
 ## 3. Using `location.pathname`
@@ -35,7 +44,7 @@ If you only need the path part of the URL (without the protocol, host, or query 
 
 ```javascript
 const path = window.location.pathname;
-console.log("Current Path:", path);
+console.log('Current Path:', path);
 ```
 
 This will return the path portion of the URL.

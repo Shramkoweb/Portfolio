@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import {
   BookOpen,
   Globe,
@@ -8,9 +7,10 @@ import {
   Users,
   Wrench,
 } from 'lucide-react';
+import Head from 'next/head';
 
-import { Tag } from '@/components/tag';
 import { BookmarkSection } from '@/components/bookmark-section';
+import { Tag } from '@/components/tag';
 
 interface BookmarkItem {
   title: string;

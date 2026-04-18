@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import { Snippet } from '@/lib/types';
-import { sortByBirthtime } from '@/lib/posts/utils';
-
-import { getSnippets } from '@/lib/snippets/api';
 
 import { ResourceCard } from '@/components/resource-card';
+import { sortByBirthtime } from '@/lib/posts/utils';
+import { getSnippets } from '@/lib/snippets/api';
+import { Snippet } from '@/lib/types';
 
 interface SnippetsPageProps {
   snippets: Snippet[];
@@ -81,45 +80,48 @@ export async function getStaticProps() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     '@id': 'https://shramko.dev/snippets/#collection',
-    'name': 'Code Snippets | Serhii Shramko',
-    'url': 'https://shramko.dev/snippets',
-    'description': 'A collection of code snippets including JavaScript, Node.js, and CSS examples, shared by Serhii Shramko.',
-    'inLanguage': 'en',
-    'author': {
+    name: 'Code Snippets | Serhii Shramko',
+    url: 'https://shramko.dev/snippets',
+    description:
+      'A collection of code snippets including JavaScript, Node.js, and CSS examples, shared by Serhii Shramko.',
+    inLanguage: 'en',
+    author: {
       '@type': 'Person',
       '@id': 'https://shramko.dev/#person',
-      'name': 'Serhii Shramko',
-      'url': 'https://shramko.dev/about'
+      name: 'Serhii Shramko',
+      url: 'https://shramko.dev/about',
     },
-    'breadcrumb': {
+    breadcrumb: {
       '@type': 'BreadcrumbList',
-      'itemListElement': [
+      itemListElement: [
         {
           '@type': 'ListItem',
-          'position': 1,
-          'name': 'Home',
-          'item': 'https://shramko.dev/'
+          position: 1,
+          name: 'Home',
+          item: 'https://shramko.dev/',
         },
         {
           '@type': 'ListItem',
-          'position': 2,
-          'name': 'Snippets',
-          'item': 'https://shramko.dev/snippets'
-        }
-      ]
+          position: 2,
+          name: 'Snippets',
+          item: 'https://shramko.dev/snippets',
+        },
+      ],
     },
-    'hasPart': sortedSnippets.slice(0, 25).map((snippet) => ({
+    hasPart: sortedSnippets.slice(0, 25).map((snippet) => ({
       '@type': 'TechArticle',
-      'headline': snippet.data.heading,
-      'description': snippet.data.description,
-      'url': `https://shramko.dev/snippets/${snippet.data.slug}`,
-      'datePublished': new Date(snippet.data.createDate).toISOString().split('T')[0],
-      'author': {
+      headline: snippet.data.heading,
+      description: snippet.data.description,
+      url: `https://shramko.dev/snippets/${snippet.data.slug}`,
+      datePublished: new Date(snippet.data.createDate)
+        .toISOString()
+        .split('T')[0],
+      author: {
         '@type': 'Person',
         '@id': 'https://shramko.dev/#person',
-        'name': 'Serhii Shramko'
-      }
-    }))
+        name: 'Serhii Shramko',
+      },
+    })),
   };
 
   return {

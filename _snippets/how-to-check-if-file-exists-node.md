@@ -3,8 +3,21 @@ title: How to check if a file exists in Node.js
 heading: Check if a file exists with Node.js
 description: Learn how to check if a file exists in Node.js using the fs module. Covers synchronous and asynchronous methods with practical examples.
 createDate: 2025-03-04T22:14:08.330Z
-keywords: [nodejs, file system, fs module, synchronous file check, file existence, javascript, file operations, file management, system utilities, node file api]
+keywords:
+  [
+    nodejs,
+    file system,
+    fs module,
+    synchronous file check,
+    file existence,
+    javascript,
+    file operations,
+    file management,
+    system utilities,
+    node file api,
+  ]
 ---
+
 To check if a file exists in the filesystem using Node.js, you can use the `fs.existsSync` method.
 
 ```javascript
@@ -30,5 +43,5 @@ access(file, constants.F_OK, (err) => {
 
 ## Related
 
-- [Fix __dirname Error in ES Modules](/blog/dirname-error) — common Node.js file path issue when using ES modules
+- [Fix \_\_dirname Error in ES Modules](/blog/dirname-error) — common Node.js file path issue when using ES modules
 - [Managing Node Versions with NVM](/blog/nvm) — set up and switch between Node.js versions

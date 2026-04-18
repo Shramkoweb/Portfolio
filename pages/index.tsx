@@ -1,15 +1,16 @@
+import clsx from 'clsx';
+import { Atom, MoveRight } from 'lucide-react';
+import { GetStaticPropsResult } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Head from 'next/head';
+import smile from 'public/static/images/smile.webp';
+import tongue from 'public/static/images/tongue.webp';
 import { useState } from 'react';
-import clsx from 'clsx';
-import { GetStaticPropsResult } from 'next';
 import useSWR from 'swr';
-import { Atom, MoveRight } from 'lucide-react';
 
-import { Routes } from '@/lib/routes';
-import { generateGradient } from '@/lib/utils';
-import { generateWebSiteSchema } from '@/lib/schema';
+import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
+import { fetcher } from '@/lib/fetcher';
 import { getPosts } from '@/lib/posts/api';
 import {
   filterByAdvanceReact,
@@ -17,14 +18,11 @@ import {
   filterByNotFeatured,
   sortByBirthtime,
 } from '@/lib/posts/utils';
+import { Routes } from '@/lib/routes';
+import { generateWebSiteSchema } from '@/lib/schema';
 import { Post } from '@/lib/types';
-import { fetcher } from '@/lib/fetcher';
-
-import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
+import { generateGradient } from '@/lib/utils';
 import type { AllViewsResponse } from '@/pages/api/views';
-
-import smile from 'public/static/images/smile.webp';
-import tongue from 'public/static/images/tongue.webp';
 
 interface IndexPageProps {
   featuredPosts: Post[];
@@ -86,9 +84,7 @@ function IndexPage(props: IndexPageProps) {
                 BetterMe
               </a>
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              Hi there 🖐 🇺🇦
-            </p>
+            <p className="text-gray-600 dark:text-gray-400">Hi there 🖐 🇺🇦</p>
             <p className="text-gray-600 dark:text-gray-400">
               I am an experienced software engineer with extensive knowledge of
               front-end development, with laser-focus on &ensp;

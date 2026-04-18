@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { Routes } from '@/lib/routes';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import { CrossIcon, MenuIcon } from '@/components/mobile-menu/icons';
+import { Routes } from '@/lib/routes';
 
 import styles from 'styles/mobile-menu.module.css';
 

@@ -1,6 +1,6 @@
+import { MoonStar, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useSyncExternalStore } from 'react';
-import { MoonStar, Sun } from 'lucide-react';
 
 enum Theme {
   light = 'light',

@@ -9,7 +9,7 @@ Sentry.init({
   sendDefaultPii: true,
   ignoreErrors: [
     // iOS Safari WebKit errors
-    'undefined is not an object (evaluating \'window.webkit.messageHandlers\')',
+    "undefined is not an object (evaluating 'window.webkit.messageHandlers')",
     /webkit\.messageHandlers/,
 
     // Browser extension errors

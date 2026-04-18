@@ -3,7 +3,24 @@ title: JavaScript Caps Lock Detection | getModifierState
 heading: Detect Caps Lock with JavaScript
 description: Detect Caps Lock state in JavaScript using getModifierState(). Copy-paste snippet for password fields and form validation with cross-browser support.
 createDate: 2025-05-29
-keywords: [ JavaScript Caps Lock detection, getModifierState JavaScript, Caps Lock JavaScript, JavaScript keyboard events, JavaScript modifier keys, Caps Lock warning JavaScript, JavaScript form validation, Keyboard state detection, JavaScript keydown events, Caps Lock indicator, JavaScript input validation, Browser keyboard API, JavaScript modifier state, Caps Lock check JavaScript, Keyboard modifiers JavaScript ]
+keywords:
+  [
+    JavaScript Caps Lock detection,
+    getModifierState JavaScript,
+    Caps Lock JavaScript,
+    JavaScript keyboard events,
+    JavaScript modifier keys,
+    Caps Lock warning JavaScript,
+    JavaScript form validation,
+    Keyboard state detection,
+    JavaScript keydown events,
+    Caps Lock indicator,
+    JavaScript input validation,
+    Browser keyboard API,
+    JavaScript modifier state,
+    Caps Lock check JavaScript,
+    Keyboard modifiers JavaScript,
+  ]
 ---
 
 Caps Lock detection using [getModifierState](https://w3c.github.io/uievents/#event-modifier-initializers).
@@ -21,7 +38,7 @@ function checkCapsLock(event) {
 
 ```javascript
 function setupCapsLockDetection(inputElement, warningElement) {
-  inputElement.addEventListener('keydown', function(event) {
+  inputElement.addEventListener('keydown', function (event) {
     const isCapsLockOn = event.getModifierState('CapsLock');
 
     if (isCapsLockOn) {

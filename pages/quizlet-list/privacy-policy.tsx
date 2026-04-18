@@ -28,7 +28,11 @@ function PrivacyPolicy() {
           key="og:description"
           content="This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user."
         />
-        <meta property="og:image" content={QUIZLET_APP_OG_IMAGE} key="og:image" />
+        <meta
+          property="og:image"
+          content={QUIZLET_APP_OG_IMAGE}
+          key="og:image"
+        />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -39,43 +43,48 @@ function PrivacyPolicy() {
           name="twitter:description"
           content="This is the privacy policy for the Quizlet QuickList Web Extension. Learn how your data is handled securely."
         />
-        <meta property="twitter:image" key="twitter:image" content={QUIZLET_APP_OG_IMAGE} />
+        <meta
+          property="twitter:image"
+          key="twitter:image"
+          content={QUIZLET_APP_OG_IMAGE}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": "Privacy Policy | Quizlet QuickList Web Extension",
-              "description": "Privacy policy for the Quizlet QuickList Web Extension explaining how we handle user data and privacy.",
-              "url": "https://shramko.dev/quizlet-list/privacy-policy",
-              "inLanguage": "en",
-              "datePublished": "2024-10-30",
-              "dateModified": "2024-10-30",
-              "author": {
-                "@type": "Person",
-                "@id": "https://shramko.dev/#person",
-                "name": "Serhii Shramko",
-                "url": "https://shramko.dev/about"
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: 'Privacy Policy | Quizlet QuickList Web Extension',
+              description:
+                'Privacy policy for the Quizlet QuickList Web Extension explaining how we handle user data and privacy.',
+              url: 'https://shramko.dev/quizlet-list/privacy-policy',
+              inLanguage: 'en',
+              datePublished: '2024-10-30',
+              dateModified: '2024-10-30',
+              author: {
+                '@type': 'Person',
+                '@id': 'https://shramko.dev/#person',
+                name: 'Serhii Shramko',
+                url: 'https://shramko.dev/about',
               },
-              "breadcrumb": {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
+              breadcrumb: {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
                   {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Quizlet QuickList",
-                    "item": "https://shramko.dev/quizlet-list"
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Quizlet QuickList',
+                    item: 'https://shramko.dev/quizlet-list',
                   },
                   {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Privacy Policy",
-                    "item": "https://shramko.dev/quizlet-list/privacy-policy"
-                  }
-                ]
-              }
-            })
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'Privacy Policy',
+                    item: 'https://shramko.dev/quizlet-list/privacy-policy',
+                  },
+                ],
+              },
+            }),
           }}
         />
       </Head>

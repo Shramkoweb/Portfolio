@@ -1,32 +1,34 @@
-import Head from 'next/head';
+import { ParsedUrlQuery } from 'querystring';
+
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next';
-import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import Head from 'next/head';
+import React, { useEffect } from 'react';
 
-import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
-import { compileMDX } from '@/lib/scripts/compiler';
-import { Snippet } from '@/lib/types';
+import { MDXComponents } from '@/components/mdx-components';
 import {
   generateTechArticleSchema,
   generateBreadcrumbSchema,
 } from '@/lib/schema';
-
-import { MDXComponents } from '@/components/mdx-components';
-import React, { useEffect } from 'react';
+import { compileMDX } from '@/lib/scripts/compiler';
+import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
+import { Snippet } from '@/lib/types';
 
 type SnippetPageProps = Pick<Snippet, 'data'> & {
   content: MDXRemoteSerializeResult;
   slug: string;
+  shikiCSS: string;
 };
 
 function SnippetPage(props: SnippetPageProps) {
   const {
     content,
     slug,
+    shikiCSS,
     data: { title, heading, description, createDate, updateDate, keywords },
   } = props;
 
@@ -48,6 +50,7 @@ function SnippetPage(props: SnippetPageProps) {
     <>
       <Head>
         <title>{title}</title>
+        {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
@@ -167,13 +170,14 @@ export async function getStaticProps({
   GetStaticPropsResult<SnippetPageProps>
 > {
   const { data, content } = await getSnippetBySlug(params?.slug);
-  const html = await compileMDX(content);
+  const { mdx, shikiCSS } = await compileMDX(content);
 
   return {
     props: {
       data,
       slug: params?.slug as string,
-      content: html,
+      content: mdx,
+      shikiCSS,
     },
   };
 }

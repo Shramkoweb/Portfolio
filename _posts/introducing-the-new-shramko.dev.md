@@ -1,11 +1,20 @@
 ---
-title: "Presenting the Revamped shramko.dev: Explore the Exciting Updates!"
-heading: "Introducing the new shramko.dev"
+title: 'Presenting the Revamped shramko.dev: Explore the Exciting Updates!'
+heading: 'Introducing the new shramko.dev'
 description: A deep dive into building my developer portfolio with Next.js 16, React 19, and Tailwind CSS 4. Learn about the tech stack, design decisions, and features behind 900+ commits.
 createDate: 2022-08-13T13:31:25.041Z
 updateDate: 2026-04-11T12:00:00.000Z
-keywords: [ Website Redesign, Next.js, React, Tailwind, Developer Portfolio, Portfolio, Website ]
-categories: [ Project-Setup, React, Vercel ]
+keywords:
+  [
+    Website Redesign,
+    Next.js,
+    React,
+    Tailwind,
+    Developer Portfolio,
+    Portfolio,
+    Website,
+  ]
+categories: [Project-Setup, React, Vercel]
 featured: false
 ---
 
@@ -265,61 +274,61 @@ Current coverage on <time dateTime="2026-04-17">17 April 2026</time>:
 
 ```shell
 ------------------------------|---------|----------|---------|---------|-------------------------------
-File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s             
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 ------------------------------|---------|----------|---------|---------|-------------------------------
-All files                     |   93.28 |    83.26 |   86.17 |   93.28 |                               
- components/blog-post-preview |     100 |     37.5 |     100 |     100 |                               
-  blog-post-preview.tsx       |     100 |    33.33 |     100 |     100 | 18-30                         
-  index.ts                    |     100 |       40 |     100 |     100 | 1                             
- components/categories        |     100 |    57.14 |     100 |     100 |                               
-  categories.tsx              |     100 |      100 |     100 |     100 |                               
-  index.ts                    |     100 |       40 |     100 |     100 | 1                             
- components/footer            |     100 |      100 |     100 |     100 |                               
-  get-copyright.ts            |     100 |      100 |     100 |     100 |                               
- components/mobile-menu       |     100 |      100 |     100 |     100 |                               
-  icons.tsx                   |     100 |      100 |     100 |     100 |                               
-  mobile-menu.tsx             |     100 |      100 |     100 |     100 |                               
- components/post-reaction     |   99.21 |    73.33 |     100 |   99.21 |                               
-  index.ts                    |     100 |       40 |     100 |     100 | 1                             
-  post-reaction.tsx           |     100 |      100 |     100 |     100 |                               
-  use-feedback-reducer.ts     |   97.82 |    83.33 |     100 |   97.82 | 25                            
- components/search-input      |     100 |      100 |     100 |     100 |                               
-  index.ts                    |     100 |      100 |     100 |     100 |                               
-  search-input.tsx            |     100 |      100 |     100 |     100 |                               
- components/share-button      |     100 |      100 |     100 |     100 |                               
-  share-button.tsx            |     100 |      100 |     100 |     100 |                               
- components/theme-changer     |   94.73 |    57.14 |     100 |   94.73 |                               
-  index.ts                    |     100 |       40 |     100 |     100 | 1                             
-  theme-changer.tsx           |   94.59 |    66.66 |     100 |   94.59 | 32-33                         
- components/view-counter      |   88.23 |     62.5 |     100 |   88.23 |                               
-  index.ts                    |     100 |       40 |     100 |     100 | 1                             
-  view-counter.tsx            |      88 |    72.72 |     100 |      88 | 20-21,35,41-43                
- lib                          |     100 |    98.27 |   75.75 |     100 |                               
-  constants.ts                |     100 |      100 |     100 |     100 |                               
-  feed.ts                     |     100 |      100 |     100 |     100 |                               
-  fetcher.ts                  |     100 |      100 |     100 |     100 |                               
-  github.ts                   |     100 |      100 |     100 |     100 |                               
-  routes.ts                   |     100 |      100 |   53.33 |     100 |                               
-  schema.ts                   |     100 |    95.23 |     100 |     100 | 69                            
-  types.ts                    |     100 |      100 |     100 |     100 |                               
-  utils.ts                    |     100 |      100 |      80 |     100 |                               
- lib/posts                    |   92.62 |    84.61 |    87.5 |   92.62 |                               
-  api.ts                      |   89.93 |    73.91 |      75 |   89.93 | 18-19,67-68,109-117,157-159   
-  utils.ts                    |     100 |      100 |     100 |     100 |                               
- lib/scripts                  |      55 |      100 |      50 |      55 |                               
-  compiler.ts                 |      55 |      100 |      50 |      55 | 9-26                          
- pages                        |     100 |      100 |     100 |     100 |                               
-  404.tsx                     |     100 |      100 |     100 |     100 |                               
- pages/api                    |   96.63 |     93.1 |     100 |   96.63 |                               
-  dashboard.ts                |    91.3 |    83.33 |     100 |    91.3 | 42-45                         
-  github.ts                   |     100 |      100 |     100 |     100 |                               
-  waitlist.ts                 |     100 |      100 |     100 |     100 |                               
- pages/api/reactions          |     100 |    93.33 |     100 |     100 |                               
-  [slug].ts                   |     100 |    93.33 |     100 |     100 | 88                            
- pages/api/views              |     100 |      100 |     100 |     100 |                               
-  [slug].ts                   |     100 |      100 |     100 |     100 |                               
- pages/blog                   |   73.63 |     62.5 |      50 |   73.63 |                               
-  index.tsx                   |   73.63 |     62.5 |      50 |   73.63 | 46,96-101,138,142-150,178-218 
+All files                     |   93.28 |    83.26 |   86.17 |   93.28 |
+ components/blog-post-preview |     100 |     37.5 |     100 |     100 |
+  blog-post-preview.tsx       |     100 |    33.33 |     100 |     100 | 18-30
+  index.ts                    |     100 |       40 |     100 |     100 | 1
+ components/categories        |     100 |    57.14 |     100 |     100 |
+  categories.tsx              |     100 |      100 |     100 |     100 |
+  index.ts                    |     100 |       40 |     100 |     100 | 1
+ components/footer            |     100 |      100 |     100 |     100 |
+  get-copyright.ts            |     100 |      100 |     100 |     100 |
+ components/mobile-menu       |     100 |      100 |     100 |     100 |
+  icons.tsx                   |     100 |      100 |     100 |     100 |
+  mobile-menu.tsx             |     100 |      100 |     100 |     100 |
+ components/post-reaction     |   99.21 |    73.33 |     100 |   99.21 |
+  index.ts                    |     100 |       40 |     100 |     100 | 1
+  post-reaction.tsx           |     100 |      100 |     100 |     100 |
+  use-feedback-reducer.ts     |   97.82 |    83.33 |     100 |   97.82 | 25
+ components/search-input      |     100 |      100 |     100 |     100 |
+  index.ts                    |     100 |      100 |     100 |     100 |
+  search-input.tsx            |     100 |      100 |     100 |     100 |
+ components/share-button      |     100 |      100 |     100 |     100 |
+  share-button.tsx            |     100 |      100 |     100 |     100 |
+ components/theme-changer     |   94.73 |    57.14 |     100 |   94.73 |
+  index.ts                    |     100 |       40 |     100 |     100 | 1
+  theme-changer.tsx           |   94.59 |    66.66 |     100 |   94.59 | 32-33
+ components/view-counter      |   88.23 |     62.5 |     100 |   88.23 |
+  index.ts                    |     100 |       40 |     100 |     100 | 1
+  view-counter.tsx            |      88 |    72.72 |     100 |      88 | 20-21,35,41-43
+ lib                          |     100 |    98.27 |   75.75 |     100 |
+  constants.ts                |     100 |      100 |     100 |     100 |
+  feed.ts                     |     100 |      100 |     100 |     100 |
+  fetcher.ts                  |     100 |      100 |     100 |     100 |
+  github.ts                   |     100 |      100 |     100 |     100 |
+  routes.ts                   |     100 |      100 |   53.33 |     100 |
+  schema.ts                   |     100 |    95.23 |     100 |     100 | 69
+  types.ts                    |     100 |      100 |     100 |     100 |
+  utils.ts                    |     100 |      100 |      80 |     100 |
+ lib/posts                    |   92.62 |    84.61 |    87.5 |   92.62 |
+  api.ts                      |   89.93 |    73.91 |      75 |   89.93 | 18-19,67-68,109-117,157-159
+  utils.ts                    |     100 |      100 |     100 |     100 |
+ lib/scripts                  |      55 |      100 |      50 |      55 |
+  compiler.ts                 |      55 |      100 |      50 |      55 | 9-26
+ pages                        |     100 |      100 |     100 |     100 |
+  404.tsx                     |     100 |      100 |     100 |     100 |
+ pages/api                    |   96.63 |     93.1 |     100 |   96.63 |
+  dashboard.ts                |    91.3 |    83.33 |     100 |    91.3 | 42-45
+  github.ts                   |     100 |      100 |     100 |     100 |
+  waitlist.ts                 |     100 |      100 |     100 |     100 |
+ pages/api/reactions          |     100 |    93.33 |     100 |     100 |
+  [slug].ts                   |     100 |    93.33 |     100 |     100 | 88
+ pages/api/views              |     100 |      100 |     100 |     100 |
+  [slug].ts                   |     100 |      100 |     100 |     100 |
+ pages/blog                   |   73.63 |     62.5 |      50 |   73.63 |
+  index.tsx                   |   73.63 |     62.5 |      50 |   73.63 | 46,96-101,138,142-150,178-218
 ------------------------------|---------|----------|---------|---------|-------------------------------
 
 Test Suites: 23 passed, 23 total

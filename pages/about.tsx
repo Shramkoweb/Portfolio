@@ -5,11 +5,11 @@ import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback/constants';
 
 import about from '../public/static/images/about.jpeg';
-import car from '../public/static/images/car.jpeg';
-import tennis from '../public/static/images/tennis.jpeg';
-import eat from '../public/static/images/eat.jpeg';
 import carBack from '../public/static/images/car-back.jpeg';
+import car from '../public/static/images/car.jpeg';
+import eat from '../public/static/images/eat.jpeg';
 import standing from '../public/static/images/standing.jpg';
+import tennis from '../public/static/images/tennis.jpeg';
 
 function AboutPage() {
   return (
@@ -37,69 +37,70 @@ function AboutPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfilePage",
-              "url": "https://shramko.dev/about",
-              "inLanguage": "en",
-              "dateModified": "2026-03-28",
-              "mainEntity": {
-                "@type": "Person",
-                "@id": "https://shramko.dev/#person",
-                "name": "Serhii Shramko",
-                "description": "Senior Software Engineer specializing in React, TypeScript, and frontend architecture. Building scalable web applications and mentoring developers.",
-                "url": "https://shramko.dev/about",
-                "image": {
-                  "@type": "ImageObject",
-                  "url": "https://shramko.dev/static/images/twittersite.png",
-                  "width": 1269,
-                  "height": 846
+              '@context': 'https://schema.org',
+              '@type': 'ProfilePage',
+              url: 'https://shramko.dev/about',
+              inLanguage: 'en',
+              dateModified: '2026-03-28',
+              mainEntity: {
+                '@type': 'Person',
+                '@id': 'https://shramko.dev/#person',
+                name: 'Serhii Shramko',
+                description:
+                  'Senior Software Engineer specializing in React, TypeScript, and frontend architecture. Building scalable web applications and mentoring developers.',
+                url: 'https://shramko.dev/about',
+                image: {
+                  '@type': 'ImageObject',
+                  url: 'https://shramko.dev/static/images/twittersite.png',
+                  width: 1269,
+                  height: 846,
                 },
-                "sameAs": [
-                  "https://github.com/shramkoweb",
-                  "https://www.linkedin.com/in/shramko-dev/",
-                  "https://www.instagram.com/serhii.shramko/"
+                sameAs: [
+                  'https://github.com/shramkoweb',
+                  'https://www.linkedin.com/in/shramko-dev/',
+                  'https://www.instagram.com/serhii.shramko/',
                 ],
-                "knowsAbout": [
-                  "Frontend Development",
-                  "TypeScript",
-                  "JavaScript",
-                  "React",
-                  "Next.js",
-                  "Redux",
-                  "Redux-Saga",
-                  "Nest.js",
-                  "Refine",
-                  "Playwright",
-                  "Elasticsearch",
-                  "Kibana",
-                  "WCAG 2.1",
-                  "Accessibility",
-                  "CI/CD",
-                  "Performance Optimization"
+                knowsAbout: [
+                  'Frontend Development',
+                  'TypeScript',
+                  'JavaScript',
+                  'React',
+                  'Next.js',
+                  'Redux',
+                  'Redux-Saga',
+                  'Nest.js',
+                  'Refine',
+                  'Playwright',
+                  'Elasticsearch',
+                  'Kibana',
+                  'WCAG 2.1',
+                  'Accessibility',
+                  'CI/CD',
+                  'Performance Optimization',
                 ],
-                "jobTitle": "Senior Software Engineer",
-                "worksFor": {
-                  "@type": "Organization",
-                  "name": "BetterMe",
-                  "url": "https://betterme.world/"
+                jobTitle: 'Senior Software Engineer',
+                worksFor: {
+                  '@type': 'Organization',
+                  name: 'BetterMe',
+                  url: 'https://betterme.world/',
                 },
-                "email": "shramko.dev@gmail.com",
-                "workLocation": {
-                  "@type": "Place",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Boston",
-                    "addressRegion": "MA",
-                    "addressCountry": "US"
-                  }
+                email: 'shramko.dev@gmail.com',
+                workLocation: {
+                  '@type': 'Place',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Boston',
+                    addressRegion: 'MA',
+                    addressCountry: 'US',
+                  },
                 },
-                "alumniOf": {
-                  "@type": "CollegeOrUniversity",
-                  "name": "Dnipro University of Technology",
-                  "url": "https://nmu.org.ua/en/"
-                }
-              }
-            })
+                alumniOf: {
+                  '@type': 'CollegeOrUniversity',
+                  name: 'Dnipro University of Technology',
+                  url: 'https://nmu.org.ua/en/',
+                },
+              },
+            }),
           }}
         />
       </Head>

@@ -1,11 +1,20 @@
 ---
 heading: Node Version Manager
-title: "Node Version Manager (NVM): Install and Switch Versions"
+title: 'Node Version Manager (NVM): Install and Switch Versions'
 description: Learn how to install and use Node Version Manager (NVM) to switch between Node.js versions effortlessly. Manage multiple Node versions for different projects.
 createDate: 2023-02-25T17:21:50.063Z
 updateDate: 2023-02-25T17:21:50.063Z
-keywords: [ what is nvm node, what is nvm in linux, brew install nvm, install nvm, install nvm windows, nvm set default, nvm set default node version ]
-categories: [ JS, Node ]
+keywords:
+  [
+    what is nvm node,
+    what is nvm in linux,
+    brew install nvm,
+    install nvm,
+    install nvm windows,
+    nvm set default,
+    nvm set default node version,
+  ]
+categories: [JS, Node]
 featured: false
 ---
 

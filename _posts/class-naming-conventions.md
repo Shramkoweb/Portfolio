@@ -1,11 +1,21 @@
 ---
 title: Advanced HTML Class Naming Strategies for CSS Efficiency
-heading: "Mastering HTML Class Naming: Boosting CSS Efficiency"
+heading: 'Mastering HTML Class Naming: Boosting CSS Efficiency'
 description: Discover the art of crafting clean HTML class names with BEM methodology. Learn to create maintainable, scalable, and SEO-friendly CSS code.
 createDate: 2023-10-25T19:12:07.231Z
 updateDate: 2025-12-07
-keywords: [ css naming conventions, name convention css, css class naming conventions, css class name convention, html id naming convention, naming css, html id name convention, html class naming conventions ]
-categories: [ CSS, HTML, Clean-Code ]
+keywords:
+  [
+    css naming conventions,
+    name convention css,
+    css class naming conventions,
+    css class name convention,
+    html id naming convention,
+    naming css,
+    html id name convention,
+    html class naming conventions,
+  ]
+categories: [CSS, HTML, Clean-Code]
 featured: false
 ---
 
@@ -50,10 +60,7 @@ A block is a standalone component that represents a high-level element or a modu
 container for one or more elements within it.
 
 ```html
-
-<div class="block">
-  ...
-</div>
+<div class="block">...</div>
 ```
 
 #### 2. **Element**
@@ -62,11 +69,8 @@ An element is a part of a block and is semantically tied to it. It is named usin
 separator.
 
 ```html
-
 <div class="block">
-  <div class="block__element">
-    ...
-  </div>
+  <div class="block__element">...</div>
 </div>
 ```
 
@@ -76,20 +80,13 @@ A modifier is used to change the appearance, behavior, or state of a block or el
 hyphen (`--`) as a separator.
 
 ```html
-
 <div class="block">
-  <div class="block__element">
-    ...
-  </div>
+  <div class="block__element">...</div>
 </div>
 
-<div class="block block--modifier">
-  ...
-</div>
+<div class="block block--modifier">...</div>
 
-<div class="block__element block__element--modifier">
-  ...
-</div>
+<div class="block__element block__element--modifier">...</div>
 ```
 
 ### Examples of BEM Methodology in Action
@@ -99,7 +96,6 @@ Let's see how BEM methodology applies to real-world examples:
 #### Navigation Menu
 
 ```html
-
 <nav class="navigation">
   <ul class="navigation__list">
     <li class="navigation__item">
@@ -119,7 +115,6 @@ to understand and style.
 #### Article Card
 
 ```html
-
 <article class="article-card">
   <header class="article-card__header">
     <h2 class="article-card__title">An Exciting Blog Post</h2>

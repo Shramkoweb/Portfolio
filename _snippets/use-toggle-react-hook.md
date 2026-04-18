@@ -3,27 +3,28 @@ title: useToggle React Hook
 heading: useToggle
 description: Simple useToggle React hook for managing boolean state. Toggle between true and false with a clean API. Perfect for modals, dropdowns, and dark mode switches.
 createDate: 2024-10-30
-keywords: [
-  useToggle hook,
-  React useToggle snippet,
-  Boolean toggle hook,
-  React hook tutorial,
-  React state management,
-  Reusable React hook,
-  React hook example,
-  useState toggle hook,
-  React functional component,
-  React toggle Boolean,
-  React hook for toggling,
-  JavaScript toggle hook,
-  Boolean toggle React,
-  React hooks tutorial,
-  Custom hook pattern React,
-  Boolean state toggle,
-  useToggle example,
-  React hook library,
-  Simplify Boolean toggle
-]
+keywords:
+  [
+    useToggle hook,
+    React useToggle snippet,
+    Boolean toggle hook,
+    React hook tutorial,
+    React state management,
+    Reusable React hook,
+    React hook example,
+    useState toggle hook,
+    React functional component,
+    React toggle Boolean,
+    React hook for toggling,
+    JavaScript toggle hook,
+    Boolean toggle React,
+    React hooks tutorial,
+    Custom hook pattern React,
+    Boolean state toggle,
+    useToggle example,
+    React hook library,
+    Simplify Boolean toggle,
+  ]
 ---
 
 A hook to toggle a boolean value with useToggle.
@@ -61,10 +62,8 @@ const App = () => {
     <>
       <p>The modal window is {isModalOpened ? 'opened' : 'closed'}.</p>
 
-      <button onClick={toggleModal}>
-        Toggle Modal State
-      </button>
+      <button onClick={toggleModal}>Toggle Modal State</button>
     </>
-  )
-}
+  );
+};
 ```

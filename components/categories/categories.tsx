@@ -1,6 +1,6 @@
+import { Tag } from '@/components/tag';
 import { PostCategory } from '@/lib/types';
 import { formatCategoryName } from '@/lib/utils';
-import { Tag } from '@/components/tag';
 
 interface CategoriesProps {
   categories: PostCategory[];

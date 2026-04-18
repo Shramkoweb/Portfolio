@@ -1,6 +1,7 @@
-import matter from 'gray-matter';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'path';
+
+import matter from 'gray-matter';
 
 import { Snippet } from '@/lib/types';
 import { extractMarkdownSlug } from '@/lib/utils';
@@ -17,9 +18,7 @@ export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
     const fileContents = await readFile(fullPath, 'utf8');
 
     const {
-      data: {
-        title, heading, description, createDate, updateDate, keywords,
-      },
+      data: { title, heading, description, createDate, updateDate, keywords },
       content,
     } = matter(fileContents);
 
@@ -36,13 +35,15 @@ export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
       content,
     };
   } catch (err) {
-    throw new Error(err as string);
+    throw new Error(String(err), { cause: err });
   }
 }
 
 export async function getSnippets(): Promise<Snippet[]> {
   const fileNames = await readdir(SNIPPETS_DIRECTORY);
-  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+  const markdownFiles = fileNames.filter((fileName) =>
+    fileName.endsWith('.md'),
+  );
 
   const snippetPromises = markdownFiles
     .map(extractMarkdownSlug)
@@ -53,7 +54,9 @@ export async function getSnippets(): Promise<Snippet[]> {
 
 export async function getSnippetSlugs(): Promise<string[]> {
   const fileNames = await readdir(SNIPPETS_DIRECTORY);
-  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith('.md'));
+  const markdownFiles = fileNames.filter((fileName) =>
+    fileName.endsWith('.md'),
+  );
 
   return markdownFiles.map(extractMarkdownSlug);
 }

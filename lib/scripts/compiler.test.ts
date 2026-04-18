@@ -4,6 +4,9 @@ jest.mock('rehype-slug', () => jest.fn());
 jest.mock('rehype-code-titles', () => jest.fn());
 jest.mock('rehype-autolink-headings', () => jest.fn());
 jest.mock('@shikijs/rehype', () => jest.fn());
+jest.mock('@shikijs/transformers', () => ({
+  transformerStyleToClass: jest.fn(() => ({})),
+}));
 
 import { extractHeadingsFromMarkdown } from '@/lib/scripts/compiler';
 

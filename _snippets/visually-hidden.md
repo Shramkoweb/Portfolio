@@ -3,28 +3,29 @@ title: Making Elements Visually Hidden for Screen Readers and Accessibility
 heading: Visually Hidden
 description: CSS snippet to hide content visually while keeping it accessible to screen readers. Essential technique for web accessibility and WCAG compliance.
 createDate: 2024-07-12
-keywords: [
-  visually hidden CSS,
-  accessibility CSS techniques,
-  screen reader CSS tricks,
-  hidden content accessibility,
-  CSS visibility tricks,
-  visually hide elements CSS,
-  CSS clip rect technique,
-  web accessibility tips,
-  CSS display none screen readers,
-  hidden content best practices,
-  CSS accessibility guidelines,
-  visually hidden elements,
-  CSS aria-hidden attribute,
-  accessible web design CSS,
-  BEM CSS methodology,
-  CSS for screen readers,
-  CSS clip technique,
-  visually hide elements accessibility,
-  hidden content SEO,
-  CSS tricks for accessibility
-]
+keywords:
+  [
+    visually hidden CSS,
+    accessibility CSS techniques,
+    screen reader CSS tricks,
+    hidden content accessibility,
+    CSS visibility tricks,
+    visually hide elements CSS,
+    CSS clip rect technique,
+    web accessibility tips,
+    CSS display none screen readers,
+    hidden content best practices,
+    CSS accessibility guidelines,
+    visually hidden elements,
+    CSS aria-hidden attribute,
+    accessible web design CSS,
+    BEM CSS methodology,
+    CSS for screen readers,
+    CSS clip technique,
+    visually hide elements accessibility,
+    hidden content SEO,
+    CSS tricks for accessibility,
+  ]
 ---
 
 ```css

@@ -1,21 +1,22 @@
 ---
-title: "React Hook Tutorial: How to Use the useHasMounted Hook"
+title: 'React Hook Tutorial: How to Use the useHasMounted Hook'
 heading: useHasMounted
 description: Avert strange SSR problems with this useful React hook. Identify whether your rendering occurs on the client or server!
 createDate: 2024-07-11
 updateDate: 2026-02-21
-keywords: [
-  React useEffect hook usage,
-  Conditional rendering in React components,
-  Managing component lifecycle states,
-  Custom React hooks tutorial,
-  useState and useEffect in React,
-  Component mount lifecycle in React,
-  Declarative React programming,
-  Advanced React component rendering,
-  Optimizing React component performance,
-  React functional components
-]
+keywords:
+  [
+    React useEffect hook usage,
+    Conditional rendering in React components,
+    Managing component lifecycle states,
+    Custom React hooks tutorial,
+    useState and useEffect in React,
+    Component mount lifecycle in React,
+    Declarative React programming,
+    Advanced React component rendering,
+    Optimizing React component performance,
+    React functional components,
+  ]
 ---
 
 Hey there! Today, let's talk about a handy custom React hook called `useHasMounted`. This hook is quite useful when you
@@ -58,6 +59,6 @@ const Component = () => {
     return null;
   }
 
-  return <div>Render only on client</div>
+  return <div>Render only on client</div>;
 };
 ```

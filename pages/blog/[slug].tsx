@@ -1,15 +1,25 @@
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { ParsedUrlQuery } from 'querystring';
+
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next';
-import { ParsedUrlQuery } from 'querystring';
-import { MDXComponents } from '@/components/mdx-components';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import React from 'react';
 
+import { MDXComponents } from '@/components/mdx-components';
+import {
+  FacebookShare,
+  LinkedInShare,
+  TelegramShare,
+  TwitterShare,
+} from '@/components/share-button';
+import { TableOfContent } from '@/components/table-of-content';
+import { Tag } from '@/components/tag';
+import { ViewCounter } from '@/components/view-counter/view-counter';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
@@ -21,15 +31,6 @@ import {
   extractHeadingsFromMarkdown,
 } from '@/lib/scripts/compiler';
 import { Post } from '@/lib/types';
-import { TableOfContent } from '@/components/table-of-content';
-import { Tag } from '@/components/tag';
-import { ViewCounter } from '@/components/view-counter/view-counter';
-import {
-  FacebookShare,
-  LinkedInShare,
-  TelegramShare,
-  TwitterShare,
-} from '@/components/share-button';
 
 const FloatingReactions = dynamic(() =>
   import('@/components/floating-reactions').then(
@@ -40,6 +41,7 @@ const FloatingReactions = dynamic(() =>
 type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
   headings: { text: string; level: number; id: string }[];
+  shikiCSS: string;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -58,6 +60,7 @@ function ArticlePage(props: ArticlePageProps) {
       faq,
     },
     headings,
+    shikiCSS,
   } = props;
 
   const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
@@ -69,6 +72,7 @@ function ArticlePage(props: ArticlePageProps) {
     <>
       <Head>
         <title>{title}</title>
+        {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
         <meta content={description} name="description" key="description" />
         <meta property="og:type" content="article" key="og:type" />
         <meta property="og:title" content={title} key="og:title" />
@@ -264,14 +268,15 @@ export async function getStaticProps({
   GetStaticPropsResult<ArticlePageProps>
 > {
   const { data, content } = await getPostBySlug(params?.slug);
-  const html = await compileMDX(content);
+  const { mdx, shikiCSS } = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
 
   return {
     props: {
       data,
-      content: html,
+      content: mdx,
       headings,
+      shikiCSS,
     },
   };
 }
