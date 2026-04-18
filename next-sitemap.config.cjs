@@ -12,12 +12,12 @@ const pathLevelToPriority = {
 
 const EXCLUDED_PATHS = ['/feed.xml'];
 
-const getPathDepthLevel = (path) => {
-  if (path === '/') {
+const getPathDepthLevel = (urlPath) => {
+  if (urlPath === '/') {
     return 0;
   }
 
-  return path.split('/').length - 1;
+  return urlPath.split('/').length - 1;
 };
 
 function getContentDate(urlPath) {
@@ -69,12 +69,12 @@ module.exports = {
   siteUrl: 'https://shramko.dev',
   generateIndexSitemap: false,
   exclude: EXCLUDED_PATHS,
-  transform: async (config, path) => {
-    const contentDate = getContentDate(path);
+  transform: async (config, urlPath) => {
+    const contentDate = getContentDate(urlPath);
 
     return {
-      loc: path,
-      priority: pathLevelToPriority[getPathDepthLevel(path)],
+      loc: urlPath,
+      priority: pathLevelToPriority[getPathDepthLevel(urlPath)],
       ...(contentDate && { lastmod: contentDate }),
       alternateRefs: config.alternateRefs ?? [],
     };

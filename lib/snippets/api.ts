@@ -35,7 +35,7 @@ export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
       content,
     };
   } catch (err) {
-    throw new Error(err as string);
+    throw new Error(String(err), { cause: err });
   }
 }
 

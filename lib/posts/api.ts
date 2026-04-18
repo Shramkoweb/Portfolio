@@ -102,7 +102,7 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
       content,
     };
   } catch (err) {
-    throw new Error(err as string);
+    throw new Error(String(err), { cause: err });
   }
 }
 
