@@ -139,6 +139,7 @@ html {
 }
 
 .dark .shiki {
+  --shiki-dark-bg: #121212;
   background-color: var(--shiki-dark-bg, #24292e);
 }
 

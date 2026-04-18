@@ -3,9 +3,13 @@ jest.mock('remark-gfm', () => jest.fn());
 jest.mock('rehype-slug', () => jest.fn());
 jest.mock('rehype-code-titles', () => jest.fn());
 jest.mock('rehype-autolink-headings', () => jest.fn());
-jest.mock('@shikijs/rehype', () => jest.fn());
+jest.mock('@shikijs/rehype/core', () => ({ default: jest.fn() }));
 jest.mock('@shikijs/transformers', () => ({
   transformerStyleToClass: jest.fn(() => ({})),
+}));
+jest.mock('shiki', () => ({
+  bundledLanguages: {},
+  getSingletonHighlighter: jest.fn(() => Promise.resolve({})),
 }));
 
 import { extractHeadingsFromMarkdown } from '@/lib/scripts/compiler';

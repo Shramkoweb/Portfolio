@@ -6,14 +6,18 @@ import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
 import { SearchInput } from '@/components/search-input';
-import { getPostsByCategory, getPostsCategories } from '@/lib/posts/api';
+import {
+  filterPostsByCategory,
+  getPostsCategories,
+  getPostsMetadata,
+} from '@/lib/posts/api';
 import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
 import { generateBreadcrumbSchema } from '@/lib/schema';
-import { Post, PostCategory } from '@/lib/types';
+import { PostCategory, PostMetadata } from '@/lib/types';
 import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
 
 interface CategoryPageProps {
-  posts: Post[];
+  posts: PostMetadata[];
   categories: PostCategory[];
   category: PostCategory;
   seoDescription: string;
@@ -134,8 +138,14 @@ export async function getStaticPaths() {
 export async function getStaticProps(
   context: GetStaticPropsContext,
 ): Promise<GetStaticPropsResult<CategoryPageProps>> {
-  const posts = await getPostsByCategory(context.params?.category as string);
-  const categories = await getPostsCategories();
+  const allPosts = await getPostsMetadata();
+  const categories = [
+    ...new Set(allPosts.flatMap((p) => p.data.categories)),
+  ] as PostCategory[];
+  const posts = filterPostsByCategory(
+    allPosts,
+    context.params?.category as string,
+  ) as PostMetadata[];
   const sortedPosts = posts.sort(sortByBirthtime);
   const postCategory = categories.find(
     (item) => item.toLowerCase() === context.params?.category,

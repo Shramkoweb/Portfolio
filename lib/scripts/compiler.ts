@@ -1,13 +1,25 @@
-import rehypeShiki from '@shikijs/rehype';
+import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
 import { transformerStyleToClass } from '@shikijs/transformers';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import { bundledLanguages, getSingletonHighlighter } from 'shiki';
+
+const highlighterPromise = getSingletonHighlighter({
+  themes: ['github-light', 'github-dark'],
+  langs: Object.keys(bundledLanguages),
+});
+
+// Singleton: highlightCache skips the transformer for cached blocks,
+// so a per-call transformer would return empty CSS on subsequent runs.
+// Module-level instance accumulates all class→variable mappings across calls.
+const transformer = transformerStyleToClass();
+const highlightCache = new Map();
 
 export async function compileMDX(content: string) {
-  const transformer = transformerStyleToClass();
+  const highlighter = await highlighterPromise;
 
   const mdx = await serialize(content, {
     mdxOptions: {
@@ -16,7 +28,8 @@ export async function compileMDX(content: string) {
         rehypeSlug,
         rehypeCodeTitles,
         [
-          rehypeShiki,
+          rehypeShikiFromHighlighter,
+          highlighter,
           {
             themes: {
               light: 'github-light',
@@ -24,6 +37,7 @@ export async function compileMDX(content: string) {
             },
             defaultColor: false,
             transformers: [transformer],
+            cache: highlightCache,
           },
         ],
         [
