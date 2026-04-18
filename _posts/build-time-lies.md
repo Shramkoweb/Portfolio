@@ -11,7 +11,7 @@ keywords:
     static generation optimization,
     Vercel build logs,
   ]
-categories: [ Opinion, Tools, Vercel ]
+categories: [Opinion, Tools, Vercel]
 featured: false
 ---
 
@@ -33,7 +33,7 @@ Then I scrolled down to the per-page breakdown. Completely different story.
 The listing pages — homepage, blog index, snippets — got much faster:
 
 | Route       | Before   | After  |
-|-------------|----------|--------|
+| ----------- | -------- | ------ |
 | `/`         | 7,046 ms | 487 ms |
 | `/blog`     | 7,116 ms | 664 ms |
 | `/snippets` | 7,046 ms | 547 ms |
@@ -43,7 +43,7 @@ Roughly a 13x improvement. But the total build time didn't budge. Something else
 That something was `/blog/category/[category]`.
 
 | Metric           | Before       | After        |
-|------------------|--------------|--------------|
+| ---------------- | ------------ | ------------ |
 | Route total      | ~15.8 s      | ~45.8 s      |
 | Slowest category | ~1,000 ms    | ~6,600 ms    |
 | Typical range    | 900–1,100 ms | 500–6,600 ms |
