@@ -12,10 +12,13 @@ const highlighterPromise = getSingletonHighlighter({
   langs: Object.keys(bundledLanguages),
 });
 
+// Singleton: highlightCache skips the transformer for cached blocks,
+// so a per-call transformer would return empty CSS on subsequent runs.
+// Module-level instance accumulates all class→variable mappings across calls.
+const transformer = transformerStyleToClass();
 const highlightCache = new Map();
 
 export async function compileMDX(content: string) {
-  const transformer = transformerStyleToClass();
   const highlighter = await highlighterPromise;
 
   const mdx = await serialize(content, {
