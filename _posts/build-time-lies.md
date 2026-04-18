@@ -52,7 +52,7 @@ Six categories jumped from about a second to 6.6 seconds each: `html`, `clean-co
 `advanced-react`. The rest stayed put. A 20-second improvement on listing pages masked a 30-second regression on
 category pages. Near-perfect cancellation.
 
-An accidental coincidence that made the top-line number useless.
+> An accidental coincidence that made the top-line number useless.
 
 ## The wrong fix
 
@@ -104,7 +104,7 @@ So why were the blog posts slow? I dug into the Shiki integration.
 Every `compileMDX` call created a new `rehypeShiki` plugin instance. Each instance initialized a fresh Shiki
 highlighter — loading the WASM engine, two themes, and grammars for every bundled language.
 
-**75 pages = 75 highlighter initializations.**
+> 75 pages = 75 highlighter initializations.
 
 The fix: use `@shikijs/rehype/core` with a single pre-created highlighter at module level.
 
@@ -138,8 +138,8 @@ You might notice those route totals don't add up. Before the fix, `/blog/[slug]`
 45s, `/snippets` showed 14s — that's 102 seconds of work. But actual static generation took 13.4s. The route times are
 concurrent, not sequential. Next.js generates multiple routes at the same time; each route's clock runs in parallel.
 
-The total build went from 46s to 42s because static generation is only one piece — TypeScript checking, Turbopack
-compilation, and Sentry uploads don't get faster when you fix Shiki.
+> The total build went from 46s to 42s because static generation is only one piece — TypeScript checking, Turbopack
+> compilation, and Sentry uploads don't get faster when you fix Shiki.
 
 ## Three things I got wrong
 
