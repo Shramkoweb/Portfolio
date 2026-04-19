@@ -12,9 +12,11 @@ keywords:
     code highlighting dark light mode,
     Shiki inline styles performance,
   ]
-categories: [ JS, Node, Tutorial ]
+categories: [JS, Node, Tutorial]
 featured: false
 ---
+
+<Image alt="Shiki syntax highlighter logo on a dark background, representing class-based theme extraction for Next.js MDX blogs" src="shiki.jpg" />
 
 When your blog has 30+ code-heavy posts, Shiki's default dual-theme output dumps two sets of inline styles on
 every `<span>` — one for light, one for dark. That's a lot of repeated CSS baked into your HTML. I switched to
@@ -115,7 +117,7 @@ Your theme toggle handles the rest. In dark mode, generated classes apply `--shi
 
 ## One gotcha
 
-If you create a *new* transformer instance per `compileMDX` call, posts compiled after a cache hit return empty CSS —
+If you create a _new_ transformer instance per `compileMDX` call, posts compiled after a cache hit return empty CSS —
 the cache skips the transformer entirely, so a fresh instance never sees those tokens. Keep the transformer at module
 scope.
 
