@@ -19,17 +19,6 @@ keywords:
   ]
 categories: [JS, TS, Clean-Code, Tutorial]
 featured: false
-faq:
-  - question: 'What is the early return pattern?'
-    answer: 'The early return pattern is a coding technique where a function exits immediately when a precondition is not met, using return, throw, or continue. Instead of wrapping logic in nested if blocks, you handle edge cases at the top and keep the main logic flat.'
-  - question: 'Is early return bad practice?'
-    answer: 'No. Early return is widely recommended and used in production codebases. The single exit point principle comes from 1970s structured programming and does not apply well to modern JavaScript.'
-  - question: 'What is the difference between early return and guard clause?'
-    answer: 'They are the same concept. Guard clause refers to the conditional check, while early return describes the behavior of exiting the function. The bouncer pattern is another name for it.'
-  - question: 'When should you not use early return?'
-    answer: 'Avoid early return in functions requiring cleanup logic unless you use try/finally. It is also unnecessary for simple one-liners or complex state machines where a switch statement is clearer.'
-  - question: 'Does early return improve performance?'
-    answer: 'The direct performance impact is negligible. However, in async code a guard clause that returns before an await avoids unnecessary network calls, which is a real performance win.'
 ---
 
 <Image src="exit.jpg" alt="Glowing green EXIT sign hanging from a ceiling, representing how early return pattern lets functions exit before reaching the end" />

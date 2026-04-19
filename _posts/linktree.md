@@ -15,13 +15,6 @@ keywords:
   ]
 categories: [Astro, Vercel, Tutorial]
 featured: false
-faq:
-  - question: 'Why use Astro instead of plain HTML for a link tree?'
-    answer: 'Astro gives you component reuse, automatic image optimization, built-in TypeScript support, and integrations like Vercel Analytics — all while shipping zero JavaScript by default. Your link tree stays as fast as hand-written HTML but is easier to maintain.'
-  - question: 'Can I add animations to my Astro link tree?'
-    answer: 'Yes. Use CSS animations or transitions in scoped style blocks — no JavaScript needed. For complex animations, add a framework component with client:load, but keep it minimal to preserve fast load times.'
-  - question: 'How do I add a custom domain on Vercel?'
-    answer: 'Go to your Vercel project settings, navigate to the Domains section, and add your domain or subdomain. Vercel automatically configures DNS records. For subdomains like links.example.com, add a CNAME record pointing to cname.vercel-dns.com.'
 ---
 
 <Image src="linktree.jpeg" alt="Custom link tree built with Astro.js" priority />

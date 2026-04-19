@@ -16,15 +16,6 @@ keywords:
   ]
 categories: [JS, TS, Astro]
 featured: false
-faq:
-  - question: 'Is Astro good for SEO?'
-    answer: 'Yes. Astro ships zero JavaScript by default and renders HTML at build time, giving search engines fully-rendered pages with fast load times. Built-in support for sitemaps, canonical URLs, and Open Graph meta makes it one of the best frameworks for SEO.'
-  - question: 'Can I use React components in Astro?'
-    answer: 'Yes. Astro is UI-agnostic and supports React, Preact, Vue, Svelte, Solid, and Lit. Add the React integration with npx astro add react, then import .jsx/.tsx components into any .astro file and hydrate them with a client directive.'
-  - question: 'Is Astro only for static sites?'
-    answer: 'No. Astro supports SSR, hybrid rendering, and Server Islands. You can deploy dynamic, authenticated apps on Node.js, Deno, Cloudflare Workers, and other runtimes.'
-  - question: 'Do I need to know React to use Astro?'
-    answer: 'No. Astro has its own .astro component syntax using plain HTML, CSS, and JavaScript. You can build an entire site without any UI framework. React, Vue, or Svelte are optional for interactive islands only.'
 ---
 
 <Image src="astro.jpg" alt="Astro framework logo on a dark starry background" />
