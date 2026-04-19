@@ -24,7 +24,6 @@ import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
   generateBreadcrumbSchema,
-  generateFAQPageSchema,
 } from '@/lib/schema';
 import {
   compileMDX,
@@ -57,7 +56,6 @@ function ArticlePage(props: ArticlePageProps) {
       createDate,
       categories = [],
       keywords,
-      faq,
     },
     headings,
     shikiCSS,
@@ -152,14 +150,6 @@ function ArticlePage(props: ArticlePageProps) {
             ),
           }}
         />
-        {faq && faq.length > 0 && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(generateFAQPageSchema(faq)),
-            }}
-          />
-        )}
       </Head>
       <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
         <div>

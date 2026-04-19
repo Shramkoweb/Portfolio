@@ -2,7 +2,6 @@ import {
   generateBlogPostingSchema,
   generateTechArticleSchema,
   generateBreadcrumbSchema,
-  generateFAQPageSchema,
   generateWebSiteSchema,
 } from '@/lib/schema';
 
@@ -123,21 +122,6 @@ describe('generateBreadcrumbSchema', () => {
     ]);
 
     expect(schema.itemListElement).toHaveLength(1);
-  });
-});
-
-describe('generateFAQPageSchema', () => {
-  it('should map FAQ items to Question/Answer pairs', () => {
-    const schema = generateFAQPageSchema([
-      { question: 'What is X?', answer: 'X is Y.' },
-      { question: 'How?', answer: 'Like this.' },
-    ]);
-
-    expect(schema['@type']).toBe('FAQPage');
-    expect(schema.mainEntity).toHaveLength(2);
-    expect(schema.mainEntity[0]['@type']).toBe('Question');
-    expect(schema.mainEntity[0].name).toBe('What is X?');
-    expect(schema.mainEntity[0].acceptedAnswer.text).toBe('X is Y.');
   });
 });
 

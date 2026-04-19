@@ -29,7 +29,6 @@ async function getPostMetadataBySlug(slug: string): Promise<PostMetadata> {
       keywords,
       createDate,
       updateDate,
-      faq,
     },
     content,
   } = matterResult;
@@ -48,7 +47,6 @@ async function getPostMetadataBySlug(slug: string): Promise<PostMetadata> {
       readTime: text,
       createDate: Date.parse(createDate),
       updateDate: updateDate ? Date.parse(updateDate) : null,
-      ...(faq && { faq }),
     },
   };
 }
@@ -78,7 +76,6 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         keywords,
         createDate,
         updateDate,
-        faq,
       },
       content,
     } = matterResult;
@@ -97,7 +94,6 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
         readTime: text,
         createDate: Date.parse(createDate),
         updateDate: updateDate ? Date.parse(updateDate) : null,
-        ...(faq && { faq }),
       },
       content,
     };

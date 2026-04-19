@@ -1,5 +1,5 @@
 import { SITE_URL } from '@/lib/constants';
-import { BaseFrontmatter, FAQItem } from '@/lib/types';
+import { BaseFrontmatter } from '@/lib/types';
 const AUTHOR_ID = `${SITE_URL}/#person`;
 
 const author = {
@@ -96,21 +96,6 @@ export function generateBreadcrumbSchema(
       position: index + 1,
       name: item.name,
       item: item.url,
-    })),
-  };
-}
-
-export function generateFAQPageSchema(faq: FAQItem[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
     })),
   };
 }
