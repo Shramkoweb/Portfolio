@@ -21,9 +21,9 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "7.7.0",
-    "@prisma/client": "7.7.0",
-    "@sentry/nextjs": "10.49.0",
+    "@prisma/adapter-pg": "7.8.0",
+    "@prisma/client": "7.8.0",
+    "@sentry/nextjs": "10.50.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/og": "0.11.1",
     "@vercel/speed-insights": "2.0.0",
@@ -42,7 +42,7 @@
     "@commitlint/types": "20.5.0",
     "@shikijs/rehype": "^4.0.2",
     "@shikijs/transformers": "^4.0.2",
-    "@tailwindcss/postcss": "4.2.2",
+    "@tailwindcss/postcss": "4.2.4",
     "@tailwindcss/typography": "0.5.19",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
@@ -57,16 +57,16 @@
     "jest-environment-jsdom": "30.3.0",
     "next-mdx-remote": "6.0.0",
     "next-sitemap": "4.2.3",
-    "oxfmt": "0.45.0",
-    "oxlint": "1.60.0",
+    "oxfmt": "0.46.0",
+    "oxlint": "1.61.0",
     "postcss": "8.5.10",
-    "prisma": "7.7.0",
+    "prisma": "7.8.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "7.1.0",
     "rehype-code-titles": "1.2.1",
     "rehype-slug": "6.0.0",
     "remark-gfm": "4.0.1",
-    "tailwindcss": "4.2.2",
+    "tailwindcss": "4.2.4",
     "typescript": "6.0.3"
   },
   "browserslist": [
@@ -75,7 +75,7 @@
   "engines": {
     "node": "24.x"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.2",
   "pnpm": {
     "overrides": {
       "hono": ">=4.12.12",
