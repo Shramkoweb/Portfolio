@@ -61,15 +61,15 @@ function useLocalStorage<T>(
     try {
       return JSON.parse(raw) as T;
     } catch {
-      return initialValue;
+      return JSON.parse(fallback) as T;
     }
-  }, [raw, initialValue]);
+  }, [raw, fallback]);
 
   const setValue = useCallback(
     (updater: T | ((prev: T) => T)) => {
       try {
         const prev = JSON.parse(localStorage.getItem(key) ?? fallback) as T;
-        const next = updater instanceof Function ? updater(prev) : updater;
+        const next = typeof updater === 'function' ? updater(prev) : updater;
         localStorage.setItem(key, JSON.stringify(next));
         window.dispatchEvent(new StorageEvent('storage', { key }));
       } catch (error) {
