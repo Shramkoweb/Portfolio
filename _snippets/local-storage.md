@@ -112,4 +112,5 @@ const cached = getItemWithExpiry<UserData>('user-profile');
 
 ## Related
 
+- [useLocalStorage React Hook](/snippets/use-local-storage) — persist React state in localStorage with cross-tab sync
 - [Common React Hooks Pitfalls](/blog/react-hooks-pitfalls) - best practices for custom hooks that use localStorage
