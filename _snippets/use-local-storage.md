@@ -95,7 +95,9 @@ function ThemeSwitch() {
   const [theme, setTheme] = useLocalStorage<'light' | 'dark'>('theme', 'light');
 
   return (
-    <button onClick={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}>
+    <button
+      onClick={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
+    >
       Current: {theme}
     </button>
   );
@@ -138,10 +140,17 @@ interface Settings {
   fontSize: number;
 }
 
-const defaults: Settings = { notifications: true, language: 'en', fontSize: 16 };
+const defaults: Settings = {
+  notifications: true,
+  language: 'en',
+  fontSize: 16,
+};
 
 function SettingsPanel() {
-  const [settings, setSettings] = useLocalStorage<Settings>('settings', defaults);
+  const [settings, setSettings] = useLocalStorage<Settings>(
+    'settings',
+    defaults,
+  );
 
   return (
     <label>
@@ -149,7 +158,10 @@ function SettingsPanel() {
         type="checkbox"
         checked={settings.notifications}
         onChange={() =>
-          setSettings((prev) => ({ ...prev, notifications: !prev.notifications }))
+          setSettings((prev) => ({
+            ...prev,
+            notifications: !prev.notifications,
+          }))
         }
       />
       Enable notifications
