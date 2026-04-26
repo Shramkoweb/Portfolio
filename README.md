@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
 </p>
 
-<p align="center"><a href="README.ua.md">Українською</a></p>
+<p align="center"><a href="README.ua.md">🇺🇦 Українською</a></p>
 
 ## Contents
 
