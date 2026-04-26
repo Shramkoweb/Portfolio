@@ -50,7 +50,7 @@ importers:
         specifier: 19.2.5
         version: 19.2.5(react@19.2.5)
       shiki:
-        specifier: ^4.0.2
+        specifier: 4.0.2
         version: 4.0.2
       swr:
         specifier: 2.4.1
@@ -66,10 +66,10 @@ importers:
         specifier: 20.5.0
         version: 20.5.0
       '@shikijs/rehype':
-        specifier: ^4.0.2
+        specifier: 4.0.2
         version: 4.0.2
       '@shikijs/transformers':
-        specifier: ^4.0.2
+        specifier: 4.0.2
         version: 4.0.2
       '@tailwindcss/postcss':
         specifier: 4.2.4
@@ -123,8 +123,8 @@ importers:
         specifier: 1.61.0
         version: 1.61.0
       postcss:
-        specifier: 8.5.10
-        version: 8.5.10
+        specifier: 8.5.11
+        version: 8.5.11
       prisma:
         specifier: 7.8.0
         version: 7.8.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)
@@ -3987,8 +3987,8 @@ packages:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postcss@8.5.10:
-    resolution: {integrity: sha512-pMMHxBOZKFU6HgAZ4eyGnwXF/EvPGGqUr0MnZ5+99485wwW41kW91A4LOGxSHhgugZmSChL5AlElNdwlNgcnLQ==}
+  postcss@8.5.11:
+    resolution: {integrity: sha512-5dDj8+lmvA8XB78SmzGI8NlQoksv7IfutGWeVZxiixHbO+p4LDPT3wuG/D9sM/wrjZZ9I+Siy/e117vbFPxSZg==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres-array@2.0.0:
@@ -6455,7 +6455,7 @@ snapshots:
       '@alloc/quick-lru': 5.2.0
       '@tailwindcss/node': 4.2.4
       '@tailwindcss/oxide': 4.2.4
-      postcss: 8.5.10
+      postcss: 8.5.11
       tailwindcss: 4.2.4
 
   '@tailwindcss/typography@0.5.19(tailwindcss@4.2.4)':
@@ -8963,7 +8963,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postcss@8.5.10:
+  postcss@8.5.11:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
