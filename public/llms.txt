@@ -1,89 +1,114 @@
-# Serhii Shramko's Portfolio
+# Serhii Shramko — Senior Frontend Engineer
 
-> This is the personal portfolio and blog of Serhii Shramko, a Senior Software Engineer specializing in frontend development. This site showcases his professional experience, blog posts, and code snippets.
+> Personal portfolio and blog of Serhii Shramko, a Senior Software Engineer specializing in frontend development with React, TypeScript, and Next.js. Built with Next.js, TypeScript, and Tailwind CSS. Open source.
 
-This website is built using Next.js, TypeScript, and Tailwind CSS. It's an open-source project, and the source code is available on GitHub. The content is written in Markdown.
+## Pages
 
-## Key Information
-
-- [About](https://shramko.dev/about): Detailed information about Serhii Shramko's professional experience, skills, and background.
-- [Blog](https://shramko.dev/blog): Articles on web development, including topics like React, Next.js, TypeScript, and performance optimization.
-- [Snippets](https://shramko.dev/snippets): A collection of useful code snippets for various programming tasks.
-- [Dashboard](https://shramko.dev/dashboard): A personal dashboard displaying real-time data from GitHub and other sources.
-- [Gear](https://shramko.dev/gear): A curated list of hardware and software that Serhii uses for development and daily tasks.
-- [Product Hunt](https://www.producthunt.com/@shramko_dev): A personal Product Hunt page with projects.
+- [About](https://shramko.dev/about): Professional experience, skills, and background
+- [Blog](https://shramko.dev/blog): Articles on React, TypeScript, Next.js, and web development
+- [Snippets](https://shramko.dev/snippets): Production-ready code snippets for common tasks
+- [Dashboard](https://shramko.dev/dashboard): Real-time GitHub and development stats
+- [Gear](https://shramko.dev/gear): Development hardware and software setup
+- [Bookmarks](https://shramko.dev/bookmarks): Curated developer bookmarks
+- [Learning](https://shramko.dev/learning): Learning resources and progress
 
 ## Projects
 
-- [Quizlet Quicklist](https://shramko.dev/quizlet-list): A tool to enhance Quizlet by allowing users to create and manage study lists quickly.
-- [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): A utility to reset progress on Udemy courses.
-
-## Social & Professional Links
-
-- [GitHub](https://github.com/shramkoweb): Find the source code for this portfolio and other projects.
-- [LinkedIn](https://www.linkedin.com/in/shramko-dev/): Professional profile and recommendations.
+- [Quizlet QuickList](https://shramko.dev/quizlet-list): Chrome extension for creating and managing Quizlet study lists
+- [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): Chrome extension to reset progress on Udemy courses
 
 ## Blog Posts
 
-- [Apollo GraphQL Certification](https://shramko.dev/blog/apollo-graphql-certification)
-- [What is Astro Framework](https://shramko.dev/blog/astro)
-- [Astro Image on Vercel](https://shramko.dev/blog/astro-image-on-vercel)
-- [Class Naming Conventions](https://shramko.dev/blog/class-naming-conventions)
-- [Conventional Commits](https://shramko.dev/blog/conventional-commits)
-- [Cross Browser Testing](https://shramko.dev/blog/cross-browser-testing)
-- [Difference Between Absolute and Relative URL](https://shramko.dev/blog/difference-between-absolute-and-relative-url)
-- [Dirname Error](https://shramko.dev/blog/dirname-error)
-- [Discriminated Unions in TypeScript](https://shramko.dev/blog/discriminated-unions)
-- [Dispatch table in javascript](https://shramko.dev/blog/dispatch-tables)
-- [Eslint with TypeScript](https://shramko.dev/blog/eslint-with-typescript)
-- [Expressions vs Statements](https://shramko.dev/blog/expressions-statements)
-- [For-in vs For-of](https://shramko.dev/blog/for-in-vs-for-of)
-- [Generic Type Parameters in TypeScript](https://shramko.dev/blog/generic-type-parameters)
-- [Gitignore is Not Enough](https://shramko.dev/blog/gitignore-is-not-enough)
-- [How to Create SSH Keys](https://shramko.dev/blog/how-to-create-ssh-keys)
-- [Introducing the new shramko.dev](https://shramko.dev/blog/introducing-the-new-shramko.dev)
-- [JavaScript Naming Conventions](https://shramko.dev/blog/javascript-naming-conventions)
-- [JS Arrays](https://shramko.dev/blog/js-arrays)
-- [Linktree](https://shramko.dev/blog/linktree)
-- [Npm Semantic Versioning](https://shramko.dev/blog/npm-semantic-versioning)
-- [What is Nvm](https://shramko.dev/blog/nvm)
-- [Phpstorm Allow Network](https://shramko.dev/blog/phpstorm-allow-network)
-- [PNPM](https://shramko.dev/blog/pnpm)
-- [Postgres Connect URL](https://shramko.dev/blog/postgres-connect-url)
-- [React Flexbox Grid](https://shramko.dev/blog/react-flexbox-grid)
-- [React Hooks Pitfalls](https://shramko.dev/blog/react-hooks-pitfalls)
-- [React Rerender](https://shramko.dev/blog/react-rerender)
-- [Unsubscribe Immediately](https://shramko.dev/blog/unsubscribe-immediately)
-- [My "every programmer should know" list - 2025](https://shramko.dev/blog/useful-articles)
+- [Absolute vs Relative URL: Which One Should You Use](https://shramko.dev/blog/difference-between-absolute-and-relative-url): Understand when to use absolute vs relative URLs in HTML. Clear examples showing how each type works, their pros and cons.
+- [Astro Framework Guide: Build Faster Sites in 2026](https://shramko.dev/blog/astro): Master the Astro framework with this hands-on guide. Islands Architecture, Content Collections, View Transitions, and client directives with code examples.
+- [Build a Link Tree with Astro.js and Vercel (2026 Guide)](https://shramko.dev/blog/linktree): Build a custom link tree with Astro.js and deploy it on Vercel. Step-by-step tutorial with TypeScript, analytics setup, and performance optimization tips.
+- [Conventional Commits enhance your coding practices](https://shramko.dev/blog/conventional-commits): Master Conventional Commits to write clear, structured commit messages. Learn the format, types like feat and fix, and how to automate changelog generation.
+- [Cross-Browser Compatibility – Testing Guide](https://shramko.dev/blog/cross-browser-testing): Learn how to test your website across different browsers and devices using BrowserStack. Ensure cross-browser compatibility without maintaining a device lab.
+- [Discriminated Unions in TypeScript: Write Safer Code](https://shramko.dev/blog/discriminated-unions): Discover how discriminated unions in TypeScript help you write cleaner, safer code. Learn what they are, how to use them, and why they're great!
+- [Dispatch Tables in JavaScript: A Clean Code Approach](https://shramko.dev/blog/dispatch-tables): Replace messy switch statements with dispatch tables in JavaScript. Learn this clean code pattern for handling multiple conditions with maintainable code.
+- [Early Return Pattern in JavaScript — Guard Clauses Guide](https://shramko.dev/blog/the-early-return-pattern-in-javascript): Learn the early return pattern (guard clauses) in JavaScript and TypeScript. Reduce nesting, improve readability, and write cleaner functions with real-world examples.
+- [ESLint with TypeScript: Setup and Configuration Guide](https://shramko.dev/blog/eslint-with-typescript): Step-by-step guide to configuring ESLint with TypeScript. Set up linting rules, integrate with your IDE, and catch errors before they reach production.
+- [Fix "__dirname Not Defined" in ES Modules – Quick Guide](https://shramko.dev/blog/dirname-error): Fix the "__dirname is not defined in ES module scope" error in Node.js. Recreate __dirname and __filename using import.meta.url.
+- [Fix: Could not find Sharp in Astro.js (Vercel Deploy)](https://shramko.dev/blog/astro-image-on-vercel): Fix the [MissingSharp] Could not find Sharp error when deploying Astro.js to Vercel. Step-by-step Sharp image service setup and configuration guide.
+- [Flexbox Grid in React: A Step-by-Step Guide](https://shramko.dev/blog/react-flexbox-grid): Learn how to build a reusable flexbox-based Grid component in React using BEM methodology and clsx for clean class management.
+- [Highly recommended resources for developers in 2025](https://shramko.dev/blog/useful-articles): Curated list of the best resources, blogs, and websites every developer should know in 2025. Essential reading for staying up-to-date.
+- [How I Got Apollo GraphQL Certification for Free](https://shramko.dev/blog/apollo-graphql-certification): My journey to getting Apollo GraphQL certification for free. Learn about the exam structure, preparation tips, and how to earn your credential.
+- [How to Use Shiki Class-Based Themes with next-mdx-remote in Next.js](https://shramko.dev/blog/shiki-class-based-themes-nextjs-mdx): Replace Shiki's bloated inline dual-theme styles with class-based CSS extraction using transformerStyleToClass and next-mdx-remote in Next.js.
+- [I Fixed the Wrong Thing and Found the Real Bug](https://shramko.dev/blog/build-time-lies): I spotted a build regression, shipped what I thought was the fix, and the numbers didn't move. Turns out the metrics were lying too — Next.js reports batch timing, not page timing.
+- [I Ran an AI SEO Audit on 56 Blog Posts in One Day](https://shramko.dev/blog/ai-seo-audit): I used Cursor AI to audit SEO across 56 blog posts in one afternoon. Meta descriptions, broken links, and alt text — all fixed systematically.
+- [Advanced HTML Class Naming Strategies for CSS Efficiency](https://shramko.dev/blog/class-naming-conventions): Discover the art of crafting clean HTML class names with BEM methodology. Learn to create maintainable, scalable, and SEO-friendly CSS code.
+- [Adding SSH Keys to Your GitHub Account](https://shramko.dev/blog/how-to-create-ssh-keys): Learn how to add SSH keys to your GitHub account. Boost security and ease your workflow by connecting your local machine to GitHub repositories.
+- [Enabling Network Connections on Startup in PHPStorm](https://shramko.dev/blog/phpstorm-allow-network): Fix the "allow network connections" popup appearing every time PHPStorm starts on macOS. Quick codesign solution to stop repeated permission requests.
+- [JavaScript Arrays: Essential Methods for Beginners](https://shramko.dev/blog/js-arrays): Master JavaScript array methods with this beginner-friendly guide. Learn map, filter, reduce, find, and other essential methods with practical examples.
+- [JavaScript Expressions vs Statements: What's the Difference?](https://shramko.dev/blog/expressions-statements): Learn the difference between expressions and statements in JavaScript. Understanding this distinction helps you write better code and avoid syntax errors.
+- [JavaScript Loops: for...in vs for...of](https://shramko.dev/blog/for-in-vs-for-of): Understand the key differences between for...in and for...of loops in JavaScript. Learn when to use each for iterating over arrays, objects, and iterables.
+- [JavaScript Naming Conventions: A Complete Guide for Clean Code](https://shramko.dev/blog/javascript-naming-conventions): Master JavaScript naming conventions with this guide. Learn best practices for naming variables, functions, and classes to write cleaner code.
+- [Mastering npm and Semantic Versioning for Smarter Development](https://shramko.dev/blog/npm-semantic-versioning): A friendly, practical guide to SemVer in npm. Learn versioning rules, avoid dependency chaos, and manage updates with confidence.
+- [Migrate from npm to pnpm – Save Time with This Guide](https://shramko.dev/blog/pnpm): Migrate from npm to pnpm and cut your deployment time by 44%. Step-by-step guide covering installation, lockfile conversion, and CI/CD configuration.
+- [Node Version Manager (NVM): Install and Switch Versions](https://shramko.dev/blog/nvm): Learn how to install and use Node Version Manager (NVM) to switch between Node.js versions effortlessly. Manage multiple Node versions for different projects.
+- [Opt-Out of Email Newsletters Now for a Clutter-Free Inbox](https://shramko.dev/blog/unsubscribe-immediately): Stop letting unwanted emails pile up. Learn why unsubscribing from newsletters immediately saves time, reduces distractions, and keeps your inbox focused.
+- [Presenting the Revamped shramko.dev: Explore the Exciting Updates!](https://shramko.dev/blog/introducing-the-new-shramko.dev): A deep dive into building my developer portfolio with Next.js 16, React 19, and Tailwind CSS 4. Learn about the tech stack, design decisions, and features behind 900+ commits.
+- [React Elements, Children as Props, and Re-Renders](https://shramko.dev/blog/react-elements-children): Learn how React elements work and how passing children as props can optimize performance by preventing unnecessary re-renders.
+- [React Re-Renders: What Triggers Them and Why](https://shramko.dev/blog/react-rerender): Dive into the mechanics of React re-renders — learn what causes them, how they impact performance, and how to manage them effectively.
+- [Understanding the Hidden Pitfalls of Custom Hooks in React](https://shramko.dev/blog/react-hooks-pitfalls): Learn about performance risks in React custom hooks, how they cause unexpected re-renders, and strategies to manage state efficiently.
+- [Use Postgres Connect URLs for DB Connections](https://shramko.dev/blog/postgres-connect-url): Learn how to connect to PostgreSQL using a connection URL string. Simple guide for Node.js, DataGrip, or any client supporting URL-based database connections.
+- [What is a generic type parameter T in TypeScript?](https://shramko.dev/blog/generic-type-parameters): Learn TypeScript generic type parameter naming conventions. Understand when to use T, K, V and when descriptive names like TKey make your code more readable.
+- [When .gitignore Isn't the Right Tool](https://shramko.dev/blog/gitignore-is-not-enough): Learn about Git's hidden alternatives to .gitignore for managing file exclusions locally without affecting your team's workflow.
 
 ## Code Snippets
 
-- [Check if Character is a Letter in JavaScript](https://shramko.dev/snippets/check-if-character-is-a-letter-in-javascript)
-- [Common CSS Classes](https://shramko.dev/snippets/common-css-classes)
-- [Compare Dates](https://shramko.dev/snippets/compare-dates)
-- [Countries SQL](https://shramko.dev/snippets/countries-sql)
-- [CSS Selection](https://shramko.dev/snippets/css-selection)
-- [Debounce](https://shramko.dev/snippets/debounce)
-- [Deep Clone](https://shramko.dev/snippets/deep-clone)
-- [Detect Caps Lock](https://shramko.dev/snippets/detect-caps-lock)
-- [Distributive Omit](https://shramko.dev/snippets/distributive-omit)
-- [Environment](https://shramko.dev/snippets/environment)
-- [Generate Range](https://shramko.dev/snippets/generate-range)
-- [How to Capitalize First Letter of String in JavaScript](https://shramko.dev/snippets/how-to-capitalize-first-letter-of-string-in-javascript)
-- [How to Check if File Exists (Node)](https://shramko.dev/snippets/how-to-check-if-file-exists-node)
-- [How to Get the Current URL with JavaScript](https://shramko.dev/snippets/how-to-get-the-current-url-with-javascript)
-- [How to Remove Query](https://shramko.dev/snippets/how-to-remove-query)
-- [Is Absolute URL](https://shramko.dev/snippets/is-absolute-url)
-- [Is Element in Viewport](https://shramko.dev/snippets/is-element-in-viewport)
-- [Is Email Valid Regex](https://shramko.dev/snippets/is-email-valid-regex)
-- [Lazy Loading Images with Intersection Observer](https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer)
-- [Move Cursor](https://shramko.dev/snippets/move-cursor)
-- [Postgres Install MacOS](https://shramko.dev/snippets/postgres-install-macos)
-- [Random](https://shramko.dev/snippets/random)
-- [Remove Duplicates Array](https://shramko.dev/snippets/remove-duplicates-array)
-- [Sleep](https://shramko.dev/snippets/sleep)
-- [Sort an Array of Objects in JavaScript](https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript)
-- [Use Has Mounted](https://shramko.dev/snippets/use-has-mounted)
-- [Use Toggle React Hook](https://shramko.dev/snippets/use-toggle-react-hook)
-- [Visually Hidden](https://shramko.dev/snippets/visually-hidden)
-- [Window Crypto](https://shramko.dev/snippets/window-crypto)
+- [Branded Types in TypeScript: Never Mix Up IDs Again](https://shramko.dev/snippets/branded-types): Use TypeScript branded types (nominal types) to prevent mixing up strings and numbers that represent different things. Stop userId/orderId bugs at compile time.
+- [Check if URL is Absolute - JavaScript Function](https://shramko.dev/snippets/is-absolute-url): A JavaScript function that uses regex to determine if a given URL string is absolute by checking for http or https protocol prefix.
+- [Copy to Clipboard in JavaScript: Modern Async Clipboard API](https://shramko.dev/snippets/copy-to-clipboard): Copy text to clipboard using the modern Async Clipboard API in TypeScript. Includes a ready-to-use React copy button component with success feedback.
+- [CSS Custom Text Selection: A Guide to Improving UX](https://shramko.dev/snippets/css-selection): Customize text selection highlighting with CSS ::selection pseudo-element. Change background color, text color, and styles when users select content.
+- [CSS Scroll-Driven Animations: Replace JavaScript with Pure CSS](https://shramko.dev/snippets/scroll-driven-animations): Pure CSS scroll-linked animations with scroll() and view() timelines. Build progress bars, fade-ins, and parallax effects without a single line of JavaScript.
+- [Debounce snippet function in modern TypeScript](https://shramko.dev/snippets/debounce): Copy-paste debounce function in TypeScript. Delay function execution until user stops typing or triggering events. Includes React usage example.
+- [DistributiveOmit Type for Union Types](https://shramko.dev/snippets/distributive-omit): Custom TypeScript utility type that properly distributes Omit across union type members. Fixes the standard Omit behavior with discriminated unions.
+- [Effective Ways to Remove Duplicates from Arrays in JavaScript](https://shramko.dev/snippets/remove-duplicates-array): Three simple ways to remove duplicate values from JavaScript arrays. Learn to use Set, filter with indexOf, and reduce methods with clear code examples.
+- [Efficient Methods to Validate Alphabetic Characters in JavaScript](https://shramko.dev/snippets/check-if-character-is-a-letter-in-javascript): Check if a character is a letter in JavaScript using regex patterns and ASCII codes. Reliable methods for character validation including Unicode support.
+- [Email Validation in TypeScript – Regex Function](https://shramko.dev/snippets/is-email-valid-regex): TypeScript function for validating email addresses using regex. Copy-paste snippet with type safety for form validation in your web applications.
+- [Essential CSS Class Names Every Developer Should Know](https://shramko.dev/snippets/common-css-classes): Essential CSS class names every developer should know. Common naming patterns following BEM methodology for structured, maintainable, and organized styles.
+- [Generating UUIDs in JavaScript: Best Practices](https://shramko.dev/snippets/window-crypto): Generate UUIDs in JavaScript using window.crypto.randomUUID(). Copy-paste snippet for creating universally unique identifiers in browser environments.
+- [Group Array by Key in JavaScript and TypeScript](https://shramko.dev/snippets/group-by): Group an array of objects by a property value in TypeScript. Covers Object.groupBy, Map.groupBy, and a manual fallback for older environments.
+- [How to Capitalize the First Letter of a String in JavaScript](https://shramko.dev/snippets/how-to-capitalize-first-letter-of-string-in-javascript): Capitalize the first letter of a string in JavaScript. Copy-paste function with examples for toUpperCase, charAt, and slice string manipulation.
+- [How to Check in Which Environment Your Code is Running](https://shramko.dev/snippets/environment): Find out how to check if your JavaScript or TypeScript code is running in a browser or Node.js environment using simple code snippets.
+- [How to check if a file exists in Node.js](https://shramko.dev/snippets/how-to-check-if-file-exists-node): Learn how to check if a file exists in Node.js using the fs module. Covers synchronous and asynchronous methods with practical examples.
+- [How to Compare Dates in JavaScript: Check Date Ranges Easily](https://shramko.dev/snippets/compare-dates): JavaScript function to check if a date falls between two other dates. Uses getTime() for accurate comparison. Perfect for date validation and booking systems.
+- [How to Get the Current URL with JavaScript](https://shramko.dev/snippets/how-to-get-the-current-url-with-javascript): Learn different methods to retrieve the current URL using JavaScript for analytics tracking, dynamic content updates, and more.
+- [How to Install PostgreSQL on macOS](https://shramko.dev/snippets/postgres-install-macos): Step-by-step guide to install PostgreSQL on macOS using Homebrew. Learn how to set up the database server, create users, and connect to your local instance.
+- [How to Move Cursor to the End of Input Field with JavaScript](https://shramko.dev/snippets/move-cursor): JavaScript snippet to programmatically move the text cursor to the end or beginning of an input field. Useful for form validation and auto-focus features.
+- [How to Use the Range Function in JavaScript: A Simple Guide](https://shramko.dev/snippets/generate-range): Create an array of sequential numbers with a JavaScript range function. Similar to Python's range(), generates number sequences with optional step values.
+- [Intl.NumberFormat: Format Currency & Units in JavaScript](https://shramko.dev/snippets/intl-numberformat): Format currency, percentages, units, and compact numbers in JavaScript with Intl.NumberFormat — one native API, zero dependencies, full locale support.
+- [JavaScript Caps Lock Detection | getModifierState](https://shramko.dev/snippets/detect-caps-lock): Detect Caps Lock state in JavaScript using getModifierState(). Copy-paste snippet for password fields and form validation with cross-browser support.
+- [JavaScript Deep Clone: How to Safely Copy Objects](https://shramko.dev/snippets/deep-clone): Create deep clones of JavaScript objects including nested structures. Copy-paste function using structuredClone for reliable object duplication.
+- [JavaScript Random Number Generation: Best Practices](https://shramko.dev/snippets/random): JavaScript function to generate random numbers within a range. Works with integers and floats. Copy-paste snippet using Math.random() for any project.
+- [JavaScript Techniques for Checking Element Visibility in the Viewport](https://shramko.dev/snippets/is-element-in-viewport): Check if an element is visible in the viewport using JavaScript. Covers Intersection Observer API and manual methods for lazy loading and animations.
+- [Lazy Load Images in TypeScript Using Observer](https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer): Complete guide to implementing lazy loading for images using Intersection Observer API with TypeScript, including code examples and best practices.
+- [Making Elements Visually Hidden for Screen Readers and Accessibility](https://shramko.dev/snippets/visually-hidden): CSS snippet to hide content visually while keeping it accessible to screen readers. Essential technique for web accessibility and WCAG compliance.
+- [React Hook Tutorial: How to Use the useHasMounted Hook](https://shramko.dev/snippets/use-has-mounted): Avert strange SSR problems with this useful React hook. Identify whether your rendering occurs on the client or server!
+- [Removing Query Strings from URLs in JavaScript](https://shramko.dev/snippets/how-to-remove-query): Snippet to remove a query string from a URL using JavaScript. Learn how to remove query parameters from a URL string.
+- [Set Methods in JavaScript: union, intersection, difference & More](https://shramko.dev/snippets/set-methods): Use native Set methods — union, intersection, difference, symmetricDifference, isSubsetOf, isSupersetOf, and isDisjointFrom — in JavaScript. No polyfill needed.
+- [Sleep in JavaScript: How to Pause Execution](https://shramko.dev/snippets/sleep): Learn how to pause JavaScript execution with a sleep function. Create delays using Promises and async/await for timing control in your code.
+- [Sort an Array of Objects by Multiple Properties in JavaScript](https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript): Learn how to sort an array of objects by multiple properties in JavaScript using the Array.prototype.sort() method with a custom compare function.
+- [SQL Countries Table Example: How to Create and Query Efficiently](https://shramko.dev/snippets/countries-sql): Ready-to-use SQL insert statements for a countries table with names, ISO codes, and phone codes. Perfect for seeding your database with real country data.
+- [Throttle Function in TypeScript with React Example](https://shramko.dev/snippets/throttle): Copy-paste throttle function in TypeScript. Limit how often a function fires during scroll, resize, or mousemove events. Includes React usage example.
+- [Type-Safe localStorage Wrapper in TypeScript](https://shramko.dev/snippets/local-storage): A type-safe localStorage wrapper with JSON parsing, error handling, and expiry support. Drop-in replacement for raw localStorage calls in TypeScript projects.
+- [TypeScript satisfies Operator: Keep Your Types Precise](https://shramko.dev/snippets/satisfies-operator): Learn when to use TypeScript's satisfies operator instead of type annotations. Validate object shapes while preserving literal types and autocomplete.
+- [TypeScript Type Predicates: Smart Type Guards for Safer Code](https://shramko.dev/snippets/type-predicates): Learn how to use TypeScript type predicates to create powerful type guards that help the compiler understand your code better.
+- [Unlocking the Power of Template Literal Types in TypeScript](https://shramko.dev/snippets/template-literal-types): Create complex string types with TypeScript template literals. Useful for CSS-in-JS libraries, event systems, and strongly typed string patterns.
+- [useClickOutside React Hook: Detect Clicks Outside an Element](https://shramko.dev/snippets/use-click-outside): React hook to detect clicks outside a component. Close dropdowns, modals, and popovers when users click outside. TypeScript, zero dependencies.
+- [useLocalStorage React Hook: Persist State Across Sessions](https://shramko.dev/snippets/use-local-storage): React hook for localStorage with TypeScript, cross-tab sync, and SSR support. Drop-in replacement for react-use or usehooks-ts. Uses useSyncExternalStore.
+- [useMediaQuery React Hook: Responsive Design in JavaScript](https://shramko.dev/snippets/use-media-query): React hook for responsive breakpoints in JavaScript. Detect screen size changes, dark mode preference, and other CSS media queries in React components.
+- [useToggle React Hook](https://shramko.dev/snippets/use-toggle-react-hook): Simple useToggle React hook for managing boolean state. Toggle between true and false with a clean API. Perfect for modals, dropdowns, and dark mode switches.
+
+## Social & Professional
+
+- [GitHub](https://github.com/shramkoweb): Source code and open-source projects
+- [LinkedIn](https://www.linkedin.com/in/shramko-dev/): Professional profile and recommendations
+- [Product Hunt](https://www.producthunt.com/@shramko_dev): Product launches
+
+## Optional
+
+- [RSS Feed](https://shramko.dev/feed.xml): Blog post feed for readers and aggregators
+- [Sitemap](https://shramko.dev/sitemap.xml): Complete URL listing for crawlers
+- [Resume PDF](https://shramko.dev/static/serhii_shramko_frontend.pdf): Downloadable resume
