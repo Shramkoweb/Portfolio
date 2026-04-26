@@ -44,3 +44,6 @@ yarn-error.log*
 
 # Prisma generated client
 /generated
+
+# AI Generated
+/docs/superpowers/
