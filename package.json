@@ -37,7 +37,7 @@
     "swr": "2.4.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.5.0",
+    "@commitlint/cli": "20.5.2",
     "@commitlint/config-conventional": "20.5.0",
     "@commitlint/types": "20.5.0",
     "@shikijs/rehype": "^4.0.2",
