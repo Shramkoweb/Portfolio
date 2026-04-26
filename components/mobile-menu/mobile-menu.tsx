@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { CrossIcon, MenuIcon } from '@/components/mobile-menu/icons';
 import { Routes } from '@/lib/routes';
 
-import styles from 'styles/mobile-menu.module.css';
+import styles from '../../styles/mobile-menu.module.css';
 
 function disablePageScroll() {
   document.body.style.overflow = 'hidden';

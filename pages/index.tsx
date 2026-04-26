@@ -4,8 +4,6 @@ import { GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import smile from 'public/static/images/smile.webp';
-import tongue from 'public/static/images/tongue.webp';
 import { useState } from 'react';
 import useSWR from 'swr';
 
@@ -23,6 +21,9 @@ import { generateWebSiteSchema } from '@/lib/schema';
 import { Post } from '@/lib/types';
 import { generateGradient } from '@/lib/utils';
 import type { AllViewsResponse } from '@/pages/api/views';
+
+import smile from '../public/static/images/smile.webp';
+import tongue from '../public/static/images/tongue.webp';
 
 interface IndexPageProps {
   featuredPosts: Post[];

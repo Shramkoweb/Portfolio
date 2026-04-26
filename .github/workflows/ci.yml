@@ -25,7 +25,9 @@ jobs:
           CI: true
       - uses: actions/cache/save@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            generated
           key: nm-${{ hashFiles('pnpm-lock.yaml') }}
 
   lint:
@@ -39,7 +41,9 @@ jobs:
           node-version-file: '.nvmrc'
       - uses: actions/cache/restore@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            generated
           key: nm-${{ hashFiles('pnpm-lock.yaml') }}
       - run: pnpm lint
 
@@ -54,7 +58,9 @@ jobs:
           node-version-file: '.nvmrc'
       - uses: actions/cache/restore@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            generated
           key: nm-${{ hashFiles('pnpm-lock.yaml') }}
       - run: pnpm typecheck
 
@@ -69,7 +75,9 @@ jobs:
           node-version-file: '.nvmrc'
       - uses: actions/cache/restore@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            generated
           key: nm-${{ hashFiles('pnpm-lock.yaml') }}
       - run: pnpm test:ci --coverage
 
@@ -85,7 +93,9 @@ jobs:
           node-version-file: '.nvmrc'
       - uses: actions/cache/restore@v4
         with:
-          path: node_modules
+          path: |
+            node_modules
+            generated
           key: nm-${{ hashFiles('pnpm-lock.yaml') }}
       - run: pnpm build
         env:

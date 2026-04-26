@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import gear from 'public/static/images/gear.jpeg';
+
+import gear from '../public/static/images/gear.jpeg';
 
 function GearPage() {
   return (
