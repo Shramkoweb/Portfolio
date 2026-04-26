@@ -9,6 +9,14 @@ const config = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
+  coverageThreshold: {
+    global: {
+      statements: 85,
+      branches: 75,
+      functions: 80,
+      lines: 85,
+    },
+  },
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
