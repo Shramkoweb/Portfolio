@@ -101,7 +101,7 @@ html {
 }
 
 .prose code:not(pre code) {
-  @apply text-gray-800 dark:text-gray-200 px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 font-medium text-nowrap text-[0.9em];
+  @apply px-2  inline-block text-gray-800 dark:text-gray-200 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 font-medium text-nowrap text-[0.9em];
 }
 
 .prose pre code {
