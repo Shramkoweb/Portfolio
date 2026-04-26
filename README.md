@@ -1,35 +1,100 @@
-[![Lint](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml/badge.svg)](https://github.com/Shramkoweb/Portfolio/actions/workflows/lint.yml)
-![](https://api.checklyhq.com/v1/badges/checks/3a199b7e-6745-4ddd-b277-3d6df2f8146a?style=flat&theme=default&responseTime=true)
-![](https://api.checklyhq.com/v1/badges/checks/3a199b7e-6745-4ddd-b277-3d6df2f8146a?style=flat&theme=default)
-[![Maintainability](https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/maintainability)](https://codeclimate.com/github/Shramkoweb/Portfolio/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/test_coverage)](https://codeclimate.com/github/Shramkoweb/Portfolio/test_coverage)
-[![Star History Chart](https://api.star-history.com/svg?repos=Shramkoweb/Portfolio&type=Date)](https://star-history.com/#Shramkoweb/Portfolio&Date)
+<h1 align="center">shramko.dev</h1>
+<p align="center">Portfolio · blog · digital garden</p>
+<p align="center"><a href="https://shramko.dev"><strong>Live demo →</strong></a></p>
 
-# My portfolio and blog
+<p align="center">
+  <a href="https://github.com/Shramkoweb/Portfolio/actions/workflows/ci.yml"><img src="https://github.com/Shramkoweb/Portfolio/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/Shramkoweb/Portfolio/actions/workflows/lighthouse.yml"><img src="https://github.com/Shramkoweb/Portfolio/actions/workflows/lighthouse.yml/badge.svg" alt="Lighthouse"></a>
+  <a href="https://codeclimate.com/github/Shramkoweb/Portfolio/maintainability"><img src="https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/maintainability" alt="Maintainability"></a>
+  <a href="https://codeclimate.com/github/Shramkoweb/Portfolio/test_coverage"><img src="https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/test_coverage" alt="Test Coverage"></a>
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
+</p>
 
-This repo contains the source code for [shramko.dev](https://shramko.dev). - in progress
+<p align="center"><a href="README.ua.md">Українською</a></p>
 
-_Readme is also available in [Ukrainian](README.ua.md)._ (in progress)
+## Contents
 
-## Description
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Monitors](#monitors)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [Next.js](https://nextjs.org/) - because it is evolving quickly, suits both developers and product needs and has an amazing support
-- [markdown](https://www.markdownguide.org/) - because it is easy to use and widespread
-- [markdown-to-jsx](https://probablyup.com/markdown-to-jsx/) - adds more flexibility to md allowing us to integrate complex custom React components in it
-- [GitHub Actions](https://github.com/features/actions) - simple CI variant
-- [Checkly](https://www.checklyhq.com/) - API & E2E monitoring platform for the modern stack making CI easier than ever before
-- [Snyk](https://snyk.io/) - Find and automatically fix vulnerabilities in your code, open source dependencies, containers, and infrastructure as code
-- [SWR](https://swr.vercel.app/) - implementation strategy stale-while-revalidate
-- [Prisma](https://www.prisma.io/) - simple and intuitive TypeScript ORM and Database Client
-- [Uptimerobot](https://uptimerobot.com/) - uptime monitoring service. Use it for Connection checks
-- [Open Graph Protocol](https://ogp.me/) - implemented for better social media sharing and SEO optimization. Each page includes
+## Tech Stack
+
+| Layer         | Tools                                                          |
+| ------------- | -------------------------------------------------------------- |
+| Framework     | Next.js 16, React 19                                           |
+| Language      | TypeScript                                                     |
+| Styling       | Tailwind CSS v4                                                |
+| Content       | MDX, `next-mdx-remote`, Shiki                                  |
+| Data          | Prisma 7, Postgres                                             |
+| State / Fetch | SWR                                                            |
+| Monitoring    | Sentry, Checkly, UptimeRobot, Vercel Analytics, Speed Insights |
+| Testing       | Jest, Testing Library                                          |
+| Tooling       | oxlint, oxfmt, commitlint, pnpm                                |
+| Hosting       | Vercel                                                         |
+
+## Getting Started
+
+### Prerequisites
+
+- Node 24.x
+- pnpm 10.x
+- Postgres database (local or hosted, e.g. [Neon](https://neon.tech))
+
+### Setup
+
+```bash
+git clone https://github.com/Shramkoweb/Portfolio.git
+cd Portfolio
+pnpm install
+cp .env.example .env
+# fill in DATABASE_URL, SENTRY_*, GITHUB_TOKEN
+pnpm dev
+```
+
+App runs at http://localhost:3000.
+
+## Scripts
+
+| Command                             | Purpose                    |
+| ----------------------------------- | -------------------------- |
+| `pnpm dev`                          | start dev server           |
+| `pnpm build`                        | production build + sitemap |
+| `pnpm start`                        | start production server    |
+| `pnpm lint` / `pnpm lint:fix`       | oxlint                     |
+| `pnpm format` / `pnpm format:check` | oxfmt                      |
+| `pnpm test` / `pnpm test:coverage`  | Jest                       |
+| `pnpm article`                      | scaffold a new blog post   |
+
+## Testing
+
+Tests use Jest with Testing Library. Run `pnpm test` for the full suite or `pnpm test:coverage` for a coverage report. Tests live in `__tests__/`. CI uploads coverage to Code Climate.
+
+## Deployment
+
+Deploys automatically to [Vercel](https://vercel.com) on push to `main`. The `postbuild` script regenerates the sitemap via `next-sitemap`. Pull requests run a Lighthouse budget check defined in `.github/workflows/lighthouse.yml`.
 
 ## Monitors
 
-- [Status page](https://stats.uptimerobot.com/8lYYzuXNM9/792406216) - lifetime checker for my portfolio uptime ![Uptime Robot status Page](docs/uptime-robot.png)
+- [UptimeRobot status page](https://stats.uptimerobot.com/8lYYzuXNM9/792406216) — public uptime monitor for the live site.
 
-- [Dashboard](<[https://portfolio-shramko.checklyhq.com/](https://portfolio-shramko.checkly-dashboards.com/?duration=30d)>) this is where I run E2E tests and check build statuses ![Checkly monitor](docs/checkly.png)
+  ![UptimeRobot status page](docs/uptime-robot.png)
+
+- [Checkly dashboard](https://portfolio-shramko.checkly-dashboards.com/?duration=30d) — E2E tests and build status.
+
+  ![Checkly monitor](docs/checkly.png)
+
+## Contributing
+
+- Commits follow [Conventional Commits](https://www.conventionalcommits.org) (Angular convention). Enforced by `commitlint.config.ts`.
+- A pre-commit hook auto-formats staged JS/TS via `oxfmt` (installed by `pnpm install` through the `prepare` script).
+- Run `pnpm pre-push` before pushing — it runs lint and format checks.
 
 ## License
 
-This app is an open-source project released under the [MIT License](https://github.com/Shramkoweb/Portfolio/blob/develop/LICENSE).
+MIT — see [LICENSE](LICENSE).
