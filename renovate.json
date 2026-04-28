@@ -3,7 +3,6 @@
   "extends": [
     "config:recommended",
     ":pinVersions",
-    ":automergeMinor",
     ":automergeDigest",
     "schedule:weekly"
   ],
@@ -11,6 +10,16 @@
     {
       "matchUpdateTypes": ["patch"],
       "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": false
     },
     {
       "matchUpdateTypes": ["major"],
