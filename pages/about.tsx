@@ -57,8 +57,7 @@ function AboutPage() {
                 },
                 sameAs: [
                   'https://github.com/shramkoweb',
-                  'https://www.linkedin.com/in/shramko-dev/',
-                  'https://www.instagram.com/serhii.shramko/',
+                  'https://www.linkedin.com/in/shramko-dev',
                 ],
                 knowsAbout: [
                   'Frontend Development',
@@ -137,7 +136,7 @@ function AboutPage() {
             </li>
 
             <li>
-              <a href="https://www.linkedin.com/in/shramko-dev/">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/shramko-dev">LinkedIn</a>
             </li>
 
             <li>

@@ -53,7 +53,7 @@ export function Footer() {
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href="https://www.linkedin.com/in/shramko-dev/">
+                <FooterLink href="https://www.linkedin.com/in/shramko-dev">
                   LinkedIn
                 </FooterLink>
               </li>

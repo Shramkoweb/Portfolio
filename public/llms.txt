@@ -104,7 +104,7 @@
 ## Social & Professional
 
 - [GitHub](https://github.com/shramkoweb): Source code and open-source projects
-- [LinkedIn](https://www.linkedin.com/in/shramko-dev/): Professional profile and recommendations
+- [LinkedIn](https://www.linkedin.com/in/shramko-dev): Professional profile and recommendations
 - [Product Hunt](https://www.producthunt.com/@shramko_dev): Product launches
 
 ## Optional
