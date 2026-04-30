@@ -24,7 +24,7 @@
   "dependencies": {
     "@prisma/adapter-pg": "7.8.0",
     "@prisma/client": "7.8.0",
-    "@sentry/nextjs": "10.50.0",
+    "@sentry/nextjs": "10.51.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/og": "0.11.1",
     "@vercel/speed-insights": "2.0.0",
@@ -38,8 +38,8 @@
     "swr": "2.4.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.5.2",
-    "@commitlint/config-conventional": "20.5.0",
+    "@commitlint/cli": "20.5.3",
+    "@commitlint/config-conventional": "20.5.3",
     "@commitlint/types": "20.5.0",
     "@shikijs/rehype": "4.0.2",
     "@shikijs/transformers": "4.0.2",
@@ -60,7 +60,7 @@
     "next-sitemap": "4.2.3",
     "oxfmt": "0.47.0",
     "oxlint": "1.62.0",
-    "postcss": "8.5.12",
+    "postcss": "8.5.13",
     "prisma": "7.8.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "7.1.0",
