@@ -33,12 +33,18 @@ importers:
       clsx:
         specifier: 2.1.1
         version: 2.1.1
+      gray-matter:
+        specifier: 4.0.3
+        version: 4.0.3
       lucide-react:
         specifier: 0.577.0
         version: 0.577.0(react@19.2.5)
       next:
         specifier: 16.2.4
         version: 16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      next-mdx-remote:
+        specifier: 6.0.0
+        version: 6.0.0(@types/react@19.2.14)(react@19.2.5)
       next-themes:
         specifier: 0.4.6
         version: 0.4.6(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -48,6 +54,9 @@ importers:
       react-dom:
         specifier: 19.2.5
         version: 19.2.5(react@19.2.5)
+      reading-time:
+        specifier: 1.5.0
+        version: 1.5.0
       shiki:
         specifier: 4.0.2
         version: 4.0.2
@@ -100,18 +109,12 @@ importers:
       '@types/react-dom':
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
-      gray-matter:
-        specifier: 4.0.3
-        version: 4.0.3
       jest:
         specifier: 30.3.0
         version: 30.3.0(@types/node@24.12.2)(ts-node@10.9.2(@types/node@24.12.2)(typescript@6.0.3))
       jest-environment-jsdom:
         specifier: 30.3.0
         version: 30.3.0
-      next-mdx-remote:
-        specifier: 6.0.0
-        version: 6.0.0(@types/react@19.2.14)(react@19.2.5)
       next-sitemap:
         specifier: 4.2.3
         version: 4.2.3(next@16.2.4(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
@@ -127,9 +130,6 @@ importers:
       prisma:
         specifier: 7.8.0
         version: 7.8.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)
-      reading-time:
-        specifier: 1.5.0
-        version: 1.5.0
       rehype-autolink-headings:
         specifier: 7.1.0
         version: 7.1.0
