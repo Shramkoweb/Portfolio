@@ -38,14 +38,14 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: |
-            const prs = await github.rest.pulls.list({
+            const { data: prs } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              head: `${context.repo.owner}:${context.payload.deployment.ref}`,
-              state: 'open',
+              commit_sha: context.payload.deployment.sha,
             });
-            if (prs.data.length > 0) {
-              core.setOutput('number', prs.data[0].number);
+            const open = prs.find((pr) => pr.state === 'open');
+            if (open) {
+              core.setOutput('number', open.number);
             }
       - name: Format results
         id: format
