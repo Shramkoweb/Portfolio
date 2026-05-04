@@ -15,12 +15,13 @@
     "lint:fix": "oxlint --fix",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "postinstall": "prisma generate",
-    "pre-push": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run test:ci",
     "prepare": "git config core.hooksPath .git-hooks",
     "start": "next start",
     "test": "jest",
     "test:ci": "jest --ci",
     "test:coverage": "jest --coverage",
+    "verify": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run test:ci",
+    "verify:full": "pnpm run verify && pnpm run build",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
