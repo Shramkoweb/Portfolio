@@ -58,7 +58,7 @@ export default function Document() {
           name="msapplication-config"
         />
       </Head>
-      <body className="bg-white dark:bg-black text-black dark:text-white">
+      <body className="bg-gray-50 dark:bg-gray-900 text-black dark:text-white">
         <Main />
         <NextScript />
       </body>
