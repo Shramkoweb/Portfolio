@@ -163,10 +163,3 @@ export function filterPostsByCategory(
     ),
   );
 }
-
-export async function getPostsByCategory(
-  category: string,
-): Promise<PostMetadata[]> {
-  const posts = await getPostsMetadata();
-  return filterPostsByCategory(posts, category) as PostMetadata[];
-}
