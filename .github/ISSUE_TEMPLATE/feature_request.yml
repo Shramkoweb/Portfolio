@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest an addition or change
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user need or pain point does this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you thought about and why you chose the one above.
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else

@@ -1,3 +1,2 @@
 #!/usr/bin/env sh
-
-pnpm run pre-push
+exec pnpm run verify

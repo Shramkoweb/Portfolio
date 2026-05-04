@@ -12,6 +12,7 @@
     "build/**",
     "coverage/**",
     "prisma/migrations/**",
-    "public/**"
+    "public/**",
+    "next-env.d.ts"
   ]
 }
