@@ -1,0 +1,66 @@
+name: Bug report
+description: Something on shramko.dev is broken or behaves unexpectedly
+labels: ['bug']
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong, in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps that someone else can follow to see the bug.
+      placeholder: |
+        1. Go to https://shramko.dev/...
+        2. Click ...
+        3. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: 'Chrome 130 / Safari 18 / Firefox 130'
+    validations:
+      required: true
+  - type: dropdown
+    id: viewport
+    attributes:
+      label: Viewport
+      options:
+        - Desktop
+        - Tablet
+        - Mobile
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options:
+        - Light
+        - Dark
+        - System
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Console errors, screenshots, related links.
