@@ -6,17 +6,17 @@ Brief for AI coding agents (Claude Code, Codex, Cursor, Copilot, Factory). Human
 
 `shramko.dev` is a personal portfolio + blog + digital garden. Single deployment target: Vercel.
 
-| Layer | Tools |
-|---|---|
-| Framework | Next.js 16 (Pages Router), React 19 |
-| Language | TypeScript (strict) |
-| Styling | Tailwind CSS v4 |
-| Content | MDX via `next-mdx-remote`, Shiki for syntax highlighting |
-| Data | Prisma 7, Postgres (Neon in prod) |
-| Fetch | SWR |
+| Layer      | Tools                                                          |
+| ---------- | -------------------------------------------------------------- |
+| Framework  | Next.js 16 (Pages Router), React 19                            |
+| Language   | TypeScript (strict)                                            |
+| Styling    | Tailwind CSS v4                                                |
+| Content    | MDX via `next-mdx-remote`, Shiki for syntax highlighting       |
+| Data       | Prisma 7, Postgres (Neon in prod)                              |
+| Fetch      | SWR                                                            |
 | Monitoring | Sentry, Vercel Analytics, Speed Insights, Checkly, UptimeRobot |
-| Testing | Jest + Testing Library |
-| Tooling | oxlint, oxfmt, commitlint, pnpm |
+| Testing    | Jest + Testing Library                                         |
+| Tooling    | oxlint, oxfmt, commitlint, pnpm                                |
 
 ## Setup
 
@@ -39,33 +39,33 @@ pnpm dev                # http://localhost:3000
 
 ## Common tasks
 
-| Goal | Command |
-|---|---|
-| Start dev server | `pnpm dev` |
-| Run a single test file | `pnpm exec jest path/to/file.test.ts` |
-| Run a single test by name | `pnpm exec jest -t "test name"` |
-| Production build | `pnpm build` |
-| Format only (write) | `pnpm format` |
-| Lint only (auto-fix) | `pnpm lint:fix` |
-| Type check only | `pnpm typecheck` |
-| Scaffold a blog post | `pnpm article` |
-| Regenerate Prisma client | `pnpm exec prisma generate` |
+| Goal                      | Command                               |
+| ------------------------- | ------------------------------------- |
+| Start dev server          | `pnpm dev`                            |
+| Run a single test file    | `pnpm exec jest path/to/file.test.ts` |
+| Run a single test by name | `pnpm exec jest -t "test name"`       |
+| Production build          | `pnpm build`                          |
+| Format only (write)       | `pnpm format`                         |
+| Lint only (auto-fix)      | `pnpm lint:fix`                       |
+| Type check only           | `pnpm typecheck`                      |
+| Scaffold a blog post      | `pnpm article`                        |
+| Regenerate Prisma client  | `pnpm exec prisma generate`           |
 
 ## Repo layout
 
-| Path | Purpose |
-|---|---|
-| `pages/` | Next.js Pages Router routes + API endpoints (`pages/api/`) |
-| `components/` | Shared React components |
-| `lib/` | Utilities, schema, GitHub/Sentry helpers, scripts |
-| `_posts/` | Blog post MDX sources |
-| `_snippets/` | Code-snippet MDX sources |
-| `prisma/` | Prisma schema + migrations |
-| `public/` | Static assets |
-| `styles/` | Global CSS + Tailwind directives |
-| `__tests__/` | Page-level and API-route tests |
-| `__mocks__/` | Manual Jest mocks |
-| `docs/superpowers/` | Local-only specs and plans (gitignored) |
+| Path                | Purpose                                                    |
+| ------------------- | ---------------------------------------------------------- |
+| `pages/`            | Next.js Pages Router routes + API endpoints (`pages/api/`) |
+| `components/`       | Shared React components                                    |
+| `lib/`              | Utilities, schema, GitHub/Sentry helpers, scripts          |
+| `_posts/`           | Blog post MDX sources                                      |
+| `_snippets/`        | Code-snippet MDX sources                                   |
+| `prisma/`           | Prisma schema + migrations                                 |
+| `public/`           | Static assets                                              |
+| `styles/`           | Global CSS + Tailwind directives                           |
+| `__tests__/`        | Page-level and API-route tests                             |
+| `__mocks__/`        | Manual Jest mocks                                          |
+| `docs/superpowers/` | Local-only specs and plans (gitignored)                    |
 
 ## Conventions
 
