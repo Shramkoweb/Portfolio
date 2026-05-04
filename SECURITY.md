@@ -29,5 +29,5 @@ Two reporting channels, in order of preference:
 ## Existing controls
 
 - GitHub native secret scanning is enabled (public repo, automatic).
-- CodeQL workflow runs on every push and PR (`.github/workflows/codeql.yml`).
+- CodeQL default setup is enabled (repo Security tab) — runs on every push and PR.
 - Dependencies are updated weekly via Renovate; `pnpm audit` runs in CI.
