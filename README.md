@@ -61,15 +61,17 @@ App runs at http://localhost:3000.
 
 ## Scripts
 
-| Command                             | Purpose                    |
-| ----------------------------------- | -------------------------- |
-| `pnpm dev`                          | start dev server           |
-| `pnpm build`                        | production build + sitemap |
-| `pnpm start`                        | start production server    |
-| `pnpm lint` / `pnpm lint:fix`       | oxlint                     |
-| `pnpm format` / `pnpm format:check` | oxfmt                      |
-| `pnpm test` / `pnpm test:coverage`  | Jest                       |
-| `pnpm article`                      | scaffold a new blog post   |
+| Command                             | Purpose                                     |
+| ----------------------------------- | ------------------------------------------- |
+| `pnpm dev`                          | start dev server                            |
+| `pnpm build`                        | production build + sitemap                  |
+| `pnpm start`                        | start production server                     |
+| `pnpm lint` / `pnpm lint:fix`       | oxlint                                      |
+| `pnpm format` / `pnpm format:check` | oxfmt                                       |
+| `pnpm test` / `pnpm test:coverage`  | Jest                                        |
+| `pnpm verify`                       | lint + format:check + typecheck + test (CI) |
+| `pnpm verify:full`                  | `verify` + production build                 |
+| `pnpm article`                      | scaffold a new blog post                    |
 
 ## Testing
 
@@ -93,7 +95,8 @@ Deploys automatically to [Vercel](https://vercel.com) on push to `main`. The `po
 
 - Commits follow [Conventional Commits](https://www.conventionalcommits.org) (Angular convention). Enforced by `commitlint.config.ts`.
 - A pre-commit hook auto-formats staged JS/TS via `oxfmt` (installed by `pnpm install` through the `prepare` script).
-- Run `pnpm pre-push` before pushing — it runs lint and format checks.
+- A pre-push hook (`.git-hooks/pre-push`) runs `pnpm verify` automatically before each push. Run `pnpm verify:full` (adds `next build`) before opening a PR.
+- See [AGENTS.md](AGENTS.md) if you're using an AI coding agent. Full policy in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

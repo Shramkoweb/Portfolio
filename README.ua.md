@@ -61,15 +61,17 @@ pnpm dev
 
 ## Команди
 
-| Команда                             | Опис                            |
-| ----------------------------------- | ------------------------------- |
-| `pnpm dev`                          | запуск dev-сервера              |
-| `pnpm build`                        | продакшн-збірка + sitemap       |
-| `pnpm start`                        | запуск продакшн-сервера         |
-| `pnpm lint` / `pnpm lint:fix`       | oxlint                          |
-| `pnpm format` / `pnpm format:check` | oxfmt                           |
-| `pnpm test` / `pnpm test:coverage`  | Jest                            |
-| `pnpm article`                      | створення шаблону нового допису |
+| Команда                             | Опис                                        |
+| ----------------------------------- | ------------------------------------------- |
+| `pnpm dev`                          | запуск dev-сервера                          |
+| `pnpm build`                        | продакшн-збірка + sitemap                   |
+| `pnpm start`                        | запуск продакшн-сервера                     |
+| `pnpm lint` / `pnpm lint:fix`       | oxlint                                      |
+| `pnpm format` / `pnpm format:check` | oxfmt                                       |
+| `pnpm test` / `pnpm test:coverage`  | Jest                                        |
+| `pnpm verify`                       | lint + format:check + typecheck + test (CI) |
+| `pnpm verify:full`                  | `verify` + продакшн-збірка                  |
+| `pnpm article`                      | створення шаблону нового допису             |
 
 ## Тестування
 
@@ -93,7 +95,8 @@ pnpm dev
 
 - Коміти йдуть у форматі [Conventional Commits](https://www.conventionalcommits.org) (Angular convention). Перевіряється через `commitlint.config.ts`.
 - Pre-commit хук автоматично форматує JS/TS через `oxfmt` (встановлюється `pnpm install` через скрипт `prepare`).
-- Запустіть `pnpm pre-push` перед пушем — він запускає lint і перевірку форматування.
+- Pre-push хук (`.git-hooks/pre-push`) автоматично запускає `pnpm verify` перед кожним пушем. Перед відкриттям PR запустіть `pnpm verify:full` (додає `next build`).
+- Якщо ви використовуєте AI-агента, дивіться [AGENTS.md](AGENTS.md). Повна політика — у [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Ліцензія
 

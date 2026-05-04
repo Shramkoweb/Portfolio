@@ -72,7 +72,7 @@ pnpm dev                # http://localhost:3000
 - **Commits:** [Conventional Commits](https://www.conventionalcommits.org/) Angular convention. Enforced by `commitlint.config.ts`. Lowercase subject, ≤ 50 chars, no period. Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 - **Branches:** `feat/`, `fix/`, `chore/`, `ci/`, `docs/`, `refactor/`, `test/`, `perf/`.
 - **Formatting:** `oxfmt`. Pre-commit hook auto-formats staged JS/TS. Don't fight it.
-- **Before pushing:** the `pnpm pre-push` hook runs `pnpm verify`. Don't bypass with `--no-verify`.
+- **Before pushing:** the git pre-push hook (`.git-hooks/pre-push`) runs `pnpm verify` automatically. Don't bypass with `--no-verify`.
 - **Before opening a PR:** run `pnpm verify:full` (adds `build`). PR template has a checkbox for this.
 
 ## Where things live
