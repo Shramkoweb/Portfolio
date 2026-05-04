@@ -10,6 +10,8 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React from 'react';
 
+import { ArticleDates } from '@/components/article-dates';
+import { ArticleMeta } from '@/components/article-meta';
 import { MDXComponents } from '@/components/mdx-components';
 import {
   FacebookShare,
@@ -61,68 +63,18 @@ function ArticlePage(props: ArticlePageProps) {
     shikiCSS,
   } = props;
 
-  const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
-    dateStyle: 'medium',
-    timeZone: 'UTC',
-  });
-
   return (
     <>
       <Head>
         <title>{title}</title>
         {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
-        <meta content={description} name="description" key="description" />
-        <meta property="og:type" content="article" key="og:type" />
-        <meta property="og:title" content={title} key="og:title" />
-        <meta
-          property="og:site_name"
-          content="Serhii Shramko"
-          key="og:site_name"
+        <ArticleMeta
+          title={title}
+          description={description}
+          createDate={createDate}
+          updateDate={updateDate}
+          keywords={keywords}
         />
-        <meta
-          property="og:description"
-          content={description}
-          key="og:description"
-        />
-        <meta
-          property="og:image"
-          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
-          key="og:image"
-        />
-        <meta name="twitter:title" content={title} key="twitter:title" />
-        <meta
-          name="twitter:description"
-          content={description}
-          key="twitter:description"
-        />
-        <meta
-          name="twitter:image"
-          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
-          key="twitter:image"
-        />
-        <meta
-          property="article:published_time"
-          content={new Date(createDate).toISOString()}
-          key="article:published_time"
-        />
-        {updateDate && (
-          <meta
-            property="article:modified_time"
-            content={new Date(updateDate).toISOString()}
-            key="article:modified_time"
-          />
-        )}
-        <meta
-          property="article:section"
-          content="Technology"
-          key="article:section"
-        />
-        <meta
-          property="article:author"
-          content="https://shramko.dev"
-          key="article:author"
-        />
-        <meta name="keywords" key="keywords" content={keywords.join(', ')} />
         {categories.map((category) => (
           <meta
             key={`article:${category}`}
@@ -193,27 +145,7 @@ function ArticlePage(props: ArticlePageProps) {
           </ul>
           <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row">
             <div className="flex flex-col items-start">
-              <div className="text-xs text-gray-700 dark:text-gray-300">
-                <p>
-                  Published on{' '}
-                  <time dateTime={new Date(createDate).toISOString()}>
-                    {formatedCreateDate}
-                  </time>
-                </p>
-                {updateDate && (
-                  <p>
-                    Last updated on{' '}
-                    <strong className="font-medium">
-                      <time dateTime={new Date(updateDate).toISOString()}>
-                        {new Date(updateDate).toLocaleDateString('en-us', {
-                          dateStyle: 'medium',
-                          timeZone: 'UTC',
-                        })}
-                      </time>
-                    </strong>
-                  </p>
-                )}
-              </div>
+              <ArticleDates createDate={createDate} updateDate={updateDate} />
             </div>
             <p className="mt-2 text-xs text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
               {`${readTime}`}

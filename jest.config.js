@@ -24,7 +24,7 @@ const config = {
     '^lib/prisma$': '<rootDir>/lib/prisma',
     '\\.(css)$': '<rootDir>/__mocks__/styleMock.js',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+  testPathIgnorePatterns: ['/node_modules/', '/.next/', '/__tests__/helpers/'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transform: {

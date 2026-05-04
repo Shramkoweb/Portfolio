@@ -103,6 +103,11 @@ const nextConfig = {
         destination: '/blog/category/astro',
         permanent: true,
       },
+      {
+        source: '/rebookmark',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
   env: {

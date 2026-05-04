@@ -9,16 +9,22 @@ import { extractMarkdownSlug } from '@/lib/utils';
 
 const POSTS_DIRECTORY = join(process.cwd(), '_posts');
 
-async function getPostMetadataBySlug(slug: string): Promise<PostMetadata> {
+async function readPostFile(slug: string) {
   const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
   const fileContents = await readFile(fullPath, 'utf8');
-
   const matterResult = matter(fileContents);
 
   if (!matterResult || !matterResult.data) {
     throw new Error(`Invalid markdown format for slug: ${slug}`);
   }
 
+  return matterResult;
+}
+
+function buildPostMetadata(
+  slug: string,
+  matterResult: matter.GrayMatterFile<string>,
+): PostMetadata {
   const {
     data: {
       heading,
@@ -51,52 +57,21 @@ async function getPostMetadataBySlug(slug: string): Promise<PostMetadata> {
   };
 }
 
+async function getPostMetadataBySlug(slug: string): Promise<PostMetadata> {
+  const matterResult = await readPostFile(slug);
+  return buildPostMetadata(slug, matterResult);
+}
+
 export async function getPostBySlug(slug?: string): Promise<Post> {
   if (!slug) {
     throw new Error('getPostBySlug: slug is required');
   }
 
   try {
-    const fullPath = join(POSTS_DIRECTORY, `${slug}.md`);
-    const fileContents = await readFile(fullPath, 'utf8');
+    const matterResult = await readPostFile(slug);
+    const { data } = buildPostMetadata(slug, matterResult);
 
-    const matterResult = matter(fileContents);
-
-    if (!matterResult || !matterResult.data) {
-      throw new Error(`Invalid markdown format for slug: ${slug}`);
-    }
-
-    const {
-      data: {
-        heading,
-        title,
-        description,
-        categories,
-        featured,
-        keywords,
-        createDate,
-        updateDate,
-      },
-      content,
-    } = matterResult;
-
-    const { text } = readingTime(content);
-
-    return {
-      data: {
-        heading,
-        slug,
-        featured,
-        keywords,
-        title,
-        categories,
-        description,
-        readTime: text,
-        createDate: Date.parse(createDate),
-        updateDate: updateDate ? Date.parse(updateDate) : null,
-      },
-      content,
-    };
+    return { data, content: matterResult.content };
   } catch (err) {
     throw new Error(String(err), { cause: err });
   }
