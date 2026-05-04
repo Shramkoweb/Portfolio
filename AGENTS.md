@@ -24,7 +24,7 @@ Prereqs: Node 24.x (see `.nvmrc`), pnpm 10.x, Postgres database for any DB-touch
 
 ```bash
 pnpm install            # also runs prisma generate via postinstall
-cp .env.example .env    # fill in values; see "Env vars" below
+cp .env.example .env    # each var is documented inline in .env.example
 pnpm dev                # http://localhost:3000
 ```
 
@@ -94,4 +94,4 @@ pnpm dev                # http://localhost:3000
 ## Notes for specific tools
 
 - **Claude Code:** `CLAUDE.md` at the repo root is a symlink to this file. Edit `AGENTS.md`, not `CLAUDE.md`.
-- **Pages Router note:** if you touch `pages/`, remember Sentry SSR-error capture currently lacks a `pages/_error.tsx` with `Sentry.captureUnderscoreErrorException`. There's a separate spec planned for this — don't fix it inline unless that's the task.
+- **Pages Router / Sentry gap:** there is no `pages/_error.tsx` with `Sentry.captureUnderscoreErrorException`, so SSR errors from the Pages Router don't reach Sentry. Don't fix this inline as a side effect of unrelated work — open a focused PR for it.
