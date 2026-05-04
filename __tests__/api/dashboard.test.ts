@@ -81,4 +81,34 @@ describe('API /api/dashboard', () => {
       followers: 0,
     });
   });
+
+  it('treats fulfilled views with null aggregate as 0', async () => {
+    mockAggregate.mockResolvedValue({ _sum: { count: null } });
+    mockFetchGitHubStats.mockResolvedValue({ stars: 1, followers: 2 });
+    const { req, res, json } = createMockReqRes();
+
+    await handler(req, res);
+
+    expect(json).toHaveBeenCalledWith({
+      totalViews: 0,
+      stars: 1,
+      followers: 2,
+    });
+  });
+
+  it('returns 500 when an unexpected error escapes (e.g. setHeader throws)', async () => {
+    mockAggregate.mockResolvedValue({ _sum: { count: 1n } });
+    mockFetchGitHubStats.mockResolvedValue({ stars: 0, followers: 0 });
+    const { req, res, status, json, setHeader } = createMockReqRes();
+    (setHeader as jest.Mock).mockImplementation(() => {
+      throw new Error('headers already sent');
+    });
+
+    await handler(req, res);
+
+    expect(status).toHaveBeenCalledWith(500);
+    expect(json).toHaveBeenCalledWith({
+      error: { message: 'Internal Server Error' },
+    });
+  });
 });

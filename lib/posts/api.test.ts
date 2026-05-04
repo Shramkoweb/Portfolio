@@ -1,9 +1,13 @@
 import { readdir, readFile } from 'node:fs/promises';
 
+import matter from 'gray-matter';
+
 import {
   filterPostsByCategory,
   getPostBySlug,
+  getPosts,
   getPostsCategories,
+  getPostsMetadata,
   getPostSlugs,
 } from '@/lib/posts/api';
 import { Post, PostCategory } from '@/lib/types';
@@ -46,23 +50,24 @@ jest.mock('node:fs/promises', () => ({
   readdir: jest.fn(),
 }));
 
-// Mock gray-matter to return a valid structure
+const DEFAULT_MATTER_RESULT = {
+  data: {
+    heading: 'Test Heading',
+    title: 'Test Title',
+    description: 'Test Description',
+    categories: ['JS'],
+    featured: false,
+    keywords: ['test'],
+    createDate: '2024-01-01',
+    updateDate: '2024-01-01',
+  },
+  content: 'Test content',
+};
+
+// Configurable mock — tests can override return value via matter.mockReturnValue
 jest.mock('gray-matter', () => {
-  return function mockMatter() {
-    return {
-      data: {
-        heading: 'Test Heading',
-        title: 'Test Title',
-        description: 'Test Description',
-        categories: ['JS'],
-        featured: false,
-        keywords: ['test'],
-        createDate: '2024-01-01',
-        updateDate: '2024-01-01',
-      },
-      content: 'Test content',
-    };
-  };
+  const fn = jest.fn(() => DEFAULT_MATTER_RESULT);
+  return { __esModule: true, default: fn };
 });
 
 // Fix reading-time mock
@@ -75,6 +80,7 @@ jest.mock('reading-time', () => {
 describe('Posts API', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    (matter as unknown as jest.Mock).mockReturnValue(DEFAULT_MATTER_RESULT);
   });
 
   describe('getPostBySlug', () => {
@@ -151,6 +157,128 @@ describe('Posts API', () => {
         PostCategory.JS.toLowerCase(),
       );
       expect(result).toHaveLength(2);
+    });
+  });
+
+  describe('getPostBySlug — buildPostMetadata edge cases', () => {
+    it('should set updateDate to null when frontmatter omits it', async () => {
+      (matter as unknown as jest.Mock).mockReturnValueOnce({
+        ...DEFAULT_MATTER_RESULT,
+        data: { ...DEFAULT_MATTER_RESULT.data, updateDate: undefined },
+      });
+      (readFile as jest.Mock).mockResolvedValueOnce('content');
+
+      const post = await getPostBySlug('no-update');
+
+      expect(post.data.updateDate).toBeNull();
+    });
+
+    it('should parse createDate string into a numeric timestamp', async () => {
+      (readFile as jest.Mock).mockResolvedValueOnce('content');
+
+      const post = await getPostBySlug('with-dates');
+
+      expect(typeof post.data.createDate).toBe('number');
+      expect(post.data.createDate).toBe(Date.parse('2024-01-01'));
+    });
+
+    it('should wrap underlying read errors with a cause', async () => {
+      const original = new Error('ENOENT');
+      (readFile as jest.Mock).mockRejectedValueOnce(original);
+
+      await expect(getPostBySlug('missing')).rejects.toMatchObject({
+        cause: original,
+      });
+    });
+
+    it('should throw when matter returns no data', async () => {
+      (readFile as jest.Mock).mockResolvedValueOnce('garbage');
+      (matter as unknown as jest.Mock).mockReturnValueOnce({ data: null });
+
+      await expect(getPostBySlug('broken')).rejects.toThrow(
+        /Invalid markdown format/,
+      );
+    });
+  });
+
+  describe('getPosts', () => {
+    it('should ignore non-markdown files in the posts directory', async () => {
+      (readdir as jest.Mock).mockResolvedValueOnce([
+        'a.md',
+        '.DS_Store',
+        'README.txt',
+        'b.md',
+      ]);
+      (readFile as jest.Mock).mockResolvedValue('content');
+
+      const posts = await getPosts();
+
+      expect(posts).toHaveLength(2);
+      expect(posts.map((p) => p.data.slug)).toEqual(['a', 'b']);
+    });
+
+    it('should return both data and content for each post', async () => {
+      (readdir as jest.Mock).mockResolvedValueOnce(['only.md']);
+      (readFile as jest.Mock).mockResolvedValueOnce('raw markdown');
+
+      const [post] = await getPosts();
+
+      expect(post).toEqual(
+        expect.objectContaining({
+          data: expect.objectContaining({ slug: 'only' }),
+          content: 'Test content',
+        }),
+      );
+    });
+
+    it('should return empty array when directory is empty', async () => {
+      (readdir as jest.Mock).mockResolvedValueOnce([]);
+
+      await expect(getPosts()).resolves.toEqual([]);
+    });
+  });
+
+  describe('getPostsMetadata', () => {
+    it('should return metadata-only entries (no content field)', async () => {
+      (readdir as jest.Mock).mockResolvedValueOnce(['a.md', 'b.md']);
+      (readFile as jest.Mock).mockResolvedValue('content');
+
+      const metas = await getPostsMetadata();
+
+      expect(metas).toHaveLength(2);
+      metas.forEach((meta) => {
+        expect(meta).not.toHaveProperty('content');
+        expect(meta.data).toHaveProperty('slug');
+      });
+    });
+
+    it('should ignore non-markdown files', async () => {
+      (readdir as jest.Mock).mockResolvedValueOnce([
+        'post.md',
+        'image.png',
+        'notes.txt',
+      ]);
+      (readFile as jest.Mock).mockResolvedValueOnce('content');
+
+      const metas = await getPostsMetadata();
+
+      expect(metas).toHaveLength(1);
+      expect(metas[0].data.slug).toBe('post');
+    });
+  });
+
+  describe('getPostSlugs', () => {
+    it('should ignore non-markdown files', async () => {
+      (readdir as jest.Mock).mockResolvedValueOnce([
+        'one.md',
+        '.DS_Store',
+        'image.png',
+        'two.md',
+      ]);
+
+      const slugs = await getPostSlugs();
+
+      expect(slugs).toEqual(['one', 'two']);
     });
   });
 });
