@@ -3,7 +3,7 @@ title: 'Presenting the Revamped shramko.dev: Explore the Exciting Updates!'
 heading: 'Introducing the new shramko.dev'
 description: A deep dive into building my developer portfolio with Next.js 16, React 19, and Tailwind CSS 4. Learn about the tech stack, design decisions, and features behind 900+ commits.
 createDate: 2022-08-13T13:31:25.041Z
-updateDate: 2026-04-11T12:00:00.000Z
+updateDate: 2026-05-04T12:00:00.000Z
 keywords:
   [
     Website Redesign,
@@ -33,27 +33,27 @@ cloc --vcs=git .
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-YAML                             4           2444              0           9422
-TypeScript                     111            823             24           7012
-Markdown                        74           2107              8           6693
-JavaScript                       8             37             17            448
-CSS                              2             47              1            229
-JSON                             6              0              0            204
-XML                              2              0              0            110
-Text                             3             12              0             81
+TypeScript                     130           1050             39           8273
+Markdown                        81           2311              9           7858
+YAML                             3           2057              0           7847
+JavaScript                       8             35             10            490
+Text                             4             57              0            300
+JSON                             8              0              0            267
+CSS                              2             47              4            233
+XML                              2              0              0            118
 Prisma Schema                    1              5              0             23
 SQL                              1              9              6             21
 SVG                              1              0              0             17
 INI                              1              2              0             11
-Bourne Shell                     2              2              0              4
+Bourne Shell                     3              3              0              9
 -------------------------------------------------------------------------------
-SUM:                           216           5488             56          24275
+SUM:                           245           5576             68          25467
 -------------------------------------------------------------------------------
 ```
 
-> Update: Lines of code on <time dateTime="2026-04-11">11 April 2026</time>
+> Update: Lines of code on <time dateTime="2026-05-04">4 May 2026</time>
 
-TypeScript is the dominant application language at ~7 000 lines. Markdown, which represents every blog post and snippet, already rivals it — a ratio I consider healthy for a content-first site.
+TypeScript is the dominant application language at ~8 300 lines. Markdown, which represents every blog post and snippet, has now nearly caught up at ~7 900 — a ratio I consider healthy for a content-first site.
 
 The first commit was
 in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f85ec7576de8a82c5b7fad835).
@@ -268,17 +268,17 @@ const views = await prisma.views.upsert({
 
 ## Testing
 
-Tests run on every push and every pull request through [GitHub Actions](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/workflows/tests.yml). The suite has grown from 9 test suites and 37 tests in 2022 to 23 suites and 158 tests today, covering API routes, components, utilities, content parsing, schema generation, and page rendering.
+Tests run on every push and every pull request through [GitHub Actions](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/workflows/tests.yml). The suite has grown from 9 test suites and 37 tests in 2022 to 23 suites and 183 tests today, covering API routes, components, utilities, content parsing, schema generation, and page rendering. The most recent push closed several long-standing coverage gaps in `lib/posts/api`, the dashboard endpoint, the view counter, the blog list page, and the blog-post preview — focusing on business logic rather than render output.
 
-Current coverage on <time dateTime="2026-04-17">17 April 2026</time>:
+Current coverage on <time dateTime="2026-05-04">4 May 2026</time>:
 
 ```shell
-------------------------------|---------|----------|---------|---------|-------------------------------
+------------------------------|---------|----------|---------|---------|-------------------
 File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
-------------------------------|---------|----------|---------|---------|-------------------------------
-All files                     |   93.28 |    83.26 |   86.17 |   93.28 |
- components/blog-post-preview |     100 |     37.5 |     100 |     100 |
-  blog-post-preview.tsx       |     100 |    33.33 |     100 |     100 | 18-30
+------------------------------|---------|----------|---------|---------|-------------------
+All files                     |   97.27 |    91.26 |   91.66 |   97.27 |
+ components/blog-post-preview |     100 |    66.66 |     100 |     100 |
+  blog-post-preview.tsx       |     100 |      100 |     100 |     100 |
   index.ts                    |     100 |       40 |     100 |     100 | 1
  components/categories        |     100 |    57.14 |     100 |     100 |
   categories.tsx              |     100 |      100 |     100 |     100 |
@@ -288,53 +288,58 @@ All files                     |   93.28 |    83.26 |   86.17 |   93.28 |
  components/mobile-menu       |     100 |      100 |     100 |     100 |
   icons.tsx                   |     100 |      100 |     100 |     100 |
   mobile-menu.tsx             |     100 |      100 |     100 |     100 |
- components/post-reaction     |   99.21 |    73.33 |     100 |   99.21 |
-  index.ts                    |     100 |       40 |     100 |     100 | 1
-  post-reaction.tsx           |     100 |      100 |     100 |     100 |
-  use-feedback-reducer.ts     |   97.82 |    83.33 |     100 |   97.82 | 25
+ components/no-results        |    92.3 |       50 |     100 |    92.3 |
+  index.ts                    |     100 |      100 |     100 |     100 |
+  no-results.tsx              |      92 |       50 |     100 |      92 | 19-20
  components/search-input      |     100 |      100 |     100 |     100 |
   index.ts                    |     100 |      100 |     100 |     100 |
   search-input.tsx            |     100 |      100 |     100 |     100 |
  components/share-button      |     100 |      100 |     100 |     100 |
   share-button.tsx            |     100 |      100 |     100 |     100 |
- components/theme-changer     |   94.73 |    57.14 |     100 |   94.73 |
+ components/tag               |   81.81 |    33.33 |     100 |   81.81 |
+  index.ts                    |     100 |      100 |     100 |     100 |
+  tag.tsx                     |   81.25 |    33.33 |     100 |   81.25 | 20-25
+ components/theme-changer     |   90.24 |    53.33 |     100 |   90.24 |
   index.ts                    |     100 |       40 |     100 |     100 | 1
-  theme-changer.tsx           |   94.59 |    66.66 |     100 |   94.59 | 32-33
- components/view-counter      |   88.23 |     62.5 |     100 |   88.23 |
+  theme-changer.tsx           |      90 |       60 |     100 |      90 | 32-33,35-36
+ components/view-counter      |     100 |    85.71 |     100 |     100 |
   index.ts                    |     100 |       40 |     100 |     100 | 1
-  view-counter.tsx            |      88 |    72.72 |     100 |      88 | 20-21,35,41-43
- lib                          |     100 |    98.27 |   75.75 |     100 |
+  view-counter.tsx            |     100 |      100 |     100 |     100 |
+ components/year-separator    |     100 |      100 |     100 |     100 |
+  index.ts                    |     100 |      100 |     100 |     100 |
+  year-separator.tsx          |     100 |      100 |     100 |     100 |
+ lib                          |     100 |    98.18 |      80 |     100 |
   constants.ts                |     100 |      100 |     100 |     100 |
   feed.ts                     |     100 |      100 |     100 |     100 |
   fetcher.ts                  |     100 |      100 |     100 |     100 |
   github.ts                   |     100 |      100 |     100 |     100 |
-  routes.ts                   |     100 |      100 |   53.33 |     100 |
-  schema.ts                   |     100 |    95.23 |     100 |     100 | 69
+  routes.ts                   |     100 |      100 |   57.14 |     100 |
+  schema.ts                   |     100 |    94.73 |     100 |     100 | 71
   types.ts                    |     100 |      100 |     100 |     100 |
-  utils.ts                    |     100 |      100 |      80 |     100 |
- lib/posts                    |   92.62 |    84.61 |    87.5 |   92.62 |
-  api.ts                      |   89.93 |    73.91 |      75 |   89.93 | 18-19,67-68,109-117,157-159
   utils.ts                    |     100 |      100 |     100 |     100 |
- lib/scripts                  |      55 |      100 |      50 |      55 |
-  compiler.ts                 |      55 |      100 |      50 |      55 | 9-26
+ lib/posts                    |     100 |      100 |     100 |     100 |
+  api.ts                      |     100 |      100 |     100 |     100 |
+  utils.ts                    |     100 |      100 |     100 |     100 |
+ lib/scripts                  |   49.33 |      100 |      50 |   49.33 |
+  compiler.ts                 |   49.33 |      100 |      50 |   49.33 | 22-59
  pages                        |     100 |      100 |     100 |     100 |
   404.tsx                     |     100 |      100 |     100 |     100 |
- pages/api                    |   96.63 |     93.1 |     100 |   96.63 |
-  dashboard.ts                |    91.3 |    83.33 |     100 |    91.3 | 42-45
+ pages/api                    |     100 |      100 |     100 |     100 |
+  dashboard.ts                |     100 |      100 |     100 |     100 |
   github.ts                   |     100 |      100 |     100 |     100 |
   waitlist.ts                 |     100 |      100 |     100 |     100 |
  pages/api/reactions          |     100 |    93.33 |     100 |     100 |
   [slug].ts                   |     100 |    93.33 |     100 |     100 | 88
  pages/api/views              |     100 |      100 |     100 |     100 |
   [slug].ts                   |     100 |      100 |     100 |     100 |
- pages/blog                   |   73.63 |     62.5 |      50 |   73.63 |
-  index.tsx                   |   73.63 |     62.5 |      50 |   73.63 | 46,96-101,138,142-150,178-218
-------------------------------|---------|----------|---------|---------|-------------------------------
+ pages/blog                   |     100 |    95.65 |     100 |     100 |
+  index.tsx                   |     100 |    95.65 |     100 |     100 | 108
+------------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 23 passed, 23 total
-Tests:       158 passed, 158 total
+Tests:       183 passed, 183 total
 Snapshots:   0 total
-Time:        1.444 s
+Time:        1.404 s
 Ran all test suites.
 ```
 
@@ -372,6 +377,6 @@ The project enforces quality at multiple checkpoints:
 
 ## Conclusion
 
-What I have learned building this site over four years would fill a book. The stack has evolved from plain HTML to Next.js 16 with React 19. The database grew from nothing to three Prisma models. The test suite went from 37 tests to 158. And the content — 33 posts, 41 snippets — keeps growing, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
+What I have learned building this site over four years would fill a book. The stack has evolved from plain HTML to Next.js 16 with React 19. The database grew from nothing to three Prisma models. The test suite went from 37 tests to 183. And the content — 33 posts, 41 snippets — keeps growing, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
 
 The project is still developing. You can see open features or suggest new ones [here](https://github.com/Shramkoweb/Portfolio/issues).
