@@ -53,17 +53,23 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: |
+            const fs = require('fs');
             const results = ${{ steps.lighthouse.outputs.manifest }};
             let comment = '## Lighthouse Results\n\n';
-            comment += '| URL | Performance | Accessibility | Best Practices | SEO |\n';
-            comment += '|-----|------------|---------------|----------------|-----|\n';
+            comment += '| URL | Perf | A11y | BP | SEO | LCP | FCP | TBT | CLS |\n';
+            comment += '|-----|------|------|----|-----|-----|-----|-----|-----|\n';
             for (const result of results) {
               const url = new URL(result.url).pathname || '/';
               const perf = Math.round(result.summary.performance * 100);
               const a11y = Math.round(result.summary.accessibility * 100);
               const bp = Math.round(result.summary['best-practices'] * 100);
               const seo = Math.round(result.summary.seo * 100);
-              comment += `| ${url} | ${perf} | ${a11y} | ${bp} | ${seo} |\n`;
+              const report = JSON.parse(fs.readFileSync(result.jsonPath, 'utf8'));
+              const lcp = (report.audits['largest-contentful-paint'].numericValue / 1000).toFixed(2) + 's';
+              const fcp = (report.audits['first-contentful-paint'].numericValue / 1000).toFixed(2) + 's';
+              const tbt = Math.round(report.audits['total-blocking-time'].numericValue) + 'ms';
+              const cls = report.audits['cumulative-layout-shift'].numericValue.toFixed(3);
+              comment += `| ${url} | ${perf} | ${a11y} | ${bp} | ${seo} | ${lcp} | ${fcp} | ${tbt} | ${cls} |\n`;
             }
             core.setOutput('comment', comment);
       - name: Post comment
