@@ -11,24 +11,14 @@ jobs:
   lighthouse:
     if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Create Lighthouse config
         run: |
-          cat > /tmp/lighthouserc.json << 'TEMPLATE'
-          {
-            "ci": {
-              "collect": {
-                "settings": {
-                  "extraHeaders": {
-                    "x-vercel-protection-bypass": "BYPASS_SECRET_PLACEHOLDER"
-                  }
-                }
-              }
-            }
-          }
-          TEMPLATE
-          sed -i "s/BYPASS_SECRET_PLACEHOLDER/$VERCEL_BYPASS_SECRET/" /tmp/lighthouserc.json
+          jq -n --arg secret "$VERCEL_BYPASS_SECRET" \
+            '{ci:{collect:{settings:{extraHeaders:{"x-vercel-protection-bypass":$secret}}}}}' \
+            > /tmp/lighthouserc.json
         env:
           VERCEL_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
       - name: Lighthouse audit
@@ -45,7 +35,7 @@ jobs:
           uploadArtifacts: true
       - name: Find PR number
         id: find-pr
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const prs = await github.rest.pulls.list({
@@ -60,7 +50,7 @@ jobs:
       - name: Format results
         id: format
         if: always() && steps.find-pr.outputs.number
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const results = ${{ steps.lighthouse.outputs.manifest }};
@@ -78,7 +68,7 @@ jobs:
             core.setOutput('comment', comment);
       - name: Post comment
         if: always() && steps.find-pr.outputs.number
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         with:
           header: lighthouse
           number: ${{ steps.find-pr.outputs.number }}
