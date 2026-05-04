@@ -10,7 +10,6 @@ export const Routes = {
   UdemyResetProgress: () => '/udemy-reset-progress',
   QuizletList: () => '/quizlet-list',
   Bookmarks: () => '/bookmarks',
-  Rebookmark: () => '/rebookmark',
 
   Resume: () => '/static/serhii_shramko_frontend.pdf',
   GitHub: () => 'https://github.com/Shramkoweb',

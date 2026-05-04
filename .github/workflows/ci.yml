@@ -53,6 +53,20 @@ jobs:
           CI: true
       - run: pnpm test:ci --coverage
 
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+      - run: pnpm i --frozen-lockfile
+        env:
+          CI: true
+      - run: pnpm audit --prod --audit-level=high
+
   build:
     needs: [lint, typecheck, test]
     if: github.event_name == 'pull_request'

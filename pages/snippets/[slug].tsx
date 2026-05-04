@@ -9,6 +9,8 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 
+import { ArticleDates } from '@/components/article-dates';
+import { ArticleMeta } from '@/components/article-meta';
 import { MDXComponents } from '@/components/mdx-components';
 import {
   generateTechArticleSchema,
@@ -32,11 +34,6 @@ function SnippetPage(props: SnippetPageProps) {
     data: { title, heading, description, createDate, updateDate, keywords },
   } = props;
 
-  const formatedCreateDate = new Date(createDate).toLocaleDateString('en-us', {
-    dateStyle: 'medium',
-    timeZone: 'UTC',
-  });
-
   useEffect(() => {
     const registerView = () =>
       fetch(`/api/views/${slug}`, {
@@ -51,58 +48,12 @@ function SnippetPage(props: SnippetPageProps) {
       <Head>
         <title>{title}</title>
         {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
-        <meta content={description} name="description" key="description" />
-        <meta property="og:type" content="article" key="og:type" />
-        <meta property="og:title" content={title} key="og:title" />
-        <meta
-          property="og:site_name"
-          content="Serhii Shramko"
-          key="og:site_name"
-        />
-        <meta
-          property="og:description"
-          content={description}
-          key="og:description"
-        />
-        <meta
-          property="og:image"
-          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
-          key="og:image"
-        />
-        <meta name="twitter:title" content={title} key="twitter:title" />
-        <meta
-          name="twitter:description"
-          content={description}
-          key="twitter:description"
-        />
-        <meta
-          name="twitter:image"
-          content={`https://shramko.dev/api/og?title=${encodeURIComponent(title)}`}
-          key="twitter:image"
-        />
-        <meta
-          property="article:published_time"
-          content={new Date(createDate).toISOString()}
-          key="article:published_time"
-        />
-        {updateDate && (
-          <meta
-            property="article:modified_time"
-            content={new Date(updateDate).toISOString()}
-            key="article:modified_time"
-          />
-        )}
-
-        <meta name="keywords" key="keywords" content={keywords.join(', ')} />
-        <meta
-          property="article:section"
-          content="Technology"
-          key="article:section"
-        />
-        <meta
-          property="article:author"
-          content="https://shramko.dev"
-          key="article:author"
+        <ArticleMeta
+          title={title}
+          description={description}
+          createDate={createDate}
+          updateDate={updateDate}
+          keywords={keywords}
         />
         <script
           type="application/ld+json"
@@ -129,27 +80,7 @@ function SnippetPage(props: SnippetPageProps) {
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
               {heading}
             </h1>
-            <div className="text-xs text-gray-700 dark:text-gray-300">
-              <p>
-                Published on{' '}
-                <time dateTime={new Date(createDate).toISOString()}>
-                  {formatedCreateDate}
-                </time>
-              </p>
-              {updateDate && (
-                <p>
-                  Last updated on{' '}
-                  <strong className="font-medium">
-                    <time dateTime={new Date(updateDate).toISOString()}>
-                      {new Date(updateDate).toLocaleDateString('en-us', {
-                        dateStyle: 'medium',
-                        timeZone: 'UTC',
-                      })}
-                    </time>
-                  </strong>
-                </p>
-              )}
-            </div>
+            <ArticleDates createDate={createDate} updateDate={updateDate} />
           </div>
         </div>
         <div className="prose dark:prose-dark w-full max-w-none">

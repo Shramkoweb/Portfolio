@@ -1,25 +1,15 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 import handler from '@/pages/api/github';
+
+import { createMockReqRes } from '../helpers/api-mocks';
 
 const mockFetchGitHubStats = jest.fn();
 jest.mock('@/lib/github', () => ({
   fetchGitHubStats: (...args: unknown[]) => mockFetchGitHubStats(...args),
 }));
 
-function createMockReqRes(method = 'GET') {
-  const req = { method } as NextApiRequest;
-  const json = jest.fn();
-  const status = jest.fn().mockReturnThis();
-  const setHeader = jest.fn();
-  const res = { json, status, setHeader } as unknown as NextApiResponse;
-
-  return { req, res, json, status, setHeader };
-}
-
 describe('API /api/github', () => {
   it('rejects non-GET', async () => {
-    const { req, res, status } = createMockReqRes('POST');
+    const { req, res, status } = createMockReqRes({ method: 'POST' });
 
     await handler(req, res);
 

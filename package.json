@@ -6,6 +6,8 @@
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
     "build": "next build",
+    "clean": "rm -rf .next coverage",
+    "deps:audit": "pnpm audit --prod --audit-level=high",
     "dev": "next dev",
     "format": "oxfmt --write",
     "format:check": "oxfmt --check",
@@ -13,7 +15,7 @@
     "lint:fix": "oxlint --fix",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "postinstall": "prisma generate",
-    "pre-push": "pnpm run lint && pnpm run format:check",
+    "pre-push": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run test:ci",
     "prepare": "git config core.hooksPath .git-hooks",
     "start": "next start",
     "test": "jest",
@@ -29,11 +31,14 @@
     "@vercel/og": "0.11.1",
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
+    "gray-matter": "4.0.3",
     "lucide-react": "0.577.0",
     "next": "16.2.4",
+    "next-mdx-remote": "6.0.0",
     "next-themes": "0.4.6",
     "react": "19.2.5",
     "react-dom": "19.2.5",
+    "reading-time": "1.5.0",
     "shiki": "4.0.2",
     "swr": "2.4.1"
   },
@@ -53,16 +58,13 @@
     "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "gray-matter": "4.0.3",
     "jest": "30.3.0",
     "jest-environment-jsdom": "30.3.0",
-    "next-mdx-remote": "6.0.0",
     "next-sitemap": "4.2.3",
     "oxfmt": "0.47.0",
     "oxlint": "1.62.0",
     "postcss": "8.5.13",
     "prisma": "7.8.0",
-    "reading-time": "1.5.0",
     "rehype-autolink-headings": "7.1.0",
     "rehype-code-titles": "1.2.1",
     "rehype-slug": "6.0.0",
@@ -74,14 +76,14 @@
     "baseline widely available"
   ],
   "engines": {
-    "node": "24.x"
+    "node": "24.x",
+    "pnpm": ">=10"
   },
   "packageManager": "pnpm@10.33.2",
   "pnpm": {
     "overrides": {
-      "hono": ">=4.12.12",
-      "@hono/node-server": ">=1.19.13",
-      "effect": ">=3.20.0"
+      "@hono/node-server": "^1.19.13",
+      "postcss": "^8.5.10"
     },
     "onlyBuiltDependencies": [
       "@prisma/engines",

@@ -1,7 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import React, { useState } from 'react';
 
-export interface Heading {
+interface Heading {
   id: string;
   text: string;
   level: number;

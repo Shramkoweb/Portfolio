@@ -2,11 +2,6 @@ export type Views = {
   total: number;
 };
 
-export type GitHub = {
-  stars: number;
-  followers: number;
-};
-
 export type DashboardData = {
   totalViews: number;
   stars: number;
@@ -76,7 +71,7 @@ type LinkedinCompany = {
   url: string;
 };
 
-type LinkedinFeedbackAuthor = {
+type LinkedinTestimonialAuthor = {
   name: string;
   position: string;
   avatar: string;
@@ -84,8 +79,8 @@ type LinkedinFeedbackAuthor = {
   linkedinLink: string;
 };
 
-export type LinkedinFeedback = {
-  author: LinkedinFeedbackAuthor;
+export type LinkedinTestimonial = {
+  author: LinkedinTestimonialAuthor;
   postDate: string;
   text: string;
 };

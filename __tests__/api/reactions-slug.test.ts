@@ -1,6 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest } from 'next';
 
 import handler from '@/pages/api/reactions/[slug]';
+
+import { createMockReqRes as createBaseMockReqRes } from '../helpers/api-mocks';
 
 const mockFindMany = jest.fn();
 const mockUpsert = jest.fn();
@@ -24,19 +26,11 @@ jest.mock('lib/prisma', () => ({
 }));
 
 function createMockReqRes(overrides: Partial<NextApiRequest> = {}) {
-  const req = {
-    method: 'GET',
+  return createBaseMockReqRes({
     query: { slug: 'my-post' },
     body: {},
     ...overrides,
-  } as unknown as NextApiRequest;
-
-  const json = jest.fn();
-  const status = jest.fn().mockReturnThis();
-  const setHeader = jest.fn();
-  const res = { json, status, setHeader } as unknown as NextApiResponse;
-
-  return { req, res, json, status, setHeader };
+  });
 }
 
 describe('API /api/reactions/[slug]', () => {
