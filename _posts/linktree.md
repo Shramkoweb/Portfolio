@@ -3,7 +3,7 @@ title: 'Build a Link Tree with Astro.js and Vercel (2026 Guide)'
 heading: 'Build Your Own Link Tree with Astro.js and Vercel'
 description: 'Build a custom link tree with Astro.js and deploy it on Vercel. Step-by-step tutorial with TypeScript, analytics setup, and performance optimization tips.'
 createDate: 2024-08-30T10:00:00.000Z
-updateDate: 2026-04-03
+updateDate: 2026-05-06
 keywords:
   [
     build link tree Astro,
@@ -29,7 +29,7 @@ Check out the final result: [links.shramko.dev](https://links.shramko.dev/)
 We're building a link tree website with Astro.js and deploying it to Vercel — a simple beginner project that takes about
 an hour.
 
-- **Stack**: Astro 6 + TypeScript + Vercel
+- **Stack**: Astro 6.2 + TypeScript + Vercel
 - **Result**: A static site with 100/100 Lighthouse scores
 - **Features**: Typed link data, image optimization, Vercel Analytics, custom subdomain
 
@@ -154,6 +154,22 @@ icon library needed:
 </svg>
 ```
 
+## Optimizing inline SVG icons
+
+The icon components above ship every SVG attribute the browser doesn't strictly need — XML namespaces, defaults, whitespace. Astro 6.2 introduces `experimental.svgOptimizer`, which runs SVGO over SVGs imported as components at build time:
+
+```typescript:astro.config.mjs
+import { defineConfig, svgoOptimizer } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    svgOptimizer: svgoOptimizer(),
+  },
+});
+```
+
+The optimizer only kicks in on `.svg` imports — `.astro` files with hand-written SVG markup pass through. To benefit, save each icon as `Github.svg` and import it as a component instead. Across four social icons the savings are modest (a few hundred bytes), so it's only worth migrating if you're already moving away from inline `.astro` icons.
+
 ## SEO and Meta Tags
 
 Even a simple link tree benefits from proper meta tags. Add OpenGraph and social sharing tags in your layout:
@@ -190,6 +206,63 @@ const { title } = Astro.props;
 
 Since Astro outputs static HTML, search engines get a fully-rendered page with zero layout shift — great
 for [Core Web Vitals and SEO](/blog/ai-seo-audit).
+
+## Dynamic OG image with Satori
+
+The static `og-image.png` works, but it goes stale the moment you add or rename a link. Astro 6.2 added `experimental_getFontFileURL` to `astro:assets` — the missing piece for build-time OG generation that doesn't reach into undocumented internals. Combine it with [Satori](https://github.com/vercel/satori) (HTML → SVG) and [Sharp](https://www.npmjs.com/package/sharp) (SVG → PNG) and the image rebuilds with the rest of your site.
+
+Configure a font in `astro.config.mjs` (see the [Astro Fonts docs](https://docs.astro.build/en/guides/fonts/)) and install the runtime dependencies:
+
+```bash
+pnpm add satori satori-html sharp
+```
+
+Add the route at `src/pages/og.png.ts`:
+
+```typescript:src/pages/og.png.ts
+import type { APIRoute } from 'astro';
+import { fontData, experimental_getFontFileURL } from 'astro:assets';
+import satori from 'satori';
+import { html } from 'satori-html';
+import sharp from 'sharp';
+
+import userData from '../../data/user.json';
+
+export const prerender = true;
+
+export const GET: APIRoute = async (context) => {
+  const fontPath = fontData['--font-roboto'][0]?.src[0]?.url;
+
+  if (fontPath === undefined) {
+    throw new Error('Roboto font not configured — check astro.config.mjs');
+  }
+
+  const fontUrl = experimental_getFontFileURL(fontPath, context.url);
+  const fontBuffer = await fetch(fontUrl).then((res) => res.arrayBuffer());
+
+  const svg = await satori(
+    html`<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;width:1200px;height:630px;background:#0f172a;color:white;font-family:Roboto;">
+      <span style="font-size:64px;font-weight:700;">${userData.name}</span>
+      <span style="font-size:32px;opacity:0.7;margin-top:16px;">${userData.profession}</span>
+    </div>`,
+    {
+      width: 1200,
+      height: 630,
+      fonts: [
+        { name: 'Roboto', data: fontBuffer, weight: 400, style: 'normal' },
+      ],
+    },
+  );
+
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+  return new Response(new Uint8Array(png), {
+    headers: { 'Content-Type': 'image/png' },
+  });
+};
+```
+
+Point your layout's `og:image` at `https://links.shramko.dev/og.png` — or keep both, with the static file as a fallback for crawlers that hit the URL before the build settles. The `experimental_` prefix means the API may shift; pin your Astro version if this lives in production.
 
 ## Analytics
 

@@ -3,7 +3,7 @@ title: 'Fix: Could not find Sharp in Astro.js (Vercel Deploy)'
 heading: 'How to Fix MissingSharp Error in Astro.js on Vercel'
 description: 'Fix the [MissingSharp] Could not find Sharp error when deploying Astro.js to Vercel. Step-by-step Sharp image service setup and configuration guide.'
 createDate: 2024-09-13T21:01:43.973Z
-updateDate: 2026-04-03
+updateDate: 2026-05-06
 keywords:
   [
     MissingSharp Astro,
@@ -172,3 +172,4 @@ export default defineConfig({
 
 - [Astro Framework Guide](/blog/astro) — comprehensive introduction to Astro
 - [Build a Link Tree with Astro.js](/blog/linktree) — the project where I first hit this error
+- [Optimize SVGs at build time with `experimental.svgOptimizer`](/blog/astro#using-the-deprecated-experimentalsvgo) — Astro 6.2's pluggable SVG optimizer, another build-time asset win

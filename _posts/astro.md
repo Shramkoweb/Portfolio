@@ -3,7 +3,7 @@ title: 'Astro Framework Guide: Build Faster Sites in 2026'
 heading: 'What Is Astro? The Complete Framework Guide for 2026'
 description: 'Master the Astro framework with this hands-on guide. Islands Architecture, Content Collections, View Transitions, and client directives with code examples.'
 createDate: 2023-03-16T09:01:43.973Z
-updateDate: 2026-04-03
+updateDate: 2026-05-06
 keywords:
   [
     astro framework guide,
@@ -112,18 +112,20 @@ Astro provides native [View Transitions](https://docs.astro.build/en/guides/view
 
 ```md:src/layouts/Base.astro
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <html>
   <head>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <slot />
   </body>
 </html>
 ```
+
+> The component was renamed from `<ViewTransitions />` to `<ClientRouter />` in Astro 5 and `<ViewTransitions />` was removed in Astro 6. If you're upgrading from an older project, swap the import.
 
 Add per-element animations with the `transition:animate` directive:
 
@@ -167,7 +169,7 @@ This is perfect for personalized content (user carts, dashboards) on otherwise s
 ## Creating Your First Project
 
 ```shell
-# Create a new Astro 6.x project
+# Scaffold a new Astro project (always pulls the latest)
 npm create astro@latest
 
 # Start the dev server
@@ -423,6 +425,32 @@ const posts = await getCollection('blog');
 ---
 ```
 
+### Using the deprecated `experimental.svgo`
+
+Astro 6.2 deprecates `experimental.svgo` in favor of `experimental.svgOptimizer`, which accepts any optimizer — the built-in `svgoOptimizer()`, `oxvg`, or your own. Update the import and the flag name:
+
+```typescript:astro.config.mjs
+// ❌ Deprecated in Astro 6.2
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    svgo: true,
+  },
+});
+```
+
+```typescript:astro.config.mjs
+// ✅ Pluggable optimizer interface
+import { defineConfig, svgoOptimizer } from 'astro/config';
+
+export default defineConfig({
+  experimental: {
+    svgOptimizer: svgoOptimizer(),
+  },
+});
+```
+
 ## Why Learn Astro in 2026?
 
 Astro ranked **#1 in satisfaction** among meta-frameworks in the [State of JS 2025](https://2025.stateofjs.com/en-US/libraries/meta-frameworks/) survey — a 39% gap over Next.js. With ~1.3M weekly npm downloads and 57K+ GitHub stars, it's one of the fastest-growing web frameworks.
@@ -430,6 +458,10 @@ Astro ranked **#1 in satisfaction** among meta-frameworks in the [State of JS 20
 In January 2026, [Cloudflare acquired Astro](https://blog.cloudflare.com/astro-joins-cloudflare/), bringing enterprise backing and deeper edge computing integration. The ecosystem continues to grow with [Starlight](https://starlight.astro.build/) (documentation framework) powering docs for Cloudflare, Sentry, and Stripe.
 
 Whether you're building a personal blog, a [link tree](/blog/linktree), or deploying [images on Vercel](/blog/astro-image-on-vercel), Astro keeps your sites fast by default.
+
+## What's Coming in Astro 7
+
+Astro 7 is in alpha as of the 6.2 release. The two changes worth tracking: Vite 8 lands as the underlying bundler, and the Rust compiler — previously gated behind `experimental.rustCompiler` — is now the default with the flag removed. Astro calls the Rust compiler "significantly faster" than the Go-based compiler it replaces; I'd verify that on your own project before celebrating. Try it on a branch with `pnpm add astro@alpha`; expect rough edges. See the [Astro 6.2 release notes](https://astro.build/blog/astro-620/) for the full scope.
 
 ## Useful Links
 
