@@ -57,45 +57,38 @@ I use [pnpm](/blog/pnpm) as my package manager, but `npm` or `yarn` work fine to
 
 ## Data Structure with TypeScript
 
-Define a typed interface for your links and store them in a JSON file:
+Keep the link data in a single typed module — one source of truth, autocomplete in the editor, and a discriminated `IconName` union that prevents typos at build time:
 
-```typescript:types.ts
-interface SocialLink {
+```typescript:src/data/user.ts
+export type IconName = "github" | "linkedin" | "star" | "twitch" | "reddit" | "message";
+
+interface UserLink {
   url: string;
-  icon: string;
+  icon: IconName;
   title: string;
   description: string;
 }
 
-interface UserData {
-  name: string;
-  profession: string;
-  links: SocialLink[];
-}
+export const name = "Serhii Shramko";
+export const profession = "Senior Software Engineer";
+
+export const links: UserLink[] = [
+  {
+    url: "https://shramko.dev/",
+    icon: "star",
+    title: "Portfolio",
+    description: "Projects, writing, and notes on building real software",
+  },
+  {
+    url: "https://github.com/Shramkoweb",
+    icon: "github",
+    title: "GitHub",
+    description: "Source code, experiments, and work-in-progress ideas",
+  },
+];
 ```
 
-```json:data/user.json
-{
-  "name": "Serhii Shramko",
-  "profession": "Senior Software Engineer",
-  "links": [
-    {
-      "url": "https://shramko.dev/",
-      "icon": "url",
-      "title": "Personal Portfolio",
-      "description": "All my latest news and blog posts"
-    },
-    {
-      "url": "https://github.com/Shramkoweb",
-      "icon": "github",
-      "title": "Github Profile",
-      "description": "My Github"
-    }
-  ]
-}
-```
-
-This approach separates data from markup — add, remove, or reorder links by editing JSON, not HTML.
+Adding, removing, or reordering links is a one-file change. The `IconName` union doubles as a switch for the icon component lookup — see the next section.
 
 ## Layout and Components
 
@@ -148,7 +141,7 @@ const { icon, title, description, url } = Astro.props;
 Astro lets you create components from inline SVG. Each icon is its own `.astro` file — clean, tree-shakeable, and no
 icon library needed:
 
-```jsx:components/icons/Github.astro
+```jsx:src/components/icons/github.astro
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
 </svg>
@@ -226,30 +219,30 @@ import satori from 'satori';
 import { html } from 'satori-html';
 import sharp from 'sharp';
 
-import userData from '../../data/user.json';
+import { name, profession } from '../data/user';
 
 export const prerender = true;
 
 export const GET: APIRoute = async (context) => {
-  const fontPath = fontData['--font-roboto'][0]?.src[0]?.url;
+  const fontPath = fontData['--font-inter'][0]?.src[0]?.url;
 
   if (fontPath === undefined) {
-    throw new Error('Roboto font not configured — check astro.config.mjs');
+    throw new Error('Inter font not configured — check astro.config.mjs');
   }
 
   const fontUrl = experimental_getFontFileURL(fontPath, context.url);
   const fontBuffer = await fetch(fontUrl).then((res) => res.arrayBuffer());
 
   const svg = await satori(
-    html`<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;width:1200px;height:630px;background:#0f172a;color:white;font-family:Roboto;">
-      <span style="font-size:64px;font-weight:700;">${userData.name}</span>
-      <span style="font-size:32px;opacity:0.7;margin-top:16px;">${userData.profession}</span>
+    html`<div style="display:flex;flex-direction:column;justify-content:center;align-items:center;width:1200px;height:630px;background:#0f172a;color:white;font-family:Inter;">
+      <span style="font-size:64px;font-weight:700;">${name}</span>
+      <span style="font-size:32px;opacity:0.7;margin-top:16px;">${profession}</span>
     </div>`,
     {
       width: 1200,
       height: 630,
       fonts: [
-        { name: 'Roboto', data: fontBuffer, weight: 400, style: 'normal' },
+        { name: 'Inter', data: fontBuffer, weight: 700, style: 'normal' },
       ],
     },
   );
@@ -263,6 +256,8 @@ export const GET: APIRoute = async (context) => {
 ```
 
 Point your layout's `og:image` at `https://links.shramko.dev/og.png` — or keep both, with the static file as a fallback for crawlers that hit the URL before the build settles. The `experimental_` prefix means the API may shift; pin your Astro version if this lives in production.
+
+> **Already on Fontsource?** This linktree currently loads Inter via `@fontsource/inter`, not Astro Fonts. To use the snippet above, add an Astro Fonts entry for Inter (the project's existing `?url` imports keep working alongside it). If you'd rather avoid the migration, swap the `experimental_getFontFileURL` block for `import inter from '@fontsource/inter/files/inter-latin-700-normal.woff2?url'` and resolve it with `import.meta.resolve` + `fs.readFile` — uglier but the same end state.
 
 ## Analytics
 
