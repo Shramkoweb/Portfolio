@@ -129,7 +129,14 @@ function UdemyResetProgressPage() {
           confirmation dialogs.
         </p>
 
-        <video loop autoPlay muted playsInline className="mb-6 mx-auto mt-10">
+        <video
+          loop
+          autoPlay
+          muted
+          playsInline
+          aria-label="Demo of Udemy Reset Progress extension resetting a course"
+          className="mb-6 mx-auto mt-10"
+        >
           <source
             src="/static/images/udemy-progress-reset/video.mp4"
             type="video/mp4"

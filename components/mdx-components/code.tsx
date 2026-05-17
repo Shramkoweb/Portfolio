@@ -45,9 +45,9 @@ export function Code(props: CodeProps) {
             aria-hidden="true"
           />
         )}
-        <span role="status" aria-live="polite" className="sr-only">
+        <output aria-live="polite" className="sr-only">
           {copyStatus === 'success' ? 'Code copied to clipboard' : ''}
-        </span>
+        </output>
       </button>
       <div className="overflow-x-scroll">{children}</div>
     </pre>
