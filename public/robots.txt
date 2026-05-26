@@ -1,3 +1,6 @@
+# NOTE: The two `Disallow: /` groups below are also enforced at request time by
+# middleware.ts via lib/bot-blocklist/tokens.ts. Edit both files together.
+#
 # ----- BLOCK: TRAINING & DATA-HARVESTING CRAWLERS -----
 # These scrape content to train LLMs or resell crawl data.
 
