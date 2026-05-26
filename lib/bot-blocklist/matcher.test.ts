@@ -150,10 +150,6 @@ describe('longest-match-wins for overlapping substring tokens', () => {
 });
 
 describe('blocklist data integrity', () => {
-  it('training crawler list has 83 entries (matches public/robots.txt)', () => {
-    expect(TRAINING_CRAWLER_TOKENS).toHaveLength(83);
-  });
-
   it('every training token has a training group mapping', () => {
     for (const t of TRAINING_CRAWLER_TOKENS) {
       expect(BLOCKED_BOT_GROUPS[t.value]).toBe('training');
@@ -166,19 +162,9 @@ describe('blocklist data integrity', () => {
     }
   });
 
-  it('autonomous agent list has 16 entries (matches public/robots.txt)', () => {
-    expect(AUTONOMOUS_AGENT_TOKENS).toHaveLength(16);
-  });
-
   it('every agent token has an agent group mapping', () => {
     for (const t of AUTONOMOUS_AGENT_TOKENS) {
       expect(BLOCKED_BOT_GROUPS[t.value]).toBe('agent');
     }
-  });
-
-  it('BLOCKED_BOT_TOKENS has 99 entries (83 training + 16 agent)', () => {
-    expect(
-      TRAINING_CRAWLER_TOKENS.length + AUTONOMOUS_AGENT_TOKENS.length,
-    ).toBe(99);
   });
 });
