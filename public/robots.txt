@@ -1,18 +1,3 @@
-# ============================================================
-# Custom robots.txt — anti-training, pro-user-AI strategy
-# Generated: 2026-05-26
-# Source: ai-robots-txt/ai.robots.txt v1.46 (filtered & re-segmented)
-#
-# Policy:
-#   BLOCK  → AI training crawlers & bulk data scrapers
-#   BLOCK  → Autonomous AI agents
-#   ALLOW  → User-triggered AI fetchers (ChatGPT-User, Claude-User, Perplexity-User, …)
-#   ALLOW  → AI search indexers (for GEO / referral traffic)
-#   ALLOW  → Standard search engines
-#   /api/ is disallowed for everyone.
-# ============================================================
-
-
 # ----- BLOCK: TRAINING & DATA-HARVESTING CRAWLERS -----
 # These scrape content to train LLMs or resell crawl data.
 
@@ -59,6 +44,7 @@ User-agent: imageSpider
 User-agent: img2dataset
 User-agent: ISSCyberRiskCrawler
 User-agent: Kangaroo Bot
+User-agent: KlaviyoAIBot
 User-agent: KunatoCrawler
 User-agent: laion-huggingface-processor
 User-agent: LAIONDownloader
@@ -186,9 +172,6 @@ User-agent: Google-NotebookLM
 Disallow: /api/
 
 User-agent: NotebookLM
-Disallow: /api/
-
-User-agent: KlaviyoAIBot
 Disallow: /api/
 
 User-agent: kagi-fetcher
