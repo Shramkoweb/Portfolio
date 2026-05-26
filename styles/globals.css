@@ -43,7 +43,7 @@ html {
 }
 
 .skip-nav {
-  @apply absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 -left-1/4 focus:top-4 focus:translate-y-3 -top-8;
+  @apply fixed px-4 py-3 transition-transform duration-200 transform -translate-y-12 left-4 focus:top-20 focus:translate-y-3 -top-8 z-50;
 }
 
 #skip {

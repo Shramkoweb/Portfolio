@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react';
 
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import { SiteBanner } from '@/components/site-banner';
 
 const DESCRIPTION =
   'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js. Practical tutorials, code snippets, and tips for web developers.';
@@ -70,6 +71,10 @@ export function Layout(props: PropsWithChildren) {
         />
         <meta name="twitter:image" content={IMAGE} key="twitter:image" />
       </Head>
+      <a href="#skip" className="skip-nav">
+        Skip to main content
+      </a>
+      <SiteBanner />
       <Header />
       <main
         id="skip"

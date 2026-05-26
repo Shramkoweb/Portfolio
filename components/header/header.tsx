@@ -12,9 +12,6 @@ export function Header() {
         aria-label="Main"
         className="relative mx-auto flex w-full max-w-3xl items-center justify-between border-gray-200 bg-gray-50 bg-opacity-60 pt-8 pb-8 text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 sm:pb-16"
       >
-        <a href="#skip" className="skip-nav">
-          Skip to main content
-        </a>
         <div className="ml-[-0.60rem]">
           <MobileMenu />
           <HeaderLink href={Routes.Home()} text="Home" />
