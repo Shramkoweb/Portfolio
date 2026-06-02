@@ -67,7 +67,7 @@ App runs at http://localhost:3000.
 | `pnpm lint` / `pnpm lint:fix`       | oxlint                                      |
 | `pnpm format` / `pnpm format:check` | oxfmt                                       |
 | `pnpm test` / `pnpm test:coverage`  | Jest                                        |
-| `pnpm verify`                       | lint + format:check + typecheck + test (CI) |
+| `pnpm verify`                       | lint + format:check + typecheck + test:ci   |
 | `pnpm verify:full`                  | `verify` + production build                 |
 | `pnpm article`                      | scaffold a new blog post                    |
 
