@@ -59,17 +59,17 @@ App runs at http://localhost:3000.
 
 ## Scripts
 
-| Command                             | Purpose                                     |
-| ----------------------------------- | ------------------------------------------- |
-| `pnpm dev`                          | start dev server                            |
-| `pnpm build`                        | production build + sitemap                  |
-| `pnpm start`                        | start production server                     |
-| `pnpm lint` / `pnpm lint:fix`       | oxlint                                      |
-| `pnpm format` / `pnpm format:check` | oxfmt                                       |
-| `pnpm test` / `pnpm test:coverage`  | Jest                                        |
-| `pnpm verify`                       | lint + format:check + typecheck + test:ci   |
-| `pnpm verify:full`                  | `verify` + production build                 |
-| `pnpm article`                      | scaffold a new blog post                    |
+| Command                             | Purpose                                   |
+| ----------------------------------- | ----------------------------------------- |
+| `pnpm dev`                          | start dev server                          |
+| `pnpm build`                        | production build + sitemap                |
+| `pnpm start`                        | start production server                   |
+| `pnpm lint` / `pnpm lint:fix`       | oxlint                                    |
+| `pnpm format` / `pnpm format:check` | oxfmt                                     |
+| `pnpm test` / `pnpm test:coverage`  | Jest                                      |
+| `pnpm verify`                       | lint + format:check + typecheck + test:ci |
+| `pnpm verify:full`                  | `verify` + production build               |
+| `pnpm article`                      | scaffold a new blog post                  |
 
 ## Testing
 
