@@ -70,7 +70,11 @@ export const TRAINING_CRAWLER_TOKENS: readonly BlockToken[] = [
   { value: 'netestate imprint crawler', kind: 'substring' },
   { value: 'omgili', kind: 'substring' },
   { value: 'omgilibot', kind: 'substring' },
-  { value: 'openai', kind: 'word-boundary' },
+  // Trailing `/` is load-bearing: matches the literal `OpenAI/<ver>` product UA
+  // but not the `+https://openai.com/...` self-link that every OpenAI bot
+  // appends — including ChatGPT-User and OAI-SearchBot, which are explicitly
+  // allowed in public/robots.txt.
+  { value: 'openai/', kind: 'substring' },
   { value: 'pangubot', kind: 'substring' },
   { value: 'panscient', kind: 'substring' },
   { value: 'petalbot', kind: 'substring' },
@@ -181,7 +185,7 @@ export const BLOCKED_BOT_GROUPS: Readonly<Record<string, BlockGroup>> = {
   'netestate imprint crawler': 'training',
   omgili: 'training',
   omgilibot: 'training',
-  openai: 'training',
+  'openai/': 'training',
   pangubot: 'training',
   panscient: 'training',
   petalbot: 'training',

@@ -99,6 +99,33 @@ describe('isBlockedUserAgent', () => {
       });
     });
   });
+
+  // robots.txt explicitly allows OpenAI's user-triggered + search bots. Every
+  // OpenAI bot's UA contains `+https://openai.com/...`, so the `openai` token
+  // must match the product-UA shape (`OpenAI/<ver>`) only, not the self-link.
+  describe('OpenAI user-triggered fetchers — allowed per robots.txt', () => {
+    it('does not block ChatGPT-User (user-initiated, not training)', () => {
+      const ua =
+        'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ' +
+        'ChatGPT-User/1.0; +https://openai.com/bot';
+      expect(isBlockedUserAgent(ua)).toEqual({ blocked: false });
+    });
+
+    it('does not block OAI-SearchBot (search referral, not training)', () => {
+      const ua =
+        'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ' +
+        'OAI-SearchBot/1.0; +https://openai.com/searchbot';
+      expect(isBlockedUserAgent(ua)).toEqual({ blocked: false });
+    });
+
+    it('still blocks the literal OpenAI/<version> product user-agent', () => {
+      expect(isBlockedUserAgent('OpenAI/1.0')).toEqual({
+        blocked: true,
+        token: 'openai/',
+        group: 'training',
+      });
+    });
+  });
 });
 
 describe('hygiene — short/generic tokens must not collide with real UAs', () => {
