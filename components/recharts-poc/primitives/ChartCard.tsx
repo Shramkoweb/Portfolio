@@ -5,33 +5,50 @@ import { useIsMounted } from './useIsMounted';
 
 interface ChartCardProps {
   title: string;
+  description?: string;
+  icon?: ReactNode;
   actions?: ReactNode;
   height: number;
-  children: ReactNode;
+  children: ReactElement;
 }
 
 export function ChartCard(props: ChartCardProps) {
-  const { title, actions, height, children } = props;
+  const { title, description, icon, actions, height, children } = props;
   const mounted = useIsMounted();
 
   return (
-    <section className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
-      <header className="mb-3 flex items-center justify-between gap-3">
-        <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
-          {title}
-        </h3>
-        {actions ? (
-          <div className="flex items-center gap-2">{actions}</div>
-        ) : null}
+    <section className="flex flex-col gap-3">
+      <header className="flex items-start justify-between gap-3">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            {icon ? (
+              <span
+                className="text-[var(--rcp-text-subtle)]"
+                aria-hidden="true"
+              >
+                {icon}
+              </span>
+            ) : null}
+            <h3 className="text-sm font-semibold text-[var(--rcp-text)]">
+              {title}
+            </h3>
+          </div>
+          {description ? (
+            <p className="text-xs leading-relaxed text-[var(--rcp-text-muted)]">
+              {description}
+            </p>
+          ) : null}
+        </div>
+        {actions ? <div className="shrink-0">{actions}</div> : null}
       </header>
       {mounted ? (
         <ResponsiveContainer width="100%" height={height}>
-          {children as ReactElement}
+          {children}
         </ResponsiveContainer>
       ) : (
         <div
           aria-hidden="true"
-          className="animate-pulse rounded bg-gray-100 dark:bg-gray-800"
+          className="animate-pulse rounded bg-[var(--rcp-border)]/40"
           style={{ height }}
         />
       )}

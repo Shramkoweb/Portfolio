@@ -1,54 +1,52 @@
 import { useRouter } from 'next/router';
 
-import { BarChartCard } from './charts/BarChartCard';
-import { DonutCard } from './charts/DonutCard';
-import { DualAxisChartCard } from './charts/DualAxisChartCard';
-import { HistogramCard } from './charts/HistogramCard';
-import { LineChartCard } from './charts/LineChartCard';
-import { KpiCard } from './kpi/KpiCard';
-import { KPIS } from './mocks/kpis';
-import { BreakdownTable } from './table/BreakdownTable';
+import { theme } from './primitives/theme';
+import { EngagementSection } from './sections/EngagementSection';
+import { TrendsSection } from './sections/TrendsSection';
+
+const CSS_VARS: Record<string, string> = {
+  '--rcp-background': theme.background,
+  '--rcp-surface': theme.surface,
+  '--rcp-border': theme.border,
+  '--rcp-border-strong': theme.borderStrong,
+  '--rcp-text': theme.text,
+  '--rcp-text-muted': theme.textMuted,
+  '--rcp-text-subtle': theme.textSubtle,
+  '--rcp-tooltip-bg': theme.tooltipBackground,
+  '--rcp-tooltip-text': theme.tooltipText,
+};
 
 export function RechartsPocPage() {
   const router = useRouter();
   const perfMode = router.query.perf === '1';
 
   return (
-    <section className="mx-auto mb-16 flex w-full max-w-6xl flex-col gap-6 px-4">
-      <header className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
-          Recharts POC
-        </h1>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          Single-page validation of Recharts against our acceptance criteria.
-          Add{' '}
-          <code className="rounded bg-gray-100 px-1 dark:bg-gray-800">
-            ?perf=1
-          </code>{' '}
-          to disable animations.
-          {perfMode ? (
-            <span className="ml-2 rounded bg-amber-100 px-1 text-amber-900 dark:bg-amber-900 dark:text-amber-100">
-              perf mode
-            </span>
-          ) : null}
-        </p>
-      </header>
+    <div
+      style={CSS_VARS as React.CSSProperties}
+      className="bg-[var(--rcp-background)] text-[var(--rcp-text)]"
+    >
+      <section className="mx-auto mb-16 flex w-full max-w-5xl flex-col gap-6 px-4 py-8">
+        <header className="flex flex-col gap-1">
+          <h1 className="text-2xl font-semibold tracking-tight text-[var(--rcp-text)]">
+            Engagement Dashboard
+          </h1>
+          <p className="text-sm text-[var(--rcp-text-muted)]">
+            Recharts POC — engagement layout.{' '}
+            <code className="rounded bg-[var(--rcp-surface)] px-1 text-xs">
+              ?perf=1
+            </code>{' '}
+            disables animations.
+            {perfMode ? (
+              <span className="ml-2 rounded bg-[var(--rcp-tooltip-bg)] px-1.5 py-0.5 text-xs text-[var(--rcp-tooltip-text)]">
+                perf mode
+              </span>
+            ) : null}
+          </p>
+        </header>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {KPIS.map((kpi) => (
-          <KpiCard key={kpi.label} {...kpi} />
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <BarChartCard perfMode={perfMode} />
-        <LineChartCard perfMode={perfMode} />
-        <DualAxisChartCard perfMode={perfMode} />
-        <HistogramCard perfMode={perfMode} />
-        <DonutCard perfMode={perfMode} />
-      </div>
-
-      <BreakdownTable />
-    </section>
+        <EngagementSection perfMode={perfMode} />
+        <TrendsSection perfMode={perfMode} />
+      </section>
+    </div>
   );
 }
