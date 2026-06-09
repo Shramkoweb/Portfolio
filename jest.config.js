@@ -48,6 +48,10 @@ const config = {
     '/node_modules/',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '<rootDir>/components/recharts-poc/(?!primitives/(periodOverPeriod|colors)\\.ts$)',
+  ],
 };
 
 export default config;
