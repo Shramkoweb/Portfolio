@@ -10,7 +10,7 @@ const pathLevelToPriority = {
   3: 0.7,
 };
 
-const EXCLUDED_PATHS = ['/feed.xml'];
+const EXCLUDED_PATHS = ['/feed.xml', '/labs/*'];
 
 const getPathDepthLevel = (urlPath) => {
   if (urlPath === '/') {
