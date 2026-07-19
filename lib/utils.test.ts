@@ -79,6 +79,18 @@ describe('getCalendarDuration', () => {
     ).toEqual({ years: 7, months: 11, days: 19 });
   });
 
+  it('should cap month-end anchors to shorter months', () => {
+    expect(
+      getCalendarDuration(new Date('2020-01-31'), new Date('2020-03-01')),
+    ).toEqual({ years: 0, months: 1, days: 1 });
+  });
+
+  it('should treat a capped february as a full month', () => {
+    expect(
+      getCalendarDuration(new Date('2020-01-31'), new Date('2021-02-28')),
+    ).toEqual({ years: 1, months: 1, days: 0 });
+  });
+
   it('should return zeros for the same instant', () => {
     expect(getCalendarDuration(start, new Date('2018-08-01'))).toEqual({
       years: 0,
