@@ -86,6 +86,22 @@ describe('generateTechArticleSchema', () => {
     expect(schema.proficiencyLevel).toBe('Expert');
   });
 
+  it('should include dateModified when updateDate provided', () => {
+    const snippet = {
+      ...validSnippet,
+      updateDate: new Date('2024-05-10').getTime(),
+    };
+    const schema = generateTechArticleSchema(snippet);
+
+    expect(schema.dateModified).toBe('2024-05-10T00:00:00.000Z');
+  });
+
+  it('should not include dateModified when updateDate is null', () => {
+    const schema = generateTechArticleSchema(validSnippet);
+
+    expect(schema).not.toHaveProperty('dateModified');
+  });
+
   it('should use provided programmingLanguage', () => {
     const snippet = { ...validSnippet, programmingLanguage: 'TypeScript' };
     const schema = generateTechArticleSchema(snippet);
