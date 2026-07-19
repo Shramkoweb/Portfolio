@@ -58,6 +58,13 @@ describe('Blog Page', () => {
     expect(blogPostsLinks).toHaveLength(POSTS.length + 1);
   });
 
+  test('uses singular "article" in the counter for exactly one post', () => {
+    render(<BlogPage posts={[POSTS[0]]} categories={CATEGORIES} />);
+    const heading = screen.getByRole('heading', { name: 'Blog 1 article' });
+
+    expect(heading).toBeInTheDocument();
+  });
+
   test('on search correct filtered exist articles', () => {
     render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
     const inputElement = screen.getByLabelText('Search articles');
