@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
 import { BlogViewsCard } from '@/components/dashboard-card/blog-views';
-import { DaysAsSoftwareEngineer } from '@/components/dashboard-card/days-as-engineer';
 import { GithubFollowers } from '@/components/dashboard-card/github-followers';
 import { GitHubStars } from '@/components/dashboard-card/github-stars';
 import { MonthlyUsers } from '@/components/dashboard-card/monthly-user';
+import { TimeAsSoftwareEngineer } from '@/components/dashboard-card/time-as-engineer';
 
 export default function Dashboard() {
   return (
@@ -53,7 +53,7 @@ export default function Dashboard() {
           Statistics
         </h2>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-          <DaysAsSoftwareEngineer />
+          <TimeAsSoftwareEngineer />
           <BlogViewsCard />
           <GithubFollowers />
           <GitHubStars />
