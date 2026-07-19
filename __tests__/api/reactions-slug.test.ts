@@ -113,6 +113,24 @@ describe('API /api/reactions/[slug]', () => {
         reactions: { heart: 6, beer: 1, trophy: 0 },
       });
     });
+
+    it('zero-fills types missing from the DB (first reaction on a post)', async () => {
+      mock$transaction.mockResolvedValue([
+        { slug: 'my-post', type: 'heart', count: 1n },
+        [{ type: 'heart', count: 1n }],
+      ]);
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        body: { type: 'heart' },
+      });
+
+      await handler(req, res);
+
+      expect(status).toHaveBeenCalledWith(200);
+      expect(json).toHaveBeenCalledWith({
+        reactions: { heart: 1, beer: 0, trophy: 0 },
+      });
+    });
   });
 
   describe('unsupported method', () => {
