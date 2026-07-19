@@ -117,6 +117,36 @@ export const categoryToSeoData = {
   },
 };
 
+export interface CalendarDuration {
+  years: number;
+  months: number;
+  days: number;
+}
+
+/**
+ * Calendar duration between two instants, computed in UTC so the
+ * result does not depend on the viewer's timezone.
+ */
+export function getCalendarDuration(start: Date, end: Date): CalendarDuration {
+  let years = end.getUTCFullYear() - start.getUTCFullYear();
+  let months = end.getUTCMonth() - start.getUTCMonth();
+  let days = end.getUTCDate() - start.getUTCDate();
+
+  if (days < 0) {
+    months -= 1;
+    // Day 0 of the current month is the last day of the previous month
+    days += new Date(
+      Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), 0),
+    ).getUTCDate();
+  }
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  return { years, months, days };
+}
+
 export const extractMarkdownSlug = (fileName: string): string => {
   const lastDotIndex = fileName.lastIndexOf('.');
 
