@@ -11,7 +11,7 @@ import React, { useEffect } from 'react';
 
 import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
-import { MDXComponents } from '@/components/mdx-components';
+import { MDXComponents } from '@/components/mdx-components/mdx-components';
 import {
   generateTechArticleSchema,
   generateBreadcrumbSchema,

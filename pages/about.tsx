@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
-import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback/constants';
+import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
 
 import about from '../public/static/images/about.jpeg';
 import carBack from '../public/static/images/car-back.jpeg';

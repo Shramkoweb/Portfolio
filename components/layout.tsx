@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 
-import { Footer } from '@/components/footer';
+import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header';
 
 const DESCRIPTION =

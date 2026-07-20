@@ -1,4 +1,4 @@
-import { type ElementType } from 'react';
+import type { ElementType } from 'react';
 
 interface YearSeparatorProps {
   year: number | string;

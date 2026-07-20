@@ -1,4 +1,4 @@
-import { LinkedinTestimonial } from '@/lib/types';
+import type { LinkedinTestimonial } from '@/lib/types';
 
 export const LINKEDIN_FEEDBACK_LIST: LinkedinTestimonial[] = [
   {

@@ -1,10 +1,10 @@
-type ArticleMetaProps = {
+interface ArticleMetaProps {
   title: string;
   description: string;
   createDate: number;
   updateDate: number | null;
   keywords: string[];
-};
+}
 
 export function ArticleMeta(props: ArticleMetaProps) {
   const { title, description, createDate, updateDate, keywords } = props;

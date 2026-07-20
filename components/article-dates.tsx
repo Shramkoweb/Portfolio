@@ -1,7 +1,7 @@
-type ArticleDatesProps = {
+interface ArticleDatesProps {
   createDate: number;
   updateDate: number | null;
-};
+}
 
 const formatDate = (timestamp: number) =>
   new Date(timestamp).toLocaleDateString('en-us', {
