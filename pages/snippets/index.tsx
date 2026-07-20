@@ -2,11 +2,11 @@ import Head from 'next/head';
 
 import { ResourceCard } from '@/components/resource-card';
 import { sortByBirthtime } from '@/lib/posts/utils';
-import { getSnippets } from '@/lib/snippets/api';
-import { Snippet } from '@/lib/types';
+import { getSnippetsMetadata } from '@/lib/snippets/api';
+import { SnippetMetadata } from '@/lib/types';
 
 interface SnippetsPageProps {
-  snippets: Snippet[];
+  snippets: SnippetMetadata[];
   jsonLd: object;
 }
 
@@ -73,7 +73,7 @@ function SnippetsPage(props: SnippetsPageProps) {
 }
 
 export async function getStaticProps() {
-  const snippets = await getSnippets();
+  const snippets = await getSnippetsMetadata();
   const sortedSnippets = snippets.sort(sortByBirthtime);
 
   const jsonLd = {

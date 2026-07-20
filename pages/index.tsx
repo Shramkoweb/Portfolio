@@ -9,7 +9,7 @@ import useSWR from 'swr';
 
 import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
 import { fetcher } from '@/lib/fetcher';
-import { getPosts } from '@/lib/posts/api';
+import { getPostsMetadata } from '@/lib/posts/api';
 import {
   filterByAdvanceReact,
   filterByFeatured,
@@ -18,7 +18,7 @@ import {
 } from '@/lib/posts/utils';
 import { Routes } from '@/lib/routes';
 import { generateWebSiteSchema } from '@/lib/schema';
-import { Post } from '@/lib/types';
+import { PostMetadata } from '@/lib/types';
 import { generateGradient } from '@/lib/utils';
 import type { AllViewsResponse } from '@/pages/api/views';
 
@@ -26,9 +26,9 @@ import smile from '../public/static/images/smile.webp';
 import tongue from '../public/static/images/tongue.webp';
 
 interface IndexPageProps {
-  featuredPosts: Post[];
-  otherPosts: Post[];
-  advancedReactPosts: Post[];
+  featuredPosts: PostMetadata[];
+  otherPosts: PostMetadata[];
+  advancedReactPosts: PostMetadata[];
 }
 
 function IndexPage(props: IndexPageProps) {
@@ -250,7 +250,7 @@ function IndexPage(props: IndexPageProps) {
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<IndexPageProps>
 > {
-  const posts = await getPosts();
+  const posts = await getPostsMetadata();
   const otherPosts = posts
     .filter(filterByNotFeatured)
     .sort(sortByBirthtime)

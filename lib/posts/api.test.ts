@@ -5,7 +5,6 @@ import matter from 'gray-matter';
 import {
   filterPostsByCategory,
   getPostBySlug,
-  getPosts,
   getPostsCategories,
   getPostsMetadata,
   getPostSlugs,
@@ -198,43 +197,6 @@ describe('Posts API', () => {
       await expect(getPostBySlug('broken')).rejects.toThrow(
         /Invalid markdown format/,
       );
-    });
-  });
-
-  describe('getPosts', () => {
-    it('should ignore non-markdown files in the posts directory', async () => {
-      (readdir as jest.Mock).mockResolvedValueOnce([
-        'a.md',
-        '.DS_Store',
-        'README.txt',
-        'b.md',
-      ]);
-      (readFile as jest.Mock).mockResolvedValue('content');
-
-      const posts = await getPosts();
-
-      expect(posts).toHaveLength(2);
-      expect(posts.map((p) => p.data.slug)).toEqual(['a', 'b']);
-    });
-
-    it('should return both data and content for each post', async () => {
-      (readdir as jest.Mock).mockResolvedValueOnce(['only.md']);
-      (readFile as jest.Mock).mockResolvedValueOnce('raw markdown');
-
-      const [post] = await getPosts();
-
-      expect(post).toEqual(
-        expect.objectContaining({
-          data: expect.objectContaining({ slug: 'only' }),
-          content: 'Test content',
-        }),
-      );
-    });
-
-    it('should return empty array when directory is empty', async () => {
-      (readdir as jest.Mock).mockResolvedValueOnce([]);
-
-      await expect(getPosts()).resolves.toEqual([]);
     });
   });
 

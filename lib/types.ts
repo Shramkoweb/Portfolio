@@ -66,6 +66,8 @@ export type Snippet = {
   content: string;
 };
 
+export type SnippetMetadata = Omit<Snippet, 'content'>;
+
 type LinkedinCompany = {
   name: string;
   url: string;

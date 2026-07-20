@@ -77,19 +77,6 @@ export async function getPostBySlug(slug?: string): Promise<Post> {
   }
 }
 
-export async function getPosts(): Promise<Post[]> {
-  const fileNames = await readdir(POSTS_DIRECTORY);
-  const markdownFiles = fileNames.filter((fileName) =>
-    fileName.endsWith('.md'),
-  );
-
-  const postPromises = markdownFiles
-    .map(extractMarkdownSlug)
-    .map(getPostBySlug);
-
-  return Promise.all(postPromises);
-}
-
 export async function getPostsMetadata(): Promise<PostMetadata[]> {
   const fileNames = await readdir(POSTS_DIRECTORY);
   const markdownFiles = fileNames.filter((fileName) =>

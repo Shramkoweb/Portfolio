@@ -22,6 +22,7 @@ const config = {
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
     '^@/lib/(.*)$': '<rootDir>/lib/$1',
     '^lib/prisma$': '<rootDir>/lib/prisma',
+    '\\.(webp|png|jpe?g|gif|svg|ico)$': '<rootDir>/__mocks__/fileMock.js',
     '\\.(css)$': '<rootDir>/__mocks__/styleMock.js',
   },
   testPathIgnorePatterns: ['/node_modules/', '/.next/', '/__tests__/helpers/'],
