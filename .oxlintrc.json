@@ -9,7 +9,19 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "no-underscore-dangle": ["error", { "allow": ["_sum"] }]
+    "no-underscore-dangle": ["error", { "allow": ["_sum"] }],
+    "oxc/no-barrel-file": ["error", { "threshold": 0 }],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "regex": "^@/components/(dashboard-card|footer|mdx-components|mobile-menu|share-button)$",
+            "message": "Import from the concrete component module instead of a barrel file."
+          }
+        ]
+      }
+    ]
   },
   "ignorePatterns": [
     "node_modules/**",

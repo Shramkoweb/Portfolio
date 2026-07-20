@@ -12,16 +12,14 @@ import React from 'react';
 
 import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
-import { MDXComponents } from '@/components/mdx-components';
-import {
-  FacebookShare,
-  LinkedInShare,
-  TelegramShare,
-  TwitterShare,
-} from '@/components/share-button';
+import { MDXComponents } from '@/components/mdx-components/mdx-components';
+import { FacebookShare } from '@/components/share-button/facebook-share';
+import { LinkedInShare } from '@/components/share-button/linkedin-share';
+import { TelegramShare } from '@/components/share-button/telegram-share';
+import { TwitterShare } from '@/components/share-button/twitter-share';
 import { TableOfContent } from '@/components/table-of-content';
 import { Tag } from '@/components/tag';
-import { ViewCounter } from '@/components/view-counter/view-counter';
+import { ViewCounter } from '@/components/view-counter';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
