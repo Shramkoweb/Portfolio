@@ -5,8 +5,12 @@ import { sortByBirthtime } from '@/lib/posts/utils';
 import { getSnippetsMetadata } from '@/lib/snippets/api';
 import { SnippetMetadata } from '@/lib/types';
 
+type SnippetListItem = {
+  data: Pick<SnippetMetadata['data'], 'slug' | 'heading' | 'createDate'>;
+};
+
 interface SnippetsPageProps {
-  snippets: SnippetMetadata[];
+  snippets: SnippetListItem[];
   jsonLd: object;
 }
 
@@ -126,7 +130,11 @@ export async function getStaticProps() {
 
   return {
     props: {
-      snippets: sortedSnippets,
+      snippets: sortedSnippets.map(
+        ({ data: { slug, heading, createDate } }) => ({
+          data: { slug, heading, createDate },
+        }),
+      ),
       jsonLd,
     },
   };

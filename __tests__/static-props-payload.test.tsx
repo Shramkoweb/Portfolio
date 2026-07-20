@@ -66,7 +66,11 @@ describe('list pages static props payload', () => {
     expect(snippets.length).toBeGreaterThan(0);
     for (const snippet of snippets) {
       expect(snippet).not.toHaveProperty('content');
-      expect(snippet.data.heading).toEqual(expect.any(String));
+      expect(Object.keys(snippet.data).sort()).toEqual([
+        'createDate',
+        'heading',
+        'slug',
+      ]);
     }
     expect(jsonLd).toHaveProperty('@type', 'CollectionPage');
   });
