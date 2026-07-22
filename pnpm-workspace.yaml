@@ -7,9 +7,12 @@ overrides:
   # allow sharp ^0.35 on their own
   sharp: ^0.35.0
 
-onlyBuiltDependencies:
-  - '@prisma/engines'
-  - '@sentry/cli'
-  - prisma
-  - sharp
-  - unrs-resolver
+allowBuilds:
+  '@prisma/engines': true
+  '@sentry/cli': true
+  prisma: true
+  sharp: true
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - postcss@8.5.22
