@@ -105,9 +105,7 @@ configure [next.config.js](https://nextjs.org/docs/pages/api-reference/config/ne
 like this:
 
 ```js
-const nextConfig = {
-  /* Next.js config options here */
-};
+const nextConfig = {/* Next.js config options here */};
 
 let resultConfig;
 

@@ -133,8 +133,7 @@ Sometimes, you might want to use a discriminated union with tuples. Here's how y
 ```typescript
 type User = { id: number; name: string }; // User type
 type APIResponse =
-  | [success: true, data: User]
-  | [success: false, error: string]; // Tuple type
+  [success: true, data: User] | [success: false, error: string]; // Tuple type
 
 function handleResponse(response: APIResponse): void {
   const [success, data] = response;
