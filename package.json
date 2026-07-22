@@ -80,18 +80,5 @@
     "node": "24.x",
     "pnpm": ">=10"
   },
-  "packageManager": "pnpm@10.34.5",
-  "pnpm": {
-    "overrides": {
-      "@hono/node-server": "^1.19.13",
-      "postcss": "^8.5.10"
-    },
-    "onlyBuiltDependencies": [
-      "@prisma/engines",
-      "@sentry/cli",
-      "prisma",
-      "sharp",
-      "unrs-resolver"
-    ]
-  }
+  "packageManager": "pnpm@10.34.5"
 }
