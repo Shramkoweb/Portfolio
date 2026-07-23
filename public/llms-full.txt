@@ -1,23 +1,23 @@
-# Serhii Shramko — Senior Frontend Engineer
+# Serhii Shramko — Senior Software Engineer
 
-> Personal portfolio and blog of Serhii Shramko, a Senior Software Engineer specializing in frontend development with React, TypeScript, and Next.js. Built with Next.js, TypeScript, and Tailwind CSS. Open source.
+> Personal portfolio, blog, and digital garden of Serhii Shramko, a Senior Software Engineer at BetterMe specializing in frontend development with React, TypeScript, and Next.js. Built with Next.js, TypeScript, and Tailwind CSS. Open source.
 
-This site contains 35 blog posts on web development topics and 43 production-ready code snippets. Content is written in Markdown with MDX support, featuring rich frontmatter metadata including descriptions, keywords, and categories. The site also showcases browser extensions and developer tools.
+This site contains 35 blog posts on web development topics and 44 production-ready code snippets. Content is written in Markdown with MDX support, featuring rich frontmatter metadata including descriptions, keywords, and categories. The site also showcases browser extensions and developer tools.
 
 ## Pages
 
-- [About](https://shramko.dev/about): Professional experience, skills, and background
-- [Blog](https://shramko.dev/blog): Articles on React, TypeScript, Next.js, and web development
-- [Snippets](https://shramko.dev/snippets): Production-ready code snippets for common tasks
-- [Dashboard](https://shramko.dev/dashboard): Real-time GitHub and development stats
-- [Gear](https://shramko.dev/gear): Development hardware and software setup
-- [Bookmarks](https://shramko.dev/bookmarks): Curated developer bookmarks
-- [Learning](https://shramko.dev/learning): Learning resources and progress
+- [About](https://shramko.dev/about): Career, skills, and background of Serhii Shramko — Senior Software Engineer at BetterMe
+- [Blog](https://shramko.dev/blog): Articles on JavaScript, TypeScript, React, Next.js, and web development
+- [Snippets](https://shramko.dev/snippets): Copy-paste code snippets for JavaScript, TypeScript, React, Node.js, and CSS
+- [Dashboard](https://shramko.dev/dashboard): Real-time GitHub and development stats built with Next.js API routes
+- [Gear](https://shramko.dev/gear): Hardware, software, and apps used daily for development
+- [Bookmarks](https://shramko.dev/bookmarks): Curated open-source projects, engineering books, blogs, and tools
+- [Learning](https://shramko.dev/learning): Chronological record of books, courses, and projects studied over the years
 
 ## Projects
 
-- [Quizlet QuickList](https://shramko.dev/quizlet-list): Chrome extension for creating and managing Quizlet study lists
-- [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): Chrome extension to reset progress on Udemy courses
+- [Quizlet QuickList](https://shramko.dev/quizlet-list): Chrome extension to gather, organize, and export word lists for studying on Quizlet
+- [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): Browser extension for Chrome and Firefox that resets Udemy course progress in one click
 
 ## Blog Posts: React
 
@@ -71,7 +71,7 @@ This site contains 35 blog posts on web development topics and 43 production-rea
 
 ## Blog Posts: Node.js & Tooling
 
-- [Fix "__dirname Not Defined" in ES Modules – Quick Guide](https://shramko.dev/blog/dirname-error): Fix the "__dirname is not defined in ES module scope" error in Node.js. Recreate __dirname and __filename using import.meta.url.
+- [Fix “__dirname Not Defined” in ES Modules – Quick Guide](https://shramko.dev/blog/dirname-error): Fix the "__dirname is not defined in ES module scope" error in Node.js. Recreate __dirname and __filename using import.meta.url.
   Keywords: __dirname Node.js, ES modules, import.meta.url
 - [Mastering npm and Semantic Versioning for Smarter Development](https://shramko.dev/blog/npm-semantic-versioning): A friendly, practical guide to SemVer in npm. Learn versioning rules, avoid dependency chaos, and manage updates with confidence.
   Keywords: npm semantic versioning, SemVer guide, package.json versioning, caret vs tilde npm
@@ -122,7 +122,7 @@ This site contains 35 blog posts on web development topics and 43 production-rea
   Keywords: TypeScript branded types, nominal types, type branding, TypeScript ID types, type safety
 - [DistributiveOmit Type for Union Types](https://shramko.dev/snippets/distributive-omit): Custom TypeScript utility type that properly distributes Omit across union type members. Fixes the standard Omit behavior with discriminated unions.
   Keywords: TypeScript utility types, distributive types, conditional types, Omit union types
-- [Template Literal Types in TypeScript](https://shramko.dev/snippets/template-literal-types): Create complex string types with TypeScript template literals. Useful for CSS-in-JS libraries, event systems, and strongly typed string patterns.
+- [Unlocking the Power of Template Literal Types in TypeScript](https://shramko.dev/snippets/template-literal-types): Create complex string types with TypeScript template literals. Useful for CSS-in-JS libraries, event systems, and strongly typed string patterns.
   Keywords: TypeScript template literal types, template literals, string types, CSS-in-JS type safety
 - [TypeScript satisfies Operator: Keep Your Types Precise](https://shramko.dev/snippets/satisfies-operator): Learn when to use TypeScript's satisfies operator instead of type annotations. Validate object shapes while preserving literal types and autocomplete.
   Keywords: TypeScript satisfies, satisfies operator, TypeScript 4.9, type inference, literal types
@@ -139,6 +139,8 @@ This site contains 35 blog posts on web development topics and 43 production-rea
   Keywords: useLocalStorage, React localStorage hook, persist state React, useSyncExternalStore, cross-tab sync
 - [useMediaQuery React Hook: Responsive Design in JavaScript](https://shramko.dev/snippets/use-media-query): React hook for responsive breakpoints in JavaScript. Detect screen size changes, dark mode preference, and other CSS media queries in React components.
   Keywords: useMediaQuery, React responsive hook, media query JavaScript, detect screen size, window matchMedia
+- [useSyncExternalStore: Subscribe to Browser APIs in React](https://shramko.dev/snippets/use-sync-external-store): Subscribe to Browser APIs in React with useSyncExternalStore — online status, matchMedia, ResizeObserver, IntersectionObserver. No useEffect, no stale closures.
+  Keywords: useSyncExternalStore, React 19 hooks, subscribe to Browser API in React, React concurrent rendering, React useEffect alternative
 - [useToggle React Hook](https://shramko.dev/snippets/use-toggle-react-hook): Simple useToggle React hook for managing boolean state. Toggle between true and false with a clean API. Perfect for modals, dropdowns, and dark mode switches.
   Keywords: useToggle hook, Boolean toggle hook, React state management, useState toggle
 
@@ -158,7 +160,7 @@ This site contains 35 blog posts on web development topics and 43 production-rea
   Keywords: JavaScript getRandom function, random number generator, generate random float, Math.random
 - [Sleep in JavaScript: How to Pause Execution](https://shramko.dev/snippets/sleep): Learn how to pause JavaScript execution with a sleep function. Create delays using Promises and async/await for timing control in your code.
   Keywords: sleep in JavaScript, pause execution, delay in JavaScript, sleep function
-- [Sort an Array of Objects by Multiple Properties in JavaScript](https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript): Learn how to sort an array of objects by multiple properties in JavaScript using the Array.prototype.sort() method with a custom compare function.
+- [How to Sort an Array of Objects by Multiple Properties in JavaScript](https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript): Learn how to sort an array of objects by multiple properties in JavaScript using the Array.prototype.sort() method with a custom compare function.
   Keywords: JavaScript Array Object Sorting, Array.prototype.sort, custom compare function, sort by multiple properties
 - [Throttle Function in TypeScript with React Example](https://shramko.dev/snippets/throttle): Copy-paste throttle function in TypeScript. Limit how often a function fires during scroll, resize, or mousemove events. Includes React usage example.
   Keywords: throttle, throttle function, throttle vs debounce, scroll throttle, rate limit function calls

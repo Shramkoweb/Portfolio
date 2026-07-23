@@ -136,9 +136,7 @@ Methods that add and remove items from the beginning or the end:
 The `.find()` method will return the **_first element_** in the array that matches a test you provide.
 
 ```js
-const employees = [
-  /* See DATA_SAMPLE */
-];
+const employees = [/* See DATA_SAMPLE */];
 
 // Find employee with name 'Serhii'
 const serhii = employees.find((employee) => employee.name === 'Serhii');
