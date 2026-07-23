@@ -1,6 +1,7 @@
 overrides:
-  # advisory 1117015: postcss <8.5.10 XSS in stringify output; next@16.2.11
-  # pins postcss 8.4.31 exactly — drop when next moves past 8.5.10
+  # advisory 1117015: postcss <8.5.10 XSS in stringify output.
+  # next@16.2.11 pins postcss@8.4.31, an exact pin that cannot reach the
+  # patched line — drop when next allows postcss >=8.5.10 on its own
   postcss: ^8.5.10
   # advisory 1124066: sharp <0.35.0 DoS; next@16.2.11 and @vercel/og@0.11.1
   # both pin ^0.34.5 which cannot reach the patched line — drop when parents
