@@ -27,14 +27,14 @@
   "dependencies": {
     "@prisma/adapter-pg": "7.9.0",
     "@prisma/client": "7.9.0",
-    "@sentry/nextjs": "10.67.0",
+    "@sentry/nextjs": "10.68.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/og": "0.11.1",
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
     "gray-matter": "4.0.3",
     "lucide-react": "0.577.0",
-    "next": "16.2.11",
+    "next": "16.2.12",
     "next-mdx-remote": "6.0.0",
     "next-themes": "0.4.6",
     "react": "19.2.8",
@@ -64,7 +64,7 @@
     "next-sitemap": "4.2.3",
     "oxfmt": "0.60.0",
     "oxlint": "1.75.0",
-    "postcss": "8.5.22",
+    "postcss": "8.5.23",
     "prisma": "7.9.0",
     "rehype-autolink-headings": "7.1.0",
     "rehype-code-titles": "1.2.1",
@@ -80,5 +80,5 @@
     "node": "24.x",
     "pnpm": ">=10"
   },
-  "packageManager": "pnpm@11.16.0"
+  "packageManager": "pnpm@11.17.0"
 }
