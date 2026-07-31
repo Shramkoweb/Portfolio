@@ -65,6 +65,18 @@ describe('isBlockedUserAgent', () => {
       });
     });
 
+    it('blocks atlassian-bot (Rovo crawler)', () => {
+      expect(
+        isBlockedUserAgent(
+          'Mozilla/5.0 (compatible; atlassian-bot/1.0; +https://www.atlassian.com)',
+        ),
+      ).toEqual({
+        blocked: true,
+        token: 'atlassian-bot',
+        group: 'training',
+      });
+    });
+
     it('is case-insensitive (GPTBOT uppercase)', () => {
       expect(isBlockedUserAgent('GPTBOT/2.0')).toEqual({
         blocked: true,
@@ -95,6 +107,29 @@ describe('isBlockedUserAgent', () => {
       expect(isBlockedUserAgent('something ChatGPT Agent/1 else')).toEqual({
         blocked: true,
         token: 'chatgpt agent',
+        group: 'agent',
+      });
+    });
+
+    it('blocks Google-Agent (documented desktop UA)', () => {
+      const ua =
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like ' +
+        'Gecko; compatible; Google-Agent; +https://developers.google.com/' +
+        'crawling/docs/crawlers-fetchers/google-agent) Chrome/125.0.0.0 ' +
+        'Safari/537.36';
+      expect(isBlockedUserAgent(ua)).toEqual({
+        blocked: true,
+        token: 'google-agent',
+        group: 'agent',
+      });
+    });
+
+    it('blocks the legacy GoogleAgent-Mariner UA shape', () => {
+      expect(
+        isBlockedUserAgent('Mozilla/5.0 (compatible; GoogleAgent-Mariner)'),
+      ).toEqual({
+        blocked: true,
+        token: 'googleagent-mariner',
         group: 'agent',
       });
     });
@@ -141,6 +176,10 @@ describe('hygiene — short/generic tokens must not collide with real UAs', () =
     { ua: 'Mozilla/5.0 YakDocReader/1.0', mentions: 'yak' },
     { ua: 'Mozilla/5.0 DevinDocViewer/1.0', mentions: 'devin' },
     { ua: 'Mozilla/5.0 openaitest/1.0 — fictional', mentions: 'openai' },
+    {
+      ua: 'Googlebot/2.1 (+http://www.google.com/bot.html)',
+      mentions: 'google-agent',
+    },
   ];
 
   for (const { ua, mentions } of cases) {
