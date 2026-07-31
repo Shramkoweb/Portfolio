@@ -1,11 +1,12 @@
 overrides:
-  # advisory 1117015: postcss <8.5.10 XSS in stringify output.
-  # next@16.2.11 pins postcss@8.4.31, an exact pin that cannot reach the
-  # patched line — drop when next allows postcss >=8.5.10 on its own
-  postcss: ^8.5.10
-  # advisory 1124066: sharp <0.35.0 DoS; next@16.2.11 and @vercel/og@0.11.1
-  # both pin ^0.34.5 which cannot reach the patched line — drop when parents
-  # allow sharp ^0.35 on their own
+  # advisories 1117015 (moderate XSS <8.5.10), 1124252 (high file read
+  # <=8.5.11), 1124288 (high source map path traversal <=8.5.17).
+  # next@16.2.12 pins postcss@8.4.31, an exact pin that cannot reach the
+  # patched line — drop when next allows postcss >=8.5.18 on its own
+  postcss: ^8.5.18
+  # advisory 1124066: sharp <0.35.0 libvips CVEs; next@16.2.12 and
+  # @vercel/og@0.11.1 both pin ^0.34.5 which cannot reach the patched line —
+  # drop when parents allow sharp ^0.35 on their own
   sharp: ^0.35.0
 
 allowBuilds:

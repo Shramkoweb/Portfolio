@@ -7,23 +7,33 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
 import { isBlockedUserAgent } from '@/lib/bot-blocklist/matcher';
+import { isBlockedSignatureAgent } from '@/lib/bot-blocklist/signature-agent';
 
 const POLICY_BODY =
   'Automated AI training and scraping crawlers are not permitted on this site.\n';
 
+function policyResponse(): NextResponse {
+  return new NextResponse(POLICY_BODY, {
+    status: 403,
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-Robots-Tag': 'noindex, noai, noimageai',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
+
 export function middleware(request: NextRequest) {
   const ua = request.headers.get('user-agent');
-  const result = isBlockedUserAgent(ua);
 
-  if (result.blocked) {
-    return new NextResponse(POLICY_BODY, {
-      status: 403,
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8',
-        'X-Robots-Tag': 'noindex, noai, noimageai',
-        'Cache-Control': 'no-store',
-      },
-    });
+  if (isBlockedUserAgent(ua).blocked) {
+    return policyResponse();
+  }
+
+  // Agentic browsers with plain browser UAs (ChatGPT agent) identify only
+  // via Web Bot Auth — see lib/bot-blocklist/signature-agent.ts.
+  if (isBlockedSignatureAgent(request.headers.get('signature-agent'), ua)) {
+    return policyResponse();
   }
 
   return NextResponse.next();

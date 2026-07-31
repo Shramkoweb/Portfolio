@@ -23,6 +23,7 @@ export const TRAINING_CRAWLER_TOKENS: readonly BlockToken[] = [
   { value: 'amazon-kendra', kind: 'substring' },
   { value: 'anthropic-ai', kind: 'substring' },
   { value: 'applebot-extended', kind: 'substring' },
+  { value: 'atlassian-bot', kind: 'substring' },
   { value: 'bedrockbot', kind: 'substring' },
   { value: 'brightbot', kind: 'substring' },
   { value: 'bytespider', kind: 'substring' },
@@ -116,6 +117,9 @@ export const AUTONOMOUS_AGENT_TOKENS: readonly BlockToken[] = [
   { value: 'channel3bot', kind: 'substring' },
   { value: 'chatgpt agent', kind: 'substring' },
   { value: 'devin', kind: 'word-boundary' },
+  // Documented token for agents on Google infrastructure (Project Mariner
+  // et al.); `googleagent-mariner` kept for the legacy UA shape.
+  { value: 'google-agent', kind: 'substring' },
   { value: 'googleagent-mariner', kind: 'substring' },
   { value: 'novaact', kind: 'substring' },
   { value: 'operator', kind: 'word-boundary' },
@@ -138,6 +142,7 @@ export const BLOCKED_BOT_GROUPS: Readonly<Record<string, BlockGroup>> = {
   'amazon-kendra': 'training',
   'anthropic-ai': 'training',
   'applebot-extended': 'training',
+  'atlassian-bot': 'training',
   bedrockbot: 'training',
   brightbot: 'training',
   bytespider: 'training',
@@ -224,6 +229,7 @@ export const BLOCKED_BOT_GROUPS: Readonly<Record<string, BlockGroup>> = {
   channel3bot: 'agent',
   'chatgpt agent': 'agent',
   devin: 'agent',
+  'google-agent': 'agent',
   'googleagent-mariner': 'agent',
   novaact: 'agent',
   operator: 'agent',
