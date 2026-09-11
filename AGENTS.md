@@ -20,7 +20,7 @@ Brief for AI coding agents (Claude Code, Codex, Cursor, Copilot, Factory). Human
 
 ## Setup
 
-Prereqs: Node 24.x (see `.nvmrc`), pnpm 10.x, Postgres database for any DB-touching feature.
+Prereqs: Node 24.x (see `.nvmrc`), pnpm at the version pinned in `packageManager` (`package.json`), Postgres database for any DB-touching feature.
 
 ```bash
 pnpm install            # also runs prisma generate via postinstall
