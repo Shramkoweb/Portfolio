@@ -1,6 +1,8 @@
+'use client';
+
 import clsx from 'clsx';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 interface HeaderLinkProps {
   href: string;
@@ -9,8 +11,8 @@ interface HeaderLinkProps {
 
 export function HeaderLink(props: HeaderLinkProps) {
   const { href, text } = props;
-  const router = useRouter();
-  const isActive = router.asPath === href;
+  const pathname = usePathname();
+  const isActive = pathname === href;
 
   return (
     <NextLink

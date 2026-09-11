@@ -1,10 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    asPath: '/',
-  }),
+jest.mock('next/navigation', () => ({
+  usePathname: () => '/',
 }));
 
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';

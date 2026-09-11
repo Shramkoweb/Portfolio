@@ -1,3 +1,5 @@
+'use client';
+
 import { MoonStar, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useSyncExternalStore } from 'react';

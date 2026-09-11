@@ -1,26 +1,18 @@
-import * as Sentry from '@sentry/nextjs';
-import Head from 'next/head';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { useEffect } from 'react';
 
-function NotFoundPage() {
-  useEffect(() => {
-    Sentry.captureMessage(`404: ${window.location.pathname}`, {
-      level: 'info',
-      tags: { referrer: document.referrer || 'direct' },
-    });
-  }, []);
+import { NotFoundReporter } from '@/components/not-found-reporter';
 
+export const metadata: Metadata = {
+  title: '404 | Serhii Shramko',
+  description:
+    "Oops! The page you're looking for isn't here. But don't worry, we'll help you find your way back. Let's start by heading to the homepage.",
+};
+
+export default function NotFound() {
   return (
     <>
-      <Head>
-        <title>404 | Serhii Shramko</title>
-        <meta
-          content="Oops! The page you're looking for isn't here. But don't worry, we'll help you find your way back. Let's start by heading to the homepage."
-          name="description"
-          key="description"
-        />
-      </Head>
+      <NotFoundReporter />
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 text-black dark:text-white">
           YOU&apos;RE IN THE WRONG PLACE
@@ -47,5 +39,3 @@ function NotFoundPage() {
     </>
   );
 }
-
-export default NotFoundPage;
