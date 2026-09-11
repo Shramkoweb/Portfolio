@@ -1,17 +1,16 @@
 overrides:
-  # advisories 1124066 (sharp <0.35.0 libvips CVEs) and 1193725 (<0.35.4).
-  # @vercel/og@0.11.1 pins sharp ^0.34.5 in optionalDependencies, which cannot
-  # reach the patched line. next@16.3.4 now allows ^0.35.4 on its own, so
-  # @vercel/og is the sole remaining justification —
-  # drop when @vercel/og allows sharp ^0.35 on its own
-  sharp: ^0.35.0
+  # advisory 1108030 (moderate, unzipSync infinite loop on malformed ZIP64
+  # <0.7.5). satori@0.33.3 (via @vercel/og@1.0.2) pins fflate@0.7.3 exactly,
+  # so the patched line is unreachable without an override.
+  # Drop when satori pins fflate >=0.7.5 on its own
+  fflate: ^0.7.5
   # advisories 1153173 (high, unsafe deserialization <3.22.0) and 1158532
-  # (moderate, <=3.23.0). prisma@7.9.1 pins mysql2@3.15.3 exactly, so the
+  # (moderate, <=3.23.0). prisma@7.10.0 pins mysql2@3.15.3 exactly, so the
   # patched line is unreachable without an override. This project is
   # Postgres-only (@prisma/adapter-pg) — the MySQL driver never executes.
   # Drop when prisma pins mysql2 >=3.23.1 on its own
   mysql2: ^3.24.4
-  # advisory 1145093 (high, prototype pollution <8.0.0). @prisma/config@7.9.1
+  # advisory 1145093 (high, prototype pollution <8.0.0). @prisma/config@7.10.0
   # pins deepmerge-ts@7.1.5 exactly — unreachable without an override.
   # Exercised at build time via prisma.config.ts.
   # Drop when @prisma/config pins deepmerge-ts >=8 on its own
