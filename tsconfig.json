@@ -2,6 +2,7 @@
   "compilerOptions": {
     "types": ["@testing-library/jest-dom"],
     "paths": {
+      "@/app/*": ["./app/*"],
       "@/pages/*": ["./pages/*"],
       "@/components/*": ["./components/*"],
       "@/lib/*": ["./lib/*"]

@@ -4,7 +4,11 @@ const { spacing } = defaultTheme;
 
 /** @type {import("tailwindcss").Config} */
 const config = {
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  content: [
+    './app/**/*.{ts,tsx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+  ],
   darkMode: 'class',
   theme: {
     fontSize: {

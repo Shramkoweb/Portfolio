@@ -23,7 +23,7 @@
     "test:coverage": "jest --coverage",
     "verify": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run test:ci",
     "verify:full": "pnpm run verify && pnpm run build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.0",
