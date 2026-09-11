@@ -7,6 +7,7 @@
     "article": "node lib/scripts/generate-article-template.js",
     "build": "next build",
     "clean": "rm -rf .next coverage",
+    "csp:check": "node lib/scripts/check-csp-hashes.js",
     "deps:audit": "pnpm audit --prod --audit-level=high",
     "dev": "next dev",
     "format": "oxfmt --write",

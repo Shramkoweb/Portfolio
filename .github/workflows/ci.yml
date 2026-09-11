@@ -95,3 +95,6 @@ jobs:
       - run: pnpm build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      # The CSP pins the next-themes inline script by hash; a dependency bump
+      # would otherwise break theming silently in production.
+      - run: pnpm csp:check
