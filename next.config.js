@@ -4,7 +4,7 @@ const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com/ https://vercel.live/;
     style-src 'self' 'unsafe-inline';
-    img-src 'self';
+    img-src 'self' data:;
     connect-src 'self' https://*.ingest.sentry.io https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live;
     font-src 'self';
     worker-src 'self' blob:;
