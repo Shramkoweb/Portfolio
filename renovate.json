@@ -24,6 +24,11 @@
     {
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "v1 removed all brand icons (Facebook/Linkedin/Twitter) used by the share buttons",
+      "matchPackageNames": ["lucide-react"],
+      "allowedVersions": "<1.0.0"
     }
   ]
 }
