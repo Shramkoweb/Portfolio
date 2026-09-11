@@ -5,8 +5,8 @@
 <p align="center">
   <a href="https://github.com/Shramkoweb/Portfolio/actions/workflows/ci.yml"><img src="https://github.com/Shramkoweb/Portfolio/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://github.com/Shramkoweb/Portfolio/actions/workflows/lighthouse.yml"><img src="https://github.com/Shramkoweb/Portfolio/actions/workflows/lighthouse.yml/badge.svg" alt="Lighthouse"></a>
-  <a href="https://codeclimate.com/github/Shramkoweb/Portfolio/maintainability"><img src="https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/maintainability" alt="Maintainability"></a>
-  <a href="https://codeclimate.com/github/Shramkoweb/Portfolio/test_coverage"><img src="https://api.codeclimate.com/v1/badges/856e98b049fbf4dca86d/test_coverage" alt="Test Coverage"></a>
+  <a href="https://qlty.sh/gh/Shramkoweb/projects/Portfolio"><img src="https://qlty.sh/gh/Shramkoweb/projects/Portfolio/maintainability.svg" alt="Maintainability"></a>
+  <a href="https://qlty.sh/gh/Shramkoweb/projects/Portfolio"><img src="https://qlty.sh/gh/Shramkoweb/projects/Portfolio/coverage.svg" alt="Test Coverage"></a>
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
 </p>
 
@@ -40,8 +40,8 @@
 
 ### Prerequisites
 
-- Node 24.x
-- pnpm 10.x
+- Node 24.x (see [`.nvmrc`](.nvmrc))
+- pnpm — the exact version is pinned in the `packageManager` field of [`package.json`](package.json); `corepack` picks it up automatically
 - Postgres database (local or hosted, e.g. [Neon](https://neon.tech))
 
 ### Setup
@@ -66,18 +66,25 @@ App runs at http://localhost:3000.
 | `pnpm start`                        | start production server                   |
 | `pnpm lint` / `pnpm lint:fix`       | oxlint                                    |
 | `pnpm format` / `pnpm format:check` | oxfmt                                     |
+| `pnpm typecheck`                    | `tsc --noEmit`                            |
 | `pnpm test` / `pnpm test:coverage`  | Jest                                      |
 | `pnpm verify`                       | lint + format:check + typecheck + test:ci |
 | `pnpm verify:full`                  | `verify` + production build               |
+| `pnpm deps:audit`                   | `pnpm audit` on prod deps, high and above |
+| `pnpm clean`                        | remove `.next/` and `coverage/`           |
 | `pnpm article`                      | scaffold a new blog post                  |
 
 ## Testing
 
-Tests use Jest with Testing Library. Run `pnpm test` for the full suite or `pnpm test:coverage` for a coverage report. Tests live in `__tests__/`. CI uploads coverage to Code Climate.
+Tests use Jest with Testing Library. Run `pnpm test` for the full suite or `pnpm test:coverage` for a coverage report.
+
+Unit tests sit next to the code they cover (`components/**/*.test.tsx`, `lib/**/*.test.ts`); page-level and API-route tests live in `__tests__/`. Coverage is collected on every run and thresholds are enforced in `jest.config.js` — Jest exits non-zero below 85% statements / 75% branches / 80% functions / 85% lines. CI publishes `coverage/lcov.info` to [Qlty](https://qlty.sh/gh/Shramkoweb/projects/Portfolio), which backs the coverage badge above.
 
 ## Deployment
 
-Deploys automatically to [Vercel](https://vercel.com) on push to `main`. The `postbuild` script regenerates the sitemap via `next-sitemap`. Pull requests run a Lighthouse budget check defined in `.github/workflows/lighthouse.yml`.
+Deploys automatically to [Vercel](https://vercel.com) on push to `main`. The `postbuild` script regenerates the sitemap via `next-sitemap`.
+
+Every push and pull request runs `.github/workflows/ci.yml` — `lint`, `typecheck`, `test` and `audit` in parallel, plus a full `build` on pull requests. Pull requests additionally run a Lighthouse budget check defined in `.github/workflows/lighthouse.yml`.
 
 ## Monitors
 

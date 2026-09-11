@@ -44,6 +44,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write # OIDC auth for the Qlty coverage upload
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v6
@@ -55,6 +58,13 @@ jobs:
         env:
           CI: true
       - run: pnpm test:ci --coverage
+      - name: Upload coverage to Qlty
+        # Forked PRs get no OIDC token — skip rather than fail the job.
+        if: github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push'
+        uses: qltysh/qlty-action/coverage@v2
+        with:
+          oidc: true
+          files: coverage/lcov.info
 
   audit:
     runs-on: ubuntu-latest
