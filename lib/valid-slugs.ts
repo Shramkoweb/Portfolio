@@ -3,7 +3,6 @@ import { getSnippetSlugs } from '@/lib/snippets/api';
 
 const MAX_SLUG_LENGTH = 128;
 
-// Pages that POST view counts but have no MDX source behind them.
 const SYNTHETIC_SLUGS = ['udemy-reset-progress-page', 'quizlet-page'];
 
 let knownSlugsPromise: Promise<Set<string>> | null = null;
@@ -14,7 +13,7 @@ async function buildKnownSlugs(): Promise<Set<string>> {
     getSnippetSlugs(),
   ]);
 
-  // Already extension-stripped. Stripping again would cut the `.dev` off
+  // Do not strip extensions again: it would cut `.dev` off the real slug
   // `introducing-the-new-shramko.dev`.
   return new Set([...postSlugs, ...snippetSlugs, ...SYNTHETIC_SLUGS]);
 }

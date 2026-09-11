@@ -1,9 +1,9 @@
 import { withSentryConfig } from '@sentry/nextjs';
 
-// The hash pins the next-themes inline theme setter; `pnpm csp:check` fails
-// when it drifts. 'unsafe-eval' must stay — MDXRemote evaluates every post via
-// `Reflect.construct(Function, ...)`, so without it /blog/* renders blank.
-// Dev swaps the hash for 'unsafe-inline' (HMR); a hash would make it ignored.
+// The hash covers the next-themes inline theme setter. 'unsafe-eval' must
+// stay: MDXRemote evaluates every post via `Reflect.construct(Function, ...)`,
+// so dropping it renders /blog/* blank. Dev cannot have both — under CSP3 a
+// hash makes 'unsafe-inline' ignored, which would block HMR.
 const scriptSrc =
   process.env.NODE_ENV === 'production'
     ? `'self' 'unsafe-eval' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU=' https://va.vercel-scripts.com/ https://vercel.live/`

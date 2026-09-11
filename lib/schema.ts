@@ -9,8 +9,8 @@ const author = {
   url: `${SITE_URL}/about`,
 };
 
-// Escapes `<` so a value containing `</script>` cannot break out of the
-// ld+json tag. Safe for JSON consumers; not safe to inline into a JS bundle.
+// Blocks a `</script>` breakout from the ld+json tag. Not sufficient for
+// inlining into a JS bundle — that also needs U+2028/U+2029 escaped.
 export function serializeJsonLd(schema: unknown): string {
   const json: string | undefined = JSON.stringify(schema);
 
