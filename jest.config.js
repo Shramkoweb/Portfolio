@@ -7,6 +7,19 @@
 const config = {
   clearMocks: true,
   collectCoverage: true,
+  // Scope coverage to the logic layer. Without an explicit list Jest reports
+  // only the files a test happens to import, so untested files vanish from
+  // the report and the percentages read far higher than they are.
+  // Presentational pages and components are deliberately out of scope: this
+  // number is about logic, and folding untested JSX into it would say more
+  // about rendering than about the code the tests actually exercise.
+  collectCoverageFrom: [
+    'lib/**/*.{ts,tsx}',
+    'pages/api/**/*.{ts,tsx}',
+    'middleware.ts',
+    '!**/*.d.ts',
+    '!**/*.test.{ts,tsx}',
+  ],
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   coverageThreshold: {
