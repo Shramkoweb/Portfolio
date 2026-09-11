@@ -1,8 +1,21 @@
 import { withSentryConfig } from '@sentry/nextjs';
 
+// Production pins the one inline script we ship — the next-themes
+// pre-hydration theme setter — by hash. Re-pin it if next-themes is upgraded
+// or the ThemeProvider props in pages/_app.tsx change.
+//
+// Dev keeps the unsafe tokens instead of the hash: the dev server serves
+// eval-wrapped modules and injects its own inline HMR/error-overlay scripts.
+// The hash cannot simply be added alongside them — under CSP3 a hash-source
+// makes 'unsafe-inline' ignored, which would block those dev scripts.
+const scriptSrc =
+  process.env.NODE_ENV === 'production'
+    ? `'self' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU=' https://va.vercel-scripts.com/ https://vercel.live/`
+    : `'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com/ https://vercel.live/`;
+
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com/ https://vercel.live/;
+    script-src ${scriptSrc};
     style-src 'self' 'unsafe-inline';
     img-src 'self' data:;
     connect-src 'self' https://*.ingest.sentry.io https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live;
