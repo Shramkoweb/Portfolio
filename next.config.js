@@ -1,16 +1,21 @@
 import { withSentryConfig } from '@sentry/nextjs';
 
 // Production pins the one inline script we ship — the next-themes
-// pre-hydration theme setter — by hash. Re-pin it if next-themes is upgraded
-// or the ThemeProvider props in pages/_app.tsx change.
+// pre-hydration theme setter — by hash, which lets us drop 'unsafe-inline'.
+// Re-pin it if next-themes is upgraded or the ThemeProvider props in
+// pages/_app.tsx change; `pnpm csp:check` catches that.
 //
-// Dev keeps the unsafe tokens instead of the hash: the dev server serves
-// eval-wrapped modules and injects its own inline HMR/error-overlay scripts.
-// The hash cannot simply be added alongside them — under CSP3 a hash-source
-// makes 'unsafe-inline' ignored, which would block those dev scripts.
+// 'unsafe-eval' has to stay: MDXRemote evaluates every post and snippet on the
+// client via `Reflect.construct(Function, ...)` (next-mdx-remote/dist/index.js:37).
+// Removing it renders a blank page with an EvalError on every /blog/* and
+// /snippets/* route. Dropping it needs a move off client-side MDX evaluation.
+//
+// Dev additionally keeps 'unsafe-inline' instead of the hash: the dev server
+// injects its own inline HMR/error-overlay scripts, and under CSP3 a
+// hash-source makes 'unsafe-inline' ignored, so the two cannot coexist.
 const scriptSrc =
   process.env.NODE_ENV === 'production'
-    ? `'self' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU=' https://va.vercel-scripts.com/ https://vercel.live/`
+    ? `'self' 'unsafe-eval' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU=' https://va.vercel-scripts.com/ https://vercel.live/`
     : `'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com/ https://vercel.live/`;
 
 const ContentSecurityPolicy = `
