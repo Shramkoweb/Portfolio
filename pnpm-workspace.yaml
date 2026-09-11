@@ -1,15 +1,24 @@
 overrides:
-  # advisories 1117015 (moderate XSS <8.5.10), 1124252 (high file read
-  # <=8.5.11), 1124288 (high source map path traversal <=8.5.17).
-  # next@16.2.12 pins postcss@8.4.31, an exact pin that cannot reach the
-  # patched line — drop when next allows postcss >=8.5.18 on its own
-  postcss: ^8.5.18
-  # advisory 1124066: sharp <0.35.0 libvips CVEs; next@16.2.12 and
-  # @vercel/og@0.11.1 both pin ^0.34.5 which cannot reach the patched line —
-  # drop when parents allow sharp ^0.35 on their own
+  # advisories 1124066 (sharp <0.35.0 libvips CVEs) and 1193725 (<0.35.4).
+  # @vercel/og@0.11.1 pins sharp ^0.34.5 in optionalDependencies, which cannot
+  # reach the patched line. next@16.3.4 now allows ^0.35.4 on its own, so
+  # @vercel/og is the sole remaining justification —
+  # drop when @vercel/og allows sharp ^0.35 on its own
   sharp: ^0.35.0
+  # advisories 1153173 (high, unsafe deserialization <3.22.0) and 1158532
+  # (moderate, <=3.23.0). prisma@7.9.1 pins mysql2@3.15.3 exactly, so the
+  # patched line is unreachable without an override. This project is
+  # Postgres-only (@prisma/adapter-pg) — the MySQL driver never executes.
+  # Drop when prisma pins mysql2 >=3.23.1 on its own
+  mysql2: ^3.24.4
+  # advisory 1145093 (high, prototype pollution <8.0.0). @prisma/config@7.9.1
+  # pins deepmerge-ts@7.1.5 exactly — unreachable without an override.
+  # Exercised at build time via prisma.config.ts.
+  # Drop when @prisma/config pins deepmerge-ts >=8 on its own
+  deepmerge-ts: ^8.0.0
 
 allowBuilds:
+  '@parcel/watcher': true
   '@prisma/engines': true
   '@sentry/cli': true
   prisma: true
