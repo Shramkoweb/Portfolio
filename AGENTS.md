@@ -50,6 +50,7 @@ pnpm dev                # http://localhost:3000
 | Type check only           | `pnpm typecheck`                      |
 | Scaffold a blog post      | `pnpm article`                        |
 | Regenerate Prisma client  | `pnpm exec prisma generate`           |
+| Check CSP inline hashes   | `pnpm csp:check` (after `pnpm build`) |
 
 ## Repo layout
 
@@ -94,4 +95,3 @@ pnpm dev                # http://localhost:3000
 ## Notes for specific tools
 
 - **Claude Code:** `CLAUDE.md` at the repo root is a symlink to this file. Edit `AGENTS.md`, not `CLAUDE.md`.
-- **Pages Router / Sentry gap:** there is no `pages/_error.tsx` with `Sentry.captureUnderscoreErrorException`, so SSR errors from the Pages Router don't reach Sentry. Don't fix this inline as a side effect of unrelated work — open a focused PR for it.
