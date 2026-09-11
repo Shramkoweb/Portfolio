@@ -7,6 +7,7 @@ import {
   ReactionType,
   VALID_REACTION_TYPES,
 } from '@/lib/types';
+import { isKnownSlug } from '@/lib/valid-slugs';
 
 type ErrorResponse = {
   error: { message: string };
@@ -52,6 +53,10 @@ export default async function handler(
         return res.status(400).json({
           error: { message: 'Invalid reaction type' },
         });
+      }
+
+      if (!(await isKnownSlug(slug))) {
+        return res.status(404).json({ error: { message: 'Unknown slug' } });
       }
 
       const [, reactions] = await prisma.$transaction([
