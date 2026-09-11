@@ -6,7 +6,6 @@ Sentry.init({
   release: process.env.APP_RELEASE_VERSION,
   tracesSampleRate: 0,
   debug: false,
-  sendDefaultPii: true,
   ignoreErrors: [
     // iOS Safari WebKit errors
     "undefined is not an object (evaluating 'window.webkit.messageHandlers')",
