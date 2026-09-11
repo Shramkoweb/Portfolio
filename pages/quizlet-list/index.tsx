@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
+import { serializeJsonLd } from '@/lib/schema';
 
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
@@ -79,7 +80,7 @@ function QuizletPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: serializeJsonLd({
               '@context': 'https://schema.org',
               '@type': 'SoftwareApplication',
               name: 'Quizlet QuickList',
@@ -117,7 +118,7 @@ function QuizletPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: serializeJsonLd({
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
               mainEntity: [

@@ -15,6 +15,7 @@ import { MDXComponents } from '@/components/mdx-components/mdx-components';
 import {
   generateTechArticleSchema,
   generateBreadcrumbSchema,
+  serializeJsonLd,
 } from '@/lib/schema';
 import { compileMDX } from '@/lib/scripts/compiler';
 import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
@@ -58,13 +59,13 @@ function SnippetPage(props: SnippetPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateTechArticleSchema(props.data)),
+            __html: serializeJsonLd(generateTechArticleSchema(props.data)),
           }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
+            __html: serializeJsonLd(
               generateBreadcrumbSchema([
                 { name: 'Home', url: 'https://shramko.dev/' },
                 { name: 'Snippets', url: 'https://shramko.dev/snippets' },

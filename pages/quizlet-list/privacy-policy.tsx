@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
+import { serializeJsonLd } from '@/lib/schema';
 
 function PrivacyPolicy() {
   return (
@@ -51,7 +52,7 @@ function PrivacyPolicy() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: serializeJsonLd({
               '@context': 'https://schema.org',
               '@type': 'WebPage',
               name: 'Privacy Policy | Quizlet QuickList Web Extension',

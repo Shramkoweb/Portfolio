@@ -3,6 +3,7 @@ import {
   generateTechArticleSchema,
   generateBreadcrumbSchema,
   generateWebSiteSchema,
+  serializeJsonLd,
 } from '@/lib/schema';
 
 const validPost = {
@@ -148,5 +149,57 @@ describe('generateWebSiteSchema', () => {
     expect(schema['@type']).toBe('WebSite');
     expect(schema.url).toBe('https://shramko.dev');
     expect(schema.author.name).toBe('Serhii Shramko');
+  });
+});
+
+describe('serializeJsonLd', () => {
+  it('should escape "<" so a "</script>" payload cannot break out', () => {
+    const output = serializeJsonLd({
+      headline: '</script><img src=x onerror=alert(1)>',
+    });
+
+    expect(output).not.toContain('<');
+    expect(output).toContain('\\u003c');
+  });
+
+  it('should escape "<" in the "<!--" breakout sequence too', () => {
+    const output = serializeJsonLd({ description: '<!--' });
+
+    expect(output).not.toContain('<');
+  });
+
+  it('should round-trip back to the original object', () => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: 'Comparing a < b in <script> tags',
+      keywords: ['a<b', 'c>d', 'e&f'],
+      nested: { deep: { value: '</script>' } },
+      count: 42,
+      flag: true,
+      empty: null,
+    };
+
+    expect(JSON.parse(serializeJsonLd(schema))).toEqual(schema);
+  });
+
+  it('should decode the escape back to a literal "<"', () => {
+    const headline = '</script><img>';
+
+    expect(JSON.parse(serializeJsonLd({ headline })).headline).toBe(headline);
+  });
+
+  it('should not throw on undefined', () => {
+    expect(() => serializeJsonLd(undefined)).not.toThrow();
+    expect(serializeJsonLd(undefined)).toBe('null');
+  });
+
+  it('should not throw on values JSON.stringify drops', () => {
+    expect(() => serializeJsonLd(() => {})).not.toThrow();
+    expect(() => serializeJsonLd(Symbol('x'))).not.toThrow();
+  });
+
+  it('should serialize real schema output without a literal "<"', () => {
+    expect(serializeJsonLd(generateWebSiteSchema())).not.toContain('<');
   });
 });

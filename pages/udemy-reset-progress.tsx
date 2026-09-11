@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 
 import { UDEMY_RESET_APP_OG_IMAGE } from '@/lib/constants';
+import { serializeJsonLd } from '@/lib/schema';
 
 import chromeStore from '../public/static/images/chrome-store.png';
 import firefoxStore from '../public/static/images/firefox-store.webp';
@@ -75,7 +76,7 @@ function UdemyResetProgressPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: serializeJsonLd({
               '@context': 'https://schema.org',
               '@type': 'SoftwareApplication',
               name: 'Udemy Reset Progress',

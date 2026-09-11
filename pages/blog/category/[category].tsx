@@ -12,7 +12,7 @@ import {
   getPostsMetadata,
 } from '@/lib/posts/api';
 import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
-import { generateBreadcrumbSchema } from '@/lib/schema';
+import { generateBreadcrumbSchema, serializeJsonLd } from '@/lib/schema';
 import { PostCategory, PostMetadata } from '@/lib/types';
 import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
 
@@ -74,7 +74,7 @@ function CategoryPage(props: CategoryPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
+            __html: serializeJsonLd(
               generateBreadcrumbSchema([
                 { name: 'Home', url: 'https://shramko.dev/' },
                 { name: 'Blog', url: 'https://shramko.dev/blog' },

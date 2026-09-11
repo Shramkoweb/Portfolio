@@ -24,6 +24,7 @@ import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
   generateBreadcrumbSchema,
+  serializeJsonLd,
 } from '@/lib/schema';
 import {
   compileMDX,
@@ -83,7 +84,7 @@ function ArticlePage(props: ArticlePageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
+            __html: serializeJsonLd(
               generateBlogPostingSchema({ ...props.data }),
             ),
           }}
@@ -91,7 +92,7 @@ function ArticlePage(props: ArticlePageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
+            __html: serializeJsonLd(
               generateBreadcrumbSchema([
                 { name: 'Home', url: 'https://shramko.dev/' },
                 { name: 'Blog', url: 'https://shramko.dev/blog' },

@@ -11,6 +11,7 @@ import Head from 'next/head';
 
 import { BookmarkSection } from '@/components/bookmark-section';
 import { Tag } from '@/components/tag';
+import { serializeJsonLd } from '@/lib/schema';
 
 interface BookmarkItem {
   title: string;
@@ -448,7 +449,7 @@ function BookmarksPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(JSON_LD),
+            __html: serializeJsonLd(JSON_LD),
           }}
         />
       </Head>
