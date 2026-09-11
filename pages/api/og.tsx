@@ -53,9 +53,11 @@ export default async function handler(req: NextRequest) {
       width: 1200,
       height: 630,
       // @vercel/og's default omits s-maxage, which the CDN needs to cache this.
+      // The CDN cache key includes the deployment, so a template change lands
+      // on the next deploy; the short max-age bounds browser staleness.
       headers: {
         'cache-control':
-          'public, immutable, no-transform, max-age=31536000, s-maxage=31536000',
+          'public, no-transform, max-age=3600, s-maxage=31536000',
       },
     },
   );
