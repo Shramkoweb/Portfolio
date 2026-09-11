@@ -78,7 +78,9 @@ App runs at http://localhost:3000.
 
 Tests use Jest with Testing Library. Run `pnpm test` for the full suite or `pnpm test:coverage` for a coverage report.
 
-Unit tests sit next to the code they cover (`components/**/*.test.tsx`, `lib/**/*.test.ts`); page-level and API-route tests live in `__tests__/`. Coverage is collected on every run and thresholds are enforced in `jest.config.js` — Jest exits non-zero below 85% statements / 75% branches / 80% functions / 85% lines. CI publishes `coverage/lcov.info` to [Qlty](https://qlty.sh/gh/Shramkoweb/projects/Portfolio), which backs the coverage badge above.
+Unit tests sit next to the code they cover (`components/**/*.test.tsx`, `lib/**/*.test.ts`); page-level and API-route tests live in `__tests__/`.
+
+Coverage is collected on every run, scoped by `collectCoverageFrom` in `jest.config.js` to the logic layer — `lib/`, `pages/api/` and `middleware.ts`. Presentational pages and components render in the test suite but are not counted, so the number reports how well the logic is exercised rather than how much JSX was touched. Thresholds are enforced on that scope: Jest exits non-zero below 85% statements / 75% branches / 80% functions / 85% lines. CI publishes `coverage/lcov.info` to [Qlty](https://qlty.sh/gh/Shramkoweb/projects/Portfolio), which backs the coverage badge above.
 
 ## Deployment
 
