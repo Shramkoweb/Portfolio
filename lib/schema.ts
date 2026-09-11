@@ -9,27 +9,9 @@ const author = {
   url: `${SITE_URL}/about`,
 };
 
-/**
- * Serialize a schema object for injection into a
- * `<script type="application/ld+json">` tag.
- *
- * `JSON.stringify` does not escape `<`, so a value containing `</script>` (or
- * `<!--`) would terminate the script element and drop the parser into HTML
- * context. Escaping `<` neutralises both breakout sequences; nothing else can
- * terminate a `<script>` element. `&` needs no escaping because script content
- * is raw text and is not entity-decoded.
- *
- * U+2028/U+2029 are deliberately NOT escaped: this output is parsed as JSON,
- * not as JavaScript, because the tag is `type="application/ld+json"`. If this
- * helper is ever used to inline data into a JS bundle, that exemption no longer
- * holds and those two code points must be escaped as well.
- *
- * `<` is a valid RFC 8259 escape that decodes back to `<`, so every
- * conformant JSON parser (Google's included) sees the original value.
- */
+// Escapes `<` so a value containing `</script>` cannot break out of the
+// ld+json tag. Safe for JSON consumers; not safe to inline into a JS bundle.
 export function serializeJsonLd(schema: unknown): string {
-  // `JSON.stringify` returns `undefined` for `undefined`, functions and
-  // symbols, so guard the result before calling `.replace` on it.
   const json: string | undefined = JSON.stringify(schema);
 
   if (json === undefined) return 'null';

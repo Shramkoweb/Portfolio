@@ -8,8 +8,6 @@ const mockFindMany = jest.fn();
 const mockUpsert = jest.fn();
 const mock$transaction = jest.fn();
 
-// The slug allow-list is built from these helpers; stub the disk reads but let
-// lib/valid-slugs itself run for real.
 jest.mock('@/lib/posts/api', () => ({
   __esModule: true,
   getPostSlugs: () => Promise.resolve(['my-post', 'another-post']),
