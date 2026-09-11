@@ -18,6 +18,7 @@ overrides:
   deepmerge-ts: ^8.0.0
 
 allowBuilds:
+  '@parcel/watcher': true
   '@prisma/engines': true
   '@sentry/cli': true
   prisma: true
