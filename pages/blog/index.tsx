@@ -14,6 +14,7 @@ import {
   isYearSeparator,
   sortByBirthtime,
 } from '@/lib/posts/utils';
+import { serializeJsonLd } from '@/lib/schema';
 import { PostCategory, PostMetadata } from '@/lib/types';
 
 interface BlogPageProps {
@@ -96,7 +97,7 @@ function BlogPage(props: BlogPageProps) {
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(props.jsonLd),
+              __html: serializeJsonLd(props.jsonLd),
             }}
           />
         )}

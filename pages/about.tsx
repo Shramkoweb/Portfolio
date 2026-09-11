@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
+import { serializeJsonLd } from '@/lib/schema';
 
 import about from '../public/static/images/about.jpeg';
 import carBack from '../public/static/images/car-back.jpeg';
@@ -36,7 +37,7 @@ function AboutPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: serializeJsonLd({
               '@context': 'https://schema.org',
               '@type': 'ProfilePage',
               url: 'https://shramko.dev/about',

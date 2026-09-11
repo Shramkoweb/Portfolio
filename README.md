@@ -71,6 +71,7 @@ App runs at http://localhost:3000.
 | `pnpm verify`                       | lint + format:check + typecheck + test:ci |
 | `pnpm verify:full`                  | `verify` + production build               |
 | `pnpm deps:audit`                   | `pnpm audit` on prod deps, high and above |
+| `pnpm csp:check`                    | CSP covers the build's inline scripts     |
 | `pnpm clean`                        | remove `.next/` and `coverage/`           |
 | `pnpm article`                      | scaffold a new blog post                  |
 
@@ -86,7 +87,7 @@ Coverage is collected on every run, scoped by `collectCoverageFrom` in `jest.con
 
 Deploys automatically to [Vercel](https://vercel.com) on push to `main`. The `postbuild` script regenerates the sitemap via `next-sitemap`.
 
-Every push and pull request runs `.github/workflows/ci.yml` — `lint`, `typecheck`, `test` and `audit` in parallel, plus a full `build` on pull requests. Pull requests additionally run a Lighthouse budget check defined in `.github/workflows/lighthouse.yml`.
+Every push and pull request runs `.github/workflows/ci.yml` — `lint`, `typecheck`, `test` and `audit` in parallel, plus a full `build` on pull requests, which also runs `csp:check`. Pull requests additionally run a Lighthouse budget check defined in `.github/workflows/lighthouse.yml`.
 
 ## Monitors
 

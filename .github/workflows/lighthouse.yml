@@ -51,10 +51,15 @@ jobs:
         id: format
         if: always() && steps.find-pr.outputs.number
         uses: actions/github-script@v9
+        env:
+          MANIFEST: ${{ steps.lighthouse.outputs.manifest }}
         with:
           script: |
             const fs = require('fs');
-            const results = ${{ steps.lighthouse.outputs.manifest }};
+            const results = JSON.parse(process.env.MANIFEST?.trim() || '[]');
+            if (results.length === 0) {
+              return;
+            }
             let comment = '## Lighthouse Results\n\n';
             comment += '| URL | Perf | A11y | BP | SEO | LCP | FCP | TBT | CLS |\n';
             comment += '|-----|------|------|----|-----|-----|-----|-----|-----|\n';
@@ -73,7 +78,7 @@ jobs:
             }
             core.setOutput('comment', comment);
       - name: Post comment
-        if: always() && steps.find-pr.outputs.number
+        if: always() && steps.find-pr.outputs.number && steps.format.outputs.comment
         uses: marocchino/sticky-pull-request-comment@v3
         with:
           header: lighthouse

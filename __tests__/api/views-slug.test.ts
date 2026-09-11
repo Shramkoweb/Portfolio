@@ -7,6 +7,16 @@ import { createMockReqRes as createBaseMockReqRes } from '../helpers/api-mocks';
 const mockUpsert = jest.fn();
 const mockFindUnique = jest.fn();
 
+jest.mock('@/lib/posts/api', () => ({
+  __esModule: true,
+  getPostSlugs: () => Promise.resolve(['test-post', 'another-post']),
+}));
+
+jest.mock('@/lib/snippets/api', () => ({
+  __esModule: true,
+  getSnippetSlugs: () => Promise.resolve(['a-snippet']),
+}));
+
 jest.mock('lib/prisma', () => ({
   __esModule: true,
   default: {
@@ -47,6 +57,49 @@ describe('API /api/views/[slug]', () => {
       expect(status).toHaveBeenCalledWith(200);
       expect(json).toHaveBeenCalledWith({ total: 42 });
     });
+
+    it('accepts the synthetic, non-MDX page slugs', async () => {
+      mockUpsert.mockResolvedValue({ count: 7n });
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        query: { slug: 'quizlet-page' },
+      });
+
+      await handler(req, res);
+
+      expect(status).toHaveBeenCalledWith(200);
+      expect(json).toHaveBeenCalledWith({ total: 7 });
+    });
+
+    it('rejects an unknown slug with 404 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        query: { slug: 'not-a-real-post' },
+      });
+
+      await handler(req, res);
+
+      expect(mockUpsert).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(404);
+      expect(json).toHaveBeenCalledWith({
+        error: { message: 'Unknown slug' },
+      });
+    });
+
+    it('rejects an array slug with 404 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        query: { slug: ['test-post', 'evil'] },
+      });
+
+      await handler(req, res);
+
+      expect(mockUpsert).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(404);
+      expect(json).toHaveBeenCalledWith({
+        error: { message: 'Unknown slug' },
+      });
+    });
   });
 
   describe('GET — read views', () => {
@@ -70,6 +123,18 @@ describe('API /api/views/[slug]', () => {
 
       await handler(req, res);
 
+      expect(json).toHaveBeenCalledWith({ total: 0 });
+    });
+
+    it('still returns 0 for an unknown slug — reads are not gated', async () => {
+      mockFindUnique.mockResolvedValue(null);
+      const { req, res, status, json } = createMockReqRes({
+        query: { slug: 'not-a-real-post' },
+      });
+
+      await handler(req, res);
+
+      expect(status).toHaveBeenCalledWith(200);
       expect(json).toHaveBeenCalledWith({ total: 0 });
     });
   });

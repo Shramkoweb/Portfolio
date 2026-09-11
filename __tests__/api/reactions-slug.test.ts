@@ -8,6 +8,16 @@ const mockFindMany = jest.fn();
 const mockUpsert = jest.fn();
 const mock$transaction = jest.fn();
 
+jest.mock('@/lib/posts/api', () => ({
+  __esModule: true,
+  getPostSlugs: () => Promise.resolve(['my-post', 'another-post']),
+}));
+
+jest.mock('@/lib/snippets/api', () => ({
+  __esModule: true,
+  getSnippetSlugs: () => Promise.resolve(['a-snippet']),
+}));
+
 jest.mock('lib/prisma', () => ({
   __esModule: true,
   default: {
@@ -60,6 +70,20 @@ describe('API /api/reactions/[slug]', () => {
 
       await handler(req, res);
 
+      expect(json).toHaveBeenCalledWith({
+        reactions: { heart: 0, beer: 0, trophy: 0 },
+      });
+    });
+
+    it('still returns zeros for an unknown slug — reads are not gated', async () => {
+      mockFindMany.mockResolvedValue([]);
+      const { req, res, status, json } = createMockReqRes({
+        query: { slug: 'not-a-real-post' },
+      });
+
+      await handler(req, res);
+
+      expect(status).toHaveBeenCalledWith(200);
       expect(json).toHaveBeenCalledWith({
         reactions: { heart: 0, beer: 0, trophy: 0 },
       });
@@ -129,6 +153,40 @@ describe('API /api/reactions/[slug]', () => {
       expect(status).toHaveBeenCalledWith(200);
       expect(json).toHaveBeenCalledWith({
         reactions: { heart: 1, beer: 0, trophy: 0 },
+      });
+    });
+
+    it('rejects an unknown slug with 404 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        query: { slug: 'not-a-real-post' },
+        body: { type: 'heart' },
+      });
+
+      await handler(req, res);
+
+      expect(mock$transaction).not.toHaveBeenCalled();
+      expect(mockUpsert).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(404);
+      expect(json).toHaveBeenCalledWith({
+        error: { message: 'Unknown slug' },
+      });
+    });
+
+    it('rejects an array slug with 404 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        query: { slug: ['my-post', 'evil'] },
+        body: { type: 'heart' },
+      });
+
+      await handler(req, res);
+
+      expect(mock$transaction).not.toHaveBeenCalled();
+      expect(mockUpsert).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(404);
+      expect(json).toHaveBeenCalledWith({
+        error: { message: 'Unknown slug' },
       });
     });
   });

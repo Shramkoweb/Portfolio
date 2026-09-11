@@ -32,8 +32,8 @@ pnpm dev                # http://localhost:3000
 
 **Two commands. Use the right one.**
 
-- `pnpm verify` — fast (~1 s). Runs `lint`, `format:check`, `typecheck`, `test:ci`. The pre-push hook calls this. Use during tight iteration.
-- `pnpm verify:full` — slower (~30–60 s). Adds `next build` on top. Matches what CI runs. **Run this before opening a PR.**
+- `pnpm verify` — fast (~3 s). Runs `lint`, `format:check`, `typecheck`, `test:ci`. The pre-push hook calls this. Use during tight iteration.
+- `pnpm verify:full` — slower (~10 s). Adds `next build` on top. Matches what CI runs. **Run this before opening a PR.**
 
 **Success criterion:** before claiming work is done, `pnpm verify:full` exits 0.
 
@@ -50,6 +50,7 @@ pnpm dev                # http://localhost:3000
 | Type check only           | `pnpm typecheck`                      |
 | Scaffold a blog post      | `pnpm article`                        |
 | Regenerate Prisma client  | `pnpm exec prisma generate`           |
+| Check CSP inline hashes   | `pnpm csp:check` (after `pnpm build`) |
 
 ## Repo layout
 
@@ -70,7 +71,7 @@ pnpm dev                # http://localhost:3000
 ## Conventions
 
 - **Commits:** [Conventional Commits](https://www.conventionalcommits.org/) Angular convention. Enforced by `commitlint.config.ts`. Lowercase subject, ≤ 50 chars, no period. Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
-- **Branches:** `feat/`, `fix/`, `chore/`, `ci/`, `docs/`, `refactor/`, `test/`, `perf/`.
+- **Branches:** `feat/`, `fix/`, `chore/`, `ci/`, `docs/`, `refactor/`, `test/`, `perf/`. Convention only — nothing enforces this, unlike commit messages.
 - **Formatting:** `oxfmt`. Pre-commit hook auto-formats staged JS/TS. Don't fight it.
 - **Before pushing:** the git pre-push hook (`.git-hooks/pre-push`) runs `pnpm verify` automatically. Don't bypass with `--no-verify`.
 - **Before opening a PR:** run `pnpm verify:full` (adds `build`). PR template has a checkbox for this.
@@ -80,7 +81,7 @@ pnpm dev                # http://localhost:3000
 - **Env vars** are documented in `.env.example` with descriptions and where to obtain each value.
 - **Secrets** live in Vercel project settings (`Sentry*`, `DATABASE_URL`, `GITHUB_TOKEN`). Read-only for agents — don't try to set them.
 - **The Sentry public DSN** (`NEXT_PUBLIC_SENTRY_DSN`) is intentionally exposed to the client; this is by Sentry design, not a leak.
-- **Specs and plans** for non-trivial work are in `docs/superpowers/specs/` and `docs/superpowers/plans/`. Both are gitignored — they live locally per-developer.
+- **Specs and plans** for non-trivial work go in `docs/superpowers/specs/` and `docs/superpowers/plans/` — create either when you need it. The whole `docs/superpowers/` tree is gitignored and lives locally per-developer.
 
 ## Don't do
 
@@ -94,4 +95,3 @@ pnpm dev                # http://localhost:3000
 ## Notes for specific tools
 
 - **Claude Code:** `CLAUDE.md` at the repo root is a symlink to this file. Edit `AGENTS.md`, not `CLAUDE.md`.
-- **Pages Router / Sentry gap:** there is no `pages/_error.tsx` with `Sentry.captureUnderscoreErrorException`, so SSR errors from the Pages Router don't reach Sentry. Don't fix this inline as a side effect of unrelated work — open a focused PR for it.

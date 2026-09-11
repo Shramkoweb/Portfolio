@@ -5,7 +5,6 @@ export function register() {
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
     environment: process.env.NODE_ENV,
     release: process.env.APP_RELEASE_VERSION,
-    sendDefaultPii: true,
     tracesSampleRate: 0.1,
     ignoreErrors: [
       'ECONNRESET',

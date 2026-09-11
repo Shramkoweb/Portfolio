@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/lib/prisma';
+import { isKnownSlug } from '@/lib/valid-slugs';
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,6 +11,10 @@ export default async function handler(
     const slug = req.query.slug as string;
 
     if (req.method === 'POST') {
+      if (!(await isKnownSlug(slug))) {
+        return res.status(404).json({ error: { message: 'Unknown slug' } });
+      }
+
       const views = await prisma.views.upsert({
         where: { slug },
         create: {

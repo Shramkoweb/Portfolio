@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import { ResourceCard } from '@/components/resource-card';
 import { sortByBirthtime } from '@/lib/posts/utils';
+import { serializeJsonLd } from '@/lib/schema';
 import { getSnippets } from '@/lib/snippets/api';
 import { Snippet } from '@/lib/types';
 
@@ -40,7 +41,7 @@ function SnippetsPage(props: SnippetsPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(props.jsonLd),
+            __html: serializeJsonLd(props.jsonLd),
           }}
         />
       </Head>

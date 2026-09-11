@@ -95,3 +95,4 @@ jobs:
       - run: pnpm build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      - run: pnpm csp:check

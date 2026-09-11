@@ -17,7 +17,7 @@ import {
   sortByBirthtime,
 } from '@/lib/posts/utils';
 import { Routes } from '@/lib/routes';
-import { generateWebSiteSchema } from '@/lib/schema';
+import { generateWebSiteSchema, serializeJsonLd } from '@/lib/schema';
 import { Post } from '@/lib/types';
 import { generateGradient } from '@/lib/utils';
 import type { AllViewsResponse } from '@/pages/api/views';
@@ -64,7 +64,7 @@ function IndexPage(props: IndexPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateWebSiteSchema()),
+            __html: serializeJsonLd(generateWebSiteSchema()),
           }}
         />
       </Head>
