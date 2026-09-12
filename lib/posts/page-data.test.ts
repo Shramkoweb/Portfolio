@@ -88,6 +88,36 @@ describe('getBlogPageData', () => {
 
     expect(categories).toEqual(cats);
   });
+
+  test('emits the full JSON-LD envelope and per-post author identity', async () => {
+    const post = makeMeta('only-post', Date.now());
+    (getPostsMetadata as jest.Mock).mockResolvedValue([post]);
+
+    const { jsonLd } = await getBlogPageData();
+
+    expect(jsonLd).toMatchObject({
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      '@id': 'https://shramko.dev/blog/#blog',
+      name: "Serhii Shramko's Blog",
+      url: 'https://shramko.dev/blog',
+      description:
+        'A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.',
+      inLanguage: 'en',
+      publisher: {
+        '@type': 'Person',
+        '@id': 'https://shramko.dev/#person',
+        name: 'Serhii Shramko',
+        url: 'https://shramko.dev/about',
+      },
+    });
+    // Per-post author is deliberately the 3-key form: no url, unlike publisher.
+    expect(jsonLd.blogPost[0].author).toEqual({
+      '@type': 'Person',
+      '@id': 'https://shramko.dev/#person',
+      name: 'Serhii Shramko',
+    });
+  });
 });
 
 describe('getHomePageData', () => {
