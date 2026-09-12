@@ -1,13 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
 import { generateRss } from '@/lib/feed';
 import { getPostsMetadata } from '@/lib/posts/api';
 import { sortByBirthtime } from '@/lib/posts/utils';
 
-export default async function handler(
-  _req: NextApiRequest,
-  res: NextApiResponse,
-) {
+// Posts are files in the repo, so the feed can only change on deploy.
+export const dynamic = 'force-static';
+
+export async function GET() {
   const posts = await getPostsMetadata();
   const sortedPosts = posts.sort(sortByBirthtime);
 
@@ -18,10 +16,10 @@ export default async function handler(
 
   const rss = generateRss(sortedPosts, new Date(latestDate).toUTCString());
 
-  res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=3600, stale-while-revalidate=86400',
-  );
-  res.status(200).send(rss);
+  return new Response(rss, {
+    headers: {
+      'Content-Type': 'application/rss+xml; charset=utf-8',
+      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+    },
+  });
 }

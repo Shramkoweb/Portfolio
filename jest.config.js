@@ -16,6 +16,8 @@ const config = {
   collectCoverageFrom: [
     'lib/**/*.{ts,tsx}',
     'app/api/**/*.ts',
+    'app/feed.xml/route.ts',
+    'app/sitemap.ts',
     'middleware.ts',
     '!**/*.d.ts',
     '!**/*.test.{ts,tsx}',
