@@ -1,9 +1,4 @@
 overrides:
-  # advisory 1108030 (moderate, unzipSync infinite loop on malformed ZIP64
-  # <0.7.5). satori@0.33.3 (via @vercel/og@1.0.2) pins fflate@0.7.3 exactly,
-  # so the patched line is unreachable without an override.
-  # Drop when satori pins fflate >=0.7.5 on its own
-  fflate: ^0.7.5
   # advisories 1153173 (high, unsafe deserialization <3.22.0) and 1158532
   # (moderate, <=3.23.0). prisma@7.10.0 pins mysql2@3.15.3 exactly, so the
   # patched line is unreachable without an override. This project is

@@ -21,6 +21,7 @@ const config = {
     'middleware.ts',
     '!**/*.d.ts',
     '!**/*.test.{ts,tsx}',
+    '!lib/og-image.tsx',
   ],
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
