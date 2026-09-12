@@ -1,10 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/lib/prisma';
-
-export type AllViewsResponse = {
-  views: Record<string, number>;
-};
+import type { AllViewsResponse } from '@/lib/types';
 
 export default async function handler(
   req: NextApiRequest,
@@ -26,7 +23,8 @@ export default async function handler(
 
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
 
-    return res.status(200).json({ views });
+    const body: AllViewsResponse = { views };
+    return res.status(200).json(body);
   } catch {
     return res.status(500).json({
       error: {

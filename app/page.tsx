@@ -1,73 +1,55 @@
-import clsx from 'clsx';
 import { Atom, MoveRight } from 'lucide-react';
-import { GetStaticPropsResult } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { useState } from 'react';
-import useSWR from 'swr';
 
-import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
-import { fetcher } from '@/lib/fetcher';
-import { getPosts } from '@/lib/posts/api';
-import {
-  filterByAdvanceReact,
-  filterByFeatured,
-  filterByNotFeatured,
-  sortByBirthtime,
-} from '@/lib/posts/utils';
+import { HoverAvatar } from '@/components/hover-avatar';
+import { PostGrid, type PostGridItem } from '@/components/post-grid';
+import { pageMetadata, SITE_TITLE } from '@/lib/metadata';
+import { getHomePageData } from '@/lib/posts/page-data';
 import { Routes } from '@/lib/routes';
 import { generateWebSiteSchema, serializeJsonLd } from '@/lib/schema';
-import { Post } from '@/lib/types';
+import type { PostMetadata } from '@/lib/types';
 import { generateGradient } from '@/lib/utils';
-import type { AllViewsResponse } from '@/pages/api/views';
 
-import smile from '../public/static/images/smile.webp';
-import tongue from '../public/static/images/tongue.webp';
+export const metadata: Metadata = pageMetadata({
+  path: '/',
+  title: SITE_TITLE,
+  keywords: [
+    'dev engineer',
+    'Learn React',
+    'Learn JavaScript',
+    'Learn TypeScript',
+    'Technical Blog',
+    'software developer',
+    'front end developer',
+    'web dev',
+    'next js',
+    'react developer',
+  ],
+});
 
-interface IndexPageProps {
-  featuredPosts: Post[];
-  otherPosts: Post[];
-  advancedReactPosts: Post[];
-}
+const PLAIN_CARD =
+  'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800';
 
-function IndexPage(props: IndexPageProps) {
-  const { featuredPosts, otherPosts, advancedReactPosts } = props;
+const toGradientItems = (posts: PostMetadata[]): PostGridItem[] =>
+  posts.map(({ data: { slug, heading } }) => ({
+    slug,
+    heading,
+    classNames: generateGradient(slug),
+  }));
 
-  const { data: viewsData } = useSWR<AllViewsResponse>('/api/views', fetcher);
-  const allViews = viewsData?.views;
-
-  const [isAvatarHovered, setIsAvatarHovered] = useState(false);
-
-  const handleHover = () => {
-    setIsAvatarHovered((prevValue) => !prevValue);
-  };
+export default async function HomePage() {
+  const { featuredPosts, otherPosts, advancedReactPosts } =
+    await getHomePageData();
 
   return (
     <>
-      <Head>
-        <meta
-          content="
-        dev engineer,
-        Learn React,
-        Learn JavaScript,
-        Learn TypeScript,
-        Technical Blog,
-        software developer,
-        front end developer,
-        web dev,
-        next js,
-        react developer"
-          key="keywords"
-          name="keywords"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(generateWebSiteSchema()),
-          }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(generateWebSiteSchema()),
+        }}
+      />
       <section className="mx-auto flex max-w-3xl flex-col items-start justify-center border-gray-200 pb-16 dark:border-gray-700">
         <div className="flex flex-col-reverse items-start sm:flex-row">
           <div className="flex flex-col pr-8">
@@ -106,52 +88,13 @@ function IndexPage(props: IndexPageProps) {
               />
             </Link>
           </div>
-          <div
-            className="shrink-0 block relative mr-auto mb-8 w-32 h-32 sm:mb-0"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHover}
-          >
-            <Image
-              alt="Serhii Shramko's Memoji avatar — smiling face with brown hair and round glasses"
-              src={smile}
-              quality={75}
-              width={128}
-              height={128}
-              className={clsx('absolute', {
-                'opacity-0': isAvatarHovered,
-              })}
-              sizes="128px"
-              priority
-            />
-            <Image
-              alt="Serhii Shramko's Memoji avatar — winking face with tongue out, brown hair, and round glasses"
-              src={tongue}
-              quality={75}
-              width={128}
-              height={128}
-              className={clsx('absolute', {
-                'opacity-0': !isAvatarHovered,
-              })}
-              sizes="128px"
-              priority
-            />
-          </div>
+          <HoverAvatar />
         </div>
 
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
           Featured Posts
         </h2>
-        <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map(({ data: { slug, heading } }) => (
-            <BlogPostSquarePreview
-              heading={heading}
-              slug={slug}
-              classNames={generateGradient(slug)}
-              views={allViews?.[slug]}
-              key={slug}
-            />
-          ))}
-        </div>
+        <PostGrid items={toGradientItems(featuredPosts)} />
 
         <div className="w-full">
           <h2 className="mt-12 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl flex items-start gap-2">
@@ -160,19 +103,7 @@ function IndexPage(props: IndexPageProps) {
               <Atom className="w-6 h-6" strokeWidth={1.5} />
             </span>
           </h2>
-
-          <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-            {advancedReactPosts.map(({ data: { slug, heading } }) => (
-              <BlogPostSquarePreview
-                heading={heading}
-                slug={slug}
-                classNames={generateGradient(slug)}
-                views={allViews?.[slug]}
-                key={slug}
-              />
-            ))}
-          </div>
-
+          <PostGrid items={toGradientItems(advancedReactPosts)} />
           <Link
             href="/blog/category/advanced-react"
             className="group mt-6 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
@@ -220,18 +151,13 @@ function IndexPage(props: IndexPageProps) {
         <h2 className="mt-16 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
           Latest posts
         </h2>
-        <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {otherPosts.map(({ data: { slug, heading } }) => (
-            <BlogPostSquarePreview
-              heading={heading}
-              slug={slug}
-              classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
-              views={allViews?.[slug]}
-              key={slug}
-            />
-          ))}
-        </div>
-
+        <PostGrid
+          items={otherPosts.map(({ data: { slug, heading } }) => ({
+            slug,
+            heading,
+            classNames: PLAIN_CARD,
+          }))}
+        />
         <Link
           href="/blog"
           className="group mt-6 flex gap-2 h-6 items-center rounded-lg leading-10 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
@@ -246,28 +172,3 @@ function IndexPage(props: IndexPageProps) {
     </>
   );
 }
-
-export async function getStaticProps(): Promise<
-  GetStaticPropsResult<IndexPageProps>
-> {
-  const posts = await getPosts();
-  const otherPosts = posts
-    .filter(filterByNotFeatured)
-    .sort(sortByBirthtime)
-    .slice(0, 3);
-  const featuredPosts = posts.filter(filterByFeatured).sort(sortByBirthtime);
-  const advancedReactPosts = posts
-    .filter(filterByAdvanceReact)
-    .sort(sortByBirthtime)
-    .reverse();
-
-  return {
-    props: {
-      featuredPosts,
-      otherPosts,
-      advancedReactPosts,
-    },
-  };
-}
-
-export default IndexPage;

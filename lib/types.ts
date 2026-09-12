@@ -84,3 +84,7 @@ export type LinkedinTestimonial = {
   postDate: string;
   text: string;
 };
+
+export type AllViewsResponse = {
+  views: Record<string, number>;
+};
