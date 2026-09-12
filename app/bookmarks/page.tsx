@@ -7,10 +7,11 @@ import {
   Users,
   Wrench,
 } from 'lucide-react';
-import Head from 'next/head';
+import type { Metadata } from 'next';
 
 import { BookmarkSection } from '@/components/bookmark-section';
 import { Tag } from '@/components/tag';
+import { pageMetadata } from '@/lib/metadata';
 import { serializeJsonLd } from '@/lib/schema';
 
 interface BookmarkItem {
@@ -397,62 +398,48 @@ const JSON_LD = {
   },
 };
 
-function BookmarksPage() {
+export const metadata: Metadata = pageMetadata({
+  path: '/bookmarks',
+  title: 'Developer Bookmarks & Open Source | Serhii Shramko',
+  description:
+    'Curated developer bookmarks from a senior software engineer with 7+ years of experience: open source projects, staff-level engineering books, programming blogs, tools, and resources for JavaScript, TypeScript, React, and Next.js developers.',
+  keywords: [
+    'developer bookmarks',
+    'open source projects',
+    'staff engineer reading list',
+    'senior engineer resources',
+    'programming books',
+    'engineering blogs',
+    'developer tools',
+    'frontend resources',
+    'JavaScript books',
+    'React resources',
+    'TypeScript learning',
+    'web development resources',
+    'software engineering reading list',
+    'system design resources',
+    'tech leadership books',
+    'best programming books',
+    'coding resources',
+    'tech blogs',
+    'open source contributions',
+  ],
+  image: 'https://shramko.dev/api/og?title=Developer%20Bookmarks',
+  openGraph: {
+    description:
+      'Open source projects, staff-level engineering books, tools, and resources curated by a senior software engineer with 7+ years in React, TypeScript, and Next.js.',
+  },
+});
+
+export default function BookmarksPage() {
   return (
     <>
-      <Head>
-        <title>Developer Bookmarks & Open Source | Serhii Shramko</title>
-        <meta
-          content="Curated developer bookmarks from a senior software engineer with 7+ years of experience: open source projects, staff-level engineering books, programming blogs, tools, and resources for JavaScript, TypeScript, React, and Next.js developers."
-          name="description"
-          key="description"
-        />
-        <meta
-          content="
-          developer bookmarks,
-          open source projects,
-          staff engineer reading list,
-          senior engineer resources,
-          programming books,
-          engineering blogs,
-          developer tools,
-          frontend resources,
-          JavaScript books,
-          React resources,
-          TypeScript learning,
-          web development resources,
-          software engineering reading list,
-          system design resources,
-          tech leadership books,
-          best programming books,
-          coding resources,
-          tech blogs,
-          open source contributions"
-          name="keywords"
-          key="keywords"
-        />
-        <meta
-          property="og:title"
-          content="Developer Bookmarks & Open Source | Serhii Shramko"
-          key="og:title"
-        />
-        <meta
-          property="og:description"
-          content="Open source projects, staff-level engineering books, tools, and resources curated by a senior software engineer with 7+ years in React, TypeScript, and Next.js."
-          key="og:description"
-        />
-        <meta
-          property="og:image"
-          content="https://shramko.dev/api/og?title=Developer%20Bookmarks"
-          key="og:image"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(JSON_LD),
-          }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(JSON_LD),
+        }}
+      />
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Bookmarks
@@ -491,5 +478,3 @@ function BookmarksPage() {
     </>
   );
 }
-
-export default BookmarksPage;

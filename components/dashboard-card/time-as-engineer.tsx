@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 import { DashboardCard } from '@/components/dashboard-card/dashboard-card';

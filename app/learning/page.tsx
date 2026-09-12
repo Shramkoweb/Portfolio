@@ -1,6 +1,7 @@
-import Head from 'next/head';
+import type { Metadata } from 'next';
 
 import { ResourceCard } from '@/components/resource-card';
+import { pageMetadata } from '@/lib/metadata';
 
 interface LearningItem {
   title: string;
@@ -241,62 +242,46 @@ const LEARNING_ITEMS: LearningItem[] = [
   },
 ];
 
-function LearningPage() {
-  return (
-    <>
-      <Head>
-        <title>Learning | Serhii Shramko</title>
-        <meta
-          content="A chronological record of books, courses, and projects I've learned from over the years."
-          name="description"
-          key="description"
-        />
-        <meta
-          content="learning, books, courses, tutorials, education, self-improvement, programming, development"
-          name="keywords"
-          key="keywords"
-        />
-        <meta
-          property="og:title"
-          content="Learning | Serhii Shramko"
-          key="og:title"
-        />
-        <meta
-          property="og:description"
-          content="A chronological record of books, courses, and projects I've learned from over the years."
-          key="og:description"
-        />
-        <meta
-          property="og:image"
-          content="https://shramko.dev/api/og?title=Learning"
-          key="og:image"
-        />
-      </Head>
-      <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Learning
-        </h1>
-        <div className="mb-8">
-          <p className="text-gray-600 dark:text-gray-400">
-            Books, courses and projects I have learned from. WORK IN PROGRESS 🤣
-          </p>
-        </div>
+export const metadata: Metadata = pageMetadata({
+  path: '/learning',
+  title: 'Learning | Serhii Shramko',
+  description:
+    "A chronological record of books, courses, and projects I've learned from over the years.",
+  keywords: [
+    'learning',
+    'books',
+    'courses',
+    'tutorials',
+    'education',
+    'self-improvement',
+    'programming',
+    'development',
+  ],
+  image: 'https://shramko.dev/api/og?title=Learning',
+});
 
-        <ul className="w-full space-y-3">
-          {LEARNING_ITEMS.map((item) => (
-            <ResourceCard
-              key={item.title}
-              title={
-                item.author ? `${item.title} · ${item.author}` : item.title
-              }
-              url={item.url}
-              description={item.description}
-            />
-          ))}
-        </ul>
-      </section>
-    </>
+export default function LearningPage() {
+  return (
+    <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
+      <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+        Learning
+      </h1>
+      <div className="mb-8">
+        <p className="text-gray-600 dark:text-gray-400">
+          Books, courses and projects I have learned from. WORK IN PROGRESS 🤣
+        </p>
+      </div>
+
+      <ul className="w-full space-y-3">
+        {LEARNING_ITEMS.map((item) => (
+          <ResourceCard
+            key={item.title}
+            title={item.author ? `${item.title} · ${item.author}` : item.title}
+            url={item.url}
+            description={item.description}
+          />
+        ))}
+      </ul>
+    </section>
   );
 }
-
-export default LearningPage;

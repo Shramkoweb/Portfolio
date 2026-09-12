@@ -1,109 +1,106 @@
-import Head from 'next/head';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
+import { pageMetadata } from '@/lib/metadata';
 import { serializeJsonLd } from '@/lib/schema';
 
-import about from '../public/static/images/about.jpeg';
-import carBack from '../public/static/images/car-back.jpeg';
-import car from '../public/static/images/car.jpeg';
-import eat from '../public/static/images/eat.jpeg';
-import standing from '../public/static/images/standing.jpg';
-import tennis from '../public/static/images/tennis.jpeg';
+import about from '../../public/static/images/about.jpeg';
+import carBack from '../../public/static/images/car-back.jpeg';
+import car from '../../public/static/images/car.jpeg';
+import eat from '../../public/static/images/eat.jpeg';
+import standing from '../../public/static/images/standing.jpg';
+import tennis from '../../public/static/images/tennis.jpeg';
 
-function AboutPage() {
+export const metadata: Metadata = pageMetadata({
+  path: '/about',
+  title: 'About | Serhii Shramko',
+  description:
+    'Learn about me and my journey through life. Discover my passions, interests, and experiences on my personal about page. Get to know the real me today.',
+  keywords: [
+    'frontend developer',
+    'Serhii',
+    'Serhii Shramko',
+    'shramko',
+    'software engineer',
+    'web developer',
+    'dev engineer',
+  ],
+});
+
+export default function AboutPage() {
   return (
     <>
-      <Head>
-        <title>About | Serhii Shramko</title>
-        <meta
-          content="Learn about me and my journey through life. Discover my passions, interests, and experiences on my personal about page. Get to know the real me today."
-          name="description"
-          key="description"
-        />
-        <meta
-          content="
-          frontend developer,
-          Serhii,
-          Serhii Shramko,
-          shramko,
-          software engineer,
-          web developer,
-          dev engineer"
-          name="keywords"
-          key="keywords"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              '@context': 'https://schema.org',
-              '@type': 'ProfilePage',
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd({
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            url: 'https://shramko.dev/about',
+            inLanguage: 'en',
+            dateModified: '2026-03-28',
+            mainEntity: {
+              '@type': 'Person',
+              '@id': 'https://shramko.dev/#person',
+              name: 'Serhii Shramko',
+              description:
+                'Senior Software Engineer specializing in React, TypeScript, and frontend architecture. Building scalable web applications and mentoring developers.',
               url: 'https://shramko.dev/about',
-              inLanguage: 'en',
-              dateModified: '2026-03-28',
-              mainEntity: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
-                description:
-                  'Senior Software Engineer specializing in React, TypeScript, and frontend architecture. Building scalable web applications and mentoring developers.',
-                url: 'https://shramko.dev/about',
-                image: {
-                  '@type': 'ImageObject',
-                  url: 'https://shramko.dev/static/images/twittersite.png',
-                  width: 1269,
-                  height: 846,
-                },
-                sameAs: [
-                  'https://github.com/shramkoweb',
-                  'https://www.linkedin.com/in/shramko-dev',
-                ],
-                knowsAbout: [
-                  'Frontend Development',
-                  'TypeScript',
-                  'JavaScript',
-                  'React',
-                  'Next.js',
-                  'Redux',
-                  'Redux-Saga',
-                  'Nest.js',
-                  'Refine',
-                  'Playwright',
-                  'Elasticsearch',
-                  'Kibana',
-                  'WCAG 2.1',
-                  'Accessibility',
-                  'CI/CD',
-                  'Performance Optimization',
-                ],
-                jobTitle: 'Senior Software Engineer',
-                worksFor: {
-                  '@type': 'Organization',
-                  name: 'BetterMe',
-                  url: 'https://betterme.world/',
-                },
-                email: 'shramko.dev@gmail.com',
-                workLocation: {
-                  '@type': 'Place',
-                  address: {
-                    '@type': 'PostalAddress',
-                    addressLocality: 'Boston',
-                    addressRegion: 'MA',
-                    addressCountry: 'US',
-                  },
-                },
-                alumniOf: {
-                  '@type': 'CollegeOrUniversity',
-                  name: 'Dnipro University of Technology',
-                  url: 'https://nmu.org.ua/en/',
+              image: {
+                '@type': 'ImageObject',
+                url: 'https://shramko.dev/static/images/twittersite.png',
+                width: 1269,
+                height: 846,
+              },
+              sameAs: [
+                'https://github.com/shramkoweb',
+                'https://www.linkedin.com/in/shramko-dev',
+              ],
+              knowsAbout: [
+                'Frontend Development',
+                'TypeScript',
+                'JavaScript',
+                'React',
+                'Next.js',
+                'Redux',
+                'Redux-Saga',
+                'Nest.js',
+                'Refine',
+                'Playwright',
+                'Elasticsearch',
+                'Kibana',
+                'WCAG 2.1',
+                'Accessibility',
+                'CI/CD',
+                'Performance Optimization',
+              ],
+              jobTitle: 'Senior Software Engineer',
+              worksFor: {
+                '@type': 'Organization',
+                name: 'BetterMe',
+                url: 'https://betterme.world/',
+              },
+              email: 'shramko.dev@gmail.com',
+              workLocation: {
+                '@type': 'Place',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Boston',
+                  addressRegion: 'MA',
+                  addressCountry: 'US',
                 },
               },
-            }),
-          }}
-        />
-      </Head>
+              alumniOf: {
+                '@type': 'CollegeOrUniversity',
+                name: 'Dnipro University of Technology',
+                url: 'https://nmu.org.ua/en/',
+              },
+            },
+          }),
+        }}
+      />
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-8 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           About Me
@@ -531,5 +528,3 @@ function AboutPage() {
     </>
   );
 }
-
-export default AboutPage;

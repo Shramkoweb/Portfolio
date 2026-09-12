@@ -1,3 +1,5 @@
+'use client';
+
 import useSWR from 'swr';
 
 import { DashboardCard } from '@/components/dashboard-card/dashboard-card';
