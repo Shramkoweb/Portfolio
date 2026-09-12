@@ -1,3 +1,5 @@
+'use client';
+
 import { Beer, Heart, Trophy } from 'lucide-react';
 import { useState } from 'react';
 import useSWR, { mutate } from 'swr';

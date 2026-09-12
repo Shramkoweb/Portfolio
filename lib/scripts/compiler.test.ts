@@ -1,18 +1,49 @@
-jest.mock('next-mdx-remote/serialize', () => ({ serialize: jest.fn() }));
+const mockCompileMdx = jest.fn();
+jest.mock('next-mdx-remote/rsc', () => ({
+  compileMDX: (...args: unknown[]) => mockCompileMdx(...args),
+}));
 jest.mock('remark-gfm', () => jest.fn());
 jest.mock('rehype-slug', () => jest.fn());
 jest.mock('rehype-code-titles', () => jest.fn());
 jest.mock('rehype-autolink-headings', () => jest.fn());
 jest.mock('@shikijs/rehype/core', () => ({ default: jest.fn() }));
 jest.mock('@shikijs/transformers', () => ({
-  transformerStyleToClass: jest.fn(() => ({})),
+  transformerStyleToClass: jest.fn(() => ({
+    getCSS: () => '.shiki-a{color:red}',
+  })),
 }));
 jest.mock('shiki', () => ({
   bundledLanguages: {},
   getSingletonHighlighter: jest.fn(() => Promise.resolve({})),
 }));
 
-import { extractHeadingsFromMarkdown } from '@/lib/scripts/compiler';
+import {
+  compileMDX,
+  extractHeadingsFromMarkdown,
+} from '@/lib/scripts/compiler';
+
+describe('compileMDX', () => {
+  it('returns the rendered element and the accumulated Shiki CSS', async () => {
+    mockCompileMdx.mockResolvedValue({ content: 'ELEMENT', frontmatter: {} });
+    const components = { pre: () => null };
+
+    const result = await compileMDX('# Hi', components);
+
+    expect(result).toEqual({
+      content: 'ELEMENT',
+      shikiCSS: '.shiki-a{color:red}',
+    });
+    expect(mockCompileMdx).toHaveBeenCalledWith(
+      expect.objectContaining({
+        source: '# Hi',
+        components,
+        options: expect.objectContaining({
+          mdxOptions: expect.objectContaining({ format: 'mdx' }),
+        }),
+      }),
+    );
+  });
+});
 
 describe('extractHeadingsFromMarkdown', () => {
   it('should extract h1-h6 headings with correct levels', () => {

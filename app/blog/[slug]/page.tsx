@@ -1,17 +1,7 @@
-import { ParsedUrlQuery } from 'querystring';
-
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import React from 'react';
+import type { Metadata } from 'next';
 
 import { ArticleDates } from '@/components/article-dates';
-import { ArticleMeta } from '@/components/article-meta';
+import { FloatingReactions } from '@/components/floating-reactions';
 import { MDXComponents } from '@/components/mdx-components/mdx-components';
 import { FacebookShare } from '@/components/share-button/facebook-share';
 import { LinkedInShare } from '@/components/share-button/linkedin-share';
@@ -20,6 +10,7 @@ import { TwitterShare } from '@/components/share-button/twitter-share';
 import { TableOfContent } from '@/components/table-of-content';
 import { Tag } from '@/components/tag';
 import { ViewCounter } from '@/components/view-counter';
+import { articleMetadata } from '@/lib/metadata';
 import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
 import {
   generateBlogPostingSchema,
@@ -30,78 +21,61 @@ import {
   compileMDX,
   extractHeadingsFromMarkdown,
 } from '@/lib/scripts/compiler';
-import { Post } from '@/lib/types';
 
-const FloatingReactions = dynamic(() =>
-  import('@/components/floating-reactions').then(
-    (mod) => mod.FloatingReactions,
-  ),
-);
+export const dynamicParams = false;
 
-type ArticlePageProps = Pick<Post, 'data'> & {
-  content: MDXRemoteSerializeResult;
-  headings: { text: string; level: number; id: string }[];
-  shikiCSS: string;
-};
+export async function generateStaticParams() {
+  const slugs = await getPostSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
-function ArticlePage(props: ArticlePageProps) {
-  const {
-    content,
-    data: {
-      title,
-      heading,
-      slug,
-      updateDate,
-      readTime,
-      description,
-      createDate,
-      categories = [],
-      keywords,
-    },
-    headings,
-    shikiCSS,
-  } = props;
+export async function generateMetadata({
+  params,
+}: PageProps<'/blog/[slug]'>): Promise<Metadata> {
+  const { slug } = await params;
+  const { data } = await getPostBySlug(slug);
+
+  return articleMetadata({
+    path: `/blog/${slug}`,
+    title: data.title,
+    description: data.description,
+    keywords: data.keywords,
+    createDate: data.createDate,
+    updateDate: data.updateDate,
+    categories: data.categories,
+  });
+}
+
+export default async function ArticlePage({
+  params,
+}: PageProps<'/blog/[slug]'>) {
+  const { slug } = await params;
+  const { data, content } = await getPostBySlug(slug);
+  const { heading, updateDate, readTime, createDate, categories = [] } = data;
+  const { content: body, shikiCSS } = await compileMDX(content, MDXComponents);
+  const headings = extractHeadingsFromMarkdown(content);
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
-        <ArticleMeta
-          title={title}
-          description={description}
-          createDate={createDate}
-          updateDate={updateDate}
-          keywords={keywords}
-        />
-        {categories.map((category) => (
-          <meta
-            key={`article:${category}`}
-            property="article:tag"
-            content={category}
-          />
-        ))}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(
-              generateBlogPostingSchema({ ...props.data }),
-            ),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(
-              generateBreadcrumbSchema([
-                { name: 'Home', url: 'https://shramko.dev/' },
-                { name: 'Blog', url: 'https://shramko.dev/blog' },
-                { name: heading, url: `https://shramko.dev/blog/${slug}` },
-              ]),
-            ),
-          }}
-        />
-      </Head>
+      {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(generateBlogPostingSchema({ ...data })),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(
+            generateBreadcrumbSchema([
+              { name: 'Home', url: 'https://shramko.dev/' },
+              { name: 'Blog', url: 'https://shramko.dev/blog' },
+              { name: heading, url: `https://shramko.dev/blog/${slug}` },
+            ]),
+          ),
+        }}
+      />
       <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
         <div>
           <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">
@@ -153,7 +127,7 @@ function ArticlePage(props: ArticlePageProps) {
             </p>
           </div>
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
-            <MDXRemote {...content} components={MDXComponents} />
+            {body}
           </div>
 
           <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
@@ -178,41 +152,3 @@ function ArticlePage(props: ArticlePageProps) {
     </>
   );
 }
-
-interface Params extends ParsedUrlQuery {
-  slug: string;
-}
-
-export async function getStaticProps({
-  params,
-}: GetStaticPropsContext<Params>): Promise<
-  GetStaticPropsResult<ArticlePageProps>
-> {
-  const { data, content } = await getPostBySlug(params?.slug);
-  const { mdx, shikiCSS } = await compileMDX(content);
-  const headings = extractHeadingsFromMarkdown(content);
-
-  return {
-    props: {
-      data,
-      content: mdx,
-      headings,
-      shikiCSS,
-    },
-  };
-}
-
-export async function getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
-  const slugs = await getPostSlugs();
-
-  return {
-    paths: slugs.map((slug: string) => ({
-      params: {
-        slug,
-      },
-    })),
-    fallback: false,
-  };
-}
-
-export default ArticlePage;

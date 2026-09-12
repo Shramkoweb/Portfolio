@@ -1,11 +1,17 @@
 import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
 import { transformerStyleToClass } from '@shikijs/transformers';
-import { serialize } from 'next-mdx-remote/serialize';
+import {
+  compileMDX as compileMdxRsc,
+  type MDXRemoteProps,
+} from 'next-mdx-remote/rsc';
+import type { ReactElement } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { bundledLanguages, getSingletonHighlighter } from 'shiki';
+
+export type MDXComponentsMap = NonNullable<MDXRemoteProps['components']>;
 
 const highlighterPromise = getSingletonHighlighter({
   themes: ['github-light', 'github-dark'],
@@ -18,44 +24,49 @@ const highlighterPromise = getSingletonHighlighter({
 const transformer = transformerStyleToClass();
 const highlightCache = new Map();
 
-export async function compileMDX(content: string) {
+export async function compileMDX(
+  source: string,
+  components: MDXComponentsMap,
+): Promise<{ content: ReactElement; shikiCSS: string }> {
   const highlighter = await highlighterPromise;
 
-  const mdx = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        rehypeSlug,
-        rehypeCodeTitles,
-        [
-          rehypeShikiFromHighlighter,
-          highlighter,
-          {
-            themes: {
-              light: 'github-light',
-              dark: 'github-dark',
+  const { content } = await compileMdxRsc({
+    source,
+    components,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [
+          rehypeSlug,
+          rehypeCodeTitles,
+          [
+            rehypeShikiFromHighlighter,
+            highlighter,
+            {
+              themes: {
+                light: 'github-light',
+                dark: 'github-dark',
+              },
+              defaultColor: false,
+              transformers: [transformer],
+              cache: highlightCache,
             },
-            defaultColor: false,
-            transformers: [transformer],
-            cache: highlightCache,
-          },
-        ],
-        [
-          rehypeAutolinkHeadings,
-          {
-            properties: {
-              className: ['anchor'],
+          ],
+          [
+            rehypeAutolinkHeadings,
+            {
+              properties: {
+                className: ['anchor'],
+              },
             },
-          },
+          ],
         ],
-      ],
-      format: 'mdx',
+        format: 'mdx',
+      },
     },
   });
 
-  const shikiCSS = transformer.getCSS();
-
-  return { mdx, shikiCSS };
+  return { content, shikiCSS: transformer.getCSS() };
 }
 
 export function extractHeadingsFromMarkdown(markdown: string) {
