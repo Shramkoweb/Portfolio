@@ -15,7 +15,7 @@ const config = {
   // about rendering than about the code the tests actually exercise.
   collectCoverageFrom: [
     'lib/**/*.{ts,tsx}',
-    'pages/api/**/*.{ts,tsx}',
+    'app/api/**/*.ts',
     'middleware.ts',
     '!**/*.d.ts',
     '!**/*.test.{ts,tsx}',
