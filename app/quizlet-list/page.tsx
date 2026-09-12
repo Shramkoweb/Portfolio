@@ -1,9 +1,10 @@
-import Head from 'next/head';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 
+import { RegisterView } from '@/components/register-view';
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
+import { pageMetadata } from '@/lib/metadata';
 import { serializeJsonLd } from '@/lib/schema';
 
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
@@ -11,146 +12,110 @@ import secondImage from '../../public/static/images/quizlet-list/quizlet-quickli
 import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklist-3.png';
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
 
-function QuizletPage() {
-  useEffect(() => {
-    const registerView = () =>
-      fetch('/api/views/quizlet-page', {
-        method: 'POST',
-      }).catch(() => {});
+export const metadata: Metadata = pageMetadata({
+  path: '/quizlet-list',
+  title: 'Quizlet QuickList - Web Extension',
+  description:
+    'Quizlet QuickList is a Web extension that helps you easily gather, organize, and export word lists for studying on Quizlet. Simplify your learning experience.',
+  keywords: [
+    'Quizlet',
+    'Chrome Extension',
+    'Firefox Extension',
+    'Vocabulary',
+    'Study',
+    'Word List',
+    'Learning Tool',
+    'Export to Quizlet',
+  ],
+  authors: [{ name: 'Serhii Shramko' }],
+  image: QUIZLET_APP_OG_IMAGE,
+  openGraph: {
+    description:
+      'Simplify vocabulary learning with Quizlet QuickList. Easily gather and export word lists for studying on Quizlet.',
+  },
+  twitter: {
+    description:
+      'Make studying easier by gathering word lists and exporting them to Quizlet with Quizlet QuickList.',
+  },
+});
 
-    registerView();
-  }, []);
-
+export default function QuizletPage() {
   return (
     <>
-      <Head>
-        <title>Quizlet QuickList - Web Extension</title>
-        <meta
-          name="description"
-          key="description"
-          content="Quizlet QuickList is a Web extension that helps you easily gather, organize, and export word lists for studying on Quizlet. Simplify your learning experience."
-        />
-        <meta
-          name="keywords"
-          key="keywords"
-          content="Quizlet, Chrome Extension, Firefox Extension, Vocabulary, Study, Word List, Learning Tool, Export to Quizlet"
-        />
-        <meta name="author" key="author" content="Serhii Shramko" />
-        <meta property="og:type" key="og:type" content="website" />
-        <meta
-          property="og:title"
-          key="og:title"
-          content="Quizlet QuickList - Web Extension"
-        />
-        <meta
-          property="og:description"
-          key="og:description"
-          content="Simplify vocabulary learning with Quizlet QuickList. Easily gather and export word lists for studying on Quizlet."
-        />
-        <meta
-          property="og:image"
-          content={QUIZLET_APP_OG_IMAGE}
-          key="og:image"
-        />
-        <meta
-          property="twitter:card"
-          key="twitter:card"
-          content="summary_large_image"
-        />
-        <meta
-          property="twitter:title"
-          key="twitter:title"
-          content="Quizlet QuickList - Web Extension"
-        />
-        <meta
-          property="twitter:description"
-          key="twitter:description"
-          content="Make studying easier by gathering word lists and exporting them to Quizlet with Quizlet QuickList."
-        />
-        <meta
-          property="twitter:image"
-          key="twitter:image"
-          content={QUIZLET_APP_OG_IMAGE}
-        />
-        <meta
-          property="twitter:site"
-          key="twitter:site"
-          content="@shramkoweb"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              '@context': 'https://schema.org',
-              '@type': 'SoftwareApplication',
-              name: 'Quizlet QuickList',
-              description:
-                'A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.',
-              url: 'https://shramko.dev/quizlet-list',
-              image:
-                'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg',
-              author: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
-                url: 'https://shramko.dev/about',
+      <RegisterView slug="quizlet-page" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'Quizlet QuickList',
+            description:
+              'A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.',
+            url: 'https://shramko.dev/quizlet-list',
+            image:
+              'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg',
+            author: {
+              '@type': 'Person',
+              '@id': 'https://shramko.dev/#person',
+              name: 'Serhii Shramko',
+              url: 'https://shramko.dev/about',
+            },
+            operatingSystem: 'Chrome, Firefox, Edge',
+            applicationCategory: [
+              'BrowserApplication',
+              'EducationalApplication',
+            ],
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'USD',
+              price: '0.00',
+              availability: 'https://schema.org/InStock',
+              url: 'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+            },
+            downloadUrl: [
+              'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+              'https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/',
+              'https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn',
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Is Quizlet QuickList free?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, Quizlet QuickList is totally free to use.',
+                },
               },
-              operatingSystem: 'Chrome, Firefox, Edge',
-              applicationCategory: [
-                'BrowserApplication',
-                'EducationalApplication',
-              ],
-              offers: {
-                '@type': 'Offer',
-                priceCurrency: 'USD',
-                price: '0.00',
-                availability: 'https://schema.org/InStock',
-                url: 'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+              {
+                '@type': 'Question',
+                name: 'Do I need a Quizlet account to use Quizlet QuickList?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: "No, you don't need one, but Quizlet QuickList works great with Quizlet if you want to use flashcards.",
+                },
               },
-              downloadUrl: [
-                'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
-                'https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/',
-                'https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn',
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: [
-                {
-                  '@type': 'Question',
-                  name: 'Is Quizlet QuickList free?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Yes, Quizlet QuickList is totally free to use.',
-                  },
+              {
+                '@type': 'Question',
+                name: 'Can I use Quizlet QuickList on any website?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Absolutely! As long as you can highlight the text, you can add words to your list.',
                 },
-                {
-                  '@type': 'Question',
-                  name: 'Do I need a Quizlet account to use Quizlet QuickList?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: "No, you don't need one, but Quizlet QuickList works great with Quizlet if you want to use flashcards.",
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: 'Can I use Quizlet QuickList on any website?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Absolutely! As long as you can highlight the text, you can add words to your list.',
-                  },
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
+              },
+            ],
+          }),
+        }}
+      />
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
@@ -420,5 +385,3 @@ function QuizletPage() {
     </>
   );
 }
-
-export default QuizletPage;

@@ -1,115 +1,80 @@
-import Head from 'next/head';
+import type { Metadata } from 'next';
 import Image from 'next/image';
-import { useEffect } from 'react';
 
+import { RegisterView } from '@/components/register-view';
 import { UDEMY_RESET_APP_OG_IMAGE } from '@/lib/constants';
+import { pageMetadata } from '@/lib/metadata';
 import { serializeJsonLd } from '@/lib/schema';
 
-import chromeStore from '../public/static/images/chrome-store.png';
-import firefoxStore from '../public/static/images/firefox-store.webp';
+import chromeStore from '../../public/static/images/chrome-store.png';
+import firefoxStore from '../../public/static/images/firefox-store.webp';
 
-function UdemyResetProgressPage() {
-  useEffect(() => {
-    const registerView = () =>
-      fetch('/api/views/udemy-reset-progress-page', {
-        method: 'POST',
-      }).catch(() => {});
+export const metadata: Metadata = pageMetadata({
+  path: '/udemy-reset-progress',
+  title: 'How to Reset Udemy Course Progress - One-Click Solution',
+  description:
+    'Learn how to reset Udemy course progress instantly with my browser extension. The easiest way to restart Udemy courses with one click. Free download for Chrome & Firefox.',
+  keywords: [
+    'reset Udemy course progress',
+    'Udemy reset progress',
+    'how to reset Udemy course',
+    'restart Udemy course',
+    'clear Udemy progress',
+    'Udemy course reset tool',
+  ],
+  authors: [{ name: 'Serhii Shramko' }],
+  image: UDEMY_RESET_APP_OG_IMAGE,
+  openGraph: {
+    description:
+      'Learn the fastest way to reset your Udemy course progress with my free browser extension. Perfect for restarting courses or managing multiple accounts.',
+  },
+  twitter: {
+    title: 'How to Reset Udemy Course Progress Instantly',
+    description:
+      'The easiest method to reset Udemy course progress - one-click solution with my free browser extension.',
+  },
+});
 
-    registerView();
-  }, []);
+export default function UdemyResetProgressPage() {
   return (
     <>
-      <Head>
-        <title>How to Reset Udemy Course Progress - One-Click Solution</title>
-        <meta
-          name="description"
-          key="description"
-          content="Learn how to reset Udemy course progress instantly with my browser extension. The easiest way to restart Udemy courses with one click. Free download for Chrome & Firefox."
-        />
-        <meta
-          name="keywords"
-          key="keywords"
-          content="reset Udemy course progress, Udemy reset progress, how to reset Udemy course, restart Udemy course, clear Udemy progress, Udemy course reset tool"
-        />
-        <meta name="author" key="author" content="Serhii Shramko" />
-        <meta property="og:type" key="og:type" content="website" />
-        <meta
-          property="og:title"
-          key="og:title"
-          content="How to Reset Udemy Course Progress - One-Click Solution"
-        />
-        <meta
-          property="og:description"
-          key="og:description"
-          content="Learn the fastest way to reset your Udemy course progress with my free browser extension. Perfect for restarting courses or managing multiple accounts."
-        />
-        <meta
-          property="og:image"
-          content={UDEMY_RESET_APP_OG_IMAGE}
-          key="og:image"
-        />
-        <meta
-          property="twitter:card"
-          key="twitter:card"
-          content="summary_large_image"
-        />
-        <meta
-          property="twitter:title"
-          key="twitter:title"
-          content="How to Reset Udemy Course Progress Instantly"
-        />
-        <meta
-          property="twitter:description"
-          key="twitter:description"
-          content="The easiest method to reset Udemy course progress - one-click solution with my free browser extension."
-        />
-        <meta
-          property="twitter:image"
-          key="twitter:image"
-          content={UDEMY_RESET_APP_OG_IMAGE}
-        />
-        <meta
-          property="twitter:site"
-          key="twitter:site"
-          content="@shramkoweb"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              '@context': 'https://schema.org',
-              '@type': 'SoftwareApplication',
-              name: 'Udemy Reset Progress',
-              description:
-                'A browser extension that lets you reset any Udemy course progress with a single click.',
-              url: 'https://shramko.dev/udemy-reset-progress',
-              image: UDEMY_RESET_APP_OG_IMAGE,
-              author: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
-                url: 'https://shramko.dev/about',
-              },
-              operatingSystem: 'Chrome, Firefox, Edge',
-              applicationCategory: [
-                'BrowserApplication',
-                'EducationalApplication',
-              ],
-              offers: {
-                '@type': 'Offer',
-                priceCurrency: 'USD',
-                price: '0.00',
-                availability: 'https://schema.org/InStock',
-                url: 'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
-              },
-              downloadUrl: [
-                'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
-                'https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/',
-              ],
-            }),
-          }}
-        />
-      </Head>
+      <RegisterView slug="udemy-reset-progress-page" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'Udemy Reset Progress',
+            description:
+              'A browser extension that lets you reset any Udemy course progress with a single click.',
+            url: 'https://shramko.dev/udemy-reset-progress',
+            image: UDEMY_RESET_APP_OG_IMAGE,
+            author: {
+              '@type': 'Person',
+              '@id': 'https://shramko.dev/#person',
+              name: 'Serhii Shramko',
+              url: 'https://shramko.dev/about',
+            },
+            operatingSystem: 'Chrome, Firefox, Edge',
+            applicationCategory: [
+              'BrowserApplication',
+              'EducationalApplication',
+            ],
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'USD',
+              price: '0.00',
+              availability: 'https://schema.org/InStock',
+              url: 'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
+            },
+            downloadUrl: [
+              'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
+              'https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/',
+            ],
+          }),
+        }}
+      />
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
@@ -323,5 +288,3 @@ function UdemyResetProgressPage() {
     </>
   );
 }
-
-export default UdemyResetProgressPage;

@@ -1,94 +1,76 @@
-import Head from 'next/head';
+import type { Metadata } from 'next';
 
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
+import { pageMetadata } from '@/lib/metadata';
 import { serializeJsonLd } from '@/lib/schema';
 
-function PrivacyPolicy() {
+export const metadata: Metadata = pageMetadata({
+  path: '/quizlet-list/privacy-policy',
+  title: 'Privacy Policy | Quizlet QuickList Web Extension',
+  description:
+    'Privacy policy for the Quizlet QuickList Web Extension. Learn how we handle your data and keep your privacy secure.',
+  keywords: [
+    'privacy policy',
+    'Quizlet QuickList',
+    'Web extension',
+    'Web extension user data',
+    'permissions',
+    'security',
+  ],
+  authors: [{ name: 'Serhii Shramko' }],
+  image: QUIZLET_APP_OG_IMAGE,
+  openGraph: {
+    description:
+      'This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user.',
+  },
+  twitter: {
+    description:
+      'This is the privacy policy for the Quizlet QuickList Web Extension. Learn how your data is handled securely.',
+  },
+});
+
+export default function PrivacyPolicy() {
   return (
     <>
-      <Head>
-        <title>Privacy Policy | Quizlet QuickList Web Extension</title>
-        <meta
-          content="Privacy policy for the Quizlet QuickList Web Extension. Learn how we handle your data and keep your privacy secure."
-          name="description"
-          key="description"
-        />
-        <meta
-          content="privacy policy, Quizlet QuickList, Web extension, Web extension user data, permissions, security"
-          name="keywords"
-          key="keywords"
-        />
-        <meta name="author" content="Serhii Shramko" />
-        <meta
-          property="og:title"
-          key="og:title"
-          content="Privacy Policy | Quizlet QuickList Web Extension"
-        />
-        <meta
-          property="og:description"
-          key="og:description"
-          content="This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user."
-        />
-        <meta
-          property="og:image"
-          content={QUIZLET_APP_OG_IMAGE}
-          key="og:image"
-        />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Privacy Policy | Quizlet QuickList Web Extension"
-        />
-        <meta
-          name="twitter:description"
-          content="This is the privacy policy for the Quizlet QuickList Web Extension. Learn how your data is handled securely."
-        />
-        <meta
-          property="twitter:image"
-          key="twitter:image"
-          content={QUIZLET_APP_OG_IMAGE}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              '@context': 'https://schema.org',
-              '@type': 'WebPage',
-              name: 'Privacy Policy | Quizlet QuickList Web Extension',
-              description:
-                'Privacy policy for the Quizlet QuickList Web Extension explaining how we handle user data and privacy.',
-              url: 'https://shramko.dev/quizlet-list/privacy-policy',
-              inLanguage: 'en',
-              datePublished: '2024-10-30',
-              dateModified: '2024-10-30',
-              author: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
-                url: 'https://shramko.dev/about',
-              },
-              breadcrumb: {
-                '@type': 'BreadcrumbList',
-                itemListElement: [
-                  {
-                    '@type': 'ListItem',
-                    position: 1,
-                    name: 'Quizlet QuickList',
-                    item: 'https://shramko.dev/quizlet-list',
-                  },
-                  {
-                    '@type': 'ListItem',
-                    position: 2,
-                    name: 'Privacy Policy',
-                    item: 'https://shramko.dev/quizlet-list/privacy-policy',
-                  },
-                ],
-              },
-            }),
-          }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'Privacy Policy | Quizlet QuickList Web Extension',
+            description:
+              'Privacy policy for the Quizlet QuickList Web Extension explaining how we handle user data and privacy.',
+            url: 'https://shramko.dev/quizlet-list/privacy-policy',
+            inLanguage: 'en',
+            datePublished: '2024-10-30',
+            dateModified: '2024-10-30',
+            author: {
+              '@type': 'Person',
+              '@id': 'https://shramko.dev/#person',
+              name: 'Serhii Shramko',
+              url: 'https://shramko.dev/about',
+            },
+            breadcrumb: {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Quizlet QuickList',
+                  item: 'https://shramko.dev/quizlet-list',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Privacy Policy',
+                  item: 'https://shramko.dev/quizlet-list/privacy-policy',
+                },
+              ],
+            },
+          }),
+        }}
+      />
       <section className="flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Privacy Policy - Quizlet QuickList Web Extension
@@ -221,5 +203,3 @@ function PrivacyPolicy() {
     </>
   );
 }
-
-export default PrivacyPolicy;
