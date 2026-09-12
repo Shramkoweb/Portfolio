@@ -50,7 +50,9 @@ export function pageMetadata(input: PageMetadataInput): Metadata {
   return {
     title,
     description,
-    ...(keywords ? { keywords } : {}),
+    // Next joins a keywords array with a bare comma. Join here instead, so the
+    // rendered tag keeps the comma-space separation the Pages Router emitted.
+    ...(keywords ? { keywords: keywords.join(', ') } : {}),
     ...(authors ? { authors } : {}),
     alternates: { canonical: url, types: RSS_FEED_ALTERNATE },
     openGraph: {

@@ -86,7 +86,7 @@ describe('pageMetadata', () => {
       authors: [{ name: 'Serhii Shramko' }],
     });
 
-    expect(meta.keywords).toEqual(['a', 'b']);
+    expect(meta.keywords).toBe('a, b');
     expect(meta.authors).toEqual([{ name: 'Serhii Shramko' }]);
   });
 });
