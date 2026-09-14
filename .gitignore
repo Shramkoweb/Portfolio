@@ -46,3 +46,6 @@ yarn-error.log*
 
 # AI Generated
 /docs/superpowers/
+
+# SDD scratch (ledgers, briefs, review packages)
+/.superpowers/

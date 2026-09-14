@@ -14,7 +14,6 @@
     "format:check": "oxfmt --check",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "postinstall": "prisma generate",
     "prepare": "git config core.hooksPath .git-hooks",
     "start": "next start",
@@ -23,14 +22,13 @@
     "test:coverage": "jest --coverage",
     "verify": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run test:ci",
     "verify:full": "pnpm run verify && pnpm run build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.0",
     "@prisma/client": "7.10.0",
     "@sentry/nextjs": "10.74.0",
     "@vercel/analytics": "2.0.1",
-    "@vercel/og": "1.0.2",
     "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
     "gray-matter": "4.0.3",
@@ -62,7 +60,6 @@
     "@types/react-dom": "19.3.0",
     "jest": "30.5.1",
     "jest-environment-jsdom": "30.5.1",
-    "next-sitemap": "4.2.3",
     "oxfmt": "0.67.0",
     "oxlint": "1.82.0",
     "postcss": "8.5.28",

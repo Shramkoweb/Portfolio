@@ -1,8 +1,9 @@
-import type { NextApiRequest } from 'next';
+/**
+ * @jest-environment node
+ */
+import { GET, POST } from '@/app/api/views/[slug]/route';
 
-import handler from '@/pages/api/views/[slug]';
-
-import { createMockReqRes as createBaseMockReqRes } from '../helpers/api-mocks';
+import { jsonRequest, routeContext } from '../helpers/route';
 
 const mockUpsert = jest.fn();
 const mockFindUnique = jest.fn();
@@ -31,20 +32,17 @@ jest.mock('lib/prisma', () => ({
   },
 }));
 
-function createMockReqRes(overrides: Partial<NextApiRequest> = {}) {
-  return createBaseMockReqRes({
-    query: { slug: 'test-post' },
-    ...overrides,
-  });
-}
+const ctx = (slug: string) => routeContext({ slug });
 
 describe('API /api/views/[slug]', () => {
   describe('POST — increment view', () => {
     it('upserts and returns total count', async () => {
       mockUpsert.mockResolvedValue({ count: 42n });
-      const { req, res, status, json } = createMockReqRes({ method: 'POST' });
 
-      await handler(req, res);
+      const res = await POST(
+        jsonRequest('/api/views/test-post', { method: 'POST' }),
+        ctx('test-post'),
+      );
 
       expect(mockUpsert).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -54,113 +52,85 @@ describe('API /api/views/[slug]', () => {
           select: { count: true },
         }),
       );
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({ total: 42 });
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({ total: 42 });
     });
 
     it('accepts the synthetic, non-MDX page slugs', async () => {
       mockUpsert.mockResolvedValue({ count: 7n });
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        query: { slug: 'quizlet-page' },
-      });
 
-      await handler(req, res);
+      const res = await POST(
+        jsonRequest('/api/views/quizlet-page', { method: 'POST' }),
+        ctx('quizlet-page'),
+      );
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({ total: 7 });
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({ total: 7 });
     });
 
     it('rejects an unknown slug with 404 and never writes', async () => {
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        query: { slug: 'not-a-real-post' },
-      });
-
-      await handler(req, res);
+      const res = await POST(
+        jsonRequest('/api/views/not-a-real-post', { method: 'POST' }),
+        ctx('not-a-real-post'),
+      );
 
       expect(mockUpsert).not.toHaveBeenCalled();
-      expect(status).toHaveBeenCalledWith(404);
-      expect(json).toHaveBeenCalledWith({
-        error: { message: 'Unknown slug' },
-      });
-    });
-
-    it('rejects an array slug with 404 and never writes', async () => {
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        query: { slug: ['test-post', 'evil'] },
-      });
-
-      await handler(req, res);
-
-      expect(mockUpsert).not.toHaveBeenCalled();
-      expect(status).toHaveBeenCalledWith(404);
-      expect(json).toHaveBeenCalledWith({
-        error: { message: 'Unknown slug' },
-      });
+      expect(res.status).toBe(404);
+      expect(await res.json()).toEqual({ error: { message: 'Unknown slug' } });
     });
   });
 
   describe('GET — read views', () => {
     it('returns count when record exists', async () => {
       mockFindUnique.mockResolvedValue({ count: 100n });
-      const { req, res, status, json, setHeader } = createMockReqRes();
 
-      await handler(req, res);
+      const res = await GET(
+        jsonRequest('/api/views/test-post'),
+        ctx('test-post'),
+      );
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({ total: 100 });
-      expect(setHeader).toHaveBeenCalledWith(
-        'Cache-Control',
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({ total: 100 });
+      expect(res.headers.get('Cache-Control')).toBe(
         's-maxage=60, stale-while-revalidate=120',
       );
     });
 
     it('returns 0 when record not found', async () => {
       mockFindUnique.mockResolvedValue(null);
-      const { req, res, json } = createMockReqRes();
 
-      await handler(req, res);
+      const res = await GET(
+        jsonRequest('/api/views/test-post'),
+        ctx('test-post'),
+      );
 
-      expect(json).toHaveBeenCalledWith({ total: 0 });
+      expect(await res.json()).toEqual({ total: 0 });
     });
 
     it('still returns 0 for an unknown slug — reads are not gated', async () => {
       mockFindUnique.mockResolvedValue(null);
-      const { req, res, status, json } = createMockReqRes({
-        query: { slug: 'not-a-real-post' },
-      });
 
-      await handler(req, res);
+      const res = await GET(
+        jsonRequest('/api/views/not-a-real-post'),
+        ctx('not-a-real-post'),
+      );
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({ total: 0 });
-    });
-  });
-
-  describe('unsupported method', () => {
-    it('returns 405 for PUT', async () => {
-      const { req, res, status, json } = createMockReqRes({ method: 'PUT' });
-
-      await handler(req, res);
-
-      expect(status).toHaveBeenCalledWith(405);
-      expect(json).toHaveBeenCalledWith({
-        error: { message: 'Method not allowed' },
-      });
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({ total: 0 });
     });
   });
 
   describe('error handling', () => {
     it('returns 500 on DB failure', async () => {
       mockFindUnique.mockRejectedValue(new Error('DB down'));
-      const { req, res, status, json } = createMockReqRes();
 
-      await handler(req, res);
+      const res = await GET(
+        jsonRequest('/api/views/test-post'),
+        ctx('test-post'),
+      );
 
-      expect(status).toHaveBeenCalledWith(500);
-      expect(json).toHaveBeenCalledWith({
+      expect(res.status).toBe(500);
+      expect(await res.json()).toEqual({
         error: { message: 'Internal Server Error' },
       });
     });

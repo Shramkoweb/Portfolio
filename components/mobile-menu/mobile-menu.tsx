@@ -1,6 +1,8 @@
+'use client';
+
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { CrossIcon, MenuIcon } from '@/components/mobile-menu/icons';
@@ -18,12 +20,12 @@ function activatePageScroll() {
 
 export function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     activatePageScroll();
     setIsMenuOpen(false);
-  }, [router.asPath]);
+  }, [pathname]);
 
   function handleMenuClick() {
     if (isMenuOpen) {

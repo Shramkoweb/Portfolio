@@ -1,3 +1,5 @@
+'use client';
+
 import { Linkedin } from 'lucide-react';
 
 import { ShareButton } from '@/components/share-button/share-button';

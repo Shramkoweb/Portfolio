@@ -1,8 +1,9 @@
-import type { NextApiRequest } from 'next';
+/**
+ * @jest-environment node
+ */
+import { GET, POST } from '@/app/api/reactions/[slug]/route';
 
-import handler from '@/pages/api/reactions/[slug]';
-
-import { createMockReqRes as createBaseMockReqRes } from '../helpers/api-mocks';
+import { jsonRequest, routeContext } from '../helpers/route';
 
 const mockFindMany = jest.fn();
 const mockUpsert = jest.fn();
@@ -35,13 +36,12 @@ jest.mock('lib/prisma', () => ({
   },
 }));
 
-function createMockReqRes(overrides: Partial<NextApiRequest> = {}) {
-  return createBaseMockReqRes({
-    query: { slug: 'my-post' },
-    body: {},
-    ...overrides,
-  });
-}
+const ctx = (slug = 'my-post') => routeContext({ slug });
+const post = (slug: string, body: unknown) =>
+  POST(
+    jsonRequest(`/api/reactions/${slug}`, { method: 'POST', body }),
+    ctx(slug),
+  );
 
 describe('API /api/reactions/[slug]', () => {
   describe('GET', () => {
@@ -50,41 +50,38 @@ describe('API /api/reactions/[slug]', () => {
         { type: 'heart', count: 5n },
         { type: 'trophy', count: 2n },
       ]);
-      const { req, res, status, json, setHeader } = createMockReqRes();
 
-      await handler(req, res);
+      const res = await GET(jsonRequest('/api/reactions/my-post'), ctx());
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({
         reactions: { heart: 5, beer: 0, trophy: 2 },
       });
-      expect(setHeader).toHaveBeenCalledWith(
-        'Cache-Control',
+      expect(res.headers.get('Cache-Control')).toBe(
         's-maxage=60, stale-while-revalidate=120',
       );
     });
 
     it('returns all zeros when no reactions exist', async () => {
       mockFindMany.mockResolvedValue([]);
-      const { req, res, json } = createMockReqRes();
 
-      await handler(req, res);
+      const res = await GET(jsonRequest('/api/reactions/my-post'), ctx());
 
-      expect(json).toHaveBeenCalledWith({
+      expect(await res.json()).toEqual({
         reactions: { heart: 0, beer: 0, trophy: 0 },
       });
     });
 
     it('still returns zeros for an unknown slug — reads are not gated', async () => {
       mockFindMany.mockResolvedValue([]);
-      const { req, res, status, json } = createMockReqRes({
-        query: { slug: 'not-a-real-post' },
-      });
 
-      await handler(req, res);
+      const res = await GET(
+        jsonRequest('/api/reactions/not-a-real-post'),
+        ctx('not-a-real-post'),
+      );
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({
         reactions: { heart: 0, beer: 0, trophy: 0 },
       });
     });
@@ -92,28 +89,25 @@ describe('API /api/reactions/[slug]', () => {
 
   describe('POST', () => {
     it('validates reaction type — rejects invalid', async () => {
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        body: { type: 'thumbsup' },
-      });
+      const res = await post('my-post', { type: 'thumbsup' });
 
-      await handler(req, res);
-
-      expect(status).toHaveBeenCalledWith(400);
-      expect(json).toHaveBeenCalledWith({
+      expect(res.status).toBe(400);
+      expect(await res.json()).toEqual({
         error: { message: 'Invalid reaction type' },
       });
     });
 
     it('validates reaction type — rejects missing', async () => {
-      const { req, res, status } = createMockReqRes({
-        method: 'POST',
-        body: {},
-      });
+      const res = await post('my-post', {});
 
-      await handler(req, res);
+      expect(res.status).toBe(400);
+    });
 
-      expect(status).toHaveBeenCalledWith(400);
+    it('rejects a malformed JSON body with 400', async () => {
+      const res = await post('my-post', '{not json');
+
+      expect(res.status).toBe(400);
+      expect(mock$transaction).not.toHaveBeenCalled();
     });
 
     it('upserts and returns updated counts', async () => {
@@ -125,15 +119,11 @@ describe('API /api/reactions/[slug]', () => {
           { type: 'trophy', count: 0n },
         ],
       ]);
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        body: { type: 'heart' },
-      });
 
-      await handler(req, res);
+      const res = await post('my-post', { type: 'heart' });
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({
         reactions: { heart: 6, beer: 1, trophy: 0 },
       });
     });
@@ -143,73 +133,33 @@ describe('API /api/reactions/[slug]', () => {
         { slug: 'my-post', type: 'heart', count: 1n },
         [{ type: 'heart', count: 1n }],
       ]);
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        body: { type: 'heart' },
-      });
 
-      await handler(req, res);
+      const res = await post('my-post', { type: 'heart' });
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({
         reactions: { heart: 1, beer: 0, trophy: 0 },
       });
     });
 
     it('rejects an unknown slug with 404 and never writes', async () => {
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        query: { slug: 'not-a-real-post' },
-        body: { type: 'heart' },
-      });
-
-      await handler(req, res);
+      const res = await post('not-a-real-post', { type: 'heart' });
 
       expect(mock$transaction).not.toHaveBeenCalled();
       expect(mockUpsert).not.toHaveBeenCalled();
-      expect(status).toHaveBeenCalledWith(404);
-      expect(json).toHaveBeenCalledWith({
-        error: { message: 'Unknown slug' },
-      });
-    });
-
-    it('rejects an array slug with 404 and never writes', async () => {
-      const { req, res, status, json } = createMockReqRes({
-        method: 'POST',
-        query: { slug: ['my-post', 'evil'] },
-        body: { type: 'heart' },
-      });
-
-      await handler(req, res);
-
-      expect(mock$transaction).not.toHaveBeenCalled();
-      expect(mockUpsert).not.toHaveBeenCalled();
-      expect(status).toHaveBeenCalledWith(404);
-      expect(json).toHaveBeenCalledWith({
-        error: { message: 'Unknown slug' },
-      });
-    });
-  });
-
-  describe('unsupported method', () => {
-    it('returns 405 for DELETE', async () => {
-      const { req, res, status } = createMockReqRes({ method: 'DELETE' });
-
-      await handler(req, res);
-
-      expect(status).toHaveBeenCalledWith(405);
+      expect(res.status).toBe(404);
+      expect(await res.json()).toEqual({ error: { message: 'Unknown slug' } });
     });
   });
 
   describe('error handling', () => {
     it('returns 500 on DB failure', async () => {
       mockFindMany.mockRejectedValue(new Error('connection lost'));
-      const { req, res, status, json } = createMockReqRes();
 
-      await handler(req, res);
+      const res = await GET(jsonRequest('/api/reactions/my-post'), ctx());
 
-      expect(status).toHaveBeenCalledWith(500);
-      expect(json).toHaveBeenCalledWith({
+      expect(res.status).toBe(500);
+      expect(await res.json()).toEqual({
         error: { message: 'Internal Server Error' },
       });
     });
