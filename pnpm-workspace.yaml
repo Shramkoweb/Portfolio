@@ -33,3 +33,4 @@ minimumReleaseAgeExclude:
   # the cooldown for that package permanently.
   # Inert is not harmless — a real waiver is hard to spot among dead ones,
   # so prune entries that no longer appear in pnpm-lock.yaml on every dep bump.
+  - '@types/node@26.6.1' # published 2026-09-15T20:36Z; drop once it matures
