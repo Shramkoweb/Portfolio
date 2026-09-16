@@ -79,44 +79,62 @@ Two cases:
 
 ### 3b. Empirical verification (mandatory — do not skip)
 
-Reasoning about semver isn't enough. Run the actual resolver:
+Reasoning about semver isn't enough. Run the actual resolver.
+
+**Remove every override at once, then re-add the ones the audit names.** Do not
+use 3a to pre-filter which entries to test: 3a is theory, and the core rule plus
+two Red Flags rows below say not to trust it. Pre-filtering in a repo where every
+override looks load-bearing means you test nothing and ship all of them unverified.
 
 ```bash
-# 1. Backup (use the session scratchpad, not the repo)
-cp pnpm-workspace.yaml "$SCRATCH/pnpm-workspace.yaml.bak"
-cp pnpm-lock.yaml      "$SCRATCH/pnpm-lock.yaml.bak"
+# 1. Backup. Define the directory — do not assume one exists in the environment.
+BAK="$(mktemp -d)"
+cp pnpm-workspace.yaml "$BAK/pnpm-workspace.yaml.bak"
+cp pnpm-lock.yaml      "$BAK/pnpm-lock.yaml.bak"
+echo "backups in $BAK"   # verify this printed before touching anything
 
-# 2. Remove the suspect override(s) from pnpm-workspace.yaml (keep load-bearing ones)
+# 2. Delete the whole `overrides:` block from pnpm-workspace.yaml
 
 # 3. Re-resolve from scratch
 pnpm install --lockfile-only
 
-# 4. Inspect what actually resolved
-grep -E "^  <pkg>@" pnpm-lock.yaml | sort -u
+# 4. Inspect what actually resolved. pnpm quotes scoped names, hence the '?
+grep -E "^  '?<pkg>@" pnpm-lock.yaml | sort -u
 
 # 5. Run audit against the override-free lockfile
-pnpm audit --json | jq '.metadata.vulnerabilities, [.advisories[].module_name]'
+pnpm audit --json | jq '.metadata.vulnerabilities, [.advisories[] | {id, module: .module_name, severity, vulnerable_versions}]'
 
-# 6a. Audit clean AND resolved version same/newer → OVERRIDE IS REDUNDANT, leave it removed
-# 6b. Audit reports the package OR a downgrade happened → restore the override
-```
+# 6. Restore — ALWAYS, whatever the outcome. Step 3 rewrote the lockfile.
+cp "$BAK/pnpm-workspace.yaml.bak" pnpm-workspace.yaml
+cp "$BAK/pnpm-lock.yaml.bak"      pnpm-lock.yaml
 
-Restore on failure:
-
-```bash
-cp "$SCRATCH/pnpm-workspace.yaml.bak" pnpm-workspace.yaml
-cp "$SCRATCH/pnpm-lock.yaml.bak"      pnpm-lock.yaml
+# 7. Re-add only the overrides the audit named in step 5, then:
 pnpm install
 ```
 
+Step 4's `'?` is not cosmetic. `grep -E "^  @types/node@"` matches **nothing** in a
+pnpm lockfile — scoped packages are written single-quoted (`  '@types/node@26.6.1':`).
+Without it the command exits silently with no output, which reads exactly like
+"no longer resolved" and walks you into the 3c row that says **Drop**. Any override
+on a `@scope/pkg` gets a confidently wrong verdict from a command that never errored.
+
+Step 6 is unconditional on purpose. `--lockfile-only` rewrote `pnpm-lock.yaml`
+whether the test passed or failed; restoring only "on failure" leaves a large
+unrelated lockfile diff in the tree that is easy to commit by accident.
+
+Read step 5's output as advisory IDs, not just module names — you need the ID to
+write the justification comment in Step 2, and the advisory **title** to describe
+the vulnerability class correctly. Do not carry over the class from an older
+comment; re-read it from the audit output.
+
 ### 3c. Decision matrix
 
-| Symptom after removal                    | Verdict                                                                                                                                                      |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Audit clean, same/newer version resolved | **Drop** the override                                                                                                                                        |
-| Audit reports the package                | **Keep** — override is load-bearing                                                                                                                          |
-| Version downgrades but no audit hit      | **Drop** the override — it isn't doing security work. If you want dedup, that's a perf concern, not a security one; note it explicitly and decide separately |
-| Multiple versions appear in lockfile     | Investigate — usually a parent pins exact. Override may be the only way to dedup; weigh against bumping the parent                                           |
+| Symptom after removal                    | Verdict                                                                                                                                                                                                                                                                                                           |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Audit clean, same/newer version resolved | **Drop** the override                                                                                                                                                                                                                                                                                             |
+| Audit reports the package                | **Keep** — override is load-bearing                                                                                                                                                                                                                                                                               |
+| Version downgrades but no audit hit      | **Drop** the override — it isn't doing security work. If you want dedup, that's a perf concern, not a security one; note it explicitly and decide separately                                                                                                                                                      |
+| Multiple versions appear in lockfile     | **Keep** if any resolved version is in the advisory's vulnerable range. Two versions means one parent is reaching the patched line on its own and another still pins the old one; the audit hit tells you the override is still carrying the second. Prefer bumping that parent over keeping the override forever |
 
 ## Step 4 — Prune spent cooldown waivers
 
@@ -140,18 +158,35 @@ A version-exact entry goes inert the moment the pin moves past it — it can nev
 Inert is not harmless: a genuinely risky waiver is hard to spot among dead ones. Every entry naming a version that no longer appears in the lockfile should go.
 
 ```bash
-sed -n '/^minimumReleaseAgeExclude:/,$p' pnpm-workspace.yaml \
+sed -n '/^minimumReleaseAgeExclude:/,/^[a-zA-Z]/p' pnpm-workspace.yaml \
   | grep -E "^  - " | sed "s/^  - //; s/'//g; s/ *#.*//" \
   | while read -r e; do
-      [ "$(grep -c -F "$e" pnpm-lock.yaml)" -eq 0 ] && echo "STALE  $e" || echo "LIVE   $e"
+      if grep -qF -e "  '$e':" -e "  $e:" pnpm-lock.yaml; then
+        echo "LIVE   $e"
+      else
+        echo "STALE  $e"
+      fi
     done
 ```
 
-Drop every `STALE` line, then confirm the prune was a no-op for resolution:
+**Match the full lockfile key, never a bare substring.** `grep -c -F "$e"` looks
+like it works and silently over-reports LIVE: `@types/node@26.6` substring-matches
+the line for `@types/node@26.6.1`, and `postcss@8.5` matches `postcss@8.5.28`, so a
+truncated or superseded entry is reported live and never pruned. That bias — keeping
+dead waivers — is the exact failure this step exists to catch. Anchoring on the key's
+own punctuation (`  '<entry>':` for scoped, `  <entry>:` for plain) is what makes a
+prefix stop matching. The `sed` range also stops at the next top-level key rather than
+running to EOF, so the scan stays correct if a block is ever added below this one.
+
+Then confirm the prune changed no resolution. Diff against a **pre-prune copy**, not
+against git HEAD — by this point Step 3b has already re-resolved the lockfile, so
+`git diff` carries that churn and the check would never come out clean:
 
 ```bash
+cp pnpm-lock.yaml "$BAK/pre-prune-lock.yaml"   # BEFORE editing the exclude list
+# ... drop the STALE entries ...
 pnpm install --lockfile-only
-git diff --stat pnpm-lock.yaml   # must be unchanged by the prune itself
+diff -q "$BAK/pre-prune-lock.yaml" pnpm-lock.yaml   # must report no difference
 ```
 
 ### 4c. Prefer waiting over waiving
