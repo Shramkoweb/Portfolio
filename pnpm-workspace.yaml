@@ -25,26 +25,11 @@ allowBuilds:
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
-  - postcss@8.5.22
-  - '@next/env@16.2.12'
-  - '@next/swc-darwin-arm64@16.2.12'
-  - '@next/swc-darwin-x64@16.2.12'
-  - '@next/swc-linux-arm64-gnu@16.2.12'
-  - '@next/swc-linux-arm64-musl@16.2.12'
-  - '@next/swc-linux-x64-gnu@16.2.12'
-  - '@next/swc-linux-x64-musl@16.2.12'
-  - '@next/swc-win32-arm64-msvc@16.2.12'
-  - '@next/swc-win32-x64-msvc@16.2.12'
-  - next@16.2.12
-  - '@shikijs/core@4.4.1'
-  - '@shikijs/engine-javascript@4.4.1'
-  - '@shikijs/engine-oniguruma@4.4.1'
-  - '@shikijs/langs@4.4.1'
-  - '@shikijs/primitive@4.4.1'
-  - '@shikijs/rehype@4.4.1'
-  - '@shikijs/themes@4.4.1'
-  - '@shikijs/transformers@4.4.1'
-  - '@shikijs/types@4.4.1'
-  - '@types/react-dom@19.2.4'
-  - '@types/react@19.2.18'
-  - shiki@4.4.1
+  # pnpm >=11 enforces a release cooldown by default (minimumReleaseAge, 1440
+  # minutes), so a version published less than a day ago will not resolve.
+  # Every entry below waives that cooldown for one exact version.
+  # The version-exact form is deliberate: it goes inert by itself once the pin
+  # moves past it, unlike a bare name or a glob ('@types/*'), which would waive
+  # the cooldown for that package permanently.
+  # Inert is not harmless — a real waiver is hard to spot among dead ones,
+  # so prune entries that no longer appear in pnpm-lock.yaml on every dep bump.
