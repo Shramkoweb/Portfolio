@@ -18,7 +18,7 @@ function AboutPage() {
       <Head>
         <title>About | Serhii Shramko</title>
         <meta
-          content="Learn about me and my journey through life. Discover my passions, interests, and experiences on my personal about page. Get to know the real me today."
+          content="Serhii Shramko, software engineer in Boston, originally from Dnipro, Ukraine. Experience, education, open source, mentoring, and the photos from long before any of it."
           name="description"
           key="description"
         />
@@ -42,7 +42,7 @@ function AboutPage() {
               '@type': 'ProfilePage',
               url: 'https://shramko.dev/about',
               inLanguage: 'en',
-              dateModified: '2026-03-28',
+              dateModified: '2026-09-18',
               mainEntity: {
                 '@type': 'Person',
                 '@id': 'https://shramko.dev/#person',
@@ -123,34 +123,48 @@ function AboutPage() {
         </div>
 
         <div className="mb-8 prose dark:prose-dark leading-6">
-          <h2>Links</h2>
+          <p className="text-lg">
+            I&apos;m Serhii, a software engineer in Boston, originally from
+            Dnipro, Ukraine. I build the front end of products people use every
+            day without thinking about them: document tools, legal tech, Mac
+            software, and now a B2B platform at BetterMe.
+          </p>
 
-          <ul>
-            <li>
-              <a
-                href="https://github.com/shramkoweb"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                GitHub
-              </a>
-            </li>
+          <p>
+            I like the parts of the job nobody demos. Code that still makes
+            sense a year later. An alert that finds the bug before a user does.
+            A test suite quiet enough that everyone can go home on Friday. Most
+            of what I do is making the next person&apos;s work easier, and that
+            person is usually me.
+          </p>
 
-            <li>
-              <a href="https://www.linkedin.com/in/shramko-dev">LinkedIn</a>
-            </li>
+          <p>
+            The rest of it is people: reviews, 1-1s, and talking someone out of
+            a rewrite. I write things down here so I don&apos;t have to explain
+            them twice. Away from the keyboard it&apos;s film cameras, cars, and
+            dinners that run long.
+          </p>
 
-            <li>
-              <a
-                href="mailto:shramko.dev@gmail.com"
-                rel="noopener noreferrer"
-                target="_blank"
-                title="Shramko Serhii personal email"
-              >
-                shramko.dev@gmail.com
-              </a>
-            </li>
-          </ul>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            <a
+              href="https://github.com/shramkoweb"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/shramko-dev">LinkedIn</a>
+
+            <a
+              href="mailto:shramko.dev@gmail.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              title="Shramko Serhii personal email"
+            >
+              shramko.dev@gmail.com
+            </a>
+          </div>
 
           <h2>Experience</h2>
 
