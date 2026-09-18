@@ -89,6 +89,8 @@ Only one or two posts should carry `featured: true` at a time. Adding one usuall
 ## Conventions
 
 - **Commits:** [Conventional Commits](https://www.conventionalcommits.org/) Angular convention. Enforced by `commitlint.config.ts`. Lowercase subject, ≤ 50 chars, no period. Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
+- **Commit bodies:** default to no body. The subject line should carry the change on its own. Add a body only when something genuinely can't be read off the diff — a non-obvious reason for the approach, a rejected alternative, a link to the upstream issue. Never restate what the diff already shows.
+- **Code comments:** same rule. Comment the _why_, not the _what_ — a constraint, a workaround, a gotcha that would otherwise get "cleaned up" by the next reader. If the code already says it, don't repeat it in prose.
 - **Branches:** `feat/`, `fix/`, `chore/`, `ci/`, `docs/`, `refactor/`, `test/`, `perf/`. Convention only — nothing enforces this, unlike commit messages.
 - **Formatting:** `oxfmt`. Pre-commit hook auto-formats staged JS/TS. Don't fight it.
 - **Before pushing:** the git pre-push hook (`.git-hooks/pre-push`) runs `pnpm verify` automatically. Don't bypass with `--no-verify`.
