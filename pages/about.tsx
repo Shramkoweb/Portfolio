@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import { DetailList } from '@/components/detail-list';
+import { FilmRoll } from '@/components/film-roll';
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
 import { serializeJsonLd } from '@/lib/schema';
@@ -516,6 +517,10 @@ function AboutPage() {
               loading="lazy"
             />
           </div>
+
+          <hr />
+
+          <FilmRoll />
         </div>
       </section>
     </>
