@@ -14,7 +14,7 @@ keywords:
     compileMDX optimization,
   ]
 categories: [JS, Node, Vercel]
-featured: true
+featured: false
 ---
 
 ## The number that didn't move
