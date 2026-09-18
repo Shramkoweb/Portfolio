@@ -166,6 +166,7 @@ function AboutPage() {
             Senior Software Engineer at&ensp;
             <a
               href="https://betterme.world/"
+              className="cursor-betterme"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -223,6 +224,7 @@ function AboutPage() {
             Senior Software Engineer at&ensp;
             <a
               href="https://macpaw.com/"
+              className="cursor-macpaw"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -293,6 +295,7 @@ function AboutPage() {
             Software Engineer at&ensp;
             <a
               href="https://loio.com/"
+              className="cursor-loio"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -356,6 +359,7 @@ function AboutPage() {
             Software Engineer at&ensp;
             <a
               href="https://www.pdffiller.com/"
+              className="cursor-pdffiller"
               rel="noopener noreferrer"
               target="_blank"
             >
