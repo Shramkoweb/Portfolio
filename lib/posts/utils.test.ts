@@ -4,9 +4,11 @@ import {
   filterByFeatured,
   filterByHeading,
   filterByNotFeatured,
+  formatPostDate,
   getYearFromPost,
   isNewPost,
   isYearSeparator,
+  parsePostDate,
   sortByBirthtime,
 } from '@/lib/posts/utils';
 import { Post, PostCategory, PostMetadata, Snippet } from '@/lib/types';
@@ -287,5 +289,39 @@ describe('isNewPost', () => {
 
   it('returns false for an unparsable date instead of throwing', () => {
     expect(isNewPost(postDated('not a date'), now)).toBe(false);
+  });
+});
+
+describe('parsePostDate', () => {
+  it('parses an ISO date the way frontmatter stores it', () => {
+    expect(parsePostDate('2024-07-07')).toBe(Date.parse('2024-07-07'));
+  });
+
+  it('parses a full ISO timestamp', () => {
+    expect(parsePostDate('2024-07-07T21:01:43.973Z')).toBe(
+      Date.parse('2024-07-07T21:01:43.973Z'),
+    );
+  });
+
+  it('returns null for a missing date', () => {
+    expect(parsePostDate(undefined)).toBeNull();
+    expect(parsePostDate(null)).toBeNull();
+    expect(parsePostDate('')).toBeNull();
+  });
+
+  it('returns null for an unparsable date instead of NaN', () => {
+    expect(parsePostDate('not a date')).toBeNull();
+  });
+});
+
+describe('formatPostDate', () => {
+  it('formats a timestamp in the medium style used across the article header', () => {
+    expect(formatPostDate(Date.parse('2024-07-07'))).toBe('Jul 7, 2024');
+  });
+
+  it('formats in UTC, so the rendered day never shifts with the reader timezone', () => {
+    expect(formatPostDate(Date.parse('2024-07-07T23:30:00.000Z'))).toBe(
+      'Jul 7, 2024',
+    );
   });
 });
