@@ -2,7 +2,7 @@
 
 > Personal portfolio, blog, and digital garden of Serhii Shramko, a Senior Software Engineer at BetterMe specializing in frontend development with React, TypeScript, and Next.js. Built with Next.js, TypeScript, and Tailwind CSS. Open source.
 
-The site contains 36 in-depth blog posts and 44 production-ready code snippets covering JavaScript, TypeScript, React, Next.js, Node.js, CSS, and developer tooling.
+In-depth blog posts and production-ready code snippets covering JavaScript, TypeScript, React, Next.js, Node.js, CSS, and developer tooling.
 
 ## Pages
 
