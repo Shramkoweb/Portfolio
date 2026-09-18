@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
+import { DetailList } from '@/components/detail-list';
+import { FilmRoll } from '@/components/film-roll';
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
 import { serializeJsonLd } from '@/lib/schema';
@@ -18,7 +20,7 @@ function AboutPage() {
       <Head>
         <title>About | Serhii Shramko</title>
         <meta
-          content="Learn about me and my journey through life. Discover my passions, interests, and experiences on my personal about page. Get to know the real me today."
+          content="Serhii Shramko, software engineer in Boston, originally from Dnipro, Ukraine. Experience, education, open source, mentoring, and the photos from long before any of it."
           name="description"
           key="description"
         />
@@ -42,7 +44,7 @@ function AboutPage() {
               '@type': 'ProfilePage',
               url: 'https://shramko.dev/about',
               inLanguage: 'en',
-              dateModified: '2026-03-28',
+              dateModified: '2026-09-18',
               mainEntity: {
                 '@type': 'Person',
                 '@id': 'https://shramko.dev/#person',
@@ -123,34 +125,49 @@ function AboutPage() {
         </div>
 
         <div className="mb-8 prose dark:prose-dark leading-6">
-          <h2>Links</h2>
+          <p className="text-lg">
+            I&apos;m Serhii, a software engineer in Boston, originally from
+            Dnipro, <span className="cursor-ukraine">Ukraine</span>. I build the
+            front end of products people use every day without thinking about
+            them: document tools, legal tech, Mac software, and now a B2B
+            platform at BetterMe.
+          </p>
 
-          <ul>
-            <li>
-              <a
-                href="https://github.com/shramkoweb"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                GitHub
-              </a>
-            </li>
+          <p>
+            I like the parts of the job nobody demos. Code that still makes
+            sense a year later. An alert that finds the bug before a user does.
+            A test suite quiet enough that everyone can go home on Friday. Most
+            of what I do is making the next person&apos;s work easier, and that
+            person is usually me.
+          </p>
 
-            <li>
-              <a href="https://www.linkedin.com/in/shramko-dev">LinkedIn</a>
-            </li>
+          <p>
+            The rest of it is people: reviews, 1-1s, and talking someone out of
+            a rewrite. I write things down here so I don&apos;t have to explain
+            them twice. Away from the keyboard it&apos;s film cameras, cars, and
+            dinners that run long.
+          </p>
 
-            <li>
-              <a
-                href="mailto:shramko.dev@gmail.com"
-                rel="noopener noreferrer"
-                target="_blank"
-                title="Shramko Serhii personal email"
-              >
-                shramko.dev@gmail.com
-              </a>
-            </li>
-          </ul>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            <a
+              href="https://github.com/shramkoweb"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/shramko-dev">LinkedIn</a>
+
+            <a
+              href="mailto:shramko.dev@gmail.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              title="Shramko Serhii personal email"
+            >
+              shramko.dev@gmail.com
+            </a>
+          </div>
 
           <h2>Experience</h2>
 
@@ -166,6 +183,7 @@ function AboutPage() {
             Senior Software Engineer at&ensp;
             <a
               href="https://betterme.world/"
+              className="cursor-betterme"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -223,6 +241,7 @@ function AboutPage() {
             Senior Software Engineer at&ensp;
             <a
               href="https://macpaw.com/"
+              className="cursor-macpaw"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -293,6 +312,7 @@ function AboutPage() {
             Software Engineer at&ensp;
             <a
               href="https://loio.com/"
+              className="cursor-loio"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -356,6 +376,7 @@ function AboutPage() {
             Software Engineer at&ensp;
             <a
               href="https://www.pdffiller.com/"
+              className="cursor-pdffiller"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -404,81 +425,52 @@ function AboutPage() {
 
           <hr />
 
+          <h2>Education</h2>
+
+          <DetailList
+            items={[
+              {
+                title: 'Dnipro University of Technology',
+                href: 'https://nmu.org.ua/en/',
+                role: 'Master of Science',
+                description: 'Electromechanical Automation Systems.',
+              },
+            ]}
+          />
+
+          <hr />
+
+          <h2>Open Source & Mentoring</h2>
+
+          <DetailList
+            items={[
+              {
+                title: 'Kottans',
+                href: 'https://kottans.org/',
+                role: 'Mentor',
+                description:
+                  'Code reviews on GitHub, voice and text consultations. More than 30 developers so far.',
+              },
+              {
+                title: 'MacPaw Career Wave',
+                href: 'https://macpaw.com/career-wave',
+                role: 'Front-end consultations & mentor',
+                description:
+                  'A mentorship program for women starting in tech. I mentored five of them, and all five landed a job.',
+              },
+              {
+                title: 'State of JS & CSS',
+                href: 'https://stateofjs.com/en-US',
+                role: 'Contributor',
+                description:
+                  'Ukrainian and Russian translations of the survey.',
+              },
+            ]}
+          />
+
+          <hr />
+
           <LinkedinFeedback feedbackList={LINKEDIN_FEEDBACK_LIST} />
-
-          <hr />
-
-          <h2 className="mt-16">Education</h2>
-
-          <p>
-            <strong>
-              Master of Science in Electromechanical Automation Systems
-            </strong>
-            <br />
-            <a
-              href="https://nmu.org.ua/en/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Dnipro University of Technology
-            </a>
-          </p>
-
-          <hr />
-
-          <h2>Open Source</h2>
-
-          <h3 className="m-0 mb-4">
-            Mentor -&ensp;
-            <a
-              href="https://kottans.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Kottans
-            </a>
-          </h3>
-
-          <p className="text-sm">
-            Over the years, I&apos;ve had the joy of mentoring{' '}
-            <strong>more than 30</strong> individuals. I love conducting
-            insightful code reviews on GitHub, offering engaging voice and text
-            consultations, and sharing motivation and inspiration along the way.
-          </p>
-
-          <h3 className="m-0 mb-4">
-            Front-end consultations -&ensp;
-            <a
-              href="https://macpaw.com/career-wave"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              MacPaw Career Wave
-            </a>
-          </h3>
-
-          <p className="text-sm">
-            A <strong>mentorship program</strong> that empowers girls with
-            valuable career insights and both soft and hard skill development. I{' '}
-            <strong>helped 5 girls</strong> break the stalemate in their careers
-            and find jobs.
-          </p>
-
-          <h3 className="m-0 mb-4">
-            Contributor -&ensp;
-            <a
-              href="https://stateofjs.com/en-US"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              State of JS & CSS
-            </a>
-          </h3>
-
-          <p className="text-sm">
-            Authored Ukrainian and Russian translations for the State of JS &
-            CSS survey.
-          </p>
 
           <hr />
 
@@ -526,6 +518,10 @@ function AboutPage() {
               loading="lazy"
             />
           </div>
+
+          <hr />
+
+          <FilmRoll />
         </div>
       </section>
     </>

@@ -248,3 +248,111 @@ input[type='email'] {
     --tw-scale-y: 1;
   }
 }
+
+/* Employer links swap the cursor for the company mark, rasterised from each
+   company's own vector asset. A cursor takes no srcset, so `image-set` is the
+   only way to hand a retina screen more pixels; the plain `url()` above it is
+   the fallback. 32 CSS px is the size that still reads while the pointer
+   moves, and it keeps the 3x file under the 128px cursor ceiling.
+   BetterMe and MacPaw ship light-on-dark variants; the other two marks carry
+   their own background and work on either theme. */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-betterme {
+    cursor:
+      url(/static/images/logos/betterme.png) 16 16,
+      pointer;
+    cursor:
+      image-set(
+          url(/static/images/logos/betterme.png) 1x,
+          url(/static/images/logos/betterme@2x.png) 2x,
+          url(/static/images/logos/betterme@3x.png) 3x
+        )
+        16 16,
+      pointer;
+  }
+
+  .cursor-macpaw {
+    cursor:
+      url(/static/images/logos/macpaw.png) 16 16,
+      pointer;
+    cursor:
+      image-set(
+          url(/static/images/logos/macpaw.png) 1x,
+          url(/static/images/logos/macpaw@2x.png) 2x,
+          url(/static/images/logos/macpaw@3x.png) 3x
+        )
+        16 16,
+      pointer;
+  }
+
+  .cursor-loio {
+    cursor:
+      url(/static/images/logos/loio.png) 16 16,
+      pointer;
+    cursor:
+      image-set(
+          url(/static/images/logos/loio.png) 1x,
+          url(/static/images/logos/loio@2x.png) 2x,
+          url(/static/images/logos/loio@3x.png) 3x
+        )
+        16 16,
+      pointer;
+  }
+
+  .cursor-pdffiller {
+    cursor:
+      url(/static/images/logos/pdffiller.png) 16 16,
+      pointer;
+    cursor:
+      image-set(
+          url(/static/images/logos/pdffiller.png) 1x,
+          url(/static/images/logos/pdffiller@2x.png) 2x,
+          url(/static/images/logos/pdffiller@3x.png) 3x
+        )
+        16 16,
+      pointer;
+  }
+
+  /* Not a link, unlike the marks above, so the fallback stays `text`. */
+  .cursor-ukraine {
+    cursor:
+      url(/static/images/cursors/ukraine.png) 16 16,
+      text;
+    cursor:
+      image-set(
+          url(/static/images/cursors/ukraine.png) 1x,
+          url(/static/images/cursors/ukraine@2x.png) 2x,
+          url(/static/images/cursors/ukraine@3x.png) 3x
+        )
+        16 16,
+      text;
+  }
+
+  .dark .cursor-betterme {
+    cursor:
+      url(/static/images/logos/betterme-dark.png) 16 16,
+      pointer;
+    cursor:
+      image-set(
+          url(/static/images/logos/betterme-dark.png) 1x,
+          url(/static/images/logos/betterme-dark@2x.png) 2x,
+          url(/static/images/logos/betterme-dark@3x.png) 3x
+        )
+        16 16,
+      pointer;
+  }
+
+  .dark .cursor-macpaw {
+    cursor:
+      url(/static/images/logos/macpaw-dark.png) 16 16,
+      pointer;
+    cursor:
+      image-set(
+          url(/static/images/logos/macpaw-dark.png) 1x,
+          url(/static/images/logos/macpaw-dark@2x.png) 2x,
+          url(/static/images/logos/macpaw-dark@3x.png) 3x
+        )
+        16 16,
+      pointer;
+  }
+}

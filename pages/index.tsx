@@ -81,7 +81,7 @@ function IndexPage(props: IndexPageProps) {
                 href="https://betterme.world/"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
+                className="cursor-betterme underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
               >
                 BetterMe
               </a>
