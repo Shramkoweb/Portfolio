@@ -2,7 +2,7 @@
 
 > Personal portfolio, blog, and digital garden of Serhii Shramko, a Senior Software Engineer at BetterMe specializing in frontend development with React, TypeScript, and Next.js. Built with Next.js, TypeScript, and Tailwind CSS. Open source.
 
-The site contains 35 in-depth blog posts and 44 production-ready code snippets covering JavaScript, TypeScript, React, Next.js, Node.js, CSS, and developer tooling.
+In-depth blog posts and production-ready code snippets covering JavaScript, TypeScript, React, Next.js, Node.js, CSS, and developer tooling.
 
 ## Pages
 
@@ -38,6 +38,7 @@ The site contains 35 in-depth blog posts and 44 production-ready code snippets c
 - [Flexbox Grid in React: A Step-by-Step Guide](https://shramko.dev/blog/react-flexbox-grid): Learn how to build a reusable flexbox-based Grid component in React using BEM methodology and clsx for clean class management.
 - [Highly recommended resources for developers in 2025](https://shramko.dev/blog/useful-articles): Curated list of the best resources, blogs, and websites every developer should know in 2025. Essential reading for staying up-to-date.
 - [How I Got Apollo GraphQL Certification for Free](https://shramko.dev/blog/apollo-graphql-certification): My journey to getting Apollo GraphQL certification for free. Learn about the exam structure, preparation tips, and how to earn your credential.
+- [How I Turned 17 Hours of Video Into a Second Brain, Offline](https://shramko.dev/blog/second-brain-from-video): Build a second brain from video: transcribe 17 hours locally with Whisper on Apple Silicon, free and offline, then turn the text into atomic notes in Obsidian.
 - [How to Use Shiki Class-Based Themes with next-mdx-remote in Next.js](https://shramko.dev/blog/shiki-class-based-themes-nextjs-mdx): Replace Shiki's bloated inline dual-theme styles with class-based CSS extraction using transformerStyleToClass and next-mdx-remote in Next.js.
 - [I Fixed the Wrong Thing and Found the Real Bug](https://shramko.dev/blog/build-time-lies): I spotted a build regression, shipped what I thought was the fix, and the numbers didn't move. Turns out the metrics were lying too — Next.js reports batch timing, not page timing.
 - [I Ran an AI SEO Audit on 56 Blog Posts in One Day](https://shramko.dev/blog/ai-seo-audit): I used Cursor AI to audit SEO across 56 blog posts in one afternoon. Meta descriptions, broken links, and alt text — all fixed systematically.

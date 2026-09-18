@@ -2,7 +2,7 @@
 
 > Personal portfolio, blog, and digital garden of Serhii Shramko, a Senior Software Engineer at BetterMe specializing in frontend development with React, TypeScript, and Next.js. Built with Next.js, TypeScript, and Tailwind CSS. Open source.
 
-This site contains 35 blog posts on web development topics and 44 production-ready code snippets. Content is written in Markdown with MDX support, featuring rich frontmatter metadata including descriptions, keywords, and categories. The site also showcases browser extensions and developer tools.
+In-depth blog posts on web development and production-ready code snippets, plus browser extensions and developer tools.
 
 ## Pages
 
@@ -104,6 +104,8 @@ This site contains 35 blog posts on web development topics and 44 production-rea
   Keywords: accept incoming network connections, PHPStorm macOS
 - [Highly recommended resources for developers in 2025](https://shramko.dev/blog/useful-articles): Curated list of the best resources, blogs, and websites every developer should know in 2025. Essential reading for staying up-to-date.
   Keywords: Resources for developers, Best Developer Websites, Tech News Resources
+- [How I Turned 17 Hours of Video Into a Second Brain, Offline](https://shramko.dev/blog/second-brain-from-video): Build a second brain from video: transcribe 17 hours locally with Whisper on Apple Silicon, free and offline, then turn the text into atomic notes in Obsidian.
+  Keywords: second brain, transcribe video locally, Whisper Mac, local transcription Apple Silicon, mlx-whisper, Obsidian second brain
 - [I Ran an AI SEO Audit on 56 Blog Posts in One Day](https://shramko.dev/blog/ai-seo-audit): I used Cursor AI to audit SEO across 56 blog posts in one afternoon. Meta descriptions, broken links, and alt text — all fixed systematically.
   Keywords: AI SEO audit, Cursor AI, meta descriptions, developer blog SEO, content optimization
 - [Opt-Out of Email Newsletters Now for a Clutter-Free Inbox](https://shramko.dev/blog/unsubscribe-immediately): Stop letting unwanted emails pile up. Learn why unsubscribing from newsletters immediately saves time, reduces distractions, and keeps your inbox focused.
