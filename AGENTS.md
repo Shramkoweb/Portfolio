@@ -52,6 +52,24 @@ pnpm dev                # http://localhost:3000
 | Regenerate Prisma client  | `pnpm exec prisma generate`           |
 | Check CSP inline hashes   | `pnpm csp:check` (after `pnpm build`) |
 
+## Publishing a blog post
+
+`pnpm article` scaffolds the file. The rest is manual, and two of these are easy to forget because nothing fails when you skip them.
+
+| Step                       | Where                   | Notes                                                                                                                                                                                 |
+| -------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Post body                  | `_posts/<slug>.md`      | MDX. Frontmatter needs `title`, `heading`, `description`, `createDate`, `keywords`, `categories`, `featured`.                                                                         |
+| Categories                 | same frontmatter        | Must exist in the `PostCategory` enum in `lib/types.ts`, or the build throws at `getStaticProps`.                                                                                     |
+| Images                     | `public/static/images/` | Reference as `<Image src="name.png" alt="..." />` — the path prefix is added by the MDX component. Add `inverted` for diagrams on a transparent background so dark mode flips them.   |
+| Video                      | `public/static/videos/` | Plain `<video>` works in MDX. Use `muted` + `playsInline`, or autoplay is blocked.                                                                                                    |
+| **`public/llms.txt`**      | hand-maintained         | **Add the post.** Entries are sorted alphabetically by title; the text after the colon is the frontmatter `description`. Deliberately no post counts — they went stale on every post. |
+| **`public/llms-full.txt`** | hand-maintained         | Same, in that file's own format.                                                                                                                                                      |
+| `public/sitemap.xml`       | generated               | `next-sitemap` rewrites it during `pnpm build`. Never hand-edit.                                                                                                                      |
+
+**Watch out:** a colon inside an unquoted frontmatter value breaks the YAML parse. `description: Build a second brain: transcribe...` silently turns into a different key and every field after it disappears, which surfaces as `Cannot read properties of undefined` in the post filters. Quote any value containing a colon.
+
+Only one or two posts should carry `featured: true` at a time. Adding one usually means clearing another.
+
 ## Repo layout
 
 | Path                | Purpose                                                    |
@@ -91,6 +109,8 @@ pnpm dev                # http://localhost:3000
 - Don't push directly to `main`. PRs only.
 - Don't add a dependency without a clear justification — this repo deliberately stays lean.
 - Don't write `*.md` files outside what an issue requires; this project does not use docs-as-features.
+- Don't hand-edit `public/sitemap.xml` — `next-sitemap` regenerates it on build.
+- Don't run `pnpm build` while `pnpm dev` is running; they fight over `.next` and the build dies on a missing `_app.js`.
 
 ## Notes for specific tools
 
