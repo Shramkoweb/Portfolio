@@ -121,7 +121,9 @@ html {
 }
 
 .dark img.inverted {
-  filter: invert(1);
+  /* hue-rotate keeps accent colours intact while flipping lightness;
+     greyscale diagrams are unaffected by it */
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .shiki,
