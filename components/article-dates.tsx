@@ -1,13 +1,9 @@
+import { formatPostDate } from '@/lib/posts/utils';
+
 interface ArticleDatesProps {
   createDate: number;
   updateDate: number | null;
 }
-
-const formatDate = (timestamp: number) =>
-  new Date(timestamp).toLocaleDateString('en-us', {
-    dateStyle: 'medium',
-    timeZone: 'UTC',
-  });
 
 export function ArticleDates(props: ArticleDatesProps) {
   const { createDate, updateDate } = props;
@@ -17,7 +13,7 @@ export function ArticleDates(props: ArticleDatesProps) {
       <p>
         Published on{' '}
         <time dateTime={new Date(createDate).toISOString()}>
-          {formatDate(createDate)}
+          {formatPostDate(createDate)}
         </time>
       </p>
       {updateDate && (
@@ -25,7 +21,7 @@ export function ArticleDates(props: ArticleDatesProps) {
           Last updated on{' '}
           <strong className="font-medium">
             <time dateTime={new Date(updateDate).toISOString()}>
-              {formatDate(updateDate)}
+              {formatPostDate(updateDate)}
             </time>
           </strong>
         </p>

@@ -39,6 +39,25 @@ export const filterByAdvanceReact = (post: Post | PostMetadata) =>
 export const filterByHeading = (post: Post | PostMetadata, heading: string) =>
   post.data.heading.toLowerCase().includes(heading.toLowerCase());
 
+export const parsePostDate = (
+  value: string | null | undefined,
+): number | null => {
+  if (!value) {
+    return null;
+  }
+
+  const timestamp = Date.parse(value);
+
+  return Number.isNaN(timestamp) ? null : timestamp;
+};
+
+/** UTC: the prerendered day must not shift with the reader's timezone. */
+export const formatPostDate = (timestamp: number): string =>
+  new Date(timestamp).toLocaleDateString('en-us', {
+    dateStyle: 'medium',
+    timeZone: 'UTC',
+  });
+
 export const getYearFromPost = (post: Post | PostMetadata): number => {
   const date = new Date(post.data.createDate);
   return date.getFullYear();
