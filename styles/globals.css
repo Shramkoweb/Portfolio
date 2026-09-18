@@ -313,6 +313,21 @@ input[type='email'] {
       pointer;
   }
 
+  /* Not a link, unlike the marks above, so the fallback stays `text`. */
+  .cursor-ukraine {
+    cursor:
+      url(/static/images/cursors/ukraine.png) 16 16,
+      text;
+    cursor:
+      image-set(
+          url(/static/images/cursors/ukraine.png) 1x,
+          url(/static/images/cursors/ukraine@2x.png) 2x,
+          url(/static/images/cursors/ukraine@3x.png) 3x
+        )
+        16 16,
+      text;
+  }
+
   .dark .cursor-betterme {
     cursor:
       url(/static/images/logos/betterme-dark.png) 16 16,

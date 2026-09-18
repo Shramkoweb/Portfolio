@@ -127,9 +127,10 @@ function AboutPage() {
         <div className="mb-8 prose dark:prose-dark leading-6">
           <p className="text-lg">
             I&apos;m Serhii, a software engineer in Boston, originally from
-            Dnipro, Ukraine. I build the front end of products people use every
-            day without thinking about them: document tools, legal tech, Mac
-            software, and now a B2B platform at BetterMe.
+            Dnipro, <span className="cursor-ukraine">Ukraine</span>. I build the
+            front end of products people use every day without thinking about
+            them: document tools, legal tech, Mac software, and now a B2B
+            platform at BetterMe.
           </p>
 
           <p>
