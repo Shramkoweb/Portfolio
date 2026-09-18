@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
+import { DetailList } from '@/components/detail-list';
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
 import { serializeJsonLd } from '@/lib/schema';
@@ -422,81 +423,52 @@ function AboutPage() {
 
           <hr />
 
+          <h2>Education</h2>
+
+          <DetailList
+            items={[
+              {
+                title: 'Dnipro University of Technology',
+                href: 'https://nmu.org.ua/en/',
+                role: 'Master of Science',
+                description: 'Electromechanical Automation Systems.',
+              },
+            ]}
+          />
+
+          <hr />
+
+          <h2>Open Source & Mentoring</h2>
+
+          <DetailList
+            items={[
+              {
+                title: 'Kottans',
+                href: 'https://kottans.org/',
+                role: 'Mentor',
+                description:
+                  'Code reviews on GitHub, voice and text consultations. More than 30 developers so far.',
+              },
+              {
+                title: 'MacPaw Career Wave',
+                href: 'https://macpaw.com/career-wave',
+                role: 'Front-end consultations & mentor',
+                description:
+                  'A mentorship program for women starting in tech. I mentored five of them, and all five landed a job.',
+              },
+              {
+                title: 'State of JS & CSS',
+                href: 'https://stateofjs.com/en-US',
+                role: 'Contributor',
+                description:
+                  'Ukrainian and Russian translations of the survey.',
+              },
+            ]}
+          />
+
+          <hr />
+
           <LinkedinFeedback feedbackList={LINKEDIN_FEEDBACK_LIST} />
-
-          <hr />
-
-          <h2 className="mt-16">Education</h2>
-
-          <p>
-            <strong>
-              Master of Science in Electromechanical Automation Systems
-            </strong>
-            <br />
-            <a
-              href="https://nmu.org.ua/en/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Dnipro University of Technology
-            </a>
-          </p>
-
-          <hr />
-
-          <h2>Open Source</h2>
-
-          <h3 className="m-0 mb-4">
-            Mentor -&ensp;
-            <a
-              href="https://kottans.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Kottans
-            </a>
-          </h3>
-
-          <p className="text-sm">
-            Over the years, I&apos;ve had the joy of mentoring{' '}
-            <strong>more than 30</strong> individuals. I love conducting
-            insightful code reviews on GitHub, offering engaging voice and text
-            consultations, and sharing motivation and inspiration along the way.
-          </p>
-
-          <h3 className="m-0 mb-4">
-            Front-end consultations -&ensp;
-            <a
-              href="https://macpaw.com/career-wave"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              MacPaw Career Wave
-            </a>
-          </h3>
-
-          <p className="text-sm">
-            A <strong>mentorship program</strong> that empowers girls with
-            valuable career insights and both soft and hard skill development. I{' '}
-            <strong>helped 5 girls</strong> break the stalemate in their careers
-            and find jobs.
-          </p>
-
-          <h3 className="m-0 mb-4">
-            Contributor -&ensp;
-            <a
-              href="https://stateofjs.com/en-US"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              State of JS & CSS
-            </a>
-          </h3>
-
-          <p className="text-sm">
-            Authored Ukrainian and Russian translations for the State of JS &
-            CSS survey.
-          </p>
 
           <hr />
 
