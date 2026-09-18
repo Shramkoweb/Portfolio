@@ -7,6 +7,24 @@ export const sortByBirthtime = (
 
 export const filterByFeatured = (post: Post | PostMetadata) =>
   post.data.featured;
+
+export const NEW_POST_WINDOW_DAYS = 14;
+
+/** Future dates count as new, so a scheduled post is marked before it is due. */
+export const isNewPost = (
+  post: Post | PostMetadata,
+  now: Date = new Date(),
+): boolean => {
+  const { createDate } = post.data;
+
+  if (!Number.isFinite(createDate)) {
+    return false;
+  }
+
+  const ageInDays = (now.getTime() - createDate) / 86_400_000;
+
+  return ageInDays < NEW_POST_WINDOW_DAYS;
+};
 export const filterByNotFeatured = (post: Post | PostMetadata) =>
   !post.data.featured &&
   !post.data.categories
