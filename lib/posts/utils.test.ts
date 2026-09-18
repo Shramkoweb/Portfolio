@@ -5,6 +5,7 @@ import {
   filterByHeading,
   filterByNotFeatured,
   getYearFromPost,
+  isNewPost,
   isYearSeparator,
   sortByBirthtime,
 } from '@/lib/posts/utils';
@@ -256,5 +257,35 @@ describe('Post Utils', () => {
       expect(result).toHaveLength(4); // 1 separator + 3 posts
       expect(result[0]).toEqual({ type: 'year-separator', year: 2024 });
     });
+  });
+});
+
+describe('isNewPost', () => {
+  const now = new Date('2026-09-18T12:00:00.000Z');
+  const postDated = (iso: string) =>
+    ({ data: { createDate: Date.parse(iso) } }) as PostMetadata;
+
+  it('marks a post published today', () => {
+    expect(isNewPost(postDated('2026-09-18T09:00:00.000Z'), now)).toBe(true);
+  });
+
+  it('marks a post just inside the two-week window', () => {
+    expect(isNewPost(postDated('2026-09-05T12:00:00.000Z'), now)).toBe(true);
+  });
+
+  it('stops marking a post once the window has passed', () => {
+    expect(isNewPost(postDated('2026-09-04T12:00:00.000Z'), now)).toBe(false);
+  });
+
+  it('does not mark an old post', () => {
+    expect(isNewPost(postDated('2025-01-01T00:00:00.000Z'), now)).toBe(false);
+  });
+
+  it('marks a post scheduled for the future', () => {
+    expect(isNewPost(postDated('2026-10-01T00:00:00.000Z'), now)).toBe(true);
+  });
+
+  it('returns false for an unparsable date instead of throwing', () => {
+    expect(isNewPost(postDated('not a date'), now)).toBe(false);
   });
 });

@@ -14,6 +14,7 @@ import {
   filterByAdvanceReact,
   filterByFeatured,
   filterByNotFeatured,
+  isNewPost,
   sortByBirthtime,
 } from '@/lib/posts/utils';
 import { Routes } from '@/lib/routes';
@@ -142,13 +143,14 @@ function IndexPage(props: IndexPageProps) {
           Featured Posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map(({ data: { slug, heading } }) => (
+          {featuredPosts.map((post) => (
             <BlogPostSquarePreview
-              heading={heading}
-              slug={slug}
-              classNames={generateGradient(slug)}
-              views={allViews?.[slug]}
-              key={slug}
+              heading={post.data.heading}
+              slug={post.data.slug}
+              classNames={generateGradient(post.data.slug)}
+              views={allViews?.[post.data.slug]}
+              isNew={isNewPost(post)}
+              key={post.data.slug}
             />
           ))}
         </div>
@@ -162,13 +164,14 @@ function IndexPage(props: IndexPageProps) {
           </h2>
 
           <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-            {advancedReactPosts.map(({ data: { slug, heading } }) => (
+            {advancedReactPosts.map((post) => (
               <BlogPostSquarePreview
-                heading={heading}
-                slug={slug}
-                classNames={generateGradient(slug)}
-                views={allViews?.[slug]}
-                key={slug}
+                heading={post.data.heading}
+                slug={post.data.slug}
+                classNames={generateGradient(post.data.slug)}
+                views={allViews?.[post.data.slug]}
+                isNew={isNewPost(post)}
+                key={post.data.slug}
               />
             ))}
           </div>
@@ -221,13 +224,14 @@ function IndexPage(props: IndexPageProps) {
           Latest posts
         </h2>
         <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {otherPosts.map(({ data: { slug, heading } }) => (
+          {otherPosts.map((post) => (
             <BlogPostSquarePreview
-              heading={heading}
-              slug={slug}
+              heading={post.data.heading}
+              slug={post.data.slug}
               classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
-              views={allViews?.[slug]}
-              key={slug}
+              views={allViews?.[post.data.slug]}
+              isNew={isNewPost(post)}
+              key={post.data.slug}
             />
           ))}
         </div>
