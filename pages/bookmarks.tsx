@@ -172,12 +172,6 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
           'I love WebStorm, but PhpStorm gives me built-in database tools like DataGrip. One IDE for code and DB queries. Worth it for that alone.',
       },
       {
-        title: 'Cursor',
-        url: 'https://cursor.com/',
-        description:
-          'VS Code fork with AI baked in. I switch between this and PhpStorm depending on the project. Good for quick edits and AI-assisted prototyping.',
-      },
-      {
         title: 'f.lux',
         url: 'https://justgetflux.com/',
         description:
@@ -209,6 +203,18 @@ const BOOKMARK_SECTIONS: BookmarkSection[] = [
         url: 'https://opencode.ai/',
         description:
           'Open-source alternative to Claude Code. I keep it around for when I want to swap models mid-task or just need a lighter CLI. Works well with Qwen and GLM-5 — handy if you want to test cheaper models on real tasks.',
+      },
+      {
+        title: 'Warp Code',
+        url: 'https://www.warp.dev/code',
+        description:
+          'The agent lives where the commands already run, so it can execute, read the output, and fix its own mistake without me relaying it. Model routing across providers plus an inline editor for the review pass.',
+      },
+      {
+        title: 'Herdr',
+        url: 'https://herdr.dev/',
+        description:
+          'The runtime my agents run on. Long tasks keep going after I shut the laptop, and I pick them back up from another machine. It also tells me which ones are blocked instead of me checking tabs one by one.',
       },
       {
         title: 'Claude AI',
