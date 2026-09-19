@@ -177,9 +177,7 @@ without breaking the chain.
 Then I dropped the numbers.
 
 They solve a paper problem: where to file a new card in a box of ninety thousand. Obsidian already knows, because it
-has backlinks and search. And `[[1.1a]]` tells you nothing when you're looking at a graph, while
-`[[Two halves of your concept have to line up]]` tells you the whole thing. The notes in the video at the top have no
-numbers at all.
+has backlinks and search.
 
 ## The honest part
 
