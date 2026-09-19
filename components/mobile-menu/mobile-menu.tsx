@@ -8,40 +8,35 @@ import { Routes } from '@/lib/routes';
 
 import styles from '../../styles/mobile-menu.module.css';
 
-function disablePageScroll() {
-  document.body.style.overflow = 'hidden';
-}
-
-function activatePageScroll() {
-  document.body.style.overflow = '';
-}
-
 export function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    activatePageScroll();
-    setIsMenuOpen(false);
-  }, [router.asPath]);
+    if (!isMenuOpen) return;
+
+    document.body.style.overflow = 'hidden';
+
+    return function cleanup() {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    function closeMenu() {
+      setIsMenuOpen(false);
+    }
+
+    router.events.on('routeChangeComplete', closeMenu);
+
+    return function cleanup() {
+      router.events.off('routeChangeComplete', closeMenu);
+    };
+  }, [router.events]);
 
   function handleMenuClick() {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-      activatePageScroll();
-    } else {
-      setIsMenuOpen(true);
-      disablePageScroll();
-    }
+    setIsMenuOpen((wasMenuOpen) => !wasMenuOpen);
   }
-
-  useEffect(
-    () =>
-      function cleanup() {
-        activatePageScroll();
-      },
-    [],
-  );
 
   return (
     <>
