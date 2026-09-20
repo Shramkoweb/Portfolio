@@ -55,7 +55,7 @@ in the repo, so a post ships through the same pipeline as a code change.
 | Data          | Prisma 7 with `@prisma/adapter-pg`, Postgres (Neon in production)       |
 | State / Fetch | SWR                                                                     |
 | Monitoring    | Sentry, Checkly, UptimeRobot, Vercel Analytics, Speed Insights          |
-| Testing       | Jest 30, Testing Library                                                |
+| Testing       | Jest 30, Testing Library, Playwright (Chromium)                         |
 | Tooling       | oxlint, oxfmt, commitlint, Renovate, pnpm                               |
 | Hosting       | Vercel                                                                  |
 
@@ -109,8 +109,12 @@ Sentry variables only matter for production builds.
 | `pnpm typecheck`                    | `tsc --noEmit`                            |
 | `pnpm test` / `pnpm test:ci`        | Jest                                      |
 | `pnpm test:coverage`                | Jest with a coverage report               |
+| `pnpm test:visual`                  | local Chromium visual regression tests    |
+| `pnpm test:visual:update`           | regenerate visual baselines intentionally |
+| `pnpm test:visual:report`           | open the visual diff report               |
 | `pnpm verify`                       | lint + format:check + typecheck + test:ci |
 | `pnpm verify:full`                  | `verify` + production build               |
+| `pnpm verify:all`                   | `verify:full` + all Playwright tests      |
 | `pnpm deps:audit`                   | `pnpm audit` on prod deps, high and above |
 | `pnpm csp:check`                    | CSP covers the build's inline scripts     |
 | `pnpm clean`                        | remove `.next/` and `coverage/`           |
@@ -118,11 +122,15 @@ Sentry variables only matter for production builds.
 
 `pnpm verify` is the fast loop and what the pre-push hook runs. `pnpm verify:full` adds
 `next build` and is what CI effectively reproduces — run it before opening a PR.
+`pnpm verify:all` runs every local check, including Jest with coverage, the
+production build, and all Playwright behavior and visual regression tests. Install
+Chromium first as described below; the command stops on the first failed step.
 
 ## Testing
 
-Tests use Jest with Testing Library. Run `pnpm test` for the full suite or
-`pnpm test:coverage` for a coverage report.
+Unit, component and API tests use Jest with Testing Library. Run `pnpm test` for
+the Jest suite or `pnpm test:coverage` for a coverage report. Run `pnpm verify:all`
+to include the Playwright suite and all build and static checks.
 
 Unit tests sit next to the code they cover (`components/**/*.test.tsx`, `lib/**/*.test.ts`);
 page-level and API-route tests live in `__tests__/`.
@@ -134,6 +142,63 @@ logic is exercised rather than how much JSX was touched. Thresholds are enforced
 scope: Jest exits non-zero below 85% statements / 75% branches / 80% functions / 85% lines.
 CI publishes `coverage/lcov.info` to [Qlty](https://qlty.sh/gh/Shramkoweb/projects/Portfolio),
 which backs the coverage badge above.
+
+### Local visual regression tests
+
+Install Chromium once, then run the local harness:
+
+```bash
+pnpm exec playwright install chromium
+pnpm test:visual
+pnpm test:visual:report
+```
+
+Playwright builds and starts an isolated production server on port 3100 using
+`.next-visual/`. No database, API credentials, Docker or CI setup is required.
+Browser API requests use fixtures; external requests are blocked. Dates are fixed
+in prerendering and the browser. Runtime errors fail the tests.
+
+The harness covers behavior and UI states. It does not take full-page screenshots
+of posts, snippets, category archives or other content pages. Existing pages are
+used to exercise real components. Visual baselines cover small UI regions on
+mobile/desktop in light/dark themes: navigation and keyboard focus, the mobile
+menu, search results and empty states, table of contents, copy controls,
+dashboard metrics, view counters, reaction badges, cards and hover states.
+Open Graph images cover default, empty, short, multiline, Ukrainian and
+length-limited titles.
+
+Behavior tests cover both search implementations, rapid input changes, category
+filtering, theme persistence and system preference changes, navigation and browser
+history, resume downloads, unknown routes, clipboard failure/retry, all share
+targets, reaction submission, optimistic updates, HTTP/network rollback, first
+reactions, view registration and API loading/error/recovery states. Shared logic
+runs once on desktop; navigation and content controls also run on mobile.
+Responsive checks assert navigation, grids and sharing at breakpoint boundaries
+without adding screenshots. Backend API validation remains in the Jest suite.
+
+For a shorter feedback loop, select a project, file or test:
+
+```bash
+pnpm test:visual --project=chromium-mobile-dark
+pnpm test:visual content.spec.ts
+pnpm test:visual --grep 'optimistic reaction'
+pnpm test:visual --ui
+```
+
+Baselines live in `tests/visual/__screenshots__`, separated by operating system
+and project because system fonts differ. The checked-in baselines were generated
+on macOS with the pinned Chromium version. On another OS, generate and review its
+baselines first. Missing baselines fail ordinary runs; they are never silently
+accepted. After an intentional UI change, update only the affected
+screenshots and review the image diff before committing:
+
+```bash
+pnpm test:visual:update visual.spec.ts --grep 'copy control'
+```
+
+Commit baseline PNGs with the corresponding change. Reports, traces, actual and
+diff images remain local in `playwright-report/` and `test-results/`. The visual
+suite is included in `pnpm verify:all`.
 
 ## Security
 

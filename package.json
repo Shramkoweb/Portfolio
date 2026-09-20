@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,8 +21,12 @@
     "test": "jest",
     "test:ci": "jest --ci",
     "test:coverage": "jest --coverage",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
+    "test:visual:report": "playwright show-report",
     "verify": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run test:ci",
     "verify:full": "pnpm run verify && pnpm run build",
+    "verify:all": "pnpm run verify:full && pnpm run test:visual",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -48,6 +52,7 @@
     "@commitlint/cli": "21.2.2",
     "@commitlint/config-conventional": "21.2.2",
     "@commitlint/types": "21.2.0",
+    "@playwright/test": "1.63.0",
     "@shikijs/rehype": "4.4.3",
     "@shikijs/transformers": "4.4.3",
     "@tailwindcss/postcss": "4.3.3",

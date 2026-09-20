@@ -63,6 +63,7 @@ const securityHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  distDir: process.env.VISUAL_TEST === '1' ? '.next-visual' : '.next',
   poweredByHeader: false,
   experimental: {
     optimizePackageImports: ['lucide-react', 'swr'],

@@ -8,6 +8,9 @@
   "sortPackageJson": true,
   "ignorePatterns": [
     ".next/**",
+    ".next-visual/**",
+    "playwright-report/**",
+    "test-results/**",
     "out/**",
     "build/**",
     "coverage/**",
