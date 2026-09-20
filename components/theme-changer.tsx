@@ -13,6 +13,7 @@ export function ThemeChanger() {
     () => false,
   );
   const { resolvedTheme, setTheme } = useTheme();
+  const isDark = mounted && resolvedTheme === Theme.dark;
 
   const handleClick = () => {
     setTheme(resolvedTheme === Theme.dark ? Theme.light : Theme.dark);
@@ -20,8 +21,8 @@ export function ThemeChanger() {
 
   return (
     <button
-      aria-label={`Switch to ${resolvedTheme === Theme.dark ? Theme.light : Theme.dark} mode`}
-      aria-pressed={resolvedTheme === Theme.dark}
+      aria-label={`Switch to ${isDark ? Theme.light : Theme.dark} mode`}
+      aria-pressed={isDark}
       type="button"
       className="ml-4 inline-flex h-11 w-11 items-center justify-center rounded-lg hover:scale-105 text-gray-800 dark:text-gray-200 transition-transform duration-200 ease-out-expo active:scale-[0.97]"
       onClick={handleClick}

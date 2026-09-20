@@ -52,5 +52,7 @@ describe('ThemeChanger', () => {
 
     expect(html).toContain('<button');
     expect(html).not.toContain('svg');
+    expect(html).toContain('aria-label="Switch to dark mode"');
+    expect(html).toContain('aria-pressed="false"');
   });
 });

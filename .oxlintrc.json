@@ -28,6 +28,9 @@
   "ignorePatterns": [
     "node_modules/**",
     ".next/**",
+    ".next-visual/**",
+    "playwright-report/**",
+    "test-results/**",
     "out/**",
     "build/**",
     "coverage/**"
