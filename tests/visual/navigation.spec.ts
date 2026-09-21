@@ -139,3 +139,31 @@ test('footer links and browser history navigate correctly', async ({
   await page.goForward();
   await expect(page).toHaveURL('/learning');
 });
+
+test('nav highlight follows the hovered link', async ({ page, viewport }) => {
+  test.skip(viewport!.width < 768, 'The desktop links are hidden below md.');
+  await visit(page, '/');
+  const nav = page.getByRole('navigation', { name: 'Main', exact: true });
+  const highlight = nav.locator('span[aria-hidden="true"]');
+  await expect(highlight).toHaveCSS('opacity', '0');
+
+  for (const label of ['Home', 'Bookmarks']) {
+    const link = nav.getByRole('link', { name: label, exact: true });
+    await link.hover();
+    await expect(highlight).toHaveCSS('opacity', '1');
+
+    const linkBox = (await link.boundingBox())!;
+    await expect
+      .poll(async () => {
+        const box = (await highlight.boundingBox())!;
+
+        return [box.x, box.y, box.width, box.height].map(Math.round);
+      })
+      .toEqual(
+        [linkBox.x, linkBox.y, linkBox.width, linkBox.height].map(Math.round),
+      );
+  }
+
+  await page.getByRole('heading', { level: 1 }).first().hover();
+  await expect(highlight).toHaveCSS('opacity', '0');
+});

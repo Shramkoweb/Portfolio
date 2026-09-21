@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { HeaderLink } from '@/components/header-link';
+import { HeaderNav } from '@/components/header-nav';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
 import { ThemeChanger } from '@/components/theme-changer';
 import { Routes } from '@/lib/routes';
@@ -17,12 +17,7 @@ export function Header() {
         </a>
         <div className="ml-[-0.60rem]">
           <MobileMenu />
-          <HeaderLink href={Routes.Home()} text="Home" />
-          <HeaderLink href={Routes.Blog()} text="Blog" />
-          <HeaderLink href={Routes.About()} text="About" />
-          <HeaderLink href={Routes.Dashboard()} text="Dashboard" />
-          <HeaderLink href={Routes.Snippets()} text="Snippets" />
-          <HeaderLink href={Routes.Bookmarks()} text="Bookmarks" />
+          <HeaderNav />
         </div>
         <div className="flex items-center justify-center">
           <Link
