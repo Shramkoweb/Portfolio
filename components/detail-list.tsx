@@ -1,4 +1,4 @@
-export interface DetailItem {
+interface DetailItem {
   title: string;
   href?: string;
   role?: string;

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+  // Loaded through NODE_OPTIONS --require by tests/visual/server.mjs.
+  "entry": ["tests/visual/fixed-date.cjs"],
+  "ignoreDependencies": [
+    // Next.js requires this peer at runtime without a direct application import.
+    "react-dom",
+    // Tailwind consumes this plugin while compiling styles/globals.css.
+    "@tailwindcss/typography",
+    // MDX compilation only runs in getStaticProps: both content routes use
+    // fallback: false without revalidation. Revisit if they adopt SSR or ISR.
+    "@shikijs/rehype",
+    "@shikijs/transformers",
+    "rehype-autolink-headings",
+    "rehype-code-titles",
+    "rehype-slug",
+    "remark-gfm",
+  ],
+  // Fallow 3.28 reports these as unused, but pnpm 12 resolves them in the
+  // second lockfile document. Keep them for the reasons in pnpm-workspace.yaml
+  // and revisit these exceptions when Fallow recognizes the lockfile entries.
+  "ignoreDependencyOverrides": [
+    { "package": "fflate", "source": "pnpm-workspace.yaml" },
+    { "package": "mysql2", "source": "pnpm-workspace.yaml" },
+    { "package": "deepmerge-ts", "source": "pnpm-workspace.yaml" },
+  ],
+}

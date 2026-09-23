@@ -4,7 +4,7 @@ import { createMockReqRes } from '../helpers/api-mocks';
 
 const mockAggregate = jest.fn();
 
-jest.mock('lib/prisma', () => ({
+jest.mock('@/lib/prisma', () => ({
   __esModule: true,
   default: {
     views: {

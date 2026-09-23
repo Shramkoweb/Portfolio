@@ -8,7 +8,7 @@ export const sortByBirthtime = (
 export const filterByFeatured = (post: Post | PostMetadata) =>
   post.data.featured;
 
-export const NEW_POST_WINDOW_DAYS = 14;
+const NEW_POST_WINDOW_DAYS = 14;
 
 /** Future dates count as new, so a scheduled post is marked before it is due. */
 export const isNewPost = (

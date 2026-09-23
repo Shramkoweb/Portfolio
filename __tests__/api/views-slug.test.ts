@@ -17,7 +17,7 @@ jest.mock('@/lib/snippets/api', () => ({
   getSnippetSlugs: () => Promise.resolve(['a-snippet']),
 }));
 
-jest.mock('lib/prisma', () => ({
+jest.mock('@/lib/prisma', () => ({
   __esModule: true,
   default: {
     views: {
