@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { HeaderNav } from '@/components/header-nav';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
+import { StarfieldToggle } from '@/components/starfield-toggle';
 import { ThemeChanger } from '@/components/theme-changer';
 import { Routes } from '@/lib/routes';
 
@@ -28,6 +29,7 @@ export function Header() {
           >
             Resume
           </Link>
+          <StarfieldToggle />
           <ThemeChanger />
         </div>
       </nav>

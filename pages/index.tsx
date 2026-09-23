@@ -1,12 +1,10 @@
-import clsx from 'clsx';
 import { Atom, MoveRight } from 'lucide-react';
 import { GetStaticPropsResult } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import useSWR from 'swr';
 
+import { Avatar } from '@/components/avatar';
 import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
 import { fetcher } from '@/lib/fetcher';
 import { getPosts } from '@/lib/posts/api';
@@ -23,9 +21,6 @@ import { Post } from '@/lib/types';
 import { generateGradient } from '@/lib/utils';
 import type { AllViewsResponse } from '@/pages/api/views';
 
-import smile from '../public/static/images/smile.webp';
-import tongue from '../public/static/images/tongue.webp';
-
 interface IndexPageProps {
   featuredPosts: Post[];
   otherPosts: Post[];
@@ -37,12 +32,6 @@ function IndexPage(props: IndexPageProps) {
 
   const { data: viewsData } = useSWR<AllViewsResponse>('/api/views', fetcher);
   const allViews = viewsData?.views;
-
-  const [isAvatarHovered, setIsAvatarHovered] = useState(false);
-
-  const handleHover = () => {
-    setIsAvatarHovered((prevValue) => !prevValue);
-  };
 
   return (
     <>
@@ -107,36 +96,7 @@ function IndexPage(props: IndexPageProps) {
               />
             </Link>
           </div>
-          <div
-            className="shrink-0 block relative mr-auto mb-8 w-32 h-32 sm:mb-0"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHover}
-          >
-            <Image
-              alt="Serhii Shramko's Memoji avatar — smiling face with brown hair and round glasses"
-              src={smile}
-              quality={75}
-              width={128}
-              height={128}
-              className={clsx('absolute', {
-                'opacity-0': isAvatarHovered,
-              })}
-              sizes="128px"
-              priority
-            />
-            <Image
-              alt="Serhii Shramko's Memoji avatar — winking face with tongue out, brown hair, and round glasses"
-              src={tongue}
-              quality={75}
-              width={128}
-              height={128}
-              className={clsx('absolute', {
-                'opacity-0': !isAvatarHovered,
-              })}
-              sizes="128px"
-              priority
-            />
-          </div>
+          <Avatar />
         </div>
 
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
