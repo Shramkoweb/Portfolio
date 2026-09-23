@@ -1,9 +1,15 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 
 import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header';
+
+const Starfield = dynamic(
+  () => import('@/components/starfield').then((m) => m.Starfield),
+  { ssr: false },
+);
 
 const DESCRIPTION =
   'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js. Practical tutorials, code snippets, and tips for web developers.';
@@ -16,7 +22,8 @@ export function Layout(props: PropsWithChildren) {
   const currentPath = router.asPath.split('?')[0];
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
+    <div>
+      <Starfield />
       <Head>
         <title>{TITLE}</title>
         <meta
@@ -71,10 +78,7 @@ export function Layout(props: PropsWithChildren) {
         <meta name="twitter:image" content={IMAGE} key="twitter:image" />
       </Head>
       <Header />
-      <main
-        id="skip"
-        className="flex flex-col justify-center bg-gray-50 px-8 dark:bg-gray-900"
-      >
+      <main id="skip" className="flex flex-col justify-center px-8">
         {children}
       </main>
       <Footer />
