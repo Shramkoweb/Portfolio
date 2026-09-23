@@ -41,7 +41,6 @@ function BlogPage(props: BlogPageProps) {
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
 
-  // Debounce search input
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchValue(searchValue);
@@ -50,7 +49,6 @@ function BlogPage(props: BlogPageProps) {
     return () => clearTimeout(timer);
   }, [searchValue]);
 
-  // Memoize filtered results
   const filteredBlogPosts = useMemo(
     () => posts.filter((post) => filterByHeading(post, debouncedSearchValue)),
     [posts, debouncedSearchValue],
@@ -183,7 +181,6 @@ export async function getStaticProps() {
   const categories = await getPostsCategories();
   const sortedPosts = posts.sort(sortByBirthtime);
 
-  // Generate JSON-LD dynamically to reduce HTML size and improve maintainability
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Blog',

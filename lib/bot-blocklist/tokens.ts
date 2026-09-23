@@ -1,5 +1,3 @@
-// lib/bot-blocklist/tokens.ts
-//
 // Source of truth for the middleware bot block-list. Mirrors the two
 // `Disallow: /` groups in `public/robots.txt` (training crawlers +
 // autonomous AI agents). Edit this file when you edit `public/robots.txt`,
@@ -132,7 +130,6 @@ export const BLOCKED_BOT_TOKENS: readonly BlockToken[] = [
   ...AUTONOMOUS_AGENT_TOKENS,
 ];
 
-// Lowercase `value` → group. Populated alongside the arrays above.
 export const BLOCKED_BOT_GROUPS: Readonly<Record<string, BlockGroup>> = {
   ai2bot: 'training',
   'ai2bot-deepresearcheval': 'training',

@@ -41,7 +41,6 @@ export default async function handler(
         select: { count: true },
       });
 
-      // Cache for 1 minute, stale-while-revalidate for 2 minutes
       res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
 
       return res.status(200).json({ total: Number(views?.count ?? 0) });
