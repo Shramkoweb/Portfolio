@@ -1,6 +1,6 @@
 overrides:
   # advisory 1164783 (moderate, unzipSync infinite loop on malformed ZIP64,
-  # >=0.7.0 <0.7.5). satori@0.33.3 (via @vercel/og@1.0.2) pins fflate@0.7.3
+  # >=0.7.0 <0.7.5). satori@0.33.5 (via @vercel/og@1.0.3) pins fflate@0.7.3
   # exactly, so the patched line is unreachable without an override.
   # Drop when satori pins fflate >=0.7.5 on its own
   fflate: ^0.7.5
@@ -35,27 +35,14 @@ minimumReleaseAgeExclude:
   # moves past it, unlike a bare name or a glob ('@types/*'), which would waive
   # the cooldown for that package permanently.
   # Inert is not harmless — a real waiver is hard to spot among dead ones,
-  # so prune entries that no longer appear in pnpm-lock.yaml on every dep bump.
-  - '@types/node@26.6.1' # published 2026-09-15T20:36Z; drop once it matures
-  - '@commitlint/cli@21.2.3'
-  - '@commitlint/config-conventional@21.2.3'
-  - '@commitlint/config-validator@21.2.3'
-  - '@commitlint/ensure@21.2.3'
-  - '@commitlint/format@21.2.3'
-  - '@commitlint/is-ignored@21.2.3'
-  - '@commitlint/lint@21.2.3'
-  - '@commitlint/load@21.2.3'
-  - '@commitlint/parse@21.2.3'
-  - '@commitlint/read@21.2.3'
-  - '@commitlint/resolve-extends@21.2.3'
-  - '@commitlint/rules@21.2.3'
-  - '@commitlint/types@21.2.3'
+  # so on every dep bump prune entries that no longer appear in pnpm-lock.yaml
+  # or whose version is already past the cooldown.
   - '@sentry/browser-utils@11.0.0'
   - '@sentry/browser@11.0.0'
   - '@sentry/bundler-plugins@11.0.0'
   - '@sentry/core@11.0.0'
   - '@sentry/feedback@11.0.0'
-  - '@sentry/nextjs@11.0.0'
+  - '@sentry/nextjs@11.0.0' # @sentry/* published 2026-09-23T12:41Z; drop once they mature
   - '@sentry/node@11.0.0'
   - '@sentry/opentelemetry@11.0.0'
   - '@sentry/react@11.0.0'
