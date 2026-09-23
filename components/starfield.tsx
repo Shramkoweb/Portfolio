@@ -45,6 +45,21 @@ export function Starfield() {
       context.fill();
     };
 
+    const spark = (x: number, y: number, arm: number, tilt: number) => {
+      const waist = arm * 0.22;
+      context.save();
+      context.translate(x, y);
+      context.rotate(tilt);
+      context.beginPath();
+      context.moveTo(0, -arm);
+      context.quadraticCurveTo(waist, -waist, arm, 0);
+      context.quadraticCurveTo(waist, waist, 0, arm);
+      context.quadraticCurveTo(-waist, waist, -arm, 0);
+      context.quadraticCurveTo(-waist, -waist, 0, -arm);
+      context.fill();
+      context.restore();
+    };
+
     const draw = (time: number) => {
       const still = reducedMotion.matches;
       const seconds = still ? 0 : time / 1000;
@@ -68,7 +83,9 @@ export function Starfield() {
           const fade = edgeFade(star, distance, FADE_INNER, FADE_OUTER);
           if (fade <= 0) continue;
           context.globalAlpha = fade * starAlpha(star, seconds);
-          dot(x, (firstRow + row) * PITCH - offsetY + PITCH / 2, star.radius);
+          const y = (firstRow + row) * PITCH - offsetY + PITCH / 2;
+          if (star.spark) spark(x, y, star.spark, star.tilt);
+          else dot(x, y, star.radius);
         }
       }
 

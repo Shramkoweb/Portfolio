@@ -1,6 +1,6 @@
 import { edgeFade, meteorAt, starAlpha, starAt } from '@/lib/starfield';
 
-const star = { rank: 0.5, radius: 1, phase: 0, speed: 1 };
+const star = { rank: 0.5, radius: 1, phase: 0, speed: 1, spark: 0, tilt: 0 };
 
 describe('starAt', () => {
   it('is stable for a cell', () => {
@@ -16,6 +16,24 @@ describe('starAt', () => {
     }
     expect(stars / 10_000).toBeGreaterThan(0.025);
     expect(stars / 10_000).toBeLessThan(0.055);
+  });
+});
+
+describe('star shapes', () => {
+  it('turns only a small share of stars into sparkles', () => {
+    const stars = [];
+    for (let col = -100; col < 100; col += 1) {
+      for (let row = 0; row < 200; row += 1) {
+        const found = starAt(col, row);
+        if (found) stars.push(found);
+      }
+    }
+    const sparks = stars.filter(({ spark }) => spark > 0);
+    expect(sparks.length / stars.length).toBeGreaterThan(0.06);
+    expect(sparks.length / stars.length).toBeLessThan(0.2);
+    expect(sparks.some(({ tilt }) => tilt > 0)).toBe(true);
+    expect(sparks.some(({ tilt }) => tilt < 0)).toBe(true);
+    expect(sparks.every(({ tilt }) => Math.abs(tilt) <= 0.25)).toBe(true);
   });
 });
 

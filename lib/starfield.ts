@@ -3,6 +3,8 @@ export interface Star {
   radius: number;
   phase: number;
   speed: number;
+  spark: number;
+  tilt: number;
 }
 
 export interface Meteor {
@@ -13,6 +15,7 @@ export interface Meteor {
 
 const STAR_CHANCE = 0.04;
 const BRIGHT_CHANCE = 0.1;
+const SPARK_CHANCE = 0.12;
 const METEOR_PERIOD = 14;
 const METEOR_DURATION = 1.1;
 
@@ -27,11 +30,14 @@ export function starAt(col: number, row: number): Star | null {
   const roll = hash(col, row);
   if (roll >= STAR_CHANCE) return null;
   const detail = hash(row, col);
+  const shape = hash(col - 3, row + 5);
   return {
     rank: roll / STAR_CHANCE,
     radius: detail < BRIGHT_CHANCE ? 1.4 : 1,
     phase: detail * Math.PI * 2,
     speed: 0.6 + hash(col + 1, row - 1) * 1,
+    spark: shape < SPARK_CHANCE ? 2.2 + (shape / SPARK_CHANCE) * 1.3 : 0,
+    tilt: (hash(row + 2, col - 7) - 0.5) * 0.5,
   };
 }
 
