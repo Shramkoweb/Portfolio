@@ -1,5 +1,3 @@
-// lib/bot-blocklist/signature-agent.ts
-//
 // Agentic browsers increasingly identify via Web Bot Auth (RFC 9421) instead
 // of a distinctive User-Agent token: ChatGPT agent browses with a plain
 // browser UA and is only recognizable by its `Signature-Agent` header

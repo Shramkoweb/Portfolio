@@ -89,7 +89,6 @@ export function FloatingReactions(props: FloatingReactionsProps) {
               className="flex items-center justify-center w-[44px] h-[44px] relative group cursor-pointer hover:scale-110 active:scale-[0.97] transition-transform duration-200 ease-out-expo"
               aria-label={`${label}${count > 0 ? `, ${count} reaction${count !== 1 ? 's' : ''}` : ''}`}
             >
-              {/* Burst particles */}
               {isAnimating && (
                 <>
                   <span
@@ -112,7 +111,6 @@ export function FloatingReactions(props: FloatingReactionsProps) {
                   />
                 </>
               )}
-              {/* Ring burst */}
               {isAnimating && (
                 <span
                   className={`absolute w-8 h-8 rounded-full border-2 ${color.replace('text-', 'border-')} animate-ring-burst`}

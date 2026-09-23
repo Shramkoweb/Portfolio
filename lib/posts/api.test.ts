@@ -70,7 +70,6 @@ jest.mock('gray-matter', () => {
   return { __esModule: true, default: fn };
 });
 
-// Fix reading-time mock
 jest.mock('reading-time', () => {
   return function mockReadingTime() {
     return { text: '2 min read' };

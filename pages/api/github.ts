@@ -13,7 +13,6 @@ export default async function handler(
   try {
     const { stars, followers } = await fetchGitHubStats();
 
-    // Cache for 1 hour, stale-while-revalidate for 24 hours
     res.setHeader(
       'Cache-Control',
       's-maxage=3600, stale-while-revalidate=86400',

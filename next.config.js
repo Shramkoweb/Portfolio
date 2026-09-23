@@ -1,4 +1,4 @@
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs/config';
 
 // The hash covers the next-themes inline theme setter. 'unsafe-eval' must
 // stay: MDXRemote evaluates every post via `Reflect.construct(Function, ...)`,
@@ -139,11 +139,13 @@ const nextConfig = {
 const sentryBuildOptions = {
   silent: !process.env.CI,
   telemetry: false,
-  bundleSizeOptimizations: {
-    excludeDebugStatements: true,
-    excludeReplayShadowDom: true,
-    excludeReplayIframe: true,
-    excludeReplayWorker: true,
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+      excludeReplayShadowDOM: true,
+      excludeReplayIframe: true,
+      excludeReplayCompressionWorker: true,
+    },
   },
 };
 

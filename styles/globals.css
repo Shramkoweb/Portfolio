@@ -292,7 +292,6 @@ input[type='email'] {
   }
 }
 
-/* Only apply hover transforms on devices with fine pointers */
 @media (hover: hover) and (pointer: fine) {
   .hover\:scale-\[1\.02\]:hover {
     --tw-scale-x: 1.02;

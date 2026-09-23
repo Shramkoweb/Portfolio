@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           value={{
             revalidateOnFocus: false,
             revalidateOnReconnect: false,
-            dedupingInterval: 60000, // 1 minute
+            dedupingInterval: 60000,
           }}
         >
           <Layout>
