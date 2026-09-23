@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import {
   type CSSProperties,
-  type MouseEvent,
   type PointerEvent,
   useEffect,
+  useId,
   useRef,
   useState,
 } from 'react';
@@ -32,6 +32,9 @@ function sparkPath({ x, y, arm }: { x: number; y: number; arm: number }) {
 }
 
 export function Avatar() {
+  const id = useId();
+  const lensId = `${id}-lens`;
+  const glintId = `${id}-glint`;
   const [winking, setWinking] = useState(false);
   const clicks = useRef({ count: 0, at: -Infinity });
   const tapTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -46,15 +49,14 @@ export function Avatar() {
     if (event.pointerType === 'mouse') setWinking(false);
   };
 
-  const handleClick = (event: MouseEvent) => {
+  const handlePointerUp = (event: PointerEvent) => {
     const now = performance.now();
     const { count, at } = clicks.current;
     const next = now - at < CLICK_GAP_MS ? count + 1 : 1;
     clicks.current = { count: next >= SHOWER_CLICKS ? 0 : next, at: now };
     if (next >= SHOWER_CLICKS) window.dispatchEvent(new Event(SHOWER_EVENT));
 
-    const { pointerType } = event.nativeEvent as globalThis.PointerEvent;
-    if (pointerType !== 'mouse') {
+    if (event.pointerType !== 'mouse') {
       clearTimeout(tapTimer.current);
       setWinking(true);
       tapTimer.current = setTimeout(() => setWinking(false), TAP_WINK_MS);
@@ -62,17 +64,15 @@ export function Avatar() {
   };
 
   return (
-    <button
-      type="button"
-      aria-label="Serhii Shramko's Memoji avatar"
-      className="avatar relative mr-auto mb-8 block h-32 w-32 shrink-0 cursor-pointer rounded-full sm:mb-0"
+    <div
+      className="avatar relative mr-auto mb-8 block h-32 w-32 shrink-0 sm:mb-0"
       data-wink={winking}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
-      onClick={handleClick}
+      onPointerUp={handlePointerUp}
     >
       <Image
-        alt=""
+        alt="Serhii Shramko's Memoji avatar — smiling face with brown hair and round glasses"
         src={smile}
         quality={75}
         width={128}
@@ -95,7 +95,6 @@ export function Avatar() {
           !winking && 'opacity-0',
         )}
         sizes="128px"
-        priority
       />
       <svg
         aria-hidden="true"
@@ -103,16 +102,16 @@ export function Avatar() {
         className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
       >
         <defs>
-          <clipPath id="avatar-lens">
+          <clipPath id={lensId}>
             <circle cx={LENS.x} cy={LENS.y} r={LENS.r} />
           </clipPath>
-          <linearGradient id="avatar-glint-fill" x1="0" x2="1" y1="0" y2="0">
+          <linearGradient id={glintId} x1="0" x2="1" y1="0" y2="0">
             <stop offset="0" stopColor="#fff" stopOpacity="0" />
             <stop offset="0.5" stopColor="#fff" stopOpacity="0.85" />
             <stop offset="1" stopColor="#fff" stopOpacity="0" />
           </linearGradient>
         </defs>
-        <g clipPath="url(#avatar-lens)">
+        <g clipPath={`url(#${lensId})`}>
           <g transform={`rotate(25 ${LENS.x} ${LENS.y})`}>
             <rect
               className="avatar-glint"
@@ -120,7 +119,7 @@ export function Avatar() {
               y={LENS.y - LENS.r * 2}
               width="6"
               height={LENS.r * 4}
-              fill="url(#avatar-glint-fill)"
+              fill={`url(#${glintId})`}
             />
           </g>
         </g>
@@ -141,6 +140,6 @@ export function Avatar() {
           ))}
         </g>
       </svg>
-    </button>
+    </div>
   );
 }

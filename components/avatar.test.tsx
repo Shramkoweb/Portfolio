@@ -15,11 +15,15 @@ jest.mock('../public/static/images/tongue.webp', () => ({
 import { Avatar } from '@/components/avatar';
 import { SHOWER_EVENT } from '@/lib/starfield';
 
-function clickAt(button: HTMLElement, times: number[]) {
+function avatar() {
+  return screen.getByRole('img', { name: /smiling face/ }).parentElement!;
+}
+
+function tapAt(element: HTMLElement, times: number[]) {
   const now = jest.spyOn(performance, 'now');
   for (const time of times) {
     now.mockReturnValue(time);
-    fireEvent.click(button);
+    fireEvent.pointerUp(element);
   }
   now.mockRestore();
 }
@@ -33,32 +37,47 @@ describe('Avatar', () => {
   it('winks while the mouse is over it', async () => {
     const user = userEvent.setup();
     render(<Avatar />);
-    const avatar = screen.getByRole('button', {
-      name: "Serhii Shramko's Memoji avatar",
-    });
 
-    await user.hover(avatar);
-    expect(avatar).toHaveAttribute('data-wink', 'true');
+    await user.hover(avatar());
+    expect(avatar()).toHaveAttribute('data-wink', 'true');
 
-    await user.unhover(avatar);
-    expect(avatar).toHaveAttribute('data-wink', 'false');
+    await user.unhover(avatar());
+    expect(avatar()).toHaveAttribute('data-wink', 'false');
   });
 
-  it('starts a star shower after five quick clicks', () => {
+  it('stays out of the tab order', () => {
     render(<Avatar />);
-    const avatar = screen.getByRole('button');
 
-    clickAt(avatar, [0, 200, 400, 600]);
+    expect(screen.queryByRole('button')).toBeNull();
+    expect(avatar()).not.toHaveAttribute('tabindex');
+  });
+
+  it('gives each instance its own SVG ids', () => {
+    const { container } = render(
+      <>
+        <Avatar />
+        <Avatar />
+      </>,
+    );
+    const ids = [...container.querySelectorAll('[id]')].map(({ id }) => id);
+
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it('starts a star shower after five quick taps', () => {
+    render(<Avatar />);
+
+    tapAt(avatar(), [0, 200, 400, 600]);
     expect(onShower).not.toHaveBeenCalled();
 
-    clickAt(avatar, [800]);
+    tapAt(avatar(), [800]);
     expect(onShower).toHaveBeenCalledTimes(1);
   });
 
-  it('ignores clicks that are too far apart', () => {
+  it('ignores taps that are too far apart', () => {
     render(<Avatar />);
 
-    clickAt(screen.getByRole('button'), [0, 700, 1400, 2100, 2800]);
+    tapAt(avatar(), [0, 700, 1400, 2100, 2800]);
 
     expect(onShower).not.toHaveBeenCalled();
   });
