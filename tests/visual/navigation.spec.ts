@@ -62,11 +62,14 @@ test('avatar changes on hover and restores on pointer leave', async ({
 }) => {
   test.skip(isMobile, 'Hover requires a mouse.');
   await visit(page, '/');
-  const avatar = page.getByRole('img', { name: /smiling face/ });
-  await avatar.locator('..').hover();
-  await expect(avatar).toHaveCSS('opacity', '0');
+  const avatar = page.getByRole('button', {
+    name: "Serhii Shramko's Memoji avatar",
+  });
+  const smile = avatar.locator('img').first();
+  await avatar.hover();
+  await expect(smile).toHaveCSS('opacity', '0');
   await page.mouse.move(0, 0);
-  await expect(avatar).toHaveCSS('opacity', '1');
+  await expect(smile).toHaveCSS('opacity', '1');
 });
 
 test('bookmark section anchor', async ({ page }) => {

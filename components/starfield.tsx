@@ -1,7 +1,13 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useRef } from 'react';
 
-import { edgeFade, meteorAt, starAlpha, starAt } from '@/lib/starfield';
+import {
+  edgeFade,
+  meteorAt,
+  SHOWER_EVENT,
+  starAlpha,
+  starAt,
+} from '@/lib/starfield';
 
 const PITCH = 8;
 const FADE_INNER = 300;
@@ -11,6 +17,16 @@ const DRIFT = 3;
 const FRAME_MS = 1000 / 30;
 const METEOR_LENGTH = 180;
 const METEOR_TAIL = 14;
+const METEOR_MS = 1100;
+const SHOWER_SIZE = 6;
+const SHOWER_GAP_MS = 320;
+
+interface ShowerMeteor {
+  start: number;
+  x: number;
+  y: number;
+  direction: number;
+}
 
 export function Starfield() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -29,6 +45,7 @@ export function Starfield() {
     let frame = 0;
     let last = -Infinity;
     let lastScroll = -1;
+    let shower: ShowerMeteor[] = [];
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -60,6 +77,26 @@ export function Starfield() {
       context.restore();
     };
 
+    const meteor = (
+      x: number,
+      y: number,
+      direction: number,
+      progress: number,
+    ) => {
+      const envelope = Math.sin(progress * Math.PI);
+      const travel = progress * METEOR_LENGTH;
+      for (let index = 0; index < METEOR_TAIL; index += 1) {
+        const along = travel - index * 5;
+        if (along < 0) break;
+        context.globalAlpha = envelope * (1 - index / METEOR_TAIL) * 0.9;
+        dot(
+          x + direction * along * 0.8,
+          y + along * 0.6,
+          index === 0 ? 1.3 : 1,
+        );
+      }
+    };
+
     const draw = (time: number) => {
       const still = reducedMotion.matches;
       const seconds = still ? 0 : time / 1000;
@@ -89,21 +126,16 @@ export function Starfield() {
         }
       }
 
-      const meteor = still ? null : meteorAt(seconds, width, height);
-      if (meteor) {
-        const direction = meteor.x < center ? -1 : 1;
-        const envelope = Math.sin(meteor.progress * Math.PI);
-        const travel = meteor.progress * METEOR_LENGTH;
-        for (let index = 0; index < METEOR_TAIL; index += 1) {
-          const along = travel - index * 5;
-          if (along < 0) break;
-          context.globalAlpha = envelope * (1 - index / METEOR_TAIL) * 0.9;
-          dot(
-            meteor.x + direction * along * 0.8,
-            meteor.y + along * 0.6,
-            index === 0 ? 1.3 : 1,
-          );
-        }
+      const scheduled = still ? null : meteorAt(seconds, width, height);
+      if (scheduled) {
+        const direction = scheduled.x < center ? -1 : 1;
+        meteor(scheduled.x, scheduled.y, direction, scheduled.progress);
+      }
+
+      shower = shower.filter(({ start }) => time - start <= METEOR_MS);
+      for (const item of shower) {
+        const progress = (time - item.start) / METEOR_MS;
+        if (progress >= 0) meteor(item.x, item.y, item.direction, progress);
       }
       context.globalAlpha = 1;
     };
@@ -131,13 +163,31 @@ export function Starfield() {
       frame = requestAnimationFrame(loop);
     };
 
+    const startShower = () => {
+      if (reducedMotion.matches || !wide.matches) return;
+      const now = performance.now();
+      const reach = Math.max(60, width / 2 - FADE_INNER - 40);
+      shower = Array.from({ length: SHOWER_SIZE }, (_, index) => {
+        const left = index % 2 === 0;
+        const offset = reach * (0.45 + 0.55 * Math.random());
+        return {
+          start: now + index * SHOWER_GAP_MS + Math.random() * 160,
+          x: left ? offset : width - offset,
+          y: height * (0.05 + Math.random() * 0.45),
+          direction: left ? -1 : 1,
+        };
+      });
+    };
+
     start();
+    window.addEventListener(SHOWER_EVENT, startShower);
     window.addEventListener('resize', start);
     document.addEventListener('visibilitychange', start);
     wide.addEventListener('change', start);
     reducedMotion.addEventListener('change', start);
     return () => {
       cancelAnimationFrame(frame);
+      window.removeEventListener(SHOWER_EVENT, startShower);
       window.removeEventListener('resize', start);
       document.removeEventListener('visibilitychange', start);
       wide.removeEventListener('change', start);

@@ -13,6 +13,8 @@ export interface Meteor {
   progress: number;
 }
 
+export const SHOWER_EVENT = 'starfield:shower';
+
 const STAR_CHANCE = 0.04;
 const BRIGHT_CHANCE = 0.1;
 const SPARK_CHANCE = 0.12;

@@ -116,9 +116,9 @@ test('featured card, hover and avatar', async ({ page, isMobile }) => {
   if (!isMobile) {
     await card.hover();
     await expect(card).toHaveScreenshot('featured-card-hover.png');
-    const avatar = page
-      .getByRole('img', { name: /smiling face/ })
-      .locator('..');
+    const avatar = page.getByRole('button', {
+      name: "Serhii Shramko's Memoji avatar",
+    });
     await avatar.hover();
     await avatar.locator('img').evaluateAll(async (images) => {
       await Promise.all(
