@@ -5,6 +5,7 @@ import { PropsWithChildren } from 'react';
 
 import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header';
+import { useStarfieldEnabled } from '@/lib/starfield-preference';
 
 const Starfield = dynamic(
   () => import('@/components/starfield').then((m) => m.Starfield),
@@ -20,10 +21,11 @@ export function Layout(props: PropsWithChildren) {
   const { children } = props;
   const router = useRouter();
   const currentPath = router.asPath.split('?')[0];
+  const starfield = useStarfieldEnabled();
 
   return (
     <div>
-      <Starfield />
+      {starfield && <Starfield />}
       <Head>
         <title>{TITLE}</title>
         <meta
