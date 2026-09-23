@@ -104,6 +104,9 @@ export async function ready(page: Page) {
   await expect(
     page.getByRole('button', { name: /Switch to .* mode/ }).locator('svg'),
   ).toBeVisible();
+  if ((page.viewportSize()?.width ?? 0) >= 1024) {
+    await expect(page.locator('canvas[data-drawn]')).toHaveCount(1);
+  }
   await page.evaluate(() => document.fonts.ready.then(() => undefined));
 }
 

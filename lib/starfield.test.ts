@@ -1,4 +1,10 @@
-import { edgeFade, meteorAt, starAlpha, starAt } from '@/lib/starfield';
+import {
+  alphaLevel,
+  edgeFade,
+  meteorAt,
+  starAlpha,
+  starAt,
+} from '@/lib/starfield';
 
 const star = { rank: 0.5, radius: 1, phase: 0, speed: 1, spark: 0, tilt: 0 };
 
@@ -71,12 +77,21 @@ describe('starAlpha', () => {
 describe('meteorAt', () => {
   it('appears briefly once per cycle, in a gutter', () => {
     const frames = Array.from({ length: 140 * 10 }, (_, i) =>
-      meteorAt(i / 10, 1600, 900),
+      meteorAt(i / 10, 1600, 900, 416),
     ).filter((meteor) => meteor !== null);
     expect(frames.length).toBeGreaterThan(0);
     expect(frames.length).toBeLessThan(140);
     for (const { x } of frames) {
-      expect(Math.abs(x - 800)).toBeGreaterThan(400);
+      expect(Math.abs(x - 800)).toBeGreaterThan(384);
     }
+  });
+});
+
+describe('alphaLevel', () => {
+  it('quantizes opacity into a fixed number of levels', () => {
+    expect(alphaLevel(0, 8)).toBe(0);
+    expect(alphaLevel(0.5, 8)).toBe(4);
+    expect(alphaLevel(1, 8)).toBe(8);
+    expect(alphaLevel(1.2, 8)).toBe(8);
   });
 });

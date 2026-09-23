@@ -67,15 +67,20 @@ export function meteorAt(
   seconds: number,
   width: number,
   height: number,
+  gutter: number,
 ): Meteor | null {
   const cycle = Math.floor(seconds / METEOR_PERIOD);
   const local = seconds - cycle * METEOR_PERIOD - hash(cycle, 7) * 6;
   if (local < 0 || local > METEOR_DURATION) return null;
   const left = hash(cycle, 3) < 0.5;
-  const gutter = width * 0.22;
+  const offset = gutter * (0.45 + 0.55 * hash(cycle, 5));
   return {
-    x: left ? hash(cycle, 5) * gutter : width - hash(cycle, 5) * gutter,
+    x: left ? offset : width - offset,
     y: (0.1 + hash(cycle, 9) * 0.5) * height,
     progress: local / METEOR_DURATION,
   };
+}
+
+export function alphaLevel(alpha: number, levels: number): number {
+  return Math.min(levels, Math.round(alpha * levels));
 }
