@@ -6,6 +6,7 @@ import { PropsWithChildren } from 'react';
 import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header';
 import { useStarfieldEnabled } from '@/lib/starfield-preference';
+import { useMediaQuery } from '@/lib/use-media-query';
 
 const Starfield = dynamic(
   () => import('@/components/starfield').then((m) => m.Starfield),
@@ -21,7 +22,11 @@ export function Layout(props: PropsWithChildren) {
   const { children } = props;
   const router = useRouter();
   const currentPath = router.asPath.split('?')[0];
-  const starfield = useStarfieldEnabled();
+  const starfieldEnabled = useStarfieldEnabled();
+  // Separate queries: a browser without forced-colors would fail a combined one.
+  const wide = useMediaQuery('(min-width: 1024px)');
+  const forcedColors = useMediaQuery('(forced-colors: active)');
+  const starfield = starfieldEnabled && wide && !forcedColors;
 
   return (
     <div>

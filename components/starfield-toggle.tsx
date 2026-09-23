@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { Sparkle, Sparkles } from 'lucide-react';
 import { useSyncExternalStore } from 'react';
 
@@ -20,7 +21,12 @@ export function StarfieldToggle() {
       aria-label="Starry background"
       aria-pressed={mounted && enabled}
       type="button"
-      className="ml-4 hidden h-11 w-11 items-center justify-center rounded-lg text-gray-800 transition-transform duration-200 ease-out-expo hover:scale-105 active:scale-[0.97] md:inline-flex dark:text-gray-200"
+      className={clsx(
+        'ml-4 hidden h-11 w-11 items-center justify-center rounded-lg transition-[color,transform] duration-200 ease-out-expo hover:scale-105 active:scale-[0.97] lg:inline-flex forced-colors:hidden',
+        mounted && !enabled
+          ? 'text-gray-400 dark:text-gray-500'
+          : 'text-gray-800 dark:text-gray-200',
+      )}
       onClick={() => setStarfieldEnabled(!enabled)}
     >
       {mounted ? (
