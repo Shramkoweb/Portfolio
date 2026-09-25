@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Create Lighthouse config
         run: |
           jq -n --arg secret "$VERCEL_BYPASS_SECRET" \
@@ -23,7 +23,7 @@ jobs:
           VERCEL_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
       - name: Lighthouse audit
         id: lighthouse
-        uses: treosh/lighthouse-ci-action@v12
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
         with:
           urls: |
             ${{ github.event.deployment_status.target_url }}/
@@ -35,7 +35,7 @@ jobs:
           uploadArtifacts: true
       - name: Find PR number
         id: find-pr
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const { data: prs } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
@@ -50,7 +50,7 @@ jobs:
       - name: Format results
         id: format
         if: always() && steps.find-pr.outputs.number
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           MANIFEST: ${{ steps.lighthouse.outputs.manifest }}
         with:
@@ -79,7 +79,7 @@ jobs:
             core.setOutput('comment', comment);
       - name: Post comment
         if: always() && steps.find-pr.outputs.number && steps.format.outputs.comment
-        uses: marocchino/sticky-pull-request-comment@v3
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
         with:
           header: lighthouse
           number: ${{ steps.find-pr.outputs.number }}

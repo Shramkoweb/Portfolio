@@ -198,7 +198,9 @@ pnpm test:visual:update visual.spec.ts --grep 'copy control'
 
 Commit baseline PNGs with the corresponding change. Reports, traces, actual and
 diff images remain local in `playwright-report/` and `test-results/`. The visual
-suite is included in `pnpm verify:all`.
+suite is included in `pnpm verify:all`. CI runs it on every pull request with
+`--ignore-snapshots`: behavior tests run on Linux, while screenshot comparison
+stays local because the baselines are macOS-only.
 
 ## Security
 
