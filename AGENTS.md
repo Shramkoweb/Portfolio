@@ -15,7 +15,7 @@ Brief for AI coding agents (Claude Code, Codex, Cursor, Copilot, Factory). Human
 | Data       | Prisma 7, Postgres (Neon in prod)                              |
 | Fetch      | SWR                                                            |
 | Monitoring | Sentry, Vercel Analytics, Speed Insights, Checkly, UptimeRobot |
-| Testing    | Jest + Testing Library, Playwright (local Chromium)            |
+| Testing    | Jest + Testing Library, Playwright (Chromium)                  |
 | Tooling    | oxlint, oxfmt, commitlint, pnpm                                |
 
 ## Setup
@@ -34,7 +34,7 @@ pnpm dev                # http://localhost:3000
 
 - `pnpm verify` — fast (~3 s). Runs `lint`, `format:check`, `typecheck`, `test:ci`. The pre-push hook calls this. Use during tight iteration.
 - `pnpm verify:full` — slower (~10 s). Adds `next build` on top. Matches what CI runs. **Run this before opening a PR.**
-- `pnpm verify:all` — complete local check. Runs `verify:full`, then all Playwright behavior and visual regression tests. Install Chromium once with `pnpm exec playwright install chromium`; no database or Docker is required for the browser tests.
+- `pnpm verify:all` — complete local check. Runs `verify:full`, then all Playwright behavior and visual regression tests. Install Chromium once with `pnpm exec playwright install chromium`; no database or Docker is required for the browser tests. CI runs the same suite on every PR with screenshot comparison off, because the baselines are macOS-only, so after a UI change run this locally.
 
 **Success criterion:** before claiming work is done, `pnpm verify:full` exits 0.
 
