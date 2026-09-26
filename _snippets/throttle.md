@@ -3,6 +3,7 @@ title: Throttle Function in TypeScript with React Example
 heading: Throttle
 description: Copy-paste throttle function in TypeScript. Limit how often a function fires during scroll, resize, or mousemove events. Includes React usage example.
 createDate: 2026-01-24
+updateDate: 2026-09-26
 keywords:
   [
     throttle,
@@ -21,18 +22,18 @@ keywords:
   ]
 ---
 
-While [debounce](/snippets/debounce) waits until the user **stops** doing something, throttle ensures a function runs \*
-\*at most once\*\* every N milliseconds — no matter how many times the event fires. Perfect for scroll, resize, and
+While [debounce](/snippets/debounce) waits until the user **stops** doing something, throttle ensures a function runs
+**at most once** every N milliseconds — no matter how many times the event fires. Perfect for scroll, resize, and
 mousemove handlers.
 
 ```typescript
-function throttle<T extends (...args: unknown[]) => void>(
-  callback: T,
+function throttle<Args extends unknown[]>(
+  callback: (...args: Args) => void,
   limit: number,
-): (...args: Parameters<T>) => void {
+): (...args: Args) => void {
   let waiting = false;
 
-  return (...args: Parameters<T>) => {
+  return (...args: Args) => {
     if (waiting) return;
 
     callback(...args);
@@ -75,3 +76,8 @@ function ScrollTracker() {
 | Scroll position tracking, resize layout | Throttle                       |
 | Button click (prevent double submit)    | Throttle                       |
 | Auto-save after typing stops            | [Debounce](/snippets/debounce) |
+
+## Related
+
+- [Debounce](/snippets/debounce) — wait until events stop, with a `useDebounce` hook for React
+- [useMediaQuery](/snippets/use-media-query) — react to viewport changes without a resize listener at all

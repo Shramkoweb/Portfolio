@@ -1,53 +1,40 @@
 ---
-title: useToggle React Hook
+title: 'useToggle React Hook: Toggle Boolean State in TypeScript'
 heading: useToggle
 description: Simple useToggle React hook for managing boolean state. Toggle between true and false with a clean API. Perfect for modals, dropdowns, and dark mode switches.
 createDate: 2024-10-30
+updateDate: 2026-09-26
 keywords:
   [
     useToggle hook,
-    React useToggle snippet,
-    Boolean toggle hook,
-    React hook tutorial,
-    React state management,
-    Reusable React hook,
-    React hook example,
-    useState toggle hook,
-    React functional component,
-    React toggle Boolean,
-    React hook for toggling,
-    JavaScript toggle hook,
-    Boolean toggle React,
-    React hooks tutorial,
-    Custom hook pattern React,
-    Boolean state toggle,
-    useToggle example,
-    React hook library,
-    Simplify Boolean toggle,
+    useToggle React,
+    React toggle boolean,
+    useState toggle,
+    custom React hook,
+    React hook TypeScript,
   ]
 ---
 
-A hook to toggle a boolean value with useToggle.
+A hook to toggle a boolean value. Call it with no arguments to flip the state, or pass `true`/`false` to set it
+explicitly.
 
 ```tsx
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
-export function useToggle(initialValue: boolean = false) {
-  const [value, setValue] = useState<boolean>(initialValue);
+export function useToggle(initialValue = false) {
+  const [value, setValue] = useState(initialValue);
 
-  const handleToggle = useCallback((newValue) => {
-    // If 'newValue' is explicitly provided as a boolean, set 'value' to 'newValue'
-    if (typeof newValue === 'boolean') {
-      return setValue(newValue);
-    }
-
-    // Otherwise, toggle the current state
-    return setValue((prev) => !prev);
+  const toggle = useCallback((nextValue?: unknown) => {
+    // onClick passes the event object, so only a real boolean counts as "set"
+    setValue((prev) => (typeof nextValue === 'boolean' ? nextValue : !prev));
   }, []);
 
-  return [value, handleToggle];
+  return [value, toggle] as const;
 }
 ```
+
+`as const` makes the return type the tuple `readonly [boolean, (nextValue?: unknown) => void]`. Without it TypeScript
+infers `(boolean | Function)[]` and destructuring loses both types.
 
 > Be careful with **any** custom React Hooks you write. They can trigger re-renders because under the hood they use **useState**.
 > For more information, check out [article about re-renders](/blog/react-rerender).
@@ -63,7 +50,14 @@ const App = () => {
       <p>The modal window is {isModalOpened ? 'opened' : 'closed'}.</p>
 
       <button onClick={toggleModal}>Toggle Modal State</button>
+      <button onClick={() => toggleModal(false)}>Close</button>
     </>
   );
 };
 ```
+
+## Related
+
+- [useClickOutside](/snippets/use-click-outside) — close the thing you just toggled open when the user clicks away
+- [useLocalStorage](/snippets/use-local-storage) — persist the toggle, e.g. a dark mode switch, across reloads
+- [usePrevious](/snippets/use-previous) — know what the value was before the last toggle

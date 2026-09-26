@@ -1,33 +1,31 @@
 ---
-title: 'React Hook Tutorial: How to Use the useHasMounted Hook'
+title: 'Fix Hydration Mismatch in React and Next.js with useHasMounted'
 heading: useHasMounted
-description: Avert strange SSR problems with this useful React hook. Identify whether your rendering occurs on the client or server!
+description: Fix "Text content does not match server-rendered HTML" hydration errors in React and Next.js. A tiny useHasMounted hook that renders browser-only UI after mount.
 createDate: 2024-07-11
-updateDate: 2026-02-21
+updateDate: 2026-09-26
 keywords:
   [
-    React useEffect hook usage,
-    Conditional rendering in React components,
-    Managing component lifecycle states,
-    Custom React hooks tutorial,
-    useState and useEffect in React,
-    Component mount lifecycle in React,
-    Declarative React programming,
-    Advanced React component rendering,
-    Optimizing React component performance,
-    React functional components,
+    useHasMounted,
+    React hydration mismatch,
+    Next.js hydration error,
+    text content does not match server-rendered HTML,
+    render only on client React,
+    useIsClient hook,
+    SSR window is not defined,
   ]
 ---
 
-Hey there! Today, let's talk about a handy custom React hook called `useHasMounted`. This hook is quite useful when you
-want to conditionally render components or perform actions based on whether your component has mounted or not.
+The server has no `window`, no `localStorage` and no idea what time zone your user is in. Render something that depends
+on them, and the HTML from the server won't match the first client render. React calls that a hydration mismatch and
+throws a warning like _"Text content does not match server-rendered HTML"_.
 
-With [React Server Components (RSC)](https://react.dev/reference/rsc/server-components) now stable, this hook is especially useful for code that must only run on the client.
+`useHasMounted` fixes it by rendering the browser-only part one tick later, after hydration is done.
 
-```jsx
-import { useState, useEffect } from 'react';
+```tsx
+import { useEffect, useState } from 'react';
 
-function useHasMounted() {
+export function useHasMounted() {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -38,27 +36,35 @@ function useHasMounted() {
 }
 ```
 
-> Be careful with **any** custom React Hooks you write. They can trigger re-renders because under the hood they use **useState**.
-> For more information, check out [article about re-renders](/blog/react-rerender).
-
-## Why use it?
-
-- Conditional rendering: You can conditionally render parts of your UI that depend on the component being fully mounted.
-- Avoid premature actions: Use this hook to avoid triggering actions or fetching data before your component is ready.
-
-Custom hooks like `useHasMounted` are great for managing component lifecycle states in a more declarative and reusable
-way. Happy coding!
+Effects never run on the server, so the server and the first client render both see `false`. They match, hydration
+succeeds, and then the effect flips it to `true`.
 
 ## Usage
 
-```jsx
-const Component = () => {
+```tsx
+const LocalTime = () => {
   const hasMounted = useHasMounted();
 
   if (!hasMounted) {
-    return null;
+    return null; // or a skeleton with the same size, to avoid layout shift
   }
 
-  return <div>Render only on client</div>;
+  return <p>Your time: {new Date().toLocaleTimeString()}</p>;
 };
 ```
+
+> Be careful with **any** custom React Hooks you write. They can trigger re-renders because under the hood they use **useState**.
+> For more information, check out [article about re-renders](/blog/react-rerender).
+
+## When Not to Use It
+
+- **For a browser value you can subscribe to**, like screen size or online status, use
+  [useSyncExternalStore](/snippets/use-sync-external-store) with a `getServerSnapshot`. You get the real value right
+  after hydration, without the extra render.
+- **For the whole page.** Hiding everything until mount throws away the point of SSR. Wrap only the part that needs the
+  browser.
+
+## Related
+
+- [Check in Which Environment the Code Is Running](/snippets/environment) — the non-React version of the same question
+- [useMediaQuery](/snippets/use-media-query) — a browser-only value that needs exactly this care during SSR
