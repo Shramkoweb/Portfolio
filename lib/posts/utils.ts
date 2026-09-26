@@ -36,6 +36,45 @@ export const filterByAdvanceReact = (post: Post | PostMetadata) =>
     .map((category) => category.toLowerCase())
     .includes(PostCategory.AdvancedReact.toLowerCase() as PostCategory);
 
+export type SeriesLink = { slug: string; heading: string };
+
+export type SeriesPosition = {
+  part: number;
+  total: number;
+  prev: SeriesLink | null;
+  next: SeriesLink | null;
+};
+
+/** Reading order is publish order, so a new post joins the series without extra frontmatter. */
+export const getAdvancedReactSeries = <T extends Post | PostMetadata>(
+  posts: T[],
+): T[] =>
+  posts
+    .filter(filterByAdvanceReact)
+    .sort((first, second) => first.data.createDate - second.data.createDate);
+
+export const getSeriesPosition = (
+  posts: (Post | PostMetadata)[],
+  slug: string,
+): SeriesPosition | null => {
+  const series = getAdvancedReactSeries(posts);
+  const index = series.findIndex((post) => post.data.slug === slug);
+
+  if (index === -1) {
+    return null;
+  }
+
+  const toLink = (post?: Post | PostMetadata): SeriesLink | null =>
+    post ? { slug: post.data.slug, heading: post.data.heading } : null;
+
+  return {
+    part: index + 1,
+    total: series.length,
+    prev: toLink(series[index - 1]),
+    next: toLink(series[index + 1]),
+  };
+};
+
 export const filterByHeading = (post: Post | PostMetadata, heading: string) =>
   post.data.heading.toLowerCase().includes(heading.toLowerCase());
 

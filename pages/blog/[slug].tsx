@@ -13,6 +13,7 @@ import React from 'react';
 import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
 import { MDXComponents } from '@/components/mdx-components/mdx-components';
+import { SeriesLabel, SeriesNav } from '@/components/series-nav';
 import { FacebookShare } from '@/components/share-button/facebook-share';
 import { LinkedInShare } from '@/components/share-button/linkedin-share';
 import { TelegramShare } from '@/components/share-button/telegram-share';
@@ -20,7 +21,12 @@ import { TwitterShare } from '@/components/share-button/twitter-share';
 import { TableOfContent } from '@/components/table-of-content';
 import { Tag } from '@/components/tag';
 import { ViewCounter } from '@/components/view-counter';
-import { getPostBySlug, getPostSlugs } from '@/lib/posts/api';
+import { getPostBySlug, getPostSlugs, getPostsMetadata } from '@/lib/posts/api';
+import {
+  filterByAdvanceReact,
+  getSeriesPosition,
+  SeriesPosition,
+} from '@/lib/posts/utils';
 import {
   generateBlogPostingSchema,
   generateBreadcrumbSchema,
@@ -42,6 +48,7 @@ type ArticlePageProps = Pick<Post, 'data'> & {
   content: MDXRemoteSerializeResult;
   headings: { text: string; level: number; id: string }[];
   shikiCSS: string;
+  series: SeriesPosition | null;
 };
 
 function ArticlePage(props: ArticlePageProps) {
@@ -60,6 +67,7 @@ function ArticlePage(props: ArticlePageProps) {
     },
     headings,
     shikiCSS,
+    series,
   } = props;
 
   return (
@@ -127,6 +135,7 @@ function ArticlePage(props: ArticlePageProps) {
         </div>
 
         <section className="lg:-ml-11 w-full">
+          {series && <SeriesLabel series={series} />}
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
             {heading}
           </h1>
@@ -155,6 +164,7 @@ function ArticlePage(props: ArticlePageProps) {
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
             <MDXRemote {...content} components={MDXComponents} />
           </div>
+          {series && <SeriesNav series={series} />}
 
           <div className="flex lg:hidden text-gray-600 dark:text-gray-400 items-center mt-16">
             <p>Share it:</p>
@@ -191,6 +201,10 @@ export async function getStaticProps({
   const { data, content } = await getPostBySlug(params?.slug);
   const { mdx, shikiCSS } = await compileMDX(content);
   const headings = extractHeadingsFromMarkdown(content);
+  // Only series posts pay for reading every post's frontmatter.
+  const series = filterByAdvanceReact({ data })
+    ? getSeriesPosition(await getPostsMetadata(), data.slug)
+    : null;
 
   return {
     props: {
@@ -198,6 +212,7 @@ export async function getStaticProps({
       content: mdx,
       headings,
       shikiCSS,
+      series,
     },
   };
 }
