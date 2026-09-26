@@ -88,3 +88,8 @@ interact with relational databases using this powerful and versatile database ma
 Remember to consult the [PostgreSQL documentation](https://www.postgresql.org/docs/current/index.html) and official
 resources for more advanced configuration and usage
 options. Happy database management!
+
+## Related
+
+- [Use Postgres Connect URLs](/blog/postgres-connect-url) — connect to your new local database with one string
+- [SQL Countries Table](/snippets/countries-sql) — seed data to play with once it's running

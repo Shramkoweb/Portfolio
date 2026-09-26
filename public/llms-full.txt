@@ -126,7 +126,7 @@ In-depth blog posts on web development and production-ready code snippets, plus 
   Keywords: TypeScript branded types, nominal types, type branding, TypeScript ID types, type safety
 - [DistributiveOmit Type for Union Types](https://shramko.dev/snippets/distributive-omit): Custom TypeScript utility type that properly distributes Omit across union type members. Fixes the standard Omit behavior with discriminated unions.
   Keywords: TypeScript utility types, distributive types, conditional types, Omit union types
-- [Unlocking the Power of Template Literal Types in TypeScript](https://shramko.dev/snippets/template-literal-types): Create complex string types with TypeScript template literals. Useful for CSS-in-JS libraries, event systems, and strongly typed string patterns.
+- [Template Literal Types in TypeScript (with Examples)](https://shramko.dev/snippets/template-literal-types): Create complex string types with TypeScript template literals. Useful for CSS-in-JS libraries, event systems, and strongly typed string patterns.
   Keywords: TypeScript template literal types, template literals, string types, CSS-in-JS type safety
 - [TypeScript satisfies Operator: Keep Your Types Precise](https://shramko.dev/snippets/satisfies-operator): Learn when to use TypeScript's satisfies operator instead of type annotations. Validate object shapes while preserving literal types and autocomplete.
   Keywords: TypeScript satisfies, satisfies operator, TypeScript 4.9, type inference, literal types
@@ -135,27 +135,31 @@ In-depth blog posts on web development and production-ready code snippets, plus 
 
 ## Snippets: React Hooks
 
-- [React Hook Tutorial: How to Use the useHasMounted Hook](https://shramko.dev/snippets/use-has-mounted): Avert strange SSR problems with this useful React hook. Identify whether your rendering occurs on the client or server!
-  Keywords: React useEffect, conditional rendering, component lifecycle, custom React hooks, useState
+- [Fix Hydration Mismatch in React and Next.js with useHasMounted](https://shramko.dev/snippets/use-has-mounted): Fix "Text content does not match server-rendered HTML" hydration errors in React and Next.js. A tiny useHasMounted hook that renders browser-only UI after mount.
+  Keywords: useHasMounted, React hydration mismatch, Next.js hydration error, render only on client
 - [useClickOutside React Hook: Detect Clicks Outside an Element](https://shramko.dev/snippets/use-click-outside): React hook to detect clicks outside a component. Close dropdowns, modals, and popovers when users click outside. TypeScript, zero dependencies.
   Keywords: useClickOutside, click outside React, close dropdown on click outside, close modal on click outside, React ref
 - [useLocalStorage React Hook: Persist State Across Sessions](https://shramko.dev/snippets/use-local-storage): React hook for localStorage with TypeScript, cross-tab sync, and SSR support. Drop-in replacement for react-use or usehooks-ts. Uses useSyncExternalStore.
   Keywords: useLocalStorage, React localStorage hook, persist state React, useSyncExternalStore, cross-tab sync
 - [useMediaQuery React Hook: Responsive Design in JavaScript](https://shramko.dev/snippets/use-media-query): React hook for responsive breakpoints in JavaScript. Detect screen size changes, dark mode preference, and other CSS media queries in React components.
   Keywords: useMediaQuery, React responsive hook, media query JavaScript, detect screen size, window matchMedia
+- [usePrevious React Hook: Get the Previous Value of State or Props](https://shramko.dev/snippets/use-previous): A usePrevious React hook in TypeScript that returns the previous value of state or props. Why the classic useRef version breaks, and the React 19-safe fix.
+  Keywords: usePrevious, React previous state, React previous props, usePrevious useRef
 - [useSyncExternalStore: Subscribe to Browser APIs in React](https://shramko.dev/snippets/use-sync-external-store): Subscribe to Browser APIs in React with useSyncExternalStore — online status, matchMedia, ResizeObserver, IntersectionObserver. No useEffect, no stale closures.
   Keywords: useSyncExternalStore, React 19 hooks, subscribe to Browser API in React, React concurrent rendering, React useEffect alternative
-- [useToggle React Hook](https://shramko.dev/snippets/use-toggle-react-hook): Simple useToggle React hook for managing boolean state. Toggle between true and false with a clean API. Perfect for modals, dropdowns, and dark mode switches.
-  Keywords: useToggle hook, Boolean toggle hook, React state management, useState toggle
+- [useToggle React Hook: Toggle Boolean State in TypeScript](https://shramko.dev/snippets/use-toggle-react-hook): Simple useToggle React hook for managing boolean state. Toggle between true and false with a clean API. Perfect for modals, dropdowns, and dark mode switches.
+  Keywords: useToggle hook, React toggle boolean, useState toggle, custom React hook
 
 ## Snippets: JavaScript Utilities
 
-- [Debounce snippet function in modern TypeScript](https://shramko.dev/snippets/debounce): Copy-paste debounce function in TypeScript. Delay function execution until user stops typing or triggering events. Includes React usage example.
-  Keywords: debounce, debounce function, debounce function in JavaScript, debounce function in TypeScript
+- [Debounce Function in TypeScript (with useDebounce Hook)](https://shramko.dev/snippets/debounce): Copy-paste debounce function in TypeScript with cancel support, plus a useDebounce React hook. Wait until the user stops typing before running expensive code.
+  Keywords: debounce, debounce function in TypeScript, useDebounce hook, debounce search input, debounce cancel
 - [Effective Ways to Remove Duplicates from Arrays in JavaScript](https://shramko.dev/snippets/remove-duplicates-array): Three simple ways to remove duplicate values from JavaScript arrays. Learn to use Set, filter with indexOf, and reduce methods with clear code examples.
   Keywords: remove duplicates array, unique array, Set, filter indexOf, reduce
 - [Group Array by Key in JavaScript and TypeScript](https://shramko.dev/snippets/group-by): Group an array of objects by a property value in TypeScript. Covers Object.groupBy, Map.groupBy, and a manual fallback for older environments.
   Keywords: group array by key, groupBy JavaScript, Object.groupBy, Map.groupBy, array reduce group
+- [How to Sort an Array of Objects by Multiple Properties in JavaScript](https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript): Learn how to sort an array of objects by multiple properties in JavaScript using the Array.prototype.sort() method with a custom compare function.
+  Keywords: JavaScript Array Object Sorting, Array.prototype.sort, custom compare function, sort by multiple properties
 - [How to Use the Range Function in JavaScript: A Simple Guide](https://shramko.dev/snippets/generate-range): Create an array of sequential numbers with a JavaScript range function. Similar to Python's range(), generates number sequences with optional step values.
   Keywords: JavaScript range function, generate sequence of numbers, JavaScript array creation, utility functions
 - [JavaScript Deep Clone: How to Safely Copy Objects](https://shramko.dev/snippets/deep-clone): Create deep clones of JavaScript objects including nested structures. Copy-paste function using structuredClone for reliable object duplication.
@@ -164,8 +168,6 @@ In-depth blog posts on web development and production-ready code snippets, plus 
   Keywords: JavaScript getRandom function, random number generator, generate random float, Math.random
 - [Sleep in JavaScript: How to Pause Execution](https://shramko.dev/snippets/sleep): Learn how to pause JavaScript execution with a sleep function. Create delays using Promises and async/await for timing control in your code.
   Keywords: sleep in JavaScript, pause execution, delay in JavaScript, sleep function
-- [How to Sort an Array of Objects by Multiple Properties in JavaScript](https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript): Learn how to sort an array of objects by multiple properties in JavaScript using the Array.prototype.sort() method with a custom compare function.
-  Keywords: JavaScript Array Object Sorting, Array.prototype.sort, custom compare function, sort by multiple properties
 - [Throttle Function in TypeScript with React Example](https://shramko.dev/snippets/throttle): Copy-paste throttle function in TypeScript. Limit how often a function fires during scroll, resize, or mousemove events. Includes React usage example.
   Keywords: throttle, throttle function, throttle vs debounce, scroll throttle, rate limit function calls
 
@@ -177,25 +179,25 @@ In-depth blog posts on web development and production-ready code snippets, plus 
   Keywords: scroll-driven animations, CSS scroll animation, animation-timeline, scroll progress CSS, view timeline CSS
 - [Generating UUIDs in JavaScript: Best Practices](https://shramko.dev/snippets/window-crypto): Generate UUIDs in JavaScript using window.crypto.randomUUID(). Copy-paste snippet for creating universally unique identifiers in browser environments.
   Keywords: window.crypto.randomUUID, UUID JavaScript, unique identifiers
-- [JavaScript Caps Lock Detection | getModifierState](https://shramko.dev/snippets/detect-caps-lock): Detect Caps Lock state in JavaScript using getModifierState(). Copy-paste snippet for password fields and form validation with cross-browser support.
-  Keywords: JavaScript Caps Lock detection, getModifierState, keyboard events, modifier keys, form validation
-- [JavaScript Techniques for Checking Element Visibility in the Viewport](https://shramko.dev/snippets/is-element-in-viewport): Check if an element is visible in the viewport using JavaScript. Covers Intersection Observer API and manual methods for lazy loading and animations.
+- [How to Check if an Element Is in the Viewport in JavaScript](https://shramko.dev/snippets/is-element-in-viewport): Check if an element is visible in the viewport using JavaScript. Covers Intersection Observer API and manual methods for lazy loading and animations.
   Keywords: JavaScript viewport check, Intersection Observer API, visibility detection, lazy loading
-- [Lazy Load Images in TypeScript Using Observer](https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer): Complete guide to implementing lazy loading for images using Intersection Observer API with TypeScript, including code examples and best practices.
-  Keywords: Intersection Observer, lazy loading, TypeScript, image optimization, web performance
 - [How to Move Cursor to the End of Input Field with JavaScript](https://shramko.dev/snippets/move-cursor): JavaScript snippet to programmatically move the text cursor to the end or beginning of an input field. Useful for form validation and auto-focus features.
   Keywords: move cursor to end of input, cursor position, setSelectionRange, input field focus
+- [JavaScript Caps Lock Detection | getModifierState](https://shramko.dev/snippets/detect-caps-lock): Detect Caps Lock state in JavaScript using getModifierState(). Copy-paste snippet for password fields and form validation with cross-browser support.
+  Keywords: JavaScript Caps Lock detection, getModifierState, keyboard events, modifier keys, form validation
+- [Lazy Load Images: loading="lazy" vs Intersection Observer](https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer): Lazy load images with the native loading="lazy" attribute, or with an Intersection Observer in TypeScript when you need custom thresholds, placeholders or background images.
+  Keywords: lazy load images, loading lazy, Intersection Observer, image optimization, web performance
 
 ## Snippets: URL & String Validation
 
 - [Check if URL is Absolute - JavaScript Function](https://shramko.dev/snippets/is-absolute-url): A JavaScript function that uses regex to determine if a given URL string is absolute by checking for http or https protocol prefix.
   Keywords: javascript url validation, absolute url, regex, http https, utility function
-- [Efficient Methods to Validate Alphabetic Characters in JavaScript](https://shramko.dev/snippets/check-if-character-is-a-letter-in-javascript): Check if a character is a letter in JavaScript using regex patterns and ASCII codes. Reliable methods for character validation including Unicode support.
-  Keywords: JavaScript character validation, check if letter, regex letters, ASCII validation, Unicode character check
 - [Email Validation in TypeScript – Regex Function](https://shramko.dev/snippets/is-email-valid-regex): TypeScript function for validating email addresses using regex. Copy-paste snippet with type safety for form validation in your web applications.
   Keywords: email validation, regular expression, regex, form validation, TypeScript function
 - [How to Capitalize the First Letter of a String in JavaScript](https://shramko.dev/snippets/how-to-capitalize-first-letter-of-string-in-javascript): Capitalize the first letter of a string in JavaScript. Copy-paste function with examples for toUpperCase, charAt, and slice string manipulation.
   Keywords: capitalize first letter, JavaScript string manipulation, toUpperCase, charAt
+- [How to Check if a Character Is a Letter in JavaScript](https://shramko.dev/snippets/check-if-character-is-a-letter-in-javascript): Check if a character is a letter in JavaScript using regex patterns and ASCII codes. Reliable methods for character validation including Unicode support.
+  Keywords: JavaScript character validation, check if letter, regex letters, ASCII validation, Unicode character check
 - [How to Get the Current URL with JavaScript](https://shramko.dev/snippets/how-to-get-the-current-url-with-javascript): Learn different methods to retrieve the current URL using JavaScript for analytics tracking, dynamic content updates, and more.
   Keywords: current URL JavaScript, window.location, location.pathname, URLSearchParams, query parameters
 - [Removing Query Strings from URLs in JavaScript](https://shramko.dev/snippets/how-to-remove-query): Snippet to remove a query string from a URL using JavaScript. Learn how to remove query parameters from a URL string.
@@ -223,10 +225,10 @@ In-depth blog posts on web development and production-ready code snippets, plus 
 
 ## Snippets: DevOps & Backend
 
-- [How to Check in Which Environment Your Code is Running](https://shramko.dev/snippets/environment): Find out how to check if your JavaScript or TypeScript code is running in a browser or Node.js environment using simple code snippets.
-  Keywords: check environment, check if code is running in browser, check if code is running in Node.js
 - [How to check if a file exists in Node.js](https://shramko.dev/snippets/how-to-check-if-file-exists-node): Learn how to check if a file exists in Node.js using the fs module. Covers synchronous and asynchronous methods with practical examples.
   Keywords: nodejs file system, fs module, synchronous file check, file existence
+- [How to Check in Which Environment Your Code is Running](https://shramko.dev/snippets/environment): Find out how to check if your JavaScript or TypeScript code is running in a browser or Node.js environment using simple code snippets.
+  Keywords: check environment, check if code is running in browser, check if code is running in Node.js
 - [How to Install PostgreSQL on macOS](https://shramko.dev/snippets/postgres-install-macos): Step-by-step guide to install PostgreSQL on macOS using Homebrew. Learn how to set up the database server, create users, and connect to your local instance.
   Keywords: install PostgreSQL macOS, PostgreSQL setup, Homebrew postgres
 - [SQL Countries Table Example: How to Create and Query Efficiently](https://shramko.dev/snippets/countries-sql): Ready-to-use SQL insert statements for a countries table with names, ISO codes, and phone codes. Perfect for seeding your database with real country data.

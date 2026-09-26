@@ -43,6 +43,11 @@ console.log(myUUID); // Outputs something like '3b241101-e2bb-4255-8caf-4136c566
 
 • **Performance**: Generates UUIDs with minimal overhead from extra code.
 
+## Related
+
+- [Check in Which Environment the Code Is Running](/snippets/environment) — guard `window.crypto` when the same code also runs on the server
+- [Random Number Generator](/snippets/random) — when you need a number in a range, not a unique ID
+
 ## Useful links
 
 - [MDN Web Docs - window.crypto.randomUUID()](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)

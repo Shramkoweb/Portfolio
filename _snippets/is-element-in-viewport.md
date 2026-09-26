@@ -1,5 +1,5 @@
 ---
-title: JavaScript Techniques for Checking Element Visibility in the Viewport
+title: 'How to Check if an Element Is in the Viewport in JavaScript'
 heading: How to Check if an Element is in the Viewport in JavaScript
 description: Check if an element is visible in the viewport using JavaScript. Covers Intersection Observer API and manual methods for lazy loading and animations.
 createDate: 2024-05-20T19:09:55.954Z

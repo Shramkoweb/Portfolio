@@ -1,7 +1,7 @@
 ---
 title: How to Check in Which Environment Your Code is Running
 heading: Check in which environment the code is running
-description: Find out how to check if your JavaScript or TypeScript code is running in a browser or Node.js environment using simple code snippets
+description: Find out how to check if your JavaScript or TypeScript code is running in a browser or Node.js environment using simple code snippets.
 createDate: 2024-09-13T20:35:42.844Z
 updateDate: 2026-02-21
 keywords:

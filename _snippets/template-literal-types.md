@@ -1,5 +1,5 @@
 ---
-title: 'Unlocking the Power of Template Literal Types in TypeScript'
+title: 'Template Literal Types in TypeScript (with Examples)'
 heading: Template Literal Types
 description: Create complex string types with TypeScript template literals. Useful for CSS-in-JS libraries, event systems, and strongly typed string patterns.
 createDate: 2025-10-16T00:00:00.000Z

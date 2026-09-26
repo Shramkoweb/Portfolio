@@ -279,3 +279,7 @@ VALUES ('AF', 'Afghanistan'),
 Feel free to use 🫡.
 
 > Need to connect to PostgreSQL? Check out [how to connect with a URL string](/blog/postgres-connect-url).
+
+## Related
+
+- [Installing PostgreSQL on macOS](/snippets/postgres-install-macos) — get a local database to load this table into

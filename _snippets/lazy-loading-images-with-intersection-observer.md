@@ -1,10 +1,13 @@
 ---
-title: Lazy Load Images in TypeScript Using Observer
+title: 'Lazy Load Images: loading="lazy" vs Intersection Observer'
 heading: Lazy Loading Images
-description: Complete guide to implementing lazy loading for images using Intersection Observer API with TypeScript, including code examples and best practices
+description: Lazy load images with the native loading="lazy" attribute, or with an Intersection Observer in TypeScript when you need custom thresholds, placeholders or background images.
 createDate: 2025-02-02T00:00:00.000Z
+updateDate: 2026-09-26
 keywords:
   [
+    lazy load images,
+    loading lazy,
     Intersection Observer,
     lazy loading,
     TypeScript,
@@ -19,7 +22,27 @@ keywords:
 Intersection Observer API allows us to load images only when they're about to enter the viewport. This optimization
 technique significantly improves initial page load performance, especially for image-heavy pages. You can also use the same API to [check if an element is in the viewport](/snippets/is-element-in-viewport) for other use cases beyond image loading.
 
-## Implementation
+## Start with the Native Attribute
+
+Every modern browser can do this without JavaScript:
+
+```html
+<img
+  src="photo.jpg"
+  alt="Mountains at sunset"
+  loading="lazy"
+  width="800"
+  height="600"
+/>
+```
+
+Set `width` and `height` so the page doesn't jump when the image arrives, and keep `loading="lazy"` off the hero image
+above the fold. That one should load as early as possible.
+
+Reach for Intersection Observer only when the attribute isn't enough: a custom `rootMargin`, a blur-up placeholder,
+CSS background images, or a fade-in once the image is ready.
+
+## Intersection Observer Implementation
 
 ```typescript
 interface LazyImageOptions {
