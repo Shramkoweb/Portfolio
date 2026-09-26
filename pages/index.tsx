@@ -9,7 +9,7 @@ import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
 import { fetcher } from '@/lib/fetcher';
 import { getPosts } from '@/lib/posts/api';
 import {
-  filterByAdvanceReact,
+  getAdvancedReactSeries,
   filterByFeatured,
   filterByNotFeatured,
   isNewPost,
@@ -220,10 +220,7 @@ export async function getStaticProps(): Promise<
     .sort(sortByBirthtime)
     .slice(0, 3);
   const featuredPosts = posts.filter(filterByFeatured).sort(sortByBirthtime);
-  const advancedReactPosts = posts
-    .filter(filterByAdvanceReact)
-    .sort(sortByBirthtime)
-    .reverse();
+  const advancedReactPosts = getAdvancedReactSeries(posts).reverse();
 
   return {
     props: {

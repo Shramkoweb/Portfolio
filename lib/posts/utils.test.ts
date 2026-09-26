@@ -5,6 +5,7 @@ import {
   filterByHeading,
   filterByNotFeatured,
   formatPostDate,
+  getSeriesPosition,
   getYearFromPost,
   isNewPost,
   isYearSeparator,
@@ -323,5 +324,61 @@ describe('formatPostDate', () => {
     expect(formatPostDate(Date.parse('2024-07-07T23:30:00.000Z'))).toBe(
       'Jul 7, 2024',
     );
+  });
+});
+
+describe('getSeriesPosition', () => {
+  const post = (
+    slug: string,
+    createDate: string,
+    categories: PostCategory[] = [PostCategory.AdvancedReact],
+  ): PostMetadata => ({
+    data: {
+      slug,
+      heading: `Heading ${slug}`,
+      createDate: Date.parse(createDate),
+      updateDate: null,
+      featured: false,
+      categories,
+      description: '',
+      title: '',
+      readTime: '',
+      keywords: [],
+    },
+  });
+
+  // Deliberately out of order, with an unrelated post mixed in.
+  const posts = [
+    post('third', '2025-12-07'),
+    post('other', '2025-06-01', [PostCategory.React]),
+    post('first', '2025-05-03'),
+    post('second', '2025-05-31'),
+  ];
+
+  it('numbers series posts in publish order, ignoring other categories', () => {
+    expect(getSeriesPosition(posts, 'first')).toEqual({
+      part: 1,
+      total: 3,
+      prev: null,
+      next: { slug: 'second', heading: 'Heading second' },
+    });
+  });
+
+  it('links both neighbours for a post in the middle', () => {
+    const position = getSeriesPosition(posts, 'second');
+
+    expect(position?.prev?.slug).toBe('first');
+    expect(position?.next?.slug).toBe('third');
+  });
+
+  it('has no next link for the latest part', () => {
+    expect(getSeriesPosition(posts, 'third')).toMatchObject({
+      part: 3,
+      next: null,
+    });
+  });
+
+  it('returns null for posts outside the series', () => {
+    expect(getSeriesPosition(posts, 'other')).toBeNull();
   });
 });
