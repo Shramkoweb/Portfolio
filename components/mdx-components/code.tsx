@@ -49,7 +49,7 @@ export function Code(props: CodeProps) {
           {copyStatus === 'success' ? 'Code copied to clipboard' : ''}
         </output>
       </button>
-      <div className="overflow-x-scroll">{children}</div>
+      <div className="overflow-x-auto">{children}</div>
     </pre>
   );
 }
