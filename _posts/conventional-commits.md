@@ -83,7 +83,7 @@ commonly used types:
 
 ## Cheat Sheet for Conventional Commits
 
-<Image src="conventional-commits-cheatsheet.png" alt="Conventional Commits cheatsheet table listing commit types: feat, fix, chore, docs, style, refactor, perf, test, build, ci, and revert with descriptions and examples" />
+<Image src="conventional-commits-cheatsheet.png" alt="Conventional Commits cheatsheet table listing commit types: feat, fix, chore, docs, style, refactor, perf, test, build, ci, and revert with descriptions and examples" inverted />
 
 | Type     | Description                | Example                          |
 | :------- | :------------------------- | :------------------------------- |

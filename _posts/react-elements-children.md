@@ -3,6 +3,7 @@ title: 'React Elements, Children as Props, and Re-Renders'
 heading: 'Elements & Children Props'
 description: 'Learn how React elements work and how passing children as props can optimize performance by preventing unnecessary re-renders.'
 createDate: 2025-12-07T10:00:00.000Z
+updateDate: 2026-09-26T12:00:00.000Z
 keywords:
   [
     react elements,
@@ -61,7 +62,12 @@ const Dashboard = () => {
 };
 ```
 
-<Image src="elements.png" alt="React DevTools screenshot titled 'The Problem: Re-rendering Everything' showing App component with scrollPosition state triggering re-renders on BunchOfStuff and VerySlowComponent children" />
+<Image src="elements.png" alt="Hand-drawn diagram titled 'The Problem: Re-rendering Everything': Dashboard holds sidebarWidth state, so every drag of DragHandle re-renders ExpensiveChart, DataGrid, AnalyticsPanel and MainContent" inverted />
+
+<Update date="2026-09-26">
+  This diagram was redrawn to match the current resizable sidebar example. The earlier one still showed the old
+  scroll-position example.
+</Update>
 
 This implementation will stutter badly. Every mouse movement fires a state update, causing `Dashboard` to re-render.
 When `Dashboard` re-renders, so does everything nested inside it. The "moving state down" approach fails here because

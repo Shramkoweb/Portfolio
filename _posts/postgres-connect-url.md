@@ -24,7 +24,7 @@ That is, without credentials such as `user`, `password`, etc.
 
 It's [official PostgreSQL format for connection URLs](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
 
-<Image src="postgresql-connection-string.png" priority={true} alt="PostgreSQL connection URL string format showing protocol, user, password, host, port, and database" />
+<Image src="postgresql-connection-string.png" priority={true} alt="PostgreSQL connection URL postgresql://janedoe:mypassword@localhost:5432/mydb?schema=public broken into protocol, base URL, path and arguments with their placeholders" inverted />
 
 ### Base URL and path
 
@@ -34,7 +34,7 @@ Here's an example of a base URL and path structure using uppercase placeholder v
 postgresql://USER:PASSWORD@HOST:PORT/DATABASE
 ```
 
-<Image src="db-table.png" priority={true} alt="PostgreSQL base URL and path structure with placeholder values for user, password, host, port, and database" />
+<Image src="db-table.png" priority={true} alt="Table of connection URL placeholders: HOST, PORT, USER, PASSWORD and DATABASE with a description and example for each" inverted />
 
 ## How this site connects to the database
 

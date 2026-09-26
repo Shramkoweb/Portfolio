@@ -30,7 +30,7 @@ categories: [TS, Clean-Code, Opinion, Tutorial]
 featured: true
 ---
 
-<Image alt="A hand-drawn diagram showing Generic Type Parameters on the left and a browser window with TypeScript code for a generic identity function on the right, plus two boxes labeled U and V" src="generic.jpg" priority={true} />
+<Image alt="A hand-drawn diagram showing Generic Type Parameters on the left and a browser window with TypeScript code for a generic identity function on the right, plus two boxes labeled U and V" src="generic.png" priority={true} inverted />
 
 When you first encounter TypeScript generics, you'll likely see something
 like [this](https://www.typescriptlang.org/docs/handbook/2/generics.html#hello-world-of-generics):

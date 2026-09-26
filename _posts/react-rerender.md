@@ -3,6 +3,7 @@ title: 'React Re-Renders: What Triggers Them and Why'
 heading: React Re-Renders
 description: Dive into the mechanics of React re-renders — learn what causes them, how they impact performance, and how to manage them effectively.
 createDate: 2025-05-03T09:01:43.973Z
+updateDate: 2026-09-26T12:00:00.000Z
 keywords:
   [
     react re-render,
@@ -16,7 +17,7 @@ categories: [Advanced-React, Tutorial, JS, TS, React]
 featured: false
 ---
 
-<Image alt="Cartoon React atom character pointing at three components and saying 'You need to re-render'" src="react-rerender.png" priority={true} />
+<Image alt="Cartoon React atom character pointing at three components and saying 'You need to re-render'" src="react-rerender.png" priority={true} inverted />
 
 Hi, react [Andy](https://en.wiktionary.org/wiki/react_Andy)!
 
@@ -35,7 +36,7 @@ That’s why I’m launching a [series of articles](/blog/category/advanced-reac
 Understanding re-renders in React is crucial for performance. You need to understand what triggers them. Know how they
 move through the app. Learn what happens during a re-render and why it matters.
 
-<Image alt="Meme: 'Oh, so you like React? Tell me what triggers a re-render' with a skeptical cartoon character" src="react-meme.png" />
+<Image alt="Meme: 'Oh, so you like React? Tell me what triggers a re-render' with a skeptical cartoon character" src="react-meme.png" inverted />
 
 ## The problem
 
@@ -96,12 +97,12 @@ hurt performance.
 
 First, let’s take a closer look at what exactly is happening and why this delay occurs.
 
-<Image alt="Flowchart showing a state update at the root triggering re-renders in all child components down the tree" src="rerender.png" />
+<Image alt="Flowchart showing a state update at the root triggering re-renders in all child components down the tree" src="rerender.png" inverted />
 
 When we click the button, we trigger the `setIsExpanded` setter function, which updates the `isExpanded` state from `false` to
 `true`. As a result, the `Dashboard` component that holds this state re-renders itself.
 
-After the state updates and the `App` component re-renders, React must pass the new data to other dependent components.
+After the state updates and the `Dashboard` component re-renders, React must pass the new data to other dependent components.
 It automatically re-renders all components that the first component shows. It keeps going down the tree until it reaches
 the end.
 
@@ -113,7 +114,7 @@ state update was initiated will be re-rendered.
 The key point to remember is that React never re-renders components "up" the render tree. If a state update occurs in
 the middle of the component tree, only the components "down" the tree will be re-rendered.
 
-<Image alt="Component tree diagram where only the subtree below the state update node re-renders, leaving sibling branches unchanged" src="rerender-state.png" />
+<Image alt="Component tree diagram where only the subtree below the state update node re-renders, leaving sibling branches unchanged" src="rerender-state.png" inverted />
 
 When a component is wrapped in `React.memo`, `React` will interrupt its default re-rendering process and first evaluate
 whether the `props` have changed. If there are no changes to the `props`, re-renders will be halted. However, if even a
@@ -122,7 +123,7 @@ single `prop` is modified, the re-rendering will proceed as usual.
 It's important to note that effectively preventing re-renders through memoization is a nuanced topic with various
 considerations. For a deeper understanding, it is advisable to explore these concepts further in new articles. (Coming soon... or read about [Elements, Children as Props, and Re-Renders](/blog/react-elements-children))
 
-<Image alt="Component tree diagram showing React.memo blocking re-renders on one branch while the other branch re-renders normally" src="react-memo.png" />
+<Image alt="Component tree diagram showing React.memo blocking re-renders on one branch while the other branch re-renders normally" src="react-memo.png" inverted />
 
 Wrapping components with `React.memo` can indeed help prevent unnecessary re-renders in certain scenarios. However, it's
 important to note that using `React.memo` comes with its own set of complexities and caveats, which will be discussed in
@@ -165,7 +166,12 @@ const Dashboard = () => {
 };
 ```
 
-<Image alt="Before-and-after component tree: moving state into a child component isolates re-renders from the slow sibling component" src="rerender-performance-fix.png" />
+<Image alt="Before-and-after component tree: with isExpanded state in Dashboard, ExpensiveDataGrid, AnalyticsWidget and ActivityFeed all re-render; after moving it into SettingsToggle, only SettingsToggle and SettingsPanel re-render" src="rerender-performance-fix.png" inverted />
+
+<Update date="2026-09-26">
+  The diagrams were redrawn to match the current `Dashboard` and `SettingsToggle` example. Earlier versions still showed
+  the components from the first draft of this article.
+</Update>
 
 Consequently, the settings panel appears immediately. We resolved a significant performance issue using a straightforward
 composition technique!
