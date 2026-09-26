@@ -1,5 +1,5 @@
 ---
-title: Efficient Methods to Validate Alphabetic Characters in JavaScript
+title: 'How to Check if a Character Is a Letter in JavaScript'
 heading: How to check if character is a letter in Javascript?
 description: Check if a character is a letter in JavaScript using regex patterns and ASCII codes. Reliable methods for character validation including Unicode support.
 createDate: 2024-12-31
@@ -28,7 +28,7 @@ Here are my favorite and reliable methods to check if a character is a letter.
 
 ## Using ASCII Code Values
 
-Another common method is checking ASCII code values using `charCodeAt()`:
+A common method is checking ASCII code values using `charCodeAt()`:
 
 ```js
 function isLetter(char) {
