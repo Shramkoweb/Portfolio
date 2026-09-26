@@ -29,6 +29,8 @@ In-depth blog posts on web development and production-ready code snippets, plus 
   Keywords: react re-render, what triggers re-render in react, react performance, react optimization, useEffect and re-render, rendering lifecycle react
 - [Understanding the Hidden Pitfalls of Custom Hooks in React](https://shramko.dev/blog/react-hooks-pitfalls): Learn about performance risks in React custom hooks, how they cause unexpected re-renders, and strategies to manage state efficiently.
   Keywords: custom hooks, react re-render, react state management, react performance, hooks best practices, avoiding unnecessary renders
+- [useRef in React: Refs vs State, DOM Access and React 19](https://shramko.dev/blog/react-useref): When to use useRef instead of useState, how DOM refs and ref callbacks work, and what React 19 changed: ref as a prop, no forwardRef, ref cleanup.
+  Keywords: react useref, useref vs usestate, react dom ref, ref as a prop react 19, forwardref deprecated, useimperativehandle, ref callback cleanup
 
 ## Blog Posts: TypeScript
 
