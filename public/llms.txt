@@ -55,6 +55,7 @@ In-depth blog posts and production-ready code snippets covering JavaScript, Type
 - [React Re-Renders: What Triggers Them and Why](https://shramko.dev/blog/react-rerender): Dive into the mechanics of React re-renders — learn what causes them, how they impact performance, and how to manage them effectively.
 - [Understanding the Hidden Pitfalls of Custom Hooks in React](https://shramko.dev/blog/react-hooks-pitfalls): Learn about performance risks in React custom hooks, how they cause unexpected re-renders, and strategies to manage state efficiently.
 - [Use Postgres Connect URLs for DB Connections](https://shramko.dev/blog/postgres-connect-url): Learn how to connect to PostgreSQL using a connection URL string. Simple guide for Node.js, DataGrip, or any client supporting URL-based database connections.
+- [useRef in React: Refs vs State, DOM Access and React 19](https://shramko.dev/blog/react-useref): When to use useRef instead of useState, how DOM refs and ref callbacks work, and what React 19 changed: ref as a prop, no forwardRef, ref cleanup.
 - [What is a generic type parameter T in TypeScript?](https://shramko.dev/blog/generic-type-parameters): Learn TypeScript generic type parameter naming conventions. Understand when to use T, K, V and when descriptive names like TKey make your code more readable.
 - [When .gitignore Isn't the Right Tool](https://shramko.dev/blog/gitignore-is-not-enough): Learn about Git's hidden alternatives to .gitignore for managing file exclusions locally without affecting your team's workflow.
 
