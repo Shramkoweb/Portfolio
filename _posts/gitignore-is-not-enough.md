@@ -19,7 +19,7 @@ categories: [Opinion, Project-Setup, Tools]
 featured: false
 ---
 
-<Image src="git.jpg" alt="Hand-drawn cover image with the Git branch logo inside a tilted diamond and the title 'The .gitignore'" priority={true} />
+<Image src="git.png" alt="Hand-drawn cover image with the Git branch logo inside a tilted diamond and the title 'The .gitignore'" priority={true} inverted />
 
 When it comes to managing version control in your project with Git, `.gitignore` files typically handle most cases of
 excluding specific files or directories from being tracked. However, there are instances when you either can’t or simply

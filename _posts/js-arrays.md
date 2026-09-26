@@ -17,7 +17,7 @@ categories: [JS, Tutorial]
 featured: false
 ---
 
-<Image src="fruits.png" alt="JavaScript array illustration showing const fruits with six fruit emoji elements and their zero-based index positions" priority={true} />
+<Image src="fruits.png" alt="Hand-drawn JavaScript array: const fruits holding six fruits, each labelled with its zero-based index from 0 to 5" priority={true} inverted />
 
 ## Syntax
 

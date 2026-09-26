@@ -72,6 +72,29 @@ pnpm dev                # http://localhost:3000
 
 Only one or two posts should carry `featured: true` at a time. Adding one usually means clearing another.
 
+## Article illustrations
+
+Diagrams, tables and covers share one hand-drawn look so every post is recognisable.
+
+- **Tools:** Excalidraw's own stack, not an imitation: [rough.js](https://roughjs.com) (roughness 1), Excalifont for text and Comic Shanns for code, both shipped in the `@excalidraw/excalidraw` package. Drawing in excalidraw.com and exporting works too.
+- **Canvas:** transparent background, exported as PNG 1536 px wide. Always add `inverted` to the `<Image>`: dark mode flips lightness and the `hue-rotate` in `globals.css` keeps the hues.
+- **Shapes:** sharp-cornered rectangles, outlines only. No solid or hachure fills — they turn into dark blocks once inverted.
+- **Signature:** every image carries `SHRAMKO.DEV` in Excalifont, Light gray: bottom-right under the drawing for diagrams, top-right for covers.
+- **Legibility:** images render at most 768 px wide, so keep text at least ~14 px at that size.
+- **Palette:** the accessible light variants of Apple's HIG system colours, so every colour holds WCAG contrast on the light page and after inversion on the dark one. Keep one or two accents per image.
+
+| Colour | Hex       | Use for                                     |
+| ------ | --------- | ------------------------------------------- |
+| Ink    | `#1d1d1f` | text, outlines                              |
+| Gray   | `#6e6e73` | captions, secondary text                    |
+| Light  | `#8e8e93` | placeholders, quiet arrows, untouched nodes |
+| Orange | `#c93400` | primary accent, the result                  |
+| Red    | `#d70015` | the problem, errors, what re-renders        |
+| Blue   | `#0066cc` | process, tools, code keywords               |
+| Green  | `#248a3d` | after / fixed; large text only (4.2:1)      |
+
+When a post's code examples change, check its diagrams still use the same component and state names.
+
 ## Repo layout
 
 | Path                | Purpose                                                    |
