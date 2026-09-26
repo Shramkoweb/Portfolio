@@ -71,7 +71,7 @@
 <url><loc>https://shramko.dev/snippets/copy-to-clipboard</loc><lastmod>2026-02-15T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/countries-sql</loc><lastmod>2025-12-07T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/css-selection</loc><lastmod>2023-03-05T20:59:59.512Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://shramko.dev/snippets/debounce</loc><lastmod>2025-12-07T00:00:00.000Z</lastmod><priority>0.8</priority></url>
+<url><loc>https://shramko.dev/snippets/debounce</loc><lastmod>2026-09-26T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/deep-clone</loc><lastmod>2026-02-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/detect-caps-lock</loc><lastmod>2025-05-29T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/distributive-omit</loc><lastmod>2025-12-07T00:00:00.000Z</lastmod><priority>0.8</priority></url>
@@ -86,7 +86,7 @@
 <url><loc>https://shramko.dev/snippets/is-absolute-url</loc><lastmod>2025-12-07T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/is-element-in-viewport</loc><lastmod>2024-05-20T19:09:55.954Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/is-email-valid-regex</loc><lastmod>2025-05-14T00:00:00.000Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer</loc><lastmod>2025-02-02T00:00:00.000Z</lastmod><priority>0.8</priority></url>
+<url><loc>https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer</loc><lastmod>2026-09-26T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/local-storage</loc><lastmod>2026-02-09T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/move-cursor</loc><lastmod>2023-03-22T00:11:17.662Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/postgres-install-macos</loc><lastmod>2026-02-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>
@@ -98,14 +98,15 @@
 <url><loc>https://shramko.dev/snippets/sleep</loc><lastmod>2024-10-18T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/sort-an-array-of-objects-in-javascript</loc><lastmod>2024-10-13T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/template-literal-types</loc><lastmod>2026-02-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://shramko.dev/snippets/throttle</loc><lastmod>2026-01-24T00:00:00.000Z</lastmod><priority>0.8</priority></url>
+<url><loc>https://shramko.dev/snippets/throttle</loc><lastmod>2026-09-26T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/type-predicates</loc><lastmod>2025-10-16T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/use-click-outside</loc><lastmod>2026-01-11T00:00:00.000Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://shramko.dev/snippets/use-has-mounted</loc><lastmod>2026-02-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>
+<url><loc>https://shramko.dev/snippets/use-has-mounted</loc><lastmod>2026-09-26T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/use-local-storage</loc><lastmod>2026-04-25T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/use-media-query</loc><lastmod>2026-01-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>
+<url><loc>https://shramko.dev/snippets/use-previous</loc><lastmod>2026-09-26T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/use-sync-external-store</loc><lastmod>2026-05-10T00:00:00.000Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://shramko.dev/snippets/use-toggle-react-hook</loc><lastmod>2024-10-30T00:00:00.000Z</lastmod><priority>0.8</priority></url>
+<url><loc>https://shramko.dev/snippets/use-toggle-react-hook</loc><lastmod>2026-09-26T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/visually-hidden</loc><lastmod>2024-07-12T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/window-crypto</loc><lastmod>2024-09-28T18:23:42.844Z</lastmod><priority>0.8</priority></url>
 </urlset>
