@@ -1,5 +1,4 @@
-import { Facebook } from 'lucide-react';
-
+import { Facebook } from '@/components/share-button/brand-icons';
 import { ShareButton } from '@/components/share-button/share-button';
 
 export function FacebookShare() {
