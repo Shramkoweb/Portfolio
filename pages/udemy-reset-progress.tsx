@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
+import { PageMeta } from '@/components/page-meta';
 import { UDEMY_RESET_APP_OG_IMAGE } from '@/lib/constants';
 import { serializeJsonLd } from '@/lib/schema';
 
@@ -19,60 +20,25 @@ function UdemyResetProgressPage() {
   }, []);
   return (
     <>
+      <PageMeta
+        title="How to Reset Udemy Course Progress - One-Click Solution"
+        description="Learn how to reset Udemy course progress instantly with my browser extension. The easiest way to restart Udemy courses with one click. Free download for Chrome & Firefox."
+        socialDescription="Learn the fastest way to reset your Udemy course progress with my free browser extension. Perfect for restarting courses or managing multiple accounts."
+        image={{
+          url: UDEMY_RESET_APP_OG_IMAGE,
+          width: 1280,
+          height: 800,
+          type: 'image/png',
+          alt: 'Udemy Reset Progress browser extension',
+        }}
+      />
       <Head>
-        <title>How to Reset Udemy Course Progress - One-Click Solution</title>
-        <meta
-          name="description"
-          key="description"
-          content="Learn how to reset Udemy course progress instantly with my browser extension. The easiest way to restart Udemy courses with one click. Free download for Chrome & Firefox."
-        />
         <meta
           name="keywords"
           key="keywords"
           content="reset Udemy course progress, Udemy reset progress, how to reset Udemy course, restart Udemy course, clear Udemy progress, Udemy course reset tool"
         />
         <meta name="author" key="author" content="Serhii Shramko" />
-        <meta property="og:type" key="og:type" content="website" />
-        <meta
-          property="og:title"
-          key="og:title"
-          content="How to Reset Udemy Course Progress - One-Click Solution"
-        />
-        <meta
-          property="og:description"
-          key="og:description"
-          content="Learn the fastest way to reset your Udemy course progress with my free browser extension. Perfect for restarting courses or managing multiple accounts."
-        />
-        <meta
-          property="og:image"
-          content={UDEMY_RESET_APP_OG_IMAGE}
-          key="og:image"
-        />
-        <meta
-          property="twitter:card"
-          key="twitter:card"
-          content="summary_large_image"
-        />
-        <meta
-          property="twitter:title"
-          key="twitter:title"
-          content="How to Reset Udemy Course Progress Instantly"
-        />
-        <meta
-          property="twitter:description"
-          key="twitter:description"
-          content="The easiest method to reset Udemy course progress - one-click solution with my free browser extension."
-        />
-        <meta
-          property="twitter:image"
-          key="twitter:image"
-          content={UDEMY_RESET_APP_OG_IMAGE}
-        />
-        <meta
-          property="twitter:site"
-          key="twitter:site"
-          content="@shramkoweb"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

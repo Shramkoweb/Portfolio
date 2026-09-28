@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { PageMeta } from '@/components/page-meta';
 import { ResourceCard } from '@/components/resource-card';
 
 interface LearningItem {
@@ -244,32 +245,15 @@ const LEARNING_ITEMS: LearningItem[] = [
 function LearningPage() {
   return (
     <>
+      <PageMeta
+        title="Learning | Serhii Shramko"
+        description="A chronological record of books, courses, and projects I've learned from over the years."
+      />
       <Head>
-        <title>Learning | Serhii Shramko</title>
-        <meta
-          content="A chronological record of books, courses, and projects I've learned from over the years."
-          name="description"
-          key="description"
-        />
         <meta
           content="learning, books, courses, tutorials, education, self-improvement, programming, development"
           name="keywords"
           key="keywords"
-        />
-        <meta
-          property="og:title"
-          content="Learning | Serhii Shramko"
-          key="og:title"
-        />
-        <meta
-          property="og:description"
-          content="A chronological record of books, courses, and projects I've learned from over the years."
-          key="og:description"
-        />
-        <meta
-          property="og:image"
-          content="https://shramko.dev/api/og?title=Learning"
-          key="og:image"
         />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">

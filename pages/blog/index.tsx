@@ -6,6 +6,7 @@ import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
+import { PageMeta } from '@/components/page-meta';
 import { YearSeparator } from '@/components/year-separator';
 import { getPostsCategories, getPostsMetadata } from '@/lib/posts/api';
 import {
@@ -67,16 +68,11 @@ function BlogPage(props: BlogPageProps) {
 
   return (
     <>
+      <PageMeta
+        title="Software Engineering Blog | Serhii Shramko"
+        description="Join me on a journey through the world of software engineering. Learn about TypeScript, JavaScript, and Next.js, and discover new ways to improve your code."
+      />
       <Head>
-        <title>
-          What&apos;s New at Software Engineering? | The Serhii Shramko&apos;s
-          Blog
-        </title>
-        <meta
-          content="Join me on a journey through the world of software engineering. Learn about TypeScript, JavaScript, and Next.js, and discover new ways to improve your code."
-          name="description"
-          key="description"
-        />
         <meta
           content="
           JavaScript blog,
@@ -85,11 +81,6 @@ function BlogPage(props: BlogPageProps) {
           web dev blog"
           name="keywords"
           key="keywords"
-        />
-        <meta
-          property="og:site_name"
-          content="Serhii Shramko"
-          key="og:site_name"
         />
         {props.jsonLd && (
           <script

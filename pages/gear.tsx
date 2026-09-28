@@ -1,18 +1,18 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
+import { PageMeta } from '@/components/page-meta';
+
 import gear from '../public/static/images/gear.jpeg';
 
 function GearPage() {
   return (
     <>
+      <PageMeta
+        title="Gear | Serhii Shramko"
+        description="Explore my coding setup: MacBook Pro M3, PhpStorm IDE, headphones, and essential apps. Hardware and software I use daily for development and productivity."
+      />
       <Head>
-        <title>Gear | Serhii Shramko</title>
-        <meta
-          content="Explore my coding setup: MacBook Pro M3, PhpStorm IDE, headphones, and essential apps. Hardware and software I use daily for development and productivity."
-          name="description"
-          key="description"
-        />
         <meta
           content="
           gear for coding,

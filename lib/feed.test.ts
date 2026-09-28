@@ -114,9 +114,11 @@ describe('Feed Utils', () => {
       expect(item).toContain(`<pubDate>${expectedDate}</pubDate>`);
     });
 
-    it('should use updateDate as pubDate when present', () => {
+    it('keeps the original publication date when a post is updated', () => {
       const item = generateRssItem(mockPostWithUpdate);
-      const expectedDate = new Date(1630454400000).toUTCString();
+      const expectedDate = new Date(
+        mockPostWithUpdate.data.createDate,
+      ).toUTCString();
       expect(item).toContain(`<pubDate>${expectedDate}</pubDate>`);
     });
 
@@ -165,8 +167,10 @@ describe('Feed Utils', () => {
 
     it('should include rss tag with atom namespace', () => {
       const rss = generateRss([], lastBuildDate);
-      expect(rss).toContain(
-        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
+      const xml = new DOMParser().parseFromString(rss, 'application/xml');
+      expect(xml.querySelector('parsererror')).toBeNull();
+      expect(xml.documentElement.lookupNamespaceURI('atom')).toBe(
+        'http://www.w3.org/2005/Atom',
       );
     });
 
@@ -217,6 +221,56 @@ describe('Feed Utils', () => {
       expect(rss).toContain('<channel>');
       expect(rss).toContain('</channel>');
       expect(rss).not.toContain('<item>');
+    });
+
+    it('exposes a feed logo and matching thumbnails in valid XML and HTML', () => {
+      const post = {
+        data: {
+          ...mockPost.data,
+          heading: 'React & TypeScript: "refs" <state> ]]>',
+          description:
+            'Read <script>alert("hello")</script> & compare a > b. ]]>',
+        },
+      };
+      const xml = new DOMParser().parseFromString(
+        generateRss([post], lastBuildDate),
+        'application/xml',
+      );
+      expect(xml.querySelector('parsererror')).toBeNull();
+      expect(xml.querySelector('channel > image > url')?.textContent).toBe(
+        'https://shramko.dev/static/favicons/favicon-32x32.png',
+      );
+      const media = xml.getElementsByTagNameNS(
+        'http://search.yahoo.com/mrss/',
+        'content',
+      )[0];
+      const thumbnail = xml.getElementsByTagNameNS(
+        'http://search.yahoo.com/mrss/',
+        'thumbnail',
+      )[0];
+      const imageUrl = new URL(media.getAttribute('url')!);
+      expect(imageUrl.origin).toBe('https://shramko.dev');
+      expect(imageUrl.pathname).toBe('/og');
+      expect(imageUrl.searchParams.get('title')).toBe(post.data.heading);
+      expect(media.getAttribute('type')).toBe('image/png');
+      expect(media.getAttribute('medium')).toBe('image');
+      expect(thumbnail.getAttribute('url')).toBe(imageUrl.href);
+
+      const content = xml.getElementsByTagNameNS(
+        'http://purl.org/rss/1.0/modules/content/',
+        'encoded',
+      )[0].textContent!;
+      const html = new DOMParser().parseFromString(content, 'text/html');
+      expect(html.querySelector('img')?.getAttribute('src')).toBe(
+        imageUrl.href,
+      );
+      expect(html.querySelector('img')?.getAttribute('alt')).toBe(
+        post.data.heading,
+      );
+      expect(html.querySelector('img')?.getAttribute('width')).toBe('1200');
+      expect(html.querySelector('img')?.getAttribute('height')).toBe('630');
+      expect(html.querySelector('script')).toBeNull();
+      expect(html.body.textContent).toBe(post.data.description);
     });
   });
 });

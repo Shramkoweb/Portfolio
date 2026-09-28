@@ -5,6 +5,7 @@ import { DetailList } from '@/components/detail-list';
 import { FilmRoll } from '@/components/film-roll';
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
+import { PageMeta } from '@/components/page-meta';
 import { serializeJsonLd } from '@/lib/schema';
 
 import about from '../public/static/images/about.jpeg';
@@ -17,13 +18,11 @@ import tennis from '../public/static/images/tennis.jpeg';
 function AboutPage() {
   return (
     <>
+      <PageMeta
+        title="About | Serhii Shramko"
+        description="Serhii Shramko, software engineer in Boston, originally from Dnipro, Ukraine. Experience, education, open source, mentoring, and the photos from long before any of it."
+      />
       <Head>
-        <title>About | Serhii Shramko</title>
-        <meta
-          content="Serhii Shramko, software engineer in Boston, originally from Dnipro, Ukraine. Experience, education, open source, mentoring, and the photos from long before any of it."
-          name="description"
-          key="description"
-        />
         <meta
           content="
           frontend developer,
@@ -54,7 +53,7 @@ function AboutPage() {
                 url: 'https://shramko.dev/about',
                 image: {
                   '@type': 'ImageObject',
-                  url: 'https://shramko.dev/static/images/twittersite.png',
+                  url: 'https://shramko.dev/static/images/about.jpeg',
                   width: 1269,
                   height: 846,
                 },

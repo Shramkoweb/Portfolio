@@ -5,17 +5,16 @@ import { GithubFollowers } from '@/components/dashboard-card/github-followers';
 import { GitHubStars } from '@/components/dashboard-card/github-stars';
 import { MonthlyUsers } from '@/components/dashboard-card/monthly-user';
 import { TimeAsSoftwareEngineer } from '@/components/dashboard-card/time-as-engineer';
+import { PageMeta } from '@/components/page-meta';
 
 export default function Dashboard() {
   return (
     <>
+      <PageMeta
+        title="Dashboard | Serhii Shramko"
+        description="My dashboard is built using Next.js API routes as serverless functions. It's personalized and easy to access."
+      />
       <Head>
-        <title>Dashboard | Serhii Shramko</title>
-        <meta
-          content="My dashboard is built using Next.js API routes as serverless functions. It's personalized and easy to access."
-          name="description"
-          key="description"
-        />
         <meta
           content="
           github stars

@@ -10,6 +10,7 @@ import {
 import Head from 'next/head';
 
 import { BookmarkSection } from '@/components/bookmark-section';
+import { PageMeta } from '@/components/page-meta';
 import { Tag } from '@/components/tag';
 import { serializeJsonLd } from '@/lib/schema';
 
@@ -406,13 +407,12 @@ const JSON_LD = {
 function BookmarksPage() {
   return (
     <>
+      <PageMeta
+        title="Developer Bookmarks & Open Source | Serhii Shramko"
+        description="Curated developer bookmarks from a senior software engineer with 7+ years of experience: open source projects, staff-level engineering books, programming blogs, tools, and resources for JavaScript, TypeScript, React, and Next.js developers."
+        socialDescription="Open source projects, staff-level engineering books, tools, and resources curated by a senior software engineer with 7+ years in React, TypeScript, and Next.js."
+      />
       <Head>
-        <title>Developer Bookmarks & Open Source | Serhii Shramko</title>
-        <meta
-          content="Curated developer bookmarks from a senior software engineer with 7+ years of experience: open source projects, staff-level engineering books, programming blogs, tools, and resources for JavaScript, TypeScript, React, and Next.js developers."
-          name="description"
-          key="description"
-        />
         <meta
           content="
           developer bookmarks,
@@ -436,21 +436,6 @@ function BookmarksPage() {
           open source contributions"
           name="keywords"
           key="keywords"
-        />
-        <meta
-          property="og:title"
-          content="Developer Bookmarks & Open Source | Serhii Shramko"
-          key="og:title"
-        />
-        <meta
-          property="og:description"
-          content="Open source projects, staff-level engineering books, tools, and resources curated by a senior software engineer with 7+ years in React, TypeScript, and Next.js."
-          key="og:description"
-        />
-        <meta
-          property="og:image"
-          content="https://shramko.dev/api/og?title=Developer%20Bookmarks"
-          key="og:image"
         />
         <script
           type="application/ld+json"
