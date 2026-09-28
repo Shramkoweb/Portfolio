@@ -7,6 +7,8 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { bundledLanguages, getSingletonHighlighter } from 'shiki';
 
+import { rehypeImageSize } from '@/lib/scripts/rehype-image-size';
+
 const highlighterPromise = getSingletonHighlighter({
   themes: ['github-light', 'github-dark'],
   langs: Object.keys(bundledLanguages),
@@ -25,6 +27,7 @@ export async function compileMDX(content: string) {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [
+        rehypeImageSize,
         rehypeSlug,
         rehypeCodeTitles,
         [

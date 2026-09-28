@@ -1,5 +1,4 @@
-import { Twitter } from 'lucide-react';
-
+import { Twitter } from '@/components/share-button/brand-icons';
 import { ShareButton } from '@/components/share-button/share-button';
 
 export function TwitterShare() {

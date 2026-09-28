@@ -5,6 +5,8 @@ import { getCopyrightYearString } from '@/components/footer/get-copyright';
 import { YEAR_OF_CREATE } from '@/lib/constants';
 import { Routes } from '@/lib/routes';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className="flex flex-col justify-center px-8">
@@ -125,10 +127,7 @@ export function Footer() {
         <small className="pb-4 text-xs text-gray-600 dark:text-gray-400">
           © Made with ❤️
           <br />
-          {getCopyrightYearString(
-            YEAR_OF_CREATE,
-            new Date().getFullYear(),
-          )}{' '}
+          {getCopyrightYearString(YEAR_OF_CREATE, CURRENT_YEAR)}{' '}
           <Link
             href="/about"
             className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"

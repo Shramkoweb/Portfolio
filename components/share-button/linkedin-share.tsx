@@ -1,5 +1,4 @@
-import { Linkedin } from 'lucide-react';
-
+import { Linkedin } from '@/components/share-button/brand-icons';
 import { ShareButton } from '@/components/share-button/share-button';
 
 export function LinkedInShare() {
