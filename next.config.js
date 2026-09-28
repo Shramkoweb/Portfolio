@@ -71,6 +71,14 @@ const nextConfig = {
   rewrites: async () => {
     return [
       {
+        source: '/og',
+        destination: '/api/og',
+      },
+      {
+        source: '/favicon.ico',
+        destination: '/static/favicons/favicon.ico',
+      },
+      {
         source: '/feed.xml',
         destination: '/api/feed',
       },

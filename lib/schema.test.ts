@@ -27,6 +27,7 @@ describe('generateBlogPostingSchema', () => {
     expect(schema.url).toBe('https://shramko.dev/blog/test-post');
     expect(schema.keywords).toEqual(['test', 'jest']);
     expect(schema.articleSection).toBe('js');
+    expect(schema.image).toBe('https://shramko.dev/og?title=Test%20Heading');
   });
 
   it('should include dateModified when updateDate provided', () => {

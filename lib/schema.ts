@@ -1,4 +1,5 @@
 import { SITE_URL } from '@/lib/constants';
+import { getSocialImage } from '@/lib/seo';
 import { BaseFrontmatter } from '@/lib/types';
 const AUTHOR_ID = `${SITE_URL}/#person`;
 
@@ -51,7 +52,7 @@ export function generateBlogPostingSchema(
       '@type': 'WebPage',
       '@id': `${SITE_URL}/blog/${post.slug}`,
     },
-    image: `${SITE_URL}/api/og?title=${encodeURIComponent(post.heading)}`,
+    image: getSocialImage(post.heading).url,
     keywords: post.keywords,
     articleSection: post.categories?.[0] || 'Technology',
     inLanguage: 'en',

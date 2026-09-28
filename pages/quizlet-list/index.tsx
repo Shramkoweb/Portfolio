@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
+import { PageMeta } from '@/components/page-meta';
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
 import { serializeJsonLd } from '@/lib/schema';
 
@@ -23,60 +24,25 @@ function QuizletPage() {
 
   return (
     <>
+      <PageMeta
+        title="Quizlet QuickList - Web Extension"
+        description="Quizlet QuickList is a Web extension that helps you easily gather, organize, and export word lists for studying on Quizlet. Simplify your learning experience."
+        socialDescription="Simplify vocabulary learning with Quizlet QuickList. Easily gather and export word lists for studying on Quizlet."
+        image={{
+          url: QUIZLET_APP_OG_IMAGE,
+          width: 880,
+          height: 560,
+          type: 'image/jpeg',
+          alt: 'Quizlet QuickList browser extension',
+        }}
+      />
       <Head>
-        <title>Quizlet QuickList - Web Extension</title>
-        <meta
-          name="description"
-          key="description"
-          content="Quizlet QuickList is a Web extension that helps you easily gather, organize, and export word lists for studying on Quizlet. Simplify your learning experience."
-        />
         <meta
           name="keywords"
           key="keywords"
           content="Quizlet, Chrome Extension, Firefox Extension, Vocabulary, Study, Word List, Learning Tool, Export to Quizlet"
         />
         <meta name="author" key="author" content="Serhii Shramko" />
-        <meta property="og:type" key="og:type" content="website" />
-        <meta
-          property="og:title"
-          key="og:title"
-          content="Quizlet QuickList - Web Extension"
-        />
-        <meta
-          property="og:description"
-          key="og:description"
-          content="Simplify vocabulary learning with Quizlet QuickList. Easily gather and export word lists for studying on Quizlet."
-        />
-        <meta
-          property="og:image"
-          content={QUIZLET_APP_OG_IMAGE}
-          key="og:image"
-        />
-        <meta
-          property="twitter:card"
-          key="twitter:card"
-          content="summary_large_image"
-        />
-        <meta
-          property="twitter:title"
-          key="twitter:title"
-          content="Quizlet QuickList - Web Extension"
-        />
-        <meta
-          property="twitter:description"
-          key="twitter:description"
-          content="Make studying easier by gathering word lists and exporting them to Quizlet with Quizlet QuickList."
-        />
-        <meta
-          property="twitter:image"
-          key="twitter:image"
-          content={QUIZLET_APP_OG_IMAGE}
-        />
-        <meta
-          property="twitter:site"
-          key="twitter:site"
-          content="@shramkoweb"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

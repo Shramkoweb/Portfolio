@@ -72,16 +72,17 @@ function ArticlePage(props: ArticlePageProps) {
 
   return (
     <>
+      <ArticleMeta
+        title={title}
+        heading={heading}
+        description={description}
+        createDate={createDate}
+        updateDate={updateDate}
+        keywords={keywords}
+      />
       <Head>
-        <title>{title}</title>
         {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
-        <ArticleMeta
-          title={title}
-          description={description}
-          createDate={createDate}
-          updateDate={updateDate}
-          keywords={keywords}
-        />
+
         {categories.map((category) => (
           <meta
             key={`article:${category}`}

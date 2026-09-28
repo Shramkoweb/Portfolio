@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { PageMeta } from '@/components/page-meta';
 import { ResourceCard } from '@/components/resource-card';
 import { sortByBirthtime } from '@/lib/posts/utils';
 import { serializeJsonLd } from '@/lib/schema';
@@ -21,20 +22,13 @@ function SnippetsPage(props: SnippetsPageProps) {
 
   return (
     <>
+      <PageMeta title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
       <Head>
-        <title>{PAGE_TITLE}</title>
         <meta
           content="JavaScript snippets, TypeScript snippets, React hooks, CSS snippets, Node.js snippets, code examples"
           name="keywords"
           key="keywords"
         />
-        <meta
-          property="og:site_name"
-          content="Serhii Shramko"
-          key="og:site_name"
-        />
-        <meta content={PAGE_DESCRIPTION} name="description" key="description" />
-        <meta property="og:title" content={PAGE_TITLE} key="og:title" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

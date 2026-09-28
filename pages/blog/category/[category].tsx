@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
+import { PageMeta } from '@/components/page-meta';
 import { SearchInput } from '@/components/search-input';
 import {
   filterPostsByCategory,
@@ -38,39 +39,13 @@ function CategoryPage(props: CategoryPageProps) {
 
   return (
     <>
+      <PageMeta
+        title={`${seoTitle} | Serhii Shramko`}
+        description={seoDescription}
+        socialTitle={seoTitle}
+      />
       <Head>
-        <title>{`${seoTitle} | Serhii Shramko`}</title>
-        <meta content={seoDescription} name="description" key="description" />
         <meta content={seoKeywords} name="keywords" key="keywords" />
-        <meta
-          property="og:site_name"
-          content="Serhii Shramko"
-          key="og:site_name"
-        />
-        <meta
-          property="og:description"
-          content={seoDescription}
-          key="og:description"
-        />
-        <meta property="og:title" content={seoTitle} key="og:title" />
-        <meta
-          property="og:image"
-          content={`https://shramko.dev/api/og?title=${encodeURIComponent(seoTitle)}`}
-          key="og:image"
-        />
-        <meta property="og:image:width" content="1200" key="og:image:width" />
-        <meta property="og:image:height" content="630" key="og:image:height" />
-        <meta name="twitter:title" content={seoTitle} key="twitter:title" />
-        <meta
-          name="twitter:description"
-          content={seoDescription}
-          key="twitter:description"
-        />
-        <meta
-          name="twitter:image"
-          content={`https://shramko.dev/api/og?title=${encodeURIComponent(seoTitle)}`}
-          key="twitter:image"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

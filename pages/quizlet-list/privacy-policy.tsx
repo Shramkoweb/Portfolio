@@ -1,54 +1,31 @@
 import Head from 'next/head';
 
+import { PageMeta } from '@/components/page-meta';
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
 import { serializeJsonLd } from '@/lib/schema';
 
 function PrivacyPolicy() {
   return (
     <>
+      <PageMeta
+        title="Privacy Policy | Quizlet QuickList Web Extension"
+        description="Privacy policy for the Quizlet QuickList Web Extension. Learn how we handle your data and keep your privacy secure."
+        socialDescription="This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user."
+        image={{
+          url: QUIZLET_APP_OG_IMAGE,
+          width: 880,
+          height: 560,
+          type: 'image/jpeg',
+          alt: 'Quizlet QuickList browser extension',
+        }}
+      />
       <Head>
-        <title>Privacy Policy | Quizlet QuickList Web Extension</title>
-        <meta
-          content="Privacy policy for the Quizlet QuickList Web Extension. Learn how we handle your data and keep your privacy secure."
-          name="description"
-          key="description"
-        />
         <meta
           content="privacy policy, Quizlet QuickList, Web extension, Web extension user data, permissions, security"
           name="keywords"
           key="keywords"
         />
         <meta name="author" content="Serhii Shramko" />
-        <meta
-          property="og:title"
-          key="og:title"
-          content="Privacy Policy | Quizlet QuickList Web Extension"
-        />
-        <meta
-          property="og:description"
-          key="og:description"
-          content="This is the privacy policy for the Quizlet QuickList Web Extension, explaining what data is collected, how it is used, and your rights as a user."
-        />
-        <meta
-          property="og:image"
-          content={QUIZLET_APP_OG_IMAGE}
-          key="og:image"
-        />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Privacy Policy | Quizlet QuickList Web Extension"
-        />
-        <meta
-          name="twitter:description"
-          content="This is the privacy policy for the Quizlet QuickList Web Extension. Learn how your data is handled securely."
-        />
-        <meta
-          property="twitter:image"
-          key="twitter:image"
-          content={QUIZLET_APP_OG_IMAGE}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
