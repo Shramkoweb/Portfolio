@@ -3,7 +3,7 @@ import { getSnippetSlugs } from '@/lib/snippets/api';
 
 const MAX_SLUG_LENGTH = 128;
 
-const SYNTHETIC_SLUGS = ['udemy-reset-progress-page', 'quizlet-page'];
+export const SYNTHETIC_SLUGS = ['udemy-reset-progress-page', 'quizlet-page'];
 
 let knownSlugsPromise: Promise<Set<string>> | null = null;
 

@@ -7,9 +7,13 @@ jest.mock('@/lib/scripts/rehype-image-size', () => ({
   rehypeImageSize: jest.fn(),
 }));
 jest.mock('@shikijs/rehype/core', () => ({ default: jest.fn() }));
-jest.mock('@shikijs/transformers', () => ({
-  transformerStyleToClass: jest.fn(() => ({})),
-}));
+jest.mock('@shikijs/transformers', () => {
+  const mockTransformer = { getCSS: jest.fn() };
+  return {
+    mockTransformer,
+    transformerStyleToClass: jest.fn(() => mockTransformer),
+  };
+});
 jest.mock('shiki', () => ({
   bundledLanguages: {},
   getSingletonHighlighter: jest.fn(() => Promise.resolve({})),
@@ -96,5 +100,66 @@ describe('extractHeadingsFromMarkdown', () => {
       'Configuration',
       'Advanced Options',
     ]);
+  });
+});
+
+describe('compileMDX', () => {
+  const { serialize } = jest.requireMock('next-mdx-remote/serialize');
+  const { mockTransformer } = jest.requireMock('@shikijs/transformers');
+
+  function rehypeOptions(call: number) {
+    const { rehypePlugins } = serialize.mock.calls[call][1].mdxOptions;
+    const [, highlighter, shiki] = rehypePlugins.find(
+      (plugin: unknown) => Array.isArray(plugin) && plugin.length === 3,
+    );
+    return { highlighter, shiki, rehypePlugins };
+  }
+
+  beforeEach(() => {
+    serialize.mockResolvedValue({ compiledSource: 'compiled' });
+  });
+
+  it('returns the serialized MDX with the Shiki CSS', async () => {
+    const { compileMDX } = await import('@/lib/scripts/compiler');
+    mockTransformer.getCSS.mockReturnValue('.__shiki_1{color:red}');
+
+    const result = await compileMDX('# Title');
+
+    expect(serialize).toHaveBeenCalledWith(
+      '# Title',
+      expect.objectContaining({
+        mdxOptions: expect.objectContaining({ format: 'mdx' }),
+      }),
+    );
+    expect(result).toEqual({
+      mdx: { compiledSource: 'compiled' },
+      shikiCSS: '.__shiki_1{color:red}',
+    });
+  });
+
+  it('sizes images before any other rehype plugin runs', async () => {
+    const { compileMDX } = await import('@/lib/scripts/compiler');
+    const { rehypeImageSize } = jest.requireMock(
+      '@/lib/scripts/rehype-image-size',
+    );
+
+    await compileMDX('');
+
+    expect(rehypeOptions(0).rehypePlugins[0]).toBe(rehypeImageSize);
+  });
+
+  it('reuses one transformer and cache so cached blocks keep their CSS', async () => {
+    const { compileMDX } = await import('@/lib/scripts/compiler');
+
+    await compileMDX('a');
+    await compileMDX('b');
+
+    const first = rehypeOptions(0);
+    const second = rehypeOptions(1);
+    expect(first.shiki.transformers).toEqual([mockTransformer]);
+    expect(second.shiki.transformers).toEqual([mockTransformer]);
+    expect(first.shiki.cache).toBeInstanceOf(Map);
+    expect(second.shiki.cache).toBe(first.shiki.cache);
+    expect(second.highlighter).toBe(first.highlighter);
   });
 });

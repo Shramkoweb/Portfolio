@@ -8,8 +8,9 @@ export function createMockReqRes(overrides: Partial<NextApiRequest> = {}) {
 
   const json = jest.fn();
   const status = jest.fn().mockReturnThis();
+  const send = jest.fn();
   const setHeader = jest.fn();
-  const res = { json, status, setHeader } as unknown as NextApiResponse;
+  const res = { json, send, status, setHeader } as unknown as NextApiResponse;
 
-  return { req, res, json, status, setHeader };
+  return { req, res, json, send, status, setHeader };
 }
