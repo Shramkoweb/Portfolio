@@ -234,3 +234,28 @@ describe('blocklist data integrity', () => {
     }
   });
 });
+
+describe('isBlockedUserAgent with only substring tokens', () => {
+  function loadMatcher() {
+    let matcher!: typeof import('@/lib/bot-blocklist/matcher');
+    jest.isolateModules(() => {
+      jest.doMock('@/lib/bot-blocklist/tokens', () => ({
+        BLOCKED_BOT_TOKENS: [{ value: 'gptbot', kind: 'substring' }],
+        BLOCKED_BOT_GROUPS: { gptbot: 'training' },
+      }));
+      matcher = require('@/lib/bot-blocklist/matcher');
+    });
+    return matcher;
+  }
+
+  it('still matches substrings and lets everything else through', () => {
+    const { isBlockedUserAgent: match } = loadMatcher();
+
+    expect(match('GPTBot/1.2')).toEqual({
+      blocked: true,
+      token: 'gptbot',
+      group: 'training',
+    });
+    expect(match('lcc cotoyogi')).toEqual({ blocked: false });
+  });
+});
