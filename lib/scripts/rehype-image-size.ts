@@ -23,11 +23,24 @@ function collectImages(node: Node, images: Node[]) {
   node.children?.forEach((child) => collectImages(child, images));
 }
 
-function readAttribute(node: Node, name: string) {
-  const attribute = node.attributes?.find(
+function findAttribute(node: Node, name: string) {
+  return node.attributes?.find(
     (attr) => attr.type === 'mdxJsxAttribute' && attr.name === name,
   );
-  return typeof attribute?.value === 'string' ? attribute.value : undefined;
+}
+
+function readAttribute(node: Node, name: string) {
+  const value = findAttribute(node, name)?.value;
+  return typeof value === 'string' ? value : undefined;
+}
+
+function readNumericAttribute(node: Node, name: string) {
+  const value = findAttribute(node, name)?.value;
+  const source =
+    typeof value === 'object' && value !== null && 'value' in value
+      ? value.value
+      : value;
+  return Number(source);
 }
 
 function setAttribute(node: Node, name: string, value: number) {
@@ -50,7 +63,7 @@ async function applyIntrinsicSize(node: Node) {
   const intrinsicWidth = rotated ? size.height : size.width;
   const intrinsicHeight = rotated ? size.width : size.height;
 
-  const explicitWidth = Number(readAttribute(node, 'width'));
+  const explicitWidth = readNumericAttribute(node, 'width');
   const width = explicitWidth > 0 ? explicitWidth : intrinsicWidth;
 
   setAttribute(node, 'width', width);
