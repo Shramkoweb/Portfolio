@@ -14,7 +14,7 @@ keywords:
     support independent writers,
   ]
 categories: [Opinion, AI]
-featured: false
+featured: true
 ---
 
 <Image src="blogs-going-offline.png" alt="Hand-drawn cover in two panels. 2024: a blog page read by three people, one holding a book, and the caption income: enough to live on. 2026: the same blog page with a red arrow for traffic going up, read by three robots labelled GPTBot, ClaudeBot and CCBot, and the caption income: zero" priority inverted />

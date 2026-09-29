@@ -18,7 +18,7 @@ keywords:
     apollo graphql professional certification,
   ]
 categories: [Tutorial]
-featured: true
+featured: false
 ---
 
 If you’re interested in GraphQL but haven’t had the chance to explore it directly, it's time to take action.
