@@ -42,14 +42,31 @@ describe('middleware', () => {
     expect(res.status).not.toBe(403);
   });
 
-  // ChatGPT agent browses with a plain browser UA; only the Signature-Agent
-  // header identifies it (see lib/bot-blocklist/signature-agent.ts).
-  it('returns 403 for a browser UA signed by a blocked Signature-Agent', async () => {
+  it('allows a user-directed browser regardless of Signature-Agent', () => {
     const res = middleware(
       makeRequest(DESKTOP_UA, { 'Signature-Agent': '"https://chatgpt.com"' }),
     );
+    expect(res.headers.get('x-middleware-next')).toBe('1');
+  });
+
+  it('does not let a signature header exempt a training crawler', () => {
+    const res = middleware(
+      makeRequest('GPTBot/1.2', { 'Signature-Agent': '"https://chatgpt.com"' }),
+    );
     expect(res.status).toBe(403);
-    expect(await res.text()).toBe(BLOCK_BODY);
+  });
+
+  it.each([
+    'Google-Agent',
+    'Amzn-SearchBot',
+    'Diffbot-User',
+    'MistralAI-Index',
+    'Kimi-User',
+    'Slackbot-LinkExpanding',
+  ])('passes through %s', (ua) => {
+    expect(
+      middleware(makeRequest(`${ua}/1.0`)).headers.get('x-middleware-next'),
+    ).toBe('1');
   });
 
   it('passes through a signed request from a robots.txt-allowed fetcher UA', async () => {

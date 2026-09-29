@@ -1,0 +1,92 @@
+{
+  "verifiedBotsSource": "https://vercel.com/docs/bot-management#verified-bots",
+  "reviewedAt": "2026-09-29",
+  "verifiedUserAgents": [
+    "Googlebot",
+    "Bingbot",
+    "DuckDuckBot",
+    "YandexBot",
+    "Applebot",
+    "PetalBot",
+    "ChatGPT-User",
+    "OAI-SearchBot",
+    "PerplexityBot",
+    "Perplexity-User",
+    "Claude-User",
+    "Claude-SearchBot",
+    "DuckAssistBot",
+    "Meta-ExternalFetcher",
+    "meta-webindexer",
+    "Google-Agent",
+    "Gemini-Deep-Research",
+    "ShapBot",
+    "Channel3Bot"
+  ],
+  "robotsOnlyUserAgents": ["AI2Bot-DeepResearchEval"],
+  "rule": {
+    "name": "Social previews and AI readers",
+    "description": "Public GET/HEAD social previews and selected AI clients; verified readers use Vercel bot verification. OG background fetch preserved. UA exceptions are not identity verification.",
+    "active": true,
+    "action": {
+      "mitigate": {
+        "action": "bypass"
+      }
+    },
+    "conditionGroup": [
+      {
+        "conditions": [
+          {
+            "type": "user_agent",
+            "op": "re",
+            "value": "(?:^|[\\s;(])(?:TelegramBot|Slackbot(?:-LinkExpanding)?|Slack-ImgProxy|Twitterbot|facebookexternalhit|Facebot|WhatsApp|LinkedInBot|Discordbot|redditbot|Pinterest(?:bot| Image Proxy)?)(?:[/\\s;)]|$)"
+          },
+          {
+            "type": "method",
+            "op": "inc",
+            "value": ["GET", "HEAD"]
+          },
+          {
+            "op": "re",
+            "neg": true,
+            "type": "path",
+            "value": "^/api(?:/|$)"
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "type": "user_agent",
+            "op": "re",
+            "value": "(?:^|[\\s;(])(?:GoogleAgent-URLContext|Google-GeminiNotebook|GoogleAgent-Mariner|Google-Gemini-CLI|Google-NotebookLM|Google-Firebase|MistralAI-Index|AmazonBuyForMe|Amzn-SearchBot|Kimi-SearchBot|MistralAI-User|ChatGPT Agent|Diffbot-User|ExaSearchBot|kagi-fetcher|Claude-Code|Terra Cotta|AIWebIndex|Kimi-Agent|Manus-User|NotebookLM|TerraCotta|Amzn-User|Kimi-User|Shap-User|TwinAgent|cohere-ai|Bravebot|LinerBot|Operator|PhindBot|opencode|qodercli|Andibot|Diffbot|HenkBot|NovaAct|Cursor|ExaBot|YouBot|Devin|Trae)(?:[/\\s;)]|$)"
+          },
+          {
+            "type": "method",
+            "op": "inc",
+            "value": ["GET", "HEAD"]
+          },
+          {
+            "op": "re",
+            "neg": true,
+            "type": "path",
+            "value": "^/api(?:/|$)"
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "type": "path",
+            "op": "eq",
+            "value": "/static/images/og-background.jpg"
+          },
+          {
+            "type": "method",
+            "op": "inc",
+            "value": ["GET", "HEAD"]
+          }
+        ]
+      }
+    ]
+  }
+}

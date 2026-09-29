@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Googlebot",
+    "userAgent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "blocked": false,
+    "reference": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"
+  },
+  {
+    "name": "bingbot",
+    "userAgent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "blocked": false,
+    "reference": "https://www.bing.com/webmasters/help/which-crawlers-does-bing-use-8c184ec0"
+  },
+  {
+    "name": "Baiduspider",
+    "userAgent": "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
+    "blocked": false,
+    "reference": "http://www.baidu.com/search/spider.html"
+  },
+  {
+    "name": "Sogou",
+    "userAgent": "Sogou web spider/4.0 (+http://www.sogou.com/docs/help/webmasters.htm#07)",
+    "blocked": false,
+    "reference": "http://www.sogou.com/docs/help/webmasters.htm#07"
+  },
+  {
+    "name": "Screaming Frog",
+    "userAgent": "Screaming Frog SEO Spider/22.0",
+    "blocked": false,
+    "reference": "https://www.screamingfrog.co.uk/seo-spider/user-guide/configuration/#user-agent"
+  },
+  {
+    "name": "Applebot",
+    "userAgent": "Mozilla/5.0 (compatible; Applebot/0.1; +http://www.apple.com/go/applebot)",
+    "blocked": false,
+    "reference": "https://support.apple.com/en-us/119829"
+  },
+  {
+    "name": "Amzn-SearchBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amzn-SearchBot/0.1) Chrome/W.X.Y.Z Safari/537.36",
+    "blocked": false,
+    "reference": "https://developer.amazon.com/en/amazonbot"
+  },
+  {
+    "name": "Amzn-User",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amzn-User/0.1) Chrome/W.X.Y.Z Safari/537.36",
+    "blocked": false,
+    "reference": "https://developer.amazon.com/en/amazonbot"
+  },
+  {
+    "name": "Amazonbot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amazonbot/0.1) Chrome/W.X.Y.Z Safari/537.36",
+    "blocked": true,
+    "reference": "https://developer.amazon.com/en/amazonbot"
+  },
+  {
+    "name": "Kimi-User",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; Kimi-User/1.0; +https://www.kimi.com/policies/kimi-crawlers",
+    "blocked": false,
+    "reference": "https://www.kimi.ai/policies/kimi-crawlers"
+  },
+  {
+    "name": "Kimi-SearchBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; Kimi-SearchBot/1.0; +https://www.kimi.com/policies/kimi-crawlers",
+    "blocked": false,
+    "reference": "https://www.kimi.ai/policies/kimi-crawlers"
+  },
+  {
+    "name": "KimiBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; KimiBot/1.0; +https://www.kimi.com/policies/kimi-crawlers",
+    "blocked": true,
+    "reference": "https://www.kimi.ai/policies/kimi-crawlers"
+  },
+  {
+    "name": "MistralAI-User",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; MistralAI-User/1.0; +https://docs.mistral.ai/robots)",
+    "blocked": false,
+    "reference": "https://docs.mistral.ai/robots"
+  },
+  {
+    "name": "MistralAI-Index",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; MistralAI-Index/1.0; +https://docs.mistral.ai/robots)",
+    "blocked": false,
+    "reference": "https://docs.mistral.ai/robots"
+  },
+  {
+    "name": "MistralAI-Training",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; MistralAI-Training/1.0; +https://docs.mistral.ai/robots)",
+    "blocked": true,
+    "reference": "https://docs.mistral.ai/robots"
+  },
+  {
+    "name": "ChatGPT-User",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot",
+    "blocked": false,
+    "reference": "https://developers.openai.com/api/docs/bots"
+  },
+  {
+    "name": "OAI-SearchBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot",
+    "blocked": false,
+    "reference": "https://developers.openai.com/api/docs/bots"
+  },
+  {
+    "name": "GPTBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "blocked": true,
+    "reference": "https://developers.openai.com/api/docs/bots"
+  },
+  {
+    "name": "Claude-User",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +https://anthropic.com)",
+    "blocked": false,
+    "reference": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+  },
+  {
+    "name": "Claude-SearchBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-SearchBot/1.0; +https://anthropic.com)",
+    "blocked": false,
+    "reference": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+  },
+  {
+    "name": "ClaudeBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +https://anthropic.com)",
+    "blocked": true,
+    "reference": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+  },
+  {
+    "name": "PerplexityBot",
+    "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)",
+    "blocked": false,
+    "reference": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"
+  },
+  {
+    "name": "meta-webindexer",
+    "userAgent": "meta-webindexer/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)",
+    "blocked": false,
+    "reference": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/"
+  },
+  {
+    "name": "meta-externalfetcher",
+    "userAgent": "meta-externalfetcher/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)",
+    "blocked": false,
+    "reference": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/"
+  },
+  {
+    "name": "meta-externalagent",
+    "userAgent": "meta-externalagent/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)",
+    "blocked": true,
+    "reference": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/"
+  },
+  {
+    "name": "Google-Agent",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko; compatible; Google-Agent; +https://developers.google.com/crawling/docs/crawlers-fetchers/google-agent) Chrome/125.0.0.0 Safari/537.36",
+    "blocked": false,
+    "reference": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers"
+  },
+  {
+    "name": "Google-GeminiNotebook",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 (compatible; Google-GeminiNotebook; +https://developers.google.com/crawling/docs/crawlers-fetchers/google-gemininotebook)",
+    "blocked": false,
+    "reference": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers"
+  },
+  {
+    "name": "GoogleOther",
+    "userAgent": "GoogleOther",
+    "blocked": true,
+    "reference": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"
+  },
+  {
+    "name": "AI2Bot",
+    "userAgent": "Mozilla/5.0 (compatible) AI2Bot (+https://www.allenai.org/crawler)",
+    "blocked": true,
+    "reference": "https://allenai.org/crawler"
+  },
+  {
+    "name": "Claude Code WebFetch",
+    "userAgent": "Claude-User (claude-code/2.1.284; +https://support.anthropic.com/)",
+    "blocked": false,
+    "reference": "Observed in Claude Code 2.1.284 WebFetch"
+  },
+  {
+    "name": "Bedrock knowledge-base import",
+    "userAgent": "bedrockbot-12345678-1234-1234-1234-123456789abc CustomerCrawler/1.0",
+    "blocked": true,
+    "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/webcrawl-data-source-connector.html"
+  },
+  {
+    "name": "Kendra index import",
+    "userAgent": "amazon-kendra",
+    "blocked": true,
+    "reference": "https://docs.aws.amazon.com/kendra/latest/dg/stop-web-crawler.html"
+  }
+]
