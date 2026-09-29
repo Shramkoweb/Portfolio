@@ -5,6 +5,7 @@ Sentry.init({
   environment: process.env.NODE_ENV,
   release: process.env.APP_RELEASE_VERSION,
   tracesSampleRate: 0,
+  dataCollection: { userInfo: false, cookies: false },
   debug: false,
   ignoreErrors: [
     // iOS Safari WebKit errors

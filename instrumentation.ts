@@ -6,6 +6,13 @@ export function register() {
     environment: process.env.NODE_ENV,
     release: process.env.APP_RELEASE_VERSION,
     tracesSampleRate: 0.1,
+    dataCollection: {
+      userInfo: false,
+      cookies: false,
+      httpHeaders: {
+        request: { deny: ['x-forwarded-for', 'x-real-ip', 'x-vercel-'] },
+      },
+    },
     ignoreErrors: [
       'ECONNRESET',
       'ECONNREFUSED',

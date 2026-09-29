@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/lib/prisma';
+import { isCrossSiteRequest } from '@/lib/same-origin';
 import { isKnownSlug } from '@/lib/valid-slugs';
 
 export default async function handler(
@@ -27,6 +28,10 @@ export default async function handler(
     }
 
     if (req.method === 'POST') {
+      if (isCrossSiteRequest(req)) {
+        return res.status(403).json({ error: { message: 'Forbidden' } });
+      }
+
       const views = await prisma.views.upsert({
         where: { slug },
         create: {
