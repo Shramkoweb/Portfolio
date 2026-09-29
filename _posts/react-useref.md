@@ -191,7 +191,15 @@ Other things that fit well in a ref: an instance of a map or chart library, a We
 
 You may also have seen refs used to keep the latest version of a callback, so an effect can call it without re-subscribing. React 19.2 added `useEffectEvent` for exactly that, so you don't need the ref trick anymore.
 
-One rule that's easy to break: don't read or write `ref.current` during render, only in event handlers and effects. The React Compiler and recent versions of `eslint-plugin-react-hooks` (the `refs` rule) flag it. The one accepted exception is initializing a ref once, with `if (ref.current === null) ref.current = …`. React doesn't know when a ref changes, so whatever you render from it will be out of date.
+One rule that's easy to break: don't read or write `ref.current` during render, only in event handlers and effects. The React Compiler and recent versions of `eslint-plugin-react-hooks` (the `refs` rule) flag it. The one accepted exception is initializing a ref once:
+
+```jsx
+if (ref.current === null) {
+  ref.current = new ExpensiveThing();
+}
+```
+
+React doesn't know when a ref changes, so whatever you render from it will be out of date.
 
 ## Refs to DOM elements
 
