@@ -1,7 +1,7 @@
 import { isBlockedUserAgent } from '@/lib/bot-blocklist/matcher';
 import {
   TRAINING_CRAWLER_TOKENS,
-  AUTONOMOUS_AGENT_TOKENS,
+  SCRAPING_CRAWLER_TOKENS,
   BLOCKED_BOT_GROUPS,
 } from '@/lib/bot-blocklist/tokens';
 
@@ -65,18 +65,6 @@ describe('isBlockedUserAgent', () => {
       });
     });
 
-    it('blocks atlassian-bot (Rovo crawler)', () => {
-      expect(
-        isBlockedUserAgent(
-          'Mozilla/5.0 (compatible; atlassian-bot/1.0; +https://www.atlassian.com)',
-        ),
-      ).toEqual({
-        blocked: true,
-        token: 'atlassian-bot',
-        group: 'training',
-      });
-    });
-
     it('is case-insensitive (GPTBOT uppercase)', () => {
       expect(isBlockedUserAgent('GPTBOT/2.0')).toEqual({
         blocked: true,
@@ -86,58 +74,90 @@ describe('isBlockedUserAgent', () => {
     });
   });
 
-  describe('autonomous agents', () => {
-    it('blocks Devin', () => {
-      expect(isBlockedUserAgent('Devin/1.0')).toEqual({
+  describe('bulk scraping', () => {
+    it.each([
+      'ApifyBot',
+      'ApifyWebsiteContentCrawler',
+      'AgentDataBot',
+      'BixelBot',
+      'CragCrawler',
+      'FirecrawlAgent',
+      'Scrapy',
+      'Awario',
+    ])('blocks %s', (ua) => {
+      expect(isBlockedUserAgent(`${ua}/1.0`)).toMatchObject({
         blocked: true,
-        token: 'devin',
-        group: 'agent',
-      });
-    });
-
-    it('blocks Operator', () => {
-      expect(isBlockedUserAgent('Mozilla/5.0 Operator/2.0')).toEqual({
-        blocked: true,
-        token: 'operator',
-        group: 'agent',
-      });
-    });
-
-    it('blocks ChatGPT Agent (token with internal space)', () => {
-      expect(isBlockedUserAgent('something ChatGPT Agent/1 else')).toEqual({
-        blocked: true,
-        token: 'chatgpt agent',
-        group: 'agent',
-      });
-    });
-
-    it('blocks Google-Agent (documented desktop UA)', () => {
-      const ua =
-        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like ' +
-        'Gecko; compatible; Google-Agent; +https://developers.google.com/' +
-        'crawling/docs/crawlers-fetchers/google-agent) Chrome/125.0.0.0 ' +
-        'Safari/537.36';
-      expect(isBlockedUserAgent(ua)).toEqual({
-        blocked: true,
-        token: 'google-agent',
-        group: 'agent',
-      });
-    });
-
-    it('blocks the legacy GoogleAgent-Mariner UA shape', () => {
-      expect(
-        isBlockedUserAgent('Mozilla/5.0 (compatible; GoogleAgent-Mariner)'),
-      ).toEqual({
-        blocked: true,
-        token: 'googleagent-mariner',
-        group: 'agent',
+        group: 'scraping',
       });
     });
   });
 
-  // robots.txt explicitly allows OpenAI's user-triggered + search bots. Every
-  // OpenAI bot's UA contains `+https://openai.com/...`, so the `openai` token
-  // must match the product-UA shape (`OpenAI/<ver>`) only, not the self-link.
+  it.each(['MistralAI-Training', 'KimiBot', 'ERNIEBot', 'QwenBot'])(
+    'blocks training crawler %s',
+    (ua) => {
+      expect(
+        isBlockedUserAgent(`Mozilla/5.0 (compatible; ${ua}/1.0)`),
+      ).toMatchObject({ blocked: true, group: 'training' });
+    },
+  );
+
+  it.each([
+    'ChatGPT Agent',
+    'Devin',
+    'Operator',
+    'Google-Agent',
+    'GoogleAgent-Mariner',
+    'Google-GeminiNotebook',
+    'Google-NotebookLM',
+    'GoogleAgent-URLContext',
+    'Claude-User',
+    'Claude-SearchBot',
+    'Claude-Code',
+    'Cursor',
+    'Code',
+    'Perplexity-User',
+    'PerplexityBot',
+    'MistralAI-User',
+    'MistralAI-Index',
+    'Kimi-User',
+    'Kimi-SearchBot',
+    'Kimi-Agent',
+    'Amzn-SearchBot',
+    'Amzn-User',
+    'Diffbot-User',
+    'Diffbot',
+    'Meta-ExternalFetcher',
+    'meta-webindexer',
+    'Applebot',
+    'Googlebot',
+    'bingbot',
+    'DuckAssistBot',
+    'ShapBot',
+    'Shap-User',
+    'ExaSearchBot',
+    'PetalBot',
+    'YouBot',
+    'TavilyBot',
+    'atlassian-bot',
+    'Slackbot-LinkExpanding',
+    'Slack-ImgProxy',
+    'TelegramBot',
+    'Twitterbot',
+    'facebookexternalhit',
+    'WhatsApp',
+    'LinkedInBot',
+    'Discordbot',
+    'redditbot',
+    'Pinterestbot',
+    'UnknownAIClient',
+    'OpenAI',
+    'Claude-Web',
+  ])('allows search, user, preview or unclassified client %s', (ua) => {
+    expect(isBlockedUserAgent(`Mozilla/5.0 (compatible; ${ua}/1.0)`)).toEqual({
+      blocked: false,
+    });
+  });
+
   describe('OpenAI user-triggered fetchers — allowed per robots.txt', () => {
     it('does not block ChatGPT-User (user-initiated, not training)', () => {
       const ua =
@@ -152,34 +172,15 @@ describe('isBlockedUserAgent', () => {
         'OAI-SearchBot/1.0; +https://openai.com/searchbot';
       expect(isBlockedUserAgent(ua)).toEqual({ blocked: false });
     });
-
-    it('still blocks the literal OpenAI/<version> product user-agent', () => {
-      expect(isBlockedUserAgent('OpenAI/1.0')).toEqual({
-        blocked: true,
-        token: 'openai/',
-        group: 'training',
-      });
-    });
   });
 });
 
 describe('hygiene — short/generic tokens must not collide with real UAs', () => {
   const cases: Array<{ ua: string; mentions: string }> = [
-    { ua: 'Mozilla/5.0 (SpiderMonkey/115)', mentions: 'spider' },
-    {
-      ua: 'SomeOperatorService/3.4 (+https://example.com)',
-      mentions: 'operator',
-    },
     { ua: 'Mozilla/5.0 LccDataReader/1.0', mentions: 'lcc' },
     { ua: 'Mozilla/5.0 CotoyogiViewer/1.0', mentions: 'cotoyogi' },
-    { ua: 'Mozilla/5.0 AnomuraReader/2.0', mentions: 'anomura' },
     { ua: 'Mozilla/5.0 YakDocReader/1.0', mentions: 'yak' },
-    { ua: 'Mozilla/5.0 DevinDocViewer/1.0', mentions: 'devin' },
-    { ua: 'Mozilla/5.0 openaitest/1.0 — fictional', mentions: 'openai' },
-    {
-      ua: 'Googlebot/2.1 (+http://www.google.com/bot.html)',
-      mentions: 'google-agent',
-    },
+    { ua: 'Mozilla/5.0 NewsAIReader/1.0', mentions: 'newsai' },
   ];
 
   for (const { ua, mentions } of cases) {
@@ -187,6 +188,33 @@ describe('hygiene — short/generic tokens must not collide with real UAs', () =
       expect(isBlockedUserAgent(ua)).toEqual({ blocked: false });
     });
   }
+});
+
+describe('AI2 product names', () => {
+  it.each([
+    'AI2Bot',
+    'AI2Bot/1.0',
+    'Mozilla/5.0 (AI2Bot; +https://allenai.org/crawler)',
+  ])('blocks the training product: %s', (ua) => {
+    expect(isBlockedUserAgent(ua).blocked).toBe(true);
+  });
+
+  it.each([
+    'AI2Bot-DeepResearchEval',
+    'AI2Bot-DeepResearchEval/1.0',
+    'Mozilla/5.0 (compatible; AI2Bot-DeepResearchEval/1.0)',
+  ])(
+    'does not classify an undocumented research client as training: %s',
+    (ua) => {
+      expect(isBlockedUserAgent(ua)).toEqual({ blocked: false });
+    },
+  );
+
+  it('still blocks an actual training product alongside a research identity', () => {
+    expect(
+      isBlockedUserAgent('AI2Bot-DeepResearchEval/1.0 GPTBot/1.2').blocked,
+    ).toBe(true);
+  });
 });
 
 describe('longest-match-wins for overlapping substring tokens', () => {
@@ -202,7 +230,7 @@ describe('longest-match-wins for overlapping substring tokens', () => {
     expect(isBlockedUserAgent('Mozilla/5.0 GoogleOther-Image/1.1')).toEqual({
       blocked: true,
       token: 'googleother-image',
-      group: 'training',
+      group: 'scraping',
     });
   });
 
@@ -210,7 +238,7 @@ describe('longest-match-wins for overlapping substring tokens', () => {
     expect(isBlockedUserAgent('Omgilibot/0.5')).toEqual({
       blocked: true,
       token: 'omgilibot',
-      group: 'training',
+      group: 'scraping',
     });
   });
 });
@@ -223,14 +251,14 @@ describe('blocklist data integrity', () => {
   });
 
   it('all token values are lowercase', () => {
-    for (const t of [...TRAINING_CRAWLER_TOKENS, ...AUTONOMOUS_AGENT_TOKENS]) {
+    for (const t of [...TRAINING_CRAWLER_TOKENS, ...SCRAPING_CRAWLER_TOKENS]) {
       expect(t.value).toBe(t.value.toLowerCase());
     }
   });
 
-  it('every agent token has an agent group mapping', () => {
-    for (const t of AUTONOMOUS_AGENT_TOKENS) {
-      expect(BLOCKED_BOT_GROUPS[t.value]).toBe('agent');
+  it('every scraping token has a scraping group mapping', () => {
+    for (const t of SCRAPING_CRAWLER_TOKENS) {
+      expect(BLOCKED_BOT_GROUPS[t.value]).toBe('scraping');
     }
   });
 });

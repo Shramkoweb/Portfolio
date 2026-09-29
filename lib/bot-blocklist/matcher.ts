@@ -15,6 +15,7 @@ const SUBSTRING_TOKENS = BLOCKED_BOT_TOKENS.filter(
   .sort((a, b) => b.value.length - a.value.length);
 
 const WORD_BOUNDARY_PATTERN = buildWordBoundaryPattern();
+const PRODUCT_PATTERN = buildProductPattern();
 
 export function isBlockedUserAgent(userAgent: string | null): MatchResult {
   if (!userAgent) return { blocked: false };
@@ -31,6 +32,15 @@ export function isBlockedUserAgent(userAgent: string | null): MatchResult {
     }
   }
 
+  const product = PRODUCT_PATTERN?.exec(lower)?.[1];
+  if (product) {
+    return {
+      blocked: true,
+      token: product,
+      group: BLOCKED_BOT_GROUPS[product] as BlockGroup,
+    };
+  }
+
   if (WORD_BOUNDARY_PATTERN) {
     const match = WORD_BOUNDARY_PATTERN.exec(lower);
     if (match) {
@@ -44,6 +54,15 @@ export function isBlockedUserAgent(userAgent: string | null): MatchResult {
   }
 
   return { blocked: false };
+}
+
+function buildProductPattern(): RegExp | null {
+  const values = BLOCKED_BOT_TOKENS.filter((t) => t.kind === 'product').map(
+    (t) => escapeRegExp(t.value),
+  );
+  if (values.length === 0) return null;
+  // A hyphen starts a different product name, not a version of this crawler.
+  return new RegExp(`(?:^|[\\s;(])(${values.join('|')})(?=[/\\s;)]|$)`, 'i');
 }
 
 function buildWordBoundaryPattern(): RegExp | null {

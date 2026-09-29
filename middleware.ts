@@ -7,7 +7,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
 import { isBlockedUserAgent } from '@/lib/bot-blocklist/matcher';
-import { isBlockedSignatureAgent } from '@/lib/bot-blocklist/signature-agent';
 
 const POLICY_BODY =
   'Automated AI training and scraping crawlers are not permitted on this site.\n';
@@ -27,12 +26,6 @@ export function middleware(request: NextRequest) {
   const ua = request.headers.get('user-agent');
 
   if (isBlockedUserAgent(ua).blocked) {
-    return policyResponse();
-  }
-
-  // Agentic browsers with plain browser UAs (ChatGPT agent) identify only
-  // via Web Bot Auth — see lib/bot-blocklist/signature-agent.ts.
-  if (isBlockedSignatureAgent(request.headers.get('signature-agent'), ua)) {
     return policyResponse();
   }
 
