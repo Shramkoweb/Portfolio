@@ -14,22 +14,6 @@ My personal site: long-form posts, a copy-paste snippet library, and the notes-i
 part of a digital garden. One Next.js app, one deployment target, no CMS — content is MDX
 in the repo, so a post ships through the same pipeline as a code change.
 
-## Contents
-
-- [What's inside](#whats-inside)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project layout](#project-layout)
-- [Scripts](#scripts)
-- [Testing](#testing)
-- [Security](#security)
-- [Performance budget](#performance-budget)
-- [Deployment](#deployment)
-- [Monitors](#monitors)
-- [Writing a post](#writing-a-post)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## What's inside
 
 | Area           | Notes                                                                                                                   |
@@ -103,26 +87,17 @@ Sentry variables only matter for production builds.
 
 ## Scripts
 
-| Command                             | Purpose                                   |
-| ----------------------------------- | ----------------------------------------- |
-| `pnpm dev`                          | start dev server                          |
-| `pnpm build`                        | production build + sitemap                |
-| `pnpm start`                        | start production server                   |
-| `pnpm lint` / `pnpm lint:fix`       | oxlint                                    |
-| `pnpm format` / `pnpm format:check` | oxfmt                                     |
-| `pnpm typecheck`                    | `tsc --noEmit`                            |
-| `pnpm test` / `pnpm test:ci`        | Jest                                      |
-| `pnpm test:coverage`                | Jest with a coverage report               |
-| `pnpm test:visual`                  | local Chromium visual regression tests    |
-| `pnpm test:visual:update`           | regenerate visual baselines intentionally |
-| `pnpm test:visual:report`           | open the visual diff report               |
-| `pnpm verify`                       | lint + format:check + typecheck + test:ci |
-| `pnpm verify:full`                  | `verify` + production build               |
-| `pnpm verify:all`                   | `verify:full` + all Playwright tests      |
-| `pnpm deps:audit`                   | `pnpm audit` on prod deps, high and above |
-| `pnpm csp:check`                    | CSP covers the build's inline scripts     |
-| `pnpm clean`                        | remove `.next/` and `coverage/`           |
-| `pnpm article`                      | scaffold a new blog post                  |
+| Command            | Purpose                                    |
+| ------------------ | ------------------------------------------ |
+| `pnpm dev`         | start the dev server                       |
+| `pnpm verify`      | lint + format:check + typecheck + test:ci  |
+| `pnpm verify:full` | `verify` + production build                |
+| `pnpm verify:all`  | `verify:full` + all Playwright tests       |
+| `pnpm test:visual` | local Playwright behavior and visual tests |
+| `pnpm article`     | scaffold a new blog post                   |
+
+The rest (formatting, linting, coverage, audits, CSP check) is in the `scripts` field of
+[`package.json`](package.json).
 
 `pnpm verify` is the fast loop and what the pre-push hook runs. `pnpm verify:full` adds
 `next build` and is what CI effectively reproduces — run it before opening a PR.
