@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/lib/prisma';
+import { isCrossSiteRequest, isJsonRequest } from '@/lib/same-origin';
 import {
   isValidReactionType,
   ReactionsResponse,
@@ -63,6 +64,16 @@ export default async function handler(
     }
 
     if (req.method === 'POST') {
+      if (isCrossSiteRequest(req)) {
+        return res.status(403).json({ error: { message: 'Forbidden' } });
+      }
+
+      if (!isJsonRequest(req)) {
+        return res
+          .status(415)
+          .json({ error: { message: 'Unsupported Media Type' } });
+      }
+
       const { type } = req.body ?? {};
 
       if (!type || !isValidReactionType(type)) {

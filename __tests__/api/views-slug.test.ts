@@ -71,6 +71,31 @@ describe('API /api/views/[slug]', () => {
       expect(json).toHaveBeenCalledWith({ total: 7 });
     });
 
+    it('rejects a cross-site browser request with 403 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        headers: { 'sec-fetch-site': 'cross-site' },
+      });
+
+      await handler(req, res);
+
+      expect(mockUpsert).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(403);
+      expect(json).toHaveBeenCalledWith({ error: { message: 'Forbidden' } });
+    });
+
+    it('accepts a same-origin request', async () => {
+      mockUpsert.mockResolvedValue({ count: 1n });
+      const { req, res, status } = createMockReqRes({
+        method: 'POST',
+        headers: { 'sec-fetch-site': 'same-origin' },
+      });
+
+      await handler(req, res);
+
+      expect(status).toHaveBeenCalledWith(200);
+    });
+
     it('rejects an unknown slug with 404 and never writes', async () => {
       const { req, res, status, json } = createMockReqRes({
         method: 'POST',
