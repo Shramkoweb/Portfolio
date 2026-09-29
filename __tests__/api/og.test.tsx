@@ -64,6 +64,13 @@ describe('API /api/og', () => {
     });
   });
 
+  it('draws the background image from the request origin', async () => {
+    await loadHandler().default(request());
+    expect(renderToStaticMarkup(mockImageResponse.mock.calls[0][0])).toContain(
+      'background-image:url(https://shramko.dev/static/images/og-background.jpg)',
+    );
+  });
+
   it.each([100, 101])(
     'bounds published titles of length %i',
     async (length) => {

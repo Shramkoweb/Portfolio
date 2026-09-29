@@ -2,14 +2,25 @@ import { expect, test } from '@playwright/test';
 
 import { getPostsMetadata } from '../../lib/posts/api';
 
-test('Open Graph image: default', async ({ request }) => {
-  const response = await request.get('/api/og');
-  expect(response.status()).toBe(200);
-  expect(response.headers()['content-type']).toContain('image/png');
-  expect(await response.body()).toMatchSnapshot('og-default.png', {
-    maxDiffPixels: 0,
+const snapshotTitles = {
+  default: undefined,
+  short: 'Gear | Serhii Shramko',
+  multiline:
+    'JavaScript, TypeScript, React & CSS Code Snippets | Serhii Shramko',
+};
+
+for (const [name, title] of Object.entries(snapshotTitles)) {
+  test(`Open Graph image: ${name}`, async ({ request }) => {
+    const query =
+      title === undefined ? '' : `?title=${encodeURIComponent(title)}`;
+    const response = await request.get(`/api/og${query}`);
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toContain('image/png');
+    expect(await response.body()).toMatchSnapshot(`og-${name}.png`, {
+      maxDiffPixels: 0,
+    });
   });
-});
+}
 
 test('renders published headings and site titles through both routes', async ({
   request,
