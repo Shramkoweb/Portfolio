@@ -75,18 +75,33 @@ describe('API /api/reactions/[slug]', () => {
       });
     });
 
-    it('still returns zeros for an unknown slug — reads are not gated', async () => {
-      mockFindMany.mockResolvedValue([]);
-      const { req, res, status, json } = createMockReqRes({
-        query: { slug: 'not-a-real-post' },
+    it.each(['not-a-real-post', ['my-post', 'evil'], undefined])(
+      'rejects unknown or malformed read slugs (%j) before querying the DB',
+      async (slug) => {
+        const { req, res, status, json, setHeader } = createMockReqRes({
+          query: { slug },
+        });
+
+        await handler(req, res);
+
+        expect(mockFindMany).not.toHaveBeenCalled();
+        expect(status).toHaveBeenCalledWith(404);
+        expect(json).toHaveBeenCalledWith({
+          error: { message: 'Unknown slug' },
+        });
+        expect(setHeader).toHaveBeenCalledWith('Cache-Control', 'no-store');
+      },
+    );
+
+    it('rejects cache-busting query parameters before querying the DB', async () => {
+      const { req, res, status } = createMockReqRes({
+        query: { slug: 'my-post', cacheBust: 'random' },
       });
 
       await handler(req, res);
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({
-        reactions: { heart: 0, beer: 0, trophy: 0 },
-      });
+      expect(mockFindMany).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(400);
     });
   });
 

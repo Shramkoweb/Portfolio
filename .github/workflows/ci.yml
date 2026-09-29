@@ -92,9 +92,8 @@ jobs:
       - run: pnpm i --frozen-lockfile
         env:
           CI: true
+      # PR code must not receive the Sentry upload token. Vercel uploads on deploy.
       - run: pnpm build
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - run: pnpm csp:check
 
   e2e:

@@ -4,9 +4,9 @@ import { ShareButton } from '@/components/share-button/share-button';
 export function TwitterShare() {
   const handleClick = () => {
     window.open(
-      `https://twitter.com/intent/tweet?url=${window.location.href}&text=${document.title} Blog`,
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(`${document.title} Blog`)}`,
       'twitter-share-dialog',
-      'width=800,height=600',
+      'width=800,height=600,noopener,noreferrer',
     );
   };
 

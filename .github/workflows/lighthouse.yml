@@ -32,7 +32,8 @@ jobs:
           runs: 3
           configPath: /tmp/lighthouserc.json
           budgetPath: .github/lighthouse-budget.json
-          uploadArtifacts: true
+          # Reports include extraHeaders, including the preview bypass secret.
+          uploadArtifacts: false
       - name: Find PR number
         id: find-pr
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
