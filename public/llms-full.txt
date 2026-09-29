@@ -112,6 +112,8 @@ In-depth blog posts on web development and production-ready code snippets, plus 
   Keywords: AI SEO audit, Cursor AI, meta descriptions, developer blog SEO, content optimization
 - [Opt-Out of Email Newsletters Now for a Clutter-Free Inbox](https://shramko.dev/blog/unsubscribe-immediately): Stop letting unwanted emails pile up. Learn why unsubscribing from newsletters immediately saves time, reduces distractions, and keeps your inbox focused.
   Keywords: Unsubscribe from email newsletters, Email management tips, Notification management
+- [Why Independent Developer Blogs Are Going Offline](https://shramko.dev/blog/blogs-going-offline): Independent developer educators are losing readers and income to AI. What you can do about it, and how I block training crawlers on this blog.
+  Keywords: AI crawlers, block AI crawlers, AI training bots, robots.txt AI bots, independent blogs
 
 ## Blog Posts: Web Fundamentals
 

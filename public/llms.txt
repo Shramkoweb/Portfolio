@@ -58,6 +58,7 @@ In-depth blog posts and production-ready code snippets covering JavaScript, Type
 - [useRef in React: Refs vs State, DOM Access and React 19](https://shramko.dev/blog/react-useref): When to use useRef instead of useState, how DOM refs and ref callbacks work, and what React 19 changed: ref as a prop, no forwardRef, ref cleanup.
 - [What is a generic type parameter T in TypeScript?](https://shramko.dev/blog/generic-type-parameters): Learn TypeScript generic type parameter naming conventions. Understand when to use T, K, V and when descriptive names like TKey make your code more readable.
 - [When .gitignore Isn't the Right Tool](https://shramko.dev/blog/gitignore-is-not-enough): Learn about Git's hidden alternatives to .gitignore for managing file exclusions locally without affecting your team's workflow.
+- [Why Independent Developer Blogs Are Going Offline](https://shramko.dev/blog/blogs-going-offline): Independent developer educators are losing readers and income to AI. What you can do about it, and how I block training crawlers on this blog.
 
 ## Code Snippets
 
