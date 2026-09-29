@@ -70,8 +70,6 @@ pnpm dev                # http://localhost:3000
 
 **Watch out:** a colon inside an unquoted frontmatter value breaks the YAML parse. `description: Build a second brain: transcribe...` silently turns into a different key and every field after it disappears, which surfaces as `Cannot read properties of undefined` in the post filters. Quote any value containing a colon.
 
-Only one or two posts should carry `featured: true` at a time. Adding one usually means clearing another.
-
 ## Article illustrations
 
 Diagrams, tables and covers share one hand-drawn look so every post is recognisable.
