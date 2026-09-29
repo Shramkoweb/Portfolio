@@ -160,7 +160,7 @@ accepted. After an intentional UI change, update only the affected
 screenshots and review the image diff before committing:
 
 ```bash
-pnpm test:visual:update visual.spec.ts --grep 'copy control'
+pnpm test:visual --update-snapshots=changed visual.spec.ts --grep 'copy control'
 ```
 
 Commit baseline PNGs with the corresponding change. Reports, traces, actual and
