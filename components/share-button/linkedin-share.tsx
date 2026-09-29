@@ -4,9 +4,9 @@ import { ShareButton } from '@/components/share-button/share-button';
 export function LinkedInShare() {
   const handleClick = () => {
     window.open(
-      `https://www.linkedin.com/shareArticle?url=${window.location.href}`,
+      `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(window.location.href)}`,
       'linkedin-share-dialog',
-      'width=800,height=600',
+      'width=800,height=600,noopener,noreferrer',
     );
   };
 

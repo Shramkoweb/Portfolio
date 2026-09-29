@@ -1,4 +1,7 @@
+import { readdirSync, readFileSync } from 'node:fs';
+
 import { withSentryConfig } from '@sentry/nextjs/config';
+import matter from 'gray-matter';
 
 // The hash covers the next-themes inline theme setter. 'unsafe-eval' must
 // stay: MDXRemote evaluates every post via `Reflect.construct(Function, ...)`,
@@ -59,6 +62,21 @@ const securityHeaders = [
     value: 'camera=(), microphone=(), geolocation=()',
   },
 ];
+
+// Bundle published headings into the edge function; it cannot read MDX files.
+const ogContentTitles = ['_posts', '_snippets'].flatMap((directory) =>
+  readdirSync(new URL(`./${directory}/`, import.meta.url))
+    .filter((file) => file.endsWith('.md'))
+    .map(
+      (file) =>
+        matter(
+          readFileSync(
+            new URL(`./${directory}/${file}`, import.meta.url),
+            'utf8',
+          ),
+        ).data.heading,
+    ),
+);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -129,6 +147,7 @@ const nextConfig = {
     ];
   },
   env: {
+    OG_CONTENT_TITLES: JSON.stringify(ogContentTitles),
     APP_RELEASE_VERSION: new Date().valueOf().toString(),
   },
   images: {
