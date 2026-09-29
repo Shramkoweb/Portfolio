@@ -6,6 +6,7 @@ export const config = {
 };
 
 const MAX_TITLE_LENGTH = 100;
+const BACKGROUND_PATH = '/static/images/og-background.jpg';
 
 export default async function handler(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -14,6 +15,7 @@ export default async function handler(req: NextRequest) {
     rawTitle.length > MAX_TITLE_LENGTH
       ? `${rawTitle.slice(0, MAX_TITLE_LENGTH)}…`
       : rawTitle;
+  const background = new URL(BACKGROUND_PATH, req.url).toString();
 
   return new ImageResponse(
     <div
@@ -24,7 +26,9 @@ export default async function handler(req: NextRequest) {
         flexDirection: 'column',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        backgroundColor: '#111',
+        backgroundColor: '#000',
+        backgroundImage: `url(${background})`,
+        backgroundSize: '100% 100%',
         padding: '60px 80px',
       }}
     >

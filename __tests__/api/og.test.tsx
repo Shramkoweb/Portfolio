@@ -42,6 +42,15 @@ describe('API /api/og', () => {
     expect(screen.getByText('Serhii Shramko')).toBeInTheDocument();
   });
 
+  it('draws the background image from the request origin', async () => {
+    await renderOg();
+
+    expect(screen.getByText('Serhii Shramko').parentElement).toHaveStyle({
+      backgroundImage:
+        'url(https://shramko.dev/static/images/og-background.jpg)',
+    });
+  });
+
   it('keeps a title of exactly 100 characters intact', async () => {
     const title = 'a'.repeat(100);
     await renderOg(`?title=${title}`);
