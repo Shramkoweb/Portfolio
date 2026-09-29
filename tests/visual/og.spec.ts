@@ -6,7 +6,6 @@ const titles = {
   short: 'React',
   multiline:
     'Practical patterns for React, TypeScript and Next.js applications',
-  unicode: 'Українська: JavaScript & TypeScript',
   limit: 'A'.repeat(100),
   truncated: 'A'.repeat(120),
 };
