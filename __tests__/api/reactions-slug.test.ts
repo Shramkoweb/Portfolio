@@ -38,6 +38,7 @@ jest.mock('@/lib/prisma', () => ({
 function createMockReqRes(overrides: Partial<NextApiRequest> = {}) {
   return createBaseMockReqRes({
     query: { slug: 'my-post' },
+    headers: { 'content-type': 'application/json' },
     body: {},
     ...overrides,
   });
@@ -75,18 +76,33 @@ describe('API /api/reactions/[slug]', () => {
       });
     });
 
-    it('still returns zeros for an unknown slug — reads are not gated', async () => {
-      mockFindMany.mockResolvedValue([]);
-      const { req, res, status, json } = createMockReqRes({
-        query: { slug: 'not-a-real-post' },
+    it.each(['not-a-real-post', ['my-post', 'evil'], undefined])(
+      'rejects unknown or malformed read slugs (%j) before querying the DB',
+      async (slug) => {
+        const { req, res, status, json, setHeader } = createMockReqRes({
+          query: { slug },
+        });
+
+        await handler(req, res);
+
+        expect(mockFindMany).not.toHaveBeenCalled();
+        expect(status).toHaveBeenCalledWith(404);
+        expect(json).toHaveBeenCalledWith({
+          error: { message: 'Unknown slug' },
+        });
+        expect(setHeader).toHaveBeenCalledWith('Cache-Control', 'no-store');
+      },
+    );
+
+    it('rejects cache-busting query parameters before querying the DB', async () => {
+      const { req, res, status } = createMockReqRes({
+        query: { slug: 'my-post', cacheBust: 'random' },
       });
 
       await handler(req, res);
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({
-        reactions: { heart: 0, beer: 0, trophy: 0 },
-      });
+      expect(mockFindMany).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(400);
     });
   });
 
@@ -154,6 +170,58 @@ describe('API /api/reactions/[slug]', () => {
       expect(json).toHaveBeenCalledWith({
         reactions: { heart: 1, beer: 0, trophy: 0 },
       });
+    });
+
+    it('rejects a cross-site browser request with 403 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'sec-fetch-site': 'cross-site',
+        },
+        body: { type: 'heart' },
+      });
+
+      await handler(req, res);
+
+      expect(mock$transaction).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(403);
+      expect(json).toHaveBeenCalledWith({ error: { message: 'Forbidden' } });
+    });
+
+    it('rejects a form-encoded body with 415 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        body: { type: 'heart' },
+      });
+
+      await handler(req, res);
+
+      expect(mock$transaction).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(415);
+      expect(json).toHaveBeenCalledWith({
+        error: { message: 'Unsupported Media Type' },
+      });
+    });
+
+    it('accepts a same-origin JSON request', async () => {
+      mock$transaction.mockResolvedValue([
+        { slug: 'my-post', type: 'heart', count: 1n },
+        [{ type: 'heart', count: 1n }],
+      ]);
+      const { req, res, status } = createMockReqRes({
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json; charset=utf-8',
+          'sec-fetch-site': 'same-origin',
+        },
+        body: { type: 'heart' },
+      });
+
+      await handler(req, res);
+
+      expect(status).toHaveBeenCalledWith(200);
     });
 
     it('rejects an unknown slug with 404 and never writes', async () => {

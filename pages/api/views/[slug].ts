@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/lib/prisma';
+import { isCrossSiteRequest } from '@/lib/same-origin';
 import { isKnownSlug } from '@/lib/valid-slugs';
 
 export default async function handler(
@@ -8,11 +9,27 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const slug = req.query.slug as string;
+    if (req.method !== 'GET' && req.method !== 'POST') {
+      res.setHeader('Allow', 'GET, POST');
+      return res.status(405).json({ error: { message: 'Method not allowed' } });
+    }
+
+    const slug = req.query.slug;
+    res.setHeader('Cache-Control', 'no-store');
+
+    if (typeof slug !== 'string' || !(await isKnownSlug(slug))) {
+      return res.status(404).json({ error: { message: 'Unknown slug' } });
+    }
+
+    if (Object.keys(req.query).some((key) => key !== 'slug')) {
+      return res
+        .status(400)
+        .json({ error: { message: 'Unexpected query parameter' } });
+    }
 
     if (req.method === 'POST') {
-      if (!(await isKnownSlug(slug))) {
-        return res.status(404).json({ error: { message: 'Unknown slug' } });
+      if (isCrossSiteRequest(req)) {
+        return res.status(403).json({ error: { message: 'Forbidden' } });
       }
 
       const views = await prisma.views.upsert({

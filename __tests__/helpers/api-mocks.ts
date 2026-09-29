@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 export function createMockReqRes(overrides: Partial<NextApiRequest> = {}) {
   const req = {
     method: 'GET',
+    headers: {},
     ...overrides,
   } as unknown as NextApiRequest;
 

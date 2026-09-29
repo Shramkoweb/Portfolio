@@ -5,9 +5,9 @@ import { ShareButton } from '@/components/share-button/share-button';
 export function TelegramShare() {
   const handleClick = () => {
     window.open(
-      `https://telegram.me/share/url?url=${window.location.href}&text=${document.title} Blog`,
+      `https://telegram.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(`${document.title} Blog`)}`,
       'telegram-share-dialog',
-      'width=800,height=600',
+      'width=800,height=600,noopener,noreferrer',
     );
   };
 

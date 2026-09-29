@@ -71,6 +71,31 @@ describe('API /api/views/[slug]', () => {
       expect(json).toHaveBeenCalledWith({ total: 7 });
     });
 
+    it('rejects a cross-site browser request with 403 and never writes', async () => {
+      const { req, res, status, json } = createMockReqRes({
+        method: 'POST',
+        headers: { 'sec-fetch-site': 'cross-site' },
+      });
+
+      await handler(req, res);
+
+      expect(mockUpsert).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(403);
+      expect(json).toHaveBeenCalledWith({ error: { message: 'Forbidden' } });
+    });
+
+    it('accepts a same-origin request', async () => {
+      mockUpsert.mockResolvedValue({ count: 1n });
+      const { req, res, status } = createMockReqRes({
+        method: 'POST',
+        headers: { 'sec-fetch-site': 'same-origin' },
+      });
+
+      await handler(req, res);
+
+      expect(status).toHaveBeenCalledWith(200);
+    });
+
     it('rejects an unknown slug with 404 and never writes', async () => {
       const { req, res, status, json } = createMockReqRes({
         method: 'POST',
@@ -126,16 +151,33 @@ describe('API /api/views/[slug]', () => {
       expect(json).toHaveBeenCalledWith({ total: 0 });
     });
 
-    it('still returns 0 for an unknown slug — reads are not gated', async () => {
-      mockFindUnique.mockResolvedValue(null);
-      const { req, res, status, json } = createMockReqRes({
-        query: { slug: 'not-a-real-post' },
+    it.each(['not-a-real-post', ['test-post', 'evil'], undefined])(
+      'rejects unknown or malformed read slugs (%j) before querying the DB',
+      async (slug) => {
+        const { req, res, status, json, setHeader } = createMockReqRes({
+          query: { slug },
+        });
+
+        await handler(req, res);
+
+        expect(mockFindUnique).not.toHaveBeenCalled();
+        expect(status).toHaveBeenCalledWith(404);
+        expect(json).toHaveBeenCalledWith({
+          error: { message: 'Unknown slug' },
+        });
+        expect(setHeader).toHaveBeenCalledWith('Cache-Control', 'no-store');
+      },
+    );
+
+    it('rejects cache-busting query parameters before querying the DB', async () => {
+      const { req, res, status } = createMockReqRes({
+        query: { slug: 'test-post', cacheBust: 'random' },
       });
 
       await handler(req, res);
 
-      expect(status).toHaveBeenCalledWith(200);
-      expect(json).toHaveBeenCalledWith({ total: 0 });
+      expect(mockFindUnique).not.toHaveBeenCalled();
+      expect(status).toHaveBeenCalledWith(400);
     });
   });
 

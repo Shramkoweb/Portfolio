@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/lib/prisma';
+import { isCrossSiteRequest, isJsonRequest } from '@/lib/same-origin';
 import {
   isValidReactionType,
   ReactionsResponse,
@@ -18,7 +19,23 @@ export default async function handler(
   res: NextApiResponse<ReactionsResponse | ErrorResponse>,
 ) {
   try {
-    const slug = req.query.slug as string;
+    if (req.method !== 'GET' && req.method !== 'POST') {
+      res.setHeader('Allow', 'GET, POST');
+      return res.status(405).json({ error: { message: 'Method not allowed' } });
+    }
+
+    const slug = req.query.slug;
+    res.setHeader('Cache-Control', 'no-store');
+
+    if (typeof slug !== 'string' || !(await isKnownSlug(slug))) {
+      return res.status(404).json({ error: { message: 'Unknown slug' } });
+    }
+
+    if (Object.keys(req.query).some((key) => key !== 'slug')) {
+      return res
+        .status(400)
+        .json({ error: { message: 'Unexpected query parameter' } });
+    }
 
     if (req.method === 'GET') {
       const reactions = await prisma.reactions.findMany({
@@ -47,16 +64,22 @@ export default async function handler(
     }
 
     if (req.method === 'POST') {
-      const { type } = req.body;
+      if (isCrossSiteRequest(req)) {
+        return res.status(403).json({ error: { message: 'Forbidden' } });
+      }
+
+      if (!isJsonRequest(req)) {
+        return res
+          .status(415)
+          .json({ error: { message: 'Unsupported Media Type' } });
+      }
+
+      const { type } = req.body ?? {};
 
       if (!type || !isValidReactionType(type)) {
         return res.status(400).json({
           error: { message: 'Invalid reaction type' },
         });
-      }
-
-      if (!(await isKnownSlug(slug))) {
-        return res.status(404).json({ error: { message: 'Unknown slug' } });
       }
 
       const [, reactions] = await prisma.$transaction([
