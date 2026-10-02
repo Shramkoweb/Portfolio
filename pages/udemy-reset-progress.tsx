@@ -9,19 +9,19 @@ import {
   UDEMY_RESET_APP_RATING,
 } from '@/lib/constants';
 import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
+import { registerView, whenVisible } from '@/lib/views';
 
 import chromeStore from '../public/static/images/chrome-store.png';
 import firefoxStore from '../public/static/images/firefox-store.webp';
 
 function UdemyResetProgressPage() {
-  useEffect(() => {
-    const registerView = () =>
-      fetch('/api/views/udemy-reset-progress-page', {
-        method: 'POST',
-      }).catch(() => {});
-
-    registerView();
-  }, []);
+  useEffect(
+    () =>
+      whenVisible(() => {
+        void registerView('udemy-reset-progress-page');
+      }),
+    [],
+  );
   return (
     <>
       <PageMeta

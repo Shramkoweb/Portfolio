@@ -7,24 +7,25 @@ function makeProps(slug: string, views?: number) {
 }
 
 describe('BlogPostPreview — view-count formatting (business logic)', () => {
-  test("renders '--- views' while the views map has not loaded", () => {
-    render(<BlogPostPreview {...makeProps('preview-loading')} />);
+  test.each([
+    ['while the views map has not loaded', undefined],
+    ['when the post has 0 views', 0],
+  ])('renders no count %s', (_, views) => {
+    render(<BlogPostPreview {...makeProps('preview-empty', views)} />);
 
-    expect(screen.getByText('--- views')).toBeInTheDocument();
+    expect(screen.queryByText(/views?$/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/-/)).not.toBeInTheDocument();
   });
 
-  test("renders '--- views' when the post has 0 views", () => {
-    render(<BlogPostPreview {...makeProps('preview-zero', 0)} />);
+  test.each([
+    [1, '1 view'],
+    [56, '56 views'],
+    [1299, '1.2K views'],
+    [12345, '12K views'],
+  ])('formats %d as %s', (views, text) => {
+    render(<BlogPostPreview {...makeProps('preview-count', views)} />);
 
-    expect(screen.getByText('--- views')).toBeInTheDocument();
-  });
-
-  test('formats the view count with locale grouping separators', () => {
-    render(<BlogPostPreview {...makeProps('preview-12345', 12345)} />);
-
-    expect(
-      screen.getByText(`${(12345).toLocaleString()} views`),
-    ).toBeInTheDocument();
+    expect(screen.getByText(text)).toBeInTheDocument();
   });
 
   test('does not fetch its own view count', () => {

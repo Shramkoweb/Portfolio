@@ -1,4 +1,4 @@
-import { expect, test, visit } from './fixtures';
+import { expect, test, viewsSettled, visit } from './fixtures';
 import { posts } from './routes';
 
 // Only UI regions get baselines. Content pages supply real controls, not page snapshots.
@@ -29,7 +29,7 @@ test('search focus, result and empty state', async ({ page }) => {
   await expect(input.locator('..')).toHaveScreenshot('search-focus.png');
   await input.fill(posts[0].heading);
   await expect(page.locator('main a h3')).toHaveCount(1);
-  await expect(page.locator('main a:has(h3)')).toContainText('1,234 views');
+  await expect(page.locator('main a:has(h3)')).toContainText('1.2K views');
   await expect(page.locator('main a:has(h3)')).toHaveScreenshot(
     'search-result.png',
   );
@@ -80,19 +80,15 @@ for (const apiState of ['ready', 'loading', 'empty'] as const) {
     });
 
     test('view counter and reaction badges', async ({ page, isMobile }) => {
+      const settled = apiState === 'loading' ? undefined : viewsSettled(page);
       await visit(page, '/blog/npm-semantic-versioning');
-      const metric = page.getByText(
-        apiState === 'ready'
-          ? '1,234 views'
-          : apiState === 'empty'
-            ? '0 views'
-            : '--- views',
-        { exact: true },
-      );
+      await settled?.();
+      const metric = page.getByText(/min read/);
       await expect(metric).toBeVisible();
-      await expect(metric.locator('..')).toHaveScreenshot(
-        `views-${apiState}.png`,
-      );
+      if (apiState === 'ready')
+        await expect(metric).toContainText('1.2K views');
+      else await expect(metric).not.toContainText('view');
+      await expect(metric).toHaveScreenshot(`views-${apiState}.png`);
       if (!isMobile && apiState !== 'loading') {
         await expect(
           page.getByRole('button', {
@@ -111,7 +107,7 @@ for (const apiState of ['ready', 'loading', 'empty'] as const) {
 test('featured card, hover and avatar', async ({ page, isMobile }) => {
   await visit(page, '/');
   const card = page.locator('main a[href^="/blog/"]').first();
-  await expect(card).toContainText('1,234');
+  await expect(card).toContainText('1.2K');
   await expect(card).toHaveScreenshot('featured-card.png');
   if (!isMobile) {
     await card.hover();

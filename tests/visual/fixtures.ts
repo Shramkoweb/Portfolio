@@ -115,3 +115,20 @@ export async function visit(page: Page, path: string, status = 200) {
   expect(response?.status()).toBe(status);
   await ready(page);
 }
+
+// Resolves once the shared views map has been answered and rendered, so
+// "nothing is shown" assertions can't pass before the data arrives.
+export function viewsSettled(page: Page) {
+  const response = page.waitForResponse(
+    (res) => new URL(res.url()).pathname === '/api/views',
+  );
+  return async () => {
+    await response;
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => setTimeout(resolve, 50)),
+        ),
+    );
+  };
+}

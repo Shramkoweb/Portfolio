@@ -1,332 +1,338 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
 
 import { ViewCounter } from '@/components/view-counter';
-import { fetcher } from '@/lib/fetcher';
-import type { AllViewsResponse } from '@/pages/api/views';
 
-function renderWithFreshCache(ui: React.ReactElement) {
-  return render(
-    <SWRConfig value={{ provider: () => new Map() }}>{ui}</SWRConfig>,
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+function mockApi({
+  map = {},
+  posted = 0,
+  postOk = true,
+}: {
+  map?: Record<string, number>;
+  posted?: number;
+  postOk?: boolean;
+}) {
+  (global.fetch as jest.Mock).mockImplementation(
+    (url: string, init?: RequestInit) => {
+      if (init?.method === 'POST')
+        return Promise.resolve(
+          postOk
+            ? { ok: true, json: () => Promise.resolve({ total: posted }) }
+            : { ok: false, status: 500, statusText: 'boom' },
+        );
+      return Promise.resolve({
+        ok: true,
+        json: () =>
+          Promise.resolve(url === '/api/views' ? { views: map } : { total: 0 }),
+      });
+    },
   );
 }
 
-function AllViewsProbe({ slug }: { slug: string }) {
-  const { data } = useSWR<AllViewsResponse>('/api/views', fetcher);
-  return <span>{`map: ${data?.views?.[slug] ?? 'none'}`}</span>;
+function posts() {
+  return (global.fetch as jest.Mock).mock.calls.filter(
+    ([, init]) => init?.method === 'POST',
+  );
 }
 
-describe('ViewCounter component', () => {
-  beforeEach(() => {
-    global.fetch = jest.fn().mockImplementation(() => {
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ total: 100 }),
-      });
-    });
-  });
+function renderCounter(slug: string) {
+  const ui = (s: string) => (
+    <SWRConfig value={{ provider: () => new Map() }}>
+      <ViewCounter key={s} slug={s} />
+    </SWRConfig>
+  );
+  const result = render(ui(slug));
+  return { ...result, rerenderSlug: (s: string) => result.rerender(ui(s)) };
+}
 
-  afterEach(async () => {
-    // Flush all pending microtasks/timers to avoid act warnings
-    await act(async () => {
-      jest.runAllTimers();
-    });
-    jest.clearAllMocks();
+async function flushIdle() {
+  await act(async () => {
+    jest.advanceTimersByTime(150);
   });
+}
 
+describe('ViewCounter', () => {
   beforeEach(() => {
     jest.useFakeTimers();
+    window.localStorage.clear();
     delete (window as unknown as { requestIdleCallback?: unknown })
       .requestIdleCallback;
     delete (window as unknown as { cancelIdleCallback?: unknown })
       .cancelIdleCallback;
   });
 
-  afterEach(() => {
+  afterEach(async () => {
+    await act(async () => {
+      jest.runOnlyPendingTimers();
+    });
     jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
-  test('Fetches views with GET via SWR', async () => {
-    const slug = 'test-article-slug';
+  test('renders nothing until the shared views map arrives', async () => {
+    (global.fetch as jest.Mock).mockImplementation(() => new Promise(() => {}));
 
-    await act(async () => {
-      render(<ViewCounter slug={slug} />);
-    });
+    const { container } = renderCounter('loading');
 
-    expect(global.fetch).toHaveBeenCalledWith(`/api/views/${slug}`, undefined);
+    expect(container).toBeEmptyDOMElement();
   });
 
-  test('Registers view with POST via useEffect', async () => {
-    const slug = 'test-article-slug';
+  test('reads the count from the shared map in compact notation', async () => {
+    mockApi({ map: { compact: 1234 }, posted: 1235 });
 
     await act(async () => {
-      render(<ViewCounter slug={slug} />);
+      renderCounter('compact');
     });
 
-    // Trigger the deferred setTimeout(register, 150)
-    await act(async () => {
-      jest.advanceTimersByTime(150);
-    });
-
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(`/api/views/${slug}`, {
-        method: 'POST',
-      });
-    });
-  });
-
-  test('Displays formatted view count after fetch', async () => {
-    const slug = 'test-views-display';
-
-    await act(async () => {
-      render(<ViewCounter slug={slug} />);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('100 views')).toBeInTheDocument();
-    });
-  });
-
-  test('Shows fallback while loading', async () => {
-    // Delay fetch so data is undefined during initial render
-    (global.fetch as jest.Mock).mockImplementation(
-      () => new Promise(() => {}), // never resolves
+    expect(await screen.findByText('1.2K views')).toBeInTheDocument();
+    expect(global.fetch).toHaveBeenCalledWith('/api/views', undefined);
+    expect(global.fetch).not.toHaveBeenCalledWith(
+      '/api/views/compact',
+      undefined,
     );
-    const slug = 'test-loading';
-
-    await act(async () => {
-      render(<ViewCounter slug={slug} />);
-    });
-
-    expect(screen.getByText('--- views')).toBeInTheDocument();
   });
 
-  test('Does not double-register when the slug prop changes after registration', async () => {
-    let rerender!: (ui: React.ReactElement) => void;
+  test('registers one view on idle and shows the fresh total', async () => {
+    mockApi({ map: { fresh: 46 }, posted: 56 });
 
     await act(async () => {
-      ({ rerender } = render(<ViewCounter slug="a" />));
+      renderCounter('fresh');
     });
-    await act(async () => {
-      jest.advanceTimersByTime(150);
-    });
+    expect(await screen.findByText('46 views')).toBeInTheDocument();
 
-    // First registration done. Now change the slug — effect re-runs, but
-    // the ref guard must short-circuit to avoid a second POST.
-    await act(async () => {
-      rerender(<ViewCounter slug="b" />);
-      jest.advanceTimersByTime(500);
-    });
+    await flushIdle();
 
-    const postCalls = (global.fetch as jest.Mock).mock.calls.filter(
-      ([, init]) => init?.method === 'POST',
+    expect(await screen.findByText('56 views')).toBeInTheDocument();
+    expect(posts()).toEqual([['/api/views/fresh', { method: 'POST' }]]);
+  });
+
+  test('never shows less than the shared map', async () => {
+    mockApi({ map: { floor: 80 }, posted: 56 });
+
+    await act(async () => {
+      renderCounter('floor');
+    });
+    await flushIdle();
+
+    await waitFor(() => expect(posts()).toHaveLength(1));
+    expect(screen.getByText('80 views')).toBeInTheDocument();
+  });
+
+  test('uses the singular for one view', async () => {
+    mockApi({ map: {}, posted: 1 });
+
+    await act(async () => {
+      renderCounter('first-view');
+    });
+    await flushIdle();
+
+    expect(await screen.findByText('1 view')).toBeInTheDocument();
+  });
+
+  test('hides the separator and count when there are no views', async () => {
+    mockApi({ map: {}, postOk: false });
+
+    const { container } = renderCounter('no-views');
+    await flushIdle();
+
+    await waitFor(() => expect(posts()).toHaveLength(1));
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  test('counts a browser once per post per day', async () => {
+    window.localStorage.setItem(
+      'views:seen',
+      JSON.stringify({ seen: { at: Date.now(), total: 60 } }),
     );
-    expect(postCalls).toHaveLength(1);
+    mockApi({ map: { seen: 50 }, posted: 61 });
+
+    await act(async () => {
+      renderCounter('seen');
+    });
+    await flushIdle();
+
+    expect(await screen.findByText('60 views')).toBeInTheDocument();
+    expect(posts()).toHaveLength(0);
   });
 
-  test('Registers exactly once across re-renders (idempotent)', async () => {
-    const slug = 'idempotent';
-    let rerender!: (ui: React.ReactElement) => void;
+  test('counts the browser again after a day', async () => {
+    window.localStorage.setItem(
+      'views:seen',
+      JSON.stringify({ stale: { at: Date.now() - DAY_MS - 1, total: 60 } }),
+    );
+    mockApi({ map: { stale: 50 }, posted: 61 });
 
     await act(async () => {
-      ({ rerender } = render(<ViewCounter slug={slug} />));
+      renderCounter('stale');
     });
+    await flushIdle();
+
+    expect(await screen.findByText('61 views')).toBeInTheDocument();
+    expect(posts()).toHaveLength(1);
+  });
+
+  test('skips registration in a browser that opted out', async () => {
+    window.localStorage.setItem('views:ignore', '1');
+    mockApi({ map: { ignored: 5 }, posted: 6 });
 
     await act(async () => {
-      jest.advanceTimersByTime(150);
+      renderCounter('ignored');
     });
+    await flushIdle();
 
+    expect(await screen.findByText('5 views')).toBeInTheDocument();
+    expect(posts()).toHaveLength(0);
+  });
+
+  test('retries on the next visit when registration fails', async () => {
+    mockApi({ map: { retry: 5 }, postOk: false });
+
+    let unmount!: () => void;
     await act(async () => {
-      rerender(<ViewCounter slug={slug} />);
-      rerender(<ViewCounter slug={slug} />);
+      ({ unmount } = renderCounter('retry'));
+    });
+    await flushIdle();
+    await waitFor(() => expect(posts()).toHaveLength(1));
+    unmount();
+
+    (global.fetch as jest.Mock).mockClear();
+    mockApi({ map: { retry: 5 }, posted: 6 });
+    await act(async () => {
+      renderCounter('retry');
+    });
+    await flushIdle();
+
+    expect(await screen.findByText('6 views')).toBeInTheDocument();
+    expect(posts()).toHaveLength(1);
+  });
+
+  test('registers each post when navigating between posts', async () => {
+    mockApi({ map: { a: 1, b: 1 }, posted: 2 });
+
+    let rerenderSlug!: (slug: string) => void;
+    await act(async () => {
+      ({ rerenderSlug } = renderCounter('a'));
+    });
+    await flushIdle();
+    await act(async () => {
+      rerenderSlug('b');
+    });
+    await flushIdle();
+
+    await waitFor(() =>
+      expect(posts().map(([url]) => url)).toEqual([
+        '/api/views/a',
+        '/api/views/b',
+      ]),
+    );
+  });
+
+  test('registers exactly once across re-renders', async () => {
+    mockApi({ map: { same: 1 }, posted: 2 });
+
+    let rerenderSlug!: (slug: string) => void;
+    await act(async () => {
+      ({ rerenderSlug } = renderCounter('same'));
+    });
+    await flushIdle();
+    await act(async () => {
+      rerenderSlug('same');
+      rerenderSlug('same');
       jest.advanceTimersByTime(1000);
     });
 
-    const postCalls = (global.fetch as jest.Mock).mock.calls.filter(
-      ([, init]) => init?.method === 'POST',
-    );
-    expect(postCalls).toHaveLength(1);
+    await waitFor(() => expect(posts()).toHaveLength(1));
   });
 
-  test('Resets the registration guard when POST fails so retry can succeed', async () => {
-    const slug = 'retry-on-fail';
-
-    // First call (GET) ok, second call (POST) fails
-    (global.fetch as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ total: 1 }),
-        }),
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({ ok: false, statusText: 'boom' }),
-      );
-
-    let unmount!: () => void;
-    await act(async () => {
-      ({ unmount } = render(<ViewCounter slug={slug} />));
-    });
+  test('waits until a hidden or prerendered page is shown', async () => {
+    const state = { value: 'hidden' };
+    jest
+      .spyOn(document, 'visibilityState', 'get')
+      .mockImplementation(() => state.value as DocumentVisibilityState);
+    mockApi({ map: { hidden: 1 }, posted: 2 });
 
     await act(async () => {
-      jest.advanceTimersByTime(150);
+      renderCounter('hidden');
     });
+    await flushIdle();
+    expect(posts()).toHaveLength(0);
 
-    // Allow the rejected promise + .catch to flush
+    state.value = 'visible';
     await act(async () => {
-      await Promise.resolve();
-      await Promise.resolve();
+      document.dispatchEvent(new Event('visibilitychange'));
     });
 
-    unmount();
-
-    // Re-mount: ref was reset, so a fresh POST attempt should occur
-    (global.fetch as jest.Mock).mockClear();
-    (global.fetch as jest.Mock).mockImplementation(() =>
-      Promise.resolve({ ok: true, json: () => Promise.resolve({ total: 2 }) }),
-    );
-
-    await act(async () => {
-      render(<ViewCounter slug={slug} />);
-    });
-
-    await act(async () => {
-      jest.advanceTimersByTime(150);
-    });
-
-    const postCalls = (global.fetch as jest.Mock).mock.calls.filter(
-      ([, init]) => init?.method === 'POST',
-    );
-    expect(postCalls.length).toBeGreaterThanOrEqual(1);
+    await waitFor(() => expect(posts()).toHaveLength(1));
   });
 
-  test('Uses requestIdleCallback when available and cleans it up on unmount', async () => {
+  test('uses requestIdleCallback when available and cancels it on unmount', async () => {
     const requestIdleCallback = jest.fn(() => 42);
     const cancelIdleCallback = jest.fn();
     Object.assign(window, { requestIdleCallback, cancelIdleCallback });
+    mockApi({ map: {} });
 
-    const slug = 'idle';
     let unmount!: () => void;
-
     await act(async () => {
-      ({ unmount } = render(<ViewCounter slug={slug} />));
+      ({ unmount } = renderCounter('idle'));
     });
 
     expect(requestIdleCallback).toHaveBeenCalledTimes(1);
-
     unmount();
     expect(cancelIdleCallback).toHaveBeenCalledWith(42);
   });
 
-  test('POST result is fed back into the SWR cache (no extra GET refetch)', async () => {
-    const slug = 'mutate-after-post';
-    (global.fetch as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ total: 9 }),
-        }),
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ total: 10 }),
-        }),
-      );
+  test('does not carry a registered count over to the next post', async () => {
+    window.localStorage.setItem(
+      'views:seen',
+      JSON.stringify({ b: { at: Date.now(), total: 3 } }),
+    );
+    mockApi({ map: { a: 1, b: 3 }, posted: 500 });
+    const ui = (slug: string) => (
+      <SWRConfig value={{ provider: () => new Map() }}>
+        <ViewCounter slug={slug} />
+      </SWRConfig>
+    );
+
+    let rerender!: (next: React.ReactElement) => void;
+    await act(async () => {
+      ({ rerender } = render(ui('a')));
+    });
+    await flushIdle();
+    expect(await screen.findByText('500 views')).toBeInTheDocument();
 
     await act(async () => {
-      render(<ViewCounter slug={slug} />);
+      rerender(ui('b'));
     });
+    await flushIdle();
 
-    await act(async () => {
-      jest.advanceTimersByTime(150);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('10 views')).toBeInTheDocument();
-    });
+    expect(await screen.findByText('3 views')).toBeInTheDocument();
+    expect(posts().map(([url]) => url)).toEqual(['/api/views/a']);
   });
 
-  test('Patches the shared /api/views map with the registered count', async () => {
-    const slug = 'shared-map';
-    (global.fetch as jest.Mock).mockImplementation(
-      (url: string, init?: RequestInit) =>
-        Promise.resolve({
-          ok: true,
-          json: () =>
-            Promise.resolve(
-              url === '/api/views'
-                ? { views: { [slug]: 5, other: 7 } }
-                : { total: init?.method === 'POST' ? 6 : 5 },
-            ),
-        }),
-    );
+  test('counts a slug that shadows an Object.prototype name', async () => {
+    mockApi({ map: { constructor: 1 }, posted: 2 });
 
     await act(async () => {
-      renderWithFreshCache(
-        <>
-          <AllViewsProbe slug={slug} />
-          <ViewCounter slug={slug} />
-        </>,
-      );
+      renderCounter('constructor');
     });
-    await waitFor(() => {
-      expect(screen.getByText('map: 5')).toBeInTheDocument();
-    });
+    await flushIdle();
 
-    await act(async () => {
-      jest.advanceTimersByTime(150);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('map: 6')).toBeInTheDocument();
-    });
-    const mapCalls = (global.fetch as jest.Mock).mock.calls.filter(
-      ([url]) => url === '/api/views',
-    );
-    expect(mapCalls).toHaveLength(1);
+    expect(await screen.findByText('2 views')).toBeInTheDocument();
+    expect(posts()).toHaveLength(1);
   });
 
-  test('Keeps an in-flight /api/views response when the POST lands first', async () => {
-    const slug = 'in-flight-map';
-    let resolveMap!: (value: unknown) => void;
-    (global.fetch as jest.Mock).mockImplementation(
-      (url: string, init?: RequestInit) =>
-        url === '/api/views'
-          ? new Promise((resolve) => {
-              resolveMap = resolve;
-            })
-          : Promise.resolve({
-              ok: true,
-              json: () =>
-                Promise.resolve({ total: init?.method === 'POST' ? 6 : 5 }),
-            }),
+  test('keeps a spoken space between the read time and the count', async () => {
+    mockApi({ map: { spaced: 4 }, posted: 5 });
+
+    const { container } = renderCounter('spaced');
+    await flushIdle();
+
+    await screen.findByText('5 views');
+    expect(container.textContent).toBe(' • 5 views');
+    expect(container.querySelector('[aria-hidden="true"]')?.textContent).toBe(
+      '•',
     );
-
-    await act(async () => {
-      renderWithFreshCache(
-        <>
-          <AllViewsProbe slug={slug} />
-          <ViewCounter slug={slug} />
-        </>,
-      );
-    });
-    await act(async () => {
-      jest.advanceTimersByTime(150);
-    });
-    await waitFor(() => {
-      expect(screen.getByText('6 views')).toBeInTheDocument();
-    });
-
-    await act(async () => {
-      resolveMap({
-        ok: true,
-        json: () => Promise.resolve({ views: { [slug]: 6 } }),
-      });
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('map: 6')).toBeInTheDocument();
-    });
   });
 });

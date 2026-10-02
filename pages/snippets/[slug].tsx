@@ -20,6 +20,7 @@ import {
 import { compileMDX } from '@/lib/scripts/compiler';
 import { getSnippetBySlug, getSnippetSlugs } from '@/lib/snippets/api';
 import { Snippet } from '@/lib/types';
+import { registerView, whenVisible } from '@/lib/views';
 
 type SnippetPageProps = Pick<Snippet, 'data'> & {
   content: MDXRemoteSerializeResult;
@@ -35,14 +36,13 @@ function SnippetPage(props: SnippetPageProps) {
     data: { title, heading, description, createDate, updateDate, keywords },
   } = props;
 
-  useEffect(() => {
-    const registerView = () =>
-      fetch(`/api/views/${slug}`, {
-        method: 'POST',
-      }).catch(() => {});
-
-    registerView();
-  }, [slug]);
+  useEffect(
+    () =>
+      whenVisible(() => {
+        void registerView(slug);
+      }),
+    [slug],
+  );
 
   return (
     <>

@@ -1,14 +1,12 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
-import useSWR from 'swr';
 
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
 import { PageMeta } from '@/components/page-meta';
 import { SearchInput } from '@/components/search-input';
-import { fetcher } from '@/lib/fetcher';
 import {
   filterPostsByCategory,
   getPostsCategories,
@@ -18,7 +16,7 @@ import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
 import { generateBreadcrumbSchema, serializeJsonLd } from '@/lib/schema';
 import { PostCategory, PostMetadata } from '@/lib/types';
 import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
-import type { AllViewsResponse } from '@/pages/api/views';
+import { useViewCounts } from '@/lib/views';
 
 interface CategoryPageProps {
   posts: PostMetadata[];
@@ -34,8 +32,7 @@ function CategoryPage(props: CategoryPageProps) {
     props;
   const postsLength = posts.length;
   const displayCategory = formatCategoryName(category);
-  const { data: viewsData } = useSWR<AllViewsResponse>('/api/views', fetcher);
-  const allViews = viewsData?.views;
+  const { getViews } = useViewCounts();
 
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) =>
@@ -92,7 +89,7 @@ function CategoryPage(props: CategoryPageProps) {
                   slug={data.slug}
                   heading={data.heading}
                   excerpt={data.description}
-                  views={allViews?.[data.slug]}
+                  views={getViews(data.slug)}
                 />
               </li>
             ))}

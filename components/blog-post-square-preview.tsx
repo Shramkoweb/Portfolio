@@ -3,17 +3,26 @@ import { Eye } from 'lucide-react';
 import Link from 'next/link';
 
 import { Badge } from '@/components/badge';
+import { formatViewCount } from '@/lib/views';
 
 interface BlogPostPreviewProps {
   heading: string;
   slug: string;
   classNames: string;
   views?: number;
+  isLoading?: boolean;
   isNew?: boolean;
 }
 
 export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
-  const { heading, slug, classNames, views, isNew = false } = props;
+  const {
+    heading,
+    slug,
+    classNames,
+    views,
+    isLoading = false,
+    isNew = false,
+  } = props;
 
   return (
     <Link
@@ -31,20 +40,28 @@ export function BlogPostSquarePreview(props: BlogPostPreviewProps) {
           </h3>
           {isNew && <Badge label="New" />}
         </div>
-        <div className="flex items-center text-gray-500 dark:text-gray-400">
+        {/* `invisible` keeps the row's height when there is no count to show. */}
+        <div
+          className={clsx(
+            'flex items-center text-gray-500 dark:text-gray-400',
+            !views && !isLoading && 'invisible',
+          )}
+        >
           <Eye size={24} aria-hidden="true" />
-          <span className="ml-2 flex items-center">
-            {views !== undefined ? (
+          <span className="ml-2 flex items-center tabular-nums">
+            {views ? (
               <>
-                {views.toLocaleString()}
-                <span className="sr-only"> views</span>
+                {formatViewCount(views)}
+                <span className="sr-only">
+                  {views === 1 ? ' view' : ' views'}
+                </span>
               </>
-            ) : (
+            ) : isLoading ? (
               <span
                 className="block h-4 w-10 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
                 aria-hidden="true"
               />
-            )}
+            ) : null}
           </span>
         </div>
       </div>

@@ -1,68 +1,70 @@
-import { useEffect, useRef } from 'react';
-import useSWR, { useSWRConfig } from 'swr';
+import { useEffect, useState } from 'react';
+import { useSWRConfig } from 'swr';
 
-import { fetcher } from '@/lib/fetcher';
-import { Views } from '@/lib/types';
-import type { AllViewsResponse } from '@/pages/api/views';
+import {
+  formatViews,
+  registerView,
+  useViewCounts,
+  whenVisible,
+} from '@/lib/views';
 
 interface ViewCounterProps {
   slug: string;
 }
 
+// Pages Router reuses the page component on client-side navigation between
+// posts, so the registered total is tied to its slug and never carries over.
 export function ViewCounter(props: ViewCounterProps) {
   const { slug } = props;
-  const cacheKey = `/api/views/${slug}`;
-  const hasRegisteredView = useRef(false);
-  const { cache, mutate } = useSWRConfig();
-
-  const { data } = useSWR<Views>(cacheKey, fetcher);
+  const { mutate } = useSWRConfig();
+  const { getViews } = useViewCounts();
+  const [registered, setRegistered] = useState<{
+    slug: string;
+    total: number;
+  }>();
 
   useEffect(() => {
-    if (hasRegisteredView.current) {
-      return;
-    }
-
-    hasRegisteredView.current = true;
-
+    let stopWaiting = () => {};
     const register = () => {
-      fetch(cacheKey, { method: 'POST' })
-        .then((res) => {
-          if (!res.ok) throw new Error(res.statusText);
-          return res.json();
-        })
-        .then((newData: Views) => {
-          mutate(cacheKey, newData, false);
-          // Blog cards read the shared /api/views map, so patch it too or they
-          // show the pre-visit count until the CDN copy expires. Only patch a
-          // map that is already cached: any mutate on the key makes SWR discard
-          // an in-flight GET, which would leave every card blank.
-          const allViews = (
-            cache.get('/api/views')?.data as AllViewsResponse | undefined
-          )?.views;
-          if (allViews) {
-            mutate<AllViewsResponse>(
-              '/api/views',
-              { views: { ...allViews, [slug]: newData.total } },
-              { revalidate: false },
-            );
-          }
-        })
-        .catch(() => {
-          hasRegisteredView.current = false;
+      stopWaiting = whenVisible(() => {
+        void registerView(slug).then((total) => {
+          if (total === undefined) return;
+          setRegistered({ slug, total });
+          // Seeds the per-slug key that list cards floor their count with.
+          void mutate(`/api/views/${slug}`, { total }, false);
         });
+      });
     };
 
     // Defer to idle time to avoid blocking INP
     if ('requestIdleCallback' in window) {
       const id = requestIdleCallback(register);
-      return () => cancelIdleCallback(id);
+      return () => {
+        cancelIdleCallback(id);
+        stopWaiting();
+      };
     }
 
     const id = setTimeout(register, 150);
-    return () => clearTimeout(id);
-  }, [cache, cacheKey, mutate, slug]);
+    return () => {
+      clearTimeout(id);
+      stopWaiting();
+    };
+  }, [mutate, slug]);
+
+  const shared = getViews(slug);
+  const views =
+    registered?.slug === slug
+      ? Math.max(shared ?? 0, registered.total)
+      : shared;
+
+  if (!views) return null;
 
   return (
-    <span className="tabular-nums">{`${data?.total?.toLocaleString() ?? '---'} views`}</span>
+    <>
+      {' '}
+      <span aria-hidden="true">•</span>{' '}
+      <span className="tabular-nums">{formatViews(views)}</span>
+    </>
   );
 }
