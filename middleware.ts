@@ -1,9 +1,12 @@
-// NOTE: We deliberately keep the legacy `middleware.ts` filename rather than
-// renaming to `proxy.ts`. In Next.js 16 the `proxy` convention runs on Node
-// runtime, while `middleware` keeps edge runtime — which we need for per-POP
-// bot rejection without a Node function invocation. Revisit when Next adds
-// edge support to `proxy`.
-//   https://nextjs.org/docs/app/guides/upgrading/version-16
+// Kept as `middleware` (not `proxy`) for the edge runtime: bots are rejected at
+// each POP without invoking a Node function on nearly every request. `proxy` is
+// Node-only, and the v16 upgrade guide ("`middleware` to `proxy`") says to keep
+// `middleware` for edge. The build's deprecation warning is expected and can't
+// be silenced (having both files errors). Migrate when `proxy` supports edge, the
+// warning becomes an error, or at the next major: lib/bot-blocklist is
+// runtime-agnostic, so it's a rename plus updating the tests that import
+// `middleware`: __tests__/middleware.test.ts and
+// lib/bot-blocklist/user-agents.test.ts.
 import { NextResponse, type NextRequest } from 'next/server';
 
 import { isBlockedUserAgent } from '@/lib/bot-blocklist/matcher';

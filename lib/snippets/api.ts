@@ -3,7 +3,7 @@ import { join } from 'path';
 
 import matter from 'gray-matter';
 
-import { Snippet } from '@/lib/types';
+import { Snippet, SnippetMetadata } from '@/lib/types';
 import { extractMarkdownSlug } from '@/lib/utils';
 
 const SNIPPETS_DIRECTORY = join(process.cwd(), '_snippets');
@@ -50,6 +50,26 @@ export async function getSnippets(): Promise<Snippet[]> {
     .map(getSnippetBySlug);
 
   return Promise.all(snippetPromises);
+}
+
+async function getSnippetMetadataBySlug(
+  slug: string,
+): Promise<SnippetMetadata> {
+  const { data } = await getSnippetBySlug(slug);
+  return { data };
+}
+
+export async function getSnippetsMetadata(): Promise<SnippetMetadata[]> {
+  const fileNames = await readdir(SNIPPETS_DIRECTORY);
+  const markdownFiles = fileNames.filter((fileName) =>
+    fileName.endsWith('.md'),
+  );
+
+  const metadataPromises = markdownFiles
+    .map(extractMarkdownSlug)
+    .map(getSnippetMetadataBySlug);
+
+  return Promise.all(metadataPromises);
 }
 
 export async function getSnippetSlugs(): Promise<string[]> {

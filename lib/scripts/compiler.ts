@@ -17,8 +17,11 @@ const highlighterPromise = getSingletonHighlighter({
 // Singleton: highlightCache skips the transformer for cached blocks,
 // so a per-call transformer would return empty CSS on subsequent runs.
 // Module-level instance accumulates all class→variable mappings across calls.
-const transformer = transformerStyleToClass();
+// The default `__shiki_` prefix repeats on every highlighted token and bloats
+// the page data. Nothing else on the site uses classes starting with `_`.
+const transformer = transformerStyleToClass({ classPrefix: '_' });
 const highlightCache = new Map();
+const STRING_LITERAL = /"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g;
 
 export async function compileMDX(content: string) {
   const highlighter = await highlighterPromise;
@@ -55,6 +58,17 @@ export async function compileMDX(content: string) {
       format: 'mdx',
     },
   });
+
+  // Indentation is about a quarter of the page data. Dropping it is safe because
+  // serialize blocks JS by default, so the output is generated code whose string
+  // literals escape their newlines; only a template literal could span lines.
+  // Backticks inside strings are common (code blocks), so only one outside a
+  // string literal skips the strip. Don't pass `blockJS: false` without
+  // revisiting this: user JS could bring regex literals the scanner can't see.
+  const code = mdx.compiledSource.replace(STRING_LITERAL, '');
+  if (!code.includes('`')) {
+    mdx.compiledSource = mdx.compiledSource.replace(/\n[ \t]+/g, '\n');
+  }
 
   const shikiCSS = transformer.getCSS();
 

@@ -1,8 +1,14 @@
-import { Post, PostCategory, PostMetadata, Snippet } from '@/lib/types';
+import {
+  Post,
+  PostCategory,
+  PostMetadata,
+  Snippet,
+  SnippetMetadata,
+} from '@/lib/types';
 
 export const sortByBirthtime = (
-  first: Post | PostMetadata | Snippet,
-  second: Post | PostMetadata | Snippet,
+  first: Post | PostMetadata | Snippet | SnippetMetadata,
+  second: Post | PostMetadata | Snippet | SnippetMetadata,
 ) => second.data.createDate - first.data.createDate;
 
 export const filterByFeatured = (post: Post | PostMetadata) =>
