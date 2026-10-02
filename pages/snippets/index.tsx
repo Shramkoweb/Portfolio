@@ -4,8 +4,8 @@ import { PageMeta } from '@/components/page-meta';
 import { ResourceCard } from '@/components/resource-card';
 import { sortByBirthtime } from '@/lib/posts/utils';
 import { serializeJsonLd } from '@/lib/schema';
-import { getSnippets } from '@/lib/snippets/api';
-import { Snippet } from '@/lib/types';
+import { getSnippetsMetadata } from '@/lib/snippets/api';
+import { SnippetMetadata } from '@/lib/types';
 
 const PAGE_TITLE =
   'JavaScript, TypeScript, React & CSS Code Snippets | Serhii Shramko';
@@ -13,7 +13,7 @@ const PAGE_DESCRIPTION =
   'Copy-paste code snippets for JavaScript, TypeScript, React hooks, CSS, and Node.js. Each one with a usage example and the gotchas to watch for.';
 
 interface SnippetsPageProps {
-  snippets: Snippet[];
+  snippets: SnippetMetadata[];
   jsonLd: object;
 }
 
@@ -67,7 +67,7 @@ function SnippetsPage(props: SnippetsPageProps) {
 }
 
 export async function getStaticProps() {
-  const snippets = await getSnippets();
+  const snippets = await getSnippetsMetadata();
   const sortedSnippets = snippets.sort(sortByBirthtime);
 
   const jsonLd = {
