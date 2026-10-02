@@ -1,21 +1,16 @@
 import Link from 'next/link';
-import useSWR from 'swr';
 
-import { fetcher } from '@/lib/fetcher';
 import { Routes } from '@/lib/routes';
-import { Views } from '@/lib/types';
 
 interface BlogPostPreviewProps {
   slug: string;
   heading: string;
   excerpt: string;
+  views?: number;
 }
 
 export function BlogPostPreview(props: BlogPostPreviewProps) {
-  const { slug, heading, excerpt } = props;
-
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  const views = data?.total;
+  const { slug, heading, excerpt, views } = props;
 
   return (
     <Link

@@ -2,12 +2,14 @@ import { Rss, Search } from 'lucide-react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import useSWR from 'swr';
 
 import { BlogPostPreview } from '@/components/blog-post-preview';
 import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
 import { PageMeta } from '@/components/page-meta';
 import { YearSeparator } from '@/components/year-separator';
+import { fetcher } from '@/lib/fetcher';
 import { getPostsCategories, getPostsMetadata } from '@/lib/posts/api';
 import {
   addYearSeparators,
@@ -17,6 +19,7 @@ import {
 } from '@/lib/posts/utils';
 import { serializeJsonLd } from '@/lib/schema';
 import { PostCategory, PostMetadata } from '@/lib/types';
+import type { AllViewsResponse } from '@/pages/api/views';
 
 interface BlogPageProps {
   posts: PostMetadata[];
@@ -38,6 +41,8 @@ interface BlogPageProps {
 function BlogPage(props: BlogPageProps) {
   const { posts, categories } = props;
   const postsLength = posts.length;
+  const { data: viewsData } = useSWR<AllViewsResponse>('/api/views', fetcher);
+  const allViews = viewsData?.views;
 
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
@@ -138,6 +143,7 @@ function BlogPage(props: BlogPageProps) {
                       slug={post.data.slug}
                       heading={post.data.heading}
                       excerpt={post.data.description}
+                      views={allViews?.[post.data.slug]}
                     />
                   </li>
                 ))
@@ -156,6 +162,7 @@ function BlogPage(props: BlogPageProps) {
                         slug={item.data.slug}
                         heading={item.data.heading}
                         excerpt={item.data.description}
+                        views={allViews?.[item.data.slug]}
                       />
                     </li>
                   );

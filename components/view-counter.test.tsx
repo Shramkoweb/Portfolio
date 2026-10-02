@@ -1,6 +1,20 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
+import useSWR, { SWRConfig } from 'swr';
 
 import { ViewCounter } from '@/components/view-counter';
+import { fetcher } from '@/lib/fetcher';
+import type { AllViewsResponse } from '@/pages/api/views';
+
+function renderWithFreshCache(ui: React.ReactElement) {
+  return render(
+    <SWRConfig value={{ provider: () => new Map() }}>{ui}</SWRConfig>,
+  );
+}
+
+function AllViewsProbe({ slug }: { slug: string }) {
+  const { data } = useSWR<AllViewsResponse>('/api/views', fetcher);
+  return <span>{`map: ${data?.views?.[slug] ?? 'none'}`}</span>;
+}
 
 describe('ViewCounter component', () => {
   beforeEach(() => {
@@ -230,6 +244,89 @@ describe('ViewCounter component', () => {
 
     await waitFor(() => {
       expect(screen.getByText('10 views')).toBeInTheDocument();
+    });
+  });
+
+  test('Patches the shared /api/views map with the registered count', async () => {
+    const slug = 'shared-map';
+    (global.fetch as jest.Mock).mockImplementation(
+      (url: string, init?: RequestInit) =>
+        Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve(
+              url === '/api/views'
+                ? { views: { [slug]: 5, other: 7 } }
+                : { total: init?.method === 'POST' ? 6 : 5 },
+            ),
+        }),
+    );
+
+    await act(async () => {
+      renderWithFreshCache(
+        <>
+          <AllViewsProbe slug={slug} />
+          <ViewCounter slug={slug} />
+        </>,
+      );
+    });
+    await waitFor(() => {
+      expect(screen.getByText('map: 5')).toBeInTheDocument();
+    });
+
+    await act(async () => {
+      jest.advanceTimersByTime(150);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('map: 6')).toBeInTheDocument();
+    });
+    const mapCalls = (global.fetch as jest.Mock).mock.calls.filter(
+      ([url]) => url === '/api/views',
+    );
+    expect(mapCalls).toHaveLength(1);
+  });
+
+  test('Keeps an in-flight /api/views response when the POST lands first', async () => {
+    const slug = 'in-flight-map';
+    let resolveMap!: (value: unknown) => void;
+    (global.fetch as jest.Mock).mockImplementation(
+      (url: string, init?: RequestInit) =>
+        url === '/api/views'
+          ? new Promise((resolve) => {
+              resolveMap = resolve;
+            })
+          : Promise.resolve({
+              ok: true,
+              json: () =>
+                Promise.resolve({ total: init?.method === 'POST' ? 6 : 5 }),
+            }),
+    );
+
+    await act(async () => {
+      renderWithFreshCache(
+        <>
+          <AllViewsProbe slug={slug} />
+          <ViewCounter slug={slug} />
+        </>,
+      );
+    });
+    await act(async () => {
+      jest.advanceTimersByTime(150);
+    });
+    await waitFor(() => {
+      expect(screen.getByText('6 views')).toBeInTheDocument();
+    });
+
+    await act(async () => {
+      resolveMap({
+        ok: true,
+        json: () => Promise.resolve({ views: { [slug]: 6 } }),
+      });
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('map: 6')).toBeInTheDocument();
     });
   });
 });
