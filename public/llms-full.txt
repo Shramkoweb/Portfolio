@@ -181,7 +181,7 @@ In-depth blog posts on web development and production-ready code snippets, plus 
   Keywords: scroll-driven animations, CSS scroll animation, animation-timeline, scroll progress CSS, view timeline CSS
 - [Generating UUIDs in JavaScript: Best Practices](https://shramko.dev/snippets/window-crypto): Generate UUIDs in JavaScript using window.crypto.randomUUID(). Copy-paste snippet for creating universally unique identifiers in browser environments.
   Keywords: window.crypto.randomUUID, UUID JavaScript, unique identifiers
-- [How to Check if an Element Is in the Viewport in JavaScript](https://shramko.dev/snippets/is-element-in-viewport): Check if an element is visible in the viewport using JavaScript. Covers Intersection Observer API and manual methods for lazy loading and animations.
+- [Check if an Element Is in the Viewport in JavaScript (2 Ways)](https://shramko.dev/snippets/is-element-in-viewport): Check if an element is visible in the viewport using JavaScript. Covers Intersection Observer API and manual methods for lazy loading and animations.
   Keywords: JavaScript viewport check, Intersection Observer API, visibility detection, lazy loading
 - [How to Move Cursor to the End of Input Field with JavaScript](https://shramko.dev/snippets/move-cursor): JavaScript snippet to programmatically move the text cursor to the end or beginning of an input field. Useful for form validation and auto-focus features.
   Keywords: move cursor to end of input, cursor position, setSelectionRange, input field focus
