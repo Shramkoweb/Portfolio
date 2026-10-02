@@ -17,6 +17,7 @@ import {
 } from '@/lib/posts/utils';
 import { serializeJsonLd } from '@/lib/schema';
 import { PostCategory, PostMetadata } from '@/lib/types';
+import { useViewCounts } from '@/lib/views';
 
 interface BlogPageProps {
   posts: PostMetadata[];
@@ -38,6 +39,7 @@ interface BlogPageProps {
 function BlogPage(props: BlogPageProps) {
   const { posts, categories } = props;
   const postsLength = posts.length;
+  const { getViews } = useViewCounts();
 
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
@@ -138,6 +140,7 @@ function BlogPage(props: BlogPageProps) {
                       slug={post.data.slug}
                       heading={post.data.heading}
                       excerpt={post.data.description}
+                      views={getViews(post.data.slug)}
                     />
                   </li>
                 ))
@@ -156,6 +159,7 @@ function BlogPage(props: BlogPageProps) {
                         slug={item.data.slug}
                         heading={item.data.heading}
                         excerpt={item.data.description}
+                        views={getViews(item.data.slug)}
                       />
                     </li>
                   );

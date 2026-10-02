@@ -1,4 +1,4 @@
-import { expect, test, visit } from './fixtures';
+import { expect, ready, test, visit } from './fixtures';
 
 const article = '/blog/npm-semantic-versioning';
 const endpoint = '**/api/reactions/npm-semantic-versioning';
@@ -91,7 +91,7 @@ for (const [path, slug] of [
   ['/quizlet-list', 'quizlet-page'],
   ['/udemy-reset-progress', 'udemy-reset-progress-page'],
 ]) {
-  test(`view registration occurs once per visit: ${path}`, async ({
+  test(`view registration occurs once per browser per day: ${path}`, async ({
     page,
     api,
   }) => {
@@ -106,6 +106,17 @@ for (const [path, slug] of [
     await expect(page.locator('html')).toHaveClass('dark');
     expect(registrations()).toHaveLength(1);
     await page.reload();
+    await ready(page);
+    // Let the deferred registration run, then check it was skipped.
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestIdleCallback(() => setTimeout(resolve, 200)),
+        ),
+    );
+    expect(registrations()).toHaveLength(1);
+    await page.evaluate(() => window.localStorage.removeItem('views:seen'));
+    await page.reload();
     await expect.poll(() => registrations().length).toBe(2);
   });
 }
@@ -117,11 +128,11 @@ for (const outcome of ['success', 'http-error', 'network-error'] as const) {
       if (outcome === 'http-error')
         return route.fulfill({ status: 500, json: { error: 'Unavailable' } });
       if (outcome === 'network-error') return route.abort('failed');
-      return route.fulfill({ json: { total: 1235 } });
+      return route.fulfill({ json: { total: 2345 } });
     });
     await visit(page, article);
     await expect(
-      page.getByText(`${outcome === 'success' ? '1,235' : '1,234'} views`, {
+      page.getByText(`${outcome === 'success' ? '2.3K' : '1.2K'} views`, {
         exact: true,
       }),
     ).toBeVisible();

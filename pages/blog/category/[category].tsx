@@ -16,6 +16,7 @@ import { filterByHeading, sortByBirthtime } from '@/lib/posts/utils';
 import { generateBreadcrumbSchema, serializeJsonLd } from '@/lib/schema';
 import { PostCategory, PostMetadata } from '@/lib/types';
 import { categoryToSeoData, formatCategoryName } from '@/lib/utils';
+import { useViewCounts } from '@/lib/views';
 
 interface CategoryPageProps {
   posts: PostMetadata[];
@@ -31,6 +32,7 @@ function CategoryPage(props: CategoryPageProps) {
     props;
   const postsLength = posts.length;
   const displayCategory = formatCategoryName(category);
+  const { getViews } = useViewCounts();
 
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) =>
@@ -87,6 +89,7 @@ function CategoryPage(props: CategoryPageProps) {
                   slug={data.slug}
                   heading={data.heading}
                   excerpt={data.description}
+                  views={getViews(data.slug)}
                 />
               </li>
             ))}

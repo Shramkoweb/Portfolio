@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "article": "node lib/scripts/generate-article-template.js",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "clean": "rm -rf .next coverage",
     "csp:check": "node lib/scripts/check-csp-hashes.js",
     "deps:audit": "pnpm audit --prod --audit-level=high",
@@ -36,7 +36,6 @@
     "@sentry/nextjs": "11.4.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/og": "1.0.3",
-    "@vercel/speed-insights": "2.0.0",
     "clsx": "2.1.1",
     "gray-matter": "4.0.3",
     "image-size": "2.0.4",

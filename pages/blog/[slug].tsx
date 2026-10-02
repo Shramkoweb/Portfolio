@@ -158,8 +158,7 @@ function ArticlePage(props: ArticlePageProps) {
             </div>
             <p className="mt-2 text-xs text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
               {`${readTime}`}
-              {' • '}
-              <ViewCounter slug={slug} />
+              <ViewCounter key={slug} slug={slug} />
             </p>
           </div>
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">

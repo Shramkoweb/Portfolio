@@ -1,52 +1,70 @@
-import { useEffect, useRef } from 'react';
-import useSWR, { mutate } from 'swr';
+import { useEffect, useState } from 'react';
+import { useSWRConfig } from 'swr';
 
-import { fetcher } from '@/lib/fetcher';
-import { Views } from '@/lib/types';
+import {
+  formatViews,
+  registerView,
+  useViewCounts,
+  whenVisible,
+} from '@/lib/views';
 
 interface ViewCounterProps {
   slug: string;
 }
 
+// Pages Router reuses the page component on client-side navigation between
+// posts, so the registered total is tied to its slug and never carries over.
 export function ViewCounter(props: ViewCounterProps) {
   const { slug } = props;
-  const cacheKey = `/api/views/${slug}`;
-  const hasRegisteredView = useRef(false);
-
-  const { data } = useSWR<Views>(cacheKey, fetcher);
+  const { mutate } = useSWRConfig();
+  const { getViews } = useViewCounts();
+  const [registered, setRegistered] = useState<{
+    slug: string;
+    total: number;
+  }>();
 
   useEffect(() => {
-    if (hasRegisteredView.current) {
-      return;
-    }
-
-    hasRegisteredView.current = true;
-
+    let stopWaiting = () => {};
     const register = () => {
-      fetch(cacheKey, { method: 'POST' })
-        .then((res) => {
-          if (!res.ok) throw new Error(res.statusText);
-          return res.json();
-        })
-        .then((newData) => {
-          mutate(cacheKey, newData, false);
-        })
-        .catch(() => {
-          hasRegisteredView.current = false;
+      stopWaiting = whenVisible(() => {
+        void registerView(slug).then((total) => {
+          if (total === undefined) return;
+          setRegistered({ slug, total });
+          // Seeds the per-slug key that list cards floor their count with.
+          void mutate(`/api/views/${slug}`, { total }, false);
         });
+      });
     };
 
     // Defer to idle time to avoid blocking INP
     if ('requestIdleCallback' in window) {
       const id = requestIdleCallback(register);
-      return () => cancelIdleCallback(id);
+      return () => {
+        cancelIdleCallback(id);
+        stopWaiting();
+      };
     }
 
     const id = setTimeout(register, 150);
-    return () => clearTimeout(id);
-  }, [cacheKey]);
+    return () => {
+      clearTimeout(id);
+      stopWaiting();
+    };
+  }, [mutate, slug]);
+
+  const shared = getViews(slug);
+  const views =
+    registered?.slug === slug
+      ? Math.max(shared ?? 0, registered.total)
+      : shared;
+
+  if (!views) return null;
 
   return (
-    <span className="tabular-nums">{`${data?.total?.toLocaleString() ?? '---'} views`}</span>
+    <>
+      {' '}
+      <span aria-hidden="true">•</span>{' '}
+      <span className="tabular-nums">{formatViews(views)}</span>
+    </>
   );
 }

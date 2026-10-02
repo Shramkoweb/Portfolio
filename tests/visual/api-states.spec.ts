@@ -1,4 +1,4 @@
-import { expect, test, visit } from './fixtures';
+import { expect, test, viewsSettled, visit } from './fixtures';
 
 for (const apiState of ['loading', 'error', 'empty'] as const) {
   test.describe(apiState, () => {
@@ -10,33 +10,30 @@ for (const apiState of ['loading', 'error', 'empty'] as const) {
       '/blog/npm-semantic-versioning',
     ]) {
       test(`${apiState} ${path}`, async ({ page, api }) => {
+        const settled =
+          apiState !== 'loading' && path !== '/dashboard'
+            ? viewsSettled(page)
+            : undefined;
         await visit(page, path);
+        await settled?.();
         await expect.poll(() => api.requests.length).toBeGreaterThan(0);
         if (path === '/dashboard')
           await expect(
             page.getByText(apiState === 'empty' ? '0' : '---', { exact: true }),
           ).toHaveCount(3);
-        if (path === '/') {
-          if (apiState === 'empty')
-            await expect(
-              page.locator('main a[href^="/blog/"]').first(),
-            ).toContainText('0');
-          else
-            await expect(
-              page.locator('main .animate-pulse').first(),
-            ).toBeVisible();
-        }
-        if (path.startsWith('/blog'))
+        if (path === '/' && apiState === 'loading')
           await expect(
-            page
-              .getByText(
-                apiState === 'empty' && path !== '/blog'
-                  ? '0 views'
-                  : '--- views',
-                { exact: true },
-              )
-              .first(),
+            page.locator('main .animate-pulse').first(),
           ).toBeVisible();
+        if (path === '/' && apiState !== 'loading')
+          await expect(page.locator('main .animate-pulse')).toHaveCount(0);
+        if (path !== '/dashboard') {
+          // No placeholder glyphs: an unknown or zero count renders nothing.
+          await expect(page.getByText('---', { exact: true })).toHaveCount(0);
+          await expect(
+            page.locator('main').getByText(/^[\d.]+K? views?$/),
+          ).toHaveCount(0);
+        }
         if (path.includes('npm-semantic-versioning')) {
           await expect(
             page.getByRole('button', { name: 'Love it', exact: true }),

@@ -2,11 +2,9 @@ import { Atom, MoveRight } from 'lucide-react';
 import { GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import useSWR from 'swr';
 
 import { Avatar } from '@/components/avatar';
 import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
-import { fetcher } from '@/lib/fetcher';
 import { getPosts } from '@/lib/posts/api';
 import {
   getAdvancedReactSeries,
@@ -19,7 +17,7 @@ import { Routes } from '@/lib/routes';
 import { generateWebSiteSchema, serializeJsonLd } from '@/lib/schema';
 import { Post } from '@/lib/types';
 import { generateGradient } from '@/lib/utils';
-import type { AllViewsResponse } from '@/pages/api/views';
+import { useViewCounts } from '@/lib/views';
 
 interface IndexPageProps {
   featuredPosts: Post[];
@@ -30,8 +28,7 @@ interface IndexPageProps {
 function IndexPage(props: IndexPageProps) {
   const { featuredPosts, otherPosts, advancedReactPosts } = props;
 
-  const { data: viewsData } = useSWR<AllViewsResponse>('/api/views', fetcher);
-  const allViews = viewsData?.views;
+  const { getViews, isLoading: viewsLoading } = useViewCounts();
 
   return (
     <>
@@ -108,7 +105,8 @@ function IndexPage(props: IndexPageProps) {
               heading={post.data.heading}
               slug={post.data.slug}
               classNames={generateGradient(post.data.slug)}
-              views={allViews?.[post.data.slug]}
+              views={getViews(post.data.slug)}
+              isLoading={viewsLoading}
               isNew={isNewPost(post)}
               key={post.data.slug}
             />
@@ -129,7 +127,8 @@ function IndexPage(props: IndexPageProps) {
                 heading={post.data.heading}
                 slug={post.data.slug}
                 classNames={generateGradient(post.data.slug)}
-                views={allViews?.[post.data.slug]}
+                views={getViews(post.data.slug)}
+                isLoading={viewsLoading}
                 isNew={isNewPost(post)}
                 key={post.data.slug}
               />
@@ -189,7 +188,8 @@ function IndexPage(props: IndexPageProps) {
               heading={post.data.heading}
               slug={post.data.slug}
               classNames="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
-              views={allViews?.[post.data.slug]}
+              views={getViews(post.data.slug)}
+              isLoading={viewsLoading}
               isNew={isNewPost(post)}
               key={post.data.slug}
             />

@@ -58,7 +58,10 @@ export default async function handler(
         select: { count: true },
       });
 
-      res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
+      res.setHeader(
+        'Cache-Control',
+        's-maxage=60, stale-while-revalidate=120, stale-if-error=86400',
+      );
 
       return res.status(200).json({ total: Number(views?.count ?? 0) });
     }

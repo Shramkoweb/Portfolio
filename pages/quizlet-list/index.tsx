@@ -7,6 +7,7 @@ import { PageMeta } from '@/components/page-meta';
 import { StoreRating } from '@/components/store-rating';
 import { QUIZLET_APP_OG_IMAGE, QUIZLET_APP_RATING } from '@/lib/constants';
 import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
+import { registerView, whenVisible } from '@/lib/views';
 
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
@@ -14,14 +15,13 @@ import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklis
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
 
 function QuizletPage() {
-  useEffect(() => {
-    const registerView = () =>
-      fetch('/api/views/quizlet-page', {
-        method: 'POST',
-      }).catch(() => {});
-
-    registerView();
-  }, []);
+  useEffect(
+    () =>
+      whenVisible(() => {
+        void registerView('quizlet-page');
+      }),
+    [],
+  );
 
   return (
     <>

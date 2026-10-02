@@ -44,7 +44,7 @@ describe('API /api/views', () => {
     expect(json).toHaveBeenCalledWith({ views: { a: 10, b: 0 } });
     expect(setHeader).toHaveBeenCalledWith(
       'Cache-Control',
-      's-maxage=60, stale-while-revalidate=120',
+      's-maxage=60, stale-while-revalidate=120, stale-if-error=86400',
     );
   });
 

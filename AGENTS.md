@@ -6,17 +6,17 @@ Brief for AI coding agents (Claude Code, Codex, Cursor, Copilot, Factory). Human
 
 `shramko.dev` is a personal portfolio + blog + digital garden. Single deployment target: Vercel.
 
-| Layer      | Tools                                                          |
-| ---------- | -------------------------------------------------------------- |
-| Framework  | Next.js 16 (Pages Router), React 19                            |
-| Language   | TypeScript (strict)                                            |
-| Styling    | Tailwind CSS v4                                                |
-| Content    | MDX via `next-mdx-remote`, Shiki for syntax highlighting       |
-| Data       | Prisma 7, Postgres (Neon in prod)                              |
-| Fetch      | SWR                                                            |
-| Monitoring | Sentry, Vercel Analytics, Speed Insights, Checkly, UptimeRobot |
-| Testing    | Jest + Testing Library, Playwright (Chromium)                  |
-| Tooling    | oxlint, oxfmt, commitlint, pnpm                                |
+| Layer      | Tools                                                    |
+| ---------- | -------------------------------------------------------- |
+| Framework  | Next.js 16 (Pages Router), React 19                      |
+| Language   | TypeScript (strict)                                      |
+| Styling    | Tailwind CSS v4                                          |
+| Content    | MDX via `next-mdx-remote`, Shiki for syntax highlighting |
+| Data       | Prisma 7, Postgres (Neon in prod)                        |
+| Fetch      | SWR                                                      |
+| Monitoring | Sentry, Vercel Analytics, Checkly, UptimeRobot           |
+| Testing    | Jest + Testing Library, Playwright (Chromium)            |
+| Tooling    | oxlint, oxfmt, commitlint, pnpm                          |
 
 ## Setup
 
