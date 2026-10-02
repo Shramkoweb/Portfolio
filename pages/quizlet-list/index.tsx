@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { PageMeta } from '@/components/page-meta';
-import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
-import { serializeJsonLd } from '@/lib/schema';
+import { StoreRating } from '@/components/store-rating';
+import { QUIZLET_APP_OG_IMAGE, QUIZLET_APP_RATING } from '@/lib/constants';
+import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
 
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
@@ -61,6 +62,8 @@ function QuizletPage() {
                 name: 'Serhii Shramko',
                 url: 'https://shramko.dev/about',
               },
+              aggregateRating:
+                generateAggregateRatingSchema(QUIZLET_APP_RATING),
               operatingSystem: 'Chrome, Firefox, Edge',
               applicationCategory: [
                 'BrowserApplication',
@@ -122,6 +125,8 @@ function QuizletPage() {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Quizlet QuickList: The Easiest Way to Collect and Study New Words
         </h1>
+
+        <StoreRating rating={QUIZLET_APP_RATING} />
 
         <p>
           Hey there! If you’re like me, you’ve probably come across tons of new

@@ -1,5 +1,5 @@
 ---
-title: How to Get the Current URL with JavaScript
+title: 'How to Get the Current URL in JavaScript (window.location)'
 updateDate: 2026-02-21
 heading: How to get the current URL with JavaScript
 description: Learn different methods to retrieve the current URL using JavaScript for analytics tracking, dynamic content updates, and more.

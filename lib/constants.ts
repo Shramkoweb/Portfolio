@@ -5,6 +5,31 @@ export const QUIZLET_APP_OG_IMAGE =
 export const UDEMY_RESET_APP_OG_IMAGE =
   'https://shramko.dev/static/images/udemy-progress-reset/udemy-progress-reset-og.png';
 
+export interface StoreRating {
+  ratingValue: number;
+  ratingCount: number;
+  users: string;
+  storeUrl: string;
+}
+
+// Copied by hand from the Chrome Web Store on 2026-10-02. The pages show
+// these numbers and mark them up as aggregateRating, so update both stores'
+// figures here together when they move.
+export const QUIZLET_APP_RATING: StoreRating = {
+  ratingValue: 4.7,
+  ratingCount: 6,
+  users: '184',
+  storeUrl:
+    'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+};
+export const UDEMY_RESET_APP_RATING: StoreRating = {
+  ratingValue: 5,
+  ratingCount: 13,
+  users: '1,000',
+  storeUrl:
+    'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
+};
+
 export const GRADIENT_FROM_COLORS = [
   'from-red-500',
   'from-orange-500',

@@ -1,4 +1,5 @@
 import {
+  generateAggregateRatingSchema,
   generateBlogPostingSchema,
   generateTechArticleSchema,
   generateBreadcrumbSchema,
@@ -150,6 +151,36 @@ describe('generateWebSiteSchema', () => {
     expect(schema['@type']).toBe('WebSite');
     expect(schema.url).toBe('https://shramko.dev');
     expect(schema.author.name).toBe('Serhii Shramko');
+  });
+});
+
+describe('generateAggregateRatingSchema', () => {
+  it("meets Google's required AggregateRating fields on a 1-5 scale", () => {
+    const schema = generateAggregateRatingSchema({
+      ratingValue: 4.7,
+      ratingCount: 6,
+      users: '184',
+      storeUrl: 'https://chromewebstore.google.com/detail/example',
+    });
+
+    expect(schema).toEqual({
+      '@type': 'AggregateRating',
+      ratingValue: '4.7',
+      ratingCount: 6,
+      bestRating: '5',
+      worstRating: '1',
+    });
+  });
+
+  it('keeps one decimal so it matches the visible score', () => {
+    const schema = generateAggregateRatingSchema({
+      ratingValue: 5,
+      ratingCount: 13,
+      users: '1,000',
+      storeUrl: 'https://chromewebstore.google.com/detail/example',
+    });
+
+    expect(schema.ratingValue).toBe('5.0');
   });
 });
 

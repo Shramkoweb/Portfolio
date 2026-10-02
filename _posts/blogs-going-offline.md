@@ -20,8 +20,8 @@ featured: true
 <Image src="blogs-going-offline.png" alt="Hand-drawn cover in two panels. 2024: a blog page read by three people, one holding a book, and the caption income: enough to live on. 2026: the same blog page with a red arrow for traffic going up, read by three robots labelled GPTBot, ClaudeBot and CCBot, and the caption income: zero" priority inverted />
 
 My post on [expressions vs statements](/blog/expressions-statements) links to
-[Axel Rauschmayer's article](https://2ality.com/2012/09/expressions-vs-statements.html) on the same topic. It's a 404
-now.
+Axel Rauschmayer's article on the same topic. It's a 404 now; only the
+[Internet Archive copy](https://web.archive.org/web/20260219101443/https://2ality.com/2012/09/expressions-vs-statements.html) is left.
 
 In May, Axel took [2ality](https://2ality.com/) and his free online books offline. His notice says the income from his
 books "went from being enough for me to live off (2024) to zero (2026)", while traffic grew past what he could afford.
