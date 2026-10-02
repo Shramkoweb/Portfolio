@@ -111,6 +111,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
+      # The workspace belongs to the runner user, not the container's root;
+      # without this, git refuses it and the `prepare` script fails.
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - run: pnpm i --frozen-lockfile
         env:
           CI: true
