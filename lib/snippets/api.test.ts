@@ -3,6 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import {
   getSnippetBySlug,
   getSnippets,
+  getSnippetsMetadata,
   getSnippetSlugs,
 } from '@/lib/snippets/api';
 
@@ -110,6 +111,47 @@ describe('Snippets API', () => {
         .mockRejectedValueOnce(new Error('EACCES'));
 
       await expect(getSnippets()).rejects.toThrow('EACCES');
+    });
+  });
+
+  describe('getSnippetsMetadata', () => {
+    it('returns frontmatter data without the markdown body', async () => {
+      mockReaddir.mockResolvedValue(['debounce.md']);
+      mockReadFile.mockResolvedValue(markdown(FRONTMATTER, 'Snippet body'));
+
+      const [meta] = await getSnippetsMetadata();
+
+      expect(meta).toEqual({
+        data: {
+          slug: 'debounce',
+          title: 'Debounce',
+          heading: 'Debounce in JS',
+          description: 'Delay a call',
+          keywords: ['js', 'timing'],
+          createDate: Date.parse('2024-01-01'),
+          updateDate: Date.parse('2024-02-01'),
+        },
+      });
+      expect(meta).not.toHaveProperty('content');
+    });
+
+    it('loads markdown files only', async () => {
+      mockReaddir.mockResolvedValue(['a.md', 'notes.txt', 'b.md']);
+      mockReadFile.mockResolvedValue(markdown(FRONTMATTER));
+
+      const metas = await getSnippetsMetadata();
+
+      expect(metas.map((m) => m.data.slug)).toEqual(['a', 'b']);
+      expect(mockReadFile).toHaveBeenCalledTimes(2);
+    });
+
+    it('rejects when any snippet fails to load', async () => {
+      mockReaddir.mockResolvedValue(['a.md', 'b.md']);
+      mockReadFile
+        .mockResolvedValueOnce(markdown(FRONTMATTER))
+        .mockRejectedValueOnce(new Error('EACCES'));
+
+      await expect(getSnippetsMetadata()).rejects.toThrow('EACCES');
     });
   });
 });

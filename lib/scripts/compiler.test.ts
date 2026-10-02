@@ -19,7 +19,67 @@ jest.mock('shiki', () => ({
   getSingletonHighlighter: jest.fn(() => Promise.resolve({})),
 }));
 
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import * as runtime from 'react/jsx-runtime';
+
 import { extractHeadingsFromMarkdown } from '@/lib/scripts/compiler';
+
+// Real serialize output for a heading, inline code and an indented code block
+// whose content holds a backtick inside a string literal.
+const COMPILED_SOURCE = [
+  '"use strict";',
+  'const {Fragment: _Fragment, jsx: _jsx, jsxs: _jsxs} = arguments[0];',
+  'const {useMDXComponents: _provideComponents} = arguments[0];',
+  'function _createMdxContent(props) {',
+  '  const _components = {',
+  '    code: "code",',
+  '    h1: "h1",',
+  '    p: "p",',
+  '    pre: "pre",',
+  '    ..._provideComponents(),',
+  '    ...props.components',
+  '  };',
+  '  return _jsxs(_Fragment, {',
+  '    children: [_jsx(_components.h1, {',
+  '      children: "Title"',
+  '    }), "\\n", _jsxs(_components.p, {',
+  '      children: ["Some ", _jsx(_components.code, {',
+  '        children: "inline"',
+  '      }), " code."]',
+  '    }), "\\n", _jsx(_components.pre, {',
+  '      children: _jsx(_components.code, {',
+  '        className: "language-js",',
+  '        children: "function greet(name) {\\n  return `Hello, ${name}`;\\n}\\n"',
+  '      })',
+  '    })]',
+  '  });',
+  '}',
+  'function MDXContent(props = {}) {',
+  '  const {wrapper: MDXLayout} = {',
+  '    ..._provideComponents(),',
+  '    ...props.components',
+  '  };',
+  '  return MDXLayout ? _jsx(MDXLayout, {',
+  '    ...props,',
+  '    children: _jsx(_createMdxContent, {',
+  '      ...props',
+  '    })',
+  '  }) : _createMdxContent(props);',
+  '}',
+  'return {',
+  '  default: MDXContent',
+  '};',
+].join('\n');
+
+function renderCompiled(compiledSource: string) {
+  const run = new Function(compiledSource);
+  const { default: Content } = run({
+    ...runtime,
+    useMDXComponents: () => ({}),
+  });
+  return renderToStaticMarkup(createElement(Content));
+}
 
 describe('extractHeadingsFromMarkdown', () => {
   it('should extract h1-h6 headings with correct levels', () => {
@@ -135,6 +195,42 @@ describe('compileMDX', () => {
       mdx: { compiledSource: 'compiled' },
       shikiCSS: '.__shiki_1{color:red}',
     });
+  });
+
+  it('strips indentation without changing the rendered HTML', async () => {
+    const { compileMDX } = await import('@/lib/scripts/compiler');
+    serialize.mockResolvedValue({ compiledSource: COMPILED_SOURCE });
+
+    const { mdx } = await compileMDX('');
+
+    expect(mdx.compiledSource.length).toBeLessThan(COMPILED_SOURCE.length);
+    expect(mdx.compiledSource).not.toMatch(/\n[ \t]/);
+    expect(renderCompiled(mdx.compiledSource)).toBe(
+      renderCompiled(COMPILED_SOURCE),
+    );
+    expect(renderCompiled(mdx.compiledSource)).toContain(
+      'function greet(name) {\n  return `Hello, ${name}`;\n}',
+    );
+  });
+
+  it('keeps indentation when a template literal could span lines', async () => {
+    const { compileMDX } = await import('@/lib/scripts/compiler');
+    const compiledSource = 'return {\n  text: `a\n  b`\n};';
+    serialize.mockResolvedValue({ compiledSource });
+
+    const { mdx } = await compileMDX('');
+
+    expect(mdx.compiledSource).toBe(compiledSource);
+  });
+
+  it('shortens the Shiki class prefix', () => {
+    const { transformerStyleToClass } = jest.requireMock(
+      '@shikijs/transformers',
+    );
+
+    jest.isolateModules(() => require('@/lib/scripts/compiler'));
+
+    expect(transformerStyleToClass).toHaveBeenCalledWith({ classPrefix: '_' });
   });
 
   it('sizes images before any other rehype plugin runs', async () => {
