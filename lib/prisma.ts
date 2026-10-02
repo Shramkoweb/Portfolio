@@ -1,8 +1,11 @@
 import { PrismaPg } from '@prisma/adapter-pg';
 
 import { PrismaClient } from '../generated/client';
+import { pinSslMode } from './database-url';
 
-const pool = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
+const pool = new PrismaPg({
+  connectionString: pinSslMode(process.env.DATABASE_URL),
+});
 const prisma = new PrismaClient({ adapter: pool });
 
 const globalForPrisma = global as unknown as { prisma: typeof prisma };
