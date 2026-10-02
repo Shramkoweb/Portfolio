@@ -87,14 +87,14 @@ Sentry variables only matter for production builds.
 
 ## Scripts
 
-| Command            | Purpose                                    |
-| ------------------ | ------------------------------------------ |
-| `pnpm dev`         | start the dev server                       |
-| `pnpm verify`      | lint + format:check + typecheck + test:ci  |
-| `pnpm verify:full` | `verify` + production build                |
-| `pnpm verify:all`  | `verify:full` + all Playwright tests       |
-| `pnpm test:visual` | local Playwright behavior and visual tests |
-| `pnpm article`     | scaffold a new blog post                   |
+| Command            | Purpose                                       |
+| ------------------ | --------------------------------------------- |
+| `pnpm dev`         | start the dev server                          |
+| `pnpm verify`      | lint + format:check + typecheck + test:ci     |
+| `pnpm verify:full` | `verify` + production build                   |
+| `pnpm verify:all`  | `verify:full` + all Playwright tests          |
+| `pnpm test:visual` | Playwright behavior and visual tests (Docker) |
+| `pnpm article`     | scaffold a new blog post                      |
 
 The rest (formatting, linting, coverage, audits, CSP check) is in the `scripts` field of
 [`package.json`](package.json).
@@ -102,8 +102,8 @@ The rest (formatting, linting, coverage, audits, CSP check) is in the `scripts` 
 `pnpm verify` is the fast loop and what the pre-push hook runs. `pnpm verify:full` adds
 `next build` and is what CI effectively reproduces — run it before opening a PR.
 `pnpm verify:all` runs every local check, including Jest with coverage, the
-production build, and all Playwright behavior and visual regression tests. Install
-Chromium first as described below; the command stops on the first failed step.
+production build, and all Playwright behavior and visual regression tests. Start
+Docker first as described below; the command stops on the first failed step.
 
 ## Testing
 
@@ -124,16 +124,17 @@ which backs the coverage badge above.
 
 ### Local visual regression tests
 
-Install Chromium once, then run the local harness:
+Start Docker, then run the harness:
 
 ```bash
-pnpm exec playwright install chromium
 pnpm test:visual
 pnpm test:visual:report
 ```
 
-Playwright builds and starts an isolated production server on port 3100 using
-`.next-visual/`. No database, API credentials, Docker or CI setup is required.
+[`tests/visual/docker.sh`](tests/visual/docker.sh) runs the suite in the pinned
+Playwright Linux image that CI also uses, as `linux/amd64` even on Apple silicon.
+Inside it, Playwright builds and starts an isolated production server on port 3100
+using `.next-visual/`. No database, API credentials or CI setup is required.
 Browser API requests use fixtures; external requests are blocked. Dates are fixed
 in prerendering and the browser. Runtime errors fail the tests.
 
@@ -149,25 +150,26 @@ For a shorter feedback loop, select a project, file or test:
 pnpm test:visual --project=chromium-mobile-dark
 pnpm test:visual content.spec.ts
 pnpm test:visual --grep 'optimistic reaction'
-pnpm test:visual --ui
 ```
 
-Baselines live in `tests/visual/__screenshots__`, separated by operating system
-and project because system fonts differ. The checked-in baselines were generated
-on macOS with the pinned Chromium version. On another OS, generate and review its
-baselines first. Missing baselines fail ordinary runs; they are never silently
-accepted. After an intentional UI change, update only the affected
-screenshots and review the image diff before committing:
+`pnpm test:visual:native` runs the same specs on the host Chromium without Docker
+(install it once with `pnpm exec playwright install chromium`). It skips screenshot
+comparison and is the way to use `--ui`.
+
+Baselines live in `tests/visual/__screenshots__/linux`, per project. They render
+only inside the Docker image: text depends on the system font stack, and a macOS
+update once shifted 26 macOS baselines with no code change. Missing baselines fail
+ordinary runs; they are never silently accepted. After an intentional UI change,
+update only the affected screenshots and review the image diff before committing:
 
 ```bash
-pnpm test:visual --update-snapshots=changed visual.spec.ts --grep 'copy control'
+pnpm test:visual:update visual.spec.ts --grep 'copy control'
 ```
 
 Commit baseline PNGs with the corresponding change. Reports, traces, actual and
 diff images remain local in `playwright-report/` and `test-results/`. The visual
-suite is included in `pnpm verify:all`. CI runs it on every pull request with
-`--ignore-snapshots`: behavior tests run on Linux, while screenshot comparison
-stays local because the baselines are macOS-only.
+suite is included in `pnpm verify:all`. CI runs it on every pull request in the same
+image, screenshots included.
 
 ## Security
 
