@@ -12,11 +12,6 @@ const Analytics = dynamic(
   { ssr: false },
 );
 
-const SpeedInsights = dynamic(
-  () => import('@vercel/speed-insights/next').then((m) => m.SpeedInsights),
-  { ssr: false },
-);
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -30,7 +25,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         >
           <Layout>
             <Component {...pageProps} />
-            <SpeedInsights />
             <Analytics />
           </Layout>
         </SWRConfig>

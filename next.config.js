@@ -17,7 +17,7 @@ const ContentSecurityPolicy = `
     script-src ${scriptSrc};
     style-src 'self' 'unsafe-inline';
     img-src 'self' data:;
-    connect-src 'self' https://*.ingest.sentry.io https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live;
+    connect-src 'self' https://*.ingest.sentry.io https://va.vercel-scripts.com https://vercel.live;
     font-src 'self';
     worker-src 'self' blob:;
     media-src 'self';

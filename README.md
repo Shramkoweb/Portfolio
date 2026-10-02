@@ -38,7 +38,7 @@ in the repo, so a post ships through the same pipeline as a code change.
 | Content       | MDX via `next-mdx-remote`, Shiki for syntax highlighting, `gray-matter` |
 | Data          | Prisma with `@prisma/adapter-pg`, Postgres (Neon in production)         |
 | State / Fetch | SWR                                                                     |
-| Monitoring    | Sentry, Checkly, UptimeRobot, Vercel Analytics, Speed Insights          |
+| Monitoring    | Sentry, Checkly, UptimeRobot, Vercel Analytics                          |
 | Testing       | Jest, Testing Library, Playwright (Chromium)                            |
 | Tooling       | oxlint, oxfmt, commitlint, Renovate, pnpm                               |
 | Hosting       | Vercel                                                                  |
