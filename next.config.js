@@ -63,7 +63,7 @@ const securityHeaders = [
   },
 ];
 
-// Bundle published headings into the edge function; it cannot read MDX files.
+// Bundle published headings into the OG function; the MDX files aren't traced into it.
 const ogContentTitles = ['_posts', '_snippets'].flatMap((directory) =>
   readdirSync(new URL(`./${directory}/`, import.meta.url))
     .filter((file) => file.endsWith('.md'))
