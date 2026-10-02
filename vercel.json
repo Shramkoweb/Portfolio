@@ -2,7 +2,8 @@
   "buildCommand": "pnpm build",
   "functions": {
     "pages/api/**/*.ts": {
-      "maxDuration": 60
+      "maxDuration": 60,
+      "regions": ["cle1"]
     }
   }
 }
