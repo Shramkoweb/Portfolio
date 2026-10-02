@@ -12,8 +12,8 @@ export function StoreRating(props: StoreRatingProps) {
 
   return (
     <p className="not-prose -mt-6 mb-4 text-xs text-gray-600 dark:text-gray-400">
-      <span aria-hidden="true">★</span> {ratingValue.toFixed(1)} ({ratingCount}{' '}
-      ratings) •{' '}
+      <span aria-hidden="true">★</span> {ratingValue.toFixed(1)}
+      <span className="sr-only"> out of 5 stars</span> ({ratingCount} ratings) •{' '}
       {/* Dropped on phones so the line fits one row without a dangling bullet. */}
       <span className="hidden sm:inline">{users} users • </span>
       <a

@@ -16,7 +16,7 @@ describe('StoreRating', () => {
     const line = screen.getByRole('link').closest('p');
 
     expect(line).toHaveTextContent(
-      '★ 5.0 (13 ratings) • 1,000 users • Chrome Web Store',
+      '★ 5.0 out of 5 stars (13 ratings) • 1,000 users • Chrome Web Store',
     );
   });
 
@@ -29,9 +29,10 @@ describe('StoreRating', () => {
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  it('hides the decorative star from screen readers', () => {
+  it('swaps the decorative star for a spoken scale', () => {
     render(<StoreRating rating={RATING} />);
 
     expect(screen.getByText('★')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByText('out of 5 stars')).toHaveClass('sr-only');
   });
 });
