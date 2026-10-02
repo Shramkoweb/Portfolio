@@ -3,8 +3,12 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 
 import { PageMeta } from '@/components/page-meta';
-import { UDEMY_RESET_APP_OG_IMAGE } from '@/lib/constants';
-import { serializeJsonLd } from '@/lib/schema';
+import { StoreRating } from '@/components/store-rating';
+import {
+  UDEMY_RESET_APP_OG_IMAGE,
+  UDEMY_RESET_APP_RATING,
+} from '@/lib/constants';
+import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
 
 import chromeStore from '../public/static/images/chrome-store.png';
 import firefoxStore from '../public/static/images/firefox-store.webp';
@@ -56,6 +60,9 @@ function UdemyResetProgressPage() {
                 name: 'Serhii Shramko',
                 url: 'https://shramko.dev/about',
               },
+              aggregateRating: generateAggregateRatingSchema(
+                UDEMY_RESET_APP_RATING,
+              ),
               operatingSystem: 'Chrome, Firefox, Edge',
               applicationCategory: [
                 'BrowserApplication',
@@ -81,6 +88,8 @@ function UdemyResetProgressPage() {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           How to Reset Udemy Course Progress in One Click
         </h1>
+
+        <StoreRating rating={UDEMY_RESET_APP_RATING} />
 
         <p>
           Need to reset your Udemy course progress but frustrated with the
