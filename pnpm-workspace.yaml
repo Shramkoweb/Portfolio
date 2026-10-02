@@ -37,29 +37,22 @@ minimumReleaseAgeExclude:
   # Inert is not harmless — a real waiver is hard to spot among dead ones,
   # so on every dep bump prune entries that no longer appear in pnpm-lock.yaml
   # or whose version is already past the cooldown.
-  # Sentry 11.2.0 published 2026-10-01T11:07Z; Shiki 4.5.0 published
-  # 2026-10-01T06:46Z. Drop these exact waivers once both releases mature.
-  - '@sentry/browser-utils@11.2.0'
-  - '@sentry/browser@11.2.0'
-  - '@sentry/bundler-plugins@11.2.0'
-  - '@sentry/core@11.2.0'
-  - '@sentry/feedback@11.2.0'
-  - '@sentry/nextjs@11.2.0'
-  - '@sentry/node@11.2.0'
-  - '@sentry/opentelemetry@11.2.0'
-  - '@sentry/react@11.2.0'
-  - '@sentry/replay-canvas@11.2.0'
-  - '@sentry/replay@11.2.0'
-  - '@sentry/server-runtime-injection@11.2.0'
-  - '@sentry/server-utils@11.2.0'
-  - '@sentry/vercel-edge@11.2.0'
-  - '@shikijs/core@4.5.0'
-  - '@shikijs/engine-javascript@4.5.0'
-  - '@shikijs/engine-oniguruma@4.5.0'
-  - '@shikijs/langs@4.5.0'
-  - '@shikijs/primitive@4.5.0'
-  - '@shikijs/rehype@4.5.0'
-  - '@shikijs/themes@4.5.0'
-  - '@shikijs/transformers@4.5.0'
-  - '@shikijs/types@4.5.0'
-  - shiki@4.5.0
+  # Sentry 11.4.0 published 2026-10-02T16:39Z, lucide-react 1.50.0
+  # 2026-10-02T11:25Z, @types/node 26.6.4 2026-10-01T22:39Z. Drop these exact
+  # waivers once all three releases mature.
+  - '@sentry/browser-utils@11.4.0'
+  - '@sentry/browser@11.4.0'
+  - '@sentry/bundler-plugins@11.4.0'
+  - '@sentry/core@11.4.0'
+  - '@sentry/feedback@11.4.0'
+  - '@sentry/nextjs@11.4.0'
+  - '@sentry/node@11.4.0'
+  - '@sentry/opentelemetry@11.4.0'
+  - '@sentry/react@11.4.0'
+  - '@sentry/replay-canvas@11.4.0'
+  - '@sentry/replay@11.4.0'
+  - '@sentry/server-runtime-injection@11.4.0'
+  - '@sentry/server-utils@11.4.0'
+  - '@sentry/vercel-edge@11.4.0'
+  - '@types/node@26.6.4'
+  - lucide-react@1.50.0
