@@ -14,6 +14,9 @@ export default defineConfig({
   workers: 3,
   timeout: 60_000,
   updateSnapshots: 'none',
+  // Baselines are rendered in the Linux image from tests/visual/docker.sh;
+  // anywhere else fonts differ, so a native run checks behavior only.
+  ignoreSnapshots: !process.env.CI && !process.env.VISUAL_DOCKER,
   snapshotPathTemplate:
     '{testDir}/__screenshots__/{platform}/{projectName}/{testFilePath}/{arg}{ext}',
   reporter: [['list'], ['html', { open: 'never' }]],

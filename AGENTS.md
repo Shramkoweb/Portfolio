@@ -34,7 +34,7 @@ pnpm dev                # http://localhost:3000
 
 - `pnpm verify` — fast (~3 s). Runs `lint`, `format:check`, `typecheck`, `test:ci`. The pre-push hook calls this. Use during tight iteration.
 - `pnpm verify:full` — slower (~10 s). Adds `next build` on top. Matches what CI runs. **Run this before opening a PR.**
-- `pnpm verify:all` — complete local check. Runs `verify:full`, then all Playwright behavior and visual regression tests. Install Chromium once with `pnpm exec playwright install chromium`; no database or Docker is required for the browser tests. CI runs the same suite on every PR with screenshot comparison off, because the baselines are macOS-only, so after a UI change run this locally.
+- `pnpm verify:all` — complete local check. Runs `verify:full`, then all Playwright behavior and visual regression tests inside the pinned Playwright Linux image (`tests/visual/docker.sh`), so **Docker must be running**; no database is required. Baselines render only in that image, never on the host OS. CI runs the same suite in the same image on every PR, screenshots included. After an intentional UI change, regenerate with `pnpm test:visual:update` and review the diffs. `pnpm test:visual:native` runs the specs on host Chromium with screenshots skipped.
 
 **Success criterion:** before claiming work is done, `pnpm verify:full` exits 0.
 
