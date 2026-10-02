@@ -138,7 +138,7 @@ describe('API /api/views/[slug]', () => {
       expect(json).toHaveBeenCalledWith({ total: 100 });
       expect(setHeader).toHaveBeenCalledWith(
         'Cache-Control',
-        's-maxage=60, stale-while-revalidate=120',
+        's-maxage=60, stale-while-revalidate=120, stale-if-error=86400',
       );
     });
 
