@@ -1,8 +1,5 @@
-// pg 8 already treats prefer/require/verify-ca as verify-full, but warns on every
-// cold start that pg 9 will switch them to libpq semantics, where `require`
-// skips certificate checks. Neon's default URL uses `sslmode=require`, so pin the
-// current behaviour explicitly. `uselibpqcompat=true` means the caller opted
-// into the libpq meaning, so leave that URL alone.
+// pg 8 treats these as verify-full but warns that pg 9 gives them libpq
+// semantics, where `require` skips the certificate check.
 const ALIASED_SSL_MODE = /([?&]sslmode=)(?:prefer|require|verify-ca)(?=&|#|$)/g;
 
 export function pinSslMode(
