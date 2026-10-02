@@ -19,7 +19,7 @@ featured: false
 
 ## The number that didn't move
 
-I pushed a routine update to my portfolio — swapped Prettier for [oxfmt](https://github.com/nicolo-ribaudo/oxfmt),
+I pushed a routine update to my portfolio — swapped Prettier for [oxfmt](https://oxc.rs/docs/guide/usage/formatter),
 added [`@shikijs/transformers`](https://shiki.style/packages/transformers) for better syntax highlighting. Stack is
 Next.js 16, Turbopack, Prisma, Sentry, Vercel, pnpm. Nothing unusual.
 

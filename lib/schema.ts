@@ -1,4 +1,4 @@
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL, type StoreRating } from '@/lib/constants';
 import { getSocialImage } from '@/lib/seo';
 import { BaseFrontmatter } from '@/lib/types';
 const AUTHOR_ID = `${SITE_URL}/#person`;
@@ -122,5 +122,15 @@ export function generateWebSiteSchema() {
       'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js.',
     author,
     inLanguage: 'en',
+  };
+}
+
+export function generateAggregateRatingSchema(rating: StoreRating) {
+  return {
+    '@type': 'AggregateRating',
+    ratingValue: rating.ratingValue.toFixed(1),
+    ratingCount: rating.ratingCount,
+    bestRating: '5',
+    worstRating: '1',
   };
 }
