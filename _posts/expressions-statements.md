@@ -47,7 +47,7 @@ console.log(const y);  // error!
 
 ## Related posts
 
-- [Expressions versus statements in JavaScript](https://2ality.com/2012/09/expressions-vs-statements.html)
+- [Expressions versus statements in JavaScript](https://web.archive.org/web/20260219101443/https://2ality.com/2012/09/expressions-vs-statements.html) (archived copy)
 - [Expressions - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_operators)
 
 ## Further reading
