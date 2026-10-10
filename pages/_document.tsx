@@ -10,8 +10,6 @@ export default function Document() {
       data-scroll-behavior="smooth"
     >
       <Head>
-        <link rel="preconnect" href="https://va.vercel-scripts.com" />
-        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link
           rel="alternate"
           type="application/rss+xml"

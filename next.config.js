@@ -6,10 +6,12 @@ import matter from 'gray-matter';
 // The hash covers the next-themes inline theme setter. 'unsafe-eval' must
 // stay: MDXRemote evaluates every post via `Reflect.construct(Function, ...)`,
 // so dropping it renders /blog/* blank. Dev cannot have both — under CSP3 a
-// hash makes 'unsafe-inline' ignored, which would block HMR.
+// hash makes 'unsafe-inline' ignored, which would block HMR. Only dev needs
+// va.vercel-scripts.com: @vercel/analytics loads its debug script from there,
+// while production serves it same-origin from /_vercel/insights.
 const scriptSrc =
   process.env.NODE_ENV === 'production'
-    ? `'self' 'unsafe-eval' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU=' https://va.vercel-scripts.com/`
+    ? `'self' 'unsafe-eval' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU='`
     : `'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com/`;
 
 const ContentSecurityPolicy = `
@@ -17,7 +19,7 @@ const ContentSecurityPolicy = `
     script-src ${scriptSrc};
     style-src 'self' 'unsafe-inline';
     img-src 'self' data:;
-    connect-src 'self' https://*.ingest.sentry.io https://va.vercel-scripts.com;
+    connect-src 'self' https://*.ingest.sentry.io;
     font-src 'self';
     worker-src 'self' blob:;
     media-src 'self';
