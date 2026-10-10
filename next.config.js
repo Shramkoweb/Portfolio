@@ -21,10 +21,10 @@ const ContentSecurityPolicy = `
     img-src 'self' data:;
     connect-src 'self';
     font-src 'self';
-    worker-src 'self' blob:;
+    worker-src 'self';
     media-src 'self';
     object-src 'none';
-    base-uri 'self';
+    base-uri 'none';
     form-action 'self';
     frame-ancestors 'none';
     upgrade-insecure-requests;
@@ -62,6 +62,10 @@ const securityHeaders = [
   {
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
+  },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin',
   },
 ];
 
