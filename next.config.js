@@ -19,7 +19,7 @@ const ContentSecurityPolicy = `
     script-src ${scriptSrc};
     style-src 'self' 'unsafe-inline';
     img-src 'self' data:;
-    connect-src 'self' https://*.ingest.sentry.io;
+    connect-src 'self';
     font-src 'self';
     worker-src 'self' blob:;
     media-src 'self';
@@ -168,6 +168,11 @@ const nextConfig = {
 const sentryBuildOptions = {
   silent: !process.env.CI,
   telemetry: false,
+  // Same-origin tunnel: keeps connect-src at 'self' (a *.ingest.sentry.io
+  // wildcard would also admit any other Sentry org as an exfiltration target)
+  // and gets past ad blockers. A fixed path, because under Turbopack the
+  // middleware must exclude it or client events fail; see middleware.ts.
+  tunnelRoute: '/relay',
   webpack: {
     treeshake: {
       removeDebugLogging: true,
