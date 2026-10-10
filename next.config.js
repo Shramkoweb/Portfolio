@@ -6,13 +6,12 @@ import matter from 'gray-matter';
 // The hash covers the next-themes inline theme setter. 'unsafe-eval' must
 // stay: MDXRemote evaluates every post via `Reflect.construct(Function, ...)`,
 // so dropping it renders /blog/* blank. Dev cannot have both — under CSP3 a
-// hash makes 'unsafe-inline' ignored, which would block HMR. Only dev needs
-// va.vercel-scripts.com: @vercel/analytics loads its debug script from there,
-// while production serves it same-origin from /_vercel/insights.
+// hash makes 'unsafe-inline' ignored, which would block HMR.
+const vercelAnalyticsDebugScript = 'https://va.vercel-scripts.com/';
 const scriptSrc =
   process.env.NODE_ENV === 'production'
     ? `'self' 'unsafe-eval' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU='`
-    : `'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com/`;
+    : `'self' 'unsafe-eval' 'unsafe-inline' ${vercelAnalyticsDebugScript}`;
 
 const ContentSecurityPolicy = `
     default-src 'self';
@@ -172,10 +171,7 @@ const nextConfig = {
 const sentryBuildOptions = {
   silent: !process.env.CI,
   telemetry: false,
-  // Same-origin tunnel: keeps connect-src at 'self' (a *.ingest.sentry.io
-  // wildcard would also admit any other Sentry org as an exfiltration target)
-  // and gets past ad blockers. A fixed path, because under Turbopack the
-  // middleware must exclude it or client events fail; see middleware.ts.
+  // Fixed, not `true`: middleware.ts has to exclude it from its matcher.
   tunnelRoute: '/relay',
   webpack: {
     treeshake: {

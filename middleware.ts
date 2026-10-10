@@ -35,8 +35,7 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// relay is the Sentry tunnel (tunnelRoute in next.config.js): under Turbopack,
-// client events fail if middleware intercepts it.
+// relay is the Sentry tunnel: under Turbopack, client events fail if it runs here.
 export const config = {
   matcher: [
     '/((?!_next/static|_next/image|favicon\\.ico$|robots\\.txt$|sitemap\\.xml$|feed\\.xml$|api/feed$|relay/?$).*)',
