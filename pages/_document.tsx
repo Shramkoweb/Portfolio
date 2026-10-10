@@ -17,7 +17,12 @@ export default function Document() {
           href={`${SITE_URL}/feed.xml`}
         />
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
-        <link href="/static/favicons/site.webmanifest" rel="manifest" />
+        {/* Manifests are fetched without cookies by default; Vercel's checkpoint then answers 429. */}
+        <link
+          href="/static/favicons/site.webmanifest"
+          rel="manifest"
+          crossOrigin="use-credentials"
+        />
         <link
           href="/static/favicons/apple-touch-icon.png"
           rel="apple-touch-icon"
