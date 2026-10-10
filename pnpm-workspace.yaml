@@ -18,6 +18,13 @@ overrides:
   # Exercised at build time via prisma.config.ts.
   # Drop when @prisma/config pins deepmerge-ts >=8 on its own
   deepmerge-ts: ^8.0.0
+  # advisory 1241232 (moderate, quadratic complexity in flat selector parsing,
+  # CPU exhaustion, <7.1.6). @tailwindcss/typography@0.5.20 pins
+  # postcss-selector-parser@6.0.10 exactly and no 6.x release is patched.
+  # The only 7.0 break (safe insertion during iteration) doesn't touch
+  # typography's commonTrailingPseudos, which iterates plain arrays.
+  # Drop when @tailwindcss/typography pins postcss-selector-parser >=7.1.6
+  postcss-selector-parser: ^7.1.6
 
 allowBuilds:
   '@parcel/watcher': true
