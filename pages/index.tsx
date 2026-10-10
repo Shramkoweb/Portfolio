@@ -228,13 +228,12 @@ export async function getStaticProps(): Promise<
       featuredPosts,
       otherPosts,
       advancedReactPosts,
-      // Decided here, not in render: the browser's clock would disagree with
-      // the build's once a post ages out, and hydration fails (React #418).
+      // Not in render: once a post ages out, the browser's clock disagrees with the build's (React #418).
       newSlugs: posts
         .filter((post) => isNewPost(post))
         .map((post) => post.data.slug),
     },
-    // Rebuild daily so an expired "New" badge drops without a deploy.
+    // Drops an expired "New" badge without a deploy.
     revalidate: 86_400,
   };
 }
