@@ -7,18 +7,24 @@ import matter from 'gray-matter';
 // stay: MDXRemote evaluates every post via `Reflect.construct(Function, ...)`,
 // so dropping it renders /blog/* blank. Dev cannot have both — under CSP3 a
 // hash makes 'unsafe-inline' ignored, which would block HMR.
+const isProduction = process.env.NODE_ENV === 'production';
 const vercelAnalyticsDebugScript = 'https://va.vercel-scripts.com/';
-const scriptSrc =
-  process.env.NODE_ENV === 'production'
-    ? `'self' 'unsafe-eval' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU='`
-    : `'self' 'unsafe-eval' 'unsafe-inline' ${vercelAnalyticsDebugScript}`;
+const scriptSrc = isProduction
+  ? `'self' 'unsafe-eval' 'sha256-cd+HpnSsLaEz1lKWBNn+k+xOe1m2p5ZgfjoyNvHy9eU='`
+  : `'self' 'unsafe-eval' 'unsafe-inline' ${vercelAnalyticsDebugScript}`;
+
+// Only production wraps the config with withSentryConfig, so only it has the
+// /relay tunnel; dev posts straight to the DSN host.
+const sentryDsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
+const connectSrc =
+  isProduction || !sentryDsn ? `'self'` : `'self' ${new URL(sentryDsn).origin}`;
 
 const ContentSecurityPolicy = `
     default-src 'self';
     script-src ${scriptSrc};
     style-src 'self' 'unsafe-inline';
     img-src 'self' data:;
-    connect-src 'self';
+    connect-src ${connectSrc};
     font-src 'self';
     worker-src 'self';
     media-src 'self';
