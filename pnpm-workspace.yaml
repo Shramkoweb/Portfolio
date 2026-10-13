@@ -44,7 +44,65 @@ minimumReleaseAgeExclude:
   # Inert is not harmless — a real waiver is hard to spot among dead ones,
   # so on every dep bump prune entries that no longer appear in pnpm-lock.yaml
   # or whose version is already past the cooldown.
-  # @types/node 26.6.5 published 2026-10-09T18:46Z, lucide-react 1.55.0
-  # 2026-10-10T06:12Z. Drop these exact waivers once both releases mature.
-  - '@types/node@26.6.5'
-  - lucide-react@1.55.0
+  # Sentry 11.7.0 and postcss 8.5.30 published 2026-10-12; lucide-react
+  # 1.56.0, user-event 14.6.8, oxfmt 0.73.0 and oxlint 1.88.0 on 2026-10-13.
+  # pnpm rejects scoped globs with a version, so every Sentry package and
+  # ox* platform binding needs its own entry.
+  - lucide-react@1.56.0
+  - '@testing-library/user-event@14.6.8'
+  - postcss@8.5.30
+  - '@sentry/browser-utils@11.7.0'
+  - '@sentry/browser@11.7.0'
+  - '@sentry/bundler-plugins@11.7.0'
+  - '@sentry/cloudflare@11.7.0'
+  - '@sentry/core@11.7.0'
+  - '@sentry/feedback@11.7.0'
+  - '@sentry/nextjs@11.7.0'
+  - '@sentry/node@11.7.0'
+  - '@sentry/opentelemetry@11.7.0'
+  - '@sentry/react@11.7.0'
+  - '@sentry/replay-canvas@11.7.0'
+  - '@sentry/replay@11.7.0'
+  - '@sentry/server-runtime-injection@11.7.0'
+  - '@sentry/server-utils@11.7.0'
+  - '@sentry/vercel-edge@11.7.0'
+  - oxfmt@0.73.0
+  - '@oxfmt/binding-android-arm-eabi@0.73.0'
+  - '@oxfmt/binding-android-arm64@0.73.0'
+  - '@oxfmt/binding-darwin-arm64@0.73.0'
+  - '@oxfmt/binding-darwin-x64@0.73.0'
+  - '@oxfmt/binding-freebsd-x64@0.73.0'
+  - '@oxfmt/binding-linux-arm-gnueabihf@0.73.0'
+  - '@oxfmt/binding-linux-arm-musleabihf@0.73.0'
+  - '@oxfmt/binding-linux-arm64-gnu@0.73.0'
+  - '@oxfmt/binding-linux-arm64-musl@0.73.0'
+  - '@oxfmt/binding-linux-ppc64-gnu@0.73.0'
+  - '@oxfmt/binding-linux-riscv64-gnu@0.73.0'
+  - '@oxfmt/binding-linux-riscv64-musl@0.73.0'
+  - '@oxfmt/binding-linux-s390x-gnu@0.73.0'
+  - '@oxfmt/binding-linux-x64-gnu@0.73.0'
+  - '@oxfmt/binding-linux-x64-musl@0.73.0'
+  - '@oxfmt/binding-openharmony-arm64@0.73.0'
+  - '@oxfmt/binding-win32-arm64-msvc@0.73.0'
+  - '@oxfmt/binding-win32-ia32-msvc@0.73.0'
+  - '@oxfmt/binding-win32-x64-msvc@0.73.0'
+  - oxlint@1.88.0
+  - '@oxlint/binding-android-arm-eabi@1.88.0'
+  - '@oxlint/binding-android-arm64@1.88.0'
+  - '@oxlint/binding-darwin-arm64@1.88.0'
+  - '@oxlint/binding-darwin-x64@1.88.0'
+  - '@oxlint/binding-freebsd-x64@1.88.0'
+  - '@oxlint/binding-linux-arm-gnueabihf@1.88.0'
+  - '@oxlint/binding-linux-arm-musleabihf@1.88.0'
+  - '@oxlint/binding-linux-arm64-gnu@1.88.0'
+  - '@oxlint/binding-linux-arm64-musl@1.88.0'
+  - '@oxlint/binding-linux-ppc64-gnu@1.88.0'
+  - '@oxlint/binding-linux-riscv64-gnu@1.88.0'
+  - '@oxlint/binding-linux-riscv64-musl@1.88.0'
+  - '@oxlint/binding-linux-s390x-gnu@1.88.0'
+  - '@oxlint/binding-linux-x64-gnu@1.88.0'
+  - '@oxlint/binding-linux-x64-musl@1.88.0'
+  - '@oxlint/binding-openharmony-arm64@1.88.0'
+  - '@oxlint/binding-win32-arm64-msvc@1.88.0'
+  - '@oxlint/binding-win32-ia32-msvc@1.88.0'
+  - '@oxlint/binding-win32-x64-msvc@1.88.0'
