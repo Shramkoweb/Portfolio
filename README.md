@@ -183,9 +183,8 @@ image, screenshots included.
   [`robots.txt`](public/robots.txt) and get a 403 from edge middleware. Search engines,
   AI search, link previews and assistants fetching a page for a user are allowed. The
   middleware list lives in [`lib/bot-blocklist/tokens.ts`](lib/bot-blocklist/tokens.ts),
-  and a test fails if `robots.txt` drifts from it. The Vercel firewall bypass rule for
-  readers is kept in [`vercel-readers.json`](lib/bot-blocklist/vercel-readers.json) and
-  applied in the Vercel dashboard, not by a deploy.
+  and a test fails if `robots.txt` drifts from it. Reader exceptions in the Vercel
+  firewall are managed directly in the Vercel dashboard, independently of deployments.
 - **Supply chain** — Renovate opens dependency PRs on the schedule in
   [`renovate.json`](renovate.json), auto-merging small updates and leaving larger ones for
   review. A production dependency audit runs as its own CI job.
