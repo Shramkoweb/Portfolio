@@ -9,7 +9,7 @@ import fixtures from './user-agents.fixture.json';
 import policy from './vercel-readers.json';
 
 // This artifact is applied to Vercel separately; a Next deployment does not sync it.
-const { rule, verifiedUserAgents, robotsOnlyUserAgents } = policy;
+const { rule, verifiedUserAgents, robotsOnlyUserAgents, feedReaders } = policy;
 
 function bypasses(userAgent: string, path = '/blog/linktree', method = 'GET') {
   return rule.conditionGroup.some(({ conditions }) =>
@@ -68,6 +68,30 @@ describe('Vercel reader exception', () => {
     expect(bypasses(ua, '/blog/linktree', 'POST')).toBe(false);
     expect(bypasses(ua, '/api')).toBe(false);
     expect(bypasses(ua, '/api/views')).toBe(false);
+  });
+
+  describe.each(feedReaders)('$name RSS reader', ({ name, userAgent }) => {
+    it.each(['/feed.xml', '/og', '/blog/linktree', '/static/images/seo.jpg'])(
+      'allows public GET/HEAD requests to %s',
+      (path) => {
+        expect(bypasses(userAgent, path)).toBe(true);
+        expect(bypasses(userAgent, path, 'HEAD')).toBe(true);
+        expect(bypasses(userAgent, path, 'POST')).toBe(false);
+      },
+    );
+
+    it.each(['/api', '/api/feed', '/api/og', '/api/views'])(
+      'does not bypass API requests to %s',
+      (path) => {
+        expect(bypasses(userAgent, path)).toBe(false);
+        expect(bypasses(userAgent, path, 'HEAD')).toBe(false);
+      },
+    );
+
+    it('requires a complete reader token', () => {
+      expect(bypasses(`Fake${name}/1.0`, '/og')).toBe(false);
+      expect(bypasses(`${name}Scraper/1.0`, '/og')).toBe(false);
+    });
   });
 
   it.each(BLOCKED_BOT_TOKENS)(
