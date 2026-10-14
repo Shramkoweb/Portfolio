@@ -38,7 +38,7 @@
           {
             "type": "user_agent",
             "op": "re",
-            "value": "(?:^|[\\s;(])(?:TelegramBot|Slackbot(?:-LinkExpanding)?|Slack-ImgProxy|Twitterbot|facebookexternalhit|Facebot|WhatsApp|LinkedInBot|Discordbot|redditbot|Pinterest(?:bot| Image Proxy)?)(?:[/\\s;)]|$)"
+            "value": "(?:^|[\\s;(])(?:Inoreader|Feedly|Feedbin|NewsBlur|NetNewsWire|FreshRSS|Miniflux|TelegramBot|Slackbot(?:-LinkExpanding)?|Slack-ImgProxy|Twitterbot|facebookexternalhit|Facebot|WhatsApp|LinkedInBot|Discordbot|redditbot|Pinterest(?:bot| Image Proxy)?)(?:[/\\s;)]|$)"
           },
           {
             "type": "method",
@@ -84,26 +84,6 @@
             "type": "method",
             "op": "inc",
             "value": ["GET", "HEAD"]
-          }
-        ]
-      },
-      {
-        "conditions": [
-          {
-            "type": "user_agent",
-            "op": "re",
-            "value": "(?:^|[\\s;(])(?:Inoreader|Feedly|Feedbin|NewsBlur|NetNewsWire|FreshRSS|Miniflux)(?:[/\\s;)]|$)"
-          },
-          {
-            "type": "method",
-            "op": "inc",
-            "value": ["GET", "HEAD"]
-          },
-          {
-            "op": "re",
-            "neg": true,
-            "type": "path",
-            "value": "^/api(?:/|$)"
           }
         ]
       }
