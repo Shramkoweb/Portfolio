@@ -10,6 +10,7 @@ import {
   QUIZLET_APP_OG_IMAGE,
   QUIZLET_APP_RATING,
   QUIZLET_APP_STORES,
+  SITE_URL,
 } from '@/lib/constants';
 import { FLASHCARD_APP_SLUGS, FLASHCARD_APPS } from '@/lib/flashcard-apps';
 import { Routes } from '@/lib/routes';
@@ -17,10 +18,11 @@ import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
 import { withStoreUtm } from '@/lib/store-links';
 import { registerView, whenVisible } from '@/lib/views';
 
-import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
-import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklist-3.png';
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
+import listsImage from '../../public/static/images/quizlet-list/quizlet-quicklist-lists.png';
+import popupImage from '../../public/static/images/quizlet-list/quizlet-quicklist-popup.png';
+import readingImage from '../../public/static/images/quizlet-list/quizlet-quicklist-reading.png';
 
 const storeLink = (url: string) => withStoreUtm(url, 'landing', 'quizlet-list');
 
@@ -37,7 +39,7 @@ function QuizletPage() {
     <>
       <PageMeta
         title="Quizlet QuickList: Save Words for Quizlet and Anki"
-        description="Free browser extension: right-click any word on a page to save it to a list, then copy the list into Quizlet or export a TSV or CSV file for Anki, Google Sheets or Excel."
+        description="Free browser extension: select a word on any page and right-click to save it to a list. Copy the list into Quizlet, or export a TSV or CSV file for Anki, Google Sheets or Excel."
         socialDescription="Save unfamiliar words from any page in one click, then copy them into Quizlet or export them for Anki."
         image={{
           url: QUIZLET_APP_OG_IMAGE,
@@ -51,7 +53,7 @@ function QuizletPage() {
         <meta
           name="keywords"
           key="keywords"
-          content="Quizlet, Anki, Chrome Extension, Firefox Extension, Vocabulary, Study, Word List, Learning Tool, Export to Quizlet, Export to Anki"
+          content="Quizlet QuickList, save words for Quizlet, Quizlet extension, Anki, Chrome extension, Firefox extension, vocabulary list, study word list, language learning tool, export to Quizlet, export to Anki"
         />
         <meta name="author" key="author" content="Serhii Shramko" />
         <script
@@ -64,8 +66,21 @@ function QuizletPage() {
               description:
                 'A browser extension that saves selected words into lists and exports them for Quizlet, Anki or a spreadsheet.',
               url: 'https://shramko.dev/quizlet-list',
-              image:
-                'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg',
+              image: QUIZLET_APP_OG_IMAGE,
+              screenshot: [
+                `${SITE_URL}/static/images/quizlet-list/quizlet-quicklist-reading.png`,
+                `${SITE_URL}/static/images/quizlet-list/quizlet-quicklist-popup.png`,
+                `${SITE_URL}/static/images/quizlet-list/quizlet-quicklist-lists.png`,
+              ],
+              featureList: [
+                'Save a selected word from any page with the right-click menu',
+                'Several named word lists',
+                'Skips words that are already on the list',
+                'Word count on the toolbar icon',
+                'Copy a list to the clipboard, one word per line',
+                'Export a list as a TSV or CSV file',
+                'Lists stay in the browser, with no account and no server',
+              ],
               author: {
                 '@type': 'Person',
                 '@id': 'https://shramko.dev/#person',
@@ -106,7 +121,7 @@ function QuizletPage() {
                   name: 'Is Quizlet QuickList free?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Yes, Quizlet QuickList is totally free to use.',
+                    text: 'Yes, it is free to use.',
                   },
                 },
                 {
@@ -114,7 +129,7 @@ function QuizletPage() {
                   name: 'Do I need a Quizlet account to use Quizlet QuickList?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: "No, you don't need one, but Quizlet QuickList works great with Quizlet if you want to use flashcards.",
+                    text: 'No. The extension works without any account, and you can paste the list into Quizlet whenever you want flashcards.',
                   },
                 },
                 {
@@ -122,7 +137,7 @@ function QuizletPage() {
                   name: 'Does Quizlet QuickList save the meaning of a word?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'No, it saves the word itself. Add the meanings in your flashcard app, or in the free formatters for Quizlet, Anki and RemNote on this site.',
+                    text: 'No. It saves the word itself. Add the meanings in your flashcard app, or in the free formatters for Quizlet, Anki and RemNote on this site.',
                   },
                 },
                 {
@@ -130,7 +145,15 @@ function QuizletPage() {
                   name: 'Can I use Quizlet QuickList on any website?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Absolutely! As long as you can highlight the text, you can add words to your list.',
+                    text: 'Yes. As long as you can highlight the text, you can add words to your list.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Is Quizlet QuickList made by Quizlet?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'No. It is an independent extension I built, and it is not affiliated with or endorsed by Quizlet.',
                   },
                 },
               ],
@@ -141,7 +164,7 @@ function QuizletPage() {
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Quizlet QuickList: The Easiest Way to Collect and Study New Words
+          Save Words from Any Page for Quizlet and Anki
         </h1>
 
         <StoreRating
@@ -152,14 +175,13 @@ function QuizletPage() {
         />
 
         <p>
-          Hey there! If you’re like me, you’ve probably come across tons of new
-          words while reading online in a foreign language. You know how
-          frustrating it can be to stop, copy each word, and paste it somewhere
-          to study later.
+          When I read in a foreign language, I keep running into words I do not
+          know. Stopping to copy each one and paste it somewhere to study later
+          breaks the reading.
         </p>
 
         <p>
-          That’s why I created{' '}
+          So I built{' '}
           <strong>
             <a
               target="_blank"
@@ -168,97 +190,68 @@ function QuizletPage() {
             >
               Quizlet QuickList
             </a>
-          </strong>{' '}
-          — a Web extension that makes saving and studying unfamiliar words
-          super easy. Now, instead of getting stuck on each word, you can focus
-          on learning and have everything neatly organized for Quizlet or any
-          study app you love.
+          </strong>
+          , a free browser extension. Select a word, right-click, and it goes on
+          a list. When you finish reading, copy the list into Quizlet or export
+          it for Anki or a spreadsheet.
         </p>
 
-        <ul>
-          <li>
-            <a
-              target="_blank"
-              href={storeLink(QUIZLET_APP_STORES.chrome)}
-              rel="noopener noreferrer"
-            >
-              Quizlet QuickList at Chrome Web Store
-            </a>
-          </li>
-
-          <li>
-            <a
-              target="_blank"
-              href={storeLink(QUIZLET_APP_STORES.firefox)}
-              rel="noopener noreferrer"
-            >
-              Quizlet QuickList at Firefox Add-ons
-            </a>
-          </li>
-
-          <li>
-            <a
-              target="_blank"
-              href={storeLink(QUIZLET_APP_STORES.edge)}
-              rel="noopener noreferrer"
-            >
-              Quizlet QuickList at Microsoft Edge Store
-            </a>
-          </li>
-        </ul>
+        <InstallLinks
+          name="Quizlet QuickList"
+          stores={QUIZLET_APP_STORES}
+          medium="landing"
+          campaign="quizlet-list"
+        />
 
         <Image
-          role="presentation"
-          alt="Screenshot showing a webpage with a visible Quizlet QuickList extension on the right side. The extension contains a list of words, including Emotion, About, etc. There are buttons to clear the list or copy it."
-          src={firstImage}
+          className="rounded-lg border border-gray-200 dark:border-gray-800"
+          alt='A Spanish reading page titled "Un domingo en el mercado" with the word "entrañable" selected, and the Quizlet QuickList popup open at the top right showing the "Spanish" list of six words, an "Add a new word..." field, a "Copy to Clipboard" button and "Export TSV", "Export CSV" and "Clear" buttons.'
+          src={readingImage}
           sizes="(min-width: 768px) 768px, 100vw"
           priority
         />
 
-        <h2>What’s Quizlet QuickList?</h2>
+        <h2>How it works</h2>
+
+        <h3>1. Install the extension</h3>
 
         <p>
-          Imagine you’re reading an article or a webpage in another language,
-          and you see a word you don’t know. With Quizlet QuickList, you can
-          instantly add it to your list with one click. No more jumping between
-          tabs or copying and pasting each word individually. When you’re ready,
-          just copy your whole list and drop it into Quizlet to study! It’s
-          really that simple.
+          Install Quizlet QuickList from the{' '}
+          <a
+            target="_blank"
+            href={storeLink(QUIZLET_APP_STORES.chrome)}
+            rel="noopener noreferrer"
+          >
+            Chrome Web Store
+          </a>
+          ,{' '}
+          <a
+            target="_blank"
+            href={storeLink(QUIZLET_APP_STORES.firefox)}
+            rel="noopener noreferrer"
+          >
+            Firefox Add-ons
+          </a>{' '}
+          or{' '}
+          <a
+            target="_blank"
+            href={storeLink(QUIZLET_APP_STORES.edge)}
+            rel="noopener noreferrer"
+          >
+            Microsoft Edge Add-ons
+          </a>
+          .
         </p>
 
-        <h2>Why I Love Using Quizlet QuickList (And You Will Too)</h2>
+        <h3>2. Add a word</h3>
 
         <p>
-          Here’s why I think Quizlet QuickList will be your new favorite study
-          tool:
+          Select a word on any page, right-click and choose{' '}
+          <strong>Add to Quizlet QuickList</strong>. Or type it into the
+          &#34;Add a new word...&#34; field in the popup and press Enter. The
+          extension capitalizes the first letter, and a word that is already on
+          the active list is not added twice.
         </p>
-
-        <ul>
-          <li>
-            <strong>No more tedious copy-pasting:</strong> Just highlight a
-            word, click <code>Add to Quizlet QuickList</code> and boom—it’s
-            saved! You can keep reading without any interruptions.
-          </li>
-          <li>
-            <strong>Quick list management:</strong> Need to start over? No
-            problem. You can clear your word list with one click and keep
-            everything tidy.
-          </li>
-          <li>
-            <strong>Copy your list in one click:</strong> When you’re ready to
-            study, hit <code>Copy</code> and paste your word list straight into
-            Quizlet (or whatever app you use to study).
-          </li>
-          <li>
-            <strong>Perfect for language learners:</strong> Whether you&#39;re
-            just starting out with a new language or brushing up on your skills,
-            this tool will save you a ton of time.
-          </li>
-        </ul>
-
-        <h2>Features That Make Your Life Easier</h2>
-
-        <h3>Step - 1. Add words instantly</h3>
 
         <Image
           role="presentation"
@@ -269,30 +262,80 @@ function QuizletPage() {
           sizes="(min-width: 768px) 768px, 100vw"
         />
 
+        <h3>3. Pick a list</h3>
+
         <p>
-          <em>
-            Highlight a word, click <code>Add to Quizlet QuickList</code>, and
-            it&#39;s saved to your list!
-          </em>
+          Keep Spanish words in one list and SAT prep in another. Click{' '}
+          <strong>+</strong> to start a new list and pick one from the dropdown
+          to switch. The pencil button opens &#34;Your Lists&#34;, where you can
+          rename or delete a list. New words go to the active list, and the
+          toolbar icon shows how many words it has.
         </p>
 
-        <h3>Step - 2. Clear your list with one click</h3>
-
         <Image
-          role="presentation"
-          alt={
-            'A screenshot of a browser window showing the "Quizlet QuickList" Web extension. The list is currently empty, with a message that reads "No words added yet." Below the message, there is an input field labeled "Enter a word," a "Clear List" button, and a "Copy" button.'
-          }
-          src={thirdImage}
+          className="rounded-lg border border-gray-200 dark:border-gray-800"
+          alt='Two Quizlet QuickList popups side by side: the "Your Lists" screen with "SAT prep" active and "Spanish" below it with edit and delete icons, and the main screen showing the six "SAT prep" words.'
+          src={listsImage}
           sizes="(min-width: 768px) 768px, 100vw"
         />
 
+        <h3>4. Copy or export the list</h3>
+
         <p>
-          Once you’ve got your words ready, just hit <code>Clear List</code> to
-          start fresh.
+          Click <strong>Copy to Clipboard</strong> to copy the active list, one
+          word per line. You will see &#34;Copied!&#34; when it is done.{' '}
+          <strong>Export TSV</strong> and <strong>Export CSV</strong> download
+          the list as a file, and <strong>Clear</strong> empties the active
+          list.
         </p>
 
-        <h3>Step - 3. Seamless Quizlet integration</h3>
+        <Image
+          className="rounded-lg border border-gray-200 dark:border-gray-800"
+          alt='The Quizlet QuickList popup with the "Spanish" list selected, six words, an "Add a new word..." field, a "Copy to Clipboard" button and "Export TSV", "Export CSV" and "Clear" buttons.'
+          src={popupImage}
+          sizes="(min-width: 768px) 768px, 100vw"
+        />
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>
+            <strong>Right-click to add:</strong> Select a word on any page and
+            save it from the context menu.
+          </li>
+          <li>
+            <strong>Named lists:</strong> Keep a separate list for each language
+            or subject and switch between them in the popup.
+          </li>
+          <li>
+            <strong>No duplicates:</strong> A word that is already on the active
+            list is not added twice.
+          </li>
+          <li>
+            <strong>Word count:</strong> The toolbar icon shows how many words
+            the active list has.
+          </li>
+          <li>
+            <strong>Copy or export:</strong> Copy the list one word per line, or
+            download it as a TSV or CSV file.
+          </li>
+          <li>
+            <strong>Private:</strong> Your lists are stored in your browser,
+            with no account and no server.
+          </li>
+          <li>
+            <strong>Free:</strong> It costs nothing and works in Chrome, Firefox
+            and Edge.
+          </li>
+        </ul>
+
+        <h2>Export to Quizlet, Anki or a spreadsheet</h2>
+
+        <p>
+          Quizlet imports pasted text on its website. Start a new set, click{' '}
+          <strong>Import</strong> and paste the list. Quizlet reads one card per
+          line, with a tab, comma or dash between term and definition.
+        </p>
 
         <Image
           role="presentation"
@@ -301,40 +344,20 @@ function QuizletPage() {
           }
           src={fourthImage}
           sizes="(min-width: 768px) 768px, 100vw"
-          priority
         />
 
         <p>
-          When you’ve added all the words you need, just click <code>Copy</code>{' '}
-          and paste it anywhere. Easy peasy. 🚀
+          For Anki, Google Sheets or Excel, click <strong>Export TSV</strong> or{' '}
+          <strong>Export CSV</strong> and import the file there.
         </p>
 
-        <p>
-          Quizlet QuickList is designed to work smoothly with Quizlet, so you
-          can quickly turn your word list into custom flashcards.
-        </p>
-
-        <h2>Export to Quizlet, Anki or a Spreadsheet</h2>
-
-        <ul>
-          <li>
-            <strong>Copy to Clipboard:</strong> one word per line, ready to
-            paste into Quizlet&#39;s import box or any other app.
-          </li>
-          <li>
-            <strong>Export TSV or CSV:</strong> downloads the list as a file for
-            Anki, Google Sheets or Excel.
-          </li>
-          <li>
-            <strong>Several lists:</strong> keep a separate list per language,
-            book or course, and switch between them in the popup.
-          </li>
-        </ul>
+        <h2>Add the meanings before you import</h2>
 
         <p>
-          The extension saves the word itself, not its meaning. These free
-          formatters turn a list into each app&#39;s import format, with room
-          for a meaning on every line, and walk through the import step by step:
+          The extension saves the word itself, not its meaning, so a copied list
+          has no definitions yet. These free formatters turn the list into each
+          app&#39;s import format, with room for a meaning on every line, and
+          walk through the import step by step:
         </p>
 
         <ul>
@@ -347,113 +370,95 @@ function QuizletPage() {
           ))}
         </ul>
 
-        <h2>How to Use Quizlet QuickList</h2>
+        <h2>Technical details</h2>
 
-        <p>
-          Using Quizlet QuickList is so easy, you’ll wonder how you ever lived
-          without it:
-        </p>
-
-        <ol>
+        <ul>
           <li>
-            <strong>Install the Extension:</strong> Grab Quizlet QuickList from
-            the{' '}
+            <strong>Framework:</strong>{' '}
             <a
               target="_blank"
-              href={storeLink(QUIZLET_APP_STORES.chrome)}
-              rel="noopener noreferrer"
+              rel="nofollow noopener"
+              href="https://www.plasmo.com/"
             >
-              Chrome Web Store
-            </a>{' '}
-            ,{' '}
-            <a
-              target="_blank"
-              href={storeLink(QUIZLET_APP_STORES.firefox)}
-              rel="noopener noreferrer"
-            >
-              Firefox Add-ons
-            </a>{' '}
-            or{' '}
-            <a
-              target="_blank"
-              href={storeLink(QUIZLET_APP_STORES.edge)}
-              rel="noopener noreferrer"
-            >
-              Microsoft Edge
+              Plasmo
             </a>
-            .
           </li>
           <li>
-            <strong>Highlight and Add Words:</strong> As you’re browsing and see
-            words you don&apos;t know, highlight them and click &quot;Add to
-            Quizlet QuickList&quot;.
+            <strong>UI:</strong>{' '}
+            <a
+              target="_blank"
+              rel="nofollow noopener"
+              href="https://react.dev/"
+            >
+              React
+            </a>{' '}
+            +{' '}
+            <a
+              target="_blank"
+              rel="nofollow noopener"
+              href="https://tailwindcss.com/"
+            >
+              Tailwind CSS
+            </a>
           </li>
           <li>
-            <strong>Manage Your Word List:</strong> Ready to study? Copy your
-            list in one click or clear it when you’re done.
+            <strong>Language:</strong>{' '}
+            <a
+              target="_blank"
+              rel="nofollow noopener"
+              href="https://www.typescriptlang.org/"
+            >
+              TypeScript
+            </a>
           </li>
           <li>
-            <strong>Paste into Quizlet:</strong> Paste your list into
-            Quizlet&#39;s import box, create a study set, and you’re all set to
-            learn.
+            <strong>Permissions:</strong> <code>contextMenus</code> and{' '}
+            <code>storage</code> only
           </li>
-        </ol>
+        </ul>
 
-        <h2>Why It’s Awesome for Language Learners</h2>
+        <h2>FAQ</h2>
 
+        <h3>Is Quizlet QuickList free?</h3>
+        <p>Yes, it is free to use.</p>
+
+        <h3>Do I need a Quizlet account to use Quizlet QuickList?</h3>
         <p>
-          Quizlet QuickList takes all the annoying parts of collecting new words
-          and makes them super simple. Instead of wasting time switching tabs,
-          copying, pasting, or organizing your notes, you can focus on learning.
-          And since it integrates smoothly with Quizlet, you can build
-          flashcards in seconds and get straight to studying.
+          No. The extension works without any account, and you can paste the
+          list into Quizlet whenever you want flashcards.
         </p>
 
+        <h3>Does Quizlet QuickList save the meaning of a word?</h3>
         <p>
-          If you’re serious about learning a new language or just picking up
-          some new vocabulary here and there,
-          <strong>Quizlet QuickList</strong> is going to make your life way
-          easier.
-        </p>
-
-        <h2>FAQs</h2>
-
-        <p>
-          <strong>Q: Is Quizlet QuickList free?</strong>
-          <br />
-          A: Yep! It’s totally free to use.
-        </p>
-
-        <p>
-          <strong>Q: Do I need a Quizlet account to use it?</strong>
-          <br />
-          A: No, you don’t need one, but Quizlet QuickList works great with
-          Quizlet if you want to use flashcards.
-        </p>
-
-        <p>
-          <strong>Q: Does it save the meaning of a word?</strong>
-          <br />
-          A: No, it saves the word itself. Add the meanings in your flashcard
-          app, or use the free formatters for{' '}
+          No. It saves the word itself. Add the meanings in your flashcard app,
+          or in the free formatters for{' '}
           <Link href={Routes.FlashcardImport('quizlet')}>Quizlet</Link>,{' '}
           <Link href={Routes.FlashcardImport('anki')}>Anki</Link> and{' '}
-          <Link href={Routes.FlashcardImport('remnote')}>RemNote</Link>.
+          <Link href={Routes.FlashcardImport('remnote')}>RemNote</Link> on this
+          site.
         </p>
 
+        <h3>Can I use Quizlet QuickList on any website?</h3>
         <p>
-          <strong>Q: Can I use it on any website?</strong>
-          <br />
-          A: Absolutely! As long as you can highlight the text, you can add
-          words to your list.
+          Yes. As long as you can highlight the text, you can add words to your
+          list.
         </p>
 
+        <h3>Is Quizlet QuickList made by Quizlet?</h3>
         <p>
-          <strong>Q: Where can I find the Privacy Policy page?</strong>
-          <br />
-          A:{' '}
-          <Link href="/quizlet-list/privacy-policy">Privacy policy page</Link>
+          No. It is an independent extension I built, and it is not affiliated
+          with or endorsed by Quizlet.
         </p>
+
+        <h3>Where can I find the privacy policy?</h3>
+        <p>
+          On the{' '}
+          <Link href="/quizlet-list/privacy-policy">privacy policy page</Link>.
+        </p>
+
+        <h2>Install Quizlet QuickList</h2>
+
+        <p>It is free for Chrome, Firefox and Edge.</p>
 
         <InstallLinks
           name="Quizlet QuickList"
@@ -462,9 +467,10 @@ function QuizletPage() {
           campaign="quizlet-list"
         />
 
-        <p className="text-xs text-gray-600 dark:text-gray-400">
-          Quizlet QuickList is an independent extension, not affiliated with or
-          endorsed by Quizlet.
+        <p>
+          Your lists stay in your browser. The{' '}
+          <Link href="/quizlet-list/privacy-policy">privacy policy</Link> has
+          the details.
         </p>
       </section>
     </>

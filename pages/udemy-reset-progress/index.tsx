@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
+import { InstallLinks } from '@/components/install-links';
 import { PageMeta } from '@/components/page-meta';
 import { StoreRating } from '@/components/store-rating';
 import { UdemyPacingModes } from '@/components/udemy-pacing-modes';
@@ -10,14 +11,15 @@ import {
   UDEMY_RESET_APP_OG_IMAGE,
   UDEMY_RESET_APP_RATING,
   UDEMY_RESET_APP_STORES,
+  SITE_URL,
 } from '@/lib/constants';
 import { Routes } from '@/lib/routes';
 import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
 import { withStoreUtm } from '@/lib/store-links';
 import { registerView, whenVisible } from '@/lib/views';
 
-import chromeStore from '../../public/static/images/chrome-store.png';
-import firefoxStore from '../../public/static/images/firefox-store.webp';
+import popupImage from '../../public/static/images/udemy-progress-reset/udemy-reset-progress-popup.png';
+import speedModesImage from '../../public/static/images/udemy-progress-reset/udemy-reset-progress-speed-modes.png';
 
 const storeLink = (url: string) =>
   withStoreUtm(url, 'landing', 'udemy-reset-progress');
@@ -30,6 +32,7 @@ function UdemyResetProgressPage() {
       }),
     [],
   );
+
   return (
     <>
       <PageMeta
@@ -63,6 +66,18 @@ function UdemyResetProgressPage() {
               url: 'https://shramko.dev/udemy-reset-progress',
               image: UDEMY_RESET_APP_OG_IMAGE,
               license: 'https://www.gnu.org/licenses/agpl-3.0.html',
+              screenshot: [
+                `${SITE_URL}/static/images/udemy-progress-reset/udemy-reset-progress-popup.png`,
+                `${SITE_URL}/static/images/udemy-progress-reset/udemy-reset-progress-speed-modes.png`,
+              ],
+              featureList: [
+                'Clear every lecture checkbox in a course',
+                'Mark every lecture complete',
+                'Speed modes: Turbo, Balanced, Safe and Auto, plus your own delay and batch size',
+                'Runs only on the tab you have open',
+                'Keeps its settings in the browser and makes no network requests of its own',
+                'Open source under AGPL-3.0',
+              ],
               author: {
                 '@type': 'Person',
                 '@id': 'https://shramko.dev/#person',
@@ -92,6 +107,65 @@ function UdemyResetProgressPage() {
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: 'Is there a built-in way to reset progress on Udemy?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: "No. As of October 2026, Udemy's help describes only unchecking lectures one by one.",
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Is this extension safe to use?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'It runs only when you press a button in its popup, and only on the tab you have open. It keeps its settings in your browser and makes no network requests of its own.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Will this affect my Udemy account?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'It clicks the same checkboxes you can click by hand. Udemy\'s Terms of Use do not allow "automated means of any kind to access the Services" and let Udemy restrict accounts that break them. They do not mention browser extensions, and Udemy has not said how it treats one like this. If that worries you, uncheck lectures by hand.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Does it work in the Udemy mobile app?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'No. It is a browser extension, so it works on the Udemy website in Chrome, Firefox or Edge.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Can I use it on other learning platforms?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'No. It is built for the Udemy interface and works only on Udemy.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Is this an official Udemy tool?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'No. It is an independent extension I built, and it is not affiliated with or endorsed by Udemy.',
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <section className="prose dark:prose-dark flex flex-col justify-center items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
@@ -109,12 +183,149 @@ function UdemyResetProgressPage() {
         <p>
           Udemy has no button that resets a whole course. Its help center only
           describes unchecking lectures one at a time in the course content
-          list. That is fine for a short course. For a long one, the free{' '}
-          <strong>Udemy Reset Progress</strong> extension clears every checkbox
-          for you.
+          list. That is fine for a short course and slow for a long one.
         </p>
 
-        <h2>Reset Progress by Hand</h2>
+        <p>
+          So I built{' '}
+          <strong>
+            <a
+              target="_blank"
+              href={storeLink(UDEMY_RESET_APP_STORES.chrome)}
+              rel="noopener"
+            >
+              Udemy Reset Progress
+            </a>
+          </strong>
+          , a free browser extension that clears every checkbox for you. It
+          clicks the same lecture checkboxes you would, in the tab you have
+          open, and makes no Udemy API calls.
+        </p>
+
+        <InstallLinks
+          name="Udemy Reset Progress"
+          stores={UDEMY_RESET_APP_STORES}
+          medium="landing"
+          campaign="udemy-reset-progress"
+        />
+
+        <video
+          loop
+          autoPlay
+          muted
+          playsInline
+          aria-label="Demo of Udemy Reset Progress extension resetting a course"
+          className="mb-6 mx-auto mt-10"
+        >
+          <source
+            src="/static/images/udemy-progress-reset/video.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        <h2>How it works</h2>
+
+        <h3>1. Install the extension</h3>
+
+        <p>
+          Install Udemy Reset Progress from the{' '}
+          <a
+            target="_blank"
+            href={storeLink(UDEMY_RESET_APP_STORES.chrome)}
+            rel="noopener noreferrer"
+          >
+            Chrome Web Store
+          </a>
+          ,{' '}
+          <a
+            target="_blank"
+            href={storeLink(UDEMY_RESET_APP_STORES.firefox)}
+            rel="noopener noreferrer"
+          >
+            Firefox Add-ons
+          </a>{' '}
+          or{' '}
+          <a
+            target="_blank"
+            href={storeLink(UDEMY_RESET_APP_STORES.edge)}
+            rel="noopener noreferrer"
+          >
+            Microsoft Edge Add-ons
+          </a>
+          .
+        </p>
+
+        <h3>2. Open the course player</h3>
+
+        <p>
+          Open the course you want to reset in the course player, the page where
+          lectures play, and make sure the course content list is on screen.
+        </p>
+
+        <h3>3. Clear the progress</h3>
+
+        <p>
+          Click the extension icon in your browser toolbar, then{' '}
+          <strong>Clear Progress</strong>. The button reads
+          &#34;Resetting...&#34; while it works. Keep the tab open until it says
+          &#34;Done&#34;. If it says &#34;Try Again&#34;, the{' '}
+          <Link href={Routes.UdemyTroubleshooting()}>troubleshooting page</Link>{' '}
+          explains the message.
+        </p>
+
+        <Image
+          className="rounded-lg border border-gray-200 dark:border-gray-800"
+          alt='The Udemy Reset Progress popup with the heading "Udemy Reset Progress", the subtitle "Manage your course progress", a settings gear, a "Clear Progress" button and a "Mark All Complete" button.'
+          src={popupImage}
+          sizes="(min-width: 768px) 768px, 100vw"
+        />
+
+        <h3>4. Reload the page</h3>
+
+        <p>
+          Reload the course page to see the result. Every lecture checkbox is
+          now clear.
+        </p>
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>
+            <strong>One-click reset:</strong> The popup clears every lecture
+            checkbox in the course content list.
+          </li>
+          <li>
+            <strong>Mark all complete:</strong> A second button ticks every box
+            that is still unchecked.
+          </li>
+          <li>
+            <strong>Speed modes:</strong> Slow down on long courses so Udemy is
+            less likely to end your session.
+          </li>
+          <li>
+            <strong>Any enrolled course:</strong> It works on any course you are
+            enrolled in that shows lecture checkboxes.
+          </li>
+          <li>
+            <strong>Private:</strong> It collects no data, keeps its settings in
+            your browser and makes no network requests of its own.
+          </li>
+          <li>
+            <strong>Free:</strong> It costs nothing, has no ads and works in
+            Chrome, Firefox and Edge.
+          </li>
+          <li>
+            <strong>Open source:</strong> The code is on GitHub under the
+            AGPL-3.0 license.
+          </li>
+        </ul>
+
+        <h2>Reset progress by hand</h2>
+
+        <p>
+          This is the only method Udemy&#39;s help describes, and it needs no
+          extension:
+        </p>
 
         <ol>
           <li>Open the course player.</li>
@@ -138,125 +349,46 @@ function UdemyResetProgressPage() {
           ).
         </p>
 
-        <h2>Reset Progress in One Click</h2>
-
-        <video
-          loop
-          autoPlay
-          muted
-          playsInline
-          aria-label="Demo of Udemy Reset Progress extension resetting a course"
-          className="mb-6 mx-auto mt-10"
-        >
-          <source
-            src="/static/images/udemy-progress-reset/video.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        <h3>Installation</h3>
-
-        <div className="flex gap-8 justify-center items-center">
-          <a
-            target="_blank"
-            rel="nofollow noopener"
-            href={storeLink(UDEMY_RESET_APP_STORES.chrome)}
-            aria-label="Udemy Reset Progress on Chrome Web Store"
-            className="transition-transform duration-200 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
-          >
-            <Image
-              className="w-44 border border-gray-200 dark:border-gray-800 rounded-lg"
-              role="presentation"
-              alt="Download Udemy Reset Progress for Chrome"
-              src={chromeStore}
-              sizes="176px"
-            />
-          </a>
-          <a
-            target="_blank"
-            rel="nofollow noopener"
-            href={storeLink(UDEMY_RESET_APP_STORES.firefox)}
-            aria-label="Udemy Reset Progress on Firefox Add-ons"
-            className="transition-transform duration-200 ease-out-expo hover:scale-[1.02] active:scale-[0.97]"
-          >
-            <Image
-              className="w-39"
-              role="presentation"
-              src={firefoxStore}
-              alt="Download Udemy Reset Progress for Firefox"
-              sizes="156px"
-            />
-          </a>
-        </div>
-
-        <h3>Step by Step</h3>
-
-        <ol>
-          <li>
-            Install the Udemy Reset Progress extension from your browser&#39;s
-            store
-          </li>
-          <li>Open the course player, with the course content list visible</li>
-          <li>Click the extension icon in your browser toolbar</li>
-          <li>
-            Click the &#34;Clear Progress&#34; button and keep the tab open
-            until it finishes
-          </li>
-          <li>Reload the page: every lecture checkbox is now clear</li>
-        </ol>
-
-        <h2>Why Choose Our Udemy Reset Progress Extension?</h2>
-
-        <ul>
-          <li>
-            <strong>One-click reset ⚡️:</strong> Clear all course progress from
-            the extension popup
-          </li>
-          <li>
-            <strong>Works on all Udemy courses 📚:</strong> Reset progress on
-            any course you&#39;re enrolled in
-          </li>
-          <li>
-            <strong>100% Free with no ads 🆓:</strong> Download now for Chrome,
-            Firefox, or Edge
-          </li>
-          <li>
-            <strong>Privacy focused 🔒:</strong> No data collection - everything
-            happens locally in your browser
-          </li>
-          <li>
-            <strong>Speed modes:</strong> Slow down on long courses so Udemy
-            does not end your session
-          </li>
-          <li>
-            <strong>Open source:</strong> AGPL-3.0, with the code on GitHub
-          </li>
-        </ul>
-
-        <h2>Speed Modes</h2>
+        <h2>Speed modes</h2>
 
         <p>
           The extension clicks the same checkboxes you would, one after another.
           Clicking hundreds of them in a few seconds can end your Udemy session,
-          so it waits between clicks and pauses after every batch. Pick a mode
-          in the extension settings:
+          so it waits between clicks and pauses after every batch. Open the
+          settings with the gear button in the popup, turn off{' '}
+          <strong>Auto</strong> and pick a mode:
         </p>
+
+        <Image
+          className="rounded-lg border border-gray-200 dark:border-gray-800"
+          alt='The Udemy Reset Progress settings page with the "Speed mode" card, the "Auto" switch turned off and "Safe" selected below "Turbo" and "Balanced", then an "Advanced" toggle and a "Reset to Auto" button.'
+          src={speedModesImage}
+          sizes="(min-width: 768px) 768px, 100vw"
+        />
 
         <UdemyPacingModes />
 
         <p>
-          Auto currently uses the Balanced settings. If Udemy logs you out
-          halfway, log back in and run it again in Safe mode. The{' '}
+          Auto is on by default and uses the Balanced timing. It does not adapt
+          to the size of the course. Open <strong>Advanced</strong> to set the
+          Action delay, from 50 to 1000 ms, and the Batch size, from 5 to 50,
+          yourself. The table shows version 2.1.2.
+        </p>
+
+        <p>
+          If Udemy logs you out halfway, log back in and run it again in Safe
+          mode. The extension does not retry, but a second run continues with
+          the boxes that are still checked. The{' '}
           <Link href={Routes.UdemyTroubleshooting()}>troubleshooting page</Link>{' '}
           covers that and every error message.
         </p>
 
-        <h2>Mark All Complete and Certificates</h2>
+        <h2>Mark a course complete</h2>
 
         <p>
-          The popup also has a &#34;Mark All Complete&#34; button, which ticks
-          every unchecked box. Udemy issues a certificate of completion for a
-          paid course once every curriculum item is complete (
+          The popup also has a <strong>Mark All Complete</strong> button, which
+          ticks every unchecked box. Udemy issues a certificate of completion
+          for a paid course once every curriculum item is complete (
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -299,11 +431,14 @@ function UdemyResetProgressPage() {
           </li>
         </ul>
 
-        <h2>Technical Details</h2>
+        <h2>Technical details</h2>
 
         <ul>
           <li>
-            <strong>Framework:</strong> <a href="https://wxt.dev/">WXT</a>
+            <strong>Framework:</strong>{' '}
+            <a target="_blank" rel="nofollow noopener" href="https://wxt.dev/">
+              WXT
+            </a>
           </li>
           <li>
             <strong>UI:</strong>{' '}
@@ -320,7 +455,7 @@ function UdemyResetProgressPage() {
               rel="nofollow noopener"
               href="https://tailwindcss.com/"
             >
-              TailwindCSS
+              Tailwind CSS
             </a>{' '}
             +{' '}
             <a
@@ -344,7 +479,7 @@ function UdemyResetProgressPage() {
           <li>
             <strong>Build:</strong>{' '}
             <a target="_blank" rel="nofollow noopener" href="https://vite.dev/">
-              Vite-powered compilation
+              Vite
             </a>
           </li>
           <li>
@@ -359,28 +494,24 @@ function UdemyResetProgressPage() {
           </li>
         </ul>
 
-        <h2>FAQs</h2>
+        <h2>FAQ</h2>
+
+        <h3>Is there a built-in way to reset progress on Udemy?</h3>
         <p>
-          <strong>
-            Q: Is there a built-in way to reset progress on Udemy?
-          </strong>
-          <br />
-          A: No. As of October 2026, Udemy&#39;s help describes only unchecking
+          No. As of October 2026, Udemy&#39;s help describes only unchecking
           lectures one by one.
         </p>
 
+        <h3>Is this extension safe to use?</h3>
         <p>
-          <strong>Q: Is this extension safe to use?</strong>
-          <br />
-          A: It runs only when you press a button in its popup, and only on the
-          tab you have open. It keeps its settings in your browser and makes no
+          It runs only when you press a button in its popup, and only on the tab
+          you have open. It keeps its settings in your browser and makes no
           network requests of its own.
         </p>
 
+        <h3>Will this affect my Udemy account?</h3>
         <p>
-          <strong>Q: Will this affect my Udemy account?</strong>
-          <br />
-          A: It clicks the same checkboxes you can click by hand. Udemy&#39;s{' '}
+          It clicks the same checkboxes you can click by hand. Udemy&#39;s{' '}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -394,59 +525,42 @@ function UdemyResetProgressPage() {
           one like this. If that worries you, uncheck lectures by hand.
         </p>
 
+        <h3>Does it work in the Udemy mobile app?</h3>
         <p>
-          <strong>Q: Does it work in the Udemy mobile app?</strong>
-          <br />
-          A: No. It is a browser extension, so it works on the Udemy website in
+          No. It is a browser extension, so it works on the Udemy website in
           Chrome, Firefox or Edge.
         </p>
 
+        <h3>Can I use it on other learning platforms?</h3>
+        <p>No. It is built for the Udemy interface and works only on Udemy.</p>
+
+        <h3>Is this an official Udemy tool?</h3>
         <p>
-          <strong>Q: Can I use it on other learning platforms?</strong>
-          <br />
-          A: No, it&#39;s specifically designed for the Udemy interface.
+          No. It is an independent extension I built, and it is not affiliated
+          with or endorsed by Udemy.
         </p>
 
-        <div className="mt-8 text-center w-full">
-          <h3>Ready to Simplify Your Udemy Experience?</h3>
-          <div className="flex justify-center gap-4 mt-4">
-            <a
-              href="https://github.com/Shramkoweb/udemy-reset-progress"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on GitHub
-            </a>
+        <h2>Install Udemy Reset Progress</h2>
 
-            <a
-              href={storeLink(UDEMY_RESET_APP_STORES.chrome)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Install for Chrome
-            </a>
+        <p>It is free for Chrome, Firefox and Edge.</p>
 
-            <a
-              href={storeLink(UDEMY_RESET_APP_STORES.firefox)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Install for Firefox
-            </a>
+        <InstallLinks
+          name="Udemy Reset Progress"
+          stores={UDEMY_RESET_APP_STORES}
+          medium="landing"
+          campaign="udemy-reset-progress"
+        />
 
-            <a
-              href={storeLink(UDEMY_RESET_APP_STORES.edge)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Install for Microsoft Edge
-            </a>
-          </div>
-        </div>
-
-        <p className="text-xs text-gray-600 dark:text-gray-400">
-          Udemy Reset Progress is an independent extension, not affiliated with
-          or endorsed by Udemy.
+        <p>
+          The code is open source under AGPL-3.0.{' '}
+          <a
+            href="https://github.com/Shramkoweb/udemy-reset-progress"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View it on GitHub
+          </a>
+          .
         </p>
       </section>
     </>

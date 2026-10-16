@@ -96,6 +96,41 @@ export function generateTechArticleSchema(
   };
 }
 
+export function generateGuideSchema(guide: {
+  path: string;
+  heading: string;
+  description: string;
+  createDate: number;
+  keywords: string[];
+}) {
+  const datePublished = toIsoDate(guide.createDate);
+
+  if (!datePublished) {
+    throw new Error(`Invalid createDate for guide "${guide.path}"`);
+  }
+
+  const url = `${SITE_URL}${guide.path}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': `${url}/#article`,
+    headline: guide.heading,
+    description: guide.description,
+    url,
+    datePublished,
+    author,
+    publisher: author,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+    image: getSocialImage(guide.heading).url,
+    keywords: guide.keywords,
+    inLanguage: 'en',
+  };
+}
+
 export function generateBreadcrumbSchema(
   items: Array<{ name: string; url: string }>,
 ) {

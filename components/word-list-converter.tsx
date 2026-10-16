@@ -18,10 +18,10 @@ interface WordListConverterProps {
 const PLACEHOLDER = 'apple - la manzana\nbanana\tel plátano\ncherry';
 
 const fieldClasses =
-  'mt-2 block w-full rounded-lg border border-gray-200 bg-white px-3 py-2 font-mono text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100';
+  'mt-2 block w-full rounded-lg border border-gray-200 bg-white px-4 py-2 font-mono text-sm text-gray-900 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-100';
 
 const buttonClasses =
-  'inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium text-gray-900 transition-[background-color,transform] duration-200 ease-out-expo hover:bg-gray-100 active:scale-[0.97] dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-800';
+  'inline-flex items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-sm font-bold text-black transition-[background-color,transform] duration-200 ease-out-expo hover:bg-gray-300 active:scale-[0.97] dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700';
 
 function plural(count: number, word: string): string {
   return `${count} ${word}${count === 1 ? '' : 's'}`;
@@ -66,7 +66,7 @@ export function WordListConverter(props: WordListConverterProps) {
   }
 
   return (
-    <div className="not-prose my-8 w-full rounded-lg border border-gray-200 p-4 dark:border-gray-700">
+    <div className="not-prose my-8 w-full rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
       <label
         htmlFor={inputId}
         className="block text-sm font-semibold text-gray-900 dark:text-gray-100"
@@ -137,7 +137,7 @@ export function WordListConverter(props: WordListConverterProps) {
               className={buttonClasses}
             >
               {copied ? (
-                <Check className="h-4 w-4 text-green-600" aria-hidden="true" />
+                <Check className="h-4 w-4 text-green-500" aria-hidden="true" />
               ) : (
                 <Copy className="h-4 w-4" aria-hidden="true" />
               )}

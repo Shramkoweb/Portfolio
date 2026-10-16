@@ -16,6 +16,7 @@ export interface FlashcardApp {
   title: string;
   description: string;
   heading: string;
+  keywords: string[];
   intro: string;
   download?: string;
   steps: string[];
@@ -32,6 +33,13 @@ export const FLASHCARD_APPS: Record<ImportFormat, FlashcardApp> = {
     description:
       "Turn a plain word list into Quizlet's import format, one card per line with a tab between term and definition, then follow the exact import steps.",
     heading: 'Import a Word List into Quizlet',
+    keywords: [
+      'quizlet import',
+      'import word list into quizlet',
+      'quizlet import format',
+      'csv to quizlet',
+      'quizlet flashcards from a list',
+    ],
     intro:
       'Quizlet builds a flashcard set from pasted text. Every row becomes a card, and the term and definition on a row are split by a comma, a tab or a dash. Paste your words below, add a meaning after a tab or a dash where you have one, and copy the result into the **Import** box.',
     steps: [
@@ -76,6 +84,13 @@ export const FLASHCARD_APPS: Record<ImportFormat, FlashcardApp> = {
     description:
       'Make an Anki-ready text file from a plain word list: UTF-8, tab-separated, with a #separator header so Anki never has to guess. Runs in your browser.',
     heading: 'Import a Word List into Anki',
+    keywords: [
+      'anki import',
+      'import word list into anki',
+      'anki text file import',
+      'anki csv import',
+      'anki separator header',
+    ],
     intro:
       'Anki imports plain text files with one note per line. It guesses which separator a file uses, and a wrong guess splits your cards in odd places. The file made here starts with `#separator:Tab` and `#html:false`, so Anki reads every line as one note with the word on the front.',
     download: 'anki-import.txt',
@@ -122,6 +137,12 @@ export const FLASHCARD_APPS: Record<ImportFormat, FlashcardApp> = {
     description:
       'Turn a word list into RemNote flashcard syntax, one "term >> definition" per line, and paste it straight into a document. Free formatter plus the steps.',
     heading: 'Import a Word List into RemNote',
+    keywords: [
+      'remnote flashcards',
+      'import flashcards into remnote',
+      'remnote import text',
+      'remnote card syntax',
+    ],
     intro:
       'RemNote does not need a file for flashcards. Text pasted into a document becomes cards when a line has `>>` between the front and the back. Paste your words below and the formatter writes them in that syntax.',
     steps: [

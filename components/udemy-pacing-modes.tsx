@@ -24,7 +24,7 @@ const MODES = [
     pause: '1.5 s',
   },
   {
-    name: 'Custom',
+    name: 'Advanced',
     delay: '50 to 1000 ms',
     batch: 'Every 5 to 50 clicks',
     pause: 'Six delays, at least 1 s',

@@ -1,10 +1,30 @@
+import Image from 'next/image';
+
 import type { ExtensionStores } from '@/lib/constants';
 import { withStoreUtm } from '@/lib/store-links';
 
-const STORES = [
-  { key: 'chrome', label: 'Chrome' },
-  { key: 'firefox', label: 'Firefox' },
-  { key: 'edge', label: 'Edge' },
+const BADGES = [
+  {
+    store: 'chrome',
+    label: 'Chrome Web Store',
+    src: '/static/images/badges/chrome-web-store.png',
+    width: 496,
+    height: 150,
+  },
+  {
+    store: 'firefox',
+    label: 'Firefox Add-ons',
+    src: '/static/images/badges/firefox-add-ons.svg',
+    width: 172,
+    height: 60,
+  },
+  {
+    store: 'edge',
+    label: 'Microsoft Edge Add-ons',
+    src: '/static/images/badges/microsoft-edge-add-ons.png',
+    width: 544,
+    height: 144,
+  },
 ] as const;
 
 interface InstallLinksProps {
@@ -18,17 +38,24 @@ export function InstallLinks(props: InstallLinksProps) {
   const { name, stores, medium, campaign } = props;
 
   return (
-    <ul className="not-prose my-6 flex flex-wrap gap-3">
-      {STORES.map(({ key, label }) => (
-        <li key={key}>
+    <ul className="not-prose my-6 flex flex-wrap items-center gap-4">
+      {BADGES.map((badge) => (
+        <li key={badge.store}>
           <a
-            href={withStoreUtm(stores[key], medium, campaign)}
             target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Install ${name} for ${label}`}
-            className="inline-flex rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-900 transition-[background-color,transform] duration-200 ease-out-expo hover:bg-gray-100 active:scale-[0.97] dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-800"
+            rel="nofollow noopener"
+            href={withStoreUtm(stores[badge.store], medium, campaign)}
+            aria-label={`${name} on ${badge.label}`}
+            className="block"
           >
-            Add to {label}
+            <Image
+              className="h-12 w-auto"
+              alt=""
+              src={badge.src}
+              width={badge.width}
+              height={badge.height}
+              unoptimized
+            />
           </a>
         </li>
       ))}

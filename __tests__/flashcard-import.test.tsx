@@ -91,7 +91,7 @@ describe('flashcard import pages', () => {
 
     const chrome = new URL(
       screen
-        .getByRole('link', { name: 'Install Quizlet QuickList for Chrome' })
+        .getByRole('link', { name: 'Quizlet QuickList on Chrome Web Store' })
         .getAttribute('href')!,
     );
 
