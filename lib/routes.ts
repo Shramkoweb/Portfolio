@@ -8,7 +8,9 @@ export const Routes = {
   Gear: () => '/gear',
   Dashboard: () => '/dashboard',
   UdemyResetProgress: () => '/udemy-reset-progress',
+  UdemyTroubleshooting: () => '/udemy-reset-progress/troubleshooting',
   QuizletList: () => '/quizlet-list',
+  FlashcardImport: (app: string) => `/quizlet-list/to/${app}`,
   Bookmarks: () => '/bookmarks',
 
   Resume: () => '/static/serhii_shramko_frontend.pdf',

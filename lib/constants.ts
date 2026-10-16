@@ -5,6 +5,26 @@ export const QUIZLET_APP_OG_IMAGE =
 export const UDEMY_RESET_APP_OG_IMAGE =
   'https://shramko.dev/static/images/udemy-progress-reset/udemy-progress-reset-og.png';
 
+export interface ExtensionStores {
+  chrome: string;
+  firefox: string;
+  edge: string;
+}
+
+export const QUIZLET_APP_STORES: ExtensionStores = {
+  chrome:
+    'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+  firefox: 'https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/',
+  edge: 'https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn',
+};
+export const UDEMY_RESET_APP_STORES: ExtensionStores = {
+  chrome:
+    'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
+  firefox:
+    'https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/',
+  edge: 'https://microsoftedge.microsoft.com/addons/detail/udemy-reset-progress/cmnolghflighmmfpdkinlbmoelfgchhc',
+};
+
 export interface StoreRating {
   ratingValue: number;
   ratingCount: number;
@@ -12,22 +32,20 @@ export interface StoreRating {
   storeUrl: string;
 }
 
-// Copied by hand from the Chrome Web Store on 2026-10-02. The pages show
+// Copied by hand from the Chrome Web Store on 2026-10-16. The pages show
 // these numbers and mark them up as aggregateRating, so update both stores'
 // figures here together when they move.
 export const QUIZLET_APP_RATING: StoreRating = {
   ratingValue: 4.7,
   ratingCount: 6,
-  users: '184',
-  storeUrl:
-    'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+  users: '192',
+  storeUrl: QUIZLET_APP_STORES.chrome,
 };
 export const UDEMY_RESET_APP_RATING: StoreRating = {
   ratingValue: 5,
-  ratingCount: 13,
+  ratingCount: 14,
   users: '1,000',
-  storeUrl:
-    'https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo',
+  storeUrl: UDEMY_RESET_APP_STORES.chrome,
 };
 
 export const GRADIENT_FROM_COLORS = [

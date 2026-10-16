@@ -11,6 +11,7 @@
 <url><loc>https://shramko.dev/quizlet-list/privacy-policy</loc><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets</loc><priority>0.9</priority></url>
 <url><loc>https://shramko.dev/udemy-reset-progress</loc><priority>0.9</priority></url>
+<url><loc>https://shramko.dev/udemy-reset-progress/troubleshooting</loc><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/blog/ai-seo-audit</loc><lastmod>2025-11-30T22:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/blog/apollo-graphql-certification</loc><lastmod>2025-03-13T09:01:43.973Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/blog/astro</loc><lastmod>2026-05-06T00:00:00.000Z</lastmod><priority>0.8</priority></url>
@@ -66,6 +67,9 @@
 <url><loc>https://shramko.dev/blog/the-early-return-pattern-in-javascript</loc><lastmod>2026-04-03T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/blog/unsubscribe-immediately</loc><lastmod>2024-04-08T11:47:44.249Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/blog/useful-articles</loc><lastmod>2025-07-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>
+<url><loc>https://shramko.dev/quizlet-list/to/anki</loc><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/quizlet-list/to/quizlet</loc><priority>0.7</priority></url>
+<url><loc>https://shramko.dev/quizlet-list/to/remnote</loc><priority>0.7</priority></url>
 <url><loc>https://shramko.dev/snippets/branded-types</loc><lastmod>2025-12-01T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/check-if-character-is-a-letter-in-javascript</loc><lastmod>2026-02-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>
 <url><loc>https://shramko.dev/snippets/common-css-classes</loc><lastmod>2026-02-21T00:00:00.000Z</lastmod><priority>0.8</priority></url>

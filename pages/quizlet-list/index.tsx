@@ -3,16 +3,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
+import { InstallLinks } from '@/components/install-links';
 import { PageMeta } from '@/components/page-meta';
 import { StoreRating } from '@/components/store-rating';
-import { QUIZLET_APP_OG_IMAGE, QUIZLET_APP_RATING } from '@/lib/constants';
+import {
+  QUIZLET_APP_OG_IMAGE,
+  QUIZLET_APP_RATING,
+  QUIZLET_APP_STORES,
+} from '@/lib/constants';
+import { FLASHCARD_APP_SLUGS, FLASHCARD_APPS } from '@/lib/flashcard-apps';
+import { Routes } from '@/lib/routes';
 import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
+import { withStoreUtm } from '@/lib/store-links';
 import { registerView, whenVisible } from '@/lib/views';
 
 import firstImage from '../../public/static/images/quizlet-list/quizlet-quicklist-1.png';
 import secondImage from '../../public/static/images/quizlet-list/quizlet-quicklist-2.png';
 import thirdImage from '../../public/static/images/quizlet-list/quizlet-quicklist-3.png';
 import fourthImage from '../../public/static/images/quizlet-list/quizlet-quicklist-4.png';
+
+const storeLink = (url: string) => withStoreUtm(url, 'landing', 'quizlet-list');
 
 function QuizletPage() {
   useEffect(
@@ -26,9 +36,9 @@ function QuizletPage() {
   return (
     <>
       <PageMeta
-        title="Quizlet QuickList - Web Extension"
-        description="Quizlet QuickList is a Web extension that helps you easily gather, organize, and export word lists for studying on Quizlet. Simplify your learning experience."
-        socialDescription="Simplify vocabulary learning with Quizlet QuickList. Easily gather and export word lists for studying on Quizlet."
+        title="Quizlet QuickList: Save Words for Quizlet and Anki"
+        description="Free browser extension: right-click any word on a page to save it to a list, then copy the list into Quizlet or export a TSV or CSV file for Anki, Google Sheets or Excel."
+        socialDescription="Save unfamiliar words from any page in one click, then copy them into Quizlet or export them for Anki."
         image={{
           url: QUIZLET_APP_OG_IMAGE,
           width: 880,
@@ -41,7 +51,7 @@ function QuizletPage() {
         <meta
           name="keywords"
           key="keywords"
-          content="Quizlet, Chrome Extension, Firefox Extension, Vocabulary, Study, Word List, Learning Tool, Export to Quizlet"
+          content="Quizlet, Anki, Chrome Extension, Firefox Extension, Vocabulary, Study, Word List, Learning Tool, Export to Quizlet, Export to Anki"
         />
         <meta name="author" key="author" content="Serhii Shramko" />
         <script
@@ -52,7 +62,7 @@ function QuizletPage() {
               '@type': 'SoftwareApplication',
               name: 'Quizlet QuickList',
               description:
-                'A Web extension that helps users quickly create and copy lists of selected words for easy use in Quizlet.',
+                'A browser extension that saves selected words into lists and exports them for Quizlet, Anki or a spreadsheet.',
               url: 'https://shramko.dev/quizlet-list',
               image:
                 'https://shramko.dev/static/images/quizlet-list/og-quizlet.jpg',
@@ -74,12 +84,12 @@ function QuizletPage() {
                 priceCurrency: 'USD',
                 price: '0.00',
                 availability: 'https://schema.org/InStock',
-                url: 'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
+                url: QUIZLET_APP_STORES.chrome,
               },
               downloadUrl: [
-                'https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg',
-                'https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/',
-                'https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn',
+                QUIZLET_APP_STORES.chrome,
+                QUIZLET_APP_STORES.firefox,
+                QUIZLET_APP_STORES.edge,
               ],
             }),
           }}
@@ -109,6 +119,14 @@ function QuizletPage() {
                 },
                 {
                   '@type': 'Question',
+                  name: 'Does Quizlet QuickList save the meaning of a word?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'No, it saves the word itself. Add the meanings in your flashcard app, or in the free formatters for Quizlet, Anki and RemNote on this site.',
+                  },
+                },
+                {
+                  '@type': 'Question',
                   name: 'Can I use Quizlet QuickList on any website?',
                   acceptedAnswer: {
                     '@type': 'Answer',
@@ -126,7 +144,12 @@ function QuizletPage() {
           Quizlet QuickList: The Easiest Way to Collect and Study New Words
         </h1>
 
-        <StoreRating rating={QUIZLET_APP_RATING} />
+        <StoreRating
+          rating={{
+            ...QUIZLET_APP_RATING,
+            storeUrl: storeLink(QUIZLET_APP_RATING.storeUrl),
+          }}
+        />
 
         <p>
           Hey there! If you’re like me, you’ve probably come across tons of new
@@ -140,7 +163,7 @@ function QuizletPage() {
           <strong>
             <a
               target="_blank"
-              href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              href={storeLink(QUIZLET_APP_STORES.chrome)}
               rel="noopener"
             >
               Quizlet QuickList
@@ -156,7 +179,7 @@ function QuizletPage() {
           <li>
             <a
               target="_blank"
-              href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              href={storeLink(QUIZLET_APP_STORES.chrome)}
               rel="noopener noreferrer"
             >
               Quizlet QuickList at Chrome Web Store
@@ -166,7 +189,7 @@ function QuizletPage() {
           <li>
             <a
               target="_blank"
-              href="https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/"
+              href={storeLink(QUIZLET_APP_STORES.firefox)}
               rel="noopener noreferrer"
             >
               Quizlet QuickList at Firefox Add-ons
@@ -176,7 +199,7 @@ function QuizletPage() {
           <li>
             <a
               target="_blank"
-              href="https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn"
+              href={storeLink(QUIZLET_APP_STORES.edge)}
               rel="noopener noreferrer"
             >
               Quizlet QuickList at Microsoft Edge Store
@@ -291,6 +314,39 @@ function QuizletPage() {
           can quickly turn your word list into custom flashcards.
         </p>
 
+        <h2>Export to Quizlet, Anki or a Spreadsheet</h2>
+
+        <ul>
+          <li>
+            <strong>Copy to Clipboard:</strong> one word per line, ready to
+            paste into Quizlet&#39;s import box or any other app.
+          </li>
+          <li>
+            <strong>Export TSV or CSV:</strong> downloads the list as a file for
+            Anki, Google Sheets or Excel.
+          </li>
+          <li>
+            <strong>Several lists:</strong> keep a separate list per language,
+            book or course, and switch between them in the popup.
+          </li>
+        </ul>
+
+        <p>
+          The extension saves the word itself, not its meaning. These free
+          formatters turn a list into each app&#39;s import format, with room
+          for a meaning on every line, and walk through the import step by step:
+        </p>
+
+        <ul>
+          {FLASHCARD_APP_SLUGS.map((slug) => (
+            <li key={slug}>
+              <Link href={Routes.FlashcardImport(slug)}>
+                {FLASHCARD_APPS[slug].heading}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
         <h2>How to Use Quizlet QuickList</h2>
 
         <p>
@@ -304,7 +360,7 @@ function QuizletPage() {
             the{' '}
             <a
               target="_blank"
-              href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg"
+              href={storeLink(QUIZLET_APP_STORES.chrome)}
               rel="noopener noreferrer"
             >
               Chrome Web Store
@@ -312,7 +368,7 @@ function QuizletPage() {
             ,{' '}
             <a
               target="_blank"
-              href="https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/"
+              href={storeLink(QUIZLET_APP_STORES.firefox)}
               rel="noopener noreferrer"
             >
               Firefox Add-ons
@@ -320,7 +376,7 @@ function QuizletPage() {
             or{' '}
             <a
               target="_blank"
-              href="https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn"
+              href={storeLink(QUIZLET_APP_STORES.edge)}
               rel="noopener noreferrer"
             >
               Microsoft Edge
@@ -337,8 +393,9 @@ function QuizletPage() {
             list in one click or clear it when you’re done.
           </li>
           <li>
-            <strong>Sync with Quizlet:</strong> Paste your list into Quizlet,
-            create custom study sets, and you’re all set to learn.
+            <strong>Paste into Quizlet:</strong> Paste your list into
+            Quizlet&#39;s import box, create a study set, and you’re all set to
+            learn.
           </li>
         </ol>
 
@@ -375,6 +432,16 @@ function QuizletPage() {
         </p>
 
         <p>
+          <strong>Q: Does it save the meaning of a word?</strong>
+          <br />
+          A: No, it saves the word itself. Add the meanings in your flashcard
+          app, or use the free formatters for{' '}
+          <Link href={Routes.FlashcardImport('quizlet')}>Quizlet</Link>,{' '}
+          <Link href={Routes.FlashcardImport('anki')}>Anki</Link> and{' '}
+          <Link href={Routes.FlashcardImport('remnote')}>RemNote</Link>.
+        </p>
+
+        <p>
           <strong>Q: Can I use it on any website?</strong>
           <br />
           A: Absolutely! As long as you can highlight the text, you can add
@@ -386,6 +453,18 @@ function QuizletPage() {
           <br />
           A:{' '}
           <Link href="/quizlet-list/privacy-policy">Privacy policy page</Link>
+        </p>
+
+        <InstallLinks
+          name="Quizlet QuickList"
+          stores={QUIZLET_APP_STORES}
+          medium="landing"
+          campaign="quizlet-list"
+        />
+
+        <p className="text-xs text-gray-600 dark:text-gray-400">
+          Quizlet QuickList is an independent extension, not affiliated with or
+          endorsed by Quizlet.
         </p>
       </section>
     </>
