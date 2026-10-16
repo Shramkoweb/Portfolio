@@ -3,6 +3,7 @@ import {
   generateBlogPostingSchema,
   generateTechArticleSchema,
   generateBreadcrumbSchema,
+  generateGuideSchema,
   generateWebSiteSchema,
   serializeJsonLd,
 } from '@/lib/schema';
@@ -117,6 +118,38 @@ describe('generateTechArticleSchema', () => {
 
     expect(() => generateTechArticleSchema(snippet)).toThrow(
       'Invalid createDate for snippet "test-snippet"',
+    );
+  });
+});
+
+describe('generateGuideSchema', () => {
+  const guide = {
+    path: '/quizlet-list/to/anki',
+    heading: 'Import a Word List into Anki',
+    description: 'Guide desc',
+    createDate: new Date('2026-10-16').getTime(),
+    keywords: ['anki import'],
+  };
+
+  it('describes the guide as a TechArticle at its own URL', () => {
+    const schema = generateGuideSchema(guide);
+
+    expect(schema['@type']).toBe('TechArticle');
+    expect(schema['@id']).toBe(
+      'https://shramko.dev/quizlet-list/to/anki/#article',
+    );
+    expect(schema.url).toBe('https://shramko.dev/quizlet-list/to/anki');
+    expect(schema.mainEntityOfPage['@id']).toBe(schema.url);
+    expect(schema.datePublished).toBe('2026-10-16T00:00:00.000Z');
+    expect(schema.keywords).toEqual(['anki import']);
+    expect(schema.image).toBe(
+      'https://shramko.dev/og?title=Import%20a%20Word%20List%20into%20Anki',
+    );
+  });
+
+  it('throws on an invalid createDate', () => {
+    expect(() => generateGuideSchema({ ...guide, createDate: NaN })).toThrow(
+      'Invalid createDate for guide "/quizlet-list/to/anki"',
     );
   });
 });

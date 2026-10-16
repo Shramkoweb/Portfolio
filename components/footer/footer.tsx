@@ -2,8 +2,13 @@ import Link from 'next/link';
 
 import { FooterLink } from '@/components/footer-link';
 import { getCopyrightYearString } from '@/components/footer/get-copyright';
-import { YEAR_OF_CREATE } from '@/lib/constants';
+import {
+  QUIZLET_APP_STORES,
+  UDEMY_RESET_APP_STORES,
+  YEAR_OF_CREATE,
+} from '@/lib/constants';
 import { Routes } from '@/lib/routes';
+import { withStoreUtm } from '@/lib/store-links';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -112,12 +117,24 @@ export function Footer() {
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href="https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg">
+                <FooterLink
+                  href={withStoreUtm(
+                    QUIZLET_APP_STORES.chrome,
+                    'footer',
+                    'quizlet-list',
+                  )}
+                >
                   Quizlet QuickList
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href="https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo">
+                <FooterLink
+                  href={withStoreUtm(
+                    UDEMY_RESET_APP_STORES.chrome,
+                    'footer',
+                    'udemy-reset-progress',
+                  )}
+                >
                   Udemy Reset Progress
                 </FooterLink>
               </li>

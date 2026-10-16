@@ -16,8 +16,12 @@ In-depth blog posts and production-ready code snippets covering JavaScript, Type
 
 ## Projects
 
-- [Quizlet QuickList](https://shramko.dev/quizlet-list): Chrome extension to gather, organize, and export word lists for studying on Quizlet
-- [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): Browser extension for Chrome and Firefox that resets Udemy course progress in one click
+- [Quizlet QuickList](https://shramko.dev/quizlet-list): Browser extension that saves words from any page into lists and exports them for Quizlet, Anki or a spreadsheet
+- [Import a Word List into Anki](https://shramko.dev/quizlet-list/to/anki): Free formatter that turns a word list into an Anki text file with a #separator header, plus the import steps
+- [Import a Word List into Quizlet](https://shramko.dev/quizlet-list/to/quizlet): Free formatter that turns a word list into Quizlet's tab-separated import format, plus the import steps
+- [Import a Word List into RemNote](https://shramko.dev/quizlet-list/to/remnote): Free formatter that turns a word list into RemNote "term >> definition" flashcards, plus the paste steps
+- [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): How to reset Udemy course progress by hand, and a free extension for Chrome, Firefox and Edge that clears every lecture checkbox in one click
+- [Udemy Reset Progress Troubleshooting](https://shramko.dev/udemy-reset-progress/troubleshooting): What each Udemy Reset Progress error means, and how to fix logouts and boxes that stay checked
 
 ## Blog Posts
 
