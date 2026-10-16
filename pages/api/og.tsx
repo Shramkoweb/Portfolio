@@ -1,10 +1,16 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
 import { ImageResponse } from '@vercel/og';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { categoryToSeoData } from '@/lib/utils';
 
 const MAX_TITLE_LENGTH = 100;
-const BACKGROUND_PATH = '/static/images/og-background.jpg';
+// @vercel/og refuses to fetch loopback and private hosts, so never load this over HTTP
+const background = `data:image/jpeg;base64,${readFileSync(
+  path.join(process.cwd(), 'public/static/images/og-background.jpg'),
+).toString('base64')}`;
 const allowedTitles = new Set<string>([
   'Serhii Shramko',
   'About | Serhii Shramko',
@@ -33,26 +39,6 @@ function sendText(res: NextApiResponse, status: number, body: string) {
     .send(body);
 }
 
-function requestOrigin(req: NextApiRequest): string | null {
-  // Only the Host header names the origin: req.url can be absolute-form and
-  // x-forwarded-host is client-controlled, and either would let a request
-  // point the background at another site.
-  const forwardedProto = req.headers['x-forwarded-proto'];
-  const proto =
-    (Array.isArray(forwardedProto) ? forwardedProto[0] : forwardedProto)
-      ?.split(',')[0]
-      .trim() === 'https'
-      ? 'https'
-      : 'http';
-  const { host } = req.headers;
-  if (!host) return null;
-  try {
-    return new URL(`${proto}://${host}`).origin;
-  } catch {
-    return null;
-  }
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -60,12 +46,6 @@ export default async function handler(
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     res.setHeader('Allow', 'GET, HEAD');
     sendText(res, 405, 'Method not allowed');
-    return;
-  }
-
-  const origin = requestOrigin(req);
-  if (!origin) {
-    sendText(res, 400, 'Invalid host');
     return;
   }
 
@@ -87,7 +67,6 @@ export default async function handler(
     rawTitle.length > MAX_TITLE_LENGTH
       ? `${rawTitle.slice(0, MAX_TITLE_LENGTH)}…`
       : rawTitle;
-  const background = new URL(BACKGROUND_PATH, origin).toString();
 
   const image = new ImageResponse(
     <div

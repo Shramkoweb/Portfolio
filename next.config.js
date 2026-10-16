@@ -96,6 +96,8 @@ const nextConfig = {
   poweredByHeader: false,
   experimental: {
     optimizePackageImports: ['lucide-react', 'swr'],
+    // true inlines a per-page bootstrap script that the hash-based CSP blocks, so pages never hydrate
+    turbopackSharedRuntime: false,
   },
   rewrites: async () => {
     return [
