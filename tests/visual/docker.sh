@@ -5,7 +5,7 @@
 # amd64 even on Apple silicon, to render exactly like the CI runner.
 set -euo pipefail
 
-IMAGE='mcr.microsoft.com/playwright:v1.64.0-noble@sha256:06a9939e57531807f8d5fd76ce44b53165ffb7d7501d87ab10e285c20b1e971f'
+IMAGE='mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf'
 
 cd "$(dirname "$0")/../.."
 
