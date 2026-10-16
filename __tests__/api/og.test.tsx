@@ -1,8 +1,9 @@
 /** @jest-environment node */
+import { readFileSync } from 'node:fs';
 import { createServer, request as httpRequest } from 'node:http';
 import type { AddressInfo } from 'node:net';
 
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiResponse } from 'next';
 import { apiResolver } from 'next/dist/server/api-utils/node/api-resolver';
 import type { ReactElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -29,7 +30,6 @@ jest.mock('@vercel/og', () => ({
 }));
 
 const TEXT = 'text/plain; charset=utf-8';
-const ORIGIN_HEADERS = { host: 'shramko.dev', 'x-forwarded-proto': 'https' };
 
 function loadModule(titles: string[] = []) {
   process.env.OG_CONTENT_TITLES = JSON.stringify(titles);
@@ -42,18 +42,14 @@ function loadModule(titles: string[] = []) {
 
 async function request({
   query = '',
-  url = `/api/og${query}`,
   method = 'GET',
-  headers = ORIGIN_HEADERS,
   titles = [],
 }: {
   query?: string;
-  url?: string;
   method?: string;
-  headers?: NextApiRequest['headers'];
   titles?: string[];
 } = {}) {
-  const mocks = createMockReqRes({ url, method, headers });
+  const mocks = createMockReqRes({ url: `/api/og${query}`, method });
   mocks.setHeader.mockReturnThis();
   const end = jest.fn();
   (mocks.res as NextApiResponse & { end: jest.Mock }).end = end;
@@ -63,10 +59,6 @@ async function request({
 
 function renderedImage() {
   return renderToStaticMarkup(mockImageResponse.mock.calls[0][0]);
-}
-
-function backgroundFrom(origin: string) {
-  return `background-image:url(${origin}/static/images/og-background.jpg)`;
 }
 
 function expectTextError(
@@ -142,56 +134,13 @@ describe('API /api/og', () => {
     );
   });
 
-  it('draws the background image from the request origin', async () => {
+  it('draws the background from the image file, not over HTTP', async () => {
     await request();
-    expect(renderedImage()).toContain(backgroundFrom('https://shramko.dev'));
-  });
-
-  it('resolves the relative request URL against the host header', async () => {
-    await request({ headers: { host: 'localhost:3000' } });
-    expect(renderedImage()).toContain(backgroundFrom('http://localhost:3000'));
-  });
-
-  it.each([
-    ['https', 'https'],
-    ['https,http', 'https'],
-    ['https, http', 'https'],
-    ['http', 'http'],
-    ['javascript', 'http'],
-    ['https://evil.example/x?', 'http'],
-    ['evil.example/x#', 'http'],
-  ])('allowlists x-forwarded-proto %j as %s', async (proto, expected) => {
-    await request({
-      headers: { host: 'shramko.dev', 'x-forwarded-proto': proto },
-    });
+    const jpeg = readFileSync('public/static/images/og-background.jpg');
     expect(renderedImage()).toContain(
-      backgroundFrom(`${expected}://shramko.dev`),
+      `background-image:url(data:image/jpeg;base64,${jpeg.toString('base64')})`,
     );
   });
-
-  it('ignores x-forwarded-host', async () => {
-    await request({
-      headers: { ...ORIGIN_HEADERS, 'x-forwarded-host': 'evil.example' },
-    });
-    expect(renderedImage()).toContain(backgroundFrom('https://shramko.dev'));
-  });
-
-  it('ignores the origin of an absolute-form request target', async () => {
-    await request({ url: 'http://evil.example/api/og?title=Serhii%20Shramko' });
-    expect(renderedImage()).toContain(backgroundFrom('https://shramko.dev'));
-  });
-
-  it.each([undefined, 'a b'])(
-    'rejects an invalid host header: %s',
-    async (host) => {
-      expectTextError(
-        await request({ headers: { host } }),
-        400,
-        'Invalid host',
-      );
-      expect(mockImageResponse).not.toHaveBeenCalled();
-    },
-  );
 
   it.each([100, 101])(
     'bounds published titles of length %i',
