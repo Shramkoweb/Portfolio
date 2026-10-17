@@ -161,6 +161,25 @@ describe('extractHeadingsFromMarkdown', () => {
       'Advanced Options',
     ]);
   });
+
+  it('should skip lines inside fenced code blocks', () => {
+    const md = [
+      '## Install',
+      '```bash',
+      '# Not a heading',
+      '```',
+      '~~~~',
+      '~~~',
+      '## Still code',
+      '~~~~',
+      '## Usage',
+    ].join('\n');
+
+    expect(extractHeadingsFromMarkdown(md).map((h) => h.text)).toEqual([
+      'Install',
+      'Usage',
+    ]);
+  });
 });
 
 describe('compileMDX', () => {
