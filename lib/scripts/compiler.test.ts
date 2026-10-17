@@ -19,6 +19,10 @@ jest.mock('shiki', () => ({
   getSingletonHighlighter: jest.fn(() => Promise.resolve({})),
 }));
 
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+import matter from 'gray-matter';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import * as runtime from 'react/jsx-runtime';
@@ -160,6 +164,45 @@ describe('extractHeadingsFromMarkdown', () => {
       'Configuration',
       'Advanced Options',
     ]);
+  });
+
+  it('should skip lines inside fenced code blocks', () => {
+    const md = [
+      '## Install',
+      '```bash',
+      '# Not a heading',
+      '```',
+      '~~~~',
+      '~~~',
+      '## Still code',
+      '~~~~',
+      '## Usage',
+    ].join('\n');
+
+    expect(extractHeadingsFromMarkdown(md).map((h) => h.text)).toEqual([
+      'Install',
+      'Usage',
+    ]);
+  });
+});
+
+describe('published content', () => {
+  const files = ['_posts', '_snippets'].flatMap((directory) =>
+    readdirSync(join(process.cwd(), directory))
+      .filter((file) => file.endsWith('.md'))
+      .map((file) => join(directory, file)),
+  );
+
+  it.each(files)('%s nests headings without skipping a level', (file) => {
+    const { content } = matter(readFileSync(join(process.cwd(), file), 'utf8'));
+    const headings = extractHeadingsFromMarkdown(content);
+    const misplaced = headings.filter(
+      (heading, index) =>
+        heading.level < 2 ||
+        heading.level > (headings[index - 1]?.level ?? 1) + 1,
+    );
+
+    expect(misplaced).toEqual([]);
   });
 });
 

@@ -275,6 +275,7 @@ function LearningPage() {
               }
               url={item.url}
               description={item.description}
+              headingLevel={2}
             />
           ))}
         </ul>

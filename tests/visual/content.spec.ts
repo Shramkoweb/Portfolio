@@ -14,6 +14,21 @@ test('table of contents expands, navigates and collapses', async ({ page }) => {
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 });
 
+test('section heading is a named link to itself', async ({ page }) => {
+  await visit(page, '/blog/npm-semantic-versioning');
+  const heading = page
+    .locator('.prose')
+    .getByRole('heading', { level: 2 })
+    .first();
+  const link = heading.getByRole('link');
+  await link.focus();
+  await expect(link).toHaveAccessibleName(await heading.innerText());
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(
+    `/blog/npm-semantic-versioning#${await heading.getAttribute('id')}`,
+  );
+});
+
 for (const path of ['/blog/npm-semantic-versioning', '/snippets/debounce']) {
   test(`code copy ${path}`, async ({ page, context }) => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);

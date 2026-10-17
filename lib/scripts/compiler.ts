@@ -49,6 +49,7 @@ export async function compileMDX(content: string) {
         [
           rehypeAutolinkHeadings,
           {
+            behavior: 'wrap',
             properties: {
               className: ['anchor'],
             },
@@ -75,11 +76,24 @@ export async function compileMDX(content: string) {
   return { mdx, shikiCSS };
 }
 
+const HEADING = /^ {0,3}(#{1,6})[ \t]+(.+?)[ \t]*#*\s*$/;
+const FENCE = /^ {0,3}(`{3,}|~{3,})(.*)$/;
+
 export function extractHeadingsFromMarkdown(markdown: string) {
-  const headingRegex = /^ {0,3}(#{1,6})[ \t]+(.+?)[ \t]*#*\s*$/gm;
   const headings: { text: string; level: number; id: string }[] = [];
-  let match;
-  while ((match = headingRegex.exec(markdown)) !== null) {
+  let fence = '';
+  for (const line of markdown.split('\n')) {
+    const [, marker, rest] = FENCE.exec(line) ?? [];
+    if (fence) {
+      if (marker?.startsWith(fence) && !rest.trim()) fence = '';
+      continue;
+    }
+    if (marker) {
+      fence = marker;
+      continue;
+    }
+    const match = HEADING.exec(line);
+    if (!match) continue;
     const level = match[1].length;
     const text = match[2].replace(/[*_`~]/g, '').trim();
     const id = text

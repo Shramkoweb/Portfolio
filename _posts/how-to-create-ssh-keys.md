@@ -31,7 +31,7 @@ the [Git website](https://git-scm.com/install/), download the latest version, an
 
 Here is a step-by-step guide:
 
-### Step 1: Checking for Existing SSH keys
+## Step 1: Checking for Existing SSH keys
 
 Before creating new SSH keys, check if you already have any pre-existing keys. Open your Git terminal or command line
 and type:
@@ -53,7 +53,7 @@ Your SSH keys might use one of the following algorithms:
   There's also a trustworthiness concern about the NIST curves that are being used by ECDSA.
 - 🥳 Ed25519: It's the most recommended public-key algorithm available today! This is what we'll use in this guide.
 
-### Step 2: Generating a New SSH key
+## Step 2: Generating a New SSH key
 
 In your terminal, paste the following command:
 
@@ -70,7 +70,7 @@ prompted to "Enter a file in which to save the key," - press Enter to accept the
 $ ssh-keygen -t rsa -b 4096 -C "shramko.dev@gmail.com"
 ```
 
-### Step 3: Adding Your SSH key to the ssh-agent
+## Step 3: Adding Your SSH key to the ssh-agent
 
 Make sure the `ssh-agent` is running:
 
@@ -86,7 +86,7 @@ $ ssh-add ~/.ssh/id_ed25519
 
 Note: If you used RSA instead, replace "id_ed25519" with "id_rsa".
 
-### Step 4: Adding the SSH key to Your GitHub Account
+## Step 4: Adding the SSH key to Your GitHub Account
 
 1. Go to your GitHub account settings.
 2. Click on 'SSH and GPG keys' in the menu on the left-hand side.
@@ -113,7 +113,7 @@ $ pbcopy < ~/.ssh/id_ed25519.pub
 
 Paste the key into the 'Key' input on GitHub, then click 'Add SSH Key'.
 
-### Step 5: Testing the Connection
+## Step 5: Testing the Connection
 
 Return to your terminal and type:
 
