@@ -5,20 +5,22 @@ export interface ResourceCardProps {
   title: string;
   url?: string;
   description?: string;
+  headingLevel?: 2 | 3;
 }
 
 const cardClasses =
   'flex flex-col gap-2 rounded-lg border border-gray-200 bg-white p-4 transition-[border-color,transform] duration-150 ease-out-expo hover:border-gray-300 active:scale-[0.97] dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700';
 
 function CardContent(props: ResourceCardProps) {
-  const { title, url, description } = props;
+  const { title, url, description, headingLevel = 3 } = props;
+  const Heading = `h${headingLevel}` as const;
 
   return (
     <>
       <div className="flex items-start justify-between gap-3">
-        <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+        <Heading className="font-semibold text-gray-900 dark:text-gray-100">
           {title}
-        </h3>
+        </Heading>
         {url && isExternalUrl(url) && (
           <ArrowUpRight
             aria-hidden="true"

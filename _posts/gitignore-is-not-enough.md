@@ -27,7 +27,7 @@ prefer not to modify the `.gitignore` file directly.
 
 Fortunately, Git offers several alternative methods to tackle these scenarios effectively.
 
-### Why You Might Want to Avoid Modifying .gitignore
+## Why You Might Want to Avoid Modifying .gitignore
 
 There are generally two key situations where you might opt to keep your `.gitignore` unchanged:
 
@@ -41,7 +41,7 @@ There are generally two key situations where you might opt to keep your `.gitign
 
 Here’s how to handle both situations gracefully.
 
-### Ignoring untracked files
+## Ignoring untracked files
 
 Git provides a straightforward solution that keeps personal preferences out of sight from collaborators: the
 `.git/info/exclude` file. This file acts just like `.gitignore` but remains local—meaning your teammates won’t be
@@ -63,7 +63,7 @@ accidental commits without interrupting your teammates’ workflow.
 
 While you’re streamlining your Git setup, don’t forget to [add SSH keys to your GitHub account](/blog/how-to-create-ssh-keys) for secure, passwordless authentication.
 
-### Temporarily Ignoring Changes with git update-index
+## Temporarily Ignoring Changes with git update-index
 
 At some point, you’ll find it necessary to tweak files you’re already tracking, but you have no intention of committing
 those changes (for example, adjusting local ports or temporary debugging code). That’s where the
@@ -95,7 +95,7 @@ git ls-files -v | grep '^h'
 
 This command lists the files that Git currently assumes are unchanged, helping you maintain organization.
 
-### Final Thoughts
+## Final Thoughts
 
 While `.gitignore` is a powerful tool, it’s not always enough on its own. By incorporating `.git/info/exclude` and the
 `git update-index` technique into your toolkit, you can enjoy greater flexibility in managing your repository.

@@ -58,6 +58,7 @@ function SnippetsPage(props: SnippetsPageProps) {
                 dateStyle: 'medium',
                 timeZone: 'UTC',
               })}
+              headingLevel={2}
             />
           ))}
         </ul>
