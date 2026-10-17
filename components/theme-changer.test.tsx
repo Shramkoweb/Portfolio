@@ -11,8 +11,10 @@ jest.mock('next-themes', () => ({
     setTheme: mockSetTheme,
   }),
 }));
+jest.mock('@/lib/sound');
 
 import { ThemeChanger } from '@/components/theme-changer';
+import { playSound } from '@/lib/sound';
 
 describe('ThemeChanger', () => {
   it('toggles from dark to light on click', async () => {
@@ -28,6 +30,7 @@ describe('ThemeChanger', () => {
     await user.click(button);
 
     expect(mockSetTheme).toHaveBeenCalledWith('light');
+    expect(playSound).toHaveBeenCalledWith('lights-on');
   });
 
   it('toggles from light to dark on click', async () => {
@@ -43,6 +46,7 @@ describe('ThemeChanger', () => {
     await user.click(button);
 
     expect(mockSetTheme).toHaveBeenCalledWith('dark');
+    expect(playSound).toHaveBeenCalledWith('lights-off');
   });
 
   it('renders an icon-free placeholder on the server to avoid hydration mismatch', () => {

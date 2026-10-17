@@ -2,7 +2,10 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderToString } from 'react-dom/server';
 
+jest.mock('@/lib/sound');
+
 import { StarfieldToggle } from '@/components/starfield-toggle';
+import { playSound } from '@/lib/sound';
 
 describe('StarfieldToggle', () => {
   beforeEach(() => localStorage.clear());
@@ -17,6 +20,7 @@ describe('StarfieldToggle', () => {
 
     expect(button).toHaveAttribute('aria-pressed', 'false');
     expect(localStorage.getItem('starfield')).toBe('off');
+    expect(playSound).toHaveBeenCalledWith('stars-off');
   });
 
   it('turns it back on and clears the saved choice', async () => {
@@ -30,6 +34,7 @@ describe('StarfieldToggle', () => {
 
     expect(button).toHaveAttribute('aria-pressed', 'true');
     expect(localStorage.getItem('starfield')).toBeNull();
+    expect(playSound).toHaveBeenCalledWith('stars-on');
   });
 
   it('renders an icon-free placeholder on the server', () => {

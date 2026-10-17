@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 
+import { playSound } from '@/lib/sound';
 import {
   alphaLevel,
   edgeFade,
@@ -25,6 +26,7 @@ const METEOR_TAIL = 14;
 const METEOR_MS = 1100;
 const SHOWER_SIZE = 6;
 const SHOWER_GAP_MS = 320;
+const METEOR_PAN = 0.6;
 
 interface VisibleStar {
   col: number;
@@ -296,6 +298,12 @@ export function Starfield() {
           direction: left ? -1 : 1,
         };
       });
+      for (const item of shower) {
+        playSound('meteor', {
+          delay: (item.start - now) / 1000,
+          pan: item.direction * METEOR_PAN,
+        });
+      }
       start();
     };
 

@@ -1,6 +1,8 @@
 import { Check, Copy } from 'lucide-react';
 import { useCallback, useRef, useState } from 'react';
 
+import { playSound } from '@/lib/sound';
+
 interface CodeProps {
   children: string;
   className?: string;
@@ -20,6 +22,7 @@ export function Code(props: CodeProps) {
 
     try {
       await navigator.clipboard.writeText(codeRef.current.textContent);
+      playSound('tick');
       setCopyStatus('success');
       setTimeout(() => setCopyStatus('idle'), 1500);
     } catch (err) {
