@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { HeaderNav } from '@/components/header-nav';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
+import { SoundToggle } from '@/components/sound-toggle';
 import { StarfieldToggle } from '@/components/starfield-toggle';
 import { ThemeChanger } from '@/components/theme-changer';
 import { Routes } from '@/lib/routes';
@@ -25,12 +26,15 @@ export function Header() {
             href={Routes.Resume()}
             download
             title="PDF document. Serhii Shramko - Resume. 105 KB"
-            className="ml-12 hidden rounded-lg border border-gray-200 p-1 transition-[color,background-color,transform] duration-200 ease-out-expo hover:bg-gray-200 active:scale-[0.97] sm:px-3 sm:py-2 md:inline-block dark:border-gray-800 dark:hover:bg-gray-800"
+            className="ml-8 hidden rounded-lg border border-gray-200 p-1 transition-[color,background-color,transform] duration-200 ease-out-expo hover:bg-gray-200 active:scale-[0.97] sm:px-3 sm:py-2 md:inline-block dark:border-gray-800 dark:hover:bg-gray-800"
           >
             Resume
           </Link>
-          <StarfieldToggle />
-          <ThemeChanger />
+          <div className="ml-1 flex items-center gap-1">
+            <StarfieldToggle />
+            <SoundToggle />
+            <ThemeChanger />
+          </div>
         </div>
       </nav>
     </header>

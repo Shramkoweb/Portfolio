@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { Sparkle, Sparkles } from 'lucide-react';
 import { useSyncExternalStore } from 'react';
 
+import { playSound } from '@/lib/sound';
 import {
   setStarfieldEnabled,
   useStarfieldEnabled,
@@ -22,12 +23,15 @@ export function StarfieldToggle() {
       aria-pressed={mounted && enabled}
       type="button"
       className={clsx(
-        'ml-4 hidden h-11 w-11 items-center justify-center rounded-lg transition-[color,transform] duration-200 ease-out-expo hover:scale-105 active:scale-[0.97] lg:inline-flex forced-colors:hidden',
+        'hidden h-11 w-11 items-center justify-center rounded-lg transition-[color,transform] duration-200 ease-out-expo hover:scale-105 active:scale-[0.97] lg:inline-flex forced-colors:hidden',
         mounted && !enabled
           ? 'text-gray-400 dark:text-gray-500'
           : 'text-gray-800 dark:text-gray-200',
       )}
-      onClick={() => setStarfieldEnabled(!enabled)}
+      onClick={() => {
+        playSound(enabled ? 'stars-off' : 'stars-on');
+        setStarfieldEnabled(!enabled);
+      }}
     >
       {mounted ? (
         <Icon size={22} aria-hidden="true" />

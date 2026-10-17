@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useSWR, { mutate } from 'swr';
 
 import { fetcher } from '@/lib/fetcher';
+import { playSound } from '@/lib/sound';
 import { ReactionsResponse, ReactionType } from '@/lib/types';
 
 const REACTIONS = [
@@ -40,6 +41,7 @@ export function FloatingReactions(props: FloatingReactionsProps) {
   const [animating, setAnimating] = useState<ReactionType | null>(null);
 
   const handleReaction = async (type: ReactionType) => {
+    playSound('pop');
     setAnimating(type);
     setTimeout(() => setAnimating(null), 400);
 
