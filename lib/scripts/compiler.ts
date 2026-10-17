@@ -49,6 +49,7 @@ export async function compileMDX(content: string) {
         [
           rehypeAutolinkHeadings,
           {
+            behavior: 'wrap',
             properties: {
               className: ['anchor'],
             },

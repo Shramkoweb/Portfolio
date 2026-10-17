@@ -65,26 +65,22 @@ html {
 }
 
 .prose .anchor {
-  @apply absolute invisible no-underline;
-
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
-  cursor: pointer;
-}
-
-.anchor:hover {
-  @apply visible;
+  @apply no-underline;
+  color: inherit;
 }
 
 .prose a {
   transition: text-decoration-color 150ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.prose .anchor:after {
-  @apply text-gray-300 dark:text-gray-700;
-  content: '#';
+.prose .anchor:before {
+  @apply absolute invisible text-gray-300 dark:text-gray-700;
+  margin-left: -1em;
+  content: '#' / '';
+}
+
+.prose .anchor:focus-visible:before {
+  @apply visible;
 }
 
 .prose code:after,
@@ -92,7 +88,7 @@ html {
   content: '';
 }
 
-.prose *:hover > .anchor {
+.prose *:hover > .anchor:before {
   @apply visible;
 }
 
