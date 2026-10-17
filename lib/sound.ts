@@ -215,11 +215,25 @@ function audio(): AudioContext | undefined {
   };
   // 'ambient' mixes with the visitor's music and obeys the iOS silent switch.
   if (audioSession) audioSession.type = 'ambient';
-  shared = new AudioContext({ latencyHint: 'interactive' });
-  output = shared.createGain();
-  output.gain.value = VOLUME;
-  output.connect(shared.destination);
+  try {
+    shared = new AudioContext({ latencyHint: 'interactive' });
+  } catch {
+    return undefined;
+  }
   return shared;
+}
+
+function speaker(context: AudioContext): GainNode {
+  if (output) return output;
+  output = context.createGain();
+  output.gain.value = VOLUME;
+  output.connect(context.destination);
+  return output;
+}
+
+export function stopSounds() {
+  output?.disconnect();
+  output = undefined;
 }
 
 function suspendAfter(context: AudioContext, end: number) {
@@ -234,14 +248,14 @@ function suspendAfter(context: AudioContext, end: number) {
 export function playSound(cue: Cue, { delay = 0, pan = 0 }: CueOptions = {}) {
   if (!getSoundEnabled()) return;
   const context = audio();
-  if (!context || !output) return;
+  if (!context) return;
   if (context.state !== 'running') context.resume().catch(() => {});
 
-  let out: AudioNode = output;
+  let out: AudioNode = speaker(context);
   if (pan) {
     const panner = context.createStereoPanner();
     panner.pan.value = pan;
-    panner.connect(output);
+    panner.connect(out);
     out = panner;
   }
   suspendAfter(

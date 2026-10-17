@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 jest.mock('@/lib/sound');
 
 import { SoundToggle } from '@/components/sound-toggle';
-import { playSound } from '@/lib/sound';
+import { playSound, stopSounds } from '@/lib/sound';
 
 describe('SoundToggle', () => {
   beforeEach(() => localStorage.clear());
@@ -20,9 +20,10 @@ describe('SoundToggle', () => {
     expect(button).toHaveAttribute('aria-pressed', 'true');
     expect(localStorage.getItem('sound')).toBe('on');
     expect(playSound).toHaveBeenCalledWith('sound-on');
+    expect(stopSounds).not.toHaveBeenCalled();
   });
 
-  it('turns off silently and forgets the choice', async () => {
+  it('turns off silently, cuts what is still playing and forgets the choice', async () => {
     localStorage.setItem('sound', 'on');
     const user = userEvent.setup();
     render(<SoundToggle />);
@@ -34,5 +35,6 @@ describe('SoundToggle', () => {
     expect(button).toHaveAttribute('aria-pressed', 'false');
     expect(localStorage.getItem('sound')).toBeNull();
     expect(playSound).not.toHaveBeenCalled();
+    expect(stopSounds).toHaveBeenCalledTimes(1);
   });
 });

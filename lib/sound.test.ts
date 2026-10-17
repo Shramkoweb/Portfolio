@@ -8,7 +8,11 @@ class FakeParam {
 }
 
 class FakeNode {
+  targets: unknown[] = [];
+  disconnect = jest.fn();
+
   connect<T>(node: T): T {
+    this.targets.push(node);
     return node;
   }
 }
@@ -25,6 +29,7 @@ class FakeAudioContext {
   state: AudioContextState = 'suspended';
   destination = new FakeNode();
   sources: FakeSource[] = [];
+  gains: (FakeNode & { gain: FakeParam })[] = [];
   panners: { pan: FakeParam }[] = [];
   resume = jest.fn(() => {
     this.state = 'running';
@@ -40,7 +45,9 @@ class FakeAudioContext {
   }
 
   createGain() {
-    return Object.assign(new FakeNode(), { gain: new FakeParam() });
+    const gain = Object.assign(new FakeNode(), { gain: new FakeParam() });
+    this.gains.push(gain);
+    return gain;
   }
 
   createOscillator() {
@@ -96,6 +103,11 @@ async function load() {
 
 function context() {
   return FakeAudioContext.created[0];
+}
+
+function speakers() {
+  const { gains, destination } = context();
+  return gains.filter(({ targets }) => targets.includes(destination));
 }
 
 describe('playSound', () => {
@@ -189,6 +201,35 @@ describe('playSound', () => {
 
     jest.advanceTimersByTime(200);
     expect(context().suspend).toHaveBeenCalledTimes(1);
+  });
+
+  it('cuts scheduled sounds when stopped and plays the next through a fresh output', async () => {
+    localStorage.setItem('sound', 'on');
+    const { playSound, stopSounds } = await load();
+
+    playSound('meteor', { delay: 1 });
+    const [first] = speakers();
+    stopSounds();
+    playSound('tick');
+
+    expect(first.disconnect).toHaveBeenCalledTimes(1);
+    expect(speakers()).toHaveLength(2);
+    expect(speakers()[1].disconnect).not.toHaveBeenCalled();
+  });
+
+  it('stays optional when the browser refuses an audio context', async () => {
+    localStorage.setItem('sound', 'on');
+    Object.assign(globalThis, {
+      AudioContext: class {
+        constructor() {
+          throw new DOMException('Too many contexts', 'NotSupportedError');
+        }
+      },
+    });
+    const { playSound, stopSounds } = await load();
+
+    expect(() => playSound('pop')).not.toThrow();
+    expect(() => stopSounds()).not.toThrow();
   });
 
   it('does nothing in a browser without Web Audio', async () => {

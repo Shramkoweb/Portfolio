@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Volume2, VolumeOff } from 'lucide-react';
 
-import { playSound } from '@/lib/sound';
+import { playSound, stopSounds } from '@/lib/sound';
 import { setSoundEnabled, useSoundEnabled } from '@/lib/sound-preference';
 
 export function SoundToggle() {
@@ -10,7 +10,8 @@ export function SoundToggle() {
 
   const handleClick = () => {
     setSoundEnabled(!enabled);
-    if (!enabled) playSound('sound-on');
+    if (enabled) stopSounds();
+    else playSound('sound-on');
   };
 
   return (
