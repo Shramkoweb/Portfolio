@@ -31,6 +31,22 @@ function IndexPage(props: IndexPageProps) {
 
   const { getViews, isLoading: viewsLoading } = useViewCounts();
 
+  const renderPostGrid = (posts: Post[]) => (
+    <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
+      {posts.map((post) => (
+        <BlogPostSquarePreview
+          heading={post.data.heading}
+          slug={post.data.slug}
+          classNames={generateGradient(post.data.slug)}
+          views={getViews(post.data.slug)}
+          isLoading={viewsLoading}
+          isNew={newSlugs.includes(post.data.slug)}
+          key={post.data.slug}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <>
       <Head>
@@ -100,19 +116,7 @@ function IndexPage(props: IndexPageProps) {
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
           Featured Posts
         </h2>
-        <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-          {featuredPosts.map((post) => (
-            <BlogPostSquarePreview
-              heading={post.data.heading}
-              slug={post.data.slug}
-              classNames={generateGradient(post.data.slug)}
-              views={getViews(post.data.slug)}
-              isLoading={viewsLoading}
-              isNew={newSlugs.includes(post.data.slug)}
-              key={post.data.slug}
-            />
-          ))}
-        </div>
+        {renderPostGrid(featuredPosts)}
 
         <div className="w-full">
           <h2 className="mt-12 mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl flex items-start gap-2">
@@ -122,19 +126,7 @@ function IndexPage(props: IndexPageProps) {
             </span>
           </h2>
 
-          <div className="grid w-full auto-rows-fr gap-6 md:grid-cols-3">
-            {advancedReactPosts.map((post) => (
-              <BlogPostSquarePreview
-                heading={post.data.heading}
-                slug={post.data.slug}
-                classNames={generateGradient(post.data.slug)}
-                views={getViews(post.data.slug)}
-                isLoading={viewsLoading}
-                isNew={newSlugs.includes(post.data.slug)}
-                key={post.data.slug}
-              />
-            ))}
-          </div>
+          {renderPostGrid(advancedReactPosts)}
 
           <Link
             href="/blog/category/advanced-react"
