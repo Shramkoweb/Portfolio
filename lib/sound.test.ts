@@ -220,11 +220,9 @@ describe('playSound', () => {
   it('stays optional when the browser refuses an audio context', async () => {
     localStorage.setItem('sound', 'on');
     Object.assign(globalThis, {
-      AudioContext: class {
-        constructor() {
-          throw new DOMException('Too many contexts', 'NotSupportedError');
-        }
-      },
+      AudioContext: jest.fn(() => {
+        throw new DOMException('Too many contexts', 'NotSupportedError');
+      }),
     });
     const { playSound, stopSounds } = await load();
 
