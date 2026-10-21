@@ -31,4 +31,4 @@ allowBuilds:
 # or whose version is already past the cooldown.
 # pnpm rejects scoped globs with a version, so every package in a scope (each
 # @sentry/* package, each ox* platform binding) needs its own entry.
-minimumReleaseAgeExclude: []
+minimumReleaseAgeExclude: [lucide-react@1.61.0]
