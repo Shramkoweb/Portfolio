@@ -1,5 +1,7 @@
 import Image, { type StaticImageData } from 'next/image';
 
+import { MEDIA_QUERIES } from '@/lib/breakpoints';
+
 import campfire from '../public/static/images/roll/campfire.jpg';
 import firstComputer from '../public/static/images/roll/first-computer.jpg';
 import firstSchoolDay from '../public/static/images/roll/first-school-day.jpg';
@@ -23,8 +25,8 @@ const SPAN_CLASSES: Record<Span, string> = {
 };
 
 const SPAN_SIZES: Record<Span, string> = {
-  full: '(min-width: 768px) 768px, 100vw',
-  half: '(min-width: 768px) 368px, 100vw',
+  full: `${MEDIA_QUERIES.md} 768px, 100vw`,
+  half: `${MEDIA_QUERIES.md} 368px, 100vw`,
 };
 
 /* Wide shots break the rows, so the squares between them come in pairs. */

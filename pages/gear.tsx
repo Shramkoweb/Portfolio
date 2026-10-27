@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import { PageMeta } from '@/components/page-meta';
+import { MEDIA_QUERIES } from '@/lib/breakpoints';
 
 import gear from '../public/static/images/gear.jpeg';
 
@@ -38,7 +39,7 @@ function GearPage() {
             src={gear}
             width={1000}
             height={667}
-            sizes="(min-width: 768px) 768px, 100vw"
+            sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
             priority
             fetchPriority="high"
           />
