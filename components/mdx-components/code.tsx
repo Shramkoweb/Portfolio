@@ -48,10 +48,10 @@ export function Code(props: CodeProps) {
             aria-hidden="true"
           />
         )}
-        <output aria-live="polite" className="sr-only">
-          {copyStatus === 'success' ? 'Code copied to clipboard' : ''}
-        </output>
       </button>
+      <output aria-live="polite" className="sr-only">
+        {copyStatus === 'success' ? 'Code copied to clipboard' : ''}
+      </output>
       <div className="overflow-x-auto">{children}</div>
     </pre>
   );

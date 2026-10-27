@@ -21,6 +21,7 @@ import { TwitterShare } from '@/components/share-button/twitter-share';
 import { TableOfContent } from '@/components/table-of-content';
 import { Tag } from '@/components/tag';
 import { ViewCounter } from '@/components/view-counter';
+import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import { getPostBySlug, getPostSlugs, getPostsMetadata } from '@/lib/posts/api';
 import {
   filterByAdvanceReact,
@@ -37,6 +38,7 @@ import {
   extractHeadingsFromMarkdown,
 } from '@/lib/scripts/compiler';
 import { Post } from '@/lib/types';
+import { useMediaQuery } from '@/lib/use-media-query';
 
 const FloatingReactions = dynamic(() =>
   import('@/components/floating-reactions').then(
@@ -52,6 +54,7 @@ type ArticlePageProps = Pick<Post, 'data'> & {
 };
 
 function ArticlePage(props: ArticlePageProps) {
+  const showReactions = useMediaQuery(MEDIA_QUERIES.lg);
   const {
     content,
     data: {
@@ -112,10 +115,10 @@ function ArticlePage(props: ArticlePageProps) {
         />
       </Head>
       <article className="flex w-full max-w-3xl mx-auto mb-16 relative">
-        <div>
+        <div className="hidden shrink-0 lg:block lg:w-11">
           <aside className="share text-gray-600 dark:text-gray-400 hidden lg:flex flex-col items-center justify-center">
-            <ul className="flex flex-col gap-2">
-              <FloatingReactions slug={slug} />
+            <ul className="flex min-h-37 flex-col gap-2">
+              {showReactions && <FloatingReactions slug={slug} />}
             </ul>
             <div className="w-8 border-t border-gray-300 dark:border-gray-700 my-4" />
             <ul className="flex flex-col gap-2">

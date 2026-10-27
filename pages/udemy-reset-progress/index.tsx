@@ -7,6 +7,7 @@ import { InstallLinks } from '@/components/install-links';
 import { PageMeta } from '@/components/page-meta';
 import { StoreRating } from '@/components/store-rating';
 import { UdemyPacingModes } from '@/components/udemy-pacing-modes';
+import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import {
   UDEMY_RESET_APP_OG_IMAGE,
   UDEMY_RESET_APP_RATING,
@@ -277,7 +278,7 @@ function UdemyResetProgressPage() {
           className="rounded-lg border border-gray-200 dark:border-gray-800"
           alt='The Udemy Reset Progress popup with the heading "Udemy Reset Progress", the subtitle "Manage your course progress", a settings gear, a "Clear Progress" button and a "Mark All Complete" button.'
           src={popupImage}
-          sizes="(min-width: 768px) 768px, 100vw"
+          sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
         />
 
         <h3>4. Reload the page</h3>
@@ -363,7 +364,7 @@ function UdemyResetProgressPage() {
           className="rounded-lg border border-gray-200 dark:border-gray-800"
           alt='The Udemy Reset Progress settings page with the "Speed mode" card, the "Auto" switch turned off and "Safe" selected below "Turbo" and "Balanced", then an "Advanced" toggle and a "Reset to Auto" button.'
           src={speedModesImage}
-          sizes="(min-width: 768px) 768px, 100vw"
+          sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
         />
 
         <UdemyPacingModes />

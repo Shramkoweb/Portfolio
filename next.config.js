@@ -94,6 +94,18 @@ const nextConfig = {
   reactStrictMode: true,
   distDir: process.env.VISUAL_TEST === '1' ? '.next-visual' : '.next',
   poweredByHeader: false,
+  turbopack: {
+    rules: {
+      '**/node_modules/@sentry/**/*.js': {
+        condition: 'browser',
+        loaders: ['./lib/scripts/sentry-client-loader.cjs'],
+      },
+    },
+    resolveAlias: {
+      // Next imports this unconditionally, independently of browserslist.
+      '../build/polyfills/polyfill-module': './lib/browser-polyfills.ts',
+    },
+  },
   experimental: {
     optimizePackageImports: ['lucide-react', 'swr'],
     // true inlines a per-page bootstrap script that the hash-based CSP blocks, so pages never hydrate
@@ -164,6 +176,7 @@ const nextConfig = {
     APP_RELEASE_VERSION: new Date().valueOf().toString(),
   },
   images: {
+    deviceSizes: [360, 640, 768, 1080, 1280, 1536, 1920, 2304],
     qualities: [75, 100],
   },
   async headers() {
@@ -181,13 +194,11 @@ const sentryBuildOptions = {
   telemetry: false,
   // Fixed, not `true`: middleware.ts has to exclude it from its matcher.
   tunnelRoute: '/relay',
-  webpack: {
-    treeshake: {
-      removeDebugLogging: true,
-      excludeReplayShadowDOM: true,
-      excludeReplayIframe: true,
-      excludeReplayCompressionWorker: true,
-    },
+  bundleSizeOptimizations: {
+    excludeDebugStatements: true,
+    excludeReplayShadowDom: true,
+    excludeReplayIframe: true,
+    excludeReplayWorker: true,
   },
 };
 

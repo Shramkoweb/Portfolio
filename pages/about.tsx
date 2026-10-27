@@ -6,6 +6,7 @@ import { FilmRoll } from '@/components/film-roll';
 import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
 import { PageMeta } from '@/components/page-meta';
+import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import { serializeJsonLd } from '@/lib/schema';
 
 import about from '../public/static/images/about.jpeg';
@@ -117,7 +118,7 @@ function AboutPage() {
             src={about}
             width={1269}
             height={846}
-            sizes="(min-width: 768px) 768px, 100vw"
+            sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
             priority
             fetchPriority="high"
           />
@@ -481,7 +482,7 @@ function AboutPage() {
               alt="Serhii Shramko smiling and holding a trophy, standing next to a woman holding a 500 UAH certificate in a casual office setting with a whiteboard in the background."
               placeholder="blur"
               src={tennis}
-              sizes="(min-width: 768px) 768px, 100vw"
+              sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
               loading="lazy"
             />
             <Image
@@ -489,7 +490,7 @@ function AboutPage() {
               alt="Serhii Shramko enjoying snacks and drinks with friends at a lively party"
               placeholder="blur"
               src={eat}
-              sizes="(min-width: 768px) 384px, 100vw"
+              sizes={`${MEDIA_QUERIES.md} 384px, 100vw`}
               loading="lazy"
             />
             <Image
@@ -497,7 +498,7 @@ function AboutPage() {
               alt="Serhii Shramko showing a red and black BMW to a friend in an outdoor parking lot."
               placeholder="blur"
               src={car}
-              sizes="(min-width: 768px) 384px, 100vw"
+              sizes={`${MEDIA_QUERIES.md} 384px, 100vw`}
               loading="lazy"
             />
             <Image
@@ -505,7 +506,7 @@ function AboutPage() {
               alt="Serhii Shramko and a friend examining the rear of a red sporty car in a parking garage"
               placeholder="blur"
               src={carBack}
-              sizes="(min-width: 768px) 384px, 100vw"
+              sizes={`${MEDIA_QUERIES.md} 384px, 100vw`}
               loading="lazy"
             />
             <Image
@@ -513,7 +514,7 @@ function AboutPage() {
               alt="Serhii Shramko and a friend standing outdoors in a bright, forested park, wearing casual outfits."
               placeholder="blur"
               src={standing}
-              sizes="(min-width: 768px) 384px, 100vw"
+              sizes={`${MEDIA_QUERIES.md} 384px, 100vw`}
               loading="lazy"
             />
           </div>
