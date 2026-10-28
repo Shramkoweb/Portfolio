@@ -1,5 +1,39 @@
 import { expect, ready, test, visit } from './fixtures';
 
+test('hydration preserves the avatar gradient and enables theme controls', async ({
+  page,
+}) => {
+  let releaseScripts!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => {
+    releaseScripts = resolve;
+  });
+  await page.route('**/_next/static/**/*.js', async (route) => {
+    await scriptsReady;
+    await route.continue();
+  });
+
+  try {
+    await page.goto('/', { waitUntil: 'commit' });
+    const stop = page.locator('.avatar stop').nth(1);
+    await expect(stop).toHaveAttribute('stop-color', '#fff');
+    await expect(stop).toHaveAttribute('stop-opacity', '0.85');
+    const serverStop = await stop.elementHandle();
+
+    releaseScripts();
+    await ready(page);
+
+    expect(
+      await serverStop!.evaluate(
+        (node) => node === document.querySelectorAll('.avatar stop')[1],
+      ),
+    ).toBe(true);
+    await page.getByRole('button', { name: 'Switch to dark mode' }).click();
+    await expect(page.locator('html')).toHaveClass('dark');
+  } finally {
+    releaseScripts();
+  }
+});
+
 test('keyboard skip link and navigation focus', async ({ page }) => {
   await visit(page, '/');
   await page.keyboard.press('Tab');

@@ -184,6 +184,14 @@ test('SEO: canonical URLs exclude tracking queries and fragments', async ({
   page,
 }) => {
   await visit(page, '/bookmarks?utm_source=audit');
+  await expect(
+    page
+      .getByRole('navigation', { name: 'Main', exact: true })
+      .getByRole('link', {
+        name: 'Bookmarks',
+        exact: true,
+      }),
+  ).toHaveAttribute('aria-current', 'page');
   await page
     .getByRole('navigation', { name: 'Bookmark sections' })
     .getByRole('link')

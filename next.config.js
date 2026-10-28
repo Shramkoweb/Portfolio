@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 
 import { withSentryConfig } from '@sentry/nextjs/config';
+import { withRedact } from '@tanstack/redact/next';
 import matter from 'gray-matter';
 
 // The hash covers the next-themes inline theme setter. 'unsafe-eval' must
@@ -208,4 +209,4 @@ const nextConfigByEnv = {
   development: nextConfig,
 };
 
-export default nextConfigByEnv[process.env.NODE_ENV];
+export default withRedact(nextConfigByEnv[process.env.NODE_ENV]);

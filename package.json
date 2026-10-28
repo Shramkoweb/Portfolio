@@ -34,6 +34,7 @@
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1",
     "@sentry/nextjs": "11.8.0",
+    "@tanstack/redact": "0.2.1",
     "@vercel/analytics": "2.0.1",
     "@vercel/og": "1.0.3",
     "clsx": "2.1.1",

@@ -1,0 +1,66 @@
+diff --git a/dist/core/attributes.js b/dist/core/attributes.js
+index e4060c70df64b8fa069d2e1336b64eeef64b9175..5b6a1504d7ecb4b13af604b82857e47a847a131a 100644
+--- a/dist/core/attributes.js
++++ b/dist/core/attributes.js
+@@ -5,7 +5,7 @@ function attributeName(name, isSvg) {
+     return "class";
+   if (name === "htmlFor")
+     return "for";
+-  if (isSvg && /^(clip|fill|stroke)/.test(name) || /^(httpEquiv|acceptCharset|maskType)$/.test(name)) {
++  if (isSvg && /^(clip|fill|stroke|stop)/.test(name) || /^(httpEquiv|acceptCharset|maskType)$/.test(name)) {
+     return name.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase());
+   }
+   if (name === "tabIndex" || name === "crossOrigin")
+diff --git a/dist/dom/dispatcher.js b/dist/dom/dispatcher.js
+index 14e2f7439ca18f2a073144a7d1227720031b7826..69259a29d8fcdf1764f5439a943ae61779a3f30b 100644
+--- a/dist/dom/dispatcher.js
++++ b/dist/dom/dispatcher.js
+@@ -313,7 +313,8 @@ const DISPATCHER = {
+       const unsubscribe = subscribe(check);
+       if (isHydrating && store.s)
+         queueMicrotask(() => queueMicrotask(check));
+-      check();
++      else
++        check();
+       return () => {
+         active = false;
+         if (isFunction(unsubscribe))
+diff --git a/dist/react/children.js b/dist/react/children.js
+index de937dcf6133407acc3f012c4d58ebc40c2c853b..3f14553eb2a5dbe99a8166e9eb38d806d08f5573 100644
+--- a/dist/react/children.js
++++ b/dist/react/children.js
+@@ -14,6 +14,23 @@ function getKey(node, index, prefix) {
+     return prefix + "$" + node.key;
+   return prefix + ":" + index;
+ }
++function arrayKey(node, index) {
++  return isValidElement(node) && node.key != null
++    ? "$" + String(node.key).replace(/[=:]/g, (char) => char === "=" ? "=0" : "=2")
++    : index.toString(36);
++}
++function flattenWithKeys(node, out, path = "") {
++  if (node == null || typeof node === "boolean")
++    return;
++  if (Array.isArray(node) || typeof node !== "string" && typeof node[Symbol.iterator] === "function") {
++    let index = 0;
++    for (const child of node) {
++      flattenWithKeys(child, out, (path ? path + ":" : ".") + arrayKey(child, index++));
++    }
++    return;
++  }
++  out.push(isValidElement(node) ? cloneElement(node, { key: path || "." + arrayKey(node, 0) }) : node);
++}
+ function mapChildren(children, fn, prefix = "") {
+   const flat = [];
+   flatten(children, flat);
+@@ -57,8 +74,8 @@ const Children = {
+   },
+   toArray(children) {
+     const flat = [];
+-    flatten(children, flat);
+-    return flat.map((c, i) => isValidElement(c) && c.key == null ? cloneElement(c, { key: "" + i }) : c);
++    flattenWithKeys(children, flat);
++    return flat;
+   },
+   only(children) {
+     if (!isValidElement(children)) {

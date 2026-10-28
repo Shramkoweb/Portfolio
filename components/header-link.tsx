@@ -10,7 +10,7 @@ interface HeaderLinkProps {
 export function HeaderLink(props: HeaderLinkProps) {
   const { href, text } = props;
   const router = useRouter();
-  const isActive = router.asPath === href;
+  const isActive = router.asPath.split(/[?#]/)[0] === href;
 
   return (
     <NextLink
