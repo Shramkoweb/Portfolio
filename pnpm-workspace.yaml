@@ -31,10 +31,10 @@ allowBuilds:
 # or whose version is already past the cooldown.
 # pnpm rejects scoped globs with a version, so every package in a scope (each
 # @sentry/* package, each ox* platform binding) needs its own entry.
-minimumReleaseAgeExclude: []
+minimumReleaseAgeExclude:
+  - '@tanstack/redact@0.2.2'
 
 patchedDependencies:
-  # 0.2.1 misnames SVG stop attributes, loops on external stores during hydration,
-  # and omits Children.toArray key prefixes needed by next/head to deduplicate tags.
-  # Remove once upstream fixes these; browser tests cover hydration and metadata.
-  '@tanstack/redact@0.2.1': patches/@tanstack__redact@0.2.1.patch
+  # SVG stop attributes and Children.toArray keys still break hydration and next/head.
+  # Remove after upstream PRs TanStack/redact#96 and #37 ship; browser tests cover both.
+  '@tanstack/redact@0.2.2': patches/@tanstack__redact@0.2.2.patch

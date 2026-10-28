@@ -11,20 +11,6 @@ index e4060c70df64b8fa069d2e1336b64eeef64b9175..5b6a1504d7ecb4b13af604b82857e47a
      return name.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase());
    }
    if (name === "tabIndex" || name === "crossOrigin")
-diff --git a/dist/dom/dispatcher.js b/dist/dom/dispatcher.js
-index 14e2f7439ca18f2a073144a7d1227720031b7826..69259a29d8fcdf1764f5439a943ae61779a3f30b 100644
---- a/dist/dom/dispatcher.js
-+++ b/dist/dom/dispatcher.js
-@@ -313,7 +313,8 @@ const DISPATCHER = {
-       const unsubscribe = subscribe(check);
-       if (isHydrating && store.s)
-         queueMicrotask(() => queueMicrotask(check));
--      check();
-+      else
-+        check();
-       return () => {
-         active = false;
-         if (isFunction(unsubscribe))
 diff --git a/dist/react/children.js b/dist/react/children.js
 index de937dcf6133407acc3f012c4d58ebc40c2c853b..3f14553eb2a5dbe99a8166e9eb38d806d08f5573 100644
 --- a/dist/react/children.js
