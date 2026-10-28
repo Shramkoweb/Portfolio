@@ -58,8 +58,10 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       className={`rounded-lg mt-4 mb-8 ${inverted ? 'inverted' : ''}`}
       width={768}
       height={300}
-      priority={priority}
-      sizes="(max-width: 768px) 100vw, 768px"
+      preload={priority}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : undefined}
+      sizes="(max-width: 832px) calc(100vw - 4rem), 768px"
       style={{ width: '100%', height: 'auto' }}
       {...restProps}
     />

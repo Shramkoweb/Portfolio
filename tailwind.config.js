@@ -1,5 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 
+import { BREAKPOINTS } from './lib/breakpoints.js';
+
 const { spacing } = defaultTheme;
 
 /** @type {import("tailwindcss").Config} */
@@ -7,6 +9,7 @@ const config = {
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   darkMode: 'class',
   theme: {
+    screens: BREAKPOINTS,
     fontSize: {
       xs: '.875rem',
       sm: '1rem',

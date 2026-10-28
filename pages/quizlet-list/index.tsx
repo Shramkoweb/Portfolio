@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { InstallLinks } from '@/components/install-links';
 import { PageMeta } from '@/components/page-meta';
 import { StoreRating } from '@/components/store-rating';
+import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import {
   QUIZLET_APP_OG_IMAGE,
   QUIZLET_APP_RATING,
@@ -207,7 +208,7 @@ function QuizletPage() {
           className="rounded-lg border border-gray-200 dark:border-gray-800"
           alt='A Spanish reading page titled "Un domingo en el mercado" with the word "entrañable" selected, and the Quizlet QuickList popup open at the top right showing the "Spanish" list of six words, an "Add a new word..." field, a "Copy to Clipboard" button and "Export TSV", "Export CSV" and "Clear" buttons.'
           src={readingImage}
-          sizes="(min-width: 768px) 768px, 100vw"
+          sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
           priority
         />
 
@@ -259,7 +260,7 @@ function QuizletPage() {
             'A screenshot of a webpage displaying highlighted text. A context menu is opened, with the option "Add to Quizlet QuickList" highlighted. This indicates the ability to quickly add a selected word to the Quizlet QuickList extension from a webpage.'
           }
           src={secondImage}
-          sizes="(min-width: 768px) 768px, 100vw"
+          sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
         />
 
         <h3>3. Pick a list</h3>
@@ -276,7 +277,7 @@ function QuizletPage() {
           className="rounded-lg border border-gray-200 dark:border-gray-800"
           alt='Two Quizlet QuickList popups side by side: the "Your Lists" screen with "SAT prep" active and "Spanish" below it with edit and delete icons, and the main screen showing the six "SAT prep" words.'
           src={listsImage}
-          sizes="(min-width: 768px) 768px, 100vw"
+          sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
         />
 
         <h3>4. Copy or export the list</h3>
@@ -293,7 +294,7 @@ function QuizletPage() {
           className="rounded-lg border border-gray-200 dark:border-gray-800"
           alt='The Quizlet QuickList popup with the "Spanish" list selected, six words, an "Add a new word..." field, a "Copy to Clipboard" button and "Export TSV", "Export CSV" and "Clear" buttons.'
           src={popupImage}
-          sizes="(min-width: 768px) 768px, 100vw"
+          sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
         />
 
         <h2>Features</h2>
@@ -343,7 +344,7 @@ function QuizletPage() {
             'A screenshot showing the Quizlet flashcard set creation interface. On the left, the user is creating a flashcard set titled "My first flashcard set." Each flashcard has an English term and its corresponding Spanish definition.'
           }
           src={fourthImage}
-          sizes="(min-width: 768px) 768px, 100vw"
+          sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
         />
 
         <p>

@@ -1,5 +1,76 @@
 import { expect, test, visit } from './fixtures';
 
+test('article image hints are present in the initial HTML', async ({
+  page,
+}) => {
+  const response = await page.request.get('/blog/blogs-going-offline');
+  expect(response.status()).toBe(200);
+  const { images, preloadPriority } = await page.evaluate(
+    (html) => {
+      const document = new DOMParser().parseFromString(html, 'text/html');
+      return {
+        images: [...document.images].map((image) => ({
+          loading: image.loading,
+          fetchPriority: image.fetchPriority,
+        })),
+        preloadPriority: document
+          .querySelector('link[rel="preload"][as="image"]')
+          ?.getAttribute('fetchpriority'),
+      };
+    },
+    await response.text(),
+  );
+
+  expect(preloadPriority).toBe('high');
+  expect(images[0]).toMatchObject({
+    loading: 'eager',
+    fetchPriority: 'high',
+  });
+  expect(images.slice(1).every((image) => image.loading === 'lazy')).toBe(true);
+});
+
+test('article images match the content width', async ({ page, api }) => {
+  await page.setViewportSize({ width: 673, height: 900 });
+  await visit(page, '/blog/blogs-going-offline');
+  const cover = page.locator('.prose img').first();
+  await expect(cover).toBeVisible();
+  await expect
+    .poll(() => cover.evaluate((image: HTMLImageElement) => image.currentSrc))
+    .toContain('&w=640&');
+  expect(
+    api.requests.some(({ path }) => path.startsWith('/api/reactions/')),
+  ).toBe(false);
+});
+
+test('desktop article geometry stays stable while JavaScript loads', async ({
+  page,
+  viewport,
+}) => {
+  test.skip(viewport!.width < 1024, 'Reactions are desktop controls.');
+  let releaseScripts!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => {
+    releaseScripts = resolve;
+  });
+  await page.route('**/_next/static/**/*.js', async (route) => {
+    await scriptsReady;
+    await route.continue();
+  });
+
+  try {
+    await page.goto('/blog/blogs-going-offline', { waitUntil: 'commit' });
+    const cover = page.locator('.prose img').first();
+    await expect(cover).toBeVisible();
+    const before = await cover.boundingBox();
+
+    releaseScripts();
+    await expect(page.getByRole('button', { name: /^Love it/ })).toBeVisible();
+
+    expect(await cover.boundingBox()).toEqual(before);
+  } finally {
+    releaseScripts();
+  }
+});
+
 test('table of contents expands, navigates and collapses', async ({ page }) => {
   await visit(page, '/blog/npm-semantic-versioning');
   const nav = page.getByRole('navigation', { name: 'Table of contents' });

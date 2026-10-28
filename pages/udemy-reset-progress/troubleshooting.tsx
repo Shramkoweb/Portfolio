@@ -6,6 +6,7 @@ import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
 import { InstallLinks } from '@/components/install-links';
 import { UdemyPacingModes } from '@/components/udemy-pacing-modes';
+import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import { SITE_URL, UDEMY_RESET_APP_STORES } from '@/lib/constants';
 import { parsePostDate } from '@/lib/posts/utils';
 import { Routes } from '@/lib/routes';
@@ -104,7 +105,7 @@ function UdemyTroubleshootingPage() {
             className="rounded-lg border border-gray-200 dark:border-gray-800"
             alt='The Udemy Reset Progress popup after "Clear Progress" was clicked on a page without a course, showing a "Try Again" button and the red message "Open a Udemy course page first".'
             src={messageImage}
-            sizes="(min-width: 768px) 768px, 100vw"
+            sizes={`${MEDIA_QUERIES.md} 768px, 100vw`}
           />
 
           <p>
