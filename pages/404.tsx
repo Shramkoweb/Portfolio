@@ -7,9 +7,13 @@ import { PageMeta } from '@/components/page-meta';
 
 function NotFoundPage() {
   useEffect(() => {
-    Sentry.captureMessage(`404: ${window.location.pathname}`, {
+    Sentry.captureMessage('404 not found', {
       level: 'info',
-      tags: { referrer: document.referrer || 'direct' },
+      fingerprint: ['404'],
+      tags: {
+        path: window.location.pathname,
+        referrer: document.referrer || 'direct',
+      },
     });
   }, []);
 

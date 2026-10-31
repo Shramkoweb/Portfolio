@@ -23,13 +23,11 @@ describe('404 page', () => {
   test('send sentry message with path on render', () => {
     render(<NotFoundPage />);
 
-    expect(Sentry.captureMessage).toHaveBeenCalledWith(
-      `404: ${window.location.pathname}`,
-      {
-        level: 'info',
-        tags: { referrer: 'direct' },
-      },
-    );
+    expect(Sentry.captureMessage).toHaveBeenCalledWith('404 not found', {
+      level: 'info',
+      fingerprint: ['404'],
+      tags: { path: window.location.pathname, referrer: 'direct' },
+    });
   });
 
   test('send sentry message only on initial render', () => {
