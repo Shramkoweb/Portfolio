@@ -8,6 +8,7 @@ jest.mock('@sentry/nextjs');
 describe('404 page', () => {
   afterEach(() => {
     jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
   test('renders with correct heading', () => {
@@ -28,6 +29,23 @@ describe('404 page', () => {
       fingerprint: ['404'],
       tags: { path: window.location.pathname, referrer: 'direct' },
     });
+  });
+
+  test('strips query and fragment from the referrer tag', () => {
+    jest
+      .spyOn(document, 'referrer', 'get')
+      .mockReturnValue('https://shramko.dev/blog?token=secret#top');
+
+    render(<NotFoundPage />);
+
+    expect(Sentry.captureMessage).toHaveBeenCalledWith(
+      '404 not found',
+      expect.objectContaining({
+        tags: expect.objectContaining({
+          referrer: 'https://shramko.dev/blog',
+        }),
+      }),
+    );
   });
 
   test('send sentry message only on initial render', () => {

@@ -5,6 +5,12 @@ import { useEffect } from 'react';
 
 import { PageMeta } from '@/components/page-meta';
 
+function referrerTag() {
+  if (!document.referrer) return 'direct';
+  const { origin, pathname } = new URL(document.referrer);
+  return origin + pathname;
+}
+
 function NotFoundPage() {
   useEffect(() => {
     Sentry.captureMessage('404 not found', {
@@ -12,7 +18,7 @@ function NotFoundPage() {
       fingerprint: ['404'],
       tags: {
         path: window.location.pathname,
-        referrer: document.referrer || 'direct',
+        referrer: referrerTag(),
       },
     });
   }, []);
