@@ -3,7 +3,6 @@ title: 'JavaScript Arrays: Essential Methods for Beginners'
 heading: 'JavaScript 101: Arrays'
 description: Master JavaScript array methods with this beginner-friendly guide. Learn map, filter, reduce, find, and other essential methods with practical examples.
 createDate: 2022-11-25T17:39:11.486Z
-updateDate: 2022-11-25T17:39:11.486Z
 keywords:
   [
     javascript arrays,
@@ -17,7 +16,7 @@ categories: [JS, Tutorial]
 featured: false
 ---
 
-<Image src="fruits.png" alt="Hand-drawn JavaScript array: const fruits holding six fruits, each labelled with its zero-based index from 0 to 5" priority={true} inverted />
+<Image src="fruits.png" alt="Hand-drawn JavaScript array: const fruits holding six fruits, each labelled with its zero-based index from 0 to 5" priority inverted />
 
 ## Syntax
 
@@ -253,3 +252,5 @@ be useful to you.
 - [Remove Duplicates from an Array](/snippets/remove-duplicates-array) - common array operation
 - [Sort an Array of Objects](/snippets/sort-an-array-of-objects-in-javascript) - sorting by multiple properties
 - [Generate a Range of Numbers](/snippets/generate-range) - quickly create sequential arrays
+- [Deep Clone an Object](/snippets/deep-clone) - copy an array of objects without sharing the nested objects
+- [Set Methods](/snippets/set-methods) - union, intersection and difference for lists of unique values

@@ -1,7 +1,7 @@
 ---
 title: 'Fix Hydration Mismatch in React and Next.js with useHasMounted'
 heading: useHasMounted
-description: Fix "Text content does not match server-rendered HTML" hydration errors in React and Next.js. A tiny useHasMounted hook that renders browser-only UI after mount.
+description: Fix "Text content does not match server-rendered HTML" hydration errors in React and Next.js. A tiny useHasMounted hook renders browser-only UI after mount.
 createDate: 2024-07-11
 updateDate: 2026-09-26
 keywords:

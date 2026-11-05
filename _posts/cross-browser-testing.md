@@ -3,7 +3,6 @@ title: Cross-Browser Compatibility – Testing Guide
 heading: Cross-browser testing
 description: Learn how to test your website across different browsers and devices using BrowserStack. Ensure cross-browser compatibility without maintaining a device lab.
 createDate: 2023-02-24T22:06:42.844Z
-updateDate: 2023-02-24T22:06:42.844Z
 keywords:
   [
     browserstack,
@@ -78,7 +77,18 @@ and test your site without installing Windows ☠️.
 If you want to quickly see how the site looks on many devices and browsers, you can
 take [screenshots](https://www.browserstack.com/screenshots) of the pages you want.
 
-<img src="/static/images/screenshots.gif" alt="Animated GIF demonstrating cross-browser screenshot comparisons in BrowserStack"/>
+<video
+  src="/static/videos/screenshots.mp4"
+  width="800"
+  height="500"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  aria-label="BrowserStack Screenshots flipping through shramko.dev captured on different browsers and devices"
+  className="rounded-lg mt-4 mb-8 w-full h-auto"
+/>
 
 Yes, I know that my site does not work on IE. I did it on purpose. [IE 11 Must die](https://death-to-ie11.com/) 👾
 

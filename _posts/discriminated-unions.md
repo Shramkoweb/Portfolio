@@ -193,4 +193,5 @@ Happy coding, and may your types always be discriminated! 🚀✨
 
 - [Branded Types in TypeScript](/snippets/branded-types) - another pattern for type-safe identifiers
 - [Type Predicates](/snippets/type-predicates) - use type predicates to narrow discriminated unions at runtime
+- [Distributive Omit](/snippets/distributive-omit) - an `Omit` that keeps each member of a discriminated union intact
 - [Generic Type Parameters](/blog/generic-type-parameters) - combine generics with unions for flexible APIs

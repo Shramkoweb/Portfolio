@@ -60,3 +60,4 @@ setupCapsLockDetection(passwordField, warning);
 
 - [Email Validation with Regex](/snippets/is-email-valid-regex) — validate user input in forms with regex patterns
 - [JavaScript Naming Conventions](/blog/javascript-naming-conventions) — consistent naming patterns for JS code
+- [Move Cursor to the End of Input](/snippets/move-cursor) — another small helper for form input fields

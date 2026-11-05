@@ -21,7 +21,7 @@ featured: false
 In a previous post we covered [How React Re-Renders Work](/blog/react-rerender). But today, we'll take a closer look at
 the hidden pitfalls of custom hooks in React.
 
-<Image alt="Hand-drawn cover image with 'Custom React Hooks' title, useEffect() in blue, fishing hook illustrations, and the React logo" src="hooks.png" priority={true} inverted />
+<Image alt="Hand-drawn cover image with 'Custom React Hooks' title, useEffect() in blue, fishing hook illustrations, and the React logo" src="hooks.png" priority inverted />
 
 When we handle state, component re-renders, and application performance in React, custom hooks are a powerful tool that
 help us keep our components clean and manageable. However, this simplicity can sometimes hide performance issues that we
@@ -63,7 +63,7 @@ At first glance, this setup appears elegant—state logic neatly wrapped in the 
 approach hides a subtle performance issue: whenever the dropdown visibility state changes, React re-renders the entire
 `App` component, despite the state being limited to a small interaction.
 
-> Why? You can read more about react rerenders [here](/blog/react-rerender).
+> Why? You can read more in [what triggers a re-render in React](/blog/react-rerender).
 
 ## Hidden States and Re-rendering Pitfalls
 
@@ -151,7 +151,7 @@ const Dropdown = () => {
 This ensures that the minimal required area re-renders, preventing unnecessary updates across the entire app.
 
 > In this solution, the `Dropdown` logic moved down from `App` to its own component. I described this approach in
-> [this article](/blog/react-rerender#moving-state-down).
+> [moving state down to prevent re-renders](/blog/react-rerender#moving-state-down).
 
 ## Key Takeaway
 

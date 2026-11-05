@@ -3,7 +3,7 @@ title: 'Conventional Commits enhance your coding practices'
 heading: Conventional Commits
 description: Master Conventional Commits to write clear, structured commit messages. Learn the format, types like feat and fix, and how to automate changelog generation.
 createDate: 2024-07-23T22:52:26.716Z
-updateDate: 2025-12-07
+updateDate: 2025-05-25T15:59:10.754Z
 keywords:
   [
     Conventional Commits for JavaScript Development,

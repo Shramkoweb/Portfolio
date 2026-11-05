@@ -3,7 +3,6 @@ title: Use Postgres Connect URLs for DB Connections
 heading: Postgres connect to database with URL
 description: Learn how to connect to PostgreSQL using a connection URL string. Simple guide for Node.js, DataGrip, or any client supporting URL-based database connections.
 createDate: 2023-02-09T12:43:36.700Z
-updateDate: 2023-02-09T12:43:36.700Z
 keywords:
   [
     DataGrip connect,
@@ -24,7 +23,7 @@ That is, without credentials such as `user`, `password`, etc.
 
 It's [official PostgreSQL format for connection URLs](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
 
-<Image src="postgresql-connection-string.png" priority={true} alt="PostgreSQL connection URL postgresql://janedoe:mypassword@localhost:5432/mydb?schema=public broken into protocol, base URL, path and arguments with their placeholders" inverted />
+<Image src="postgresql-connection-string.png" priority alt="PostgreSQL connection URL postgresql://janedoe:mypassword@localhost:5432/mydb?schema=public broken into protocol, base URL, path and arguments with their placeholders" inverted />
 
 ### Base URL and path
 
@@ -34,7 +33,7 @@ Here's an example of a base URL and path structure using uppercase placeholder v
 postgresql://USER:PASSWORD@HOST:PORT/DATABASE
 ```
 
-<Image src="db-table.png" priority={true} alt="Table of connection URL placeholders: HOST, PORT, USER, PASSWORD and DATABASE with a description and example for each" inverted />
+<Image src="db-table.png" alt="Table of connection URL placeholders: HOST, PORT, USER, PASSWORD and DATABASE with a description and example for each" inverted />
 
 ## How this site connects to the database
 
@@ -83,7 +82,7 @@ datasource db {
 You can use the same credentials like `HOST`, `PORT`, `USER`, `PASSWORD`, `DATABASE` for connection to Database with
 DataGrip.
 
-<Image src="db-datagrip.png" priority={true} alt="DataGrip connection dialog configured with PostgreSQL credentials" />
+<Image src="db-datagrip.png" alt="DataGrip connection dialog configured with PostgreSQL credentials" />
 
 ## Related
 

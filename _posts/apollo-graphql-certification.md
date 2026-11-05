@@ -25,7 +25,7 @@ If you’re interested in GraphQL but haven’t had the chance to explore it dir
 [Apollo Odyssey](https://www.apollographql.com/tutorials/) is the perfect solution to help you understand how it all
 fits together!
 
-<Image alt="Apollo Certified Graph Developer Associate certificate issued to Serhii Shramko on 3/12/2025" src="graphql-certificate.png" priority={true} />
+<Image alt="Apollo Certified Graph Developer Associate certificate issued to Serhii Shramko on 3/12/2025" src="graphql-certificate.png" priority />
 
 ## Apollo Odyssey: Free Learning Platform
 

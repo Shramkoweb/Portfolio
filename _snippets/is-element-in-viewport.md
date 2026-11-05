@@ -85,3 +85,5 @@ This function calculates the bounding rectangle of the element and checks if it 
 
 - [Lazy Loading Images with Intersection Observer](/snippets/lazy-loading-images-with-intersection-observer) — practical use of the same Intersection Observer API
 - [Cross-Browser Testing](/blog/cross-browser-testing) — ensure viewport detection works across all browsers
+- [CSS Scroll-Driven Animations](/snippets/scroll-driven-animations) — fade elements in as they enter the viewport with
+  `view()`, no JavaScript needed

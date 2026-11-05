@@ -159,7 +159,7 @@ scope that doesn't re-render and then passed to the stateful component.
 
 ## Wrapping Up
 
-The [previous article](/blog/react-rerender#moving-state-down) showed how pushing state into a child component
+[Moving state down](/blog/react-rerender#moving-state-down), from the React re-renders article, showed how pushing state into a child component
 prevents unnecessary re-renders. This article demonstrated the inverse: lifting static UI _out_ of the stateful
 component by passing it as props.
 

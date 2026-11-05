@@ -15,7 +15,7 @@ categories: [AI, SEO, Productivity, Tools, Opinion]
 featured: false
 ---
 
-<Image src="seo.jpg" alt="Website analytics dashboard showing real-time user count, traffic graphs, revenue metrics, and top countries" priority={true} />
+<Image src="seo.jpg" alt="Website analytics dashboard showing real-time user count, traffic graphs, revenue metrics, and top countries" priority />
 
 I've been putting off an SEO audit of my blog for months. With **30+** articles and **20+** code snippets, the task felt overwhelming. Reviewing each meta description, checking for broken links, validating alt text — it's the kind of work that's _easy to procrastinate_ on indefinitely.
 
@@ -95,3 +95,7 @@ By the end of the afternoon: **56 files** updated, **50+ meta descriptions** rew
 
 - [Introducing the New shramko.dev](/blog/introducing-the-new-shramko.dev) — how the blog was built and the tech stack behind it
 - [Conventional Commits](/blog/conventional-commits) — another developer tooling practice that keeps your workflow consistent
+- [How I Turned 17 Hours of Video Into a Second Brain, Offline](/blog/second-brain-from-video) — another job split
+  between AI and me: Whisper transcribed, I wrote the notes
+- [Why Independent Developer Blogs Are Going Offline](/blog/blogs-going-offline) — what AI crawlers cost the people who
+  write, and how I block them on this blog

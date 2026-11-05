@@ -1,7 +1,7 @@
 ---
 title: 'Lazy Load Images: loading="lazy" vs Intersection Observer'
 heading: Lazy Loading Images
-description: Lazy load images with the native loading="lazy" attribute, or with an Intersection Observer in TypeScript when you need custom thresholds, placeholders or background images.
+description: Lazy load images with the native loading="lazy" attribute, or an Intersection Observer in TypeScript for custom thresholds, placeholders or background images.
 createDate: 2025-02-02T00:00:00.000Z
 updateDate: 2026-09-26
 keywords:

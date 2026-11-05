@@ -1,7 +1,7 @@
 ---
 title: 'I Fixed the Wrong Thing and Found the Real Bug'
 heading: 'Total Build Time Lies'
-description: I spotted a build regression, shipped what I thought was the fix, and the numbers didn't move. Turns out the metrics were lying too — Next.js reports batch timing, not page timing.
+description: I spotted a build regression, shipped what I thought was the fix, and nothing moved. The metrics lied too — Next.js reports batch timing, not page timing.
 createDate: 2026-04-17T22:00:00.000Z
 keywords:
   [
@@ -19,8 +19,9 @@ featured: false
 
 ## The number that didn't move
 
-I pushed a routine update to my portfolio — swapped Prettier for [oxfmt](https://oxc.rs/docs/guide/usage/formatter),
-added [`@shikijs/transformers`](https://shiki.style/packages/transformers) for better syntax highlighting. Stack is
+I pushed a routine update to [my portfolio](/blog/introducing-the-new-shramko.dev) — swapped Prettier for [oxfmt](https://oxc.rs/docs/guide/usage/formatter),
+added [`@shikijs/transformers`](https://shiki.style/packages/transformers) for
+[class-based syntax highlighting themes](/blog/shiki-class-based-themes-nextjs-mdx). Stack is
 Next.js 16, Turbopack, Prisma, Sentry, Vercel, pnpm. Nothing unusual.
 
 Checked the [Vercel build log](https://vercel.com/docs/deployments/logs). Total build time: 48 seconds. Ran two more deploys to be sure. 47 seconds. 48 seconds.
