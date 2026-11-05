@@ -3,7 +3,6 @@ title: 'ESLint with TypeScript: Setup and Configuration Guide'
 heading: How to use ESLint with TypeScript
 description: Step-by-step guide to configuring ESLint with TypeScript. Set up linting rules, integrate with your IDE, and catch errors before they reach production.
 createDate: 2022-08-02T19:51:19Z
-updateDate: 2022-08-02T20:00:45.784Z
 keywords:
   [TS, TypeScript, ESLint, Project Setup, Optimizing TypeScript Development]
 categories: [TS, Project-Setup]

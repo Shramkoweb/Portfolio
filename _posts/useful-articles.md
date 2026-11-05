@@ -15,7 +15,7 @@ categories: [Tools]
 featured: false
 ---
 
-<Image alt="Illustration of an astronaut in space absorbing knowledge from a floating book connected to their helmet" src="books.jpeg" priority={true} />
+<Image alt="Illustration of an astronaut in space absorbing knowledge from a floating book connected to their helmet" src="books.jpeg" priority />
 
 > “Knowledge must be shared”.
 

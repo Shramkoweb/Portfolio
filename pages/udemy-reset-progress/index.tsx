@@ -15,7 +15,11 @@ import {
   SITE_URL,
 } from '@/lib/constants';
 import { Routes } from '@/lib/routes';
-import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
+import {
+  generateAggregateRatingSchema,
+  person,
+  serializeJsonLd,
+} from '@/lib/schema';
 import { withStoreUtm } from '@/lib/store-links';
 import { registerView, whenVisible } from '@/lib/views';
 
@@ -38,7 +42,7 @@ function UdemyResetProgressPage() {
     <>
       <PageMeta
         title="How to Reset Udemy Course Progress: By Hand or in One Click"
-        description="Udemy has no button that resets a whole course. Uncheck lectures one by one, or clear every checkbox in one click with a free, open-source extension for Chrome, Firefox and Edge."
+        description="Udemy has no button to reset a whole course. Uncheck lectures one by one, or clear every checkbox in one click with a free extension for Chrome, Firefox, Edge."
         socialDescription="Udemy has no reset button. How to uncheck lectures by hand, and how to clear a whole course in one click with a free extension."
         image={{
           url: UDEMY_RESET_APP_OG_IMAGE,
@@ -79,12 +83,7 @@ function UdemyResetProgressPage() {
                 'Keeps its settings in the browser and makes no network requests of its own',
                 'Open source under AGPL-3.0',
               ],
-              author: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
-                url: 'https://shramko.dev/about',
-              },
+              author: person,
               aggregateRating: generateAggregateRatingSchema(
                 UDEMY_RESET_APP_RATING,
               ),

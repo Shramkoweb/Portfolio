@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import { PageMeta } from '@/components/page-meta';
+import { SITE_URL } from '@/lib/constants';
 import { getSocialImage } from '@/lib/seo';
 
 interface ArticleMetaProps {
@@ -45,7 +46,7 @@ export function ArticleMeta(props: ArticleMetaProps) {
         />
         <meta
           property="article:author"
-          content="https://shramko.dev"
+          content={`${SITE_URL}/about`}
           key="article:author"
         />
       </Head>

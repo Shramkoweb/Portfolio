@@ -1,7 +1,7 @@
 ---
 title: Early Return Pattern in JavaScript — Guard Clauses Guide
 heading: The early return pattern in JavaScript
-description: Learn the early return pattern (guard clauses) in JavaScript and TypeScript. Reduce nesting, improve readability, and write cleaner functions with real-world examples.
+description: Use the early return pattern (guard clauses) in JavaScript and TypeScript to reduce nesting and write cleaner, more readable functions. Real-world examples.
 createDate: 2025-09-15T09:01:43.973Z
 updateDate: 2026-04-03T00:00:00.000Z
 keywords:

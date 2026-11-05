@@ -132,7 +132,7 @@ export function FloatingReactions(props: FloatingReactionsProps) {
                 <span
                   aria-live="polite"
                   className={`
-                    absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 text-[10px] font-medium
+                    absolute -top-1 -right-1 min-w-5 h-5 px-1 text-[12px] leading-none font-medium
                     bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300
                     rounded-full flex items-center justify-center
                     ${isAnimating ? 'animate-bounce-pop' : ''}

@@ -3,7 +3,6 @@ title: 'useSyncExternalStore: Subscribe to Browser APIs in React'
 heading: useSyncExternalStore
 description: Subscribe to Browser APIs in React with useSyncExternalStore — online status, matchMedia, ResizeObserver, IntersectionObserver. No useEffect, no stale closures.
 createDate: 2026-05-10
-updateDate: 2026-05-10
 keywords:
   [
     useSyncExternalStore,
@@ -92,7 +91,7 @@ export function useMediaQuery(query: string): boolean {
 ## Element Sizing with ResizeObserver
 
 [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) watches a specific DOM node, so the
-hook pairs `useSyncExternalStore` with a `useRef` that caches the latest snapshot.
+hook pairs `useSyncExternalStore` with a [`useRef`](/blog/react-useref) that caches the latest snapshot.
 
 ```typescript
 import { useCallback, useRef, useSyncExternalStore } from 'react';

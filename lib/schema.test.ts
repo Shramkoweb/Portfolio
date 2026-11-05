@@ -1,10 +1,13 @@
 import {
   generateAggregateRatingSchema,
   generateBlogPostingSchema,
+  generateBlogPostingSummary,
   generateTechArticleSchema,
+  generateTechArticleSummary,
   generateBreadcrumbSchema,
   generateGuideSchema,
-  generateWebSiteSchema,
+  generateHomePageSchema,
+  person,
   serializeJsonLd,
 } from '@/lib/schema';
 
@@ -16,20 +19,62 @@ const validPost = {
   createDate: new Date('2024-01-15').getTime(),
   updateDate: null,
   keywords: ['test', 'jest'],
-  categories: ['js', 'react'],
+  categories: ['JS', 'React'],
 };
+
+describe('person', () => {
+  it('describes the author fully, without private contact details', () => {
+    expect(person).toEqual(
+      expect.objectContaining({
+        '@type': 'Person',
+        '@id': 'https://shramko.dev/#person',
+        url: 'https://shramko.dev/about',
+        jobTitle: 'Senior Software Engineer',
+      }),
+    );
+    expect(person.image.url).toBe(
+      'https://shramko.dev/static/images/about.jpeg',
+    );
+    expect(person.worksFor.name).toBe('BetterMe');
+    expect(person.sameAs).toContain('https://github.com/shramkoweb');
+    expect(person).not.toHaveProperty('email');
+    expect(person).not.toHaveProperty('workLocation');
+  });
+});
 
 describe('generateBlogPostingSchema', () => {
   it('should generate valid BlogPosting schema', () => {
     const schema = generateBlogPostingSchema(validPost);
 
     expect(schema['@type']).toBe('BlogPosting');
+    expect(schema['@id']).toBe('https://shramko.dev/blog/test-post/#article');
     expect(schema.headline).toBe('Test Heading');
     expect(schema.datePublished).toBe('2024-01-15T00:00:00.000Z');
     expect(schema.url).toBe('https://shramko.dev/blog/test-post');
     expect(schema.keywords).toEqual(['test', 'jest']);
-    expect(schema.articleSection).toBe('js');
-    expect(schema.image).toBe('https://shramko.dev/og?title=Test%20Heading');
+    expect(schema.articleSection).toBe('JavaScript');
+    expect(schema.image).toEqual({
+      '@type': 'ImageObject',
+      url: 'https://shramko.dev/og?title=Test%20Heading',
+      width: 1200,
+      height: 630,
+    });
+  });
+
+  it('uses the full shared Person as author and publisher', () => {
+    const schema = generateBlogPostingSchema(validPost);
+
+    expect(schema.author).toBe(person);
+    expect(schema.publisher).toBe(person);
+  });
+
+  it('names multi-word categories for humans', () => {
+    const schema = generateBlogPostingSchema({
+      ...validPost,
+      categories: ['Advanced-React', 'JS'],
+    });
+
+    expect(schema.articleSection).toBe('Advanced React');
   });
 
   it('should include dateModified when updateDate provided', () => {
@@ -64,6 +109,18 @@ describe('generateBlogPostingSchema', () => {
   });
 });
 
+describe('generateBlogPostingSummary', () => {
+  it('shares the detail page @id and references the Person', () => {
+    const summary = generateBlogPostingSummary(validPost);
+
+    expect(summary['@id']).toBe(generateBlogPostingSchema(validPost)['@id']);
+    expect(summary.datePublished).toBe('2024-01-15T00:00:00.000Z');
+    expect(summary.articleSection).toBe('JavaScript');
+    expect(summary.author).toEqual({ '@id': 'https://shramko.dev/#person' });
+    expect(summary).not.toHaveProperty('@context');
+  });
+});
+
 describe('generateTechArticleSchema', () => {
   const validSnippet = {
     slug: 'test-snippet',
@@ -79,15 +136,30 @@ describe('generateTechArticleSchema', () => {
     const schema = generateTechArticleSchema(validSnippet);
 
     expect(schema['@type']).toBe('TechArticle');
+    expect(schema['@id']).toBe(
+      'https://shramko.dev/snippets/test-snippet/#article',
+    );
     expect(schema.url).toBe('https://shramko.dev/snippets/test-snippet');
-    expect(schema.proficiencyLevel).toBe('Beginner');
-    expect(schema.about.programmingLanguage).toBe('JavaScript');
+    expect(schema.author).toBe(person);
+    expect(schema.publisher).toBe(person);
+    expect(schema.image.url).toBe(
+      'https://shramko.dev/og?title=Snippet%20Heading',
+    );
   });
 
-  it('should use provided proficiencyLevel', () => {
-    const schema = generateTechArticleSchema(validSnippet, 'Expert');
+  it('omits fields the frontmatter cannot back', () => {
+    const schema = generateTechArticleSchema(validSnippet);
 
-    expect(schema.proficiencyLevel).toBe('Expert');
+    expect(schema).not.toHaveProperty('proficiencyLevel');
+    expect(schema).not.toHaveProperty('about');
+  });
+
+  it('summary shares the detail page @id and datePublished', () => {
+    const summary = generateTechArticleSummary(validSnippet);
+
+    expect(summary['@id']).toBe(generateTechArticleSchema(validSnippet)['@id']);
+    expect(summary.datePublished).toBe('2024-03-01T00:00:00.000Z');
+    expect(summary.author).toEqual({ '@id': 'https://shramko.dev/#person' });
   });
 
   it('should include dateModified when updateDate provided', () => {
@@ -104,13 +176,6 @@ describe('generateTechArticleSchema', () => {
     const schema = generateTechArticleSchema(validSnippet);
 
     expect(schema).not.toHaveProperty('dateModified');
-  });
-
-  it('should use provided programmingLanguage', () => {
-    const snippet = { ...validSnippet, programmingLanguage: 'TypeScript' };
-    const schema = generateTechArticleSchema(snippet);
-
-    expect(schema.about.programmingLanguage).toBe('TypeScript');
   });
 
   it('should throw on invalid createDate', () => {
@@ -142,9 +207,10 @@ describe('generateGuideSchema', () => {
     expect(schema.mainEntityOfPage['@id']).toBe(schema.url);
     expect(schema.datePublished).toBe('2026-10-16T00:00:00.000Z');
     expect(schema.keywords).toEqual(['anki import']);
-    expect(schema.image).toBe(
+    expect(schema.image.url).toBe(
       'https://shramko.dev/og?title=Import%20a%20Word%20List%20into%20Anki',
     );
+    expect(schema.author).toBe(person);
   });
 
   it('throws on an invalid createDate', () => {
@@ -177,13 +243,17 @@ describe('generateBreadcrumbSchema', () => {
   });
 });
 
-describe('generateWebSiteSchema', () => {
-  it('should return static website schema', () => {
-    const schema = generateWebSiteSchema();
+describe('generateHomePageSchema', () => {
+  it('puts the full Person and a WebSite published by it in one graph', () => {
+    const schema = generateHomePageSchema();
+    const [author, website] = schema['@graph'];
 
-    expect(schema['@type']).toBe('WebSite');
-    expect(schema.url).toBe('https://shramko.dev');
-    expect(schema.author.name).toBe('Serhii Shramko');
+    expect(author).toBe(person);
+    expect(website['@type']).toBe('WebSite');
+    expect(website.url).toBe('https://shramko.dev');
+    expect(website).toHaveProperty('publisher', {
+      '@id': 'https://shramko.dev/#person',
+    });
   });
 });
 
@@ -265,6 +335,6 @@ describe('serializeJsonLd', () => {
   });
 
   it('should serialize real schema output without a literal "<"', () => {
-    expect(serializeJsonLd(generateWebSiteSchema())).not.toContain('<');
+    expect(serializeJsonLd(generateHomePageSchema())).not.toContain('<');
   });
 });

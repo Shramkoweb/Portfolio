@@ -43,3 +43,4 @@ const uniqueNumbers = numbers.filter((element, index) => {
 
 - [JavaScript Arrays](/blog/js-arrays) — comprehensive guide to array methods in JavaScript
 - [for...in vs for...of](/blog/for-in-vs-for-of) — choosing the right loop when iterating arrays and objects
+- [Set Methods](/snippets/set-methods) — union, intersection and difference once your values are in a `Set`

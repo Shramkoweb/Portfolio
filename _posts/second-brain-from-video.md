@@ -199,3 +199,5 @@ Without the transcripts I'd never have started. If I'd stopped there I'd have 12
 - [I Ran an AI SEO Audit on 56 Blog Posts in One Day](/blog/ai-seo-audit) — the model did the boring half, I kept the
   judgement
 - [Unsubscribe from Email Newsletters Immediately](/blog/unsubscribe-immediately) — a smaller habit, same shape
+- [Why Independent Developer Blogs Are Going Offline](/blog/blogs-going-offline) — the other side: why this blog keeps
+  AI training crawlers out

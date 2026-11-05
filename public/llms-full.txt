@@ -54,7 +54,7 @@ Every blog post and snippet is also served as Markdown: append `.md` to its URL,
 
 - [Dispatch Tables in JavaScript: A Clean Code Approach](https://shramko.dev/blog/dispatch-tables): Replace messy switch statements with dispatch tables in JavaScript. Learn this clean code pattern for handling multiple conditions with maintainable code.
   Keywords: Switch statement in javascript, Dynamic Dispatch, Dispatch Tables, Conditionals in JavaScript, Polymorphism
-- [Early Return Pattern in JavaScript — Guard Clauses Guide](https://shramko.dev/blog/the-early-return-pattern-in-javascript): Learn the early return pattern (guard clauses) in JavaScript and TypeScript. Reduce nesting, improve readability, and write cleaner functions with real-world examples.
+- [Early Return Pattern in JavaScript — Guard Clauses Guide](https://shramko.dev/blog/the-early-return-pattern-in-javascript): Use the early return pattern (guard clauses) in JavaScript and TypeScript to reduce nesting and write cleaner, more readable functions. Real-world examples.
   Keywords: early return javascript, guard clauses, javascript reduce nesting, early return vs nested if, fail fast pattern
 - [JavaScript Arrays: Essential Methods for Beginners](https://shramko.dev/blog/js-arrays): Master JavaScript array methods with this beginner-friendly guide. Learn map, filter, reduce, find, and other essential methods with practical examples.
   Keywords: javascript arrays, javascript array replace, js array concat, js array includes, array methods
@@ -75,23 +75,23 @@ Every blog post and snippet is also served as Markdown: append `.md` to its URL,
   Keywords: MissingSharp Astro, Could not find Sharp, Astro image Vercel, Astro Sharp configuration
 - [How to Use Shiki Class-Based Themes with next-mdx-remote in Next.js](https://shramko.dev/blog/shiki-class-based-themes-nextjs-mdx): Replace Shiki's bloated inline dual-theme styles with class-based CSS extraction using transformerStyleToClass and next-mdx-remote in Next.js.
   Keywords: Shiki dark mode Next.js, transformerStyleToClass, next-mdx-remote syntax highlighting, Shiki dual theme class CSS
-- [I Fixed the Wrong Thing and Found the Real Bug](https://shramko.dev/blog/build-time-lies): I spotted a build regression, shipped what I thought was the fix, and the numbers didn't move. Turns out the metrics were lying too — Next.js reports batch timing, not page timing.
+- [I Fixed the Wrong Thing and Found the Real Bug](https://shramko.dev/blog/build-time-lies): I spotted a build regression, shipped what I thought was the fix, and nothing moved. The metrics lied too — Next.js reports batch timing, not page timing.
   Keywords: Next.js build performance, build time regression, Shiki highlighting performance, static generation batch timing
-- [Presenting the Revamped shramko.dev: Explore the Exciting Updates!](https://shramko.dev/blog/introducing-the-new-shramko.dev): A deep dive into building my developer portfolio with Next.js 16, React 19, and Tailwind CSS 4. Learn about the tech stack, design decisions, and features behind 900+ commits.
+- [Presenting the Revamped shramko.dev: Explore the Exciting Updates!](https://shramko.dev/blog/introducing-the-new-shramko.dev): How I built my developer portfolio with Next.js 16, React 19 and Tailwind CSS 4. The tech stack, design decisions and features behind 900+ commits.
   Keywords: Website Redesign, Next.js, React, Tailwind, Developer Portfolio
 
 ## Blog Posts: Node.js & Tooling
 
 - [Enabling Network Connections on Startup in PHPStorm](https://shramko.dev/blog/phpstorm-allow-network): Fix the "allow network connections" popup appearing every time PHPStorm starts on macOS. Quick codesign solution to stop repeated permission requests.
   Keywords: accept incoming network connections, PHPStorm macOS
-- [Fix “__dirname Not Defined” in ES Modules – Quick Guide](https://shramko.dev/blog/dirname-error): Fix the "__dirname is not defined in ES module scope" error in Node.js. Recreate __dirname and __filename using import.meta.url.
-  Keywords: __dirname Node.js, ES modules, import.meta.url
+- [Fix “__dirname Not Defined” in ES Modules – Quick Guide](https://shramko.dev/blog/dirname-error): Fix the "__dirname is not defined in ES module scope" error in Node.js. Use import.meta.dirname and import.meta.filename, or import.meta.url on older Node.
+  Keywords: __dirname is not defined in ES module scope, import.meta.dirname, import.meta.filename, import.meta.url, __dirname Node.js
 - [Mastering npm and Semantic Versioning for Smarter Development](https://shramko.dev/blog/npm-semantic-versioning): A friendly, practical guide to SemVer in npm. Learn versioning rules, avoid dependency chaos, and manage updates with confidence.
   Keywords: npm semantic versioning, SemVer guide, package.json versioning, caret vs tilde npm
 - [Migrate from npm to pnpm – Save Time with This Guide](https://shramko.dev/blog/pnpm): Migrate from npm to pnpm and cut your deployment time by 44%. Step-by-step guide covering installation, lockfile conversion, and CI/CD configuration.
   Keywords: migrate npm to pnpm, pnpm migration guide, pnpm benefits, npm alternatives
-- [Node Version Manager (NVM): Install and Switch Versions](https://shramko.dev/blog/nvm): Learn how to install and use Node Version Manager (NVM) to switch between Node.js versions effortlessly. Manage multiple Node versions for different projects.
-  Keywords: what is nvm, install nvm, nvm set default node version
+- [Node Version Manager (NVM): Install and Switch Versions](https://shramko.dev/blog/nvm): Install Node Version Manager (NVM) with its official script, switch Node.js versions per project with .nvmrc, and set the default version for new shells.
+  Keywords: install nvm, nvm set default node version, nvm alias default, nvmrc, nvm on windows
 - [Use Postgres Connect URLs for DB Connections](https://shramko.dev/blog/postgres-connect-url): Learn how to connect to PostgreSQL using a connection URL string. Simple guide for Node.js, DataGrip, or any client supporting URL-based database connections.
   Keywords: database connection url, postgres connect url, how to connect to database
 
@@ -149,7 +149,7 @@ Every blog post and snippet is also served as Markdown: append `.md` to its URL,
 
 ## Snippets: React Hooks
 
-- [Fix Hydration Mismatch in React and Next.js with useHasMounted](https://shramko.dev/snippets/use-has-mounted): Fix "Text content does not match server-rendered HTML" hydration errors in React and Next.js. A tiny useHasMounted hook that renders browser-only UI after mount.
+- [Fix Hydration Mismatch in React and Next.js with useHasMounted](https://shramko.dev/snippets/use-has-mounted): Fix "Text content does not match server-rendered HTML" hydration errors in React and Next.js. A tiny useHasMounted hook renders browser-only UI after mount.
   Keywords: useHasMounted, React hydration mismatch, Next.js hydration error, render only on client
 - [useClickOutside React Hook: Detect Clicks Outside an Element](https://shramko.dev/snippets/use-click-outside): React hook to detect clicks outside a component. Close dropdowns, modals, and popovers when users click outside. TypeScript, zero dependencies.
   Keywords: useClickOutside, click outside React, close dropdown on click outside, close modal on click outside, React ref
@@ -199,13 +199,13 @@ Every blog post and snippet is also served as Markdown: append `.md` to its URL,
   Keywords: move cursor to end of input, cursor position, setSelectionRange, input field focus
 - [JavaScript Caps Lock Detection | getModifierState](https://shramko.dev/snippets/detect-caps-lock): Detect Caps Lock state in JavaScript using getModifierState(). Copy-paste snippet for password fields and form validation with cross-browser support.
   Keywords: JavaScript Caps Lock detection, getModifierState, keyboard events, modifier keys, form validation
-- [Lazy Load Images: loading="lazy" vs Intersection Observer](https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer): Lazy load images with the native loading="lazy" attribute, or with an Intersection Observer in TypeScript when you need custom thresholds, placeholders or background images.
+- [Lazy Load Images: loading="lazy" vs Intersection Observer](https://shramko.dev/snippets/lazy-loading-images-with-intersection-observer): Lazy load images with the native loading="lazy" attribute, or an Intersection Observer in TypeScript for custom thresholds, placeholders or background images.
   Keywords: lazy load images, loading lazy, Intersection Observer, image optimization, web performance
 
 ## Snippets: URL & String Validation
 
-- [Check if URL is Absolute - JavaScript Function](https://shramko.dev/snippets/is-absolute-url): A JavaScript function that uses regex to determine if a given URL string is absolute by checking for http or https protocol prefix.
-  Keywords: javascript url validation, absolute url, regex, http https, utility function
+- [Check if URL is Absolute - JavaScript Function](https://shramko.dev/snippets/is-absolute-url): A JavaScript function that uses regex to check if a URL is absolute: it starts with a scheme like https:, ftp: or mailto:, or is protocol-relative.
+  Keywords: check if url is absolute javascript, absolute url regex, protocol-relative url, javascript url validation
 - [Email Validation in TypeScript – Regex Function](https://shramko.dev/snippets/is-email-valid-regex): TypeScript function for validating email addresses using regex. Copy-paste snippet with type safety for form validation in your web applications.
   Keywords: email validation, regular expression, regex, form validation, TypeScript function
 - [How to Capitalize the First Letter of a String in JavaScript](https://shramko.dev/snippets/how-to-capitalize-first-letter-of-string-in-javascript): Capitalize the first letter of a string in JavaScript. Copy-paste function with examples for toUpperCase, charAt, and slice string manipulation.

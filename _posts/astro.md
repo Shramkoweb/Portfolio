@@ -308,7 +308,18 @@ const user = await response.json();
 
 > Before using React components for fetched data, add the [React integration](https://docs.astro.build/en/guides/integrations-guide/react/).
 
-<Image src="astro-dev.gif" alt="Data fetching in Astro" />
+<video
+  src="/static/videos/astro-dev.mp4"
+  width="800"
+  height="500"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  aria-label="Data fetching in Astro: the local dev server renders a fetched user's name, email and photo"
+  className="rounded-lg mt-4 mb-8 w-full h-auto"
+/>
 
 **Build-time vs runtime:** In static mode (default), `fetch()` runs at build time. With [SSR enabled](https://docs.astro.build/en/guides/on-demand-rendering/), it runs on each request. Read more in the [data fetching docs](https://docs.astro.build/en/guides/data-fetching/).
 

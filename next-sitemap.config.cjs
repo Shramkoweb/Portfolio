@@ -1,68 +1,65 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
-/* eslint-enable @typescript-eslint/no-require-imports */
 
-const pathLevelToPriority = {
-  0: 1,
-  1: 0.9,
-  2: 0.8,
-  3: 0.7,
-};
+const matter = require('gray-matter');
+/* eslint-enable @typescript-eslint/no-require-imports */
 
 const EXCLUDED_PATHS = ['/feed.xml', '/og', '/favicon.ico'];
 
-const getPathDepthLevel = (urlPath) => {
-  if (urlPath === '/') {
-    return 0;
-  }
+function readEntries(directory) {
+  const directoryPath = path.join(process.cwd(), directory);
 
-  return urlPath.split('/').length - 1;
-};
+  return fs
+    .readdirSync(directoryPath)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
+      const { data } = matter(
+        fs.readFileSync(path.join(directoryPath, file), 'utf-8'),
+      );
+      const time = new Date(data.updateDate ?? data.createDate).getTime();
 
-function getContentDate(urlPath) {
-  const blogMatch = urlPath.match(/^\/blog\/([^/]+)$/);
-  const snippetMatch = urlPath.match(/^\/snippets\/([^/]+)$/);
-
-  let dir;
-  let slug;
-
-  if (blogMatch) {
-    dir = '_posts';
-    slug = blogMatch[1];
-  } else if (snippetMatch) {
-    dir = '_snippets';
-    slug = snippetMatch[1];
-  } else {
-    return null;
-  }
-
-  const filePath = path.join(process.cwd(), dir, `${slug}.md`);
-
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8');
-    const frontmatter =
-      content.match(/^---\r?\n([\s\S]*?)\r?\n---/m)?.[1] ?? '';
-    const updateMatch = frontmatter.match(/^updateDate:\s*(.+)$/m);
-    const createMatch = frontmatter.match(/^createDate:\s*(.+)$/m);
-
-    const dateStr = updateMatch
-      ? updateMatch[1].trim()
-      : createMatch
-        ? createMatch[1].trim()
-        : null;
-
-    if (dateStr) {
-      return new Date(dateStr).toISOString();
-    }
-  } catch (error) {
-    if (error?.code !== 'ENOENT') {
-      console.error(`Error reading content date for ${urlPath}:`, error);
-    }
-  }
-
-  return null;
+      return {
+        slug: file.slice(0, -'.md'.length),
+        lastmod: Number.isNaN(time) ? null : new Date(time).toISOString(),
+        categories: (data.categories ?? []).map((category) =>
+          String(category).toLowerCase(),
+        ),
+      };
+    });
 }
+
+function newestLastmod(entries) {
+  return (
+    entries
+      .map(({ lastmod }) => lastmod)
+      .filter(Boolean)
+      .sort()
+      .at(-1) ?? null
+  );
+}
+
+function buildLastmodIndex() {
+  const posts = readEntries('_posts');
+  const snippets = readEntries('_snippets');
+  const categories = [...new Set(posts.flatMap((post) => post.categories))];
+
+  return new Map([
+    ...posts.map((post) => [`/blog/${post.slug}`, post.lastmod]),
+    ...snippets.map((snippet) => [
+      `/snippets/${snippet.slug}`,
+      snippet.lastmod,
+    ]),
+    ['/blog', newestLastmod(posts)],
+    ['/snippets', newestLastmod(snippets)],
+    ...categories.map((category) => [
+      `/blog/category/${category}`,
+      newestLastmod(posts.filter((post) => post.categories.includes(category))),
+    ]),
+  ]);
+}
+
+const lastmodByPath = buildLastmodIndex();
 
 /** @type {import("next-sitemap").IConfig} */
 module.exports = {
@@ -70,12 +67,11 @@ module.exports = {
   generateIndexSitemap: false,
   exclude: EXCLUDED_PATHS,
   transform: async (config, urlPath) => {
-    const contentDate = getContentDate(urlPath);
+    const lastmod = lastmodByPath.get(urlPath);
 
     return {
       loc: urlPath,
-      priority: pathLevelToPriority[getPathDepthLevel(urlPath)],
-      ...(contentDate && { lastmod: contentDate }),
+      ...(lastmod && { lastmod }),
       alternateRefs: config.alternateRefs ?? [],
     };
   },

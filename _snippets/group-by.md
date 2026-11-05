@@ -85,4 +85,4 @@ const grouped = groupBy(products, 'category');
 ```
 
 > To sort the grouped results, check out [sorting arrays of objects](/snippets/sort-an-array-of-objects-in-javascript)
-> by any property.
+> by any property. To show the prices as currency, use [Intl.NumberFormat](/snippets/intl-numberformat).

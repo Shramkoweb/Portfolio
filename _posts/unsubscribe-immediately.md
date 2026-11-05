@@ -36,3 +36,5 @@ To make it easier for you to deal with unnecessary newsletters and notifications
 
 - [Useful Articles for Developers](/blog/useful-articles) — a curated collection of resources worth keeping in your inbox
 - [Conventional Commits](/blog/conventional-commits) — another small habit that improves your daily developer productivity
+- [How I Turned 17 Hours of Video Into a Second Brain, Offline](/blog/second-brain-from-video) — what I did with a course
+  that sat unwatched in a folder for weeks

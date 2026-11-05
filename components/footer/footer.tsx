@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { FooterLink } from '@/components/footer-link';
+import { FooterLink, footerLinkClassName } from '@/components/footer-link';
 import { getCopyrightYearString } from '@/components/footer/get-copyright';
 import {
   QUIZLET_APP_STORES,
@@ -16,44 +16,32 @@ export function Footer() {
   return (
     <footer className="flex flex-col justify-center px-8">
       <div className="mx-auto flex w-full max-w-3xl flex-col items-start justify-center">
-        <hr className="mb-16 w-full border-gray-200 border dark:border-gray-800" />
+        <hr className="mb-14 w-full border-gray-200 border dark:border-gray-800" />
         <nav aria-label="Footer">
-          <div className="grid w-full max-w-3xl grid-cols-1 gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-4">
-            <ul className="flex flex-col space-y-4">
+          <div className="grid w-full max-w-3xl grid-cols-1 gap-x-4 pb-10 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="flex flex-col items-start">
               <li>
-                <Link
-                  href="/"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href="/" className={footerLinkClassName}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/about"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href="/about" className={footerLinkClassName}>
                   About
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blog"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href="/blog" className={footerLinkClassName}>
                   Blog
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/feed.xml"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href="/feed.xml" className={footerLinkClassName}>
                   RSS Feed
                 </Link>
               </li>
             </ul>
-            <ul className="flex flex-col space-y-4">
+            <ul className="flex flex-col items-start">
               <li>
                 <FooterLink href="https://github.com/shramkoweb">
                   GitHub
@@ -69,48 +57,36 @@ export function Footer() {
                   href="https://github.com/Shramkoweb/Portfolio/issues/new"
                   target="_blank"
                   rel="nofollow noopener"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
+                  className={footerLinkClassName}
                 >
                   Report an Issue
                   <span className="sr-only"> (opens in new tab)</span>
                 </a>
               </li>
             </ul>
-            <ul className="flex flex-col space-y-4">
+            <ul className="flex flex-col items-start">
               <li>
-                <Link
-                  href={Routes.Gear()}
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href={Routes.Gear()} className={footerLinkClassName}>
                   My Gear
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/dashboard"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href="/dashboard" className={footerLinkClassName}>
                   Dashboard
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/snippets"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href="/snippets" className={footerLinkClassName}>
                   Snippets
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/learning"
-                  className="text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-900 active:scale-[0.97] dark:text-gray-400 dark:hover:text-white"
-                >
+                <Link href="/learning" className={footerLinkClassName}>
                   Learning
                 </Link>
               </li>
             </ul>
-            <ul className="flex flex-col space-y-4">
+            <ul className="flex flex-col items-start">
               <li>
                 <FooterLink href="https://www.producthunt.com/@shramko_dev">
                   Product Hunt
@@ -147,7 +123,7 @@ export function Footer() {
           {getCopyrightYearString(YEAR_OF_CREATE, CURRENT_YEAR)}{' '}
           <Link
             href="/about"
-            className="underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
+            className="-my-[11.5px] inline-flex min-h-11 items-center underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo"
           >
             Serhii Shramko
           </Link>

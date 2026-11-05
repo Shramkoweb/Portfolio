@@ -20,7 +20,7 @@ export function TableOfContent(props: TableOfContentProps) {
     <nav aria-label="Table of contents">
       <button
         type="button"
-        className="flex items-center gap-2 font-semibold text-base text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 ease-out-expo"
+        className="-my-[8.5px] inline-flex min-h-11 items-center gap-2 font-semibold text-base text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 ease-out-expo"
         onClick={() => setIsOpen((v) => !v)}
         aria-expanded={isOpen}
         aria-controls="toc-list"
@@ -47,7 +47,7 @@ export function TableOfContent(props: TableOfContentProps) {
             <a
               href={`#${heading.id}`}
               tabIndex={isOpen ? undefined : -1}
-              className="block py-1 text-gray-700 dark:text-gray-300 underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo text-sm"
+              className="block py-1 pointer-coarse:py-3text-gray-700 dark:text-gray-300 underline decoration-gray-300 decoration-1 underline-offset-[3px] hover:decoration-gray-500 dark:decoration-gray-600 dark:hover:decoration-gray-400 transition-[text-decoration-color] duration-150 ease-out-expo text-sm"
             >
               {heading.text}
             </a>

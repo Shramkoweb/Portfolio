@@ -44,11 +44,10 @@ const POSTS: Post[] = [
 describe('Blog Page', () => {
   test('renders with correct heading', () => {
     render(<BlogPage posts={POSTS} categories={CATEGORIES} />);
-    const heading = screen.getByRole('heading', {
-      name: `Blog ${POSTS.length} articles`,
-    });
+    const heading = screen.getByRole('heading', { level: 1 });
 
-    expect(heading).toBeInTheDocument();
+    expect(heading).toHaveTextContent(/^Blog$/);
+    expect(screen.getByText(`${POSTS.length} articles`)).toBeInTheDocument();
   });
 
   test('renders with initial posts', () => {
@@ -60,9 +59,8 @@ describe('Blog Page', () => {
 
   test('uses singular "article" in the counter for exactly one post', () => {
     render(<BlogPage posts={[POSTS[0]]} categories={CATEGORIES} />);
-    const heading = screen.getByRole('heading', { name: 'Blog 1 article' });
 
-    expect(heading).toBeInTheDocument();
+    expect(screen.getByText('1 article')).toBeInTheDocument();
   });
 
   test('on search correct filtered exist articles', () => {
@@ -190,7 +188,7 @@ describe('Blog Page — getStaticProps (business logic)', () => {
   });
 
   test('builds JSON-LD entries from each post heading/description/slug', async () => {
-    const post = makeMeta('hello-world', Date.now(), {
+    const post = makeMeta('hello-world', Date.UTC(2024, 0, 15), {
       heading: 'Hello, world',
       description: 'A greeting',
     });
@@ -203,9 +201,12 @@ describe('Blog Page — getStaticProps (business logic)', () => {
     expect(entry).toEqual(
       expect.objectContaining({
         '@type': 'BlogPosting',
+        '@id': 'https://shramko.dev/blog/hello-world/#article',
         headline: 'Hello, world',
         description: 'A greeting',
         url: 'https://shramko.dev/blog/hello-world',
+        datePublished: '2024-01-15T00:00:00.000Z',
+        articleSection: 'JavaScript',
       }),
     );
   });
@@ -231,9 +232,11 @@ describe('Blog Page — JSON-LD render path', () => {
       blogPost: [
         {
           '@type': 'BlogPosting',
+          '@id': 'https://shramko.dev/blog/x/#article',
           headline: 'h',
           description: 'd',
           url: 'https://shramko.dev/blog/x',
+          datePublished: '2024-01-15T00:00:00.000Z',
         },
       ],
     };

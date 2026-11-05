@@ -1,9 +1,9 @@
 ---
 heading: Node Version Manager
 title: 'Node Version Manager (NVM): Install and Switch Versions'
-description: Learn how to install and use Node Version Manager (NVM) to switch between Node.js versions effortlessly. Manage multiple Node versions for different projects.
+description: Install Node Version Manager (NVM) with its official script, switch Node.js versions per project with .nvmrc, and set the default version for new shells.
 createDate: 2023-02-25T17:21:50.063Z
-updateDate: 2023-02-25T17:21:50.063Z
+updateDate: 2026-11-05T12:00:00.000Z
 keywords:
   [
     what is nvm node,
@@ -13,6 +13,7 @@ keywords:
     install nvm windows,
     nvm set default,
     nvm set default node version,
+    nvmrc,
   ]
 categories: [JS, Node]
 featured: false
@@ -28,8 +29,27 @@ using JavaScript.
 By using NVM to manage different versions with ease, developers can keep their environment up-to-date with the best
 tools and achieve their desired results with ease.
 
-In this article, we’ll be looking at how to install NVM with Brew and verify it worked properly. Additionally, we’ll
-take a look at why we need NVM, a useful NVM cheatsheet, and how to install NVM on Windows, Linux, and MacOS.
+In this article, we’ll be looking at how to install NVM with its official script and verify it worked properly.
+Additionally, we’ll set a default Node.js version, pin a version per project, and go through a useful NVM cheatsheet
+and NVM on Windows and Linux.
+
+## Set the Default Node Version
+
+Run `nvm alias default` with a version, then `nvm use default` to switch the shell you're already in:
+
+```shell
+nvm alias default 24
+nvm use default
+nvm ls
+```
+
+New shells start with the default version. `nvm ls` lists the versions you have installed and shows where `default`
+points. Use `nvm alias default --lts node` to default to the latest LTS release you have installed.
+
+<Update date="2026-11-05">
+  The commands now paste cleanly, and NVM is installed with its official script instead of Homebrew, which the NVM
+  project doesn't support. I also added this section and the one on `.nvmrc`.
+</Update>
 
 ## What is NVM?
 
@@ -45,64 +65,84 @@ take advantage of the newest tools available in the Node.js ecosystem.
 Additionally, NVM helps us become more efficient as developers. With NVM, we can quickly switch between different
 versions of Node.js without having to reconfigure our environment and restart our terminal.
 
-## How to Install NVM with Brew
+## How to Install NVM
 
-Installing NVM with [Brew](https://brew.sh/) is a fairly straightforward process.
-
-First, you’ll need to install Brew, which you can do simply by entering this on your terminal:
+Run the official install script from the [NVM README](https://github.com/nvm-sh/nvm#installing-and-updating):
 
 ```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash
 ```
 
-Once Brew is installed, you can install NVM by entering `brew install nvm` on your terminal.
-This command will download the latest version of NVM for your system, including the necessary libraries and packages.
+The script clones NVM into `~/.nvm` and adds the lines that load it to your shell profile: `~/.zshrc`, `~/.bashrc`,
+`~/.bash_profile` or `~/.profile`. Open a new terminal to pick them up.
+
+On macOS, zsh is the default shell, but there's no `~/.zshrc` until you create one. If the script found no profile to
+update, create it and run the script again:
 
 ```shell
-brew install nvm
+touch ~/.zshrc
 ```
+
+Don't install NVM with `brew install nvm`. The NVM README says Homebrew installation isn't supported.
 
 ### Verify It Worked
 
-Once you’ve installed NVM with Brew, you can verify that it worked by entering `nvm —-v` on your terminal. This command
+Once you’ve installed NVM, you can verify that it worked by entering `nvm --version` on your terminal. This command
 will show you the version of NVM you’re currently running.
 
 ```shell
-nvm —-v
-
-#Node Version Manager (v0.39.3) // It's my version of NVM
+nvm --version
 ```
+
+## Pin a Version per Project with .nvmrc
+
+Put the version in a `.nvmrc` file at the project root:
+
+```shell
+echo "24" > .nvmrc
+```
+
+Then `nvm install` and `nvm use` with no version pick it up, from the project folder or any folder below it:
+
+```shell
+nvm install
+nvm use
+```
+
+This blog does the same: its `.nvmrc` pins Node 24, so every clone and CI run gets the same major version.
 
 ## NVM Cheatsheet
 
 Using NVM can be intimidating at first. To help, here’s a helpful NVM cheatsheet:
 
-```shell
-- nvm install 8.0.0                     #Install a specific version number
-- nvm use 8.0                           #Use the latest available 8.0.x release
-- nvm run 6.10.3 app.js                 #Run app.js using node 6.10.3
-- nvm exec 4.8.3 node app.js            #Run `node app.js` with the PATH pointing to node 4.8.3
-- nvm alias default 8.1.0               #Set default node version on a shell
-- nvm alias default node                #Always default to the latest available node version on a shell
-- nvm uninstall [<version>]             #This command will uninstall a specific version of Node.js
-
-- nvm install node                      #Install the latest available version
-- nvm use node                          #Use the latest version
-- nvm install --lts                     #Install the latest LTS version
-- nvm use --lts                         #Use the latest LTS version
-```
+| Command                   | What it does                                        |
+| ------------------------- | --------------------------------------------------- |
+| `nvm install 24`          | Install the latest 24.x release                     |
+| `nvm use 22`              | Use the latest installed 22.x release               |
+| `nvm run 22 app.js`       | Run app.js using Node 22                            |
+| `nvm exec 20 node app.js` | Run `node app.js` with the PATH pointing to Node 20 |
+| `nvm alias default 24`    | Set the default version for new shells              |
+| `nvm alias default node`  | Always default to the latest installed version      |
+| `nvm uninstall 20`        | Uninstall a specific version of Node.js             |
+| `nvm install node`        | Install the latest available version                |
+| `nvm use node`            | Use the latest version                              |
+| `nvm install --lts`       | Install the latest LTS version                      |
+| `nvm use --lts`           | Use the latest LTS version                          |
+| `nvm ls`                  | List installed versions and aliases                 |
+| `nvm ls-remote --lts`     | List LTS versions available to install              |
 
 ## How to Install NVM on Windows
 
-Installing NVM on Windows is slightly more involved than with Linux or macOS. To do so, you’ll need to have the [Windows
-Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL) installed. Once you have WSL
-installed, you can use Brew to install NVM just as you would with Linux or macOS.
+NVM has no native Windows build. It works inside the [Windows
+Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL), depending on your WSL version, and in
+Git Bash or Cygwin: open that terminal and run the same install script as on Linux or macOS.
+
+For native Windows, there's [nvm-windows](https://github.com/nvm-windows/nvm). It's a separate project with similar
+commands, not maintained by the NVM team.
 
 ## How to Install NVM on Linux
 
-The easiest way to install NVM on Linux is to use Brew. Simply open your terminal and then enter `brew install nvm`.
-
-Before that, install Brew 🍻
+Use the same install script as above. It works in bash and zsh, and adds NVM to your `~/.bashrc` or `~/.zshrc`.
 
 ## Recap
 

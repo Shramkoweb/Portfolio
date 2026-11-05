@@ -2,8 +2,11 @@
   transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
   border: 0;
   background: transparent;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  /* 44px hit area in the old 40px slot; vertical-align cancels the baseline shift */
+  margin: -2px;
+  vertical-align: -2px;
   position: relative;
 }
 

@@ -65,3 +65,5 @@ I haven't removed that 2ality link. His notice says the break is "hopefully temp
 
 - [My "every programmer should know" list](/blog/useful-articles) — Axel and Josh have been on it since 2022
 - [Bookmarks](/bookmarks) — more blogs, each with a line on why it's there
+- [How I Turned 17 Hours of Video Into a Second Brain, Offline](/blog/second-brain-from-video) — the AI I do use, on my
+  own machine and my own notes

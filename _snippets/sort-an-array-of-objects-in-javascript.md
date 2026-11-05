@@ -65,3 +65,5 @@ console.log(data);
 
 - [JavaScript Arrays](/blog/js-arrays) — deep dive into array methods including sort, map, and filter
 - [Group By](/snippets/group-by) — group array elements by a property for organized data structures
+- [Check if a Date Is Between Two Dates](/snippets/compare-dates) — compare `Date` objects by their timestamps when a
+  property holds a date

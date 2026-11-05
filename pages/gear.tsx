@@ -3,16 +3,44 @@ import Image from 'next/image';
 
 import { PageMeta } from '@/components/page-meta';
 import { MEDIA_QUERIES } from '@/lib/breakpoints';
+import { SITE_URL } from '@/lib/constants';
+import {
+  generateBreadcrumbSchema,
+  person,
+  serializeJsonLd,
+} from '@/lib/schema';
 
 import gear from '../public/static/images/gear.jpeg';
+
+const TITLE = 'Gear | Serhii Shramko';
+const DESCRIPTION =
+  'Explore my coding setup: MacBook Pro M3, PhpStorm IDE, headphones, and essential apps. Hardware and software I use daily for development and productivity.';
+const PAGE_URL = `${SITE_URL}/gear`;
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${PAGE_URL}/#collection`,
+  name: TITLE,
+  url: PAGE_URL,
+  description: DESCRIPTION,
+  inLanguage: 'en',
+  author: person,
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+  },
+};
+
+const BREADCRUMB_JSON_LD = generateBreadcrumbSchema([
+  { name: 'Home', url: `${SITE_URL}/` },
+  { name: 'Gear', url: PAGE_URL },
+]);
 
 function GearPage() {
   return (
     <>
-      <PageMeta
-        title="Gear | Serhii Shramko"
-        description="Explore my coding setup: MacBook Pro M3, PhpStorm IDE, headphones, and essential apps. Hardware and software I use daily for development and productivity."
-      />
+      <PageMeta title={TITLE} description={DESCRIPTION} />
       <Head>
         <meta
           content="
@@ -22,6 +50,16 @@ function GearPage() {
           PhpStorm"
           name="keywords"
           key="keywords"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(JSON_LD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(BREADCRUMB_JSON_LD),
+          }}
         />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-8 w-full">

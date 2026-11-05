@@ -34,6 +34,30 @@ describe('BlogPostPreview — view-count formatting (business logic)', () => {
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
+  test('shows the publish date and read time when given', () => {
+    render(
+      <BlogPostPreview
+        {...makeProps('preview-dated')}
+        createDate={Date.parse('2025-05-03T09:01:43.973Z')}
+        readTime="5 min read"
+      />,
+    );
+
+    expect(screen.getByText('May 3, 2025')).toHaveAttribute(
+      'datetime',
+      '2025-05-03T09:01:43.973Z',
+    );
+    expect(screen.getByText(/5 min read/)).toBeInTheDocument();
+  });
+
+  test('renders no date line without a publish date', () => {
+    const { container } = render(
+      <BlogPostPreview {...makeProps('preview-undated')} />,
+    );
+
+    expect(container.querySelector('time')).toBeNull();
+  });
+
   test('points the link at the post route derived from the slug', () => {
     render(<BlogPostPreview {...makeProps('my-amazing-post', 1)} />);
 

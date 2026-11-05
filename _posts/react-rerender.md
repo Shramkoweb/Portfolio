@@ -17,7 +17,7 @@ categories: [Advanced-React, Tutorial, JS, TS, React]
 featured: false
 ---
 
-<Image alt="Cartoon React atom character pointing at three components and saying 'You need to re-render'" src="react-rerender.png" priority={true} inverted />
+<Image alt="Cartoon React atom character pointing at three components and saying 'You need to re-render'" src="react-rerender.png" priority inverted />
 
 Hi, react [Andy](https://en.wiktionary.org/wiki/react_Andy)!
 
@@ -121,15 +121,15 @@ whether the `props` have changed. If there are no changes to the `props`, re-ren
 single `prop` is modified, the re-rendering will proceed as usual.
 
 It's important to note that effectively preventing re-renders through memoization is a nuanced topic with various
-considerations. For a deeper understanding, it is advisable to explore these concepts further in new articles. (Coming soon... or read about [Elements, Children as Props, and Re-Renders](/blog/react-elements-children))
+considerations. Often you don't need it: [passing components as children](/blog/react-elements-children) keeps them out
+of the parent's re-render, and a value the UI never shows can [live in a ref instead of state](/blog/react-useref).
 
 <Image alt="Component tree diagram showing React.memo blocking re-renders on one branch while the other branch re-renders normally" src="react-memo.png" inverted />
 
 Wrapping components with `React.memo` can indeed help prevent unnecessary re-renders in certain scenarios. However, it's
-important to note that using `React.memo` comes with its own set of complexities and caveats, which will be discussed in
-future articles. A more effective approach is to isolate the components that rely on specific state and encapsulate both
-the state and those components into a smaller, dedicated component. This can lead to improved performance and a clearer
-component structure.
+important to note that using `React.memo` comes with its own set of complexities and caveats. A more effective approach
+is to isolate the components that rely on specific state and encapsulate both the state and those components into a
+smaller, dedicated component. This can lead to improved performance and a clearer component structure.
 
 ## Moving state down
 
@@ -175,3 +175,6 @@ const Dashboard = () => {
 
 Consequently, the settings panel appears immediately. We resolved a significant performance issue using a straightforward
 composition technique!
+
+The same fix works when the state hides inside a custom hook. [A custom hook doesn't isolate re-renders](/blog/react-hooks-pitfalls),
+so move the hook call down together with the UI that uses it.

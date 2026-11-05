@@ -49,9 +49,11 @@ export default async function handler(
   res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
   res.setHeader('Link', `<${url}>; rel="canonical"`);
   res.setHeader('Vary', 'Accept');
+  res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+  // Vercel's edge obeys this instead of Cache-Control, so must-revalidate binds only browsers.
   res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=3600, stale-while-revalidate=86400',
+    'Vercel-CDN-Cache-Control',
+    'max-age=3600, stale-while-revalidate=86400',
   );
   res.status(200).send(toMarkdown({ ...data, url, content }));
 }

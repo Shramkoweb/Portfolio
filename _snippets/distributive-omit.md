@@ -3,7 +3,6 @@ title: DistributiveOmit Type for Union Types
 heading: Distributive Omit in TS
 description: Custom TypeScript utility type that properly distributes Omit across union type members. Fixes the standard Omit behavior with discriminated unions.
 createDate: 2025-03-10T22:10:08.330Z
-updateDate: 2025-12-07
 keywords:
   [
     TypeScript,

@@ -15,7 +15,11 @@ import {
 } from '@/lib/constants';
 import { FLASHCARD_APP_SLUGS, FLASHCARD_APPS } from '@/lib/flashcard-apps';
 import { Routes } from '@/lib/routes';
-import { generateAggregateRatingSchema, serializeJsonLd } from '@/lib/schema';
+import {
+  generateAggregateRatingSchema,
+  person,
+  serializeJsonLd,
+} from '@/lib/schema';
 import { withStoreUtm } from '@/lib/store-links';
 import { registerView, whenVisible } from '@/lib/views';
 
@@ -40,7 +44,7 @@ function QuizletPage() {
     <>
       <PageMeta
         title="Quizlet QuickList: Save Words for Quizlet and Anki"
-        description="Free browser extension: select a word on any page and right-click to save it to a list. Copy the list into Quizlet, or export a TSV or CSV file for Anki, Google Sheets or Excel."
+        description="Free browser extension: select a word on any page and right-click to save it. Copy the list into Quizlet, or export TSV or CSV for Anki, Google Sheets or Excel."
         socialDescription="Save unfamiliar words from any page in one click, then copy them into Quizlet or export them for Anki."
         image={{
           url: QUIZLET_APP_OG_IMAGE,
@@ -82,12 +86,7 @@ function QuizletPage() {
                 'Export a list as a TSV or CSV file',
                 'Lists stay in the browser, with no account and no server',
               ],
-              author: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
-                url: 'https://shramko.dev/about',
-              },
+              author: person,
               aggregateRating:
                 generateAggregateRatingSchema(QUIZLET_APP_RATING),
               operatingSystem: 'Chrome, Firefox, Edge',

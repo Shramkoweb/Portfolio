@@ -1,9 +1,9 @@
 ---
 title: 'Presenting the Revamped shramko.dev: Explore the Exciting Updates!'
 heading: 'Introducing the new shramko.dev'
-description: A deep dive into building my developer portfolio with Next.js 16, React 19, and Tailwind CSS 4. Learn about the tech stack, design decisions, and features behind 900+ commits.
+description: How I built my developer portfolio with Next.js 16, React 19 and Tailwind CSS 4. The tech stack, design decisions and features behind 900+ commits.
 createDate: 2022-08-13T13:31:25.041Z
-updateDate: 2026-05-04T12:00:00.000Z
+updateDate: 2026-11-05T12:00:00.000Z
 keywords:
   [
     Website Redesign,
@@ -18,11 +18,16 @@ categories: [Project-Setup, React, Vercel]
 featured: false
 ---
 
-<Image src="my-site.jpeg" priority={true} alt="Screenshot of the redesigned shramko.dev homepage showing dark theme with featured blog posts" />
+<Image src="my-site.jpeg" priority alt="Screenshot of the redesigned shramko.dev homepage showing dark theme with featured blog posts" />
 
-What started as a two-month rewrite in the summer of 2022 has turned into a nearly four-year engineering project — 940+ commits, 33 blog posts, 41 code snippets, and a full-stack architecture that I keep pushing forward with every new version of the JavaScript ecosystem.
+What started as a two-month rewrite in the summer of 2022 has turned into a nearly four-year engineering project — 940+ commits, a growing [blog](/blog) and [snippet collection](/snippets), and a full-stack architecture that I keep pushing forward with every new version of the JavaScript ecosystem.
 
 Here is an overview of what powers shramko.dev today.
+
+<Update date="2026-11-05">
+  oxfmt has replaced Prettier, and the waitlist model is gone. The testing and Prisma sections below still show the
+  site as of May 2026; the suite has since grown past 800 tests.
+</Update>
 
 ## Overview
 
@@ -75,6 +80,7 @@ in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f8
 - Post reactions (heart, beer, trophy) with optimistic UI via a custom `useReducer`
 - Lighthouse CI on every deploy preview with enforced [performance budgets](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/lighthouse-budget.json) (LCP < 2.5 s, TBT < 1 s, CLS < 0.1)
 - Auto-generated sitemap with depth-based priority and frontmatter-driven `lastmod` dates
+- AI training crawlers kept out by `robots.txt` and a middleware blocklist — [why I block AI crawlers](/blog/blogs-going-offline)
 
 ## 💻 Technologies
 
@@ -166,6 +172,10 @@ export const compileMDX = async (content: string) =>
     }
   });
 ```
+
+That's the original setup. Two Shiki changes came later: [class-based Shiki themes](/blog/shiki-class-based-themes-nextjs-mdx)
+replaced the inline dual-theme styles, and a single shared highlighter fixed
+[a Shiki build regression the build log hid](/blog/build-time-lies).
 
 A separate `extractHeadingsFromMarkdown` function parses heading structure from the raw Markdown to build the auto-generated table of contents — no extra runtime dependency required.
 
@@ -355,9 +365,9 @@ The site runs on Next.js 16 with React 19 — still on the Pages Router, which r
 - **Ecosystem depth**: The React and Node.js ecosystems provide a package for nearly every need, from MDX compilation to Prisma database access
 - **Performance defaults**: SWC compilation, automatic code splitting, image optimization with configurable quality levels
 
-<Image src="framework.jpeg" width={400} className="mt-4 mb-8 mx-auto rounded-lg" alt="Two-button meme: a sweating man choosing between 'Learn yet another framework' and 'Lose my job'"/>
+<Image src="framework.jpeg" width="400" className="mt-4 mb-8 mx-auto max-w-[400px] rounded-lg" alt="Two-button meme: a sweating man choosing between 'Learn yet another framework' and 'Lose my job'"/>
 
-> I wrote articles about another framework — Astro [here](/blog/astro) and [here](/blog/linktree) 😆.
+> I wrote articles about another framework too: [an Astro framework guide](/blog/astro) and [building a link tree with Astro](/blog/linktree) 😆.
 
 Since launching, I have also [run an AI-powered SEO audit](/blog/ai-seo-audit) across the entire blog to improve discoverability.
 
@@ -366,9 +376,9 @@ Since launching, I have also [run an AI-powered SEO audit](/blog/ai-seo-audit) a
 The project enforces quality at multiple checkpoints:
 
 - **[oxlint](https://oxc.rs/docs/guide/usage/linter)** — a fast, Rust-based linter that replaced ESLint with zero-config setup and 136 rules
-- **Prettier** for consistent formatting (single quotes, trailing commas, 80-char width)
-- **Conventional Commits** enforced by [commitlint](https://commitlint.js.org/) via a `commit-msg` git hook
-- **Pre-push hook** that runs the full linter before code leaves the local machine
+- **[oxfmt](https://oxc.rs/docs/guide/usage/formatter)** for consistent formatting (single quotes, trailing commas, 80-char width)
+- **[Conventional Commits](/blog/conventional-commits)** enforced by [commitlint](https://commitlint.js.org/) via a `commit-msg` git hook
+- **Pre-push hook** that runs lint, format check, type check and tests before code leaves the local machine
 - **Browserslist** set to `baseline widely available`, which targets browsers with broad cross-engine support
 
 ## Acknowledgements
@@ -377,6 +387,6 @@ The project enforces quality at multiple checkpoints:
 
 ## Conclusion
 
-What I have learned building this site over four years would fill a book. The stack has evolved from plain HTML to Next.js 16 with React 19. The database grew from nothing to three Prisma models. The test suite went from 37 tests to 183. And the content — 33 posts, 41 snippets — keeps growing, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
+What I have learned building this site over four years would fill a book. The stack has evolved from plain HTML to Next.js 16 with React 19. The database grew from nothing to two Prisma models. The test suite went from 37 tests to over 800. And the content keeps growing, partly thanks to the [resources I recommend to every developer](/blog/useful-articles). 🤓
 
-The project is still developing. You can see open features or suggest new ones [here](https://github.com/Shramkoweb/Portfolio/issues).
+The project is still developing. You can see open features or suggest new ones in the [GitHub issues](https://github.com/Shramkoweb/Portfolio/issues).
