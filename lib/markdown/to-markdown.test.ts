@@ -58,6 +58,15 @@ describe('toMarkdown', () => {
     );
   });
 
+  it('escapes backslashes so a label cannot close early', () => {
+    expect(body('<Image src="a.png" alt="C:\\dir \\](https://x.dev)" />')).toBe(
+      '![C:\\\\dir \\\\\\](https://x.dev)](https://shramko.dev/static/images/a.png)',
+    );
+    expect(body('<video src="/v.mp4" aria-label="a\\]b"></video>')).toBe(
+      '[Video: a\\\\\\]b](https://shramko.dev/v.mp4)',
+    );
+  });
+
   it('rejects an image without src', () => {
     expect(() => body('<Image alt="lost" />')).toThrow('without src');
   });
@@ -130,6 +139,17 @@ describe('toMarkdown', () => {
     ].join('\n');
 
     expect(body(code)).toBe(code);
+  });
+
+  it('closes a fence with a longer run of the same character', () => {
+    expect(
+      body(
+        '```tsx\n<Image src="a.png" alt="code" />\n````\n\n<Image src="b.png" alt="B" />',
+      ),
+    ).toBe(
+      '```tsx\n<Image src="a.png" alt="code" />\n````\n\n![B](https://shramko.dev/static/images/b.png)',
+    );
+    expect(() => body('~~~\n<Dashboard />\n~~~``\n')).toThrow('<Dashboard>');
   });
 
   it('fails on a component it cannot convert, naming the page', () => {

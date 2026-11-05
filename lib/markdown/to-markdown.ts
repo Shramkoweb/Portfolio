@@ -11,7 +11,8 @@ export type MarkdownSource = {
 
 const AUTHOR = 'Serhii Shramko';
 
-const FENCED_CODE = /^[ \t]*(`{3,}|~{3,})[^\n]*\n[\s\S]*?^[ \t]*\1[ \t]*$/gm;
+const FENCED_CODE =
+  /^[ \t]*(`{3,}|~{3,})[^\n]*\n[\s\S]*?^[ \t]*\1(?:(?<=`)`*|(?<=~)~*)[ \t]*$/gm;
 const INLINE_CODE = /(`+)[^\n]*?[^`\n]\1(?!`)/g;
 const TAG_BODY = `((?:[^>"']|"[^"]*"|'[^']*')*?)`;
 const IMAGE = new RegExp(`<Image\\b${TAG_BODY}\\/>`, 'g');
@@ -39,12 +40,16 @@ function toIsoDay(timestamp: number): string {
   return new Date(timestamp).toISOString().slice(0, 10);
 }
 
+function escapeLabel(text: string): string {
+  return text.replace(/[\\[\]]/g, '\\$&');
+}
+
 function convertImage(source: string): string {
   const { src, alt = '' } = parseAttributes(source);
   if (!src) {
     throw new Error(`<Image> without src: <Image${source}/>`);
   }
-  return `![${alt.replace(/[[\]]/g, '\\$&')}](${SITE_URL}/static/images/${src})`;
+  return `![${escapeLabel(alt)}](${SITE_URL}/static/images/${src})`;
 }
 
 function convertUpdate(source: string, body: string): string {
@@ -66,7 +71,7 @@ function convertVideo(source: string): string {
   if (!src) {
     throw new Error(`<video> without src: <video${source}>`);
   }
-  return `[Video: ${label.replace(/[[\]]/g, '\\$&')}](${src.startsWith('/') ? SITE_URL : ''}${src})`;
+  return `[Video: ${escapeLabel(label)}](${src.startsWith('/') ? SITE_URL : ''}${src})`;
 }
 
 function convertProse(text: string, url: string): string {
