@@ -110,6 +110,10 @@ describe('toMarkdown', () => {
       '<video src="/v.mp4"></video>',
       '[Video: Video](https://shramko.dev/v.mp4)',
     ],
+    [
+      '<video src="//cdn.dev/v.mp4"></video>',
+      '[Video: Video](//cdn.dev/v.mp4)',
+    ],
   ])('turns a video into a labelled link', (video, link) => {
     expect(body(video)).toBe(link);
   });

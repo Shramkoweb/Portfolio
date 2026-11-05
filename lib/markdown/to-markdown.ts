@@ -71,7 +71,8 @@ function convertVideo(source: string): string {
   if (!src) {
     throw new Error(`<video> without src: <video${source}>`);
   }
-  return `[Video: ${escapeLabel(label)}](${src.startsWith('/') ? SITE_URL : ''}${src})`;
+  const href = /^\/(?!\/)/.test(src) ? `${SITE_URL}${src}` : src;
+  return `[Video: ${escapeLabel(label)}](${href})`;
 }
 
 function convertProse(text: string, url: string): string {
