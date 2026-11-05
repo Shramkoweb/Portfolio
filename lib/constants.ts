@@ -32,13 +32,13 @@ export interface StoreRating {
   storeUrl: string;
 }
 
-// Copied by hand from the Chrome Web Store on 2026-10-16. The pages show
+// Copied by hand from the Chrome Web Store on 2026-11-05. The pages show
 // these numbers and mark them up as aggregateRating, so update both stores'
 // figures here together when they move.
 export const QUIZLET_APP_RATING: StoreRating = {
   ratingValue: 4.7,
   ratingCount: 6,
-  users: '192',
+  users: '185',
   storeUrl: QUIZLET_APP_STORES.chrome,
 };
 export const UDEMY_RESET_APP_RATING: StoreRating = {
