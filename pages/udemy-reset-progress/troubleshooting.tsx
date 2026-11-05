@@ -22,7 +22,10 @@ const NEW_COURSE_EXPERIENCE_FAQ =
   'https://web.archive.org/web/20260216/https://support.udemy.com/hc/en-us/articles/34345830524183-Udemy-s-New-Course-Experience-Frequently-Asked-Questions';
 const MARK_COMPLETE_HELP =
   'https://web.archive.org/web/20230924/https://support.udemy.com/hc/en-us/articles/229607188-How-to-Mark-or-Unmark-Lectures-as-Complete-on-a-Browser-';
+const BUSINESS_COMPLETION_HELP =
+  'https://web.archive.org/web/20230928232926/https://business-support.udemy.com/hc/en-us/articles/13302587726615';
 const CREATE_DATE = parsePostDate('2026-10-16') ?? 0;
+const UPDATE_DATE = parsePostDate('2026-11-05');
 const HEADING = 'Udemy Reset Progress Not Working?';
 const DESCRIPTION =
   'What each Udemy Reset Progress error means and how to fix it: a missing course content list, logouts on long courses, boxes that stay checked, and courses with no checkboxes.';
@@ -42,7 +45,7 @@ function UdemyTroubleshootingPage() {
         heading={HEADING}
         description={DESCRIPTION}
         createDate={CREATE_DATE}
-        updateDate={null}
+        updateDate={UPDATE_DATE}
         keywords={KEYWORDS}
       />
       <Head>
@@ -85,7 +88,7 @@ function UdemyTroubleshootingPage() {
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
               {HEADING}
             </h1>
-            <ArticleDates createDate={CREATE_DATE} updateDate={null} />
+            <ArticleDates createDate={CREATE_DATE} updateDate={UPDATE_DATE} />
           </div>
         </div>
         <div className="prose dark:prose-dark w-full max-w-none">
@@ -208,9 +211,24 @@ function UdemyTroubleshootingPage() {
           <h2>Udemy Business</h2>
 
           <p>
-            Udemy Business runs on your company&#39;s own udemy.com address
-            under a separate agreement with Udemy. I have not tested the
-            extension there, so it may not find the checkboxes.
+            Udemy Business&#39;s{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={BUSINESS_COMPLETION_HELP}
+            >
+              help
+            </a>{' '}
+            says that there &ldquo;lectures and course items cannot be manually
+            marked as complete, and checkboxes cannot be manually
+            adjusted&rdquo;. The extension clicks those same checkboxes, so it
+            most likely cannot change them either. I have not tested it on Udemy
+            Business. Locked checkboxes and the &ldquo;Progress cannot be
+            changed for this item&rdquo; message are covered in{' '}
+            <Link href={Routes.UdemyProgressNotUpdating()}>
+              why Udemy progress is not updating
+            </Link>
+            .
           </p>
 
           <h2>Still stuck?</h2>
@@ -240,6 +258,12 @@ function UdemyTroubleshootingPage() {
             <li>
               <Link href={Routes.UdemyResetProgress()}>
                 How to reset Udemy course progress, by hand or in one click
+              </Link>
+            </li>
+            <li>
+              <Link href={Routes.UdemyProgressNotUpdating()}>
+                Udemy progress not updating? Lectures, certificates and locked
+                checkboxes
               </Link>
             </li>
           </ul>

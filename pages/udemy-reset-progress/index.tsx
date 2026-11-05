@@ -350,6 +350,15 @@ function UdemyResetProgressPage() {
           ).
         </p>
 
+        <p>
+          If lectures do not get their checkmark, or the certificate does not
+          appear after you finish, see{' '}
+          <Link href={Routes.UdemyProgressNotUpdating()}>
+            why Udemy progress is not updating
+          </Link>
+          .
+        </p>
+
         <h2>Speed modes</h2>
 
         <p>
@@ -423,8 +432,17 @@ function UdemyResetProgressPage() {
             extension.
           </li>
           <li>
-            It has not been tested on Udemy Business, which runs on your
-            company&#39;s own udemy.com address under a separate agreement.
+            On Udemy Business it most likely cannot change anything. Udemy
+            Business&#39;s help says &#34;checkboxes cannot be manually
+            adjusted&#34; there (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://web.archive.org/web/20230928232926/https://business-support.udemy.com/hc/en-us/articles/13302587726615"
+            >
+              archived Udemy Business help
+            </a>
+            ), and I have not tested the extension on it.
           </li>
           <li>
             It does not retry or check what Udemy saved. Reload the course page
