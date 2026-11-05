@@ -2,6 +2,16 @@ import Head from 'next/head';
 
 import { getSocialImage, SocialImage } from '@/lib/seo';
 
+const SITE_NAME_SUFFIX = ' | Serhii Shramko';
+const MAX_TITLE_LENGTH = 60;
+
+// Only <title> drops the suffix: /og only renders allowlisted full titles.
+export function documentTitle(title: string): string {
+  return title.length > MAX_TITLE_LENGTH && title.endsWith(SITE_NAME_SUFFIX)
+    ? title.slice(0, -SITE_NAME_SUFFIX.length)
+    : title;
+}
+
 interface PageMetaProps {
   title: string;
   description: string;
@@ -21,7 +31,7 @@ export function PageMeta({
 }: PageMetaProps) {
   return (
     <Head>
-      <title>{title}</title>
+      <title>{documentTitle(title)}</title>
       <meta name="description" content={description} key="description" />
       <meta property="og:type" content={type} key="og:type" />
       <meta property="og:title" content={socialTitle} key="og:title" />

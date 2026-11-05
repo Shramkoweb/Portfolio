@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import { Avatar } from '@/components/avatar';
 import { BlogPostSquarePreview } from '@/components/blog-post-square-preview';
+import { PageMeta } from '@/components/page-meta';
 import { getPosts } from '@/lib/posts/api';
 import {
   getAdvancedReactSeries,
@@ -14,10 +15,19 @@ import {
   sortByBirthtime,
 } from '@/lib/posts/utils';
 import { Routes } from '@/lib/routes';
-import { generateWebSiteSchema, serializeJsonLd } from '@/lib/schema';
+import { generateHomePageSchema, serializeJsonLd } from '@/lib/schema';
+import { SITE_IMAGE } from '@/lib/seo';
 import { Post } from '@/lib/types';
 import { generateGradient } from '@/lib/utils';
 import { useViewCounts } from '@/lib/views';
+
+const TITLE = 'Serhii Shramko – Senior Software Engineer (React, Next.js)';
+const DESCRIPTION =
+  'Senior Software Engineer sharing guides on JavaScript, TypeScript, React, and Next.js. Practical tutorials, code snippets, and tips for web developers.';
+const INTRO_LINKS = [
+  { href: Routes.Blog(), label: 'Read the blog' },
+  { href: Routes.About(), label: 'Read more about me' },
+];
 
 interface IndexPageProps {
   featuredPosts: Post[];
@@ -49,6 +59,7 @@ function IndexPage(props: IndexPageProps) {
 
   return (
     <>
+      <PageMeta title={TITLE} description={DESCRIPTION} image={SITE_IMAGE} />
       <Head>
         <meta
           content="
@@ -68,7 +79,7 @@ function IndexPage(props: IndexPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(generateWebSiteSchema()),
+            __html: serializeJsonLd(generateHomePageSchema()),
           }}
         />
       </Head>
@@ -99,16 +110,21 @@ function IndexPage(props: IndexPageProps) {
               &ensp;and&ensp;
               <abbr title="The React Framework for Production">Next.js</abbr>
             </p>
-            <Link
-              href="/about"
-              className="group mt-6 gap-2 mb-8 flex h-6 items-center rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
-            >
-              Read more about me
-              <MoveRight
-                size={24}
-                className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
-              />
-            </Link>
+            <div className="mt-6 mb-8 flex flex-wrap gap-x-8 gap-y-4">
+              {INTRO_LINKS.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="group flex h-6 items-center gap-2 rounded-lg leading-7 text-gray-600 transition-[color,transform] duration-200 ease-out-expo hover:text-gray-800 active:scale-[0.97] dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                  {label}
+                  <MoveRight
+                    size={24}
+                    className="transition-transform duration-200 ease-out-expo group-hover:translate-x-1"
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
           <Avatar />
         </div>

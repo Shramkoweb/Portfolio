@@ -3,7 +3,11 @@ import Head from 'next/head';
 import { PageMeta } from '@/components/page-meta';
 import { ResourceCard } from '@/components/resource-card';
 import { sortByBirthtime } from '@/lib/posts/utils';
-import { serializeJsonLd } from '@/lib/schema';
+import {
+  generateTechArticleSummary,
+  person,
+  serializeJsonLd,
+} from '@/lib/schema';
 import { getSnippetsMetadata } from '@/lib/snippets/api';
 import { SnippetMetadata } from '@/lib/types';
 
@@ -79,12 +83,7 @@ export async function getStaticProps() {
     url: 'https://shramko.dev/snippets',
     description: PAGE_DESCRIPTION,
     inLanguage: 'en',
-    author: {
-      '@type': 'Person',
-      '@id': 'https://shramko.dev/#person',
-      name: 'Serhii Shramko',
-      url: 'https://shramko.dev/about',
-    },
+    author: person,
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -102,20 +101,9 @@ export async function getStaticProps() {
         },
       ],
     },
-    hasPart: sortedSnippets.map((snippet) => ({
-      '@type': 'TechArticle',
-      headline: snippet.data.heading,
-      description: snippet.data.description,
-      url: `https://shramko.dev/snippets/${snippet.data.slug}`,
-      datePublished: new Date(snippet.data.createDate)
-        .toISOString()
-        .split('T')[0],
-      author: {
-        '@type': 'Person',
-        '@id': 'https://shramko.dev/#person',
-        name: 'Serhii Shramko',
-      },
-    })),
+    hasPart: sortedSnippets.map((snippet) =>
+      generateTechArticleSummary(snippet.data),
+    ),
   };
 
   return {

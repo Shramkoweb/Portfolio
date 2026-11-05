@@ -8,6 +8,7 @@ import { Categories } from '@/components/categories';
 import { NoResults } from '@/components/no-results';
 import { PageMeta } from '@/components/page-meta';
 import { YearSeparator } from '@/components/year-separator';
+import { SITE_URL } from '@/lib/constants';
 import { getPostsCategories, getPostsMetadata } from '@/lib/posts/api';
 import {
   addYearSeparators,
@@ -15,9 +16,19 @@ import {
   isYearSeparator,
   sortByBirthtime,
 } from '@/lib/posts/utils';
-import { serializeJsonLd } from '@/lib/schema';
+import {
+  generateBlogPostingSummary,
+  generateBreadcrumbSchema,
+  person,
+  serializeJsonLd,
+} from '@/lib/schema';
 import { PostCategory, PostMetadata } from '@/lib/types';
 import { useViewCounts } from '@/lib/views';
+
+const BREADCRUMB_JSON_LD = generateBreadcrumbSchema([
+  { name: 'Home', url: `${SITE_URL}/` },
+  { name: 'Blog', url: `${SITE_URL}/blog` },
+]);
 
 interface BlogPageProps {
   posts: PostMetadata[];
@@ -29,9 +40,11 @@ interface BlogPageProps {
     description: string;
     blogPost: Array<{
       '@type': string;
+      '@id': string;
       headline: string;
       description: string;
       url: string;
+      datePublished: string;
     }>;
   };
 }
@@ -92,14 +105,20 @@ function BlogPage(props: BlogPageProps) {
             }}
           />
         )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(BREADCRUMB_JSON_LD),
+          }}
+        />
       </Head>
       <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white flex self-center w-full items-center">
-          Blog
-          <span className="ml-auto inline-block text-sm font-medium">
+        <div className="mb-4 flex w-full items-center self-center tracking-tight text-black dark:text-white">
+          <h1 className="text-3xl font-bold md:text-5xl">Blog</h1>
+          <p className="ml-auto text-sm font-medium">
             {postsLength} {postsLength === 1 ? 'article' : 'articles'}
-          </span>
-        </h1>
+          </p>
+        </div>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           Guides and deep dives on JavaScript, TypeScript, React, and Next.js —
           from practical patterns to production pitfalls.{' '}
@@ -141,6 +160,8 @@ function BlogPage(props: BlogPageProps) {
                       heading={post.data.heading}
                       excerpt={post.data.description}
                       views={getViews(post.data.slug)}
+                      createDate={post.data.createDate}
+                      readTime={post.data.readTime}
                     />
                   </li>
                 ))
@@ -160,6 +181,8 @@ function BlogPage(props: BlogPageProps) {
                         heading={item.data.heading}
                         excerpt={item.data.description}
                         views={getViews(item.data.slug)}
+                        createDate={item.data.createDate}
+                        readTime={item.data.readTime}
                       />
                     </li>
                   );
@@ -185,23 +208,10 @@ export async function getStaticProps() {
     description:
       'A blog featuring articles on tech topics, including TypeScript, Astro.js, React, and more.',
     inLanguage: 'en',
-    publisher: {
-      '@type': 'Person',
-      '@id': 'https://shramko.dev/#person',
-      name: 'Serhii Shramko',
-      url: 'https://shramko.dev/about',
-    },
-    blogPost: sortedPosts.slice(0, 25).map((post) => ({
-      '@type': 'BlogPosting',
-      headline: post.data.heading,
-      description: post.data.description,
-      url: `https://shramko.dev/blog/${post.data.slug}`,
-      author: {
-        '@type': 'Person',
-        '@id': 'https://shramko.dev/#person',
-        name: 'Serhii Shramko',
-      },
-    })),
+    publisher: person,
+    blogPost: sortedPosts
+      .slice(0, 25)
+      .map((post) => generateBlogPostingSummary(post.data)),
   };
 
   return {

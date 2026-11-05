@@ -117,7 +117,8 @@ test('SEO: every sitemap page has unique prerendered metadata', async ({
         expect(image.searchParams.get('title')).toBe(data.heading);
         if (path.startsWith('/blog/')) {
           expect(
-            schemas.find((schema) => schema['@type'] === 'BlogPosting').image,
+            schemas.find((schema) => schema['@type'] === 'BlogPosting').image
+              .url,
           ).toBe(image.href);
         }
       }

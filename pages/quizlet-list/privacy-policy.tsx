@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { PageMeta } from '@/components/page-meta';
 import { QUIZLET_APP_OG_IMAGE } from '@/lib/constants';
-import { serializeJsonLd } from '@/lib/schema';
+import { person, serializeJsonLd } from '@/lib/schema';
 
 function PrivacyPolicy() {
   return (
@@ -39,12 +39,7 @@ function PrivacyPolicy() {
               inLanguage: 'en',
               datePublished: '2024-10-30',
               dateModified: '2024-10-30',
-              author: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
-                url: 'https://shramko.dev/about',
-              },
+              author: person,
               breadcrumb: {
                 '@type': 'BreadcrumbList',
                 itemListElement: [

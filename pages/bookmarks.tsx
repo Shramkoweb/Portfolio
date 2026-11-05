@@ -12,7 +12,7 @@ import Head from 'next/head';
 import { BookmarkSection } from '@/components/bookmark-section';
 import { PageMeta } from '@/components/page-meta';
 import { Tag } from '@/components/tag';
-import { serializeJsonLd } from '@/lib/schema';
+import { person, serializeJsonLd } from '@/lib/schema';
 
 interface BookmarkItem {
   title: string;
@@ -357,13 +357,7 @@ const JSON_LD = {
     'Curated developer bookmarks from a senior software engineer: open source projects, staff-level engineering books, programming blogs, developer tools, and learning resources.',
   inLanguage: 'en',
   datePublished: '2026-04-12',
-  dateModified: '2026-04-12',
-  author: {
-    '@type': 'Person',
-    '@id': 'https://shramko.dev/#person',
-    name: 'Serhii Shramko',
-    url: 'https://shramko.dev/about',
-  },
+  author: person,
   isPartOf: {
     '@type': 'WebSite',
     '@id': 'https://shramko.dev/#website',
@@ -409,7 +403,7 @@ function BookmarksPage() {
     <>
       <PageMeta
         title="Developer Bookmarks & Open Source | Serhii Shramko"
-        description="Curated developer bookmarks from a senior software engineer with 7+ years of experience: open source projects, staff-level engineering books, programming blogs, tools, and resources for JavaScript, TypeScript, React, and Next.js developers."
+        description="Open source projects, staff-level engineering books, blogs and tools for JavaScript, TypeScript, React and Next.js developers, curated by a senior engineer."
         socialDescription="Open source projects, staff-level engineering books, tools, and resources curated by a senior software engineer with 7+ years in React, TypeScript, and Next.js."
       />
       <Head>

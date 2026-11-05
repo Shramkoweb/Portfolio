@@ -7,7 +7,12 @@ import { LinkedinFeedback } from '@/components/linkedin-feedback';
 import { LINKEDIN_FEEDBACK_LIST } from '@/components/linkedin-feedback.constants';
 import { PageMeta } from '@/components/page-meta';
 import { MEDIA_QUERIES } from '@/lib/breakpoints';
-import { serializeJsonLd } from '@/lib/schema';
+import { SITE_URL } from '@/lib/constants';
+import {
+  generateBreadcrumbSchema,
+  person,
+  serializeJsonLd,
+} from '@/lib/schema';
 
 import about from '../public/static/images/about.jpeg';
 import carBack from '../public/static/images/car-back.jpeg';
@@ -21,7 +26,7 @@ function AboutPage() {
     <>
       <PageMeta
         title="About | Serhii Shramko"
-        description="Serhii Shramko, software engineer in Boston, originally from Dnipro, Ukraine. Experience, education, open source, mentoring, and the photos from long before any of it."
+        description="Serhii Shramko, software engineer in Boston, originally from Dnipro, Ukraine. Experience, education, open source, mentoring, and photos from long before it all."
       />
       <Head>
         <meta
@@ -42,26 +47,12 @@ function AboutPage() {
             __html: serializeJsonLd({
               '@context': 'https://schema.org',
               '@type': 'ProfilePage',
-              url: 'https://shramko.dev/about',
+              url: `${SITE_URL}/about`,
               inLanguage: 'en',
-              dateModified: '2026-09-18',
               mainEntity: {
-                '@type': 'Person',
-                '@id': 'https://shramko.dev/#person',
-                name: 'Serhii Shramko',
+                ...person,
                 description:
                   'Senior Software Engineer specializing in React, TypeScript, and frontend architecture. Building scalable web applications and mentoring developers.',
-                url: 'https://shramko.dev/about',
-                image: {
-                  '@type': 'ImageObject',
-                  url: 'https://shramko.dev/static/images/about.jpeg',
-                  width: 1269,
-                  height: 846,
-                },
-                sameAs: [
-                  'https://github.com/shramkoweb',
-                  'https://www.linkedin.com/in/shramko-dev',
-                ],
                 knowsAbout: [
                   'Frontend Development',
                   'TypeScript',
@@ -80,22 +71,6 @@ function AboutPage() {
                   'CI/CD',
                   'Performance Optimization',
                 ],
-                jobTitle: 'Senior Software Engineer',
-                worksFor: {
-                  '@type': 'Organization',
-                  name: 'BetterMe',
-                  url: 'https://betterme.world/',
-                },
-                email: 'shramko.dev@gmail.com',
-                workLocation: {
-                  '@type': 'Place',
-                  address: {
-                    '@type': 'PostalAddress',
-                    addressLocality: 'Boston',
-                    addressRegion: 'MA',
-                    addressCountry: 'US',
-                  },
-                },
                 alumniOf: {
                   '@type': 'CollegeOrUniversity',
                   name: 'Dnipro University of Technology',
@@ -103,6 +78,17 @@ function AboutPage() {
                 },
               },
             }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(
+              generateBreadcrumbSchema([
+                { name: 'Home', url: `${SITE_URL}/` },
+                { name: 'About', url: `${SITE_URL}/about` },
+              ]),
+            ),
           }}
         />
       </Head>

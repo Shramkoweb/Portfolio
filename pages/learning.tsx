@@ -2,6 +2,12 @@ import Head from 'next/head';
 
 import { PageMeta } from '@/components/page-meta';
 import { ResourceCard } from '@/components/resource-card';
+import { SITE_URL } from '@/lib/constants';
+import {
+  generateBreadcrumbSchema,
+  person,
+  serializeJsonLd,
+} from '@/lib/schema';
 
 interface LearningItem {
   title: string;
@@ -242,18 +248,62 @@ const LEARNING_ITEMS: LearningItem[] = [
   },
 ];
 
+const TITLE = 'Learning | Serhii Shramko';
+const DESCRIPTION =
+  "A chronological record of books, courses, and projects I've learned from over the years.";
+const PAGE_URL = `${SITE_URL}/learning`;
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${PAGE_URL}/#collection`,
+  name: TITLE,
+  url: PAGE_URL,
+  description: DESCRIPTION,
+  inLanguage: 'en',
+  author: person,
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    name: 'Books, courses and projects',
+    numberOfItems: LEARNING_ITEMS.length,
+    itemListElement: LEARNING_ITEMS.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.title,
+      ...(item.url && { url: item.url }),
+      ...(item.description && { description: item.description }),
+    })),
+  },
+};
+
+const BREADCRUMB_JSON_LD = generateBreadcrumbSchema([
+  { name: 'Home', url: `${SITE_URL}/` },
+  { name: 'Learning', url: PAGE_URL },
+]);
+
 function LearningPage() {
   return (
     <>
-      <PageMeta
-        title="Learning | Serhii Shramko"
-        description="A chronological record of books, courses, and projects I've learned from over the years."
-      />
+      <PageMeta title={TITLE} description={DESCRIPTION} />
       <Head>
         <meta
           content="learning, books, courses, tutorials, education, self-improvement, programming, development"
           name="keywords"
           key="keywords"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(JSON_LD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(BREADCRUMB_JSON_LD),
+          }}
         />
       </Head>
       <section className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">

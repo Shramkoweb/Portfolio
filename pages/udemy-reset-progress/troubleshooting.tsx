@@ -28,7 +28,7 @@ const CREATE_DATE = parsePostDate('2026-10-16') ?? 0;
 const UPDATE_DATE = parsePostDate('2026-11-05');
 const HEADING = 'Udemy Reset Progress Not Working?';
 const DESCRIPTION =
-  'What each Udemy Reset Progress error means and how to fix it: a missing course content list, logouts on long courses, boxes that stay checked, and courses with no checkboxes.';
+  'What each Udemy Reset Progress error means and how to fix it: a missing content list, logouts on long courses, boxes that stay checked, and missing checkboxes.';
 const KEYWORDS = [
   'udemy reset progress not working',
   'udemy reset progress extension',
