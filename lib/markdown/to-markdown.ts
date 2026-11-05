@@ -22,7 +22,7 @@ const VIDEO = new RegExp(
 );
 const ATTRIBUTE = /([\w-]+)=(?:"([^"]*)"|'([^']*)'|\{([^}]*)\})/g;
 const COMPONENT = /<([A-Z][A-Za-z0-9]*)\b/;
-const MASK = '';
+const MASK = '\uE000';
 const MASKED_SPAN = new RegExp(`${MASK}(\\d+)${MASK}`, 'g');
 
 function parseAttributes(source: string): Record<string, string> {
