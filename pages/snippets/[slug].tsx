@@ -56,6 +56,11 @@ function SnippetPage(props: SnippetPageProps) {
       />
       <Head>
         {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href={`https://shramko.dev/snippets/${slug}.md`}
+        />
 
         <script
           type="application/ld+json"

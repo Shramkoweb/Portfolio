@@ -4,6 +4,8 @@
 
 In-depth blog posts and production-ready code snippets covering JavaScript, TypeScript, React, Next.js, Node.js, CSS, developer tooling, and AI-assisted development.
 
+Every blog post and snippet is also served as Markdown: append `.md` to its URL, or request the page with `Accept: text/markdown`.
+
 ## Pages
 
 - [About](https://shramko.dev/about): Career, skills, and background of Serhii Shramko — Senior Software Engineer at BetterMe

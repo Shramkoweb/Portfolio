@@ -67,6 +67,7 @@ pnpm dev                # http://localhost:3000
 | **`public/llms.txt`**      | hand-maintained         | **Add the post.** Entries are sorted alphabetically by title; the text after the colon is the frontmatter `description`. Deliberately no post counts — they went stale on every post. |
 | **`public/llms-full.txt`** | hand-maintained         | Same, under the matching topic section. Its `Keywords:` line is curated search phrases the post actually covers, not a copy of the frontmatter `keywords` — the two differ by design. |
 | `public/sitemap.xml`       | generated               | `next-sitemap` rewrites it during `pnpm build`. Never hand-edit.                                                                                                                      |
+| Markdown twin              | `/blog/<slug>.md`       | Served from the MDX by `lib/markdown/to-markdown.ts`. A new MDX component fails `__tests__/api/markdown.test.ts` until it gets a Markdown conversion there.                           |
 
 **Watch out:** a colon inside an unquoted frontmatter value breaks the YAML parse. `description: Build a second brain: transcribe...` silently turns into a different key and every field after it disappears, which surfaces as `Cannot read properties of undefined` in the post filters. Quote any value containing a colon.
 

@@ -85,6 +85,11 @@ function ArticlePage(props: ArticlePageProps) {
       />
       <Head>
         {shikiCSS && <style dangerouslySetInnerHTML={{ __html: shikiCSS }} />}
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href={`https://shramko.dev/blog/${slug}.md`}
+        />
 
         {categories.map((category) => (
           <meta
