@@ -3,7 +3,15 @@
  */
 import { NextRequest } from 'next/server';
 
-import { middleware } from '../middleware';
+import { config, middleware } from '../middleware';
+
+// Next's own matcher compiler; it is exported at runtime but not typed.
+const { getMiddlewareMatchers } = jest.requireActual<{
+  getMiddlewareMatchers: (
+    matcher: unknown,
+    nextConfig: object,
+  ) => { regexp: string }[];
+}>('next/dist/build/analysis/get-page-static-info');
 
 function makeRequest(
   userAgent: string | null,
@@ -78,5 +86,16 @@ describe('middleware', () => {
       ),
     );
     expect(res.status).not.toBe(403);
+  });
+
+  it.each([
+    '/blog/react-useref.md',
+    '/snippets/debounce.md',
+    '/api/markdown/blog/react-useref',
+  ])('runs on Markdown twin path %s', (path) => {
+    const matchers = getMiddlewareMatchers(config.matcher, {});
+    expect(matchers.some(({ regexp }) => new RegExp(regexp).test(path))).toBe(
+      true,
+    );
   });
 });

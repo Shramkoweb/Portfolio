@@ -48,6 +48,7 @@ test('SEO: every sitemap page has unique prerendered metadata', async ({
   );
   expect(paths).not.toContain('/og');
   expect(paths).not.toContain('/feed.xml');
+  expect(paths.filter((path) => path.endsWith('.md'))).toEqual([]);
 
   for (let index = 0; index < paths.length; index += 10) {
     const pages = await Promise.all(
@@ -295,4 +296,66 @@ test('SEO: feed thumbnails and favicon are publicly served', async ({
   const favicon = await request.get('/favicon.ico');
   expect(favicon.status()).toBe(200);
   expect(favicon.headers()['content-type']).toMatch(/^image\//);
+});
+
+test('SEO: posts and snippets have Markdown twins', async ({
+  page,
+  request,
+}) => {
+  const markdownType = 'text/markdown; charset=utf-8';
+
+  for (const path of [
+    '/blog/react-useref',
+    '/blog/introducing-the-new-shramko.dev',
+    '/snippets/debounce',
+  ]) {
+    const twin = await request.get(`${path}.md`);
+    expect(twin.status(), path).toBe(200);
+    expect(twin.headers()['content-type'], path).toBe(markdownType);
+    expect(twin.headers()['link'], path).toBe(
+      `<${origin}${path}>; rel="canonical"`,
+    );
+    const markdown = await twin.text();
+    expect(markdown.startsWith(`# ${article(path).title}\n`), path).toBe(true);
+
+    const negotiated = await request.get(path, {
+      headers: { accept: 'text/markdown, text/html;q=0.9, */*;q=0.8' },
+    });
+    expect(negotiated.headers()['content-type'], path).toBe(markdownType);
+    expect(await negotiated.text(), path).toBe(markdown);
+
+    const html = await request.get(path);
+    expect(html.headers()['content-type'], path).toContain('text/html');
+    const alternate = await page.evaluate(
+      (source) =>
+        new DOMParser()
+          .parseFromString(source, 'text/html')
+          .head.querySelector('link[rel="alternate"][type="text/markdown"]')
+          ?.getAttribute('href'),
+      await html.text(),
+    );
+    expect(alternate, path).toBe(`${origin}${path}.md`);
+  }
+
+  const twinWithAccept = await request.get('/blog/react-useref.md', {
+    headers: { accept: 'text/markdown' },
+  });
+  expect(twinWithAccept.status()).toBe(200);
+  expect((await request.get('/blog/react-useref.md.md')).status()).toBe(404);
+  expect((await request.get('/blog/missing-post.md')).status()).toBe(404);
+
+  for (const [accept, type] of [
+    ['text/markdown, text/html, */*', markdownType],
+    ['text/markdown, text/html;q=0.9', markdownType],
+    ['text/markdown;q=1.0', markdownType],
+    ['text/markdown;q=0', 'text/html; charset=utf-8'],
+    ['text/html, text/markdown;q=0.1', 'text/html; charset=utf-8'],
+    ['xtext/markdown', 'text/html; charset=utf-8'],
+    ['text/markdownx', 'text/html; charset=utf-8'],
+  ]) {
+    const response = await request.get('/blog/react-useref', {
+      headers: { accept },
+    });
+    expect(response.headers()['content-type'], accept).toBe(type);
+  }
 });

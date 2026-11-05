@@ -2,7 +2,9 @@
 
 > Personal portfolio, blog, and digital garden of Serhii Shramko, a Senior Software Engineer at BetterMe specializing in frontend development with React, TypeScript, and Next.js. Built with Next.js, TypeScript, and Tailwind CSS. Open source.
 
-In-depth blog posts on web development and production-ready code snippets, plus browser extensions and developer tools.
+In-depth blog posts on web development and AI-assisted engineering, production-ready code snippets, plus browser extensions and developer tools.
+
+Every blog post and snippet is also served as Markdown: append `.md` to its URL, or request the page with `Accept: text/markdown`.
 
 ## Pages
 
@@ -77,6 +79,8 @@ In-depth blog posts on web development and production-ready code snippets, plus 
 
 ## Blog Posts: Node.js & Tooling
 
+- [Enabling Network Connections on Startup in PHPStorm](https://shramko.dev/blog/phpstorm-allow-network): Fix the "allow network connections" popup appearing every time PHPStorm starts on macOS. Quick codesign solution to stop repeated permission requests.
+  Keywords: accept incoming network connections, PHPStorm macOS
 - [Fix “__dirname Not Defined” in ES Modules – Quick Guide](https://shramko.dev/blog/dirname-error): Fix the "__dirname is not defined in ES module scope" error in Node.js. Recreate __dirname and __filename using import.meta.url.
   Keywords: __dirname Node.js, ES modules, import.meta.url
 - [Mastering npm and Semantic Versioning for Smarter Development](https://shramko.dev/blog/npm-semantic-versioning): A friendly, practical guide to SemVer in npm. Learn versioning rules, avoid dependency chaos, and manage updates with confidence.
@@ -104,27 +108,28 @@ In-depth blog posts on web development and production-ready code snippets, plus 
 - [Cross-Browser Compatibility – Testing Guide](https://shramko.dev/blog/cross-browser-testing): Learn how to test your website across different browsers and devices using BrowserStack. Ensure cross-browser compatibility without maintaining a device lab.
   Keywords: browserstack, cross-browser testing, browser dev tools
 
-## Blog Posts: Productivity & Opinion
+## Blog Posts: AI & SEO
 
-- [Enabling Network Connections on Startup in PHPStorm](https://shramko.dev/blog/phpstorm-allow-network): Fix the "allow network connections" popup appearing every time PHPStorm starts on macOS. Quick codesign solution to stop repeated permission requests.
-  Keywords: accept incoming network connections, PHPStorm macOS
-- [Highly recommended resources for developers in 2025](https://shramko.dev/blog/useful-articles): Curated list of the best resources, blogs, and websites every developer should know in 2025. Essential reading for staying up-to-date.
-  Keywords: Resources for developers, Best Developer Websites, Tech News Resources
 - [How I Turned 17 Hours of Video Into a Second Brain, Offline](https://shramko.dev/blog/second-brain-from-video): Build a second brain from video: transcribe 17 hours locally with Whisper on Apple Silicon, free and offline, then turn the text into atomic notes in Obsidian.
   Keywords: second brain, transcribe video locally, Whisper Mac, local transcription Apple Silicon, mlx-whisper, Obsidian second brain
 - [I Ran an AI SEO Audit on 56 Blog Posts in One Day](https://shramko.dev/blog/ai-seo-audit): I used Cursor AI to audit SEO across 56 blog posts in one afternoon. Meta descriptions, broken links, and alt text — all fixed systematically.
   Keywords: AI SEO audit, Cursor AI, meta descriptions, developer blog SEO, content optimization
-- [Opt-Out of Email Newsletters Now for a Clutter-Free Inbox](https://shramko.dev/blog/unsubscribe-immediately): Stop letting unwanted emails pile up. Learn why unsubscribing from newsletters immediately saves time, reduces distractions, and keeps your inbox focused.
-  Keywords: Unsubscribe from email newsletters, Email management tips, Notification management
 - [Why Independent Developer Blogs Are Going Offline](https://shramko.dev/blog/blogs-going-offline): Independent developer educators are losing readers and income to AI. What you can do about it, and how I block training crawlers on this blog.
   Keywords: AI crawlers, block AI crawlers, AI training bots, robots.txt AI bots, independent blogs
+
+## Blog Posts: Career, Productivity & Opinion
+
+- [Highly recommended resources for developers in 2025](https://shramko.dev/blog/useful-articles): Curated list of the best resources, blogs, and websites every developer should know in 2025. Essential reading for staying up-to-date.
+  Keywords: Resources for developers, Best Developer Websites, Tech News Resources
+- [How I Got Apollo GraphQL Certification for Free](https://shramko.dev/blog/apollo-graphql-certification): My journey to getting Apollo GraphQL certification for free. Learn about the exam structure, preparation tips, and how to earn your credential.
+  Keywords: GraphQL, Apollo Odyssey, GraphQL Certification, apollo graphql certification
+- [Opt-Out of Email Newsletters Now for a Clutter-Free Inbox](https://shramko.dev/blog/unsubscribe-immediately): Stop letting unwanted emails pile up. Learn why unsubscribing from newsletters immediately saves time, reduces distractions, and keeps your inbox focused.
+  Keywords: Unsubscribe from email newsletters, Email management tips, Notification management
 
 ## Blog Posts: Web Fundamentals
 
 - [Absolute vs Relative URL: Which One Should You Use](https://shramko.dev/blog/difference-between-absolute-and-relative-url): Understand when to use absolute vs relative URLs in HTML. Clear examples showing how each type works, their pros and cons.
   Keywords: absolute url, relative url, absolute url vs relative url, absolute url html
-- [How I Got Apollo GraphQL Certification for Free](https://shramko.dev/blog/apollo-graphql-certification): My journey to getting Apollo GraphQL certification for free. Learn about the exam structure, preparation tips, and how to earn your credential.
-  Keywords: GraphQL, Apollo Odyssey, GraphQL Certification, apollo graphql certification
 
 ## Snippets: TypeScript Patterns
 
@@ -216,7 +221,7 @@ In-depth blog posts on web development and production-ready code snippets, plus 
 - [Essential CSS Class Names Every Developer Should Know](https://shramko.dev/snippets/common-css-classes): Essential CSS class names every developer should know. Common naming patterns following BEM methodology for structured, maintainable, and organized styles.
   Keywords: Common CSS class names, BEM methodology, CSS naming conventions
 - [Making Elements Visually Hidden for Screen Readers and Accessibility](https://shramko.dev/snippets/visually-hidden): CSS snippet to hide content visually while keeping it accessible to screen readers. Essential technique for web accessibility and WCAG compliance.
-  Keywords: visually hidden CSS, accessibility, screen reader, WCAG compliance, aria-hidden
+  Keywords: visually hidden CSS, accessibility, screen reader, WCAG compliance
 
 ## Snippets: Data & Storage
 

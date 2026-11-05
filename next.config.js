@@ -89,6 +89,39 @@ const ogContentTitles = ['_posts', '_snippets'].flatMap((directory) =>
     ),
 );
 
+const MARKDOWN_ELEMENT = '(?:.*,)?\\s*text/markdown\\s*';
+
+// Any explicit q below 1 falls back to HTML; agents that want Markdown send it unweighted.
+const markdownNegotiation = {
+  has: [
+    {
+      type: 'header',
+      key: 'accept',
+      value: `${MARKDOWN_ELEMENT}(?:[;,].*)?`,
+    },
+  ],
+  missing: [
+    {
+      type: 'header',
+      key: 'accept',
+      value: `${MARKDOWN_ELEMENT};[^,]*\\bq\\s*=\\s*0(?:\\.\\d{0,3})?\\s*(?:[;,].*)?`,
+    },
+  ],
+};
+
+// The `.md` rule must come first: `/blog/:slug` also matches `/blog/x.md`.
+const markdownRewrites = ['blog', 'snippets'].flatMap((type) => [
+  {
+    source: `/${type}/:slug.md`,
+    destination: `/api/markdown/${type}/:slug`,
+  },
+  {
+    source: `/${type}/:slug`,
+    ...markdownNegotiation,
+    destination: `/api/markdown/${type}/:slug`,
+  },
+]);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -111,21 +144,27 @@ const nextConfig = {
     // true inlines a per-page bootstrap script that the hash-based CSP blocks, so pages never hydrate
     turbopackSharedRuntime: false,
   },
+  outputFileTracingIncludes: {
+    '/api/markdown/**': ['./_posts/*.md', './_snippets/*.md'],
+  },
   rewrites: async () => {
-    return [
-      {
-        source: '/og',
-        destination: '/api/og',
-      },
-      {
-        source: '/favicon.ico',
-        destination: '/static/favicons/favicon.ico',
-      },
-      {
-        source: '/feed.xml',
-        destination: '/api/feed',
-      },
-    ];
+    return {
+      beforeFiles: markdownRewrites,
+      afterFiles: [
+        {
+          source: '/og',
+          destination: '/api/og',
+        },
+        {
+          source: '/favicon.ico',
+          destination: '/static/favicons/favicon.ico',
+        },
+        {
+          source: '/feed.xml',
+          destination: '/api/feed',
+        },
+      ],
+    };
   },
   redirects: async () => {
     return [
