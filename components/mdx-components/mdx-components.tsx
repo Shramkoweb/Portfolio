@@ -50,8 +50,9 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
   } = props;
 
   const concatenatedSrc = `/static/images/${src}`;
+  const isInlineDiagram = inverted && !priority;
 
-  return (
+  const image = (
     <Image
       src={concatenatedSrc}
       alt={alt}
@@ -61,11 +62,19 @@ function RoundedImage(props: ImageProps & { inverted: boolean }) {
       preload={priority}
       loading={priority ? 'eager' : 'lazy'}
       fetchPriority={priority ? 'high' : undefined}
-      sizes="(max-width: 832px) calc(100vw - 4rem), 768px"
+      sizes={
+        isInlineDiagram
+          ? '(max-width: 639px) 640px, (max-width: 832px) calc(100vw - 4rem), 768px'
+          : '(max-width: 832px) calc(100vw - 4rem), 768px'
+      }
       style={{ width: '100%', height: 'auto' }}
       {...restProps}
     />
   );
+
+  if (!isInlineDiagram) return image;
+
+  return <span className="diagram block">{image}</span>;
 }
 
 export const MDXComponents = {

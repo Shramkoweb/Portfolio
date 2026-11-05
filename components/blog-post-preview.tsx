@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { formatPostDate } from '@/lib/posts/utils';
 import { Routes } from '@/lib/routes';
 import { formatViews } from '@/lib/views';
 
@@ -8,14 +9,17 @@ interface BlogPostPreviewProps {
   heading: string;
   excerpt: string;
   views?: number;
+  createDate?: number;
+  readTime?: string;
 }
 
 export function BlogPostPreview(props: BlogPostPreviewProps) {
-  const { slug, heading, excerpt, views } = props;
+  const { slug, heading, excerpt, views, createDate, readTime } = props;
 
   return (
     <Link
       href={Routes.BlogPost(slug)}
+      prefetch={false}
       className="group block rounded-lg border border-gray-200 bg-white p-4 transition-[border-color,transform] duration-150 ease-out-expo hover:border-gray-300 active:scale-[0.97] dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
     >
       <div className="flex flex-col justify-between gap-1 md:flex-row md:items-start">
@@ -31,6 +35,19 @@ export function BlogPostPreview(props: BlogPostPreviewProps) {
       <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
         {excerpt}
       </p>
+      {createDate !== undefined && (
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+          <time dateTime={new Date(createDate).toISOString()}>
+            {formatPostDate(createDate)}
+          </time>
+          {readTime && (
+            <>
+              {' '}
+              <span aria-hidden="true">•</span> {readTime}
+            </>
+          )}
+        </p>
+      )}
     </Link>
   );
 }

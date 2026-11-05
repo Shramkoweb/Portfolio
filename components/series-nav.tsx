@@ -14,7 +14,7 @@ export function SeriesLabel({ series }: SeriesProps) {
     <p className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
       <Link
         href={SERIES_HREF}
-        className="underline-offset-4 hover:text-gray-900 hover:underline dark:hover:text-gray-100"
+        className="-my-2.5 inline-flex min-h-11 items-center underline-offset-4 hover:text-gray-900 hover:underline dark:hover:text-gray-100"
       >
         {SERIES_NAME}
       </Link>

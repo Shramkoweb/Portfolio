@@ -65,7 +65,7 @@ export function Avatar() {
 
   return (
     <div
-      className="avatar relative mr-auto mb-8 block h-32 w-32 shrink-0 sm:mb-0"
+      className="avatar relative mr-auto mb-6 block size-20 shrink-0 sm:mb-0 sm:size-32"
       data-wink={winking}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
@@ -78,10 +78,10 @@ export function Avatar() {
         width={128}
         height={128}
         className={clsx(
-          'absolute top-0 left-0 transition-opacity duration-150 ease-out',
+          'absolute top-0 left-0 size-full transition-opacity duration-150 ease-out',
           winking && 'opacity-0',
         )}
-        sizes="128px"
+        sizes="(min-width: 640px) 128px, 80px"
         priority
       />
       <Image
@@ -91,10 +91,10 @@ export function Avatar() {
         width={128}
         height={128}
         className={clsx(
-          'absolute top-0 left-0 transition-opacity duration-150 ease-out',
+          'absolute top-0 left-0 size-full transition-opacity duration-150 ease-out',
           !winking && 'opacity-0',
         )}
-        sizes="128px"
+        sizes="(min-width: 640px) 128px, 80px"
       />
       <svg
         aria-hidden="true"

@@ -106,14 +106,30 @@ html {
   background: transparent;
 }
 
-.prose > :first-child:not(img) {
+.prose > :first-child:not(img, .diagram) {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
 }
 
-.inverted {
+.inverted,
+.diagram {
   margin-top: 4rem;
   margin-bottom: 4rem;
+}
+
+.diagram {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.diagram img {
+  margin: 0;
+}
+
+@media (width < 40rem) {
+  .diagram img {
+    min-width: 640px;
+  }
 }
 
 .dark img.inverted {
