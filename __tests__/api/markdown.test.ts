@@ -30,7 +30,8 @@ describe('API /api/markdown/[type]/[slug]', () => {
       'Content-Type': 'text/markdown; charset=utf-8',
       Link: '<https://shramko.dev/blog/react-useref>; rel="canonical"',
       Vary: 'Accept',
-      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      'Cache-Control': 'public, max-age=0, must-revalidate',
+      'Vercel-CDN-Cache-Control': 'max-age=3600, stale-while-revalidate=86400',
     });
     expect(body).toMatch(/^# useRef in React/);
     expect(body).toContain('Source: https://shramko.dev/blog/react-useref');

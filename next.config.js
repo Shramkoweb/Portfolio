@@ -122,6 +122,18 @@ const markdownRewrites = ['blog', 'snippets'].flatMap((type) => [
   },
 ]);
 
+// Repeats Next's own tokens: on Vercel this value may replace the prerender's Vary rather than merge.
+const negotiatedVaryHeaders = ['blog', 'snippets'].map((type) => ({
+  source: `/${type}/:slug`,
+  headers: [
+    {
+      key: 'Vary',
+      value:
+        'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept',
+    },
+  ],
+}));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -215,6 +227,7 @@ const nextConfig = {
     APP_RELEASE_VERSION: new Date().valueOf().toString(),
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     deviceSizes: [360, 640, 768, 1080, 1280, 1536, 1920, 2304],
     qualities: [75, 100],
   },
@@ -223,6 +236,16 @@ const nextConfig = {
       {
         source: '/:path*',
         headers: securityHeaders,
+      },
+      ...negotiatedVaryHeaders,
+      {
+        source: '/static/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
+          },
+        ],
       },
     ];
   },
