@@ -17,7 +17,6 @@ keywords:
     hidden content best practices,
     CSS accessibility guidelines,
     visually hidden elements,
-    CSS aria-hidden attribute,
     accessible web design CSS,
     BEM CSS methodology,
     CSS for screen readers,
