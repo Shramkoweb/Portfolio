@@ -343,4 +343,19 @@ test('SEO: posts and snippets have Markdown twins', async ({
   expect(twinWithAccept.status()).toBe(200);
   expect((await request.get('/blog/react-useref.md.md')).status()).toBe(404);
   expect((await request.get('/blog/missing-post.md')).status()).toBe(404);
+
+  for (const [accept, type] of [
+    ['text/markdown, text/html, */*', markdownType],
+    ['text/markdown, text/html;q=0.9', markdownType],
+    ['text/markdown;q=1.0', markdownType],
+    ['text/markdown;q=0', 'text/html; charset=utf-8'],
+    ['text/html, text/markdown;q=0.1', 'text/html; charset=utf-8'],
+    ['xtext/markdown', 'text/html; charset=utf-8'],
+    ['text/markdownx', 'text/html; charset=utf-8'],
+  ]) {
+    const response = await request.get('/blog/react-useref', {
+      headers: { accept },
+    });
+    expect(response.headers()['content-type'], accept).toBe(type);
+  }
 });

@@ -89,6 +89,26 @@ const ogContentTitles = ['_posts', '_snippets'].flatMap((directory) =>
     ),
 );
 
+const MARKDOWN_ELEMENT = '(?:.*,)?\\s*text/markdown\\s*';
+
+// Any explicit q below 1 falls back to HTML; agents that want Markdown send it unweighted.
+const markdownNegotiation = {
+  has: [
+    {
+      type: 'header',
+      key: 'accept',
+      value: `${MARKDOWN_ELEMENT}(?:[;,].*)?`,
+    },
+  ],
+  missing: [
+    {
+      type: 'header',
+      key: 'accept',
+      value: `${MARKDOWN_ELEMENT};[^,]*\\bq\\s*=\\s*0(?:\\.\\d{0,3})?\\s*(?:[;,].*)?`,
+    },
+  ],
+};
+
 // The `.md` rule must come first: `/blog/:slug` also matches `/blog/x.md`.
 const markdownRewrites = ['blog', 'snippets'].flatMap((type) => [
   {
@@ -97,7 +117,7 @@ const markdownRewrites = ['blog', 'snippets'].flatMap((type) => [
   },
   {
     source: `/${type}/:slug`,
-    has: [{ type: 'header', key: 'accept', value: '(.*)text/markdown(.*)' }],
+    ...markdownNegotiation,
     destination: `/api/markdown/${type}/:slug`,
   },
 ]);
