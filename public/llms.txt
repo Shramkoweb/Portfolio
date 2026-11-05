@@ -19,10 +19,13 @@ Every blog post and snippet is also served as Markdown: append `.md` to its URL,
 ## Projects
 
 - [Quizlet QuickList](https://shramko.dev/quizlet-list): Browser extension that saves words from any page into lists and exports them for Quizlet, Anki or a spreadsheet
+- [How to Import a CSV File into Quizlet](https://shramko.dev/quizlet-list/quizlet-import-csv): Quizlet has no CSV upload; how to paste a CSV, Excel or Google Sheets list into its Import box so each row becomes one card
 - [Import a Word List into Anki](https://shramko.dev/quizlet-list/to/anki): Free formatter that turns a word list into an Anki text file with a #separator header, plus the import steps
 - [Import a Word List into Quizlet](https://shramko.dev/quizlet-list/to/quizlet): Free formatter that turns a word list into Quizlet's tab-separated import format, plus the import steps
 - [Import a Word List into RemNote](https://shramko.dev/quizlet-list/to/remnote): Free formatter that turns a word list into RemNote "term >> definition" flashcards, plus the paste steps
+- [Is There a Quizlet Chrome Extension?](https://shramko.dev/quizlet-list/quizlet-chrome-extension): Quizlet makes no browser extension; what the Quizlet extensions in the Chrome Web Store do, and one that collects words for Quizlet sets
 - [Udemy Progress Reset](https://shramko.dev/udemy-reset-progress): How to reset Udemy course progress by hand, and a free extension for Chrome, Firefox and Edge that clears every lecture checkbox in one click
+- [Udemy Progress Not Updating?](https://shramko.dev/udemy-reset-progress/progress-not-updating): Why Udemy lectures stay unchecked, why the certificate does not appear, and what "Progress cannot be changed for this item" means
 - [Udemy Reset Progress Troubleshooting](https://shramko.dev/udemy-reset-progress/troubleshooting): What each Udemy Reset Progress error means, and how to fix logouts and boxes that stay checked
 
 ## Blog Posts

@@ -350,6 +350,15 @@ function UdemyResetProgressPage() {
           ).
         </p>
 
+        <p>
+          If lectures do not get their checkmark, or the certificate does not
+          appear after you finish, see{' '}
+          <Link href={Routes.UdemyProgressNotUpdating()}>
+            why Udemy progress is not updating
+          </Link>
+          .
+        </p>
+
         <h2>Speed modes</h2>
 
         <p>

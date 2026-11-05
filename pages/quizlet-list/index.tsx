@@ -154,7 +154,7 @@ function QuizletPage() {
                   name: 'Is Quizlet QuickList made by Quizlet?',
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'No. It is an independent extension I built, and it is not affiliated with or endorsed by Quizlet.',
+                    text: 'No. It is an independent extension I built, and it is not affiliated with or endorsed by Quizlet. Quizlet does not make a browser extension of its own, and the Quizlet extensions in the Chrome Web Store come from other developers.',
                   },
                 },
               ],
@@ -349,7 +349,10 @@ function QuizletPage() {
 
         <p>
           For Anki, Google Sheets or Excel, click <strong>Export TSV</strong> or{' '}
-          <strong>Export CSV</strong> and import the file there.
+          <strong>Export CSV</strong> and import the file there. Quizlet cannot
+          open a CSV file, so{' '}
+          <Link href={Routes.QuizletImportCsv()}>paste a CSV into Quizlet</Link>{' '}
+          through its Import box instead.
         </p>
 
         <h2>Add the meanings before you import</h2>
@@ -448,7 +451,12 @@ function QuizletPage() {
         <h3>Is Quizlet QuickList made by Quizlet?</h3>
         <p>
           No. It is an independent extension I built, and it is not affiliated
-          with or endorsed by Quizlet.
+          with or endorsed by Quizlet. Quizlet does not make a browser extension
+          of its own, and{' '}
+          <Link href={Routes.QuizletChromeExtension()}>
+            the Quizlet extensions in the Chrome Web Store
+          </Link>{' '}
+          come from other developers.
         </p>
 
         <h3>Where can I find the privacy policy?</h3>

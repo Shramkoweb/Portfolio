@@ -242,6 +242,12 @@ function UdemyTroubleshootingPage() {
                 How to reset Udemy course progress, by hand or in one click
               </Link>
             </li>
+            <li>
+              <Link href={Routes.UdemyProgressNotUpdating()}>
+                Udemy progress not updating? Lectures, certificates and locked
+                checkboxes
+              </Link>
+            </li>
           </ul>
         </div>
       </article>

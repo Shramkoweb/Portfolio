@@ -9,8 +9,11 @@ export const Routes = {
   Dashboard: () => '/dashboard',
   UdemyResetProgress: () => '/udemy-reset-progress',
   UdemyTroubleshooting: () => '/udemy-reset-progress/troubleshooting',
+  UdemyProgressNotUpdating: () => '/udemy-reset-progress/progress-not-updating',
   QuizletList: () => '/quizlet-list',
   FlashcardImport: (app: string) => `/quizlet-list/to/${app}`,
+  QuizletChromeExtension: () => '/quizlet-list/quizlet-chrome-extension',
+  QuizletImportCsv: () => '/quizlet-list/quizlet-import-csv',
   Bookmarks: () => '/bookmarks',
 
   Resume: () => '/static/serhii_shramko_frontend.pdf',
