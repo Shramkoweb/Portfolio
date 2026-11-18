@@ -3,7 +3,7 @@ title: 'Presenting the Revamped shramko.dev: Explore the Exciting Updates!'
 heading: 'Introducing the new shramko.dev'
 description: A deep dive into building my developer portfolio with Next.js 16, React 19, and Tailwind CSS 4. Learn about the tech stack, design decisions, and features behind 900+ commits.
 createDate: 2022-08-13T13:31:25.041Z
-updateDate: 2026-05-04T12:00:00.000Z
+updateDate: 2026-11-18T00:00:00.000Z
 keywords:
   [
     Website Redesign,
@@ -23,6 +23,12 @@ featured: false
 What started as a two-month rewrite in the summer of 2022 has turned into a nearly four-year engineering project — 940+ commits, 33 blog posts, 41 code snippets, and a full-stack architecture that I keep pushing forward with every new version of the JavaScript ecosystem.
 
 Here is an overview of what powers shramko.dev today.
+
+<Update date="2026-11-18">
+  Lighthouse CI has been retired. The Lighthouse workflow and performance budgets
+  described below reflect the earlier setup; automated preview audits and their PR
+  comments are no longer part of the CI pipeline. The other CI checks and uptime monitors remain.
+</Update>
 
 ## Overview
 
@@ -73,7 +79,7 @@ in [3 Jul 2022](https://github.com/Shramkoweb/Portfolio/commit/ce017f5e8e55693f8
 - RSS feed at `/feed.xml` with proper cache headers and CDATA escaping
 - Schema.org structured data — BlogPosting, TechArticle, BreadcrumbList, FAQPage, and WebSite schemas
 - Post reactions (heart, beer, trophy) with optimistic UI via a custom `useReducer`
-- Lighthouse CI on every deploy preview with enforced [performance budgets](https://github.com/Shramkoweb/Portfolio/blob/develop/.github/lighthouse-budget.json) (LCP < 2.5 s, TBT < 1 s, CLS < 0.1)
+- Lighthouse CI on every deploy preview with enforced [performance budgets](https://github.com/Shramkoweb/Portfolio/blob/0d84bc34daeabce8381bfab1877d5f211e2c272c/.github/lighthouse-budget.json) (LCP < 2.5 s, TBT < 1 s, CLS < 0.1)
 - Auto-generated sitemap with depth-based priority and frontmatter-driven `lastmod` dates
 
 ## 💻 Technologies

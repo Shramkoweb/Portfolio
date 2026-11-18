@@ -4,7 +4,6 @@
 
 <p align="center">
   <a href="https://github.com/Shramkoweb/Portfolio/actions/workflows/ci.yml"><img src="https://github.com/Shramkoweb/Portfolio/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://github.com/Shramkoweb/Portfolio/actions/workflows/lighthouse.yml"><img src="https://github.com/Shramkoweb/Portfolio/actions/workflows/lighthouse.yml/badge.svg" alt="Lighthouse CI"></a>
   <a href="https://qlty.sh/gh/Shramkoweb/projects/Portfolio"><img src="https://qlty.sh/gh/Shramkoweb/projects/Portfolio/maintainability.svg" alt="Maintainability"></a>
   <a href="https://qlty.sh/gh/Shramkoweb/projects/Portfolio"><img src="https://qlty.sh/gh/Shramkoweb/projects/Portfolio/coverage.svg" alt="Test Coverage"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
@@ -193,14 +192,6 @@ image, screenshots included.
 Vulnerability reports go through the process in [SECURITY.md](SECURITY.md) — please don't
 open a public issue.
 
-## Performance budget
-
-Lighthouse CI audits every Vercel preview deployment against
-[`.github/lighthouse-budget.json`](.github/lighthouse-budget.json), which sets budgets for
-Core Web Vitals timings and for script, stylesheet and total size. The audited pages and
-the number of runs are set in [`lighthouse.yml`](.github/workflows/lighthouse.yml), and the
-results are posted back to the pull request as a table.
-
 ## Deployment
 
 Deploys automatically to [Vercel](https://vercel.com) on push to `main`. The `postbuild`
@@ -210,10 +201,6 @@ script regenerates the sitemap via `next-sitemap`.
 dependency audit on every push to `main` and every pull request. Pull requests also build
 the site, check the CSP hashes and run the Playwright suite with screenshot comparison
 off. Test coverage goes to Qlty over OIDC.
-
-[`.github/workflows/lighthouse.yml`](.github/workflows/lighthouse.yml) is triggered by a
-successful Vercel **Preview** deployment rather than by the push itself, so it audits the
-real deployed preview instead of a local build.
 
 ## Monitors
 
