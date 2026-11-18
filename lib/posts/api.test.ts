@@ -160,6 +160,23 @@ describe('Posts API', () => {
   });
 
   describe('getPostBySlug — buildPostMetadata edge cases', () => {
+    it('preserves milliseconds from YAML Date objects', async () => {
+      (matter as unknown as jest.Mock).mockReturnValueOnce({
+        ...DEFAULT_MATTER_RESULT,
+        data: {
+          ...DEFAULT_MATTER_RESULT.data,
+          createDate: new Date('2024-01-01T12:00:00.973Z'),
+          updateDate: new Date('2024-02-01T12:00:00.123Z'),
+        },
+      });
+      (readFile as jest.Mock).mockResolvedValueOnce('content');
+
+      const post = await getPostBySlug('with-yaml-dates');
+
+      expect(post.data.createDate).toBe(Date.parse('2024-01-01T12:00:00.973Z'));
+      expect(post.data.updateDate).toBe(Date.parse('2024-02-01T12:00:00.123Z'));
+    });
+
     it('should set updateDate to null when frontmatter omits it', async () => {
       (matter as unknown as jest.Mock).mockReturnValueOnce({
         ...DEFAULT_MATTER_RESULT,

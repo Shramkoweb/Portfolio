@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
+const matter = require('gray-matter');
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 const pathLevelToPriority = {
@@ -19,6 +20,33 @@ const getPathDepthLevel = (urlPath) => {
 
   return urlPath.split('/').length - 1;
 };
+
+function parseContentDate(value, field) {
+  if (!(value instanceof Date) && typeof value !== 'string') {
+    throw new Error(`${field} must be a date`);
+  }
+
+  if (
+    typeof value === 'string' &&
+    !/^\d{4}-\d{2}-\d{2}(?:T.+(?:Z|[+-]\d{2}:\d{2}))?$/.test(value)
+  ) {
+    throw new Error(
+      `${field} must be YYYY-MM-DD or an ISO timestamp with a timezone`,
+    );
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    throw new Error(`${field} is not a valid date`);
+  }
+
+  if (date.getTime() > Date.now()) {
+    throw new Error(`${field} must not be in the future`);
+  }
+
+  return date;
+}
 
 function getContentDate(urlPath) {
   const blogMatch = urlPath.match(/^\/blog\/([^/]+)$/);
@@ -41,33 +69,35 @@ function getContentDate(urlPath) {
 
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const frontmatter =
-      content.match(/^---\r?\n([\s\S]*?)\r?\n---/m)?.[1] ?? '';
-    const updateMatch = frontmatter.match(/^updateDate:\s*(.+)$/m);
-    const createMatch = frontmatter.match(/^createDate:\s*(.+)$/m);
+    const { data } = matter(content);
+    const created = parseContentDate(data.createDate, 'createDate');
+    const updated =
+      data.updateDate == null
+        ? created
+        : parseContentDate(data.updateDate, 'updateDate');
 
-    const dateStr = updateMatch
-      ? updateMatch[1].trim()
-      : createMatch
-        ? createMatch[1].trim()
-        : null;
-
-    if (dateStr) {
-      return new Date(dateStr).toISOString();
+    if (updated < created) {
+      throw new Error('updateDate must not precede createDate');
     }
+
+    return updated.toISOString();
   } catch (error) {
-    if (error?.code !== 'ENOENT') {
-      console.error(`Error reading content date for ${urlPath}:`, error);
-    }
+    // next-sitemap's CLI catches errors without setting a failure exit code.
+    process.exitCode = 1;
+    throw new Error(
+      `Cannot generate sitemap entry for ${urlPath} (${dir}/${slug}.md): ${error.message}`,
+      {
+        cause: error,
+      },
+    );
   }
-
-  return null;
 }
 
-/** @type {import("next-sitemap").IConfig} */
+/** @satisfies {import("next-sitemap").IConfig} */
 module.exports = {
   siteUrl: 'https://shramko.dev',
   generateIndexSitemap: false,
+  autoLastmod: false,
   exclude: EXCLUDED_PATHS,
   transform: async (config, urlPath) => {
     const contentDate = getContentDate(urlPath);

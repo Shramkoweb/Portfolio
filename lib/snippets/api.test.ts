@@ -68,6 +68,25 @@ describe('Snippets API', () => {
       expect(snippet.data.updateDate).toBeNull();
     });
 
+    it('preserves milliseconds from YAML timestamps', async () => {
+      mockReadFile.mockResolvedValue(
+        markdown({
+          ...FRONTMATTER,
+          createDate: '2024-01-01T12:00:00.973Z',
+          updateDate: '2024-02-01T12:00:00.123Z',
+        }),
+      );
+
+      const snippet = await getSnippetBySlug('with-yaml-dates');
+
+      expect(snippet.data.createDate).toBe(
+        Date.parse('2024-01-01T12:00:00.973Z'),
+      );
+      expect(snippet.data.updateDate).toBe(
+        Date.parse('2024-02-01T12:00:00.123Z'),
+      );
+    });
+
     it('wraps read errors and keeps the original as cause', async () => {
       const original = new Error('ENOENT');
       mockReadFile.mockRejectedValue(original);

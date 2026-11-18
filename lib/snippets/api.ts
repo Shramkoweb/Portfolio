@@ -29,8 +29,8 @@ export async function getSnippetBySlug(slug?: string): Promise<Snippet> {
         heading,
         description,
         keywords,
-        createDate: Date.parse(createDate),
-        updateDate: updateDate ? Date.parse(updateDate) : null,
+        createDate: new Date(createDate).getTime(),
+        updateDate: updateDate ? new Date(updateDate).getTime() : null,
       },
       content,
     };

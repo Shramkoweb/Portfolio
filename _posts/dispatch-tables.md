@@ -3,7 +3,7 @@ title: 'Dispatch Tables in JavaScript: A Clean Code Approach'
 heading: Dispatch table in javascript
 description: Replace messy switch statements with dispatch tables in JavaScript. Learn this clean code pattern for handling multiple conditions with maintainable code.
 createDate: 2022-08-28T08:04:18.720Z
-updateDate: 2025-12-01
+updateDate: 2026-04-10
 keywords:
   [
     Switch statement in javascript,
