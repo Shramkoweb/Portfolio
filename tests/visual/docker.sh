@@ -5,7 +5,7 @@
 # amd64 even on Apple silicon, to render exactly like the CI runner.
 set -euo pipefail
 
-IMAGE='mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf'
+IMAGE='mcr.microsoft.com/playwright:v1.65.0-noble@sha256:9beb546099e11f52d62e505537914870e01a67e0e6b00ae41da4775324e73dbe'
 
 cd "$(dirname "$0")/../.."
 
@@ -22,7 +22,7 @@ exec docker run --rm --init --ipc=host --platform linux/amd64 \
   -e pnpm_config_store_dir=/pnpm-store \
   "$IMAGE" bash -c '
     git config --global --add safe.directory /work
-    corepack enable >/dev/null
+    npm install --global --silent "$(node -p "require(\"./package.json\").packageManager")"
     pnpm install --frozen-lockfile --prefer-offline >/dev/null
     pnpm exec playwright test "$@"
   ' bash "$@"
