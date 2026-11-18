@@ -10,6 +10,15 @@ overrides:
   # override stays on the major typography is written against.
   # Drop when @tailwindcss/typography pins postcss-selector-parser >=6.1.5
   postcss-selector-parser@6: ^6.1.5
+  # advisory 1244013 (moderate, AbortSignal cancellation bypass allows
+  # post-timeout filesystem traversal, >=9.0.0 <=14.0.1). jest@30.5.2 and
+  # test-exclude@7.0.2 ask for glob ^13 / ^10; the fix only shipped in 14.x.
+  # Drop when jest and test-exclude depend on glob >=14.0.2
+  'glob@>=9.0.0 <14.0.2': ^14.0.2
+  # advisory 1244623 (moderate, denial of service via globparts amplification,
+  # >=7.0.0 <11.0.1). Pulled by the glob and test-exclude above; the fix only
+  # shipped in 11.x. Drop together with the glob override
+  'minimatch@>=7.0.0 <11.0.1': ^11.0.1
 
 allowBuilds:
   '@parcel/watcher': true
