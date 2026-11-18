@@ -51,8 +51,8 @@ function buildPostMetadata(
       categories,
       description,
       readTime: text,
-      createDate: Date.parse(createDate),
-      updateDate: updateDate ? Date.parse(updateDate) : null,
+      createDate: new Date(createDate).getTime(),
+      updateDate: updateDate ? new Date(updateDate).getTime() : null,
     },
   };
 }

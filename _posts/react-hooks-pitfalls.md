@@ -3,6 +3,7 @@ title: 'Understanding the Hidden Pitfalls of Custom Hooks in React'
 heading: Custom Hooks Pitfalls
 description: Learn about performance risks in React custom hooks, how they cause unexpected re-renders, and strategies to manage state efficiently.
 createDate: 2025-05-31T09:01:43.973Z
+updateDate: 2026-01-29
 keywords:
   [
     custom hooks,
