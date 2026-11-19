@@ -61,7 +61,7 @@
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
-    "@testing-library/user-event": "14.6.9",
+    "@testing-library/user-event": "14.6.10",
     "@types/jest": "30.0.0",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
@@ -87,5 +87,5 @@
     "node": "24.x",
     "pnpm": ">=10"
   },
-  "packageManager": "pnpm@12.19.0"
+  "packageManager": "pnpm@12.20.0"
 }
