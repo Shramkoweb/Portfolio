@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { InstallLinks } from '@/components/install-links';
+import { MarkdownAlternate } from '@/components/markdown-alternate';
 import { PageMeta } from '@/components/page-meta';
 import { StoreRating } from '@/components/store-rating';
 import { UdemyPacingModes } from '@/components/udemy-pacing-modes';
@@ -36,6 +37,7 @@ function UdemyResetProgressPage() {
 
   return (
     <>
+      <MarkdownAlternate path={Routes.UdemyResetProgress()} />
       <PageMeta
         title="How to Reset Udemy Course Progress: By Hand or in One Click"
         description="Udemy has no button that resets a whole course. Uncheck lectures one by one, or clear every checkbox in one click with a free, open-source extension for Chrome, Firefox and Edge."

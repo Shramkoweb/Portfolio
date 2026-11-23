@@ -12,6 +12,7 @@ import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
 import { InlineText } from '@/components/inline-text';
 import { InstallLinks } from '@/components/install-links';
+import { MarkdownAlternate } from '@/components/markdown-alternate';
 import { WordListConverter } from '@/components/word-list-converter';
 import { QUIZLET_APP_STORES, SITE_URL } from '@/lib/constants';
 import {
@@ -44,6 +45,7 @@ function FlashcardImportPage(props: FlashcardImportPageProps) {
 
   return (
     <>
+      <MarkdownAlternate path={Routes.FlashcardImport(app.slug)} />
       <ArticleMeta
         title={app.title}
         heading={app.heading}

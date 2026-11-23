@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { InstallLinks } from '@/components/install-links';
+import { MarkdownAlternate } from '@/components/markdown-alternate';
 import { PageMeta } from '@/components/page-meta';
 import { StoreRating } from '@/components/store-rating';
 import { MEDIA_QUERIES } from '@/lib/breakpoints';
@@ -38,6 +39,7 @@ function QuizletPage() {
 
   return (
     <>
+      <MarkdownAlternate path={Routes.QuizletList()} />
       <PageMeta
         title="Quizlet QuickList: Save Words for Quizlet and Anki"
         description="Free browser extension: select a word on any page and right-click to save it to a list. Copy the list into Quizlet, or export a TSV or CSV file for Anki, Google Sheets or Excel."

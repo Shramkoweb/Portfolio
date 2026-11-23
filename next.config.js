@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync } from 'node:fs';
+import { sep } from 'node:path';
 
 import { withSentryConfig } from '@sentry/nextjs/config';
 import matter from 'gray-matter';
@@ -122,6 +123,21 @@ const markdownRewrites = ['blog', 'snippets'].flatMap((type) => [
   },
 ]);
 
+// Pages with a hand-written twin in _markdown/, plus the formatter pages that
+// lib/markdown/project-pages.ts generates; the route 404s an unknown :app.
+const projectMarkdownRewrites = [
+  ...readdirSync(new URL('./_markdown/', import.meta.url), { recursive: true })
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => file.slice(0, -'.md'.length).split(sep).join('/')),
+  'quizlet-list/to/:app',
+].flatMap((path) => {
+  const destination = `/api/markdown/page?path=${path}`;
+  return [
+    { source: `/${path}.md`, destination },
+    { source: `/${path}`, ...markdownNegotiation, destination },
+  ];
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -145,11 +161,15 @@ const nextConfig = {
     turbopackSharedRuntime: false,
   },
   outputFileTracingIncludes: {
-    '/api/markdown/**': ['./_posts/*.md', './_snippets/*.md'],
+    '/api/markdown/**': [
+      './_posts/*.md',
+      './_snippets/*.md',
+      './_markdown/**/*.md',
+    ],
   },
   rewrites: async () => {
     return {
-      beforeFiles: markdownRewrites,
+      beforeFiles: [...markdownRewrites, ...projectMarkdownRewrites],
       afterFiles: [
         {
           source: '/og',
