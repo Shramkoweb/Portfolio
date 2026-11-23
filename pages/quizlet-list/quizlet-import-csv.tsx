@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
 import { InstallLinks } from '@/components/install-links';
-import { MarkdownAlternate } from '@/components/markdown-alternate';
 import { QUIZLET_APP_STORES, SITE_URL } from '@/lib/constants';
 import { parsePostDate } from '@/lib/posts/utils';
 import { Routes } from '@/lib/routes';
@@ -58,7 +57,6 @@ const FAQ = [
 function QuizletImportCsvPage() {
   return (
     <>
-      <MarkdownAlternate path={Routes.QuizletImportCsv()} />
       <ArticleMeta
         title="Quizlet Import CSV: How to Get a CSV File into Quizlet"
         heading={HEADING}
@@ -68,6 +66,11 @@ function QuizletImportCsvPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/quizlet-list/quizlet-import-csv.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

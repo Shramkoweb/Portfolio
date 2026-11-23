@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
 import { InstallLinks } from '@/components/install-links';
-import { MarkdownAlternate } from '@/components/markdown-alternate';
 import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import {
   QUIZLET_APP_RATING,
@@ -97,7 +96,6 @@ const FAQ = [
 function QuizletChromeExtensionPage() {
   return (
     <>
-      <MarkdownAlternate path={Routes.QuizletChromeExtension()} />
       <ArticleMeta
         title="Quizlet Chrome Extension: Is There an Official One?"
         heading={HEADING}
@@ -107,6 +105,11 @@ function QuizletChromeExtensionPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/quizlet-list/quizlet-chrome-extension.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

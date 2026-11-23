@@ -1,11 +1,12 @@
----
-title: How to Reset Udemy Course Progress
-description: Udemy has no button that resets a whole course. Uncheck lectures one by one, or clear every checkbox in one click with Udemy Reset Progress, a free, open-source extension for Chrome, Firefox and Edge.
----
+# How to Reset Udemy Course Progress
+
+> Udemy has no button that resets a whole course. Uncheck lectures one by one, or clear every checkbox in one click with Udemy Reset Progress, a free, open-source extension for Chrome, Firefox and Edge.
+
+Source: https://shramko.dev/udemy-reset-progress · Author: Serhii Shramko
 
 **Short answer:** Udemy has no button that resets a whole course. Its help center only describes unchecking lectures one at a time in the course content list. That is fine for a short course and slow for a long one. **Udemy Reset Progress** is a free, open-source browser extension that clears every lecture checkbox in one click.
 
-<StoreRating app="udemy-reset-progress" />
+Rated 5.0 out of 5 from 14 ratings, with 1,000 users, on the [Chrome Web Store](https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-reset-progress).
 
 - **Price:** free, no ads.
 - **Browsers:** Chrome, Firefox and Microsoft Edge.
@@ -14,7 +15,9 @@ description: Udemy has no button that resets a whole course. Uncheck lectures on
 - **Source:** open source under AGPL-3.0, [on GitHub](https://github.com/Shramkoweb/udemy-reset-progress).
 - **Made by:** Serhii Shramko. It is an independent extension, not affiliated with or endorsed by Udemy.
 
-<InstallLinks app="udemy-reset-progress" campaign="udemy-reset-progress" />
+- [Udemy Reset Progress on Chrome Web Store](https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-reset-progress)
+- [Udemy Reset Progress on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-reset-progress)
+- [Udemy Reset Progress on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/udemy-reset-progress/cmnolghflighmmfpdkinlbmoelfgchhc?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-reset-progress)
 
 ## How it works
 
@@ -28,7 +31,7 @@ Open the course you want to reset in the course player, the page where lectures 
 
 ### 3. Clear the progress
 
-Click the extension icon in your browser toolbar, then **Clear Progress**. The button reads "Resetting..." while it works. Keep the tab open until it says "Done". If it says "Try Again", the [troubleshooting page](/udemy-reset-progress/troubleshooting) explains the message.
+Click the extension icon in your browser toolbar, then **Clear Progress**. The button reads "Resetting..." while it works. Keep the tab open until it says "Done". If it says "Try Again", the [troubleshooting page](https://shramko.dev/udemy-reset-progress/troubleshooting) explains the message.
 
 ### 4. Reload the page
 
@@ -54,17 +57,25 @@ This is the only method Udemy's help describes, and it needs no extension:
 
 Udemy marks a lecture complete on its own once you have watched every minute of it, so the checkmarks come back as you rewatch. Its help also notes that assignments cannot be unmarked as complete ([archived Udemy help article](https://web.archive.org/web/20230924/https://support.udemy.com/hc/en-us/articles/229607188-How-to-Mark-or-Unmark-Lectures-as-Complete-on-a-Browser-)).
 
-If lectures do not get their checkmark, or the certificate does not appear after you finish, see [why Udemy progress is not updating](/udemy-reset-progress/progress-not-updating).
+If lectures do not get their checkmark, or the certificate does not appear after you finish, see [why Udemy progress is not updating](https://shramko.dev/udemy-reset-progress/progress-not-updating).
 
 ## Speed modes
 
 The extension clicks the same checkboxes you would, one after another. Clicking hundreds of them in a few seconds can end your Udemy session, so it waits between clicks and pauses after every batch. Open the settings with the gear button in the popup, turn off **Auto** and pick a mode:
 
-<UdemyPacingModes />
+Speed modes in version 2.1.2:
+
+| Mode | Between clicks | Pause | Pause length |
+| --- | --- | --- | --- |
+| Turbo | 100 ms | No pause | - |
+| Balanced | 250 ms | Every 30 clicks | 1.5 s |
+| Safe | 400 ms | Every 20 clicks | 3 s |
+| Auto (default) | 250 ms | Every 30 clicks | 1.5 s |
+| Advanced | 50 to 1000 ms | Every 5 to 50 clicks | Six delays, at least 1 s |
 
 Auto is on by default and uses the Balanced timing. It does not adapt to the size of the course. Open **Advanced** to set the Action delay, from 50 to 1000 ms, and the Batch size, from 5 to 50, yourself.
 
-If Udemy logs you out halfway, log back in and run it again in Safe mode. The extension does not retry, but a second run continues with the boxes that are still checked. The [troubleshooting page](/udemy-reset-progress/troubleshooting) covers that and every error message.
+If Udemy logs you out halfway, log back in and run it again in Safe mode. The extension does not retry, but a second run continues with the boxes that are still checked. The [troubleshooting page](https://shramko.dev/udemy-reset-progress/troubleshooting) covers that and every error message.
 
 ## Mark a course complete
 
@@ -115,6 +126,8 @@ No. It is an independent extension I built, and it is not affiliated with or end
 
 It is free for Chrome, Firefox and Edge.
 
-<InstallLinks app="udemy-reset-progress" campaign="udemy-reset-progress" />
+- [Udemy Reset Progress on Chrome Web Store](https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-reset-progress)
+- [Udemy Reset Progress on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-reset-progress)
+- [Udemy Reset Progress on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/udemy-reset-progress/cmnolghflighmmfpdkinlbmoelfgchhc?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-reset-progress)
 
 The code is open source under AGPL-3.0. [View it on GitHub](https://github.com/Shramkoweb/udemy-reset-progress).

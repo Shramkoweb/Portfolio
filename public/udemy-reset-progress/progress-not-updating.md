@@ -1,12 +1,12 @@
----
-title: Udemy Progress Not Updating?
-description: Why Udemy lectures stay unchecked, why the certificate does not appear, and what "Progress cannot be changed for this item" means, with fixes from Udemy's help.
-createDate: 2026-11-05
----
+# Udemy Progress Not Updating?
+
+> Why Udemy lectures stay unchecked, why the certificate does not appear, and what "Progress cannot be changed for this item" means, with fixes from Udemy's help.
+
+Source: https://shramko.dev/udemy-reset-progress/progress-not-updating · Author: Serhii Shramko · Published: 2026-11-05
 
 **Short answer:** Udemy ticks a lecture once you have watched every minute of it, and it issues a certificate only when every item in the course has a checkmark. When the percentage stalls or the certificate never appears, one item is almost always missing its tick. This page shows how to find it, which checkboxes Udemy locks, and how to tick the rest.
 
-I built [Udemy Reset Progress](/udemy-reset-progress), a free extension that clears or ticks every lecture checkbox in a course. It is my own tool, not an official Udemy one. The Udemy help articles quoted here are archived copies from 2023 to 2025, listed under Sources at the bottom, and Udemy may have changed them since.
+I built [Udemy Reset Progress](https://shramko.dev/udemy-reset-progress), a free extension that clears or ticks every lecture checkbox in a course. It is my own tool, not an official Udemy one. The Udemy help articles quoted here are archived copies from 2023 to 2025, listed under Sources at the bottom, and Udemy may have changed them since.
 
 ## How Udemy marks an item complete
 
@@ -55,11 +55,13 @@ Udemy Reset Progress makes those clicks for you. Open the course player with the
 
 It clicks the same checkboxes you can click yourself, so items Udemy locks, such as assignments, stay as they are. Udemy's [Terms of Use](https://www.udemy.com/terms/terms-of-use/) do not allow "automated means of any kind to access the Services". They do not mention browser extensions, and if that worries you, tick the boxes by hand.
 
-<InstallLinks app="udemy-reset-progress" campaign="udemy-progress-not-updating" />
+- [Udemy Reset Progress on Chrome Web Store](https://chromewebstore.google.com/detail/udemy-reset-progress/dddnklikfgdefjekcbhehjogkpfkbdlo?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-progress-not-updating)
+- [Udemy Reset Progress on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/udemy-reset-progress/?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-progress-not-updating)
+- [Udemy Reset Progress on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/udemy-reset-progress/cmnolghflighmmfpdkinlbmoelfgchhc?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=udemy-progress-not-updating)
 
 ## Resetting progress on Udemy Business
 
-Udemy Business's help says its checkboxes cannot be adjusted by hand, and it describes no reset option for learners. I have not tested the extension there. On Udemy.com you can [reset a whole course by hand or in one click](/udemy-reset-progress).
+Udemy Business's help says its checkboxes cannot be adjusted by hand, and it describes no reset option for learners. I have not tested the extension there. On Udemy.com you can [reset a whole course by hand or in one click](https://shramko.dev/udemy-reset-progress).
 
 ## FAQ
 
@@ -85,8 +87,8 @@ Udemy Business's help says its checkboxes cannot be adjusted by hand, and it des
 
 ## Related
 
-- [How to reset Udemy course progress, by hand or in one click](/udemy-reset-progress)
-- [Udemy Reset Progress not working? Fixes for every error](/udemy-reset-progress/troubleshooting)
+- [How to reset Udemy course progress, by hand or in one click](https://shramko.dev/udemy-reset-progress)
+- [Udemy Reset Progress not working? Fixes for every error](https://shramko.dev/udemy-reset-progress/troubleshooting)
 
 ## Sources
 

@@ -71,9 +71,7 @@ pnpm dev                # http://localhost:3000
 
 **Watch out:** a colon inside an unquoted frontmatter value breaks the YAML parse. `description: Build a second brain: transcribe...` silently turns into a different key and every field after it disappears, which surfaces as `Cannot read properties of undefined` in the post filters. Quote any value containing a colon.
 
-## Project pages served as Markdown
-
-The extension landing pages and guides under `pages/quizlet-list/` and `pages/udemy-reset-progress/` are TSX, so their Markdown twins (`/<path>.md`, or the page with `Accept: text/markdown`) are written by hand in `_markdown/<path>.md`. The `quizlet-list/to/<app>` twins are generated from `lib/flashcard-apps.ts`. When you change one of these pages, update its twin: `__tests__/markdown-twins.test.tsx` fails until both have the same headings and dates. Store links, ratings and the speed table come from code through `<InstallLinks>`, `<StoreRating>`, `<StoreUsers>` and `<UdemyPacingModes>` (see `lib/markdown/project-pages.ts`). A new page needs a twin file, a `<MarkdownAlternate>` in its head, and an entry in that test.
+**Project pages have Markdown copies.** The pages under `pages/quizlet-list/` and `pages/udemy-reset-progress/` are TSX, so their Markdown versions are static files at `public/<path>.md`. When you change one of these pages, update its `.md` too; nothing checks that they match.
 
 ## Article illustrations
 
@@ -107,7 +105,6 @@ When a post's code examples change, check its diagrams still use the same compon
 | `lib/`              | Utilities, schema, GitHub/Sentry helpers, scripts          |
 | `_posts/`           | Blog post MDX sources                                      |
 | `_snippets/`        | Code-snippet MDX sources                                   |
-| `_markdown/`        | Hand-written Markdown twins of the project pages           |
 | `prisma/`           | Prisma schema + migrations                                 |
 | `public/`           | Static assets                                              |
 | `styles/`           | Global CSS + Tailwind directives                           |

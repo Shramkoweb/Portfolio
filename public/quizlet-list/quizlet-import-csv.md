@@ -1,8 +1,8 @@
----
-title: How to Import a CSV File into Quizlet
-description: Quizlet has no CSV upload. Its Import box takes pasted text, on the website only. How to paste a CSV, Excel or Google Sheets list so each row becomes one card.
-createDate: 2026-11-05
----
+# How to Import a CSV File into Quizlet
+
+> Quizlet has no CSV upload. Its Import box takes pasted text, on the website only. How to paste a CSV, Excel or Google Sheets list so each row becomes one card.
+
+Source: https://shramko.dev/quizlet-list/quizlet-import-csv · Author: Serhii Shramko · Published: 2026-11-05
 
 **Short answer:** Quizlet cannot open a .csv file. Its Import box takes pasted text, and only on the website. To get a CSV into Quizlet, open it, copy the rows and paste them. Each row becomes one card. I checked the steps below against [Quizlet's help](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content) on 5 November 2026.
 
@@ -36,9 +36,11 @@ You can also open the file in a text editor, copy everything and paste it with a
 
 ## Words without definitions
 
-If you collect vocabulary while you read, [Quizlet QuickList](/quizlet-list), a free extension I built, saves each word you select on a page. Its **Export CSV** button writes one word per line followed by a comma, with the definition left empty. For Quizlet, **Copy to Clipboard** is simpler: it copies the list one word per line. To add the meanings first, paste the list into the free [Quizlet formatter](/quizlet-list/to/quizlet), which puts a tab between each word and its meaning.
+If you collect vocabulary while you read, [Quizlet QuickList](https://shramko.dev/quizlet-list), a free extension I built, saves each word you select on a page. Its **Export CSV** button writes one word per line followed by a comma, with the definition left empty. For Quizlet, **Copy to Clipboard** is simpler: it copies the list one word per line. To add the meanings first, paste the list into the free [Quizlet formatter](https://shramko.dev/quizlet-list/to/quizlet), which puts a tab between each word and its meaning.
 
-<InstallLinks app="quizlet-list" campaign="quizlet-import-csv" />
+- [Quizlet QuickList on Chrome Web Store](https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-import-csv)
+- [Quizlet QuickList on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-import-csv)
+- [Quizlet QuickList on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-import-csv)
 
 ## Export a Quizlet set to CSV
 
@@ -64,9 +66,9 @@ Only as copied text, and only for sets you created. Paste the exported text into
 
 ## Related
 
-- [Import a word list into Quizlet: free formatter](/quizlet-list/to/quizlet)
-- [Is there a Quizlet Chrome extension?](/quizlet-list/quizlet-chrome-extension)
-- [Import a word list into Anki](/quizlet-list/to/anki)
+- [Import a word list into Quizlet: free formatter](https://shramko.dev/quizlet-list/to/quizlet)
+- [Is there a Quizlet Chrome extension?](https://shramko.dev/quizlet-list/quizlet-chrome-extension)
+- [Import a word list into Anki](https://shramko.dev/quizlet-list/to/anki)
 
 ## Sources
 

@@ -1,8 +1,8 @@
----
-title: Is There a Quizlet Chrome Extension?
-description: Quizlet makes no browser extension. What the Quizlet extensions in the Chrome Web Store actually do, and a free one that collects words for your Quizlet sets.
-createDate: 2026-11-05
----
+# Is There a Quizlet Chrome Extension?
+
+> Quizlet makes no browser extension. What the Quizlet extensions in the Chrome Web Store actually do, and a free one that collects words for your Quizlet sets.
+
+Source: https://shramko.dev/quizlet-list/quizlet-chrome-extension · Author: Serhii Shramko · Published: 2026-11-05
 
 **Short answer:** no. Quizlet does not make a browser extension. Its help center has no article about one, and the Quizlet extensions in the Chrome Web Store come from other developers. They fall into three groups, and only one of them helps you build your own sets:
 
@@ -10,7 +10,7 @@ createDate: 2026-11-05
 2. Extensions that answer for you.
 3. Extensions that add words to Quizlet (QuizBridge, Quizlet QuickList).
 
-Disclosure: I made one of these extensions, [Quizlet QuickList](/quizlet-list), so keep that in mind as you read. User counts and dates come from each Chrome Web Store listing on 5 November 2026.
+Disclosure: I made one of these extensions, [Quizlet QuickList](https://shramko.dev/quizlet-list), so keep that in mind as you read. User counts and dates come from each Chrome Web Store listing on 5 November 2026.
 
 ## Extensions that copy sets out of Quizlet
 
@@ -26,7 +26,9 @@ This group is for people who meet new words while reading and want them in a set
 
 With Quizlet QuickList you select a word on any page, right-click and choose **Add to Quizlet QuickList**. Words go into named lists, one per language or subject, a word already on the list is skipped, and the toolbar icon shows the count. When you finish reading, **Copy to Clipboard** copies the list one word per line, ready for Quizlet's Import box. It is free in Chrome, Firefox and Edge, needs no account, and asks only for the `contextMenus` and `storage` permissions.
 
-<InstallLinks app="quizlet-list" campaign="quizlet-chrome-extension" />
+- [Quizlet QuickList on Chrome Web Store](https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-chrome-extension)
+- [Quizlet QuickList on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-chrome-extension)
+- [Quizlet QuickList on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-chrome-extension)
 
 ## Get the words into a Quizlet set
 
@@ -38,11 +40,11 @@ Quizlet [builds a set from pasted text](https://help.quizlet.com/hc/en-us/articl
 4. Select **Import** and paste the list. Each line becomes a card.
 5. Select **Import**, set the languages for terms and definitions, then select **Create**.
 
-The extension saves the word only, so the cards start without definitions. The free [Quizlet formatter](/quizlet-list/to/quizlet) lets you add a meaning after each word before you paste. If your words are in a spreadsheet instead, see [how to import a CSV file into Quizlet](/quizlet-list/quizlet-import-csv).
+The extension saves the word only, so the cards start without definitions. The free [Quizlet formatter](https://shramko.dev/quizlet-list/to/quizlet) lets you add a meaning after each word before you paste. If your words are in a spreadsheet instead, see [how to import a CSV file into Quizlet](https://shramko.dev/quizlet-list/quizlet-import-csv).
 
 ## One list for Quizlet and Anki
 
-The "Quizlet to Anki" extensions convert a finished Quizlet set into an Anki deck. If you collect your own words, keep one list and send it to both: paste it into Quizlet, and click **Export TSV** or use the [Anki formatter](/quizlet-list/to/anki) for Anki.
+The "Quizlet to Anki" extensions convert a finished Quizlet set into an Anki deck. If you collect your own words, keep one list and send it to both: paste it into Quizlet, and click **Export TSV** or use the [Anki formatter](https://shramko.dev/quizlet-list/to/anki) for Anki.
 
 ## At a glance
 
@@ -52,7 +54,7 @@ The "Quizlet to Anki" extensions convert a finished Quizlet set into an Anki dec
 | [Quizlet Exporter](https://chromewebstore.google.com/detail/quizlet-exporter-export-f/lkoaedeomnobdibjfdfggjhoiiabpgkl) | Exports Quizlet flashcards as JSON, CSV or text                                         | 5,000                             | 19 Jun 2025  |
 | [Quizlet to Anki](https://chromewebstore.google.com/detail/quizlet-to-anki/cgeebapijlelpceccbapfkpoaolbiccm)            | Turns Quizlet flashcards into Anki decks                                                | 1,000                             | 26 Jul 2025  |
 | [QuizBridge](https://chromewebstore.google.com/detail/quizbridge/omadfbkdojofkioimegikmokdmdicogb)                      | Sends vocabulary lists to Quizlet flashcards                                            | 7                                 | 9 Feb 2025   |
-| [Quizlet QuickList](/quizlet-list)                                                                                      | Saves words from any page into lists you copy into Quizlet or export for Anki           | <StoreUsers app="quizlet-list" /> | 7 Oct 2026   |
+| [Quizlet QuickList](https://shramko.dev/quizlet-list)                                                                                      | Saves words from any page into lists you copy into Quizlet or export for Anki           | 185 | 7 Oct 2026   |
 
 ## FAQ
 
@@ -74,9 +76,9 @@ Yes. It is free in Chrome, Firefox and Edge, needs no account, and keeps your li
 
 ## Related
 
-- [Quizlet QuickList: save words from any page for Quizlet and Anki](/quizlet-list)
-- [How to import a CSV file into Quizlet](/quizlet-list/quizlet-import-csv)
-- [Import a word list into Quizlet](/quizlet-list/to/quizlet)
+- [Quizlet QuickList: save words from any page for Quizlet and Anki](https://shramko.dev/quizlet-list)
+- [How to import a CSV file into Quizlet](https://shramko.dev/quizlet-list/quizlet-import-csv)
+- [Import a word list into Quizlet](https://shramko.dev/quizlet-list/to/quizlet)
 
 ## Sources
 

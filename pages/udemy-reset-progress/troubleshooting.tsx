@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
 import { InstallLinks } from '@/components/install-links';
-import { MarkdownAlternate } from '@/components/markdown-alternate';
 import { UdemyPacingModes } from '@/components/udemy-pacing-modes';
 import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import { SITE_URL, UDEMY_RESET_APP_STORES } from '@/lib/constants';
@@ -41,7 +40,6 @@ const KEYWORDS = [
 function UdemyTroubleshootingPage() {
   return (
     <>
-      <MarkdownAlternate path={Routes.UdemyTroubleshooting()} />
       <ArticleMeta
         title="Udemy Reset Progress Not Working? Fixes for Every Error"
         heading={HEADING}
@@ -51,6 +49,11 @@ function UdemyTroubleshootingPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/udemy-reset-progress/troubleshooting.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

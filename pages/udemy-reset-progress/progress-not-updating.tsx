@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { ArticleDates } from '@/components/article-dates';
 import { ArticleMeta } from '@/components/article-meta';
 import { InstallLinks } from '@/components/install-links';
-import { MarkdownAlternate } from '@/components/markdown-alternate';
 import { MEDIA_QUERIES } from '@/lib/breakpoints';
 import { SITE_URL, UDEMY_RESET_APP_STORES } from '@/lib/constants';
 import { parsePostDate } from '@/lib/posts/utils';
@@ -79,7 +78,6 @@ const FAQ = [
 function UdemyProgressNotUpdatingPage() {
   return (
     <>
-      <MarkdownAlternate path={Routes.UdemyProgressNotUpdating()} />
       <ArticleMeta
         title="Udemy Progress Not Updating? Fix Lectures and Certificates"
         heading={HEADING}
@@ -89,6 +87,11 @@ function UdemyProgressNotUpdatingPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/udemy-reset-progress/progress-not-updating.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

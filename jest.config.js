@@ -30,7 +30,6 @@ const config = {
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
     '^@/lib/(.*)$': '<rootDir>/lib/$1',
     '\\.(css)$': '<rootDir>/__mocks__/styleMock.js',
-    '\\.(png|jpe?g|gif|webp|avif)$': '<rootDir>/__mocks__/imageMock.js',
   },
   testPathIgnorePatterns: [
     '/node_modules/',

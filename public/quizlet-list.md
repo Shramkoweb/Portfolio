@@ -1,11 +1,12 @@
----
-title: Save Words from Any Page for Quizlet and Anki
-description: Quizlet QuickList is a free browser extension for Chrome, Firefox and Edge. Select a word on any page, right-click to save it to a list, then copy the list into Quizlet or export it as TSV or CSV for Anki, Google Sheets or Excel.
----
+# Save Words from Any Page for Quizlet and Anki
+
+> Quizlet QuickList is a free browser extension for Chrome, Firefox and Edge. Select a word on any page, right-click to save it to a list, then copy the list into Quizlet or export it as TSV or CSV for Anki, Google Sheets or Excel.
+
+Source: https://shramko.dev/quizlet-list · Author: Serhii Shramko
 
 **Quizlet QuickList** is a free browser extension that collects unfamiliar words while you read. Select a word on any web page, right-click, choose **Add to Quizlet QuickList**, and keep reading. When you are done, paste the list into Quizlet or export it for Anki or a spreadsheet.
 
-<StoreRating app="quizlet-list" />
+Rated 4.7 out of 5 from 6 ratings, with 185 users, on the [Chrome Web Store](https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-list).
 
 - **Price:** free, no account needed.
 - **Browsers:** Chrome, Firefox and Microsoft Edge.
@@ -15,7 +16,9 @@ description: Quizlet QuickList is a free browser extension for Chrome, Firefox a
 
 I built it because stopping to copy each new word while reading in a foreign language breaks the reading. With the extension, collecting a word takes one right-click.
 
-<InstallLinks app="quizlet-list" campaign="quizlet-list" />
+- [Quizlet QuickList on Chrome Web Store](https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-list)
+- [Quizlet QuickList on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-list)
+- [Quizlet QuickList on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-list)
 
 ## How it works
 
@@ -53,15 +56,15 @@ Keep Spanish words in one list and SAT prep in another. Click **+** to start a n
 
 **Anki, Google Sheets or Excel:** click **Export TSV** or **Export CSV** and import the file there.
 
-Quizlet cannot open a CSV file, so [paste a CSV into Quizlet](/quizlet-list/quizlet-import-csv) through its Import box instead.
+Quizlet cannot open a CSV file, so [paste a CSV into Quizlet](https://shramko.dev/quizlet-list/quizlet-import-csv) through its Import box instead.
 
 ## Add the meanings before you import
 
 The extension saves the word itself, not its meaning, so a copied list has no definitions yet. These free formatters turn the list into each app's import format, with room for a meaning on every line, and walk through the import step by step:
 
-- [Import a Word List into Quizlet](/quizlet-list/to/quizlet)
-- [Import a Word List into Anki](/quizlet-list/to/anki)
-- [Import a Word List into RemNote](/quizlet-list/to/remnote)
+- [Import a Word List into Quizlet](https://shramko.dev/quizlet-list/to/quizlet)
+- [Import a Word List into Anki](https://shramko.dev/quizlet-list/to/anki)
+- [Import a Word List into RemNote](https://shramko.dev/quizlet-list/to/remnote)
 
 ## Technical details
 
@@ -82,7 +85,7 @@ No. The extension works without any account, and you can paste the list into Qui
 
 ### Does Quizlet QuickList save the meaning of a word?
 
-No. It saves the word itself. Add the meanings in your flashcard app, or in the free formatters for [Quizlet](/quizlet-list/to/quizlet), [Anki](/quizlet-list/to/anki) and [RemNote](/quizlet-list/to/remnote) on this site.
+No. It saves the word itself. Add the meanings in your flashcard app, or in the free formatters for [Quizlet](https://shramko.dev/quizlet-list/to/quizlet), [Anki](https://shramko.dev/quizlet-list/to/anki) and [RemNote](https://shramko.dev/quizlet-list/to/remnote) on this site.
 
 ### Can I use Quizlet QuickList on any website?
 
@@ -90,16 +93,18 @@ Yes. As long as you can highlight the text, you can add words to your list.
 
 ### Is Quizlet QuickList made by Quizlet?
 
-No. It is an independent extension I built, and it is not affiliated with or endorsed by Quizlet. Quizlet does not make a browser extension of its own, and [the Quizlet extensions in the Chrome Web Store](/quizlet-list/quizlet-chrome-extension) come from other developers.
+No. It is an independent extension I built, and it is not affiliated with or endorsed by Quizlet. Quizlet does not make a browser extension of its own, and [the Quizlet extensions in the Chrome Web Store](https://shramko.dev/quizlet-list/quizlet-chrome-extension) come from other developers.
 
 ### Where can I find the privacy policy?
 
-On the [privacy policy page](/quizlet-list/privacy-policy).
+On the [privacy policy page](https://shramko.dev/quizlet-list/privacy-policy).
 
 ## Install Quizlet QuickList
 
 It is free for Chrome, Firefox and Edge.
 
-<InstallLinks app="quizlet-list" campaign="quizlet-list" />
+- [Quizlet QuickList on Chrome Web Store](https://chromewebstore.google.com/detail/quizlet-quicklist/oagcgmfbkpelgahbgilehnmjajpgdflg?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-list)
+- [Quizlet QuickList on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/quizlet-quicklist/?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-list)
+- [Quizlet QuickList on Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quizlet-quicklist/fpnjfdebfnhoecnljeohbnnnedhgdefn?utm_source=shramko.dev&utm_medium=markdown&utm_campaign=quizlet-list)
 
-Your lists stay in your browser. The [privacy policy](/quizlet-list/privacy-policy) has the details.
+Your lists stay in your browser. The [privacy policy](https://shramko.dev/quizlet-list/privacy-policy) has the details.

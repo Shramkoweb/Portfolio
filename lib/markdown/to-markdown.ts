@@ -4,7 +4,7 @@ export type MarkdownSource = {
   title: string;
   description: string;
   url: string;
-  createDate: number | null;
+  createDate: number;
   updateDate: number | null;
   content: string;
 };
@@ -26,7 +26,7 @@ const COMPONENT = /<([A-Z][A-Za-z0-9]*)\b/;
 const MASK = '\uE000';
 const MASKED_SPAN = new RegExp(`${MASK}(\\d+)${MASK}`, 'g');
 
-export function parseAttributes(source: string): Record<string, string> {
+function parseAttributes(source: string): Record<string, string> {
   const attributes: Record<string, string> = {};
   for (const [, name, double, single, expression] of source.matchAll(
     ATTRIBUTE,
@@ -140,7 +140,7 @@ export function toMarkdown(source: MarkdownSource): string {
   const byline = [
     `Source: ${url}`,
     `Author: ${AUTHOR}`,
-    ...(createDate ? [`Published: ${toIsoDay(createDate)}`] : []),
+    `Published: ${toIsoDay(createDate)}`,
     ...(updateDate ? [`Updated: ${toIsoDay(updateDate)}`] : []),
   ].join(' · ');
 
