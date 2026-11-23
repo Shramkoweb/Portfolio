@@ -49,6 +49,11 @@ function UdemyTroubleshootingPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/udemy-reset-progress/troubleshooting.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

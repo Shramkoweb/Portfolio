@@ -51,6 +51,11 @@ function QuizletPage() {
         }}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/quizlet-list.md"
+        />
         <meta
           name="keywords"
           key="keywords"

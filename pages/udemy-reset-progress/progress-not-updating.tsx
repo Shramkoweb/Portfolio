@@ -87,6 +87,11 @@ function UdemyProgressNotUpdatingPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/udemy-reset-progress/progress-not-updating.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -53,6 +53,11 @@ function FlashcardImportPage(props: FlashcardImportPageProps) {
         keywords={app.keywords}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href={`https://shramko.dev/quizlet-list/to/${app.slug}.md`}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -72,6 +72,8 @@ pnpm dev                # http://localhost:3000
 
 **Watch out:** a colon inside an unquoted frontmatter value breaks the YAML parse. `description: Build a second brain: transcribe...` silently turns into a different key and every field after it disappears, which surfaces as `Cannot read properties of undefined` in the post filters. Quote any value containing a colon.
 
+**Project pages have Markdown copies.** The pages under `pages/quizlet-list/` and `pages/udemy-reset-progress/` are TSX, so their Markdown versions are static files at `public/<path>.md`. When you change one of these pages, update its `.md` too; nothing checks that they match.
+
 ## Article illustrations
 
 Diagrams, tables and covers share one hand-drawn look so every post is recognisable.

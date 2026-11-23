@@ -105,6 +105,11 @@ function QuizletChromeExtensionPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/quizlet-list/quizlet-chrome-extension.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

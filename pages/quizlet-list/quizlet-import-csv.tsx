@@ -66,6 +66,11 @@ function QuizletImportCsvPage() {
         keywords={KEYWORDS}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/quizlet-list/quizlet-import-csv.md"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

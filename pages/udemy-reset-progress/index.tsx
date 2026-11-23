@@ -49,6 +49,11 @@ function UdemyResetProgressPage() {
         }}
       />
       <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://shramko.dev/udemy-reset-progress.md"
+        />
         <meta
           name="keywords"
           key="keywords"
