@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync } from 'node:fs';
+import { sep } from 'node:path';
 
 import { withSentryConfig } from '@sentry/nextjs/config';
 import matter from 'gray-matter';
@@ -123,15 +124,32 @@ const markdownRewrites = ['blog', 'snippets'].flatMap((type) => [
 ]);
 
 // Project pages are TSX, so their Markdown twins are static files in public/.
-const projectMarkdownRewrites = readdirSync(
+const projectMarkdownPaths = readdirSync(
   new URL('./public/', import.meta.url),
-  { recursive: true },
+  {
+    recursive: true,
+  },
 )
   .filter((file) => file.endsWith('.md'))
-  .map((file) => {
-    const path = `/${file.slice(0, -'.md'.length)}`;
-    return { source: path, ...markdownNegotiation, destination: `${path}.md` };
-  });
+  .map((file) => `/${file.slice(0, -'.md'.length).split(sep).join('/')}`);
+
+const projectMarkdownRewrites = projectMarkdownPaths.map((path) => ({
+  source: path,
+  ...markdownNegotiation,
+  destination: `${path}.md`,
+}));
+
+// Static files miss the headers the blog's Markdown route sets: the canonical
+// keeps the .md out of search results, Vary keeps caches from mixing formats.
+const projectMarkdownHeaders = projectMarkdownPaths.flatMap((path) => [
+  { source: path, headers: [{ key: 'Vary', value: 'Accept' }] },
+  {
+    source: `${path}.md`,
+    headers: [
+      { key: 'Link', value: `<https://shramko.dev${path}>; rel="canonical"` },
+    ],
+  },
+]);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -235,6 +253,7 @@ const nextConfig = {
         source: '/:path*',
         headers: securityHeaders,
       },
+      ...projectMarkdownHeaders,
     ];
   },
 };
