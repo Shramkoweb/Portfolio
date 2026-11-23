@@ -1,0 +1,34 @@
+name: IndexNow
+# Vercel reports every deploy back to GitHub as a deployment.
+on: deployment_status
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: github.event.deployment.environment == 'Production' && github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
+      # main takes squash merges, so the deployed commit holds the whole change.
+      # The key must match public/<key>.txt.
+      - run: |
+          urls=$(git diff --name-only --no-renames HEAD^ HEAD | sed -nE \
+            -e 's#^_posts/(.+)\.md$#https://shramko.dev/blog/\1#p' \
+            -e 's#^_snippets/(.+)\.md$#https://shramko.dev/snippets/\1#p')
+          if [ -z "$urls" ]; then
+            echo "No posts or snippets changed."
+            exit 0
+          fi
+          echo "$urls"
+          echo "$urls" | jq -R . | jq -s '{
+            host: "shramko.dev",
+            key: "ckr9wym8x39nknjxkf3awktvue9pqu6h",
+            keyLocation: "https://shramko.dev/ckr9wym8x39nknjxkf3awktvue9pqu6h.txt",
+            urlList: .
+          }' | curl -fsS -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data-binary @- -w 'IndexNow: HTTP %{http_code}\n'
