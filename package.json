@@ -33,13 +33,13 @@
   "dependencies": {
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1",
-    "@sentry/nextjs": "11.12.0",
+    "@sentry/nextjs": "11.13.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/og": "1.0.3",
     "clsx": "2.1.1",
     "gray-matter": "4.0.3",
     "image-size": "2.1.0",
-    "lucide-react": "1.72.0",
+    "lucide-react": "1.74.0",
     "next": "16.4.6",
     "next-mdx-remote": "6.0.0",
     "next-themes": "0.4.6",
@@ -53,7 +53,7 @@
     "@commitlint/cli": "21.2.4",
     "@commitlint/config-conventional": "21.2.4",
     "@commitlint/types": "21.2.3",
-    "@playwright/test": "1.65.0",
+    "@playwright/test": "1.65.1",
     "@shikijs/rehype": "4.6.0",
     "@shikijs/transformers": "4.6.0",
     "@tailwindcss/postcss": "4.3.5",
@@ -61,7 +61,7 @@
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
-    "@testing-library/user-event": "14.6.10",
+    "@testing-library/user-event": "14.6.12",
     "@types/jest": "30.0.0",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
@@ -69,9 +69,9 @@
     "jest": "30.5.2",
     "jest-environment-jsdom": "30.5.2",
     "next-sitemap": "4.2.3",
-    "oxfmt": "0.78.0",
-    "oxlint": "1.93.0",
-    "postcss": "8.5.32",
+    "oxfmt": "0.79.0",
+    "oxlint": "1.94.0",
+    "postcss": "8.5.33",
     "prisma": "7.10.1",
     "rehype-autolink-headings": "7.1.0",
     "rehype-code-titles": "1.2.1",
@@ -87,5 +87,5 @@
     "node": "24.x",
     "pnpm": ">=10"
   },
-  "packageManager": "pnpm@12.20.0"
+  "packageManager": "pnpm@12.21.0"
 }

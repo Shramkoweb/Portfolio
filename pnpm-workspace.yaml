@@ -19,6 +19,11 @@ overrides:
   # >=7.0.0 <11.0.1). Pulled by the glob and test-exclude above; the fix only
   # shipped in 11.x. Drop together with the glob override
   'minimatch@>=7.0.0 <11.0.1': ^11.0.1
+  # advisory 1248071 (high, ReDoS in Schema.TemplateLiteral compiled regex,
+  # <=3.22.0). @prisma/config@7.10.1 (via prisma) pins effect@3.20.0 exactly,
+  # and 7.10.1 is the newest stable prisma.
+  # Drop when @prisma/config pins effect >=3.22.1
+  effect@3: ^3.22.1
 
 allowBuilds:
   '@parcel/watcher': true
